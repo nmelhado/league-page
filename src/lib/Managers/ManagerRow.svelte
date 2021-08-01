@@ -1,0 +1,217 @@
+<script>
+import { goto } from "$app/navigation";
+
+
+    export let manager, rosters, users, key;
+
+    const roster = rosters.rosters[manager.roster - 1];
+    const user = users[roster.owner_id];
+</script>
+
+<style>
+    .manager {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding: 1em 0;
+        background-color: #fff;
+        margin: 0.5em 0;
+        border-radius: 2em;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 6px 0 #bbb;
+        cursor: pointer;
+    }
+
+    .manager:hover {
+        box-shadow: 0 0 10px 0 #999;
+        background-color: #eee;
+    }
+
+    .photo {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        vertical-align: middle;
+        margin-left: 1em;
+        box-shadow: 0 0 2px 1px #bbb;
+    }
+
+    .name {
+        text-align: center;
+        display: inline-block;
+        color: #555;
+        line-height: 1.2em;
+        margin-left: 1em;
+        font-weight: 700;
+    }
+
+    .team {
+        text-align: center;
+        display: inline-block;
+        font-style: italic;
+        line-height: 1.2em;
+        color: #777;
+        font-weight: 300;
+        margin-left: 1em;
+    }
+
+    .spacer {
+        flex-grow: 1;
+    }
+
+    .info {
+        display: flex;
+    }
+
+    .infoSlot {
+        text-align: center;
+        margin: 0 0.5em;
+        width: 63px;
+    }
+
+    .infoIcon {
+        display: inline-flex;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    .infoImg {
+        height: 30px;
+    }
+
+    .infoAnswer {
+        font-size: 0.8em;
+        color: #777;
+        width: 63px;
+        text-align: center;
+        line-height: 1.2em;
+    }
+
+	@media (max-width: 665px) {
+        .name {
+            font-size: 0.9em;
+            margin-left: 0.5em;
+        }
+
+        .team {
+            font-size: 0.8em;
+            margin-left: 0.5em;
+        }
+    }
+
+	@media (max-width: 595px) {
+        .manager {
+            padding: 0.5em 0;
+            margin: 0.3em 0;
+            border-radius: 1.5em;
+        }
+
+        .photo {
+            height: 30px;
+            width: 30px;
+            margin-left: 0.5em;
+        }
+
+        .infoSlot {
+            text-align: center;
+            margin: 0 0.4em;
+            width: 56px;
+        }
+
+        .infoIcon {
+            height: 30px;
+            width: 30px;
+        }
+
+        .infoImg {
+            height: 25px;
+        }
+
+        .infoAnswer {
+            font-size: 0.7em;
+            width: 56px;
+        }
+    }
+
+    @media (max-width: 475px) {
+        .name {
+            font-size: 0.8em;
+            margin-left: 0.4em;
+        }
+
+        .team {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+        }
+
+        .photo {
+            height: 25px;
+            width: 25px;
+        }
+
+        .infoSlot {
+            text-align: center;
+            margin: 0 0.4em;
+            width: 49px;
+        }
+
+        .infoIcon {
+            height: 25px;
+            width: 25px;
+        }
+
+        .infoImg {
+            height: 22px;
+        }
+
+        .infoAnswer {
+            font-size: 0.6em;
+            width: 49px;
+        }
+    }
+
+    @media (max-width: 370px) {
+        .infoTeam {
+            display: none;
+        }
+    }
+</style>
+
+<div class="manager" on:click={() => goto(`/managers?manager=${key}`)}>
+    <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+    <div class="name">{manager.name}</div>
+    <div class="team">{user.metadata.team_name ? user.metadata.team_name : user.display_name}</div>
+    <div class="spacer" />
+    <div class="info">
+        <!-- Favorite team -->
+        <div class="infoSlot infoTeam">
+            <div class="infoIcon">
+                <img class="infoImg" src="https://sleepercdn.com/images/team_logos/nfl/{manager.favoriteTeam}.png" alt="favorite team"/>
+            </div>
+        </div>
+        <!-- Preffered contact -->
+        <div class="infoSlot">
+            <div class="infoIcon">
+                <img class="infoImg" src="/{manager.prefferedContact}.png" alt="{manager.prefferedContact}"/>
+            </div>
+            <div class="infoAnswer">
+                {manager.prefferedContact}
+            </div>
+        </div>
+        <!-- Rebuild mode -->
+        <div class="infoSlot infoRebuild">
+            <div class="infoIcon">
+                <img class="infoImg" src="/{manager.mode.replace(' ', '%20')}.png" alt="win now or rebuild"/>
+            </div>
+            <div class="infoAnswer">
+                {manager.mode}
+            </div>
+        </div>
+    </div>
+</div>
