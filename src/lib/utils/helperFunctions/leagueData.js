@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import {leagueData} from '$lib/stores';
 
-export const leagueID = "658776020341567488"; // your league ID
+export const leagueID = "your_league_id"; // your league ID
 export const dues = 100; // (optional) used in template constitution page
 
 export const getLeagueData = async (queryLeagueID = leagueID) => {

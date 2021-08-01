@@ -1,0 +1,5 @@
+@use '@material/textfield/icon/index' as icon;
+@use './mixins';
+
+@include icon.icon-core-styles;
+@include mixins.core-styles;

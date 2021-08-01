@@ -56,6 +56,11 @@
 		background-color: rgba(0, 0, 0, 0.32);
 		transition: all 0.7s;
 	}
+
+	.badgeHolder {
+		text-align: center;
+		padding: 1em 0;
+	}
 </style>
 
 <Icon class="material-icons menuIcon" on:click={() => (open = true)}>menu</Icon>
@@ -63,8 +68,10 @@
 <div class="nav-back" style="pointer-events: {open ? "visible" : "none"}; opacity: {open ? 1 : 0};" on:click={() => (open = false)}/>
 
 <Drawer variant="modal" class="nav-drawer" fixed={true} bind:open>
-	<Header>
-		<Title>The Legends League</Title>
+	<Header >
+		<div class="badgeHolder">
+			<img id="logo" alt="league logo" src="./badge.png" />
+		</div>
 	</Header>
 	<Content>
 		<List>

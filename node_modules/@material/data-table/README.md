@@ -1,0 +1,591 @@
+<!--docs:
+title: "Data Tables"
+layout: detail
+section: components
+excerpt: "Data tables display information in a grid-like format of rows and columns."
+iconId: data_table
+path: /catalog/data-tables/
+-->
+
+# Data tables
+
+[Data tables](https://material.io/components/data-tables/#) display sets of data across rows and columns.
+
+![Data table with 5 rows: 1 header row, 4 rows, one column of checkboxes](images/data-table-hero.png)
+
+## Using data tables
+
+Data tables display information in a grid-like format of rows and columns. They organize information in a way that’s easy to scan, so that users can look for patterns and insights.
+
+Data tables can contain:
+
+* Interactive components (such as chips, buttons, or menus)
+* Non-interactive elements (such as badges)
+* Tools to query and manipulate data
+
+### Installation
+
+```
+npm install @material/data-table
+```
+
+### Styles
+
+```scss
+@use "@material/checkbox"; // Required only for data table with row selection.
+@use "@material/icon-button"; // Required only for data table with column sorting.
+@use "@material/data-table/data-table";
+
+@include checkbox.core-styles;
+@include icon-button.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
+```
+
+**Note: Styles for any components you intend to include within data-table (e.g. Checkboxes, Buttons etc.) must be
+loaded.**
+
+### JavaScript instantiation
+
+```js
+import {MDCDataTable} from '@material/data-table';
+const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
+```
+
+> See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
+
+> Instantiating `MDCDataTable` component is only required to add interactions for example, row selection.
+
+MDC Data Table component auto instantiates `MDCCheckbox` for header row checkbox and all row checkboxes. Make sure to set required class names to instantiate checkbox component. We suggest to use `layout` API when rows are added or removed from data table to register new checkbox components.
+
+### Making data tables accessible
+
+Please refer to the [WAI-ARIA Authoring Practices for table](https://www.w3.org/TR/wai-aria-practices-1.1/#table) for the ARIA recommended role, states and properties required for table element.
+
+## Data tables
+
+Data table currently supports following features.
+
+### Standard data table
+
+Use this to render data table without any interactivity such as row selection, sorting, etc.
+
+```html
+<div class="mdc-data-table">
+  <div class="mdc-data-table__table-container">
+    <table class="mdc-data-table__table" aria-label="Dessert calories">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody class="mdc-data-table__content">
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+          <td class="mdc-data-table__cell">Super tasty</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+          <td class="mdc-data-table__cell">I like ice cream more</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Eclair</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+          <td class="mdc-data-table__cell">New filing flavor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
+### Data table with row selection
+
+The row selection feature allows users to select table rows via row checkboxes. Users can select or unselect all rows using the header row checkbox. Additionally, the header row checkbox will be automatically updated based on the checked status of each row's checkbox, whether it was checked manually or programmatically.
+
+#### HTML Structure
+
+```html
+<div class="mdc-data-table">
+  <div class="mdc-data-table__table-container">
+    <table class="mdc-data-table__table" aria-label="Dessert calories">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--checkbox" role="columnheader" scope="col">
+            <div class="mdc-checkbox mdc-data-table__header-row-checkbox mdc-checkbox--selected">
+              <input type="checkbox" class="mdc-checkbox__native-control" aria-label="Toggle all rows"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+          </th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Signal name</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Status</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Severity</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Stage</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Time</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Roles</th>
+        </tr>
+      </thead>
+      <tbody class="mdc-data-table__content">
+        <tr data-row-id="u0" class="mdc-data-table__row">
+          <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+            <div class="mdc-checkbox mdc-data-table__row-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u0"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+          </td>
+          <th class="mdc-data-table__cell" scope="row" id="u0">Arcus watch slowdown</th>
+          <td class="mdc-data-table__cell">Online</td>
+          <td class="mdc-data-table__cell">Medium</td>
+          <td class="mdc-data-table__cell">Triaged</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
+          <td class="mdc-data-table__cell">Allison Brie</td>
+        </tr>
+        <tr data-row-id="u1" class="mdc-data-table__row mdc-data-table__row--selected" aria-selected="true">
+          <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+            <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
+              <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u1"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+          </td>
+          <th class="mdc-data-table__cell" scope="row" id="u1">monarch: prod shared ares-managed-features-provider-heavy</th>
+          <td class="mdc-data-table__cell">Offline</td>
+          <td class="mdc-data-table__cell">Huge</td>
+          <td class="mdc-data-table__cell">Triaged</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
+          <td class="mdc-data-table__cell">Brie Larson</td>
+        </tr>
+        <tr data-row-id="u2" class="mdc-data-table__row mdc-data-table__row--selected" aria-selected="true">
+          <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+            <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
+              <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u2"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+          </td>
+          <th class="mdc-data-table__cell" scope="row" id="u2">monarch: prod shared ares-managed-features-provider-heavy</th>
+          <td class="mdc-data-table__cell">Online</td>
+          <td class="mdc-data-table__cell">Minor</td>
+          <td class="mdc-data-table__cell">Not triaged</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
+          <td class="mdc-data-table__cell">Jeremy Lake</td>
+        </tr>
+        <tr data-row-id="u3" class="mdc-data-table__row">
+          <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+            <div class="mdc-checkbox mdc-data-table__row-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u3"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+          </td>
+          <th class="mdc-data-table__cell" scope="row" id="u3">Arcus watch slowdown</th>
+          <td class="mdc-data-table__cell">Online</td>
+          <td class="mdc-data-table__cell">Negligible</td>
+          <td class="mdc-data-table__cell">Triaged</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
+          <td class="mdc-data-table__cell">Angelina Cheng</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
+#### JavaScript APIs
+
+- Use `layout()` API when new row checkboxes are added or removed from data table.
+- Programmatically get / set row selection using following API's:
+  - `getSelectedRowIds()`
+  - `setSelectedRowIds(string[])`
+
+### Data table with pagination
+
+Pagination is rendered at the footer section of data table. Pagination helps
+user change the rows per page (page size) and navigate between data table pages.
+
+#### HTML Structure
+
+```html
+<div class="mdc-data-table">
+  <div class="mdc-data-table__table-container">
+    <table class="mdc-data-table__table" aria-label="Dessert calories">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody class="mdc-data-table__content">
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+          <td class="mdc-data-table__cell">Super tasty</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+          <td class="mdc-data-table__cell">I like ice cream more</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Eclair</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+          <td class="mdc-data-table__cell">New filing flavor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mdc-data-table__pagination">
+    <div class="mdc-data-table__pagination-trailing">
+      <div class="mdc-data-table__pagination-rows-per-page">
+        <div class="mdc-data-table__pagination-rows-per-page-label">
+          Rows per page
+        </div>
+
+        <div class="mdc-select mdc-select--outlined mdc-select--no-label mdc-data-table__pagination-rows-per-page-select">
+          <div class="mdc-select__anchor" role="button" aria-haspopup="listbox"
+                aria-labelledby="demo-pagination-select" tabindex="0">
+            <span class="mdc-select__selected-text-container">
+              <span id="demo-pagination-select" class="mdc-select__selected-text">10</span>
+            </span>
+            <span class="mdc-select__dropdown-icon">
+              <svg
+                  class="mdc-select__dropdown-icon-graphic"
+                  viewBox="7 10 10 5">
+                <polygon
+                    class="mdc-select__dropdown-icon-inactive"
+                    stroke="none"
+                    fill-rule="evenodd"
+                    points="7 10 12 15 17 10">
+                </polygon>
+                <polygon
+                    class="mdc-select__dropdown-icon-active"
+                    stroke="none"
+                    fill-rule="evenodd"
+                    points="7 15 12 10 17 15">
+                </polygon>
+              </svg>
+            </span>
+            <span class="mdc-notched-outline mdc-notched-outline--notched">
+              <span class="mdc-notched-outline__leading"></span>
+              <span class="mdc-notched-outline__trailing"></span>
+            </span>
+          </div>
+
+          <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth" role="listbox">
+            <ul class="mdc-list">
+              <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" role="option" data-value="10">
+                <span class="mdc-list-item__text">10</span>
+              </li>
+              <li class="mdc-list-item" role="option" data-value="25">
+                <span class="mdc-list-item__text">25</span>
+              </li>
+              <li class="mdc-list-item" role="option" data-value="100">
+                <span class="mdc-list-item__text">100</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdc-data-table__pagination-navigation">
+        <div class="mdc-data-table__pagination-total">
+          1‑10 of 100
+        </div>
+        <button class="mdc-icon-button material-icons mdc-data-table__pagination-button" data-first-page="true" disabled>
+          <div class="mdc-button__icon">first_page</div>
+        </button>
+        <button class="mdc-icon-button material-icons mdc-data-table__pagination-button" data-prev-page="true" disabled>
+          <div class="mdc-button__icon">chevron_left</div>
+        </button>
+        <button class="mdc-icon-button material-icons mdc-data-table__pagination-button" data-next-page="true">
+          <div class="mdc-button__icon">chevron_right</div>
+        </button>
+        <button class="mdc-icon-button material-icons mdc-data-table__pagination-button" data-last-page="true">
+          <div class="mdc-button__icon">last_page</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+#### JavaScript APIs
+
+Data table component does not provide any JavaScript APIs for pagination.
+
+- Should manually initialize following components supporting pagination feature:
+  - Select component: Used to change rows per page (page size).
+  - Icon button: Used to navigate between data table pages.
+- Should re-render data table content when rows per page is changed or navigated to another page using events triggered by select & pagination button.
+- Should manually enable or disable pagination buttons accordingly when data table reaches first or last page.
+
+### Data table with progress indicator
+
+Progress indicator inform users about the status of ongoing processes, such as data loading. Indeterminate linear progress indicator along with a scrim is shown on blocking the table content.
+
+#### HTML Structure
+
+```html
+<div class="mdc-data-table">
+  <div class="mdc-data-table__table-container">
+    <table class="mdc-data-table__table" aria-label="Dessert calories">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody class="mdc-data-table__content">
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+          <td class="mdc-data-table__cell">Super tasty</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+          <td class="mdc-data-table__cell">I like ice cream more</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Eclair</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+          <td class="mdc-data-table__cell">New filing flavor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mdc-data-table__progress-indicator">
+    <div class="mdc-data-table__scrim"></div>
+    <div class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-data-table__linear-progress" role="progressbar" aria-label="Data is being loaded...">
+      <div class="mdc-linear-progress__buffer">
+        <div class="mdc-linear-progress__buffer-bar"></div>
+        <div class="mdc-linear-progress__buffer-dots"></div>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+#### JavaScript APIs
+
+- Use `showProgress()` and `hideProgress()` API to show or hide the progress indicator.
+- Data table component will automatically initializes the linear progress indicator subcomponent.
+
+#### Events
+
+Following events are emitted for row selection feature.
+
+Event constant | Event name | Event detail | Description
+-- | -- | -- | --
+`ROW_SELECTION_CHANGED` | `MDCDataTable:rowSelectionChanged` | `MDCDataTableRowSelectionChangedEventDetail` | Event emitted when row checkbox is checked or unchecked.
+`SELECTED_ALL` | `MDCDataTable:selectedAll` | `void` | Event emitted when header row checkbox is checked.
+`UNSELECTED_ALL` | `MDCDataTable:unselectedAll` | `void` | Event emitted when header row checkbox is unchecked.
+
+### Data table with column sorting
+
+The column sorting feature allows users to reorder table rows in ascending or descending order by a column.
+
+The data table handles sorting as follows:
+
+- Triggers event when sort icon button is clicked.
+- Flips the sort icon based on sort direction.
+- Sets appropriate ARIA attributes based on sort status.
+
+Data table consumer should re-render the table body (rows) in sorted order on `events.SORTED` event.
+
+#### HTML Structure
+
+Set `data-column-id` on sortable header cell element to uniquely identify column
+that needs to be sorted.
+
+```html
+<div class="mdc-data-table">
+  <table class="mdc-data-table__table" aria-label="Dessert calories">
+    <thead>
+      <tr class="mdc-data-table__header-row">
+        <th
+          class="mdc-data-table__header-cell mdc-data-table__header-cell--with-sort"
+          role="columnheader"
+          scope="col"
+          aria-sort="none"
+          data-column-id="dessert"
+        >
+          <div class="mdc-data-table__header-cell-wrapper">
+            <div class="mdc-data-table__header-cell-label">
+              Dessert
+            </div>
+            <button class="mdc-icon-button material-icons mdc-data-table__sort-icon-button"
+                    aria-label="Sort by dessert" aria-describedby="dessert-status-label">arrow_upward</button>
+            <div class="mdc-data-table__sort-status-label" aria-hidden="true" id="dessert-status-label">
+            </div>
+          </div>
+        </th>
+        <th
+          class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric mdc-data-table__header-cell--with-sort mdc-data-table__header-cell--sorted"
+          role="columnheader"
+          scope="col"
+          aria-sort="ascending"
+          data-column-id="carbs"
+        >
+          <div class="mdc-data-table__header-cell-wrapper">
+            <button class="mdc-icon-button material-icons mdc-data-table__sort-icon-button"
+                    aria-label="Sort by carbs" aria-describedby="carbs-status-label">arrow_upward</button>
+            <div class="mdc-data-table__header-cell-label">
+              Carbs (g)
+            </div>
+            <div class="mdc-data-table__sort-status-label" aria-hidden="true" id="carbs-status-label"></div>
+          </div>
+        </th>
+        <th
+          class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric mdc-data-table__header-cell--with-sort"
+          role="columnheader"
+          scope="col"
+          aria-sort="none"
+          data-column-id="protein"
+        >
+          <div class="mdc-data-table__header-cell-wrapper">
+            <button class="mdc-icon-button material-icons mdc-data-table__sort-icon-button"
+                    aria-label="Sort by protein" aria-describedby="protein-status-label">arrow_upward</button>
+            <div class="mdc-data-table__header-cell-label">
+              Protein (g)
+            </div>
+            <div class="mdc-data-table__sort-status-label" aria-hidden="true" id="protein-status-label"></div>
+          </div>
+        </th>
+        <th
+          class="mdc-data-table__header-cell"
+          role="columnheader"
+          scope="col"
+          data-column-id="comments"
+        >
+          Comments
+        </th>
+      </tr>
+    </thead>
+    <tbody class="mdc-data-table__content">
+      <tr class="mdc-data-table__row">
+        <td class="mdc-data-table__cell">Frozen yogurt</td>
+        <td class="mdc-data-table__cell mdc-data-table__cell--numeric">
+          24
+        </td>
+        <td class="mdc-data-table__cell mdc-data-table__cell--numeric">
+          4.0
+        </td>
+        <td class="mdc-data-table__cell">Super tasty</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+#### Events
+
+Event constant | Event name | Event detail | Description
+-- | -- | -- | --
+`SORTED` | `MDCDataTable:sorted` | `SortActionEventDetail` | Event emitted when clicked on sortable header cell.
+
+## Style customization
+
+### CSS classes
+
+CSS Class | Description
+--- | ---
+`mdc-data-table` | Mandatory. The root DOM element containing `table` and other supporting elements.
+`mdc-data-table--sticky-header` | Optional. Modifier class name added to root element to make header row sticky (fixed) on vertical scroll. (Note: Sticky header feature is not compatible with IE11 browsers.)
+`mdc-data-table__table-container` | Mandatory. Container of Table element. Used for horizontal overflowing of table content.
+`mdc-data-table__table` | Mandatory. Table element. Added to `table` HTML tag.
+`mdc-data-table__header-row` | Mandatory. Table header row element. Added to `thead > tr` HTML tag.
+`mdc-data-table__header-cell` | Mandatory. Table header cell element. Added to `thead > tr > th` HTML tag.
+`mdc-data-table__header-cell--checkbox` | Optional. Table header cell element that contains `mdc-checkbox`. Added to `thead > tr > th` HTML tag.
+`mdc-data-table__header-cell--numeric` | Optional. Table header cell element that maps to numeric cells. Added to `thead > tr > th` HTML tag.
+`mdc-data-table__content` | Mandatory. Table body element. Added to `tbody` HTML tag.
+`mdc-data-table__row` | Mandatory. Table row element. Added to `tbody > tr` HTML tag.
+`mdc-data-table__cell` | Mandatory. Table cell element. Added to `tbody > tr > td` HTML tag.
+`mdc-data-table__cell--numeric` | Optional. Table cell element that contains numeric data. Added to `tbody > tr > td` HTML tag.
+`mdc-data-table__cell--checkbox` | Optional. Table cell element that contains `mdc-checkbox`. Added to `thead> th > td:first-child` HTML tag.
+`mdc-data-table__header-row-checkbox` | Optional. Checkbox element rendered inside table header row element. Add this class name to `mdc-checkbox` element to override styles required for data-table.
+`mdc-data-table__row-checkbox` | Optional. Checkbox element rendered inside table row element. Add this class name to `mdc-checkbox` element to override styles required for data-table.
+`mdc-data-table__row--selected` | Optional. Modifier class added to `mdc-data-table__row` when table row is selected.
+`mdc-data-table__header-cell--sorted` | Optional. Modifier class added to header cell element if column is sorted.
+`mdc-data-table__header-cell--sorted-descending` | Optional. Modifier class added to header cell element if column is sorted in descending order.
+`mdc-data-table__header-cell--with-sort` | Optional. Modifier class added to header cell element if column supports sorting.
+`mdc-data-table__header-cell-wrapper` | Mandatory. Container of header cell label and sort button, used to align header cell in center.
+`mdc-data-table__sort-icon-button` | Optional. Class name added to icon button used as sort icon button. This is sibling to header cell label.
+`mdc-data-table__header-cell-label` | Mandatory. Class name added to header cell label. Child to header cell wrapper element.
+`mdc-data-table__sort-status-label` | Optional. Class name added to sort status label which is visually hidden. Only visible to screen reader users.
+`mdc-data-table__pagination` | Root element of pagination. Pagination block element is rendered as immediate child to data table root element.
+`mdc-data-table__pagination-trailing` | Immediate child of pagination. Used to wrap pagination content.
+`mdc-data-table__pagination-rows-per-page` | Container of rows per page label and rows per page select.
+`mdc-data-table__pagination-rows-per-page-select` | Class name added to select component used for changing rows per page (page size).
+`mdc-data-table__pagination-navigation` | Block element containing all icon buttons used to navigate between data table pages.
+`mdc-data-table__pagination-button` | Class name added to icon button component used to navigate between data table pages.
+`mdc-data-table__progress-indicator` | Block element rendered as immediate child to data table root element. Contains linear progress and scrim blocking the data table content.
+`mdc-data-table__scrim` | Element blocking data table content. Rendered inside progress indicator root element.
+`mdc-data-table__linear-progress` | Class name added to linear progress component. Rendered inside progress indicator root element.
+
+### Sass mixins
+
+See [_mixins.scss](./_mixins.scss) file for up-to-date code documentation of Data table theme APIs.
+
+## `MDCDataTable` properties and methods
+
+See [component.ts](./component.ts) file for up-to-date code documentation of Data table component APIs.
+
+## Usage within web frameworks
+
+If you are using a JavaScript framework, such as React or Angular, you can create a Data Table for your framework. Depending on your needs, you can use the _Simple Approach: Wrapping MDC Web Vanilla Components_, or the _Advanced Approach: Using Foundations and Adapters_. Please follow the instructions [here](../../docs/integrating-into-frameworks.md).
+
+See [MDCDataTableAdapter](./adapter.ts) and [MDCDataTableFoundation](./foundation.ts) for up-to-date code documentation of Data table foundation APIs.

@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>{!activeTab[1] ? 'Home' : activeTab[1].toUpperCase() + activeTab.slice(2)} | Legends Dynasty League</title>
+	<title>{!activeTab[1] ? 'Home' : activeTab[1].toUpperCase() + activeTab.slice(2)} | League Page</title>
 </svelte:head>
 
 <style>

@@ -1,0 +1,51 @@
+/**
+ * @license
+ * Copyright 2017 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+import { MDCFoundation } from '@material/base/foundation';
+import { MDCNotchedOutlineAdapter } from './adapter';
+export declare class MDCNotchedOutlineFoundation extends MDCFoundation<MDCNotchedOutlineAdapter> {
+    static get strings(): {
+        NOTCH_ELEMENT_SELECTOR: string;
+    };
+    static get cssClasses(): {
+        NO_LABEL: string;
+        OUTLINE_NOTCHED: string;
+        OUTLINE_UPGRADED: string;
+    };
+    static get numbers(): {
+        NOTCH_ELEMENT_PADDING: number;
+    };
+    /**
+     * See {@link MDCNotchedOutlineAdapter} for typing information on parameters and return types.
+     */
+    static get defaultAdapter(): MDCNotchedOutlineAdapter;
+    constructor(adapter?: Partial<MDCNotchedOutlineAdapter>);
+    /**
+     * Adds the outline notched selector and updates the notch width calculated based off of notchWidth.
+     */
+    notch(notchWidth: number): void;
+    /**
+     * Removes notched outline selector to close the notch in the outline.
+     */
+    closeNotch(): void;
+}
+export default MDCNotchedOutlineFoundation;

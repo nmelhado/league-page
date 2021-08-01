@@ -80,7 +80,7 @@
 			{/each}
 		</ul>
 	</div>
-	<span class="copyright">&copy; 2019 - {year} The Legends League</span>
+	<span class="copyright">&copy; 2021 - {year} League Page</span>
 	<br />
-	<span class="creator">Built by <a href="http://www.nmelhado.com/">Nicholas Melhado</a></span>
+	<span class="creator">Built by <a href="http://www.nmelhado.com/">Nicholas Melhado</a><br /><a href="https://www.buymeacoffee.com/nmelhado" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a></span>
 </footer>

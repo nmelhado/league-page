@@ -1,0 +1,25 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "words": [
+    "esbuild",
+    "rmrf",
+    "fuzzyjs",
+    "socio",
+    "octocat",
+    "gjuchault",
+    "ssjs",
+    "ssjav",
+    "yntax",
+    "apbaca",
+    "appbancar"
+  ],
+  "flagWords": [],
+  "ignorePaths": [
+    "package.json",
+    "package-lock.json",
+    "yarn.lock",
+    "tsconfig.json",
+    "node_modules/**"
+  ]
+}

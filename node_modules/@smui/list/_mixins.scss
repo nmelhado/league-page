@@ -1,0 +1,31 @@
+/*
+ Temporary addition until support for three-line added to @material
+https://github.com/material-components/material-components-web/issues/31
+*/
+@use '@material/feature-targeting/index' as feature-targeting;
+
+@mixin core-styles($query: feature-targeting.all()) {
+  $feat-structure: feature-targeting.create-target($query, structure);
+
+  .smui-list--three-line .mdc-deprecated-list-item__text {
+    @include feature-targeting.targets($feat-structure) {
+      align-self: flex-start;
+    }
+  }
+
+  .smui-list--three-line .mdc-deprecated-list-item {
+    @include feature-targeting.targets($feat-structure) {
+      height: 88px;
+    }
+  }
+
+  .smui-list--three-line.mdc-deprecated-list--dense .mdc-deprecated-list-item {
+    @include feature-targeting.targets($feat-structure) {
+      height: 76px;
+    }
+  }
+
+  .mdc-deprecated-list-item.smui-menu-item--non-interactive {
+    cursor: auto;
+  }
+}
