@@ -75,7 +75,7 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	let currentManagers = null;
 	let currentSeason = null;
 
-	while(currentLeagueID) {
+	while(currentLeagueID && currentLeagueID != 0) {
 		// gather supporting info simultaneously
 		const [leagueData, rosterRes, users] = await waitForAll(
 			getLeagueData(currentLeagueID),

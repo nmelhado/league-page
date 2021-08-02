@@ -38,7 +38,7 @@ export const getAwards = async () => {
 
 	const podiums = [];
 
-	while(previousSeasonID) {
+	while(previousSeasonID && previousSeasonID != 0) {
 		const resPromises = [
 			fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}`, {compress: true}),
 			getLeagueRosters(previousSeasonID),

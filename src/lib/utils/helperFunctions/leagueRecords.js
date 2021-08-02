@@ -25,7 +25,7 @@ export const getLeagueRecords = async () => {
 	let leagueWeekRecords = []; // highest weekly points within a single season
 	let mostSeasonLongPoints = []; // 10 highest full season points
 
-	while(curSeason) {
+	while(curSeason && curSeason != 0) {
 		const [rosterRes, users, leagueData] = await waitForAll(
 			getLeagueRosters(curSeason),
 			getLeagueUsers(curSeason),

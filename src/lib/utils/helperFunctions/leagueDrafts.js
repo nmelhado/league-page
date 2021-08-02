@@ -177,7 +177,7 @@ export const getPreviousDrafts = async () => {
 	const drafts = [];
 	
 	let currentManagers;
-	while(curSeason) {
+	while(curSeason && curSeason != 0) {
 		const [rosterRes, users, leagueData] = await waitForAll(
 			getLeagueRosters(curSeason),
 			getLeagueUsers(curSeason),
