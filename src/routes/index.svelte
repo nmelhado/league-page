@@ -161,7 +161,7 @@
     <div class="leagueData">
         <div class="homeBanner">
             {#await nflState}
-                <p class="center">Retreiving NFL state...</p>
+                <p class="center">Retrieving NFL state...</p>
                 <LinearProgress indeterminate />
             {:then nflStateData}
                 <p class="center">NFL {nflStateData.season} {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}</p>
@@ -172,7 +172,7 @@
 
         <div id="currentChamp">
             {#await podiumsData}
-                <p class="center">Retreiving awards...</p>
+                <p class="center">Retrieving awards...</p>
                 <LinearProgress indeterminate />
             {:then {podiums, currentManagers}}
                 {#if podiums[0]}

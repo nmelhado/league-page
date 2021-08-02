@@ -51,7 +51,7 @@
     {#await managersInfo}
         <!-- promise is pending -->
         <div class="loading">
-            <p>Retreiving managers...</p>
+            <p>Retrieving managers...</p>
             <LinearProgress indeterminate />
         </div>
     {:then [rostersData, users, leagueData, transactionsData, awards, records]}

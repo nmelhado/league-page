@@ -25,7 +25,7 @@
 
 {#await upcomingDraftData }
 	<div class="loading">
-		<p>Retreiving upcoming draft...</p>
+		<p>Retrieving upcoming draft...</p>
 		<br />
 		<LinearProgress indeterminate />
 	</div>
@@ -42,7 +42,7 @@
 <h4>Previous Drafts</h4>
 {#await previousDraftsData }
 	<div class="loading">
-		<p>Retreiving previous drafts...</p>
+		<p>Retrieving previous drafts...</p>
 		<br />
 		<LinearProgress indeterminate />
 	</div>
