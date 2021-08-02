@@ -1,4 +1,3 @@
-DATA HOSTED WITH ♥ BY PASTEBIN.COM - DOWNLOAD RAW - SEE ORIGINAL
 export const managers = [
     {
       "roster": 1,  // ID of the roster that the manager manages
