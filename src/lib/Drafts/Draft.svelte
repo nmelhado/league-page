@@ -9,9 +9,6 @@
 
     const {draftOrder, draft, currentManagers, originalManagers, accuracy, draftType} = draftData;
 
-    console.log(draftData)
- 
-
     let progress = 0;
     let closed = false;
 
