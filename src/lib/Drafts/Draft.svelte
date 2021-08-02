@@ -8,6 +8,8 @@
     export let draftData, previous = false;
 
     const {draftOrder, draft, currentManagers, originalManagers, accuracy, draftType} = draftData;
+
+    console.log(draftData)
  
 
     let progress = 0;
@@ -117,10 +119,12 @@
     <Head>
         <Row>
             {#each draftOrder as draftPosition}
-                <Cell class="draftTeam">
-                    <img class="avatar" src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
-                    <br />{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}
-                </Cell>
+                {#if draftPosition}
+                    <Cell class="draftTeam">
+                        <img class="avatar" src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
+                        <br />{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}
+                    </Cell>
+                {/if}
             {/each}
         </Row>
     </Head>

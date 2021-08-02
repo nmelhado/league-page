@@ -347,18 +347,20 @@
 	</div>
 	<div class="divisions">
 		{#each divisions as division}
-			<div class="division">
-				{#if division.name}
-					<h6>{division.name} Division</h6>
-				{:else}
-					<h6>Regular Season Champion</h6>
-				{/if}
-				<div class="leaderBlock">
-					<img src="{division.manager.avatar}" class="divisionLeader" alt="{division.name} champion" />
-					<img src="./medal.png" class="medal" alt="champion" />
+			{#if division.manager}
+				<div class="division">
+					{#if division.name}
+						<h6>{division.name} Division</h6>
+					{:else}
+						<h6>Regular Season Champion</h6>
+					{/if}
+					<div class="leaderBlock">
+						<img src="{division.manager.avatar}" class="divisionLeader" alt="{division.name} champion" />
+						<img src="./medal.png" class="medal" alt="champion" />
+					</div>
+					<span class="genLabel">{@html getNames(division.manager.name, division.manager.rosterID)}</span>
 				</div>
-				<span class="genLabel">{@html getNames(division.manager.name, division.manager.rosterID)}</span>
-			</div>
+			{/if}
 		{/each}
 	</div>
 

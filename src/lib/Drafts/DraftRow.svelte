@@ -33,6 +33,7 @@
         color: #444;
         text-align: center;
         white-space: break-spaces;
+        line-height: 1.2em;
     }
 
 	:global(.prevQB) {
@@ -87,18 +88,20 @@
 
 <Row>
     {#each draftRow as draftCol, col}
-        <Cell class="draftCell{draftCol ? ' changedHands' : ''}{previous ? ` prev${draftCol.player.position}` : ''}">
-            <span class="draftPos{previous ? "Prev" : ""}">
-                {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
-            </span>
-            {#if draftCol && !previous}
-                <div class="newOwner">{draftCol}</div>
-            {/if}
-            {#if previous}
-                <div class="playerAvatar" style="{draftCol.player.avatar}" />
-                <br />
-                <div class="name">{draftCol.player.name}{draftCol.player.position == "DEF" ? "" : ` (${draftCol.player.team})`}</div>
-            {/if}
-        </Cell>
+        {#if !previous || draftCol}
+            <Cell class="draftCell{draftCol ? ' changedHands' : ''}{previous ? ` prev${draftCol.player.position}` : ''}">
+                <span class="draftPos{previous ? "Prev" : ""}">
+                    {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                </span>
+                {#if draftCol && !previous}
+                    <div class="newOwner">{draftCol}</div>
+                {/if}
+                {#if previous}
+                    <div class="playerAvatar" style="{draftCol.player.avatar}" />
+                    <br />
+                    <div class="name">{draftCol.player.name}{draftCol.player.position == "DEF" ? "" : ` (${draftCol.player.team})`}</div>
+                {/if}
+            </Cell>
+        {/if}
     {/each}
 </Row>
