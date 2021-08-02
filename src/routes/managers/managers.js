@@ -250,5 +250,5 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
 ]
