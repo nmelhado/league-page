@@ -36,7 +36,7 @@
 
 {#await articlesData}
 	<div class="loading">
-		<p>Retrieving roster data...</p>
+		<p>Retrieving fantasy news...</p>
 		<br />
 		<LinearProgress indeterminate />
 	</div>
