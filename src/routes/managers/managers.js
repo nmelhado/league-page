@@ -85,7 +85,7 @@ export const managers = [
   // },
   // {
   //   "roster": 5,  // ID of the roster that the manager manages
-  //   "name": "Dave", // (optional) used if a manager took over a team, null or omit otherwise
+  //   "name": "Lukas", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
   //   "photo": "/managers/name.jpg", // done
