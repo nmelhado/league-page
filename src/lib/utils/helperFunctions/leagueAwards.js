@@ -67,7 +67,7 @@ export const getAwards = async () => {
 	
 		const prevManagers = {};
 
-		const numDivisions = leagueData.settings.divisions || 1;
+		const numDivisions = prevLeagueData.settings.divisions || 1;
 
 		const divisions = {};
 
