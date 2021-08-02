@@ -209,7 +209,7 @@
 		margin: 20px auto 0;
 	}
 
-	.tammy-banner {
+	.toilet-banner {
 		display: block;
 		width: 50%;
 		max-width: 350px;
@@ -365,7 +365,7 @@
 		<!-- Toilet Bowl -->
 	<div class="toiletParent">
 		
-		<img src="./tammy-banner.png" class="tammy-banner" alt="The Legends Cup" />
+		<img src="./toilet-banner.png" class="toilet-banner" alt="The Legends Cup" />
 
 		<div class="toiletBowl">
 			<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
