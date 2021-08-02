@@ -21,9 +21,16 @@ export const getAwards = async () => {
 
 	for(const roster of rosters) {
 		const user = users[roster.owner_id];
-		currentManagers[roster.roster_id] = {
-			avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-			name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+		if(user) {
+			managers[roster.roster_id] = {
+				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+			}
+		} else {
+			managers[roster.roster_id] = {
+				avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+				name: 'Unknown Manager',
+			}
 		}
 	}
 
@@ -82,10 +89,18 @@ export const getAwards = async () => {
 				divisions[div].roster = roster.roster_id;
 			}
 			const user = usersData[roster.owner_id];
-			prevManagers[roster.roster_id] = {
-				rosterID: roster.roster_id,
-				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+			if(user) {
+				prevManagers[roster.roster_id] = {
+					rosterID: roster.roster_id,
+					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+				}
+			} else {
+				prevManagers[roster.roster_id] = {
+					rosterID: roster.roster_id,
+					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+					name: 'Unknown Manager',
+				}
 			}
 		}
 

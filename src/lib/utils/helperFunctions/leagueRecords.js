@@ -49,9 +49,17 @@ export const getLeagueRecords = async () => {
 		for(const roster of rosters) {
 			const rosterID = roster.roster_id;
 			const user = users[roster.owner_id];
-			originalManagers[rosterID] = {
-				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+
+			if(user) {
+				originalManagers[rosterID] = {
+					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+				}
+			} else {
+				originalManagers[rosterID] = {
+					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+					name: 'Unknown Manager',
+				}
 			}
 
 			if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) continue;

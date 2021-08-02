@@ -91,9 +91,16 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	
 		for(const roster of rosters) {
 			const user = users[roster.owner_id];
-			managers[roster.roster_id] = {
-				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+			if(user) {
+				managers[roster.roster_id] = {
+					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+				}
+			} else {
+				managers[roster.roster_id] = {
+					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+					name: 'Unknown Manager',
+				}
 			}
 		}
 
