@@ -50,9 +50,10 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - Fork this repo
 - Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID in `/src/lib/utils/helperFunctions/leagueData.js`:
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)
-- Fill out the information in `/src/routes/managers/managers.js`
+- Fill out and uncomment the information in `/src/routes/managers/managers.js`, there should be one for each manager
 ![manager object](https://storage.googleapis.com/nfl-player-data/managersObj.png)
 ![manager rendering](https://storage.googleapis.com/nfl-player-data/managerRendering.png)
+- Add corresponding images for managers to the `/static/managers/` directory and make the sure the name matches with what was provided above
 - Fill out the manager to roster ID mapping object in `/src/lib/utils/rosterManagers.js` (fill out the appropriate managers array number for each roster ID)
 - Customize your league constitution `/src/routes/constitution/index.svelte` (remember to adjust the table of contents accordingly)
 - Write your homepage text (league intro/bio) `/src/routes/index.svelte` (remember to adjust the table of contents accordingly)
