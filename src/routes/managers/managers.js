@@ -4,7 +4,7 @@ export const managers = [
   //   "name": "Jeremy", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/jeremy.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -25,7 +25,7 @@ export const managers = [
   //   "name": "Nick", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Nick.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -46,7 +46,7 @@ export const managers = [
   //   "name": "Collin & Matt", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Collin & Matt.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -67,7 +67,7 @@ export const managers = [
   //   "name": "Sherif", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Sherif.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -88,7 +88,7 @@ export const managers = [
   //   "name": "Lukas", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Lukas.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -109,7 +109,7 @@ export const managers = [
   //   "name": "Brandon", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Brandon.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -130,7 +130,7 @@ export const managers = [
   //   "name": "Jeff", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Jeff.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -151,7 +151,7 @@ export const managers = [
   //   "name": "Markis", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Markis.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -172,7 +172,7 @@ export const managers = [
   //   "name": "Jon", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Jon.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -193,7 +193,7 @@ export const managers = [
   //   "name": "Matt", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Matt.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -214,7 +214,7 @@ export const managers = [
   //   "name": "Dave", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Dave.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -235,7 +235,7 @@ export const managers = [
   //   "name": "Rick", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
   //   "bio": "Made my riches robbing Brandon blind",
-  //   "photo": "/managers/name.jpg", // done
+  //   "photo": "/managers/Rick.jpg", // done
   //   "fantasyStart": 1954, // when did the manager start playing fantasy football
   //   "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   //   "mode": "Win Now", // 'Win Now' or 'Rebuild'
