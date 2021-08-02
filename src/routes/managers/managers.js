@@ -19,7 +19,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 2,  // ID of the roster that the manager manages
   //   "name": "Nick", // (optional) used if a manager took over a team, null or omit otherwise
@@ -40,7 +40,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 3,  // ID of the roster that the manager manages
   //   "name": "Collin & Matt", // (optional) used if a manager took over a team, null or omit otherwise
@@ -61,7 +61,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 4,  // ID of the roster that the manager manages
   //   "name": "Sherif", // (optional) used if a manager took over a team, null or omit otherwise
@@ -82,7 +82,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 5,  // ID of the roster that the manager manages
   //   "name": "Lukas", // (optional) used if a manager took over a team, null or omit otherwise
@@ -103,7 +103,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 6,  // ID of the roster that the manager manages
   //   "name": "Brandon", // (optional) used if a manager took over a team, null or omit otherwise
@@ -124,7 +124,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 7,  // ID of the roster that the manager manages
   //   "name": "Jeff", // (optional) used if a manager took over a team, null or omit otherwise
@@ -145,7 +145,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 8,  // ID of the roster that the manager manages
   //   "name": "Markis", // (optional) used if a manager took over a team, null or omit otherwise
@@ -166,7 +166,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 9,  // ID of the roster that the manager manages
   //   "name": "Jon", // (optional) used if a manager took over a team, null or omit otherwise
@@ -187,7 +187,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 10,  // ID of the roster that the manager manages
   //   "name": "Matt", // (optional) used if a manager took over a team, null or omit otherwise
@@ -208,7 +208,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 11,  // ID of the roster that the manager manages
   //   "name": "Dave", // (optional) used if a manager took over a team, null or omit otherwise
@@ -229,7 +229,7 @@ export const managers = [
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-  // },
+  // }
   // {
   //   "roster": 12,  // ID of the roster that the manager manages
   //   "name": "Rick", // (optional) used if a manager took over a team, null or omit otherwise
