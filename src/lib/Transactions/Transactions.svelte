@@ -35,6 +35,10 @@
 	.link:hover {
 		color: #00316b;
 	}
+
+	.nothingYet {
+		margin: 5em 0;
+	}
 </style>
 
 <div class="transactions">
@@ -43,22 +47,32 @@
 		<LinearProgress indeterminate />
 	{:then {transactions, currentManagers}}
 		<!-- waiver -->
-		<h5>Recent Waiver Moves</h5>
-		{#each transactions.waivers as transaction }
-			<Transaction {transaction} {masterOffset} {currentManagers} />
-		{/each}
+		{#if transactions.waivers.length}
+			<h5>Recent Waiver Moves</h5>
+			{#each transactions.waivers as transaction }
+				<Transaction {transaction} {masterOffset} {currentManagers} />
+			{/each}
 
-		<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
+			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
+		{:else}
+			<p class="nothingYet">No waiver moves have been made yet...</p>
+		{/if}
 
-		<br />
+		{#if transactions.waivers.length && transactions.trades.length}
+			<br />
+		{/if}
 
 		<!-- trades -->
-		<h5>Recent Trades</h5>
-		{#each transactions.trades as transaction }
-			<Transaction {transaction} {masterOffset} currentManagers={currentManagers} />
-		{/each}
+		{#if transactions.trades.length}
+			<h5>Recent Trades</h5>
+			{#each transactions.trades as transaction }
+				<Transaction {transaction} {masterOffset} currentManagers={currentManagers} />
+			{/each}
 
-		<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>
+			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>
+		{:else}
+			<p class="nothingYet">No trades have been made yet...</p>
+		{/if}
 	{:catch error}
 		<p>Something went wrong: {error.message}</p>
 	{/await}

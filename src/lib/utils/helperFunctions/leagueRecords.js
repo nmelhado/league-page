@@ -36,7 +36,7 @@ export const getLeagueRecords = async () => {
 
 		// on first run, week is provided above from nflState,
 		// after that get the final week of regular season from leagueData
-		if(week > 90) {
+		if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
 			week = leagueData.settings.playoff_week_start - 1;
 		}
 
@@ -131,12 +131,12 @@ export const getLeagueRecords = async () => {
 
 		const seasonPointsRecord = [];
 		// process all the matchups
-		for(let matchupWeek = 1; matchupWeek < matchupsData.length + 1; matchupWeek++) {
-			for(const matchup of matchupsData[matchupWeek-1]) {
+		for(let matchupWeek = 0; matchupWeek < matchupsData.length; matchupWeek++) {
+			for(const matchup of matchupsData[matchupWeek]) {
 				const entry = {
 					manager: originalManagers[matchup.roster_id],
 					fpts: matchup.points,
-					week: matchupWeek,
+					week: matchupWeek + 1,
 					year,
 					rosterID: matchup.roster_id
 				}
@@ -155,8 +155,6 @@ export const getLeagueRecords = async () => {
 			}
 			seasonWeekRecords.push(interSeasonEntry)
 		};
-
-		week = 99; // will be adjusted back ddown in next loop
 	}
 
 	leagueWeekRecords = leagueWeekRecords.sort((a, b) => b.fpts - a.fpts).slice(0, 10);

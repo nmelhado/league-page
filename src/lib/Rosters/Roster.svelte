@@ -54,7 +54,7 @@
 					break;
 			}
 			player = {
-				name: `${players[singlePlayer].first_name} ${players[singlePlayer].last_name}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
+				name: `${players[singlePlayer].first_name} ${players[singlePlayer].last_name}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata && roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
 				positions: players[singlePlayer].position,
 				team: players[singlePlayer].team,
 				avatar: players[singlePlayer].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${singlePlayer.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${singlePlayer}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
@@ -76,7 +76,9 @@
 	}
 
 	const buildRecord = (newRoster) => {
-		 const innerRecord = [];
+		const innerRecord = [];
+		// Check to make sure that record exists
+		if(!newRoster.metadata || !newRoster.metadata.record) return innerRecord;
 		// simplify record
 		for (const c of newRoster.metadata.record) {
 			switch (c) {

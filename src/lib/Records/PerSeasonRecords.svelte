@@ -74,13 +74,17 @@
             })
 
             // add lineup IQ rankings
-            yearsObj[season.year].lineupIQs.push({
+            let lineupIQ = {
                 rosterID,
                 manager: season.manager,
-                iq: round(season.fpts / season.potentialPoints * 100),
                 fpts: round(season.fpts),
-                potentialPoints: round(season.potentialPoints),
-            })
+            }
+            if(season.potentialPoints) {
+                lineupIQ.iq = round(season.fpts / season.potentialPoints * 100);
+                lineupIQ.potentialPoints = round(season.potentialPoints);
+            }
+
+            yearsObj[season.year].lineupIQs.push(lineupIQ)
 
             // add fantasy points histories
             yearsObj[season.year].fptsHistories.push({
@@ -110,7 +114,7 @@
     years.sort((a, b) => b.year - a.year);
 </script>
 
-{#each years as {waiversData, tradesData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year}}
+{#each years as {waiversData, tradesData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year}, ix}
     <RecordsAndRankings
         {waiversData}
         {tradesData}
@@ -122,5 +126,6 @@
         {lineupIQs}
         prefix={year}
         {currentManagers}
+        last={ix == years.length - 1}
     />
 {/each}

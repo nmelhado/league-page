@@ -1,4 +1,4 @@
-import {getLeagueData, dues, leagueID} from './helperFunctions/leagueData';
+import {getLeagueData, dues, leagueID, leagueName} from './helperFunctions/leagueData';
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
@@ -30,6 +30,7 @@ export {
     round,
     dues,
     leagueID,
+    leagueName,
     getAwards,
     generateGraph,
     predictScores

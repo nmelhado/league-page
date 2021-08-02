@@ -36,14 +36,19 @@
             ties: leagueRosterRecord.ties,
             losses: leagueRosterRecord.losses,
         })
-    
-        lineupIQs.push({
+
+        let lineupIQ = {
             rosterID: key,
             manager: currentManagers[key],
-            iq: round(leagueRosterRecord.fptsFor / leagueRosterRecord.potentialPoints * 100),
             fpts: round(leagueRosterRecord.fptsFor),
-            potentialPoints: round(leagueRosterRecord.potentialPoints),
-        })
+        }
+
+        if(leagueRosterRecord.potentialPoints) {
+            lineupIQ.iq = round(leagueRosterRecord.fptsFor / leagueRosterRecord.potentialPoints * 100);
+            lineupIQ.potentialPoints = round(leagueRosterRecord.potentialPoints);
+        }
+
+        lineupIQs.push(lineupIQ)
     
         fptsHistories.push({
             rosterID: key,

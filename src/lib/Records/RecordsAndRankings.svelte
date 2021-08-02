@@ -5,7 +5,7 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, currentManagers, allTime=false;
+    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, currentManagers, allTime=false, last=false;
 
     const lineupIQGraph = {
         stats: lineupIQs,
@@ -88,22 +88,26 @@
         short: "Waivers"
     }
     
-    const graphs = [
-        generateGraph(lineupIQGraph),
-        generateGraph(winsGraph, 5),
-        generateGraph(winPercentagesGraph),
-        generateGraph(fptsHistoriesGraph),
-        generateGraph(potentialPointsGraph, 10, 0),
-        generateGraph(tradesGraph),
-        generateGraph(waiversGraph),
-    ];
+    const graphs = [];
+
+    if(lineupIQs[0]?.potentialPoints) {
+        graphs.push(generateGraph(lineupIQGraph));
+    }
+    graphs.push(generateGraph(winsGraph, 5));
+    graphs.push(generateGraph(winPercentagesGraph));
+    graphs.push(generateGraph(fptsHistoriesGraph));
+    if(lineupIQs[0]?.potentialPoints) {
+        graphs.push(generateGraph(potentialPointsGraph, 10, 0));
+    }
+    graphs.push(generateGraph(tradesGraph));
+    graphs.push(generateGraph(waiversGraph));
 
     const transactions = [];
 
     for(let i = 1; i <= waiversData.length; i++) {
         const waiver = waiversData.find(w => w.rosterID == i);
-        const trades = tradesData.find(t => t.rosterID == i).trades;
-        const waivers = waiver.waivers;
+        const trades = tradesData.find(t => t.rosterID == i)?.trades || 0;
+        const waivers = waiver?.waivers || 0;
         const manager = waiver.manager;
         transactions.push({
             rosterID: i,
@@ -113,31 +117,36 @@
         })
     }
 
+    let curTable = 0;
+    let curGraph = 0;
+
+    let iqOffset = 0;
     const tables = [
-        "Lineup IQs",
         "Win Percentages",
         "Points",
         "Transactions",
     ]
-    let curTable = 0;
-    let curGraph = 0;
-
+    if(!lineupIQs[0]?.potentialPoints) {
+        iqOffset = 1;
+    } else {
+        tables.unshift('Lineup IQs');
+    }
     const changeTable = (newGraph) => {
         switch (newGraph) {
-            case 0:
-            case 4:
+            case 0 - iqOffset:
+            case (4 + (99 * iqOffset)):
                 curTable = 0;
                 break;
-            case 1:
-            case 2:
-                curTable = 1;
+            case 1 - iqOffset:
+            case 2 - iqOffset:
+                curTable = 1 - iqOffset;
                 break;
-            case 3:
-                curTable = 2;
+            case 3 - iqOffset:
+                curTable = 2 - iqOffset;
                 break;
-            case 5:
-            case 6:
-                curTable = 3;
+            case 5 - (2 * iqOffset):
+            case 6 - (2 * iqOffset):
+                curTable = 3 - iqOffset;
                 break;
             default:
                 curTable = 0;
@@ -147,26 +156,26 @@
 
     const changeGraph = (newTable) => {
         switch (newTable) {
-            case 0:
+            case 0 - iqOffset:
                 if(curGraph == 0 || curGraph == 4) {
                     break;
                 }
                 curGraph = 0;
                 break;
-            case 1:
-                if(curGraph == 1 || curGraph == 2) {
+            case 1 - iqOffset:
+                if(curGraph == 1 - iqOffset || curGraph == 2 - iqOffset) {
                     break;
                 }
-                curGraph = 1;
+                curGraph = 1 - iqOffset;
                 break;
-            case 2:
-                curGraph = 3;
+            case 2 - iqOffset:
+                curGraph = 3 - iqOffset;
                 break;
-            case 3:
-                if(curGraph == 5 || curGraph == 6) {
+            case 3 - iqOffset:
+                if(curGraph == 5 - (2 * iqOffset) || curGraph == 6 - (2 * iqOffset)) {
                     break;
                 }
-                curGraph = 5;
+                curGraph = 5 - (2 * iqOffset);
                 break;
             default:
                 curGraph = 0;
@@ -250,6 +259,7 @@
 
     .buttonHolder {
         text-align: center;
+        margin: 2em 0 4em;
     }
 
     :global(.cellName) {
@@ -369,36 +379,37 @@
 
 <h4>{prefix} Records</h4>
 
-
 <div class="fullFlex">
-    <DataTable class="recordTable">
-        <Head>
-            <Row>
-                <Cell class="header" colspan=4>{prefix} Single Week Scoring Records</Cell>
-            </Row>
-            <Row>
-                <Cell class="header"></Cell>
-                <Cell class="header">Manager</Cell>
-                <Cell class="header">Week</Cell>
-                <Cell class="header">Total Points</Cell>
-            </Row>
-        </Head>
-        <Body>
-            {#each weekRecords as leagueWeekRecord, ix}
+    {#if weekRecords && weekRecords.length}
+        <DataTable class="recordTable">
+            <Head>
                 <Row>
-                    <Cell>{ix + 1}</Cell>
-                    <Cell class="cellName">
-                        {leagueWeekRecord.manager.name}
-                        {#if !allTime  && cleanName(leagueWeekRecord.manager.name) != cleanName(currentManagers[leagueWeekRecord.rosterID].name)}
-                            <div class="curRecordManager">({currentManagers[leagueWeekRecord.rosterID].name})</div>
-                        {/if}
-                    </Cell>
-                    <Cell>{allTime ? leagueWeekRecord.year + " " : "" }Week {leagueWeekRecord.week}</Cell>
-                    <Cell>{leagueWeekRecord.fpts}</Cell>
+                    <Cell class="header" colspan=4>{prefix} Single Week Scoring Records</Cell>
                 </Row>
-            {/each}
-        </Body>
-    </DataTable>
+                <Row>
+                    <Cell class="header"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Week</Cell>
+                    <Cell class="header">Total Points</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each weekRecords as leagueWeekRecord, ix}
+                    <Row>
+                        <Cell>{ix + 1}</Cell>
+                        <Cell class="cellName">
+                            {leagueWeekRecord.manager.name}
+                            {#if !allTime  && cleanName(leagueWeekRecord.manager.name) != cleanName(currentManagers[leagueWeekRecord.rosterID].name)}
+                                <div class="curRecordManager">({currentManagers[leagueWeekRecord.rosterID].name})</div>
+                            {/if}
+                        </Cell>
+                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }Week {leagueWeekRecord.week}</Cell>
+                        <Cell>{leagueWeekRecord.fpts}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
 
     <DataTable class="recordTable">
         <Head>
@@ -434,51 +445,51 @@
     </DataTable>
 </div>
 
-<hr />
-
-<h5>{prefix} Rankings</h5>
+<h4>{prefix} Rankings</h4>
 
 <BarChart maxWidth={innerWidth} {graphs} bind:curGraph={curGraph} />
 
 <div class="rankingHolder">
     <div class="rankingInner" style="margin-left: -{100 * curTable}%;">
-        <div class="rankingTableWrapper">
-            <DataTable class="rankingTable">
-                <Head>
-                    <Row>
-                        <Cell class="header" colspan=5>
-                            {prefix} Lineup IQ Rankings
-                            <div class="subTitle">
-                                The percentage of potential points each manager has captured
-                            </div>
-                        </Cell>
-                    </Row>
-                    <Row>
-                        <Cell class="header"></Cell>
-                        <Cell class="header">Manager</Cell>
-                        <Cell class="header">Lineup IQ</Cell>
-                        <Cell class="header">Points</Cell>
-                        <Cell class="header">Potential Points</Cell>
-                    </Row>
-                </Head>
-                <Body>
-                    {#each lineupIQs as lineupIQ, ix}
+        {#if lineupIQs[0]?.potentialPoints}
+            <div class="rankingTableWrapper">
+                <DataTable class="rankingTable">
+                    <Head>
                         <Row>
-                            <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" >
-                                {lineupIQ.manager.name}
-                                {#if !allTime  && cleanName(lineupIQ.manager.name) != cleanName(currentManagers[lineupIQ.rosterID].name)}
-                                    <div class="curRecordManager">({currentManagers[lineupIQ.rosterID].name})</div>
-                                {/if}
+                            <Cell class="header" colspan=5>
+                                {prefix} Lineup IQ Rankings
+                                <div class="subTitle">
+                                    The percentage of potential points each manager has captured
+                                </div>
                             </Cell>
-                            <Cell>{lineupIQ.iq}%</Cell>
-                            <Cell>{lineupIQ.fpts}</Cell>
-                            <Cell>{lineupIQ.potentialPoints}</Cell>
                         </Row>
-                    {/each}
-                </Body>
-            </DataTable>
-        </div>
+                        <Row>
+                            <Cell class="header"></Cell>
+                            <Cell class="header">Manager</Cell>
+                            <Cell class="header">Lineup IQ</Cell>
+                            <Cell class="header">Points</Cell>
+                            <Cell class="header">Potential Points</Cell>
+                        </Row>
+                    </Head>
+                    <Body>
+                        {#each lineupIQs as lineupIQ, ix}
+                            <Row>
+                                <Cell>{ix + 1}</Cell>
+                                <Cell class="cellName" >
+                                    {lineupIQ.manager.name}
+                                    {#if !allTime  && cleanName(lineupIQ.manager.name) != cleanName(currentManagers[lineupIQ.rosterID].name)}
+                                        <div class="curRecordManager">({currentManagers[lineupIQ.rosterID].name})</div>
+                                    {/if}
+                                </Cell>
+                                <Cell>{lineupIQ.iq}%</Cell>
+                                <Cell>{lineupIQ.fpts}</Cell>
+                                <Cell>{lineupIQ.potentialPoints}</Cell>
+                            </Row>
+                        {/each}
+                    </Body>
+                </DataTable>
+            </div>
+        {/if}
 
         <div class="rankingTableWrapper">
             <DataTable class="rankingTable">
@@ -597,3 +608,7 @@
         {/each}
     </Group>
 </div>
+
+{#if !last}
+    <hr />
+{/if}

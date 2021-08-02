@@ -36,6 +36,14 @@
 		max-width: 500px;
 		margin: 80px auto;
 	}
+
+	.nothingYet {
+		display: block;
+		width: 85%;
+		max-width: 500px;
+		margin: 80px auto;
+		text-align: center;
+	}
 </style>
 
 <div class="awards">
@@ -45,9 +53,13 @@
 			<LinearProgress indeterminate />
 		</div>
 	{:then {podiums, currentManagers} }
+	{#if podiums.length}
 		{#each podiums as podium}
 			<Awards {podium} {currentManagers} />
 		{/each}
+	{:else}
+		<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
+	{/if}
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>

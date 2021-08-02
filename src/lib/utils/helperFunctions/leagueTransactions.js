@@ -26,7 +26,7 @@ export const getLeagueTransactions = async (preview) => {
 
 	const {transactionsData, prevManagers, currentManagers, currentSeason} = await combThroughTransactions(week, leagueID).catch((err) => { console.error(err); });
 
-	const { transactions, totals } = digestTransactions(transactionsData, prevManagers, players, currentSeason);
+	const { transactions, totals } = digestTransactions(transactionsData, prevManagers, players, currentSeason, Object.keys(currentManagers).length);
 
 	const transactionPackage = {
 		transactions,
@@ -142,12 +142,19 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	return {transactionsData, prevManagers, currentManagers, currentSeason};
 }
 
-const digestTransactions = (transactionsData, prevManagers, players, currentSeason) => {
+const digestTransactions = (transactionsData, prevManagers, players, currentSeason, numRosters) => {
 	const transactions = [];
 	const totals = {
 		allTime: {},
 		seasons: {}
 	};
+
+	for(let i = 1; i <= numRosters; i++) {
+		totals.allTime[i] = {
+			trade: 0,
+			waiver: 0
+		};
+	}
 	
 	for(const transaction of transactionsData) {
 		const {digestedTransaction, season} = digestTransaction(transaction, prevManagers, players, currentSeason)
@@ -156,24 +163,18 @@ const digestTransactions = (transactionsData, prevManagers, players, currentSeas
 		for(const roster of digestedTransaction.rosters) {
 			const type = digestedTransaction.type;
 			// add to league long totals
-			if(!totals.allTime[roster]) {
-				totals.allTime[roster] = {
-					trade: 0,
-					waiver: 0
-				};
-			}
 			totals.allTime[roster][type]++;
 			
 			// add to season long totals
 			if(!totals.seasons[season]) {
 				totals.seasons[season] = {};
-			}
-			if(!totals.seasons[season][roster]) {
-				totals.seasons[season][roster] = {
-					trade: 0,
-					waiver: 0,
-					manager: prevManagers[season][roster]
-				};
+				for(let i = 1; i <= Object.keys(prevManagers[season]).length; i++) {
+					totals.seasons[season][i] = {
+						trade: 0,
+						waiver: 0,
+						manager: prevManagers[season][i]
+					};
+				}
 			}
 			totals.seasons[season][roster][type]++;
 		}

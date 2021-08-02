@@ -29,10 +29,13 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - League constitution
 - Helpful fantasy football resources and news<br><br>
 - Built using [Svelte](https://svelte.dev/docs) and [SvelteKit](https://kit.svelte.dev/docs)
+- Desktop, Mobile and PWA compatible 
 - League information generated from [Sleeper API](https://docs.sleeper.app/)
 
 
 ## Roadmap
+  - [ ] Cleanup repo
+  - [ ] Test redraft leagues
   - [ ] Playoff matchups and current bracket
   - [ ] Dynasty power rankings
   - [ ] Hyperlink all manager references
@@ -44,7 +47,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 ### 1. Setup your own League Page
 - Fork this repo
-- Replace `your_league_id` with your Sleeper league ID in `/src/lib/utils/helperFunctions/leagueData.js`:
+- Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID in `/src/lib/utils/helperFunctions/leagueData.js`:
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)
 - Fill out the information in `/src/routes/managers/managers.js`
 ![manager object](https://storage.googleapis.com/nfl-player-data/managersObj.png)

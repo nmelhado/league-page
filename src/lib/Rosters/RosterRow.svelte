@@ -126,8 +126,8 @@
 	{#if player.avatar}
 		<Cell class="avatar playerCell"><div class="playerAvatar" style="{player.avatar}" /></Cell>
 	{/if}
-	{#if player.team && player.positions != "DEF"}
-		<Cell class="playerCell teamCell">{player.team}</Cell>
+	{#if player.positions != "DEF"}
+		<Cell class="playerCell teamCell">{player.team || ''}</Cell>
 	{/if}
 	<Cell class="playerCell nameCell" colspan={player.name != "Empty" ? (player.positions == "DEF" ? 2 : 1) : 3}>{@html player.name}</Cell>
 </Row>

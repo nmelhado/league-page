@@ -7,6 +7,8 @@
 	import { Icon } from '@smui/tab';
   	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import { goto, prefetch } from '$app/navigation';
+	import { leagueName } from '$lib/utils/helper';
+	import { managers } from '/src/routes/managers/managers';
 	
 	export let active, tabs;
 
@@ -56,11 +58,6 @@
 		background-color: rgba(0, 0, 0, 0.32);
 		transition: all 0.7s;
 	}
-
-	.badgeHolder {
-		text-align: center;
-		padding: 1em 0;
-	}
 </style>
 
 <Icon class="material-icons menuIcon" on:click={() => (open = true)}>menu</Icon>
@@ -68,10 +65,8 @@
 <div class="nav-back" style="pointer-events: {open ? "visible" : "none"}; opacity: {open ? 1 : 0};" on:click={() => (open = false)}/>
 
 <Drawer variant="modal" class="nav-drawer" fixed={true} bind:open>
-	<Header >
-		<div class="badgeHolder">
-			<img id="logo" alt="league logo" src="./badge.png" />
-		</div>
+	<Header>
+		<Title>{leagueName}</Title>
 	</Header>
 	<Content>
 		<List>
@@ -88,10 +83,19 @@
 					<Separator />
 					<Subheader>{tab.label}</Subheader>
 					{#each tab.children as subTab}
-						<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={active == subTab.dest}  on:touchstart={() => prefetch(subTab.dest)} on:mouseover={() => prefetch(subTab.dest)}>
-							<Graphic class="material-icons{active == subTab.dest ? "" : " nav-item"}" aria-hidden="true">{subTab.icon}</Graphic>
-							<Text class="{active == subTab.dest ? "" : "nav-item"}">{subTab.label}</Text>
-						</Item>
+						{#if subTab.label == 'Managers'}
+							{#if managers.length}
+								<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={active == subTab.dest}  on:touchstart={() => prefetch(subTab.dest)} on:mouseover={() => prefetch(subTab.dest)}>
+									<Graphic class="material-icons{active == subTab.dest ? "" : " nav-item"}" aria-hidden="true">{subTab.icon}</Graphic>
+									<Text class="{active == subTab.dest ? "" : "nav-item"}">{subTab.label}</Text>
+								</Item>
+							{/if}
+						{:else}
+							<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={active == subTab.dest}  on:touchstart={() => {if(subTab.label != 'Go to Sleeper') prefetch(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') prefetch(subTab.dest)}}>
+								<Graphic class="material-icons{active == subTab.dest ? "" : " nav-item"}" aria-hidden="true">{subTab.icon}</Graphic>
+								<Text class="{active == subTab.dest ? "" : "nav-item"}">{subTab.label}</Text>
+							</Item>
+						{/if}
 					{/each}
 				{/if}
 			{/each}
