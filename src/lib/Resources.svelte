@@ -1,5 +1,6 @@
 <script>
     import List, { Item, Graphic, Separator, Text } from '@smui/list';
+import { dynasty } from './utils/helper';
 
     const today = new Date();
     const resources = [
@@ -23,6 +24,7 @@
             icon: "assessment",
             premium: false,
             separator: true,
+            dynastyOnly: true,
         },
         {
             name: "DynastyProcess Trade Calculator",
@@ -30,6 +32,7 @@
             icon: "calculate",
             premium: false,
             separator: true,
+            dynastyOnly: true,
         },
         {
             name: "Dynasty League Football",
@@ -37,6 +40,7 @@
             icon: "insights",
             premium: true,
             separator: true,
+            dynastyOnly: true,
         },
         {
             name: "Reddit Dynasty Fantasy Football",
@@ -44,6 +48,15 @@
             icon: "article",
             premium: false,
             separator: true,
+            dynastyOnly: true,
+        },
+        {
+            name: "Reddit Fantasy Football",
+            url: "https://www.reddit.com/r/fantasyfootball/",
+            icon: "article",
+            premium: false,
+            separator: true,
+            redraftOnly: true,
         },
         {
             name: "Dynasty 101 Trade Calculator",
@@ -51,6 +64,7 @@
             icon: "calculate",
             premium: false,
             separator: true,
+            dynastyOnly: true,
         },
         {
             name: "Dynasty Nerds GM",
@@ -58,6 +72,15 @@
             icon: "insights",
             premium: true,
             separator: true,
+            dynastyOnly: true,
+        },
+        {
+            name: "Fantasy Football Trade Analyzer",
+            url: `https://fantasyfootballcalculator.com/trade-analyzer`,
+            icon: "calculate",
+            premium: false,
+            separator: true,
+            redraftOnly: true,
         },
         {
             name: "Reddit FF Trade Analyzer",
@@ -113,17 +136,43 @@
 
     <List class="list" dense>
         {#each resources as resource}
-            <a target="_blank" href="{resource.url}">
-                <Item>
-                    {#if resource.icon}
-                        <Graphic class="material-icons">{resource.icon}</Graphic>
+            {#if resource.dynastyOnly && dynasty}
+                <a target="_blank" href="{resource.url}">
+                    <Item>
+                        {#if resource.icon}
+                            <Graphic class="material-icons">{resource.icon}</Graphic>
+                        {/if}
+                        <Text class="linkText">{resource.name}{resource.premium ? "*" : ""}</Text>
+                    </Item>
+                    {#if resource.separator}
+                        <Separator />
                     {/if}
-                    <Text class="linkText">{resource.name}{resource.premium ? "*" : ""}</Text>
-                </Item>
-                {#if resource.separator}
-                    <Separator />
-                {/if}
-            </a>
+                </a>
+            {:else if resource.redraftOnly && !dynasty}
+                <a target="_blank" href="{resource.url}">
+                    <Item>
+                        {#if resource.icon}
+                            <Graphic class="material-icons">{resource.icon}</Graphic>
+                        {/if}
+                        <Text class="linkText">{resource.name}{resource.premium ? "*" : ""}</Text>
+                    </Item>
+                    {#if resource.separator}
+                        <Separator />
+                    {/if}
+                </a>
+            {:else if !resource.redraftOnly && !resource.dynastyOnly}
+                <a target="_blank" href="{resource.url}">
+                    <Item>
+                        {#if resource.icon}
+                            <Graphic class="material-icons">{resource.icon}</Graphic>
+                        {/if}
+                        <Text class="linkText">{resource.name}{resource.premium ? "*" : ""}</Text>
+                    </Item>
+                    {#if resource.separator}
+                        <Separator />
+                    {/if}
+                </a>
+            {/if}
         {/each}
     </List>
     <p class="disclaimer">*Some or all content is behind a paywall</p>

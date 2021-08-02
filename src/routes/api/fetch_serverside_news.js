@@ -1,5 +1,6 @@
 import parser from 'fast-xml-parser';
 import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
+import { dynasty } from '$lib/utils/helper';
 
 const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';
 const FTN_NEWS= 'https://www.ftnfantasy.com/content/news?type=news&sport=nfl&limit=30';
@@ -7,18 +8,25 @@ const DYNASTY_LEAGUE= 'https://dynastyleaguefootball.com/feed/';
 const DYNASTY_NERDS= 'https://www.dynastynerds.com/feed/';
 
 export async function get() {
-    const [ffballers, ftn, dynastyLeague, dynastyNerds] = await waitForAll(
+	const articles = [
         getXMLArticles(FF_BALLERS, processFF),
         getJSONArticles(FTN_NEWS, processFTN),
-        getXMLArticles(DYNASTY_LEAGUE, processDynastyLeague),
-        getXMLArticles(DYNASTY_NERDS, processDynastyNerds),
-    ).catch((err) => { console.error(err); });
+	];
+	if(dynasty) {
+		articles.push(getXMLArticles(DYNASTY_LEAGUE, processDynastyLeague));
+		getXMLArticles(DYNASTY_NERDS, processDynastyNerds);
+	}
+    const responses = await waitForAll(...articles).catch((err) => { console.error(err); });
+
+	let finalArticles = [];
+
+	for(const response of responses) {
+		finalArticles = [...finalArticles, ...response];
+	}
 
     return {
         status: 200,
-        body: JSON.stringify(
-            [...ffballers, ...ftn, ...dynastyLeague, ...dynastyNerds]
-        )
+        body: JSON.stringify(finalArticles)
     };
 }
 

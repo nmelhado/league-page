@@ -1,23 +1,31 @@
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {news} from '$lib/stores';
+import { dynasty } from './leagueData';
 
 const NBC_URL = 'https://www.nbcsportsedge.com/edge/api/player_news?sort=-created&page%5Blimit%5D=10&page%5Boffset%5D=0&filter%5Bleague.meta.drupal_internal__id%5D=21&include=player,position,team,team.secondary_logo,player.image,related_players,related_teams';
 const REDDIT_DYNASTY = 'https://www.reddit.com/r/DynastyFF/new.json';
+const REDDIT_FANTASY = 'https://www.reddit.com/r/fantasyfootball/new.json';
 const SERVER_API = './api/fetch_serverside_news';
 
 export const getNews = async (bypass = false) => {
 	if(get(news)[0] && !bypass) {
 		return {articles: get(news), fresh: false};
 	}
-	const [nbcNews, redditDynasty, serverRes] = await waitForAll(
+	const newsSources = [
 		getFeed(NBC_URL, processNBC),
-		getFeed(REDDIT_DYNASTY, processReddit),
 		fetch(SERVER_API, {compress: true}),
-	).catch((err) => { console.error(err); });
+	];
+	if(dynasty) {
+		newsSources.push(getFeed(REDDIT_DYNASTY, processReddit));
+	} else {
+		newsSources.push(getFeed(REDDIT_FANTASY, processReddit));
+	}
+
+	const [nbcNews, serverRes, reddit] = await waitForAll(...newsSources).catch((err) => { console.error(err); });
 	const serverData = await serverRes.json().catch((err) => { console.error(err); });
 
-	const articles = [...nbcNews, ...redditDynasty, ...serverData].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
+	const articles = [...nbcNews, ...reddit, ...serverData].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
 	news.update(() => articles);
 
 	return {articles, fresh: true};
