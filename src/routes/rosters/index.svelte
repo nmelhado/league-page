@@ -40,7 +40,7 @@
 <div class="holder">
 	{#await rostersInfo}
 		<div class="loading">
-			<p>Retreiving roster data...</p>
+			<p>Retrieving roster data...</p>
 			<br />
 			<LinearProgress indeterminate />
 		</div>
