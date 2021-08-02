@@ -41,7 +41,7 @@ export const managers = [
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   // },
-   // {
+  // {
   //   "roster": 3,  // ID of the roster that the manager manages
   //   "name": "Collin & Matt", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
@@ -167,7 +167,7 @@ export const managers = [
   //   "tradingScale": 10, // 1 - 10
   //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   // },
-   // {
+  // {
   //   "roster": 9,  // ID of the roster that the manager manages
   //   "name": "Jon", // (optional) used if a manager took over a team, null or omit otherwise
   //   "location": "Ohio",
