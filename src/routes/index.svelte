@@ -6,13 +6,9 @@
     import { rosterManagers } from '$lib/utils/rosterManagers';
     import { goto } from '$app/navigation';
     import { managers } from './managers/managers';
-
     let nflState = getNflState();
     let podiumsData = getAwards();
-
-
 	$: left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-
     let el;
     
     	const getNames = (name, rosterID, currentManagers) => {
@@ -21,9 +17,7 @@
 		}
 		return name;
 	}
-
 </script>
-
 <style>
     #home {
         display: flex;
@@ -32,20 +26,17 @@
         overflow-y: hidden;
         z-index: 1;
     }
-
     #main {
         flex-grow: 1;
         min-width: 320px;
         margin: 0 auto;
         padding: 60px 0;
     }
-
     .text {
         padding: 0 30px;
         max-width: 620px;
         margin: 0 auto;
     }
-
     .leagueData {
         position: relative;
         z-index: 1;
@@ -57,7 +48,6 @@
         border-left: #eee;
 		box-shadow: inset 0px 3px 3px -2px rgb(0 0 0 / 20%), inset 0px 3px 4px 0px rgb(0 0 0 / 14%), inset 0px 1px 8px 0px rgb(0 0 0 / 12%);
     }
-
     @media (max-width: 950px) {
         .leagueData {
             max-width: 100%;
@@ -68,21 +58,17 @@
             flex-wrap: wrap;
         }
     }
-
     .transactions {
         display: block;
         width: 95%;
         margin: 10px auto;
     }
-
     .center {
         text-align: center;
     }
-
     h6 {
         text-align: center;
     }
-
     /* champ styling */
     #currentChamp {
         padding: 25px 0;
@@ -91,7 +77,6 @@
         box-shadow: 0 -8px 8px -8px #555, 0 8px 8px -8px #555;
         border-left: 1px solid #ccc;
     }
-
     #champ {
         position: relative;
         width: 150px;
@@ -99,7 +84,6 @@
         margin: 0 auto;
         cursor: pointer;
     }
-
     .first {
         position: absolute;
         transform: translate(-50%, -50%);
@@ -110,7 +94,6 @@
         left: 50%;
         top: 43%;
     }
-
     .laurel {
         position: absolute;
         transform: translate(-50%, -50%);
@@ -119,13 +102,11 @@
         left: 50%;
         top: 50%;
     }
-
     h4 {
         text-align: center;
         font-size: 1.6em;
         margin: 10px;
     }
-
     .label {
         display: table;
         text-align: center;
@@ -143,17 +124,14 @@
 		font-style: italic;
 	}
 </style>
-
 <div id="home">
     <div id="main">
         <div class="text">
             <h6>{leagueName}</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Working</p>
+            <p>On</p>
+			<p>This</p>
+			<p>Now</p>
         </div>
         <PowerRankings />
     </div>
@@ -169,7 +147,6 @@
                 <p class="center">Something went wrong: {error.message}</p>
             {/await}
         </div>
-
         <div id="currentChamp">
             {#await podiumsData}
                 <p class="center">Retreiving awards...</p>
@@ -189,7 +166,6 @@
                 <p class="center">Something went wrong: {error.message}</p>
             {/await}
         </div>
-
         <div class="transactions" bind:this={el} >
             <Transactions masterOffset={left} />
         </div>
