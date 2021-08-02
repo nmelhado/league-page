@@ -4,7 +4,7 @@ export const managers = [
    "name": "Jeremy", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
-   "photo": "/managers/jeremy.jpg", // done
+   "photo": "/managers/Jeremy.jpg", // done
    "fantasyStart": 1954, // when did the manager start playing fantasy football
    "favoriteTeam": "cle", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
    "mode": "Win Now", // 'Win Now' or 'Rebuild'
