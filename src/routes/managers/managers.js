@@ -22,7 +22,7 @@ export const managers = [
  },
  {
    "roster": 2,  // ID of the roster that the manager manages
-   "name": "Nick", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Brandon", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Nick.jpg", // done
@@ -43,7 +43,7 @@ export const managers = [
  },
  {
    "roster": 3,  // ID of the roster that the manager manages
-   "name": "Collin & Matt", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Rick", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Collin & Matt.jpg", // done
@@ -64,7 +64,7 @@ export const managers = [
  },
  {
    "roster": 4,  // ID of the roster that the manager manages
-   "name": "Sherif", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Nick", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Sherif.jpg", // done
@@ -106,7 +106,7 @@ export const managers = [
  },
  {
    "roster": 6,  // ID of the roster that the manager manages
-   "name": "Brandon", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Jon", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Brandon.jpg", // done
@@ -127,7 +127,7 @@ export const managers = [
  },
  {
    "roster": 7,  // ID of the roster that the manager manages
-   "name": "Jeff", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Sherif", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Jeff.jpg", // done
@@ -148,7 +148,7 @@ export const managers = [
  },
  {
    "roster": 8,  // ID of the roster that the manager manages
-   "name": "Markis", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Jeff", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Markis.jpg", // done
@@ -169,7 +169,7 @@ export const managers = [
  },
  {
    "roster": 9,  // ID of the roster that the manager manages
-   "name": "Jon", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Dave", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Jon.jpg", // done
@@ -190,7 +190,7 @@ export const managers = [
  },
  {
    "roster": 10,  // ID of the roster that the manager manages
-   "name": "Matt", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Markis", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Matt.jpg", // done
@@ -211,7 +211,7 @@ export const managers = [
  },
  {
    "roster": 11,  // ID of the roster that the manager manages
-   "name": "Dave", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Matt", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Dave.jpg", // done
@@ -232,7 +232,7 @@ export const managers = [
  },
  {
    "roster": 12,  // ID of the roster that the manager manages
-   "name": "Rick", // (optional) used if a manager took over a team, null or omit otherwise
+   "name": "Brandon", // (optional) used if a manager took over a team, null or omit otherwise
    "location": "Ohio",
    "bio": "Made my riches robbing Brandon blind",
    "photo": "/managers/Rick.jpg", // done
