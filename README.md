@@ -44,7 +44,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - League constitution
 - Helpful fantasy football resources and news<br><br>
 - Built using [Svelte](https://svelte.dev/docs) and [SvelteKit](https://kit.svelte.dev/docs)
-- Desktop, Mobile and PWA compatible 
+- Desktop, Mobile and [PWA](https://mobilesyrup.com/2020/05/24/how-install-progressive-web-app-pwa-android-ios-pc-mac/) compatible 
 - League information generated from [Sleeper API](https://docs.sleeper.app/)
 
 
@@ -78,7 +78,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
     npm install
     npm run dev --
-    npm run dev -- --host` (to test on other devices locally)
+    npm run dev -- --host (to test on other devices locally)
 ## To deploy on [Vercel](https://vercel.com/) for free:
 - Push up your changes
 - [Link your github repo to Vercel](https://vercel.com/guides/deploying-svelte-with-vercel#step-2:-deploying-your-svelte-app-with-vercel)
