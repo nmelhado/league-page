@@ -84,4 +84,5 @@
 	<br />
 	<!-- PLEASE DO NOT REMOVE -->
 	<span class="creator">Built by <a href="http://www.nmelhado.com/">Nicholas Melhado</a><br /></span>
+	Love League Page? Please consider <a href="https://www.buymeacoffee.com/nmelhado">donating</a> to support enhancements or just to say thank you!
 </footer>

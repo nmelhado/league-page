@@ -5,6 +5,8 @@
 
 
 Generate a custom league page for your Sleeper fantasy football league in just a few steps
+  <br />
+  ![GitHub](https://img.shields.io/github/license/nmelhado/league-page) [![node](https://img.shields.io/node/v/passport.svg)](https://github.com/nmelhado/league-page) ![GitHub top language](https://img.shields.io/github/languages/top/nmelhado/league-page?color=ff3e00) ![GitHub forks](https://img.shields.io/github/forks/nmelhado/league-page)
 </div>
 
 
