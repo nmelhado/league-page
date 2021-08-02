@@ -12,7 +12,11 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 ![League Page demo](https://storage.googleapis.com/nfl-player-data/league-page-demo.png)
 
-## [Live demo](https://www.legendsleagueff.com/)
+## <center>[Live demo](https://www.legendsleagueff.com/</center>)
+
+<br>
+<br>
+
 -----------
 <div align="center">
 
@@ -22,6 +26,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 </div>
 
 -----------
+
+<br>
+<br>
 
 ## Features
 - Up-to-date league information
