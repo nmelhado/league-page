@@ -212,12 +212,12 @@
         <div class="barChartInner" style="width: {width * .85}px; height: {width * .7 * .66}px" bind:this={el}>
             <!-- x Axis label and intervals -->
             {#each stats as stat, ix}
-                <div class="bar{secondStats.length == 0  ? '' : ' opacity'}" style="background-color: {colors[rosterIDs[ix]-1]}; width: {chartWidthInterval * 0.8}px; left: {chartWidthInterval * ix + (chartWidthInterval / 2)}px; height: {(stat - yMin) / (yMax - yMin == 0 ? 1 : (yMax - yMin)) * 100}%;">
+                <div class="bar{secondStats.length == 0  ? '' : ' opacity'}" style="background-color: {colors[(rosterIDs[ix]-1) % 12]}; width: {chartWidthInterval * 0.8}px; left: {chartWidthInterval * ix + (chartWidthInterval / 2)}px; height: {(stat - yMin) / (yMax - yMin == 0 ? 1 : (yMax - yMin)) * 100}%;">
                     <span class="barLabel" style="font-size: {barLFont}em;">{stat}{labels.stat}</span>
                 </div>
             {/each}
             {#each secondStats as stat, ix}
-                <div class="bar" style="background-color: {colors[rosterIDs[ix]-1]}; width: {chartWidthInterval * 0.8}px; left: {chartWidthInterval * ix + (chartWidthInterval / 2)}px; height: {(stat - yMin) / (yMax - yMin == 0 ? 1 : (yMax - yMin)) * 100}%;" />
+                <div class="bar" style="background-color: {colors[(rosterIDs[ix]-1) % 12]}; width: {chartWidthInterval * 0.8}px; left: {chartWidthInterval * ix + (chartWidthInterval / 2)}px; height: {(stat - yMin) / (yMax - yMin == 0 ? 1 : (yMax - yMin)) * 100}%;" />
             {/each}
         </div>
 
