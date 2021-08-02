@@ -1,7 +1,7 @@
 <div align="center">
   <img alt="League Page logo" src="https://storage.googleapis.com/nfl-player-data/League%20Page.png" width="100px" />
 
-  **(Unofficial) Sleeper League Page Template**
+  **[(Unofficial) Sleeper League Page Template](https://github.com/nmelhado/league-page/)**
 
 
 Generate a custom league page for your Sleeper fantasy football league in just a few steps
@@ -34,6 +34,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 
 ## Roadmap
+  - [ ] Add integration tests
   - [ ] Cleanup repo
   - [ ] Test redraft leagues
   - [ ] Playoff matchups and current bracket
