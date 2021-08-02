@@ -1,7 +1,8 @@
 export const managers = [
   // {
   //   "roster": 1,  // ID of the roster that the manager manages
-  //   "name": "Your Name", // (optional) used if a manager took over a team, null or omit otherwise
+  //   "name": "Your Name",
+  //   "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
   //   "location": "Brooklyn",
   //   "bio": "Lorem ipsum...",
   //   "photo": "/managers/name.jpg", // done
