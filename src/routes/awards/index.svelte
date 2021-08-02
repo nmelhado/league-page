@@ -49,7 +49,7 @@
 <div class="awards">
 	{#await awardsData }
 		<div class="loading">
-			<p>Retreiving awards data...</p>
+			<p>Retrieving awards data...</p>
 			<LinearProgress indeterminate />
 		</div>
 	{:then {podiums, currentManagers} }

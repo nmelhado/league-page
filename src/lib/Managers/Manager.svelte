@@ -254,7 +254,7 @@ import ManagerAwards from './ManagerAwards.svelte';
     {#await playerData}
         <!-- promise is pending -->
         <div class="loading">
-            <p>Retreiving players...</p>
+            <p>Retrieving players...</p>
             <LinearProgress indeterminate />
         </div>
     {:then players}
