@@ -20,7 +20,7 @@ export const managers = [
   //   "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
-  //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+  //   "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   // },
   // {
   //   "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
@@ -42,7 +42,7 @@ export const managers = [
   //   "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
-  //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+  //   "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   // },
   // {
   //   "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
@@ -64,6 +64,6 @@ export const managers = [
   //   "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
   //   "philosophy": "Your fantasy team's philosophy",
   //   "tradingScale": 10, // 1 - 10
-  //   "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+  //   "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   // },
 ]
