@@ -220,3 +220,4 @@ export const managers = [
     "tradingScale": 5// 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
+]
