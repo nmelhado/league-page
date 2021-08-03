@@ -2,7 +2,7 @@
     import BarChart from '$lib/BarChart.svelte';
     import { generateGraph, round, predictScores } from '$lib/utils/helper';
     export let nflState, rostersData, users, players, leagueData;
-
+console.log(leagueData)
     const rosters = rostersData.rosters;
 
     const currentManagers = {};

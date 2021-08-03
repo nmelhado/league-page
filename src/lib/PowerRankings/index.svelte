@@ -31,7 +31,9 @@
         <LinearProgress indeterminate />
     </div>
 {:then [nflState, rostersData, users, records, leagueData, players]}
-    <PowerRankingsDisplay {nflState} {rostersData} {users} {leagueData} {records} {players} />
+    {#if leagueData.status != 'pre_draft'}
+        <PowerRankingsDisplay {nflState} {rostersData} {users} {leagueData} {records} {players} />
+    {/if}
 {:catch error}
 	<!-- promise was rejected -->
 	<p>Something went wrong: {error.message}</p>
