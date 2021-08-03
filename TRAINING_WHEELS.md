@@ -19,44 +19,50 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - If you don't already have a Github account, [make a free account](https://github.com/join)
 - Go to [League Page (https://github.com/nmelhado/league-page)](https://github.com/nmelhado/league-page)
 - Click on the Fork button
-![Fork](https://storage.googleapis.com/nfl-player-data/fork.png)
+> ![Fork](https://storage.googleapis.com/nfl-player-data/fork.png)
+
 <br />
 
 - You now have your own League Page!
 
 ### 2. Configure your League
 - In your league page, go to `/src/lib/utils/helperFunctions/leagueData.js`
-![src](https://storage.googleapis.com/nfl-player-data/src.png)
+> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
 ![lib](https://storage.googleapis.com/nfl-player-data/lib.png)
 ![utils](https://storage.googleapis.com/nfl-player-data/utils.png)
 ![helperFunctions](https://storage.googleapis.com/nfl-player-data/helperFunctions.png)
 ![leagueData](https://storage.googleapis.com/nfl-player-data/leagueData.png)
+
 <br />
 
 - Click the edit button
-![editLeagueData](https://storage.googleapis.com/nfl-player-data/editLeagueData.png)
+> ![editLeagueData](https://storage.googleapis.com/nfl-player-data/editLeagueData.png)
+
 <br />
 
 - Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID *[(how to find your league ID)](https://support.sleeper.app/en/articles/4121798-how-do-i-find-my-league-id#:~:text=Go%20toward%20the%20bottom%20of,email%20support%40sleeper.app.)* in `/src/lib/utils/helperFunctions/leagueData.js`:
-![league ID instructions](https://storage.googleapis.com/nfl-player-data/editLeagueID.jpg)
+> ![league ID instructions](https://storage.googleapis.com/nfl-player-data/editLeagueID.jpg)
 - Scroll down to the bottom of the page and commit your changes
 <br />
 
-![Commit your changes](https://storage.googleapis.com/nfl-player-data/commitLeagueID.png)
+> ![Commit your changes](https://storage.googleapis.com/nfl-player-data/commitLeagueID.png)
 - Your league has been configured!
 ### 3. Deploy your League Page
 - Go to Vercel, and [sign up using your GitHub account](https://vercel.com/signup)
 - Now link your Github account to your Vercel account
-![Link GitHub account](https://storage.googleapis.com/nfl-player-data/linkAccounts.png)
+> ![Link GitHub account](https://storage.googleapis.com/nfl-player-data/linkAccounts.png)
+
 <br />
 
 - `Import` League Page
-![import league page](https://storage.googleapis.com/nfl-player-data/importLeaguePage.png)
+> ![import league page](https://storage.googleapis.com/nfl-player-data/importLeaguePage.png)
+
 <br />
 
 - Skip the Create a Team step
 - Leave all setting as they are, and click `Deploy`
-![deploy](https://storage.googleapis.com/nfl-player-data/deploy.png)
+> ![deploy](https://storage.googleapis.com/nfl-player-data/deploy.png)
+
 <br />
 
 - Wait for Vercel to deploy your League Page (should take about a minute)
@@ -68,63 +74,74 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 ### 1. Now that you have a league website, it's time to personalize your homepage
 - Go back to GitHub and go to the root of you repo
-![root](https://storage.googleapis.com/nfl-player-data/root.png)
+> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
+
 <br />
 
 - Go to `/src/routes/index.svelte`
-![src](https://storage.googleapis.com/nfl-player-data/src.png)
+> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
 ![routes](https://storage.googleapis.com/nfl-player-data/routes.png)
 ![index](https://storage.googleapis.com/nfl-player-data/index.png)
+
 <br />
 
 - Click edit
-![edit index](https://storage.googleapis.com/nfl-player-data/editIndex.png)
+> ![edit index](https://storage.googleapis.com/nfl-player-data/editIndex.png)
+
 <br />
 
 - Scroll down to lines 151-156
-![scroll down](https://storage.googleapis.com/nfl-player-data/scrollDown.png)
+> ![scroll down](https://storage.googleapis.com/nfl-player-data/scrollDown.png)
+
 <br />
 
 - Each line (which is sandwiched by a `<p>` and a `</p>`) creates a new paragraph on your homepage. Replace those paragraphs with the text you want to use to introduce your league
 - If you want fewer paragraphs, delete one of the lines. If you want more, copy a line and paste it below the last `<p>...</p>` in this area
-![example text](https://storage.googleapis.com/nfl-player-data/exampleText.png)
+> ![example text](https://storage.googleapis.com/nfl-player-data/exampleText.png)
+
 <br />
 
 - Scroll down to the bottom of the page when you're done and `Commit changes`
 - Now go back to your league website, wait a minute or two, and then refresh!
-![text preview](https://storage.googleapis.com/nfl-player-data/textRendered.png)
+> ![text preview](https://storage.googleapis.com/nfl-player-data/textRendered.png)
 
 
 ### 2. Add Managers
 - You now have a functioning website, with a personalized homepage. But you're missing one of League Page's best features, Managers!
 - Go back to GitHub and go to the root of you repo
-![root](https://storage.googleapis.com/nfl-player-data/root.png)
+> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
+
 <br />
 
 - Go to `/src/routes/managers/managers.js`
-![src](https://storage.googleapis.com/nfl-player-data/src.png)
+> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
 ![routes](https://storage.googleapis.com/nfl-player-data/routes.png)
 ![managers](https://storage.googleapis.com/nfl-player-data/managers.png)
 ![managersJs](https://storage.googleapis.com/nfl-player-data/managersJs.png)
+
 <br />
 
 - Click the edit button
 - Highlight lines 3-68
-![highlight](https://storage.googleapis.com/nfl-player-data/highlight.png)
+> ![highlight](https://storage.googleapis.com/nfl-player-data/highlight.png)
+
 <br />
 
 - On Mac, click: `⌘ Command` + `/`, on Windows, click: `Ctrl` + `/`. This will remove the `// ` or, in coding terminology, `uncomment` these lines, so the code should now look like this:
-![uncomment](https://storage.googleapis.com/nfl-player-data/uncomment.png)
+> ![uncomment](https://storage.googleapis.com/nfl-player-data/uncomment.png)
+
 <br />
 
 - Each `object` (shown highlighted below) corresponds to one manager
-![single manager](https://storage.googleapis.com/nfl-player-data/singleManager.png)
+> ![single manager](https://storage.googleapis.com/nfl-player-data/singleManager.png)
+
 <br />
 
 - Fill each one out as follows:
     - `"roster" :` give the roster ID for this manager
         - To find the roster ID for the manager, go back to your website and scroll down to the `Power Rankings` graph
-        ![pRankings](https://storage.googleapis.com/nfl-player-data/pRankings.png)
+        > ![pRankings](https://storage.googleapis.com/nfl-player-data/pRankings.png)
+
         <br />
 
         - The roster ID is the order of the bar chart, the first bar is roster ID 1, the second is roster ID 2, etc.
@@ -135,22 +152,25 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - `"bio" :` This manager's bio. If you don't have a bio yet, leave it as is and come back and edit this again when you have the bio.
     - `"photo" :` This manager's photo. To upload a photo:
         - Open up your repo's root in a new tab
-        ![newTab](https://storage.googleapis.com/nfl-player-data/newTab.png)
+        > ![newTab](https://storage.googleapis.com/nfl-player-data/newTab.png)
+
         <br />
 
         - Got to `/static/managers/`
-        ![static](https://storage.googleapis.com/nfl-player-data/static.png)
+        > ![static](https://storage.googleapis.com/nfl-player-data/static.png)
         ![managersDir](https://storage.googleapis.com/nfl-player-data/managersDir.png)
+
         <br />
 
         - Click on `Add file` then `Upload files`
-        ![managersDir](https://storage.googleapis.com/nfl-player-data/upload.png)
+        > ![managersDir](https://storage.googleapis.com/nfl-player-data/upload.png)
+
         <br />
 
         - Add one or all of the manager photos
         - When you're done, click `Commit changes` at the bottom of the page
-        - Back in `/src/routes/managers/managers.js` tab, use the filename to fill out the photo field. For the below file, you would fill out `"photo" : "/managers/nick.jpg",`
-        ![managersDir](https://storage.googleapis.com/nfl-player-data/nickExample.png) (please note that this IS case sensitive)
+        - Back in `/src/routes/managers/managers.js` tab, use the filename (please note that this IS case sensitive) to fill out the photo field. For the below file, you would fill out `"photo" : "/managers/nick.jpg",`
+        > ![managersDir](https://storage.googleapis.com/nfl-player-data/nickExample.png)
     - `"fantasyStart" :` what year did the manager start playing fantasy
     - `"favoriteTeam" :` supply the lowercase shorthand for a manager's favorite NFL team (i.e. `"nyj"`, `"cle"`, `"sf"`, `"ne"`, etc.)
     - `"mode" :` There are two options: `"Win Now"` or `"Rebuild"`
@@ -164,7 +184,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - `"favoritePlayer" :` This is possibly the trickiest step
         - Go to [https://api.sleeper.app/v1/players/nfl](https://api.sleeper.app/v1/players/nfl) in a new tab
         - Use `⌘ Command` + `F` (on Mac), or `Ctrl` + `F` on Windows to search for the player you are looking for and then copy down that player's `player_id`
-        ![player selection](https://storage.googleapis.com/nfl-player-data/playerSelection.jpg)
+        > ![player selection](https://storage.googleapis.com/nfl-player-data/playerSelection.jpg)
         <br />
 
         - Supply that number (i.e. `1426`)
@@ -182,14 +202,16 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - Now for the final step
 - Go to the root of your repo
 - Go back to the root of you repo
-![root](https://storage.googleapis.com/nfl-player-data/root.png)
+> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
+
 <br />
 
 - Go to `/src/lib/utils/rosterManagers.js`
-![src](https://storage.googleapis.com/nfl-player-data/src.png)
+> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
 ![lib](https://storage.googleapis.com/nfl-player-data/lib.png)
 ![utils](https://storage.googleapis.com/nfl-player-data/utils.png)
 ![roster managers](https://storage.googleapis.com/nfl-player-data/rosterManagers.png)
+
 <br />
 
 - Click edit
@@ -225,7 +247,7 @@ export const rosterManagers = {
 - Go back to your league website tab, wait a minute or two, and then refresh. Now you'll have a Managers tab (located in `LEAGUE INFO` on desktop)
 - Click on `Managers` and you'll see all the managers you just added
 
-![managers preview](https://storage.googleapis.com/nfl-player-data/managersRendered.png)
+> ![managers preview](https://storage.googleapis.com/nfl-player-data/managersRendered.png)
 
 ## III. Wrapping up
 
