@@ -6,6 +6,7 @@
 
 Generate a custom league page for your Sleeper fantasy football league in just a few steps
   <br />
+
   ![GitHub](https://img.shields.io/github/license/nmelhado/league-page) [![node](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](https://github.com/nmelhado/league-page) ![GitHub top language](https://img.shields.io/github/languages/top/nmelhado/league-page?color=ff3e00) ![Lines of code](https://img.shields.io/tokei/lines/github/nmelhado/league-page?label=lines%20of%20code) ![GitHub forks](https://img.shields.io/github/forks/nmelhado/league-page) ![GitHub pull requests](https://img.shields.io/github/issues-pr/nmelhado/league-page) ![GitHub issues](https://img.shields.io/github/issues-raw/nmelhado/league-page)
 </div>
 
@@ -124,6 +125,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - To find the roster ID for the manager, go back to your website and scroll down to the `Power Rankings` graph
         ![pRankings](https://storage.googleapis.com/nfl-player-data/pRankings.png)
 <br />
+
         - The roster ID is the order of the bar chart, the first bar is roster ID 1, the second is roster ID 2, etc.
     - `"name" :` The name of this manager
     - `"tookOver" :` If this manager took over an orphaned team in your league, give the year they took over. Otherwise set this to `null`
@@ -134,13 +136,16 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - Open up your repo's root in a new tab
         ![newTab](https://storage.googleapis.com/nfl-player-data/newTab.png)
 <br />
+
         - Got to `/static/managers/`
         ![static](https://storage.googleapis.com/nfl-player-data/static.png)
         ![managersDir](https://storage.googleapis.com/nfl-player-data/managersDir.png)
 <br />
+
         - Click on `Add file` then `Upload files`
         ![managersDir](https://storage.googleapis.com/nfl-player-data/upload.png)
 <br />
+
         - Add one or all of the manager photos
         - When you're done, click `Commit changes` at the bottom of the page
         - Back in `/src/routes/managers/managers.js` tab, use the filename to fill out the photo field. For the below file, you would fill out `"photo" : "/managers/nick.jpg",`
@@ -160,6 +165,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - Use `⌘ Command` + `F` (on Mac), or `Ctrl` + `F` on Windows to search for the player you are looking for and then copy down that player's `player_id`
         ![player selection](https://storage.googleapis.com/nfl-player-data/playerSelection.jpg)
 <br />
+
         - Supply that number (i.e. `1426`)
     - `"favoritePlayer" :` This is possibly the trickiest step.
     - `"valuePosition" :` Does the manager prefer `"WR"`, `"RB"`, `"QB"`, `"TE"`, etc. for fantasy
