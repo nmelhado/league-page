@@ -21,6 +21,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - Click on the Fork button
 ![Fork](https://storage.googleapis.com/nfl-player-data/fork.png)
 <br />
+
 - You now have your own League Page!
 
 ### 2. Configure your League
@@ -124,7 +125,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - `"roster" :` give the roster ID for this manager
         - To find the roster ID for the manager, go back to your website and scroll down to the `Power Rankings` graph
         ![pRankings](https://storage.googleapis.com/nfl-player-data/pRankings.png)
-<br />
+        <br />
 
         - The roster ID is the order of the bar chart, the first bar is roster ID 1, the second is roster ID 2, etc.
     - `"name" :` The name of this manager
@@ -135,16 +136,16 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - `"photo" :` This manager's photo. To upload a photo:
         - Open up your repo's root in a new tab
         ![newTab](https://storage.googleapis.com/nfl-player-data/newTab.png)
-<br />
+        <br />
 
         - Got to `/static/managers/`
         ![static](https://storage.googleapis.com/nfl-player-data/static.png)
         ![managersDir](https://storage.googleapis.com/nfl-player-data/managersDir.png)
-<br />
+        <br />
 
         - Click on `Add file` then `Upload files`
         ![managersDir](https://storage.googleapis.com/nfl-player-data/upload.png)
-<br />
+        <br />
 
         - Add one or all of the manager photos
         - When you're done, click `Commit changes` at the bottom of the page
@@ -164,7 +165,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - Go to [https://api.sleeper.app/v1/players/nfl](https://api.sleeper.app/v1/players/nfl) in a new tab
         - Use `⌘ Command` + `F` (on Mac), or `Ctrl` + `F` on Windows to search for the player you are looking for and then copy down that player's `player_id`
         ![player selection](https://storage.googleapis.com/nfl-player-data/playerSelection.jpg)
-<br />
+        <br />
 
         - Supply that number (i.e. `1426`)
     - `"favoritePlayer" :` This is possibly the trickiest step.
