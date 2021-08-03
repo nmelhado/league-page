@@ -37,20 +37,25 @@
 	<p>Something went wrong: {error.message}</p>
 {/await}
 
-<hr />
 
-<h4>Previous Drafts</h4>
 {#await previousDraftsData }
+	<hr />
+	<h4>Previous Drafts</h4>
 	<div class="loading">
 		<p>Retrieving previous drafts...</p>
 		<br />
 		<LinearProgress indeterminate />
 	</div>
 {:then previousDrafts }
-    {#each previousDrafts as previousDraft}
-        <h6>{previousDraft.year} Draft</h6>
-        <Draft draftData={previousDraft} previous={true} />
-    {/each}
+	<!-- Don't display anything unless there are previous drafts -->
+	{#if previousDrafts.length}
+		<hr />
+		<h4>Previous Drafts</h4>
+		{#each previousDrafts as previousDraft}
+			<h6>{previousDraft.year} Draft</h6>
+			<Draft draftData={previousDraft} previous={true} />
+		{/each}
+	{/if}
 {:catch error}
 	<!-- promise was rejected -->
 	<p>Something went wrong: {error.message}</p>
