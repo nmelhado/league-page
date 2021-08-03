@@ -28,7 +28,7 @@
         z-index: 1;
     }
 
-    .loading {
+    .message {
         display: block;
         width: 85%;
         max-width: 500px;
@@ -39,12 +39,18 @@
 <div id="main">
     {#await matchupsData}
         <!-- promise is pending -->
-        <div class="loading">
+        <div class="message">
             <p>Loading league matchups...</p>
             <LinearProgress indeterminate />
         </div>
     {:then [{matchupWeeks, year, week, regularSeasonLength}, players]}
-		<MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} />
+        {#if matchupWeeks.length}
+		    <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} />
+        {:else}
+            <div class="message">
+                <p>No upcoming matchups...</p>
+            </div>
+        {/if}
     {:catch error}
         <!-- promise was rejected -->
         <p>Something went wrong: {error.message}</p>

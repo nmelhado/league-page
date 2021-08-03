@@ -62,6 +62,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - [Legends League](https://www.legendsleagueff.com/)
 
 ### 1. Setup your own League Page
+*If you've never touched a line of code, use the [Training Wheels Guide](./TRAINING_WHEELS.md) instead*
 - Fork this repo
 - Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID in `/src/lib/utils/helperFunctions/leagueData.js`:
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)

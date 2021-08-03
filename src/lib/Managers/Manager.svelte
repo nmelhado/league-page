@@ -205,7 +205,7 @@ import ManagerAwards from './ManagerAwards.svelte';
             <span class="seperator">|</span>
             <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
             <span class="seperator">|</span>
-            <span class="infoChild">{viewManager.prefferedContact}</span>
+            <span class="infoChild">{viewManager.preferredContact}</span>
             <span class="seperator">|</span>
             <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
         </div>
