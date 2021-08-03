@@ -149,7 +149,7 @@
         <div class="text">
             <h6>{leagueName}</h6>
             <p>Welcome the LFEP League Page.</p>
-            <p>The LFEP, Est. 2020, is the most prominent Dynasty Fantasy Football League in all of the north. Piggybacking off of the downfall of the LTQ, we have established ourselves as a true dynasty league.</p>
+            <p>The LFEP, Est. in year Twenty-Twenty, is the most prominent Dynasty Fantasy Football League in all of the north. Piggybacking off of the downfall of the LTQ, we have established ourselves as a true dynasty league.</p>
             <p>What will you find with this league? Integrity, commitment, and fraternity. This league page will walk you through everything you need to know about the LFEP. Awards, rankings, matchups, trades, and more. I welcome you to the LFEP.</p>
         /div>
         <PowerRankings />
