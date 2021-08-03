@@ -42,7 +42,7 @@ export const managers = [
     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
     "philosophy": "Hope Alex sends you shitty offers.",
     "tradingScale": 7, // 1 - 10
-    "prefferedContact": "Good Luck", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+    "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
   {
     "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
@@ -196,6 +196,28 @@ export const managers = [
     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
     "philosophy": "Kick ass and have fun.",
     "tradingScale": 5, // 1 - 10
+    "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+  },
+    {
+    "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "name": "Andrew Lee",
+    "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
+    "location": "Wilkes",
+    "bio": "Lee shows up when the time comes.",
+    "photo": "/managers/name.jpg", // done
+    "fantasyStart": 2018, // when did the manager start playing fantasy football
+    "favoriteTeam": "phi", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    "mode": "Rebuild", // 'Win Now' or 'Rebuild'
+    "rival": {
+      name: "Rahm", // Can be anything (usually your rival's name)
+      link: 5, // manager array number within this array, or null to link back to all managers page
+      image: "everyone", // either a specific manager photo or 'everyone' or 'question'
+    },
+    "favoritePlayer": 6509, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
+    "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
+    "philosophy": "Fuck Bitches Get Mula.",
+    "tradingScale": 1, // 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
 ]
