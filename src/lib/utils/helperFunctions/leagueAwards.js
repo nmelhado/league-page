@@ -3,7 +3,7 @@ import { getLeagueRosters } from './leagueRosters';
 import { getLeagueUsers } from './leagueUsers';
 import {waitForAll} from './multiPromise';
 import { get } from 'svelte/store';
-import {awards, leagueData} from '$lib/stores';
+import {awards} from '$lib/stores';
 
 export const getAwards = async () => {
 	if(get(awards).podiums) {
