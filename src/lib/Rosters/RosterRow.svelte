@@ -2,6 +2,9 @@
 	import { Row, Cell } from '@smui/data-table';
 	
 	export let player;
+
+	const playerSLotClass = player.slot.replace('/', '').replace('SUPER_', 'S-').replace('REC_', 'R-');
+	const playerSlot = player.slot.replace('SUPER_', 'S ').replace('REC_', 'R ');
 </script>
 
 <style>
@@ -53,6 +56,10 @@
 	:global(.S-FLEX) {
 		background: linear-gradient(to right, #58a7ff, #58a7ff 25%, #00ceb8 25%, #00ceb8 50%, #ffae58 50%, #ffae58 75%, #ff2a6d);
 		background-color: #8f66ff;
+	}
+
+	:global(.R-FLEX) {
+		background: linear-gradient(to right, #58a7ff, #58a7ff 50%, #ffae58 50%);
 	}
 
 	:global(.DEF) {
@@ -122,7 +129,7 @@
 </style>
 
 <Row>
-	<Cell class="slot playerCell"><span class="position {player.slot.replace('/', '').replace('SUPER_', 'S-')}">{player.slot.replace('SUPER_', 'S ')}</span></Cell>
+	<Cell class="slot playerCell"><span class="position {playerSLotClass}">{playerSlot}</span></Cell>
 	{#if player.avatar}
 		<Cell class="avatar playerCell"><div class="playerAvatar" style="{player.avatar}" /></Cell>
 	{/if}

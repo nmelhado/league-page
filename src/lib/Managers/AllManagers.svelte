@@ -1,5 +1,7 @@
 <script>
+    import { leagueName } from '$lib/utils/helper';
     import ManagerRow from './ManagerRow.svelte'
+
     export let managers, rosters, users;
 
     let innerWidth;
@@ -37,7 +39,7 @@
 </style>
 
 <div class="managerContainer">
-    <h2>Legends League Managers</h2>
+    <h2>{leagueName} Managers</h2>
     <div class="managerConstrained">
         {#each managers as manager, key}
             <ManagerRow {manager} {rosters} {users} {key} />

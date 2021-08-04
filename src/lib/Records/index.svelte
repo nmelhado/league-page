@@ -13,9 +13,18 @@
         width: 100%;
         max-width: 1200px;
     }
+
+    .empty {
+        margin: 10em 0 4em;
+        text-align: center;
+    }
 </style>
 
 <div class="rankingsWrapper">
-    <AllTimeRecords transactionTotals={totals} {leagueRosterRecords} {leagueWeekRecords} {currentManagers} {mostSeasonLongPoints} />
+    {#if leagueWeekRecords.length}
+        <AllTimeRecords transactionTotals={totals} {leagueRosterRecords} {leagueWeekRecords} {currentManagers} {mostSeasonLongPoints} />
+    {:else}
+        <p class="empty">No records <i>yet</i>...</p>
+    {/if}
     <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {currentManagers} {currentYear} {lastYear} />
 </div>

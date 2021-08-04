@@ -329,7 +329,7 @@
 <div class="awards">
 	<h3>{year} Awards</h3>
 
-	<img src="./banner.png" class="banner" alt="The Legends Cup" />
+	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
 		<img src="./podium.png" class="podiumImage" alt="podium" />
@@ -367,7 +367,7 @@
 		<!-- Toilet Bowl -->
 	<div class="toiletParent">
 		
-		<img src="./toilet-banner.png" class="toilet-banner" alt="The Legends Cup" />
+		<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 
 		<div class="toiletBowl">
 			<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />

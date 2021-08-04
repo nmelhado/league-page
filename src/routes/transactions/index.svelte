@@ -39,10 +39,19 @@
 
     const transactionsData = getLeagueTransactions(false);
 
-	$: masterOffset = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
+    let el, masterOffset;
 
-    let el;
+    const resize = (w) => {
+        masterOffset = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
+    }
+
+    $: resize(innerWidth);
+
+    let innerWidth;
+
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     #main {

@@ -9,17 +9,24 @@
 
 	let activeTab = active;
 
-	let el, display;
+	let display;
+	let el, width, height, left, top;
 
-    $: top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
-    $: bottom = el?.getBoundingClientRect() ? el?.getBoundingClientRect().bottom  : 0;
+	const sizeSubMenu = (w) => {
+		top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
+		const bottom = el?.getBoundingClientRect() ? el?.getBoundingClientRect().bottom  : 0;
 
-	$: height = bottom - top + 1;
+		height = bottom - top + 1;
 
-    $: left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-    $: right = el?.getBoundingClientRect() ? el?.getBoundingClientRect().right  : 0;
+		left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
+		const right = el?.getBoundingClientRect() ? el?.getBoundingClientRect().right  : 0;
 
-	$: width = right - left;
+		width = right - left;
+	}
+
+	let innerWidth;
+
+	$: sizeSubMenu(innerWidth);
 
 	const open = (close = false) => {
 		if(close) {
@@ -46,6 +53,8 @@
 	}
 
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     :global(.navBar) {

@@ -195,13 +195,13 @@ import { goto } from "$app/navigation";
                 <img class="infoImg" src="https://sleepercdn.com/images/team_logos/nfl/{manager.favoriteTeam}.png" alt="favorite team"/>
             </div>
         </div>
-        <!-- Preffered contact -->
+        <!-- Preferred contact -->
         <div class="infoSlot">
             <div class="infoIcon">
-                <img class="infoImg" src="/{manager.prefferedContact}.png" alt="{manager.prefferedContact}"/>
+                <img class="infoImg" src="/{manager.preferredContact}.png" alt="{manager.preferredContact}"/>
             </div>
             <div class="infoAnswer">
-                {manager.prefferedContact}
+                {manager.preferredContact}
             </div>
         </div>
         <!-- Rebuild mode -->

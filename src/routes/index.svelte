@@ -10,19 +10,26 @@
     let nflState = getNflState();
     let podiumsData = getAwards();
 
-
-	$: left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-
-    let el;
-    
-    	const getNames = (name, rosterID, currentManagers) => {
+    const getNames = (name, rosterID, currentManagers) => {
 		if(cleanName(name) != cleanName(currentManagers[rosterID].name)) {
 			return `${name}<div class="curOwner">(${currentManagers[rosterID].name})</div>`;
 		}
 		return name;
 	}
 
+    let el, left;
+
+    const resize = (w) => {
+        left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
+    }
+
+    $: resize(innerWidth);
+
+    let innerWidth;
+
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     #home {
