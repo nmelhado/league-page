@@ -10,8 +10,10 @@ Generate a custom league page for your Sleeper fantasy football league in just a
   ![GitHub](https://img.shields.io/github/license/nmelhado/league-page) [![node](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](https://github.com/nmelhado/league-page) ![GitHub top language](https://img.shields.io/github/languages/top/nmelhado/league-page?color=ff3e00) ![Lines of code](https://img.shields.io/tokei/lines/github/nmelhado/league-page?label=lines%20of%20code) ![GitHub forks](https://img.shields.io/github/forks/nmelhado/league-page) ![GitHub pull requests](https://img.shields.io/github/issues-pr/nmelhado/league-page) ![GitHub issues](https://img.shields.io/github/issues-raw/nmelhado/league-page)
 </div>
 
-# Training Wheels Instructions
-<div align="center">Keep this open in a separate tab, to make setup as easy as possible</div>
+<div align="center">
+  <h1>Training Wheels Instructions</h1>
+  <span>Keep this open in a separate tab, to make setup as easy as possible</span>
+</div>
 
 ## I. Initial Setup
 
@@ -252,12 +254,14 @@ export const rosterManagers = {
 ## III. Wrapping up
 
 - That's it. You've built out your own league website!
+- If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`
+    - This page is primarily HTML, so you can edit this in a similar way to how you edited the homepage
 - If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)
 <div align="center">
     <a href="https://www.buymeacoffee.com/nmelhado" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important; width: 217px !important;" width="217px" height="60px" ></a>
 </div>
 
-- **If you run into any issues**, go back to [the original League Page repo](https://github.com/nmelhado/league-page) and click on [`Issues`](https://github.com/nmelhado/league-page/issues)
+- **If you run into any issues**, go back to [the original League Page repo](https://github.com/nmelhado/league-page) and click on [Issues](https://github.com/nmelhado/league-page/issues)
 
 <br>
 <br>
