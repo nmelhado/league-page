@@ -6,7 +6,7 @@
 	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
-import ManagerAwards from './ManagerAwards.svelte';
+    import ManagerAwards from './ManagerAwards.svelte';
 
     export let manager, managers, rostersData, users, rosterPositions, transactions, currentManagers, awards, records;
 
@@ -202,12 +202,18 @@ import ManagerAwards from './ManagerAwards.svelte';
         
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location}</span>
-            <span class="seperator">|</span>
-            <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
+            {#if viewManager.fantasyStart}
+                <!-- fantasyStart is an optional field -->
+                <span class="seperator">|</span>
+                <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
+            {/if}
             <span class="seperator">|</span>
             <span class="infoChild">{viewManager.preferredContact}</span>
-            <span class="seperator">|</span>
-            <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
+            {#if viewManager.favoriteTeam}
+                <!-- favoriteTeam is an optional field -->
+                <span class="seperator">|</span>
+                <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
+            {/if}
         </div>
 
         <div class="managerNav upper">
