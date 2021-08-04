@@ -6,7 +6,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Allentown",
     "bio": "A die hard fantasy player who can never seem to win anything.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/matt.jpg", // done
     "fantasyStart": 2014, // when did the manager start playing fantasy football
     "favoriteTeam": "jax", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -28,7 +28,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Brass Rail",
     "bio": "Tristan does not answer his phone",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/tris.jpg", // done
     "fantasyStart": 2013, // when did the manager start playing fantasy football
     "favoriteTeam": "phi", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -50,7 +50,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Pittsburgh",
     "bio": "Strong willed hard working trader. Josh does not just day trade stocks, but he excells in trading players even more.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/josh.jpg", // done
     "fantasyStart": 2016, // when did the manager start playing fantasy football
     "favoriteTeam": "was", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -72,7 +72,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Penn State",
     "bio": "Believes he is the best but has not proved himself.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/mooch.jpg", // done
     "fantasyStart": 2016, // when did the manager start playing fantasy football
     "favoriteTeam": "gb", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -94,7 +94,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Baltimore",
     "bio": "Jack of all trades, master of none. Rahm can not decide if wants to win now or rebuild. Very good Warzone player though.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/rahm.jpg", // done
     "fantasyStart": 2017, // when did the manager start playing fantasy football
     "favoriteTeam": "pit", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
@@ -116,7 +116,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Wilkes-Barre",
     "bio": "Sam is the reigning champion. It was a fluke.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/sam.jpg", // done
     "fantasyStart": 2016, // when did the manager start playing fantasy football
     "favoriteTeam": "phi", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -138,7 +138,7 @@ export const managers = [
     "tookOver": 2021, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Pittsburgh",
     "bio": "Some would call him a taco but he has had more fantasy success then anyone else. Is he just faking it?",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/yount.jpg", // done
     "fantasyStart": 2019, // when did the manager start playing fantasy football
     "favoriteTeam": "dal", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -160,7 +160,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "West Chester",
     "bio": "The poster child for gender equality in our league, meredith looks to crush everyones hopes and dreams and be the Kamala Harris of fantasy football.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/dith.jpg", // done
     "fantasyStart": 2020, // when did the manager start playing fantasy football
     "favoriteTeam": "lar", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
@@ -182,7 +182,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "A-Town",
     "bio": "Jacob is the kindest soul in our league.Nicest dude you'll ever meet until the trash talk comes out.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/wolfe.jpg", // done
     "fantasyStart": 2017, // when did the manager start playing fantasy football
     "favoriteTeam": "dal", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
@@ -204,7 +204,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Wilkes",
     "bio": "Lee shows up when the time comes.",
-    "photo": "/managers/name.jpg", // done
+    "photo": "/managers/lee.jpg", // done
     "fantasyStart": 2018, // when did the manager start playing fantasy football
     "favoriteTeam": "phi", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
