@@ -36,73 +36,38 @@ export const getAwards = async () => {
 
 	let previousSeasonID = leagueData.previous_league_id;
 
+	const podiums = await getPodiums(previousSeasonID)
+
+	const gatheredAwards = {
+		podiums,
+		currentManagers
+	};
+
+	awards.update(() => gatheredAwards);
+
+	return gatheredAwards;
+}
+
+const getPodiums = async (previousSeasonID) => {
 	const podiums = [];
 
 	while(previousSeasonID && previousSeasonID != 0) {
-		const resPromises = [
-			fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}`, {compress: true}),
-			getLeagueRosters(previousSeasonID),
-			getLeagueUsers(previousSeasonID),
-			fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/losers_bracket`, {compress: true}),
-			fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/winners_bracket`, {compress: true}),
-		]
+		// use the previous season ID to get the previous league, roster, user, and bracket data
+		const previousSeasonData = await getPreviousLeagueData(previousSeasonID);
 
-		const [leagueRes, rostersData, usersData, losersRes, winnersRes] = await waitForAll(...resPromises).catch((err) => { console.error(err); });
+		const {
+			losersData,
+			winnersData,
+			year,
+			previousRosters,
+			numDivisions,
+			usersData,
+			leagueMetadata
+		} = previousSeasonData;
 
-		if(!leagueRes.ok || !losersRes.ok || !winnersRes.ok) {
-			throw new Error(data);
-		}
+		previousSeasonID = previousSeasonData.previousSeasonID;
 
-		const jsonPromises = [
-			leagueRes.json(),
-			losersRes.json(),
-			winnersRes.json(),
-		]
-	
-		const [prevLeagueData, losersData, winnersData] = await waitForAll(...jsonPromises).catch((err) => { console.error(err); });
-
-		const year = prevLeagueData.season;
-
-		const previousRosters = rostersData.rosters;
-	
-		const prevManagers = {};
-
-		const numDivisions = prevLeagueData.settings.divisions || 1;
-
-		const divisions = {};
-
-		for(let i = 0; i < numDivisions; i++) {
-			divisions[i+1] = {
-				name: leagueData.metadata ? leagueData.metadata[`division_${i + 1}`] : null,
-				roster: null,
-				wins: -1,
-				points: -1
-			}
-		}
-	
-		for(const roster of previousRosters) {
-			const rSettings = roster.settings;
-			const div = rSettings.division ? rSettings.division : 1;
-			if(rSettings.wins > divisions[div].wins || (rSettings.wins == divisions[div].wins && (rSettings.fpts  + rSettings.fpts_decimal / 100)  == divisions[div].points)) {
-				divisions[div].points = rSettings.fpts  + rSettings.fpts_decimal / 100;
-				divisions[div].wins = rSettings.wins;
-				divisions[div].roster = roster.roster_id;
-			}
-			const user = usersData[roster.owner_id];
-			if(user) {
-				prevManagers[roster.roster_id] = {
-					rosterID: roster.roster_id,
-					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-				}
-			} else {
-				prevManagers[roster.roster_id] = {
-					rosterID: roster.roster_id,
-					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
-					name: 'Unknown Manager',
-				}
-			}
-		}
+		const {divisions, prevManagers} = buildDivisionsAndManagers({usersData, previousRosters, leagueMetadata, numDivisions});
 
 		// add manager to division obj and convert to array
 		const divisionArr = []
@@ -130,16 +95,88 @@ export const getAwards = async () => {
 			toilet
 		}
 		podiums.push(podium);
+	}
+	return podiums;
+}
 
-		previousSeasonID = prevLeagueData.previous_league_id;
+// fetch the previous season's data from sleeper
+const getPreviousLeagueData = async (previousSeasonID) => {
+	const resPromises = [
+		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}`, {compress: true}),
+		getLeagueRosters(previousSeasonID),
+		getLeagueUsers(previousSeasonID),
+		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/losers_bracket`, {compress: true}),
+		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/winners_bracket`, {compress: true}),
+	]
+
+	const [leagueRes, rostersData, usersData, losersRes, winnersRes] = await waitForAll(...resPromises).catch((err) => { console.error(err); });
+
+	if(!leagueRes.ok || !losersRes.ok || !winnersRes.ok) {
+		throw new Error(data);
 	}
 
-	const gatheredAwards = {
-		podiums,
-		currentManagers
-	};
+	const jsonPromises = [
+		leagueRes.json(),
+		losersRes.json(),
+		winnersRes.json(),
+	]
 
-	awards.update(() => gatheredAwards);
+	const [prevLeagueData, losersData, winnersData] = await waitForAll(...jsonPromises).catch((err) => { console.error(err); });
 
-	return gatheredAwards;
+	const year = prevLeagueData.season;
+
+	const previousRosters = rostersData.rosters;
+
+	const numDivisions = prevLeagueData.settings.divisions || 1;
+
+	previousSeasonID = prevLeagueData.previous_league_id;
+
+	return {
+		losersData,
+		winnersData,
+		year,
+		previousRosters,
+		numDivisions,
+		usersData,
+		previousSeasonID,
+		leagueMetadata: prevLeagueData.metadata
+	}
+}
+
+// determine division champions and construct previousManagers object
+const buildDivisionsAndManagers = ({usersData, previousRosters, leagueMetadata, numDivisions}) => {
+	const prevManagers = {};
+
+	const divisions = {};
+
+	for(let i = 0; i < numDivisions; i++) {
+		divisions[i+1] = {
+			name: leagueMetadata ? leagueMetadata[`division_${i + 1}`] : null,
+			roster: null,
+			wins: -1,
+			points: -1
+		}
+	}
+
+	for(const roster of previousRosters) {
+		const rSettings = roster.settings;
+		const div = rSettings.division ? rSettings.division : 1;
+		if(rSettings.wins > divisions[div].wins || (rSettings.wins == divisions[div].wins && (rSettings.fpts  + rSettings.fpts_decimal / 100)  == divisions[div].points)) {
+			divisions[div].points = rSettings.fpts  + rSettings.fpts_decimal / 100;
+			divisions[div].wins = rSettings.wins;
+			divisions[div].roster = roster.roster_id;
+		}
+		const user = usersData[roster.owner_id];
+		prevManagers[roster.roster_id] = {
+			rosterID: roster.roster_id,
+			avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+			name: 'Unknown Manager',
+		}
+		if(user) {
+			prevManagers[roster.roster_id].avatar = `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+			prevManagers[roster.roster_id].name = user.metadata.team_name ? user.metadata.team_name : user.display_name;
+		}
+	}
+
+	return {divisions, prevManagers}
 }
