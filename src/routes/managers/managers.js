@@ -69,7 +69,7 @@ export const managers = [
    {
      "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Matt",
-     "tookOver": 2017 // (optional) used if a manager took over a team, delete this line or change to null otherwise
+     "tookOver": 2017, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Fort Collins",
      "bio": "I am known for ultra confident but extremely wrong takes.",
      "photo": "/managers/Matt.jpg", // done
@@ -91,7 +91,7 @@ export const managers = [
    {
      "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Brandon",
-     "tookOver": 2018 // (optional) used if a manager took over a team, delete this line or change to null otherwise
+     "tookOver": 2018, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Colorado?",
      "bio": "I prefer to not talk in league chat much.  My impact is felt through...um...",
      "photo": "/managers/Matt.jpg", // done
@@ -113,7 +113,7 @@ export const managers = [
    {
      "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Trey",
-     "tookOver": null // (optional) used if a manager took over a team, delete this line or change to null otherwise
+     "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Florida",
      "bio": "FLORIDA MAN INJECTS SELF WITH SPRAY FOAM, DOES NOT HELP WITH FFL RESULTS",
      "photo": "/managers/Trey.jpg", // done
@@ -157,7 +157,7 @@ export const managers = [
    {
      "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Erik",
-     "tookOver": 2021 // (optional) used if a manager took over a team, delete this line or change to null otherwise
+     "tookOver": 2021, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Earth",
      "bio": "???",
      "photo": "/managers/Erik.jpg", // done
