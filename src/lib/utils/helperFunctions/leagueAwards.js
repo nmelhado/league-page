@@ -62,6 +62,8 @@ const getPodiums = async (previousSeasonID) => {
 			previousRosters,
 			numDivisions,
 			usersData,
+			playoffRounds,
+			toiletRounds,
 			leagueMetadata
 		} = previousSeasonData;
 
@@ -76,14 +78,14 @@ const getPodiums = async (previousSeasonID) => {
 			divisionArr.push(divisions[key]);
 		}
 
-		const finalsMatch = winnersData.filter(m => m.r == 3 && m.t1_from.w)[0];
+		const finalsMatch = winnersData.filter(m => m.r == playoffRounds && m.t1_from.w)[0];
 		const champion = prevManagers[finalsMatch.w];
 		const second = prevManagers[finalsMatch.l];
 	
-		const runnersUpMatch = winnersData.filter(m => m.r == 3 && m.t1_from.l)[0];
+		const runnersUpMatch = winnersData.filter(m => m.r == playoffRounds && m.t1_from.l)[0];
 		const third = prevManagers[runnersUpMatch.w];
 
-		const toiletBowlMatch = losersData.filter(m => m.r == 3 && m.t1_from.w)[0];
+		const toiletBowlMatch = losersData.filter(m => m.r == toiletRounds && (!m.t1_from || m.t1_from.w))[0];
 		const toilet = prevManagers[toiletBowlMatch.w]
 
 		const podium = {
@@ -131,6 +133,9 @@ const getPreviousLeagueData = async (previousSeasonID) => {
 
 	previousSeasonID = prevLeagueData.previous_league_id;
 
+	const playoffRounds = winnersData[winnersData.length - 1].r
+	const toiletRounds = losersData[losersData.length - 1].r
+
 	return {
 		losersData,
 		winnersData,
@@ -139,6 +144,8 @@ const getPreviousLeagueData = async (previousSeasonID) => {
 		numDivisions,
 		usersData,
 		previousSeasonID,
+		playoffRounds,
+		toiletRounds,
 		leagueMetadata: prevLeagueData.metadata
 	}
 }
