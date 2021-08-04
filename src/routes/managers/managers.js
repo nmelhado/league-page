@@ -27,7 +27,7 @@ export const managers = [
      "name": "Sam",
      "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Denver",
-     "bio": "",
+     "bio": "BEER",
      "photo": "/managers/Sam.jpg", // done
      "fantasyStart": 2015, // when did the manager start playing fantasy football
      "favoriteTeam": "den", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -94,7 +94,7 @@ export const managers = [
      "tookOver": 2018, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Colorado?",
      "bio": "I prefer to not talk in league chat much.  My impact is felt through...um...",
-     "photo": "/managers/Matt.jpg", // done
+     "photo": "/managers/Brandon.jpg", // done
      "fantasyStart": 2015, // when did the manager start playing fantasy football
      "favoriteTeam": "den", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
      "mode": "Rebuild", // 'Win Now' or 'Rebuild'
@@ -134,28 +134,6 @@ export const managers = [
    },
    {
      "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-     "name": "Erik",
-     "tookOver": 2021, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-     "location": "Earth",
-     "bio": "???",
-     "photo": "/managers/Erik.jpg", // done
-     "fantasyStart": 2012, // when did the manager start playing fantasy football
-     "favoriteTeam": "den", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
-     "rival": {
-       name: "Everyone", // Can be anything (usually your rival's name)
-       link: null, // manager array number within this array, or null to link back to all managers page
-       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
-     },
-     "favoritePlayer": 3970, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-     "valuePosition": "QB", // Favorite position (QB, WR, RB, TE, etc.)
-     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
-     "philosophy": "???",
-     "tradingScale": 5, // 1 - 10
-     "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
-   },
-   {
-     "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Erik",
      "tookOver": 2021, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Earth",
@@ -238,7 +216,7 @@ export const managers = [
      "favoritePlayer": 867, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
      "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
-     "philosophy": "Experts?  More like fucking groupthink.",
+     "philosophy": "I believe in the power of murdering puppies.",
      "tradingScale": 10, // 1 - 10
      "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
    },
