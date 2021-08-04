@@ -151,7 +151,6 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - `"tookOver" :` If this manager took over an orphaned team in your league, give the year they took over. Otherwise set this to `null`
     - `"location" :` Where is this manager based out of (City, State, Country, whatever floats your boat)
     - `"bio" :` This manager's bio. If you don't have a bio yet, leave it as is and come back and edit this again when you have the bio.
-    - `"bio" :` This manager's bio. If you don't have a bio yet, leave it as is and come back and edit this again when you have the bio.
     - `"photo" :` This manager's photo. To upload a photo:
         - Open up your repo's root in a new tab
         > ![newTab](https://storage.googleapis.com/nfl-player-data/newTab.png)
