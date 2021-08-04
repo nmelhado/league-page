@@ -55,9 +55,9 @@ export const managers = [
      "favoriteTeam": "den", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
      "mode": "Win Now", // 'Win Now' or 'Rebuild'
      "rival": {
-       name: "Matt", // Can be anything (usually your rival's name)
-       link: 4, // manager array number within this array, or null to link back to all managers page
-       image: "/managers/Matt.jpg", // either a specific manager photo or 'everyone' or 'question'
+       name: "Brandon", // Can be anything (usually your rival's name)
+       link: 5, // manager array number within this array, or null to link back to all managers page
+       image: "/managers/Brandon.jpg", // either a specific manager photo or 'everyone' or 'question'
      },
      "favoritePlayer": 1244, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "TE", // Favorite position (QB, WR, RB, TE, etc.)
@@ -101,7 +101,7 @@ export const managers = [
      "rival": {
        name: "Everyone", // Can be anything (usually your rival's name)
        link: null, // manager array number within this array, or null to link back to all managers page
-       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
+       image: "/managers/everyone.png", // either a specific manager photo or 'everyone' or 'question'
      },
      "favoritePlayer": 4319, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
@@ -123,7 +123,7 @@ export const managers = [
      "rival": {
        name: "Everyone", // Can be anything (usually your rival's name)
        link: null, // manager array number within this array, or null to link back to all managers page
-       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
+       image: "/managers/everyone.png", // either a specific manager photo or 'everyone' or 'question'
      },
      "favoritePlayer": 3970, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "QB", // Favorite position (QB, WR, RB, TE, etc.)
@@ -145,7 +145,7 @@ export const managers = [
      "rival": {
        name: "Everyone", // Can be anything (usually your rival's name)
        link: null, // manager array number within this array, or null to link back to all managers page
-       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
+       image: "/managers/everyone.png", // either a specific manager photo or 'everyone' or 'question'
      },
      "favoritePlayer": 3970, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "QB", // Favorite position (QB, WR, RB, TE, etc.)
@@ -209,9 +209,9 @@ export const managers = [
      "favoriteTeam": "den", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
      "mode": "Win Now", // 'Win Now' or 'Rebuild'
      "rival": {
-       name: "Ward", // Can be anything (usually your rival's name)
+       name: "Everyone", // Can be anything (usually your rival's name)
        link: 9, // manager array number within this array, or null to link back to all managers page
-       image: "/managers/Ward.jpg", // either a specific manager photo or 'everyone' or 'question'
+       image: "/managers/everyone.png", // either a specific manager photo or 'everyone' or 'question'
      },
      "favoritePlayer": 867, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
@@ -260,7 +260,7 @@ export const managers = [
      "favoritePlayer": 4084, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "WR", // Favorite position (QB, WR, RB, TE, etc.)
      "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
-     "philosophy": "I know it says Win Now earlier but I meant Win Never.",
+     "philosophy": "I know it says Win Now but I mean Win Never.",
      "tradingScale": 3, // 1 - 10
      "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
    },
