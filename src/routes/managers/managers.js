@@ -147,7 +147,7 @@ export const managers = [
       link: 8, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
-    "favoritePlayer": 4314, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    "favoritePlayer": 4029, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
     "valuePosition": "WR", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
     "philosophy": "I have no clue what is hapening.",
