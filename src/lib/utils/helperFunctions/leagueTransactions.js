@@ -164,7 +164,8 @@ const digestTransactions = (transactionsData, prevManagers, players, currentSeas
 	}
 	
 	for(const transaction of transactionsData) {
-		const {digestedTransaction, season} = digestTransaction(transaction, prevManagers, players, currentSeason)
+		const {digestedTransaction, season, success} = digestTransaction(transaction, prevManagers, players, currentSeason)
+		if(!success) continue;
 		transactions.push(digestedTransaction);
 
 		for(const roster of digestedTransaction.rosters) {
@@ -202,6 +203,8 @@ const digestDate = (tStamp) => {
 }
 
 const digestTransaction = (transaction, prevManagers, players, currentSeason) => {
+	// don't include failed waiver claims
+	if(transaction.status == 'failed') return {success: false};
 	const handled = [];
 	const transactionRosters = transaction.roster_ids;
 	const bid = transaction.settings?.waiver_bid;
@@ -304,7 +307,7 @@ const digestTransaction = (transaction, prevManagers, players, currentSeason) =>
 		digestedTransaction.moves.push(move);
 	}
 
-	return {digestedTransaction, season};
+	return {digestedTransaction, season, success: true};
 }
 
 const handleAdds = (rosters, adds, drops, player, bid, players) => {
