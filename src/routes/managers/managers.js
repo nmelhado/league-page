@@ -1,4 +1,9 @@
-// 3 managers as an example (remove the // before each line to make it live code)
+/*
+3 managers as an example. Uncomment (remove the //) before each line to make it live code
+If you're having trouble, reference the Training Wheels' Manager Section
+https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers
+*/
+
 export const managers = [
   // {
   //   "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
