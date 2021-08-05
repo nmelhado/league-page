@@ -7,7 +7,7 @@
 
 	export let queryWeek, matchupsData, bracketsData, playersData;
 
-    let selection = 'regular';
+    let selection = 'champions';
 </script>
 
 <style>
@@ -90,7 +90,7 @@
         </div>
     {:then brackets}
         <!-- {promise has processed -->
-        {#if selection == 'champions' || selection == 'losers'}
+        {#if brackets.champs.bracket[0][0][0].points && (selection == 'champions' || selection == 'losers')}
             <Brackets {players} {brackets} {selection}/>
         {/if}
     {:catch error}

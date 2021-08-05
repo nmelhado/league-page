@@ -1,38 +1,12 @@
 <script>
     import { round } from "$lib/utils/helper";
 
-    export let players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters;
+    export let players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters, consolationNum;
 
     let label = '';
 
     const setLabel = (l) => {
-        if(consolation) {
-            switch (playoffLength - ix) {
-                case 1:
-                    if(losers) {
-                        label = nThPlace(2);
-                    } else {
-                        label = '3rd Place'
-                    }
-                    break;
-                case 2:
-                    if(losers) {
-                        label = nThPlace(4);
-                    } else {
-                        label = '5th Place'
-                    }
-                    break;
-                case 3:
-                    if(losers) {
-                        label = nThPlace(6);
-                    } else {
-                        label = '7th Place'
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else {
+        if(matchCol.length > 1) {
             switch (playoffLength - ix) {
                 case 1:
                     if(losers) {
@@ -54,13 +28,27 @@
                 default:
                     break;
             }
+        } else {
+            // If it's not a consolation match the only single matchup is the final
+            if(!consolation) {
+                if(losers) {
+                    label = 'Toilet Bowl'
+                } else {
+                    label = 'Championship Match'
+                }
+                return;
+            }
+            if(losers) {
+                label = nThPlace(numRosters - (2 * (consolationNum + 1)));
+            } else {
+                label = nThPlace(1 + (2 * (consolationNum + 1)));
+            }
         }
     }
 
-    const nThPlace = (offset) => {
-        const place = numRosters - offset;
+    const nThPlace = (num) => {
         let end = 'th';
-        switch (place[place.length - 1]) {
+        switch (num % 10) {
             case 3:
                 end = 'rd'
                 break;
@@ -73,16 +61,22 @@
             default:
                 break;
         }
-        return `${place}${end} Place`
+        return `${num}${end} Place`
     }
 
     $: setLabel(losers)
 
     let anchors = {};
     let drawBracket = false;
-    if(matchCol.length % 2 == 0) {
-        drawBracket = true;
+    const setDrawBracket = (col) => {
+        if(col.length % 2 == 0) {
+            drawBracket = true;
+        } else {
+            drawBracket = false;
+        }
     }
+    $: setDrawBracket(matchCol)
+
     const duos = matchCol.length / 2;
     for(let i = 0; i < duos; i++) {
         anchors[i] = {
@@ -108,6 +102,7 @@
     }
 
     const calculatePoints = (points) => {
+        if(!points) return 0;
         let totalPoints = 0;
         for(const point of points) {
             totalPoints += point;
@@ -116,6 +111,7 @@
     }
 
     const calculatePotentialPoints = (starters, ix) => {
+        if(!starters) return 0;
         let totalPoints = 0;
         for(const starter of starters) {
             totalPoints += parseFloat(players[starter].weeklyInfo[playoffsStart - ix].projection);
@@ -303,10 +299,17 @@
         opacity: 0.3;
         border: none;
     }
+
+    .spacer {
+        background: none;
+        border: none;
+    }
 </style>
 
 <div class="bracketColumn" bind:this={el}>
-    <p class="label" style="top: {labelY}px;">{label}</p>
+    {#if matchCol.length}
+        <p class="label" style="top: {labelY}px;">{label}</p>
+    {/if}
     <!-- If we need to draw a bracket, include anchor points and include svgs to draw the  bracket -->
     {#each matchCol as matchups, inx}
         <div class="match" bind:this={anchors[Math.floor(inx / 2)][inx % 2 == 0 ? 't' : 'b']}>
@@ -346,4 +349,7 @@
             </svg>
         {/if}
     {/each}
+    {#if !matchCol.length}
+        <div class="match spacer" />
+    {/if}
 </div>

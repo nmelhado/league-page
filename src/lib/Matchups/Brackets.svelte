@@ -6,22 +6,22 @@
     const {playoffsStart, champs, losers, numRosters} = brackets;
 
     const champsBracket = champs.bracket;
-    const champsConsolation = champs.consolations;
+    const champsConsolations = champs.consolations;
 
     const losersBracket = losers.bracket;
-    const losersConsolation = losers.consolations;
+    const losersConsolations = losers.consolations;
 
     let bracket = [];
-    let consolation = [];
+    let consolations = [];
 
     const changeSelection = () => {
         if(selection == 'losers') {
             bracket = losersBracket;
-            consolation = losersConsolation;
+            consolations = losersConsolations;
             return;
         }
         bracket = champsBracket;
-        consolation = champsConsolation;
+        consolations = champsConsolations;
     }
 
     $: changeSelection(selection);
@@ -48,9 +48,11 @@
         {/each}
     </div>
 
-    <div class="bracket">
-        {#each consolation as matchCol, ix}
-            <BracketsColumn {matchCol} {ix} {players} {playoffsStart} playoffLength={consolation.length} {numRosters} consolation={true} losers={selection == 'losers'} />
-        {/each}
-    </div>
+    {#each consolations as consolation, consolationNum}
+        <div class="bracket">
+            {#each consolation as matchCol, ix}
+                <BracketsColumn {consolationNum} {matchCol} {ix} {players} {playoffsStart} playoffLength={consolation.length} {numRosters} consolation={true} losers={selection == 'losers'} />
+            {/each}
+        </div>
+    {/each}
 </div>
