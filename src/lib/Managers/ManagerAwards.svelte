@@ -75,7 +75,7 @@
             const pointsRecord = pointsRecords[i];
             const iqRecord = iqRecords[i];
 
-            if(winRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(winRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -85,7 +85,7 @@
                 })
             }
 
-            if(pointsRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(pointsRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -94,7 +94,7 @@
                 })
             }
 
-            if(iqRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(iqRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
