@@ -102,6 +102,12 @@ const evaluateBracket = (contestants, rounds, playoffMatchups, rosters, users) =
                 // this was from a team that got a bye
                 let byeMatchup = processPlayoffMatchup(playoffBracket, playoffMatchups[i - 2], rosters, users, consolationMs, fromWs);
                 byeMatchup.bye = true;
+                byeMatchup[0].m = null;
+                byeMatchup[1].m = null;
+                byeMatchup[0].r--;
+                byeMatchup[1].r--;
+                // set the opponent to null
+                byeMatchup[1].manager = null;
                 if(first) {
                     bracket[i - 2].unshift(byeMatchup);
                     first = false;
@@ -155,6 +161,7 @@ const newConsolation = (consolationMatchups, rounds, i) => {
 const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs, fromWs) => {
     const matchup = [];
     const m = bracket.m;
+    const r = bracket.r;
     const t1From = bracket.t1_from?.w ? bracket.t1_from?.w : bracket.t1_from?.l;
     const t2From = bracket.t2_from?.w ? bracket.t2_from?.w : bracket.t2_from?.l;
     const winners = bracket.t1_from?.w && bracket.t2_from?.w ? true : false;
@@ -182,6 +189,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
                 points: t1Matchup?.starters_points,
                 t1From,
                 m,
+                r,
                 winners,
                 fromWinners,
                 consolation
@@ -196,6 +204,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
                 points: t1Matchup?.starters_points,
                 t1From,
                 m,
+                r,
                 winners,
                 fromWinners,
                 consolation
@@ -208,6 +217,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
             consolation,
             t1From,
             m,
+            r,
             winners,
             fromWinners,
         });
@@ -229,6 +239,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
                 points: t2Matchup?.starters_points,
                 t2From,
                 m,
+                r,
                 winners,
                 fromWinners,
                 consolation
@@ -243,6 +254,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
                 points: t2Matchup?.starters_points,
                 t2From,
                 m,
+                r,
                 winners,
                 fromWinners,
                 consolation
@@ -256,6 +268,7 @@ const processPlayoffMatchup = (bracket, matchups, rosters, users, consolationMs,
             t2From,
             winners,
             fromWinners,
+            r,
             m,
         });
     }

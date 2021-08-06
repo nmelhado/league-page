@@ -4,14 +4,18 @@
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
 
-    export let queryWeek, players, matchupWeeks, year, week, regularSeasonLength;
+    export let queryWeek, players, matchupWeeks, year, week, regularSeasonLength, selection;
 
     let displayWeek = queryWeek * 1 || 1;
 
     onMount(() => {
-        if(!queryWeek || queryWeek > regularSeasonLength || queryWeek < 1) {
+        if(!queryWeek || queryWeek < 1) {
             goto(`/matchups?week=${week}`, {noscroll: true});
             processDisplayMatchup(1)
+            return;
+        }
+        if(queryWeek > regularSeasonLength) {
+            selection = 'champions';
             return;
         }
         processDisplayMatchup(displayWeek)

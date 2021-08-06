@@ -1,7 +1,7 @@
 <script>
     import { round } from "$lib/utils/helper";
 
-    export let players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters, consolationNum;
+    export let players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters, consolationNum, selected;
 
     let label = '';
 
@@ -114,7 +114,7 @@
         if(!starters) return 0;
         let totalPoints = 0;
         for(const starter of starters) {
-            totalPoints += parseFloat(players[starter].weeklyInfo[playoffsStart - ix].projection);
+            totalPoints += parseFloat(players[starter].weeklyInfo[playoffsStart - ix]?.projection || 0);
         }
         return round(totalPoints);
     }
@@ -155,6 +155,11 @@
     
     let innerWidth;
 
+    const changeSelection = (m) => {
+        if(m == selected) return;
+        selected = m;
+    }
+
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -178,10 +183,19 @@
     .match {
         width: 280px;
         border: 1px solid #ccc;
-        background-color: #fff;
+        background-color: #f8f8f9;
         border-radius: 10px;
         margin: 2em 1em;
         z-index: 2;
+    }
+
+    .selected {
+        background-color: #fff;
+        box-shadow: 0 0 8px 6px #fff;
+    }
+
+    .clickable {
+        cursor: pointer;
     }
 
     .manager {
@@ -312,7 +326,7 @@
     {/if}
     <!-- If we need to draw a bracket, include anchor points and include svgs to draw the  bracket -->
     {#each matchCol as matchups, inx}
-        <div class="match" bind:this={anchors[Math.floor(inx / 2)][inx % 2 == 0 ? 't' : 'b']}>
+        <div class="match{matchups[0].m == selected ? ' selected' : ''}{matchups[0].m && matchups[1].manager ? ' clickable' : ''}" bind:this={anchors[Math.floor(inx / 2)][inx % 2 == 0 ? 't' : 'b']} on:click={() => {changeSelection(matchups[0].m)}}>
             {#each matchups as matchup}
                 <div class="manager">
                     <div class="avatarPointsBlock">
