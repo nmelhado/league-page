@@ -129,6 +129,30 @@
         background-color: #fff67a;
     }
 
+    .CB {
+        background-color: #ffcc7a;
+    }
+
+    .SS {
+        background-color: #b7a1db;
+    }
+
+    .FS {
+        background-color: #ebe7b3;
+    }
+
+    .DE {
+        background-color: #b1d0e9;
+    }
+
+    .DL {
+        background-color: #c392d3;
+    }
+
+    .LB {
+        background-color: #98c097;
+    }
+
     .favoritePlayer {
         height: 65px;
         vertical-align: bottom;
