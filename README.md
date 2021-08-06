@@ -51,12 +51,11 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ## Roadmap
   - [ ] Add integration tests
   - [ ] Cleanup repo
-  - [ ] Test redraft leagues
-  - [ ] Playoff matchups and current bracket
+  - [x] ~~Test redraft leagues~~
+  - [x] ~~Playoff matchups and current bracket~~
   - [ ] Dynasty power rankings
   - [ ] Hyperlink all manager references
-  - [ ] Fix all css issues when actively resizing the window
-  <!-- - [x] ~~performance optimizations~~ -->
+  - [x] ~~Fix all css issues when actively resizing the window~~
 
 ## Some real-life League Pages
 - [Legends League](https://www.legendsleagueff.com/)

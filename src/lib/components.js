@@ -7,7 +7,7 @@ import Awards from './Awards/Awards.svelte';
 import Rosters from './Rosters/Rosters.svelte';
 import Transactions from './Transactions/Transactions.svelte';
 import TransactionsPage from './Transactions/TransactionsPage.svelte';
-import MatchupWeeks from './Matchups/MatchupWeeks.svelte';
+import MatchupsAndBrackets from './Matchups/MatchupsAndBrackets.svelte';
 import Pagination from './Pagination.svelte';
 import Drafts from './Drafts/index.svelte';
 import Records from './Records/index.svelte';
@@ -24,7 +24,7 @@ export {
     TransactionsPage,
     News,
     Resources,
-    MatchupWeeks,
+    MatchupsAndBrackets,
     Pagination,
     Drafts,
     Records,
