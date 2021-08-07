@@ -136,7 +136,7 @@ export const managers = [
      "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
      "name": "Erik",
      "tookOver": 2021, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-     "location": "Earth",
+     "location": "Florida?",
      "bio": "???",
      "photo": "/managers/Erik.jpg", // done
      "fantasyStart": 2012, // when did the manager start playing fantasy football
