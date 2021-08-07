@@ -155,7 +155,11 @@
     <div id="main">
         <div class="text">
             <h6>{leagueName}</h6>
-            <p>This is a sweet fantasy league page intro. Fraser is going to put some stuff here about the history and such.</p>
+            <p>This is a Keeper “Light” Fantasy Football League. In general, this league is quite experimental
+and often tries things before the industry comes around to them. Living on the cutting edge has
+its costs, as change is not for everyone. The goal is to have fun, build community, and have
+serious competition for serious prizes. So far, this league has lived up to it, and we are getting
+close (I think) to solidifying a lot of our charter. The changes are less and less every year.</p>
             <p>Power Rankings will be displayed below after the draft and will auto-update!</p>
         </div>
         <PowerRankings />
