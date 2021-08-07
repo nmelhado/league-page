@@ -114,8 +114,8 @@ we do a majority rules, or unanimous required poll.</p>
 <p>Loser Trophy (License Plate Holder): Loser of the Toilet Bowl (12 th Place)</p>
 <p>Trophies will be sent to the winner or “winner” by the previous owner.  
 <p><b>Scoring/Rosters:</b>  .5 PPR, Redraft snake draft league. 1QB/2RB/2WR/2FLX/1TE/1DEF
-<p>Maximum 2 Keepers per year. No kickers, because kickers suck.</p>
-Keeper Rules: You can have up to 2 keepers, however you do not have to keep anyone. You
+Maximum 2 Keepers per year. No kickers, because kickers suck.</p>
+<p><b>Keeper Rules:</b> You can have up to 2 keepers, however you do not have to keep anyone. You
 can keep a player up to 2 times (meaning they could be on your team for 3 years total before
 going back into the draft). Trades do not reset this. </p>
 	
