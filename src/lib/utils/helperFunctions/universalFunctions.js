@@ -16,6 +16,11 @@ const max = (stats, roundOverride) => {
     return Math.ceil(num / roundOverride) * roundOverride;
 }
 
+export const findManagerLink = (managers, rosterID) => {
+    const managersIndex = managers.indexOf(m => m.rosterID == rosterID);
+    return `/managers?manager=${managersIndex}`;
+}
+
 export const generateGraph = ({stats, x, y, stat, header, field, short, secondField = null}, roundOverride = 10, yMinOverride = null) => {
     if(!stats) {
         return null;

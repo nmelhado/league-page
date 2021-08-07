@@ -1,6 +1,14 @@
 <script context="module">
-    import { waitForAll, getLeagueRosters, getLeagueUsers, getLeagueData, getLeagueTransactions, getAwards, getLeagueRecords } from '$lib/utils/helper';
-    import {managers} from './managers';
+    import {
+        waitForAll,
+        getLeagueRosters,
+        getLeagueUsers,
+        getLeagueData,
+        getLeagueTransactions,
+        getAwards,
+        getLeagueRecords,
+        managers
+    } from '$lib/utils/helper';
 	
     export async function load({ page }) {
         const managersInfo = waitForAll(

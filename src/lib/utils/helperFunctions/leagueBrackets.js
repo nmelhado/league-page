@@ -1,4 +1,5 @@
-import { getLeagueData, leagueID } from './leagueData';
+import { getLeagueData } from './leagueData';
+import { leagueID } from '$lib/utils/leagueInfo';
 import { getLeagueRosters } from './leagueRosters';
 import { getLeagueUsers } from './leagueUsers';
 import {waitForAll} from './multiPromise';

@@ -1,4 +1,4 @@
-import {leagueID} from './helperFunctions/leagueData';
+import {leagueID} from '$lib/utils/leagueInfo';
 
 export const tabs = [
     {

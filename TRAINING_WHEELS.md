@@ -28,12 +28,11 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - You now have your own League Page!
 
 ### 2. Configure your League
-- In your league page, go to `/src/lib/utils/helperFunctions/leagueData.js`
+- In your league page, go to `/src/lib/utils/leagueInfo.js`
 > ![src](https://storage.googleapis.com/nfl-player-data/src.png)
 ![lib](https://storage.googleapis.com/nfl-player-data/lib.png)
 ![utils](https://storage.googleapis.com/nfl-player-data/utils.png)
-![helperFunctions](https://storage.googleapis.com/nfl-player-data/helperFunctions.png)
-![leagueData](https://storage.googleapis.com/nfl-player-data/leagueData.png)
+![leagueInfo](https://storage.googleapis.com/nfl-player-data/leagueInfo.png)
 
 <br />
 
@@ -42,12 +41,13 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 <br />
 
-- Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID *[(how to find your league ID)](https://support.sleeper.app/en/articles/4121798-how-do-i-find-my-league-id#:~:text=Go%20toward%20the%20bottom%20of,email%20support%40sleeper.app.)* in `/src/lib/utils/helperFunctions/leagueData.js`:
+- Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID *[(how to find your league ID)](https://support.sleeper.app/en/articles/4121798-how-do-i-find-my-league-id#:~:text=Go%20toward%20the%20bottom%20of,email%20support%40sleeper.app.)* :
 > ![league ID instructions](https://storage.googleapis.com/nfl-player-data/editLeagueID.jpg)
 - Scroll down to the bottom of the page and commit your changes
+> ![Commit your changes](https://storage.googleapis.com/nfl-player-data/commitLeagueID.png)
+
 <br />
 
-> ![Commit your changes](https://storage.googleapis.com/nfl-player-data/commitLeagueID.png)
 - Your league has been configured!
 ### 3. Deploy your League Page
 - Go to Vercel, and [sign up using your GitHub account](https://vercel.com/signup)
@@ -75,24 +75,13 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ## II. Adding Managers and Changing the Homepage Text
 
 ### 1. Now that you have a league website, it's time to personalize your homepage
-- Go back to GitHub and go to the root of you repo
-> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
-
-<br />
-
-- Go to `/src/routes/index.svelte`
-> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
-![routes](https://storage.googleapis.com/nfl-player-data/routes.png)
-![index](https://storage.googleapis.com/nfl-player-data/index.png)
-
-<br />
-
+- Go back to GitHub, and scroll back to the top of `/src/lib/utils/leagueInfo.js`
 - Click edit
 > ![edit index](https://storage.googleapis.com/nfl-player-data/editIndex.png)
 
 <br />
 
-- Scroll down to lines 151-156
+- Scroll down to lines 9-14
 > ![scroll down](https://storage.googleapis.com/nfl-player-data/scrollDown.png)
 
 <br />
@@ -110,21 +99,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 ### 2. Add Managers
 - You now have a functioning website, with a personalized homepage. But you're missing one of League Page's best features, Managers!
-- Go back to GitHub and go to the root of you repo
-> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
-
-<br />
-
-- Go to `/src/routes/managers/managers.js`
-> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
-![routes](https://storage.googleapis.com/nfl-player-data/routes.png)
-![managers](https://storage.googleapis.com/nfl-player-data/managers.png)
-![managersJs](https://storage.googleapis.com/nfl-player-data/managersJs.png)
-
-<br />
-
+- Go back to GitHub and scroll back up to the top of `/src/lib/utils/leagueInfo.js`
 - Click the edit button
-- Highlight lines 3-68
+- Highlight lines 27-92
 > ![highlight](https://storage.googleapis.com/nfl-player-data/highlight.png)
 
 <br />
@@ -174,7 +151,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         > ![managersDir](https://storage.googleapis.com/nfl-player-data/nickExample.png)
     - `"fantasyStart" :` what year did the manager start playing fantasy
     - `"favoriteTeam" :` supply the lowercase shorthand for a manager's favorite NFL team (i.e. `"nyj"`, `"cle"`, `"sf"`, `"ne"`, etc.)
-    - `"mode" :` There are two options: `"Win Now"` or `"Rebuild"`
+    - `"mode" :` There are three options currently: `"Win Now"`, `"Dynasty"`, or `"Rebuild"`
     - `"rival" :` This has a nested object that should be filled out as follows:
         - `"name" :` The name of this manager's rival (can also be themselves, everyone, or nobody)
         - `"link" :` This corresponds to the other managers on this list. 
@@ -198,61 +175,15 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - You have finished your first manager! Now repeat the process for each manager in your league. Here's [an example](https://github.com/nmelhado2/league-page/blob/master/src/routes/managers/managers.js) of a finished 12 team `managers.js`
 - When you're done, scroll down and click `Commit changes`
-
-## 3. Configure the roster to manager link
-- Now for the final step
-- Go to the root of your repo
-- Go back to the root of you repo
-> ![root](https://storage.googleapis.com/nfl-player-data/root.png)
-
-<br />
-
-- Go to `/src/lib/utils/rosterManagers.js`
-> ![src](https://storage.googleapis.com/nfl-player-data/src.png)
-![lib](https://storage.googleapis.com/nfl-player-data/lib.png)
-![utils](https://storage.googleapis.com/nfl-player-data/utils.png)
-![roster managers](https://storage.googleapis.com/nfl-player-data/rosterManagers.png)
-
-<br />
-
-- Click edit
-- This links the different rosters to the correct manager. Each row corresponds to a different roster. For a 12 team league, it should look like this:
-```
-export const rosterManagers = {
-    // the 1 here corresponds to the roster ID (roster 1)
-    // the 0 is the manger
-    (1st manager is manager 0, second is manager 1, etc.)
-    1: 0,
-  
-    // the 2 here corresponds to the roster ID (roster 2)
-    // the 1 is the manger
-    (2nd manager is manager 1, third is manager 2, etc.)
-    2: 1,
-  
-    // same for the below. Make sure that each roster
-    // corresponds to the correct manager. If there are
-    // co-managers for a team, choose one "primary" manager
-    3: 2,
-    4: 3,
-    5: 4,
-    6: 5,
-    7: 6,
-    8: 7,
-    9: 8,
-    10: 9,
-    11: 10,
-    12: 11,
-};
-```
-- When you're done, scroll down and click `Commit changes`
 - Go back to your league website tab, wait a minute or two, and then refresh. Now you'll have a Managers tab (located in `LEAGUE INFO` on desktop)
-- Click on `Managers` and you'll see all the managers you just added
+- Click on `Managers` and you'll see all the managers you just added!
 
 > ![managers preview](https://storage.googleapis.com/nfl-player-data/managersRendered.png)
 
 ## III. Wrapping up
 
 - That's it. You've built out your own league website!
+- League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
 - If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`
     - This page is primarily HTML, so you can edit this in a similar way to how you edited the homepage
 - If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)
@@ -260,7 +191,8 @@ export const rosterManagers = {
     <a href="https://www.buymeacoffee.com/nmelhado" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important; width: 217px !important;" width="217px" height="60px" ></a>
 </div>
 
-- **If you run into any issues**, go back to [the original League Page repo](https://github.com/nmelhado/league-page) and click on [Issues](https://github.com/nmelhado/league-page/issues)
+- **If you run into any issues**, go back to [the original League Page repo](https://github.com/nmelhado/league-page) and open an [issue](https://github.com/nmelhado/league-page/issues/new?assignees=nmelhado&labels=bug&template=bug_report.md&title=%5BBUG%5D)
+- **If you have any recommendations**, go back to [the original League Page repo](https://github.com/nmelhado/league-page) and open a [feature request](https://github.com/nmelhado/league-page/issues/new?assignees=nmelhado&labels=enhancement&template=feature_request.md&title=%5BENHANCEMENT%5D)
 
 <br>
 <br>

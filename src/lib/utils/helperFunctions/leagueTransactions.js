@@ -1,4 +1,5 @@
-import { leagueID, getLeagueData } from './leagueData';
+import { getLeagueData } from './leagueData';
+import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from './nflState';
 import { loadPlayers } from './players';
 import { getLeagueRosters } from './leagueRosters';

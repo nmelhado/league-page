@@ -1,11 +1,9 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
-	import { getNflState, cleanName, leagueName } from '$lib/utils/helper';
+	import { getNflState, cleanName, leagueName, homepageText, managers, findManagerLink } from '$lib/utils/helper';
 	import { Transactions, PowerRankings} from '$lib/components';
     import { getAwards } from "$lib/utils/helper"
-    import { rosterManagers } from '$lib/utils/rosterManagers';
     import { goto } from '$app/navigation';
-    import { managers } from './managers/managers';
 
     let nflState = getNflState();
     let podiumsData = getAwards();
@@ -155,12 +153,8 @@
     <div id="main">
         <div class="text">
             <h6>{leagueName}</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
+            {@html homepageText }
         </div>
         <PowerRankings />
     </div>
@@ -184,11 +178,11 @@
             {:then {podiums, currentManagers}}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Champ</h4>
-                    <div id="champ" on:click={() => {if(managers.length) goto(`/managers?manager=${rosterManagers[parseInt(podiums[0].champion.rosterID)]}`)}} >
+                    <div id="champ" on:click={() => {if(managers.length) goto(findManagerLink(managers, parseInt(podiums[0].champion.rosterID)))}} >
                         <img src="{podiums[0].champion.avatar}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
-                    <span class="label" on:click={() => goto(`/managers?manager=${rosterManagers[parseInt(podiums[0].champion.rosterID)]}`)} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentManagers)}</span>
+                    <span class="label" on:click={() => goto(findManagerLink(managers, parseInt(podiums[0].champion.rosterID)))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentManagers)}</span>
                 {:else}
                     <p class="center">No former champs.</p>
                 {/if}

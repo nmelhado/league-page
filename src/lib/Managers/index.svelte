@@ -1,6 +1,4 @@
 <script>
-    import {getLeagueRosters, getLeagueUsers, waitForAll, getLeagueData, getLeagueTransactions, getAwards, getLeagueRecords} from '$lib/utils/helper'
-	import LinearProgress from '@smui/linear-progress';
     import AllManagers from './AllManagers.svelte'
     import Manager from './Manager.svelte'
 
