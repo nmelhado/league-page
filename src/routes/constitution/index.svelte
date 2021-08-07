@@ -103,7 +103,7 @@
     <h1 class="noUnderscore">AFFLOIAF LEAGUE CONSTITUTION</h1>
     
 <p><b>A few rules to get started:</b></p>
-<p><b>Rule 1:</b>  Have fun. Trash talk, trading, and activity all-around is encouraged. </p> 
+<p><b>Rule 1:</b>  Have fun. Trash talk, trading, and activity all-around is encouraged.</p> 
 <p><b>Rule 2:</b>  Participation required, because it’s no fun if people don’t play (even after you’re out).</p>
 <p><b>Rule 3:</b> Commissioner has final say on things. We often ask for opinions through polls and
 league chat. Occasionally we even vote to decide things, which will be specified when
@@ -190,7 +190,7 @@ season, dues will be refunded. Otherwise, we’ll do our best to roll with the p
 come.
 Considering for 2022: I am considering adding a 2 nd IR spot permanently. I am warming
 to the idea of the flexibility it adds and less concerned about the exploitation of it. I will
-see if 1 IR spot is enough or not this year and consider a 2 nd next year</p>.
+see if 1 IR spot is enough or not this year and consider a 2 nd next year.</p>
 <p><b>Balanced schedule/Rivalry week:</b> Fantasy football has always had an unbalanced schedule
 due to number of games vs. number of teams. We have done away with this by introducing
 rivalry week to balance the number of Head-to-head (H2H) matchups with the number of teams
