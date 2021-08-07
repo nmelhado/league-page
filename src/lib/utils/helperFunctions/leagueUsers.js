@@ -1,4 +1,4 @@
-import { leagueID } from "./leagueData"
+import { leagueID } from '$lib/utils/leagueInfo';
 import { get } from 'svelte/store';
 import {users} from '$lib/stores';
 

@@ -1,7 +1,7 @@
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {news} from '$lib/stores';
-import { dynasty } from './leagueData';
+import { dynasty } from '$lib/utils/leagueInfo';
 
 const NBC_URL = 'https://www.nbcsportsedge.com/edge/api/player_news?sort=-created&page%5Blimit%5D=10&page%5Boffset%5D=0&filter%5Bleague.meta.drupal_internal__id%5D=21&include=player,position,team,team.secondary_logo,player.image,related_players,related_teams';
 const REDDIT_DYNASTY = 'https://www.reddit.com/r/DynastyFF/new.json';

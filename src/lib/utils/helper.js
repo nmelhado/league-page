@@ -1,4 +1,5 @@
-import {getLeagueData, dues, leagueID, leagueName, dynasty} from './helperFunctions/leagueData';
+import {getLeagueData} from './helperFunctions/leagueData';
+import {dues, leagueID, leagueName, dynasty, managers, homepageText} from './leagueInfo';
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
@@ -10,11 +11,14 @@ import { waitForAll } from './helperFunctions/multiPromise';
 import { getUpcomingDraft, getPreviousDrafts } from './helperFunctions/leagueDrafts'
 import { getLeagueRecords } from './helperFunctions/leagueRecords'
 import { getAwards } from './helperFunctions/leagueAwards'
-import { cleanName, round, generateGraph } from './helperFunctions/universalFunctions';
+import { cleanName, round, generateGraph, findManagerLink } from './helperFunctions/universalFunctions';
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 
 export {
+    homepageText,
+    findManagerLink,
+    managers,
     getLeagueData,
     getLeagueTransactions,
     getNflState, 

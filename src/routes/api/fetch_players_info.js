@@ -1,8 +1,6 @@
-import { leagueID } from "$lib/utils/helperFunctions/leagueData"
+import { leagueID } from "$lib/utils/leagueInfo"
 import { round } from "$lib/utils/helperFunctions/universalFunctions"
-import { getNflState } from "$lib/utils/helperFunctions/nflState"
 import { waitForAll } from "$lib/utils/helperFunctions/multiPromise"
-import { getLeagueData } from "$lib/utils/helperFunctions/leagueData"
 
 export async function get() {
     // get NFL state from sleeper (week and year)
