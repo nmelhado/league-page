@@ -109,7 +109,7 @@
 league chat. Occasionally we even vote to decide things, which will be specified when
 we do a majority rules, or unanimous required poll.</p>
 <p><b>Prizes:</b>  Buy-in is $100 per person.</p>
-<p><1st place:  $900 | 2nd place: $200 | 3rd place:  $100</p>
+<p>1st place:  $900 | 2nd place: $200 | 3rd place:  $100</p>
 <p>1st overall pick in the next year’s draft: Winner of Toilet Bowl (7 th Place)</p>
 <p>Loser Trophy (License Plate Holder): Loser of the Toilet Bowl (12 th Place)</p>
 <p>Trophies will be sent to the winner or “winner” by the previous owner.  
