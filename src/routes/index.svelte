@@ -162,8 +162,7 @@ serious competition for serious prizes. So far, this league has lived up to it, 
 close (I think) to solidifying a lot of our charter. The changes are less and less every year.</p>
 		<p>League Podcast:</p>
 		<a href="https://affloiaf.podbean.com/">https://affloiaf.podbean.com/</a>
-	<iframe title="A Fantasy Football League of Ice and Fire" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=qpgtk-4f310c-pbblog-playlist&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&order=episodic&limit=10&filter=all&ss=a713390a017602015775e868a2cf26b0&btn-skin=7&size=315" allowfullscreen=""></iframe>
-            <p>Power Rankings will be displayed below after the draft and will auto-update!</p>
+	    <p>Power Rankings will be displayed below after the draft and will auto-update!</p>
         </div>
         <PowerRankings />
     </div>
