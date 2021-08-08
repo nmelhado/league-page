@@ -77,7 +77,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ### 1. Now that you have a league website, it's time to personalize your homepage
 - Go back to GitHub, and scroll back to the top of `/src/lib/utils/leagueInfo.js`
 - Click edit
-> ![edit index](https://storage.googleapis.com/nfl-player-data/editIndex.png)
+> ![edit index](https://storage.googleapis.com/nfl-player-data/editLeagueData.png)
 
 <br />
 
@@ -184,6 +184,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - That's it. You've built out your own league website!
 - League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
+    - If you first created your league before August 7th, 2021, you may encounter `merge conflicts` when trying to fetch upstream.
+    - In that situation, copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
+    - There should be **NO merge conflicts going forward**.
 - If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`
     - This page is primarily HTML, so you can edit this in a similar way to how you edited the homepage
 - If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)
