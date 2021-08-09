@@ -7,7 +7,7 @@ import { get } from 'svelte/store';
 import {brackets} from '$lib/stores';
 
 export const getBrackets = async () => {
-	if(get(brackets).champions) {
+	if(get(brackets).champs) {
 		return get(brackets);
 	}
 

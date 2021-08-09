@@ -1,5 +1,4 @@
 import Nav from './Nav/index.svelte';
-import Bg from './Bg.svelte';
 import Footer from './Footer.svelte';
 import News from './News/index.svelte';
 import Resources from './Resources.svelte';
@@ -16,7 +15,6 @@ import PowerRankings from './PowerRankings/index.svelte';
 
 export {
     Nav,
-    Bg,
     Footer,
     Awards,
     Rosters,

@@ -58,7 +58,7 @@
 
 	.banner-D-3 {
 		background-image: url("/division-3-banner.png");
-		background-position: right; 
+		background-position: left; 
 	}
 
 	h2 {
@@ -93,8 +93,8 @@
 	}
 
 	.banner h2 {
-		text-shadow: #fff 0px 0px 3px, #fff 0px 0px 3px, #fff 0px 0px 3px,
-            		 #fff 0px 0px 3px, #fff 0px 0px 3px, #fff 0px 0px 3px;
+		text-shadow: var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px,
+            		 var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px;
 		-webkit-font-smoothing: antialiased;
 	}
 

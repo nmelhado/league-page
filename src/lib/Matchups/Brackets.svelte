@@ -33,10 +33,10 @@
         if(selection == 'losers') {
             bracket = losersBracket;
             consolations = losersConsolations;
-            return;
+        } else {
+            bracket = champsBracket;
+            consolations = champsConsolations;
         }
-        bracket = champsBracket;
-        consolations = champsConsolations;
         allMatches = []
         for(const week of bracket) {
             allMatches = [...allMatches, ...week]
@@ -47,6 +47,7 @@
             }
         }
         top = el?.getBoundingClientRect()?.top || 0;
+        setSelected(selection);
     }
 
     $: changeSelection(selection);
@@ -65,7 +66,6 @@
         window.scrollTo({left: 0, top, behavior: 'smooth'});
     }
 
-    $: setSelected(selection);
     $: changeDisplay(selected);
 </script>
 

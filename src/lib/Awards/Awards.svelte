@@ -14,7 +14,7 @@
 
 <style>
 	* {
-		color: #777;
+		color: var(--grayNine);
 	}
 
 	h3 {
@@ -50,8 +50,8 @@
 		height: auto;
 		transform: translate(-50%, -50%);
 		border-radius: 100%;
-		border: 1px solid #bbb;
-		background-color: #fff;
+		border: 1px solid var(--grayTen);
+		background-color: var(--primaryBack);
 	}
 
 	.laurel {
@@ -102,7 +102,7 @@
 		top: 0;
 		left: 50%;
 		border-radius: 100%;
-		border: 1px solid #bbb;
+		border: 1px solid var(--grayTen);
 		z-index: 3;
 	}
 
@@ -131,7 +131,7 @@
 		top: 20px;
 		left: 55%;
 		border-radius: 100%;
-		border: 1px solid #bbb;
+		border: 1px solid var(--grayTen);
 		z-index: 3;
 	}
 
@@ -155,9 +155,9 @@
 		position: absolute;
 		transform: translate(-50%, -50%);
 		padding: 6px 30px;
-		background-color: #fff;
-		border: 1px solid #bbb;
-        box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		background-color: var(--primaryBack);
+		border: 1px solid var(--grayTen);
+        box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
 	.firstLabel {
@@ -185,9 +185,9 @@
 		text-align: center;
 		margin: 15px auto 20px;
 		padding: 6px 30px;
-		background-color: #fff;
-		border: 1px solid #bbb;
-		box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		background-color: var(--primaryBack);
+		border: 1px solid var(--grayTen);
+		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
 	.division {
@@ -218,7 +218,7 @@
 
 	:global(.curOwner) {
 		font-size: 0.75em;
-		color: #bbb;
+		color: var(--grayTen);
 		font-style: italic;
 	}
 

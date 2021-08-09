@@ -9,7 +9,7 @@
     }
 
     :global(.changedHands) {
-        background-color: #f8fcff;
+        background-color: var(--draftSwapped);
     }
 
     .draftPos {
@@ -25,40 +25,64 @@
         top: 0.1em;
         left: 0.1em;
         font-style: italic;
-        color: #444;
+        color: var(--graySeven);
     }
 
     .newOwner {
         font-style: italic;
-        color: #444;
+        color: var(--graySeven);
         text-align: center;
         white-space: break-spaces;
         line-height: 1.2em;
     }
 
 	:global(.prevQB) {
-		background-color: #ff8fb2;
+		background-color: var(--QB);
 	}
 
 	:global(.prevWR) {
-		background-color: #afd4ff;
+		background-color: var(--WR);
 	}
 
 	:global(.prevRB) {
-		background-color: #6ccac1;
+		background-color: var(--RB);
 	}
 
 	:global(.prevTE) {
-		background-color: #ffd6aa;
+		background-color: var(--TE);
 	}
 
 	:global(.prevK) {
-		background-color: #deb4ff;
+		background-color: var(--K);
 	}
 
 	:global(.prevDEF) {
-		background-color: #fffbbc;
+		background-color: var(--DEF);
 	}
+
+    :global(.prevCB) {
+        background-color: var(--CB);
+    }
+
+    :global(.prevSS) {
+        background-color: var(--SS);
+    }
+
+    :global(.prevFS) {
+        background-color: var(--FS);
+    }
+
+    :global(.prevDE) {
+        background-color: var(--DE);
+    }
+
+    :global(.prevDL) {
+        background-color: var(--DL);
+    }
+
+    :global(.prevLB) {
+        background-color: var(--LB);
+    }
 
 	.playerAvatar {
 		display: inline-block;
