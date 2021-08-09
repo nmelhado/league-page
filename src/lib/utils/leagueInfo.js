@@ -45,7 +45,7 @@ export const managers = [
     "philosophy": "Next man up.",
     "tradingScale": 10,
     "contactMethods": "Text, WhatsApp, email, Blind Sleeper offer",
-    "prefferedContact": "Text",
+    "preferredContact": "Text",
   },
   {
     "roster": 4,  // ID of the roster that the manager manages
@@ -66,7 +66,7 @@ export const managers = [
     "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
     "philosophy": "Quality over quantity. The team policy is to trade depth for stars, and win on a knife's edge where a single injury can completely derail a season.",
     "tradingScale": 10, // 1 - 10
-    "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+    "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
   {
     "timestamp": "7/20/2021 11:25:49",
@@ -89,7 +89,7 @@ export const managers = [
     "philosophy": "My team's philosophy is to win at all costs, which will turn into a culture that will lead to many victories.",
     "tradingScale": 7,
     "contactMethods": "WhatsApp, Blind Sleeper offer, Carrier pigeon",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/21/2021 1:29:22",
@@ -113,7 +113,7 @@ export const managers = [
     "philosophy": "We dominate the trenches",
     "tradingScale": 10,
     "contactMethods": "Text, WhatsApp, Call, email, Blind Sleeper offer, Have someone click the \"interested in\" button on sleeper, Carrier pigeon",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/20/2021 21:56:13",
@@ -137,7 +137,7 @@ export const managers = [
     "philosophy": "Fantasy is won in the trenches",
     "tradingScale": 7,
     "contactMethods": "Text, email, Blind Sleeper offer, Have someone click the \"interested in\" button on sleeper, Carrier pigeon",
-    "prefferedContact": "Text",
+    "preferredContact": "Text",
   },
   {
     "timestamp": "7/20/2021 21:56:13",
@@ -161,7 +161,7 @@ export const managers = [
     "philosophy": "DOMINATE THE TRENCHES ",
     "tradingScale": 7,
     "contactMethods": "Text",
-    "prefferedContact": "Text",
+    "preferredContact": "Text",
   },
   {
     "timestamp": "7/20/2021 22:43:40",
@@ -184,7 +184,7 @@ export const managers = [
     "philosophy": "Back to back champ....and you are asking me this question? Well you can buy my book \"How to Dominate your Fantasy League\" to know the secrets but I will give you a little taste here: all about leadership. Starts with the Owner/GM/Manager...",
     "tradingScale": 9,
     "contactMethods": "Text, Blind Sleeper offer, Have someone click the \"interested in\" button on sleeper",
-    "prefferedContact": "Text",
+    "preferredContact": "Text",
   },
   {
     "timestamp": "7/20/2021 22:43:40",
@@ -207,7 +207,7 @@ export const managers = [
     "philosophy": "Do exactly what Clayton does.",
     "tradingScale": 2,
     "contactMethods": "WhatsApp",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/21/2021 13:09:32", // done
@@ -230,7 +230,7 @@ export const managers = [
     "philosophy": "I don’t see us crushing anyone over the next decade, but the team is certainly willing to go as far as Mahomes and Jefferson will take us…or the draft capital we receive in return for them….! Let’s be honest, one look at my squad, and my team building skills could be called into question. However, team culture is something we’ve never lacked in Seattle (see Pete Carrol and the Super Bowl 47 Champion Seahawks!), and it’s clear that guys love being a part of our team", // done
     "tradingScale": 6, // done
     "contactMethods": "Text, WhatsApp",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/21/2021 21:01:49",
@@ -253,7 +253,7 @@ export const managers = [
     "philosophy": "Our teams philosophy is to play as a team. Every player plays their hardest and their best because they play for each other and not for themselves. They all push each other to be better. My team is also extremely young so they’ll be dominating for the next decade!",
     "tradingScale": 7,
     "contactMethods": "Text, WhatsApp, Blind Sleeper offer",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/20/2021 22:43:40",
@@ -277,7 +277,7 @@ export const managers = [
     "philosophy": "Spread the wealth and always Run deep on RBs",
     "tradingScale": 7,
     "contactMethods": "Text, WhatsApp, Blind Sleeper offer, Carrier pigeon",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/20/2021 22:43:45",
@@ -300,7 +300,7 @@ export const managers = [
     "philosophy": "Better to be lucky than good",
     "tradingScale": 8,
     "contactMethods": "Text, WhatsApp",
-    "prefferedContact": "Text",
+    "preferredContact": "Text",
   },
   {
     "timestamp": "7/20/2021 22:43:40",
@@ -323,7 +323,7 @@ export const managers = [
     "philosophy": "Pacifist",
     "tradingScale": 3,
     "contactMethods": "Text, WhatsApp",
-    "prefferedContact": "WhatsApp",
+    "preferredContact": "WhatsApp",
   },
   {
     "timestamp": "7/20/2021 22:43:40",
@@ -346,7 +346,7 @@ export const managers = [
     "philosophy": "No need to over analyze, pick the best players and beat everyone ",
     "tradingScale": 1,
     "contactMethods": "Carrier Pigeon",
-    "prefferedContact": "Carrier Pigeon",
+    "preferredContact": "Carrier Pigeon",
   },
 ]
   
