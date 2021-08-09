@@ -194,12 +194,12 @@
 
 <style>
     .awardsCase {
-        background-color: var(--primaryBack);
+        background-color: var(--fff);
         padding: 0 0 2em;
         margin: 3em 0 4em;
-        border-bottom: 1px solid var(--grayTwelve);
-        border-top: 1px solid var(--grayTwelve);
-        box-shadow: 0 0 8px 4px var(--grayFour);
+        border-bottom: 1px solid var(--aaa);
+        border-top: 1px solid var(--aaa);
+        box-shadow: 0 0 8px 4px var(--ccc);
     }
 
     .awardsCaseInner {
@@ -245,13 +245,13 @@
     .subText {
         font-size: 0.8em;
         width: 130px;
-        color: var(--grayNine);
+        color: var(--g555);
         margin-top: 0.3em;
         font-style: italic;
     }
 
     .sad {
-        color: var(--grayEleven);
+        color: var(--g999);
         font-style: italic;
     }
 
@@ -259,7 +259,7 @@
         height: 80px;
         width: 80px;
         border-radius: 100%;
-        box-shadow: 0 0 4px 1px var(--grayFour);
+        box-shadow: 0 0 4px 1px var(--ccc);
         text-align: center;
         overflow: hidden;
     }
@@ -270,7 +270,7 @@
     
     .disclaimer {
         font-size: 0.8em;
-        color: var(--grayEleven);
+        color: var(--g999);
         font-style: italic;
         text-align: center;
         margin: 0;

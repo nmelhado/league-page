@@ -45,7 +45,7 @@
 	}
 
 	:global(.trade) {
-		background-color: var(--primaryBack);
+		background-color: var(--fff);
 	}
 
 	:global(.Added) {

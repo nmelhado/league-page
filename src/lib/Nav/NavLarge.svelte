@@ -78,7 +78,7 @@
 		display: block;
 		position: absolute;
 		z-index: 5;
-		background-color: var(--primaryBack);
+		background-color: var(--fff);
 		transition: all 0.4s;
 	}
 

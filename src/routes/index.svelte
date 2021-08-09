@@ -58,7 +58,7 @@
         min-width: 470px;
         max-width: 470px;
         min-height: 100%;
-		background-color: var(--grayOne);
+		background-color: var(--ebebeb);
         border-left: #eee;
 		box-shadow: inset 0px 3px 3px -2px rgb(0 0 0 / 20%), inset 0px 3px 4px 0px rgb(0 0 0 / 14%), inset 0px 1px 8px 0px rgb(0 0 0 / 12%);
     }
@@ -92,9 +92,9 @@
     #currentChamp {
         padding: 25px 0;
         box-shadow: 0 0 8px 0 #777;
-		background-color: var(--grayThree);
+		background-color: var(--f3f3f3);
         box-shadow: 0 -8px 8px -8px #555, 0 8px 8px -8px #555;
-        border-left: 1px solid var(--grayFour);
+        border-left: 1px solid var(--ccc);
     }
 
     #champ {
@@ -136,7 +136,7 @@
         text-align: center;
         line-height: 1.1em;
         padding: 6px 20px;
-        background-color: var(--primaryBack);
+        background-color: var(--fff);
         border: 1px solid #aaa;
         margin: 10px auto 0;
         cursor: pointer;

@@ -226,7 +226,7 @@
 
     .rosters {
         position: relative;
-        background-color: var(--primaryBack);
+        background-color: var(--fff);
         border-radius: 8px;
         overflow: hidden;
         border-left: 1px solid #bbb;
@@ -341,14 +341,14 @@
         left: 50%;
         height: 100%;
         width: 0;
-        border-left: 1px solid var(--grayFive);
+        border-left: 1px solid var(--eee);
         z-index: 1;
     }
 
     .close {
         display: block;
         width: 100%;
-        background-color: var(--grayFive);
+        background-color: var(--eee);
         text-align: center;
         cursor: pointer;
         z-index: 2;
@@ -357,7 +357,7 @@
     }
 
     .close:hover {
-        background-color: var(--graySix);
+        background-color: var(--ddd);
     }
 
     .nameHolder {

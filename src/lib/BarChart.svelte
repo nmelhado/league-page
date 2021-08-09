@@ -94,7 +94,7 @@
     }
 
     .chartWrapper {
-		background-color: var(--primaryBack);
+		background-color: var(--fff);
         padding: 1em 0 0.5em;
         margin: 0 auto;
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);

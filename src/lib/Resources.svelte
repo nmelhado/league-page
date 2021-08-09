@@ -102,7 +102,7 @@ import { dynasty } from './utils/helper';
         width: 90%;
         max-width: 800px;
         border: 1px solid
-        var(--mdc-theme-text-hint-on-background, var(--grayEight));
+        var(--mdc-theme-text-hint-on-background, var(--d7d7d7));
         margin: 15px auto;
         padding: 0 !important;
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
@@ -114,7 +114,7 @@ import { dynasty } from './utils/helper';
     }
 
     a {
-        color: var(--grayNine);
+        color: var(--g555);
         font-size: 1.1em;
         text-decoration: none;
     }

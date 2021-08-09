@@ -23,7 +23,7 @@
 
 <style>
 	footer {
-		background-color: var(--grayTwo);
+		background-color: var(--f8f8f8);
 		width: 100%;
         display: block;
         position: absolute;
