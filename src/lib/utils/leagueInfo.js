@@ -7,7 +7,6 @@ export const dynasty = true; // true for dynasty leagues, false for redraft and 
 /*   STEP 2   */
 export const homepageText = `
   <p>HCDL is an empire-style dynasty league established in Summer 2020.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 `;
 
 /*   STEP 3   */
