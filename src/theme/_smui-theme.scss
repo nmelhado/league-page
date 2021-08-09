@@ -33,17 +33,19 @@
 @use '@material/typography/index' as typography;
 
 :root {
-  --primaryBack: #fff;
-  --grayOne: #ebebeb;
-  --grayTwo: #f8f8f8;
-  --grayThree: #f3f3f3;
-  --grayFour: #ccc;
-  --grayFive: #eee;
-  --graySix: #ddd;
-  --graySeven: #444;
-  --grayEight: #d7d7d7;
-  --grayNine: #555;
-  --grayTen: #bbb;
+  --fff: #fff;
+  --ebebeb: #ebebeb;
+  --f8f8f8: #f8f8f8;
+  --f3f3f3: #f3f3f3;
+  --ccc: #ccc;
+  --eee: #eee;
+  --ddd: #ddd;
+  --g444: #444;
+  --d7d7d7: #d7d7d7;
+  --g555: #555;
+  --bbb: #bbb;
+  --g999: #999;
+  --aaa: #aaa;
   --boxShadowOne: #ccc;
   --boxShadowTwo: #cacaca;
   --boxShadowThree: #d4d4d4;

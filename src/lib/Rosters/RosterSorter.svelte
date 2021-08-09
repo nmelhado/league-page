@@ -93,8 +93,8 @@
 	}
 
 	.banner h2 {
-		text-shadow: var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px,
-            		 var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px, var(--primaryBack) 0px 0px 3px;
+		text-shadow: var(--fff) 0px 0px 3px, var(--fff) 0px 0px 3px, var(--fff) 0px 0px 3px,
+            		 var(--fff) 0px 0px 3px, var(--fff) 0px 0px 3px, var(--fff) 0px 0px 3px;
 		-webkit-font-smoothing: antialiased;
 	}
 

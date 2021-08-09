@@ -14,7 +14,7 @@
 
 <style>
 	* {
-		color: var(--grayNine);
+		color: var(--g555);
 	}
 
 	h3 {
@@ -50,8 +50,8 @@
 		height: auto;
 		transform: translate(-50%, -50%);
 		border-radius: 100%;
-		border: 1px solid var(--grayTen);
-		background-color: var(--primaryBack);
+		border: 1px solid var(--bbb);
+		background-color: var(--fff);
 	}
 
 	.laurel {
@@ -102,7 +102,7 @@
 		top: 0;
 		left: 50%;
 		border-radius: 100%;
-		border: 1px solid var(--grayTen);
+		border: 1px solid var(--bbb);
 		z-index: 3;
 	}
 
@@ -131,7 +131,7 @@
 		top: 20px;
 		left: 55%;
 		border-radius: 100%;
-		border: 1px solid var(--grayTen);
+		border: 1px solid var(--bbb);
 		z-index: 3;
 	}
 
@@ -155,8 +155,8 @@
 		position: absolute;
 		transform: translate(-50%, -50%);
 		padding: 6px 30px;
-		background-color: var(--primaryBack);
-		border: 1px solid var(--grayTen);
+		background-color: var(--fff);
+		border: 1px solid var(--bbb);
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
@@ -185,8 +185,8 @@
 		text-align: center;
 		margin: 15px auto 20px;
 		padding: 6px 30px;
-		background-color: var(--primaryBack);
-		border: 1px solid var(--grayTen);
+		background-color: var(--fff);
+		border: 1px solid var(--bbb);
 		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
@@ -218,7 +218,7 @@
 
 	:global(.curOwner) {
 		font-size: 0.75em;
-		color: var(--grayTen);
+		color: var(--bbb);
 		font-style: italic;
 	}
 

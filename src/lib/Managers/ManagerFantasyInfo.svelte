@@ -20,9 +20,9 @@
         flex-wrap: wrap;
         padding: 0 0 2em;
         margin: 3em 0 4em;
-        border-bottom: 1px solid #aaa;
-        border-top: 1px solid #aaa;
-        box-shadow: 0 0 8px 4px #ccc;
+        border-bottom: 1px solid var(--aaa);
+        border-top: 1px solid var(--aaa);
+        box-shadow: 0 0 8px 4px var(--ccc);
     }
 
     .infoSlot {
@@ -37,9 +37,9 @@
         justify-content: center;
         align-items: center;
         border-radius: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid var(--ccc);
         overflow: hidden;
-        background-color: #fff;
+        background-color: var(--fff);
 		transition: box-shadow 0.4s;
     }
 
@@ -49,7 +49,7 @@
 
     .infoLabel {
         font-size: 0.7em;
-        color: #00316b;
+        color: var(--blueOne);
         font-weight: 700;
         margin-bottom: 1em;
         height: 30px;
@@ -60,7 +60,7 @@
 
     .infoAnswer {
         font-size: 0.8em;
-        color: #777;
+        color: var(--g555);
         margin-top: 1em;
         width: 90px;
         text-align: center;
@@ -70,12 +70,11 @@
     .tradingScale {
         line-height: 70px;
         font-size: 55px;
-        color: #00316b;
+        color: var(--blueOne);
     }
 
     .rookiesOrVets {
         height: 65px;
-        opacity: 0.5;
         vertical-align: middle;
     }
 
@@ -84,8 +83,8 @@
     }
 
     .infoRival:hover .infoIcon {
-        box-shadow: 0 0 6px 4px #aaa;
-        border: 1px solid #aaa;
+        box-shadow: 0 0 6px 4px var(--aaa);
+        border: 1px solid var(--aaa);
     }
 
     .rival {
@@ -99,7 +98,7 @@
     .valuePosition {
         line-height: 70px;
         font-size: 25px;
-        color: #fff;
+        color: var(--fff);
     }
 
     .QB {

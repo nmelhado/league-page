@@ -40,7 +40,7 @@
     	margin: 0 auto;
 	}
 	nav {
-		background-color: var(--primaryBack);
+		background-color: var(--fff);
 		position: relative;
 		z-index: 2;
 		border-bottom: 1px solid #00316b;
@@ -69,7 +69,7 @@
 	}
 
 	:global(.lightDark) {
-		color: var(--grayNine)
+		color: var(--g555)
 	}
 
 	@media (max-width: 860px) { /* width of the large navBar */

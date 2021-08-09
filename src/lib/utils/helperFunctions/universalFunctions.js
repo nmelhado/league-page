@@ -17,7 +17,7 @@ const max = (stats, roundOverride) => {
 }
 
 export const findManagerLink = (managers, rosterID) => {
-    const managersIndex = managers.indexOf(m => m.rosterID == rosterID);
+    const managersIndex = managers.findIndex(m => m.roster == rosterID);
     return `/managers?manager=${managersIndex}`;
 }
 
