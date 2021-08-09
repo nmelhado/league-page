@@ -1,9 +1,6 @@
 {
   "name": "legends-league",
   "version": "2.0.0",
-  "engines": {
-    "npm": ">=6.0.0"
-  },
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
