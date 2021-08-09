@@ -63,7 +63,7 @@
         font-size: 0.8em;
 		text-align: center;
 		padding: 5px 0;
-		background-color: rgb(245, 252, 255);
+		background-color: var(--transactHeader);
         white-space: break-spaces;
         line-height: 1em;
         height: 5em;
