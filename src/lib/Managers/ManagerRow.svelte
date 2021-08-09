@@ -14,17 +14,17 @@ import { goto } from "$app/navigation";
         justify-content: left;
         align-items: center;
         padding: 1em 0;
-        background-color: #fff;
+        background-color: var(--primaryBack);
         margin: 0.5em 0;
         border-radius: 2em;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 6px 0 #bbb;
+        border: 1px solid var(--grayFour);
+        box-shadow: 0 0 6px 0 var(--grayTen);
         cursor: pointer;
     }
 
     .manager:hover {
-        box-shadow: 0 0 10px 0 #999;
-        background-color: #eee;
+        box-shadow: 0 0 10px 0 bar(--grayEleven);
+        background-color: bar(--grayFive);
     }
 
     .photo {
@@ -33,13 +33,13 @@ import { goto } from "$app/navigation";
         border-radius: 100%;
         vertical-align: middle;
         margin-left: 1em;
-        box-shadow: 0 0 2px 1px #bbb;
+        box-shadow: 0 0 2px 1px var(--grayTen);
     }
 
     .name {
         text-align: center;
         display: inline-block;
-        color: #555;
+        color: var(--grayNine);
         line-height: 1.2em;
         margin-left: 1em;
         font-weight: 700;
@@ -50,7 +50,7 @@ import { goto } from "$app/navigation";
         display: inline-block;
         font-style: italic;
         line-height: 1.2em;
-        color: #777;
+        color: var(--grayNine);
         font-weight: 300;
         margin-left: 1em;
     }
@@ -78,7 +78,7 @@ import { goto } from "$app/navigation";
         border-radius: 100%;
         border: 1px solid #ccc;
         overflow: hidden;
-        background-color: #fff;
+        background-color: var(--primaryBack);
     }
 
     .infoImg {
@@ -87,7 +87,7 @@ import { goto } from "$app/navigation";
 
     .infoAnswer {
         font-size: 0.8em;
-        color: #777;
+        color: var(--grayNine);
         width: 63px;
         text-align: center;
         line-height: 1.2em;
