@@ -34,26 +34,28 @@
 
 :root {
   --fff: #000000;
-  --ebebeb: #333;
   --f8f8f8: #070707;
   --f3f3f3: #0d0d0d;
-  --ccc: #444;
   --eee: #1b1b1b;
+  --ebebeb: #333;
   --ddd: #282828;
-  --g444: #bbb;
   --d7d7d7: #171717;
-  --g555: #aaa;
+  --ccc: #444;
   --bbb: #444;
-  --g999: #666;
   --aaa: #555;
-  --boxShadowOne: #333;
-  --boxShadowTwo: #4d4d4d;
-  --boxShadowThree: #343434;
-  --transactHeader: #2b2e2e;
+  --g999: #666;
+  --g444: #bbb;
+  --g555: #aaa;
+  --boxShadowOne: #070707;
+  --boxShadowTwo: #272727;
+  --boxShadowThree: #0d0d0d;
+  --champShadow: #111;
+  --transactHeader: #202424;
   --draftSwapped: #202025;
   --waiverAdd: #3e4741;
   --waiverDrop: #423a3a;
   --bracketMatch: #0b0b0c;
+  --matchupSelected: #2f2f35;
   --fadeOne: rgba(0, 0, 0, 0) 0%;
   --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
   --fadeThree: rgba(0, 0, 0, 0.9) 90%;

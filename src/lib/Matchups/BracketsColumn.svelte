@@ -190,8 +190,8 @@
     }
 
     .selected {
-        background-color: var(--fff);
-        box-shadow: 0 0 8px 6px var(--fff);
+        background-color: var(--matchupSelected);
+        box-shadow: 0 0 8px 6px var(--matchupSelected);
     }
 
     .clickable {
