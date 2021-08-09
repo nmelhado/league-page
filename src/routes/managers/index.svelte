@@ -39,7 +39,7 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { Managers } from '$lib/components';
 
-	export let managers, manager, managersInfo;
+	export let manager, managersInfo;
 </script>
 
 <style>
