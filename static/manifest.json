@@ -1,6 +1,6 @@
 {
-  "short_name": "League Page",
-  "name": "League Page",
+  "short_name": "Legends League",
+  "name": "The League of Legends",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
@@ -58,5 +58,5 @@
       "url": "/resources"
     }
   ],
-  "description": "Information about the League"
+  "description": "Information about the Legends League"
 }
