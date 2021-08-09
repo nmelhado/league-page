@@ -105,6 +105,7 @@
         opacity: 0.8;
         cursor: pointer;
 		transition: opacity 0.5s;
+        overflow: hidden;
     }
 
     .header:hover {
