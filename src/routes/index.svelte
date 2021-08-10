@@ -159,6 +159,9 @@
     </div>
     
     <div class="leagueData">
+	<div class="constitution">
+	<iframe src="https://docs.google.com/document/d/e/2PACX-1vSVljtj2W3T2vFn075kqH8V9COov52UIx28KIzKBbU9eP6I2wOXzPvc-J6bMMjkRa2UFuOkYbqiTgrk/pub?embedded=true"></iframe>
+	</div>
         <div class="homeBanner">
             {#await nflState}
                 <p class="center">Retrieving NFL state...</p>
