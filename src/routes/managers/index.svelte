@@ -7,7 +7,7 @@
         getLeagueTransactions,
         getAwards,
         getLeagueRecords,
-        managers
+        managers as managersObj
     } from '$lib/utils/helper';
 	
     export async function load({ page }) {
@@ -24,10 +24,10 @@
 
         const props = {
             manager: null,
-            managers,
+            managers: managersObj,
             managersInfo
         }
-        if(manager && (manager >= 0 && manager < managers.length)) {
+        if(manager && (manager >= 0 && manager < managersObj.length)) {
             props.manager = manager;
         }
     
