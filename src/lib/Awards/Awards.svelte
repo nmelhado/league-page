@@ -365,14 +365,16 @@
 	</div>
 
 		<!-- Toilet Bowl -->
-	<div class="toiletParent">
-		
-		<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+	{#if toilet}
+		<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 
-		<div class="toiletBowl">
-			<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
-			<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			<div class="toiletBowl">
+				<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel">{@html getNames(toilet.name, toilet.rosterID)}</span>
 		</div>
-		<span class="genLabel">{@html getNames(toilet.name, toilet.rosterID)}</span>
-	</div>
+	{/if}
 </div>
