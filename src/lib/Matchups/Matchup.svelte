@@ -1,10 +1,10 @@
 <script>
     import {round} from '$lib/utils/helper'
 
-    export let matchup, players, active, ix, displayWeek;
+    export let matchup, players, active, ix, displayWeek, expandOverride=false;
 
-    const home = matchup[0];
-    const away = matchup[1];
+    let home = matchup[0];
+    let away = matchup[1];
 
     let homePointsTotal = 0;
     let homeProjectionTotal = 0;
@@ -13,8 +13,20 @@
 
     let winning = "home";
 
-    const digestStarters = (homeStarters, awayStarters, homePoints, awayPoints) => {
-        const starters = [];
+    const digestStarters = (x) => {
+        home = matchup[0];
+        away = matchup[1];
+        const homeStarters = home.starters;
+        const awayStarters = away.starters;
+        const homePoints = home.points;
+        const awayPoints = away.points;
+
+        homePointsTotal = 0;
+        homeProjectionTotal = 0;
+        awayPointsTotal = 0;
+        awayProjectionTotal = 0;
+
+        const localStarters = [];
         for(let i = 0; i < homeStarters.length; i++) {
             homePointsTotal += homePoints[i];
             awayPointsTotal += awayPoints[i];
@@ -22,11 +34,12 @@
             const away = digestStarter(awayStarters[i], awayPoints[i]);
             homeProjectionTotal += home.projection;
             awayProjectionTotal += away.projection;
-            starters.push({home, away});
+            localStarters.push({home, away});
         }
+        if(awayPointsTotal < homePointsTotal) winning = "home";
         if(awayPointsTotal > homePointsTotal) winning = "away";
         if(awayPointsTotal == homePointsTotal) winning = "tied";
-        return starters;
+        starters = localStarters;
     }
 
     const digestStarter = (starter, points) => {
@@ -58,13 +71,16 @@
             };
     }
 
-    const starters = digestStarters(home.starters, away.starters, home.points, away.points);
+    let starters;
+    
+    $: digestStarters(ix);
 
     let el;
 
     $: top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
 
     const expandClose = () => {
+        if(expandOverride) return;
         active = active == ix ? null : ix;
         setTimeout( () => {
             window.scrollTo({left: 0, top, behavior: 'smooth'});
@@ -89,6 +105,7 @@
         opacity: 0.8;
         cursor: pointer;
 		transition: opacity 0.5s;
+        overflow: hidden;
     }
 
     .header:hover {
@@ -210,7 +227,7 @@
 
     .rosters {
         position: relative;
-        background-color: #fff;
+        background-color: var(--fff);
         border-radius: 8px;
         overflow: hidden;
         border-left: 1px solid #bbb;
@@ -325,14 +342,14 @@
         left: 50%;
         height: 100%;
         width: 0;
-        border-left: 1px solid #eee;
+        border-left: 1px solid var(--eee);
         z-index: 1;
     }
 
     .close {
         display: block;
         width: 100%;
-        background-color: #eee;
+        background-color: var(--eee);
         text-align: center;
         cursor: pointer;
         z-index: 2;
@@ -341,7 +358,7 @@
     }
 
     .close:hover {
-        background-color: #ddd;
+        background-color: var(--ddd);
     }
 
     .nameHolder {
@@ -467,6 +484,8 @@
                 </div>
             </div>
         {/each}
-        <div class="close" on:click={() => expandClose()}>Close Matchup</div>
+        {#if !expandOverride}
+            <div class="close" on:click={() => expandClose()}>Close Matchup</div>
+        {/if}
     </div>
 </div>

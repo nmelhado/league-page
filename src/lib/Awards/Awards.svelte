@@ -14,7 +14,7 @@
 
 <style>
 	* {
-		color: #777;
+		color: var(--g555);
 	}
 
 	h3 {
@@ -50,8 +50,8 @@
 		height: auto;
 		transform: translate(-50%, -50%);
 		border-radius: 100%;
-		border: 1px solid #bbb;
-		background-color: #fff;
+		border: 1px solid var(--bbb);
+		background-color: var(--fff);
 	}
 
 	.laurel {
@@ -102,7 +102,7 @@
 		top: 0;
 		left: 50%;
 		border-radius: 100%;
-		border: 1px solid #bbb;
+		border: 1px solid var(--bbb);
 		z-index: 3;
 	}
 
@@ -131,7 +131,7 @@
 		top: 20px;
 		left: 55%;
 		border-radius: 100%;
-		border: 1px solid #bbb;
+		border: 1px solid var(--bbb);
 		z-index: 3;
 	}
 
@@ -155,9 +155,9 @@
 		position: absolute;
 		transform: translate(-50%, -50%);
 		padding: 6px 30px;
-		background-color: #fff;
-		border: 1px solid #bbb;
-        box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		background-color: var(--fff);
+		border: 1px solid var(--bbb);
+        box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
 	.firstLabel {
@@ -185,9 +185,9 @@
 		text-align: center;
 		margin: 15px auto 20px;
 		padding: 6px 30px;
-		background-color: #fff;
-		border: 1px solid #bbb;
-		box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		background-color: var(--fff);
+		border: 1px solid var(--bbb);
+		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
 	.division {
@@ -218,7 +218,7 @@
 
 	:global(.curOwner) {
 		font-size: 0.75em;
-		color: #bbb;
+		color: var(--bbb);
 		font-style: italic;
 	}
 
@@ -365,14 +365,16 @@
 	</div>
 
 		<!-- Toilet Bowl -->
-	<div class="toiletParent">
-		
-		<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+	{#if toilet}
+		<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 
-		<div class="toiletBowl">
-			<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
-			<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			<div class="toiletBowl">
+				<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel">{@html getNames(toilet.name, toilet.rosterID)}</span>
 		</div>
-		<span class="genLabel">{@html getNames(toilet.name, toilet.rosterID)}</span>
-	</div>
+	{/if}
 </div>

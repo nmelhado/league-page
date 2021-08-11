@@ -1,6 +1,6 @@
 <!-- __layout.svelte -->
 <script>
-	import { Nav, Bg, Footer } from "$lib/components"
+	import { Nav, Footer } from "$lib/components"
     export let activeTab;
 </script>
 
@@ -18,8 +18,6 @@
   
     <slot activeTab={activeTab} />
 
-    <Bg /> <!-- adds the default background -->
-    
     <Footer /> <!-- adds the footer -->
 
 </div>

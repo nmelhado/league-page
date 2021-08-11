@@ -11,7 +11,8 @@
 		display: block;
 		width: 100%;
 		margin: 15px auto;
-		box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		border: 1px solid var(--ccc);
+		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 	}
 
 	:global(.transaction table) {
@@ -22,13 +23,13 @@
 	:global(.transactTeam) {
 		text-align: center;
 		padding: 5px 0;
-		background-color: rgb(245, 252, 255);
+		background-color: var(--transactHeader);
 	}
 
 	:global(.transact-date) {
 		text-align: center;
 		padding: 5px 0;
-		background-color: rgb(245, 252, 255);
+		background-color: var(--transactHeader);
 		color: #888;
 		font-style: italic;
 	}

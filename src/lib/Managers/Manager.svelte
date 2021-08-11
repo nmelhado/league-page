@@ -6,7 +6,7 @@
 	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
-import ManagerAwards from './ManagerAwards.svelte';
+    import ManagerAwards from './ManagerAwards.svelte';
 
     export let manager, managers, rostersData, users, rosterPositions, transactions, currentManagers, awards, records;
 
@@ -106,6 +106,12 @@ import ManagerAwards from './ManagerAwards.svelte';
         font-style: italic;
     }
 
+    .infoContact {
+        height: 20px;
+        vertical-align: middle;
+        padding-left: 1em;
+    }
+
     .infoTeam {
         height: 48px;
     }
@@ -148,13 +154,13 @@ import ManagerAwards from './ManagerAwards.svelte';
 
     /* media queries */
 
-    @media (max-width: 490px) {
+    @media (max-width: 505px) {
         :global(.selectionButtons span) {
             font-size: 0.8em;
         }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 435px) {
         :global(.selectionButtons span) {
             line-height: 1.2em;
             font-size: 0.8em;
@@ -202,12 +208,19 @@ import ManagerAwards from './ManagerAwards.svelte';
         
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location}</span>
+            {#if viewManager.fantasyStart}
+                <!-- fantasyStart is an optional field -->
+                <span class="seperator">|</span>
+                <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
+            {/if}
             <span class="seperator">|</span>
-            <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
-            <span class="seperator">|</span>
-            <span class="infoChild">{viewManager.preferredContact}</span>
-            <span class="seperator">|</span>
-            <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
+            <span class="infoChild">{viewManager.preferredContact}<img class="infoChild infoContact" src="/{viewManager.preferredContact}.png" alt="favorite team"/></span>
+            <!-- <span class="infoChild">{viewManager.preferredContact}</span> -->
+            {#if viewManager.favoriteTeam}
+                <!-- favoriteTeam is an optional field -->
+                <span class="seperator">|</span>
+                <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
+            {/if}
         </div>
 
         <div class="managerNav upper">
@@ -264,8 +277,6 @@ import ManagerAwards from './ManagerAwards.svelte';
     <div class="managerConstrained" bind:this={el}>
         <TransactionsPage transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
     </div>
-
-    <hr />
 
     <div class="managerNav">
         <Group variant="outlined">

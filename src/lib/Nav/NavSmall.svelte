@@ -8,7 +8,7 @@
   	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import { goto, prefetch } from '$app/navigation';
 	import { leagueName } from '$lib/utils/helper';
-	import { managers } from '/src/routes/managers/managers';
+	import { managers } from '$lib/utils/leagueInfo';
 	
 	export let active, tabs;
 

@@ -75,7 +75,7 @@
     }
 
     .selected {
-        color: #00316b;
+        color: var(--blueOne);
         cursor: default;
         user-select: none;
     }

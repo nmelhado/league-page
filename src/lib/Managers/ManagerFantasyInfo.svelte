@@ -20,9 +20,9 @@
         flex-wrap: wrap;
         padding: 0 0 2em;
         margin: 3em 0 4em;
-        border-bottom: 1px solid #aaa;
-        border-top: 1px solid #aaa;
-        box-shadow: 0 0 8px 4px #ccc;
+        border-bottom: 1px solid var(--aaa);
+        border-top: 1px solid var(--aaa);
+        box-shadow: 0 0 8px 4px var(--ccc);
     }
 
     .infoSlot {
@@ -37,9 +37,9 @@
         justify-content: center;
         align-items: center;
         border-radius: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid var(--ccc);
         overflow: hidden;
-        background-color: #fff;
+        background-color: var(--fff);
 		transition: box-shadow 0.4s;
     }
 
@@ -49,7 +49,7 @@
 
     .infoLabel {
         font-size: 0.7em;
-        color: #00316b;
+        color: var(--blueOne);
         font-weight: 700;
         margin-bottom: 1em;
         height: 30px;
@@ -60,7 +60,7 @@
 
     .infoAnswer {
         font-size: 0.8em;
-        color: #777;
+        color: var(--g555);
         margin-top: 1em;
         width: 90px;
         text-align: center;
@@ -70,12 +70,11 @@
     .tradingScale {
         line-height: 70px;
         font-size: 55px;
-        color: #00316b;
+        color: var(--blueOne);
     }
 
     .rookiesOrVets {
         height: 65px;
-        opacity: 0.5;
         vertical-align: middle;
     }
 
@@ -84,8 +83,8 @@
     }
 
     .infoRival:hover .infoIcon {
-        box-shadow: 0 0 6px 4px #aaa;
-        border: 1px solid #aaa;
+        box-shadow: 0 0 6px 4px var(--aaa);
+        border: 1px solid var(--aaa);
     }
 
     .rival {
@@ -99,7 +98,7 @@
     .valuePosition {
         line-height: 70px;
         font-size: 25px;
-        color: #fff;
+        color: var(--fff);
     }
 
     .QB {
@@ -129,6 +128,30 @@
         background-color: #fff67a;
     }
 
+    .CB {
+        background-color: #ffcc7a;
+    }
+
+    .SS {
+        background-color: #b7a1db;
+    }
+
+    .FS {
+        background-color: #ebe7b3;
+    }
+
+    .DE {
+        background-color: #b1d0e9;
+    }
+
+    .DL {
+        background-color: #c392d3;
+    }
+
+    .LB {
+        background-color: #98c097;
+    }
+
     .favoritePlayer {
         height: 65px;
         vertical-align: bottom;
@@ -156,28 +179,32 @@
 </style>
 
 <div class="fantasyInfos">
+    <!-- Rookies or Vets (optional) -->
+    {#if viewManager.rookieOrVets}
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Rookie or Vet Preference
+            </div>
+            <div class="infoIcon">
+                <img class="rookiesOrVets" src="/{viewManager.rookieOrVets}.png" alt="rookie or vet preference"/>
+            </div>
+            <div class="infoAnswer">
+                {viewManager.rookieOrVets}
+            </div>
+        </div>
+    {/if}
+    <!-- Favorite fantasy position (optional) -->
+    {#if viewManager.valuePosition}
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Favorite Fantasy Asset
+            </div>
+            <div class="infoIcon {viewManager.valuePosition}">
+                <span class="valuePosition">{viewManager.valuePosition}</span>
+            </div>
+        </div>
+    {/if}
     <!-- Trading Scale -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Rookie or Vet Preference
-        </div>
-        <div class="infoIcon">
-            <img class="rookiesOrVets" src="/{viewManager.rookieOrVets}.png" alt="rookie or vet preference"/>
-        </div>
-        <div class="infoAnswer">
-            {viewManager.rookieOrVets}
-        </div>
-    </div>
-    <!-- Favorite fantasy position -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Favorite Fantasy Asset
-        </div>
-        <div class="infoIcon {viewManager.valuePosition}">
-            <span class="valuePosition">{viewManager.valuePosition}</span>
-        </div>
-    </div>
-    <!-- Rookies or Vets -->
     <div class="infoSlot">
         <div class="infoLabel">
             Desire to Trade
@@ -189,30 +216,35 @@
             {viewManager.tradingScale} out of 10
         </div>
     </div>
-    <!-- Favorite player -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Favorite Player
+    <!-- Favorite player (optioonal) -->
+    {#if viewManager.favoritePlayer}
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Favorite Player
+            </div>
+            <div class="infoIcon playerIcon">
+                <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
+            </div>
+            <div class="infoAnswer">
+                {players[viewManager.favoritePlayer].first_name} {players[viewManager.favoritePlayer].last_name}
+            </div>
         </div>
-        <div class="infoIcon playerIcon">
-            <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
+    {/if}
+    <!-- Rebuild Mod (optional) -->
+    {#if viewManager.mode}
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Win Now or Rebuild?
+            </div>
+            <div class="infoIcon">
+                <img class="rebuildOrWin" src="/{viewManager.mode.replace(' ', '%20')}.png" alt="win now or rebuild"/>
+            </div>
+            <div class="infoAnswer">
+                {viewManager.mode}
+            </div>
         </div>
-        <div class="infoAnswer">
-            {players[viewManager.favoritePlayer].first_name} {players[viewManager.favoritePlayer].last_name}
-        </div>
-    </div>
-    <!-- Rebuild Mode -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Win Now or Rebuild?
-        </div>
-        <div class="infoIcon">
-            <img class="rebuildOrWin" src="/{viewManager.mode.replace(' ', '%20')}.png" alt="win now or rebuild"/>
-        </div>
-        <div class="infoAnswer">
-            {viewManager.mode}
-        </div>
-    </div>
+    {/if}
+    <!-- Rival -->
     <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
         <div class="infoLabel">
             Rival

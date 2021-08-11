@@ -3,7 +3,7 @@
 	import List, { Item, Graphic, Text, Separator } from '@smui/list';
 	import TabBar from '@smui/tab-bar';
 	import { goto, prefetch } from '$app/navigation';
-	import { managers } from '/src/routes/managers/managers';
+	import { managers } from '$lib/utils/leagueInfo';
 
 	export let active, tabs;
 
@@ -78,7 +78,7 @@
 		display: block;
 		position: absolute;
 		z-index: 5;
-		background-color: #fff;
+		background-color: var(--fff);
 		transition: all 0.4s;
 	}
 

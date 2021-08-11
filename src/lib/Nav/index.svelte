@@ -2,10 +2,32 @@
 	import { tabs } from '$lib/utils/tabs';
 	import NavSmall from './NavSmall.svelte';
 	import NavLarge from './NavLarge.svelte';
+	
+	import IconButton from '@smui/icon-button';
+	import { Icon } from '@smui/common';
 
 	export let activeTab;
 
 	$: active = tabs.find(tab => tab.dest == activeTab || (tab.nest && tab.children.find(subTab => subTab.dest == activeTab)));
+
+	// toggle dark mode
+	let lightTheme =
+		typeof window === "undefined" ||
+		window.matchMedia("(prefers-color-scheme: light)").matches;
+	
+	function switchTheme() {
+		lightTheme = !lightTheme;
+		let themeLink = document.head.querySelector("#theme");
+		if (!themeLink) {
+			themeLink = document.createElement("link");
+			themeLink.rel = "stylesheet";
+			themeLink.id = "theme";
+		}
+		themeLink.href = `/smui${lightTheme ? "" : "-dark"}.css`;
+		document.head
+		.querySelector('link[href="/smui-dark.css"]')
+		.insertAdjacentElement("afterend", themeLink);
+	}
 </script>
 
 <svelte:head>
@@ -18,7 +40,7 @@
     	margin: 0 auto;
 	}
 	nav {
-		background-color: #fff;
+		background-color: var(--fff);
 		position: relative;
 		z-index: 2;
 		border-bottom: 1px solid #00316b;
@@ -40,6 +62,16 @@
 		display: none;
 	}
 
+	.container {
+		position: absolute;
+		top: 0.25em;
+		right: 0.25em;
+	}
+
+	:global(.lightDark) {
+		color: var(--g555)
+	}
+
 	@media (max-width: 860px) { /* width of the large navBar */
 		.large {
 			display: none;
@@ -53,6 +85,18 @@
 
 <nav>
 	<a href="/"><img id="logo" alt="league logo" src="./badge.png" /></a>
+
+	<div class="container">
+		<IconButton
+			toggle
+			pressed={lightTheme}
+			on:MDCIconButtonToggle:change={switchTheme}
+			class="lightDark"
+		>
+			<Icon class="material-icons" on>dark_mode</Icon>
+			<Icon class="material-icons">light_mode</Icon>
+		</IconButton>
+	</div>
 
 	<div class="large">
 		<NavLarge {tabs} bind:active={active} />

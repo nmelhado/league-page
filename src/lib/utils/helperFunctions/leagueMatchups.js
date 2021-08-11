@@ -1,4 +1,5 @@
-import { leagueID, getLeagueData } from "./leagueData"
+import { getLeagueData } from "./leagueData"
+import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from "./nflState"
 import { getLeagueRosters } from "./leagueRosters"
 import { getLeagueUsers } from "./leagueUsers"
@@ -26,7 +27,7 @@ export const getLeagueMatchups = async () => {
 
 	// pull in all matchup data for the season
 	const matchupsPromises = [];
-	for(let i = 1; i < 15; i++) {
+	for(let i = 1; i < leagueData.settings.playoff_week_start; i++) {
 		matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${leagueID}/matchups/${i}`, {compress: true}))
 	}
 	const matchupsRes = await waitForAll(...matchupsPromises);
@@ -66,26 +67,12 @@ export const getLeagueMatchups = async () => {
 	return matchupsResponse;
 }
 
-const processMatchups = (imputMatchups, rosters, users, week) => {
-	if(!imputMatchups || imputMatchups.length == 0) {
+const processMatchups = (inputMatchups, rosters, users, week) => {
+	if(!inputMatchups || inputMatchups.length == 0) {
 		return false;
 	}
-	switch (week) {
-		case 15:
-			week = "Quarterfinals"
-			break;
-		case 16:
-			week = "Semifinals"
-			break;
-		case 17:
-			week = "Finals"
-			break;
-	
-		default:
-			break;
-	}
 	const matchups = {};
-	for(const match of imputMatchups) {
+	for(const match of inputMatchups) {
 		if(!matchups[match.matchup_id]) {
 			matchups[match.matchup_id] = [];
 		}

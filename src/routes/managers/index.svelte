@@ -1,6 +1,14 @@
 <script context="module">
-    import { waitForAll, getLeagueRosters, getLeagueUsers, getLeagueData, getLeagueTransactions, getAwards, getLeagueRecords } from '$lib/utils/helper';
-    import {managers} from './managers';
+    import {
+        waitForAll,
+        getLeagueRosters,
+        getLeagueUsers,
+        getLeagueData,
+        getLeagueTransactions,
+        getAwards,
+        getLeagueRecords,
+        managers as managersObj
+    } from '$lib/utils/helper';
 	
     export async function load({ page }) {
         const managersInfo = waitForAll(
@@ -16,14 +24,14 @@
 
         const props = {
             manager: null,
-            managers,
+            managers: managersObj,
             managersInfo
         }
-        if(manager && (manager >= 0 && manager < managers.length)) {
+        if(manager && (manager >= 0 && manager < managersObj.length)) {
             props.manager = manager;
         }
     
-		return { props, managers };
+		return { props };
 	}
 </script>
 

@@ -14,17 +14,17 @@ import { goto } from "$app/navigation";
         justify-content: left;
         align-items: center;
         padding: 1em 0;
-        background-color: #fff;
+        background-color: var(--fff);
         margin: 0.5em 0;
         border-radius: 2em;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 6px 0 #bbb;
+        border: 1px solid var(--ccc);
+        box-shadow: 0 0 6px 0 var(--bbb);
         cursor: pointer;
     }
 
     .manager:hover {
-        box-shadow: 0 0 10px 0 #999;
-        background-color: #eee;
+        box-shadow: 0 0 10px 0 bar(--g999);
+        background-color: bar(--eee);
     }
 
     .photo {
@@ -33,13 +33,13 @@ import { goto } from "$app/navigation";
         border-radius: 100%;
         vertical-align: middle;
         margin-left: 1em;
-        box-shadow: 0 0 2px 1px #bbb;
+        box-shadow: 0 0 2px 1px var(--bbb);
     }
 
     .name {
         text-align: center;
         display: inline-block;
-        color: #555;
+        color: var(--g555);
         line-height: 1.2em;
         margin-left: 1em;
         font-weight: 700;
@@ -50,7 +50,7 @@ import { goto } from "$app/navigation";
         display: inline-block;
         font-style: italic;
         line-height: 1.2em;
-        color: #777;
+        color: var(--g555);
         font-weight: 300;
         margin-left: 1em;
     }
@@ -78,7 +78,7 @@ import { goto } from "$app/navigation";
         border-radius: 100%;
         border: 1px solid #ccc;
         overflow: hidden;
-        background-color: #fff;
+        background-color: var(--fff);
     }
 
     .infoImg {
@@ -87,7 +87,7 @@ import { goto } from "$app/navigation";
 
     .infoAnswer {
         font-size: 0.8em;
-        color: #777;
+        color: var(--g555);
         width: 63px;
         text-align: center;
         line-height: 1.2em;
@@ -189,11 +189,13 @@ import { goto } from "$app/navigation";
     <div class="team">{user.metadata.team_name ? user.metadata.team_name : user.display_name}</div>
     <div class="spacer" />
     <div class="info">
-        <!-- Favorite team -->
+        <!-- Favorite team (optional) -->
         <div class="infoSlot infoTeam">
-            <div class="infoIcon">
-                <img class="infoImg" src="https://sleepercdn.com/images/team_logos/nfl/{manager.favoriteTeam}.png" alt="favorite team"/>
-            </div>
+            {#if manager.favoriteTeam}
+                <div class="infoIcon">
+                    <img class="infoImg" src="https://sleepercdn.com/images/team_logos/nfl/{manager.favoriteTeam}.png" alt="favorite team"/>
+                </div>
+            {/if}
         </div>
         <!-- Preferred contact -->
         <div class="infoSlot">
@@ -204,14 +206,16 @@ import { goto } from "$app/navigation";
                 {manager.preferredContact}
             </div>
         </div>
-        <!-- Rebuild mode -->
+        <!-- Rebuild mode (optional) -->
         <div class="infoSlot infoRebuild">
-            <div class="infoIcon">
-                <img class="infoImg" src="/{manager.mode.replace(' ', '%20')}.png" alt="win now or rebuild"/>
-            </div>
-            <div class="infoAnswer">
-                {manager.mode}
-            </div>
+            {#if manager.mode}
+                <div class="infoIcon">
+                    <img class="infoImg" src="/{manager.mode.replace(' ', '%20')}.png" alt="win now or rebuild"/>
+                </div>
+                <div class="infoAnswer">
+                    {manager.mode}
+                </div>
+            {/if}
         </div>
     </div>
 </div>

@@ -18,7 +18,7 @@
         // first lookl through annual awards (champion, second, etc)
         for(const podium of awards.podiums) {
             for(const award in podium) {
-                if(podium[award].rosterID == currentRoster.roster_id) {
+                if(podium[award]?.rosterID == currentRoster.roster_id) {
                     const former = tookOver && tookOver > podium.year;
                     if(former) {
                         formerGlobal = true;
@@ -75,7 +75,7 @@
             const pointsRecord = pointsRecords[i];
             const iqRecord = iqRecords[i];
 
-            if(winRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(winRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -85,7 +85,7 @@
                 })
             }
 
-            if(pointsRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(pointsRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -94,7 +94,7 @@
                 })
             }
 
-            if(iqRecord.rosterID == currentRoster.roster_id && i < 3) {
+            if(iqRecord?.rosterID == currentRoster.roster_id && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -194,12 +194,12 @@
 
 <style>
     .awardsCase {
-        background-color: #fff;
+        background-color: var(--fff);
         padding: 0 0 2em;
         margin: 3em 0 4em;
-        border-bottom: 1px solid #aaa;
-        border-top: 1px solid #aaa;
-        box-shadow: 0 0 8px 4px #ccc;
+        border-bottom: 1px solid var(--aaa);
+        border-top: 1px solid var(--aaa);
+        box-shadow: 0 0 8px 4px var(--ccc);
     }
 
     .awardsCaseInner {
@@ -245,13 +245,13 @@
     .subText {
         font-size: 0.8em;
         width: 130px;
-        color: #666;
+        color: var(--g555);
         margin-top: 0.3em;
         font-style: italic;
     }
 
     .sad {
-        color: #888;
+        color: var(--g999);
         font-style: italic;
     }
 
@@ -259,7 +259,7 @@
         height: 80px;
         width: 80px;
         border-radius: 100%;
-        box-shadow: 0 0 4px 1px #ccc;
+        box-shadow: 0 0 4px 1px var(--ccc);
         text-align: center;
         overflow: hidden;
     }
@@ -270,7 +270,7 @@
     
     .disclaimer {
         font-size: 0.8em;
-        color: #888;
+        color: var(--g999);
         font-style: italic;
         text-align: center;
         margin: 0;

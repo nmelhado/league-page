@@ -135,7 +135,7 @@
 	}
 
 	:global(.teamInner) {
-		box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 		display: block;
 	    margin: 0 auto;
 	}
@@ -149,17 +149,17 @@
 
 	:global(.r_1) {
 		text-align: center;
-		background-color: #f7f9fd;
+		background-color: var(--r1);
 	}
 
 	:global(.r_2) {
 		text-align: center;
-		background-color: #fbf7f7;
+		background-color: var(--r2);
 	}
 
 	:global(.r_3) {
 		text-align: center;
-		background-color: #f7fbf7;
+		background-color: var(--r3);
 	}
 
 	.record {

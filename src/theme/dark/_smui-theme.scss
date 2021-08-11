@@ -4,10 +4,10 @@
 
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #00316b,
-  $secondary: #0082c3,
-  $surface: #fff,
-  $background: #fff,
+  $primary: #0082c3,
+  $secondary: #00316b,
+  $surface: #000000,
+  $background: #000000,
   $error: color-palette.$red-900,
 );
 
@@ -33,51 +33,51 @@
 @use '@material/typography/index' as typography;
 
 :root {
-  --fff: #fff;
-  --f8f8f8: #f8f8f8;
-  --f3f3f3: #f3f3f3;
-  --eee: #eee;
-  --ebebeb: #ebebeb;
-  --ddd: #ddd;
-  --d7d7d7: #d7d7d7;
-  --ccc: #ccc;
-  --bbb: #bbb;
-  --aaa: #aaa;
-  --g999: #999;
-  --g555: #555;
-  --g444: #444;
-  --boxShadowOne: #ccc;
-  --boxShadowTwo: #cacaca;
-  --boxShadowThree: #d4d4d4;
-  --champShadow: #555;
-  --transactHeader: #f5fcff;
-  --draftSwapped: #f8fcff;
-  --waiverAdd: #e9fff1;
-  --waiverDrop: #ffe9e9;
-  --bracketMatch: #f7fdff;
-  --matchupSelected: #fff;
-  --fadeOne: rgba(255, 255, 255, 0) 0%;
-  --fadeTwo: rgba(255, 255, 255, 0.7) 50%;
-  --fadeThree: rgba(255, 255, 255, 0.9) 90%;
-  --fadeFour: rgba(255, 255, 255, 1) 100%;
-  --blueOne: #00316b;
-  --r1: #f7f9fd;
-  --r2: #fbf7f7;
-  --r3: #f7fbf7;
+  --fff: #000000;
+  --f8f8f8: #070707;
+  --f3f3f3: #0d0d0d;
+  --eee: #1b1b1b;
+  --ebebeb: #333;
+  --ddd: #282828;
+  --d7d7d7: #171717;
+  --ccc: #444;
+  --bbb: #444;
+  --aaa: #555;
+  --g999: #666;
+  --g444: #bbb;
+  --g555: #aaa;
+  --boxShadowOne: #070707;
+  --boxShadowTwo: #272727;
+  --boxShadowThree: #0d0d0d;
+  --champShadow: #111;
+  --transactHeader: #202424;
+  --draftSwapped: #202025;
+  --waiverAdd: #3e4741;
+  --waiverDrop: #423a3a;
+  --bracketMatch: #0b0b0c;
+  --matchupSelected: #2f2f35;
+  --fadeOne: rgba(0, 0, 0, 0) 0%;
+  --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
+  --fadeThree: rgba(0, 0, 0, 0.9) 90%;
+  --fadeFour: rgba(0, 0, 0, 1) 100%;
+  --blueOne: #0082c3;
+  --r1: #1c1c1d;
+  --r2: #1f1d1d;
+  --r3: #181a18;
   // Positions
-  --QB: #ff8fb2;
-  --WR: #afd4ff;
-  --RB: #6ccac1;
-  --TE: #ffd6aa;
-  --K: #deb4ff;
-  --DEF: #fffbbc;
-  --PICKS: #73b647;
-  --CB: #ffcc7a;
-  --SS: #b7a1db;
-  --FS: #ebe7b3;
-  --DE: #b1d0e9;
-  --DL: #c392d3;
-  --LB: #98c097;
+  --QB: #311c23;
+  --WR: #2b353f;
+  --RB: #1c3634;
+  --TE: #42382c;
+  --K: #3c3144;
+  --DEF: #2f2f23;
+  --PICKS: #2b441b;
+  --CB: #524126;
+  --SS: #362f41;
+  --FS: #424132;
+  --DE: #2f373d;
+  --DL: #3d2e42;
+  --LB: #334132;
 }
 
 html,
@@ -87,9 +87,9 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #f4f4f4;
-  background: linear-gradient(to bottom right, #f4f4f4,#ebebeb );
-  background: -webkit-linear-gradient(to bottom right, #f4f4f4,#ebebeb );
+  background: #222;
+  background: linear-gradient(to bottom right, #111,#222 );
+  background: -webkit-linear-gradient(to bottom right, #111,#222 );
 }
  
 //
@@ -155,5 +155,5 @@ a:visited {
 }
 
 .mdc-button--outlined:not(:disabled) {
-  background-color: #f9f9f9 !important;
+  background-color: #070707 !important;
 }

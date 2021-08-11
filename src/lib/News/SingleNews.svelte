@@ -16,7 +16,7 @@
 
     .title-link {
         font-weight: 500;
-        color: #00316b;
+        color: var(--blueOne);
         text-decoration: none;
         text-align: center;
         max-height: 96px;
@@ -58,34 +58,34 @@
         height: 60px;
         top: 420px;
         background: -webkit-linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.9) 90%,
-            rgba(255, 255, 255, 1) 100%
+            var(--fadeOne),
+            var(--fadeTwo),
+            var(--fadeThree),
+            var(--fadeFour)
         ); 
         background-image: -moz-linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.9) 90%,
-            rgba(255, 255, 255, 1) 100%
+            var(--fadeOne),
+            var(--fadeTwo),
+            var(--fadeThree),
+            var(--fadeFour)
         );
         background-image: -o-linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.9) 90%,
-            rgba(255, 255, 255, 1) 100%
+            var(--fadeOne),
+            var(--fadeTwo),
+            var(--fadeThree),
+            var(--fadeFour)
         );
         background-image: linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.9) 90%,
-            rgba(255, 255, 255, 1) 100%
+            var(--fadeOne),
+            var(--fadeTwo),
+            var(--fadeThree),
+            var(--fadeFour)
         );
         background-image: -ms-linear-gradient(
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.9) 90%,
-            rgba(255, 255, 255, 1) 100%
+            var(--fadeOne),
+            var(--fadeTwo),
+            var(--fadeThree),
+            var(--fadeFour)
         );
     }
 

@@ -45,15 +45,15 @@
 	}
 
 	:global(.trade) {
-		background-color: #fff;
+		background-color: var(--fff);
 	}
 
 	:global(.Added) {
-		background-color: rgb(233, 255, 241);
+		background-color: var(--waiverAdd);
 	}
 
 	:global(.Dropped) {
-		background-color:rgb(255, 233, 233);
+		background-color: var(--waiverDrop);
 	}
 
 	.lineParent {

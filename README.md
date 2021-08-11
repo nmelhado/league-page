@@ -51,29 +51,28 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ## Roadmap
   - [ ] Add integration tests
   - [ ] Cleanup repo
-  - [ ] Test redraft leagues
-  - [ ] Playoff matchups and current bracket
+  - [x] ~~Test redraft leagues~~
+  - [x] ~~Playoff matchups and current bracket~~
   - [ ] Dynasty power rankings
   - [ ] Hyperlink all manager references
-  - [ ] Fix all css issues when actively resizing the window
-  <!-- - [x] ~~performance optimizations~~ -->
+  - [x] ~~Fix all css issues when actively resizing the window~~
 
 ## Some real-life League Pages
 - [Legends League](https://www.legendsleagueff.com/)
 
-### 1. Setup your own League Page
+### Setup your own League Page
 *If you've never touched a line of code, use the [Training Wheels Guide](./TRAINING_WHEELS.md) instead*
 - Fork this repo
-- Replace `your_league_name` and `your_league_id` with your Sleeper league name and ID in `/src/lib/utils/helperFunctions/leagueData.js`:
+- Go to `/src/lib/utils/leagueInfo.js` and replace `your_league_id` (line 2) and `your_league_name` (line 3) with your Sleeper league ID and league name. (Optionally, also fill out the dues, and dynasty fields):
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)
-- Fill out and uncomment (delete the `// ` at the beginning of each line) the information in `/src/routes/managers/managers.js`, there should be one for each manager
+- Write your homepage text (league intro/bio) `/src/lib/utils/leagueInfo.js` (lines 9-14)
+![homepage text](https://storage.googleapis.com/nfl-player-data/homepage_text.png)
+- Next, fill out and uncomment (delete the `// ` at the beginning of each line) the managers' object (lines 27 - 92), also located in `/src/lib/utils/leagueInfo.js`, there should be one object for each manager (for assistance, consult the [Training Wheels guide](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers))
 ![manager object](https://storage.googleapis.com/nfl-player-data/managersObj.png)
 ![manager rendering](https://storage.googleapis.com/nfl-player-data/managerRendering.png)
 - Add corresponding images for managers to the `/static/managers/` directory and make the sure the name matches with what was provided above
-- Fill out the manager to roster ID mapping object in `/src/lib/utils/rosterManagers.js` (fill out the appropriate managers array number for each roster ID)
+- If you run into trouble adding managers, reference the [Training Wheels' Manager section](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
 - Customize your league constitution `/src/routes/constitution/index.svelte` (remember to adjust the table of contents accordingly)
-- Write your homepage text (league intro/bio) `/src/routes/index.svelte` (remember to adjust the table of contents accordingly)
-![homepage text](https://storage.googleapis.com/nfl-player-data/homepage_text.png)
 -----------
 ## For local developing [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 

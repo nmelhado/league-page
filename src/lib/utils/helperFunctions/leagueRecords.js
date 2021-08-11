@@ -1,4 +1,5 @@
-import { leagueID, getLeagueData } from './leagueData';
+import { getLeagueData } from './leagueData';
+import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from './nflState';
 import { getLeagueRosters } from "./leagueRosters"
 import { getLeagueUsers } from "./leagueUsers"
@@ -11,7 +12,7 @@ export const getLeagueRecords = async () => {
 		return get(records);
 	}
 	const nflState = await getNflState().catch((err) => { console.error(err); });
-	let week = nflState.week;
+	let week = nflState.week - 1;
 
 	let curSeason = leagueID;
 	
