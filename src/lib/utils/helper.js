@@ -11,13 +11,13 @@ import { waitForAll } from './helperFunctions/multiPromise';
 import { getUpcomingDraft, getPreviousDrafts } from './helperFunctions/leagueDrafts'
 import { getLeagueRecords } from './helperFunctions/leagueRecords'
 import { getAwards } from './helperFunctions/leagueAwards'
-import { cleanName, round, generateGraph, findManagerLink } from './helperFunctions/universalFunctions';
+import { cleanName, round, generateGraph, gotoManager } from './helperFunctions/universalFunctions';
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 
 export {
     homepageText,
-    findManagerLink,
+    gotoManager,
     managers,
     getLeagueData,
     getLeagueTransactions,
