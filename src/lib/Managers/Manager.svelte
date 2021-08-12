@@ -249,10 +249,10 @@
             </Group>
         </div>
 
-        <p class="bio">{viewManager.bio}</p>
+        <p class="bio">{@html viewManager.bio}</p>
 
         <h3>Team Philosophy</h3>
-        <p class="philosophy">{viewManager.philosophy}</p>
+        <p class="philosophy">{@html viewManager.philosophy}</p>
     </div>
 
     {#await playerData}
