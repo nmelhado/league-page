@@ -1,4 +1,5 @@
 <script>
+	import { gotoManager } from '$lib/utils/helper';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"
@@ -134,6 +135,10 @@
 		margin: 4px 10px 10px;
 	}
 
+	:global(.clickable) {
+		cursor: pointer;
+	}
+
 	:global(.teamInner) {
 		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
 		display: block;
@@ -242,8 +247,8 @@
 	<DataTable class="teamInner" table$aria-label="Team Name" style="width: {innerWidth * 0.95 > 380 ? 380 : innerWidth * 0.95}px;" >
 		<Head> <!-- Team name  -->
 			<Row>
-				<Cell colspan=4 class="r_{division}">
-					<h3>
+				<Cell colspan=4 class="r_{division} clickable">
+					<h3 on:click={() => gotoManager(roster.roster_id)}>
 						<img alt="team avatar" class="teamAvatar" src="https://sleepercdn.com/avatars/thumbs/{user.avatar}" />
 						{user.metadata.team_name ? user.metadata.team_name : user.display_name}
 					</h3>
