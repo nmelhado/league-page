@@ -1,7 +1,7 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
     import BarChart from '../BarChart.svelte'
-    import { cleanName, generateGraph } from '$lib/utils/helper';
+    import { cleanName, generateGraph, gotoManager } from '$lib/utils/helper';
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
@@ -263,6 +263,7 @@
     }
 
     :global(.cellName) {
+        cursor: pointer;
         line-height: 1.2em;
     }
 
@@ -397,7 +398,7 @@
                 {#each weekRecords as leagueWeekRecord, ix}
                     <Row>
                         <Cell>{ix + 1}</Cell>
-                        <Cell class="cellName">
+                        <Cell class="cellName" on:click={() => gotoManager(leagueWeekRecord.rosterID)}>
                             {leagueWeekRecord.manager.name}
                             {#if !allTime  && cleanName(leagueWeekRecord.manager.name) != cleanName(currentManagers[leagueWeekRecord.rosterID].name)}
                                 <div class="curRecordManager">({currentManagers[leagueWeekRecord.rosterID].name})</div>
@@ -429,7 +430,7 @@
             {#each seasonLongRecords as mostSeasonLongPoint, ix}
                 <Row>
                     <Cell>{ix + 1}</Cell>
-                    <Cell class="cellName" >
+                    <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
                         {mostSeasonLongPoint.manager.name}
                         {#if !allTime  && cleanName(mostSeasonLongPoint.manager.name) != cleanName(currentManagers[mostSeasonLongPoint.rosterID].name)}
                             <div class="curRecordManager">({currentManagers[mostSeasonLongPoint.rosterID].name})</div>
@@ -475,7 +476,7 @@
                         {#each lineupIQs as lineupIQ, ix}
                             <Row>
                                 <Cell>{ix + 1}</Cell>
-                                <Cell class="cellName" >
+                                <Cell class="cellName" on:click={() => gotoManager(lineupIQ.rosterID)}>
                                     {lineupIQ.manager.name}
                                     {#if !allTime  && cleanName(lineupIQ.manager.name) != cleanName(currentManagers[lineupIQ.rosterID].name)}
                                         <div class="curRecordManager">({currentManagers[lineupIQ.rosterID].name})</div>
@@ -512,7 +513,7 @@
                     {#each winPercentages as winPercentage, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName">
+                            <Cell class="cellName" on:click={() => gotoManager(winPercentage.rosterID)}>
                                 {winPercentage.manager.name}
                                 {#if !allTime  && cleanName(winPercentage.manager.name) != cleanName(currentManagers[winPercentage.rosterID].name)}
                                     <div class="curRecordManager">({currentManagers[winPercentage.rosterID].name})</div>
@@ -549,7 +550,7 @@
                     {#each fptsHistories as fptsHistory, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName">
+                            <Cell class="cellName" on:click={() => gotoManager(fptsHistory.rosterID)}>
                                 {fptsHistory.manager.name}
                                 {#if !allTime  && cleanName(fptsHistory.manager.name) != cleanName(currentManagers[fptsHistory.rosterID].name)}
                                     <div class="curRecordManager">({currentManagers[fptsHistory.rosterID].name})</div>
@@ -582,7 +583,7 @@
                     {#each transactions as transaction, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName">
+                            <Cell class="cellName" on:click={() => gotoManager(transaction.rosterID)}>
                                 {transaction.manager.name}
                                 {#if !allTime  && cleanName(transaction.manager.name) != cleanName(currentManagers[transaction.rosterID].name)}
                                     <div class="curRecordManager">({currentManagers[transaction.rosterID].name})</div>
