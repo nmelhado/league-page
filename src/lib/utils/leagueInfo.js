@@ -305,29 +305,6 @@ export const managers = [
   {
     "timestamp": "7/20/2021 22:43:40",
     "roster": 2,
-    "name": "Harry Jones",
-    "location": "New York",
-    "bio": "Lorem Ipsum",
-    "photo": "/managers/harry.jpg", // done
-    "fantasyStart": 2018,
-    "favoriteTeam": "nyg",
-    "mode": "Win Now",
-    "rival": {
-      name: "My co-manager",
-      link: 13,
-      image: "/managers/siim.jpg"
-    },
-    "favoritePlayer": 1141,
-    "valuePosition": "TE",
-    "rookieOrVets": "Vets",
-    "philosophy": "Pacifist",
-    "tradingScale": 3,
-    "contactMethods": "Text, WhatsApp",
-    "preferredContact": "WhatsApp",
-  },
-  {
-    "timestamp": "7/20/2021 22:43:40",
-    "roster": 2,
     "name": "Siim Tuus",
     "location": "Rakvere, Estonia",
     "bio": "31-year-old Estonian, once played tennis at a decent level, now playing padel",
@@ -347,6 +324,29 @@ export const managers = [
     "tradingScale": 1,
     "contactMethods": "Carrier Pigeon",
     "preferredContact": "Carrier Pigeon",
+  },
+  {
+    "timestamp": "7/20/2021 22:43:40",
+    "roster": 2,
+    "name": "Harry Jones",
+    "location": "New York",
+    "bio": "Lorem Ipsum",
+    "photo": "/managers/harry.jpg", // done
+    "fantasyStart": 2018,
+    "favoriteTeam": "nyg",
+    "mode": "Win Now",
+    "rival": {
+      name: "My co-manager",
+      link: 13,
+      image: "/managers/siim.jpg"
+    },
+    "favoritePlayer": 1141,
+    "valuePosition": "TE",
+    "rookieOrVets": "Vets",
+    "philosophy": "Pacifist",
+    "tradingScale": 3,
+    "contactMethods": "Text, WhatsApp",
+    "preferredContact": "WhatsApp",
   },
 ]
   
