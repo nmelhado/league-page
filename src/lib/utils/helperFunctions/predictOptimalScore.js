@@ -18,6 +18,12 @@ export const predictScores = (players, week, leagueData) => {
     const ks = projectedPlayers.filter(p => p.position == 'K');
     // and the IDPs
     const idps = projectedPlayers.filter(p => p.position == 'IDP');
+    // and the DLs
+    const dls = projectedPlayers.filter(p => p.position == 'DL');
+    // and the LBs
+    const lbs = projectedPlayers.filter(p => p.position == 'LB');
+    // and the DBs
+    const dbs = projectedPlayers.filter(p => p.position == 'DB');
 
     let powerScore = 0;
     // next, use the roster configuration to grab the highest scorer at each position
@@ -47,6 +53,15 @@ export const predictScores = (players, week, leagueData) => {
                 break;
             case 'IDP':
                 powerScore += parseFloat(idps.shift()?.weeklyInfo[week]?.projection || 0);
+                break;
+            case 'DL':
+                powerScore += parseFloat(dls.shift()?.weeklyInfo[week]?.projection || 0);
+                break;
+            case 'LB':
+                powerScore += parseFloat(lbs.shift()?.weeklyInfo[week]?.projection || 0);
+                break;
+            case 'DB':
+                powerScore += parseFloat(dbs.shift()?.weeklyInfo[week]?.projection || 0);
                 break;
             // Start of flex players
             case 'FLEX':
