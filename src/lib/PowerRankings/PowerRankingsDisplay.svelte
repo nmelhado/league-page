@@ -40,8 +40,8 @@
             manager: currentManagers[roster.roster_id],
             powerScore: 0,
         }
-        
-        for(let i = week; i < Object.keys(rosterPlayers[0].weeklyInfo).length; i++) {
+        const seasonEnd = Object.keys(rosterPlayers[0].weeklyInfo).length || 18;
+        for(let i = week; i < seasonEnd; i++) {
             rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
         }
         if(rosterPower.powerScore > max) {
