@@ -87,7 +87,23 @@
         }, 200);
         ;
     }
+
+    let innerWidth;
+
+    const calcHeight = () => {
+        let multiplier = 73;
+        if(innerWidth < 500) {
+            multiplier = 72;
+        }
+        if(innerWidth < 410) {
+            multiplier = 71;
+        }
+        return home.starters.length * multiplier + 37;
+    }
+
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     .matchup {
@@ -193,37 +209,53 @@
 		height: 32px;
 	}
 
-	:global(.QB) {
-		background-color: #ff2a6d;
+	.QB {
+		background-color: var(--QB);
 	}
 
-	:global(.WR) {
-		background-color: #58a7ff;
+	.WR {
+		background-color: var(--WR);
 	}
 
-	:global(.RB) {
-		background-color: #00ceb8;
+	.RB {
+		background-color: var(--RB);
 	}
 
-	:global(.TE) {
-		background-color: #ffae58;
+	.TE {
+		background-color: var(--TE);
 	}
 
-	:global(.FLEX) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 33.33%, #00ceb8 33.33%, #00ceb8 66.66%, #ffae58 66.66%);
+	.FLEX {
+		background: linear-gradient(to right, var(--WR), var(--WR) 33.33%, var(--RB) 33.33%, var(--RB) 66.66%, var(--TE) 66.66%);
 	}
 
-	:global(.WRRB) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 50%, #00ceb8 50%);
+	.WRRB {
+		background: linear-gradient(to right, var(--WR), var(--WR) 50%, var(--RB) 50%);
 	}
 
-	:global(.K) {
-		background-color: #bd66ff;
+	.K {
+		background-color: var(--K);
 	}
 
-	:global(.DEF) {
-		background-color: #fff67a;
+	.DEF {
+		background-color: var(--DEF);
 	}
+
+    .DL, .DE, .DT {
+        background-color: var(--DL);
+    }
+
+    .LB {
+        background-color: var(--LB);
+    }
+
+    .DB, .CB, .SS, .FS {
+        background-color: var(--DB);
+    }
+
+    .IDP {
+        background: linear-gradient(to right, var(--DL), var(--DL) 33.33%, var(--LB) 33.33%, var(--LB) 66.66%, var(--DB) 66.66%);
+    }
 
     .rosters {
         position: relative;
@@ -434,7 +466,7 @@
         </div>
     </div>
 
-    <div class="rosters" style="max-height: {active == ix ? "800px" : "0"}; {active != ix ? "border: none" : ""};">
+    <div class="rosters" style="max-height: {active == ix ? calcHeight() + "px" : "0"}; {active != ix ? "border: none" : ""};">
         {#each starters as player}
             <div class="line">
                 <div class="player playerHome">
