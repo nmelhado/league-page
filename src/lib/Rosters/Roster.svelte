@@ -239,7 +239,7 @@
 	}
 
 	:global(.bench) {
-		background-color: #eee;
+		background-color: var(--ccc);
 	}
 </style>
 
@@ -282,7 +282,7 @@
 				<!-- 	IR	 -->
 				{#if finalIR}
 					<Row>
-							<Cell colspan=4 ><h5>IR:</h5></Cell>
+					<Cell colspan=4 ><h5><Icon class="material-icons icon">healing</Icon> Injured Reserve</h5></Cell>
 					</Row>
 					{#each finalIR as ir}
 						<RosterRow player={ir} />

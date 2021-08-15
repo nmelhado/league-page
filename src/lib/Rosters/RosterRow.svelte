@@ -66,6 +66,22 @@
 		background-color: #fff67a;
 	}
 
+	:global(.DL) {
+		background-color: #ff795a;
+	}
+
+	:global(.LB) {
+		background-color: #6d7df5;
+	}
+
+	:global(.DB) {
+		background-color: #ff7cb6;
+	}
+
+	:global(.IDP) {
+		background: linear-gradient(to right, #ff795a, #ff795a 33.33%, #6d7df5 33.33%, #6d7df5 66.66%, #ff7cb6 66.66%);
+	}
+
 	:global(.BN) {
 		background-color: #b6d0eb;
 	}
