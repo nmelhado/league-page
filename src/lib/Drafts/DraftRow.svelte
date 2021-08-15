@@ -37,51 +37,51 @@
     }
 
 	:global(.prevQB) {
-		background-color: var(--QB);
+		background-color: var(--QBfade);
 	}
 
 	:global(.prevWR) {
-		background-color: var(--WR);
+		background-color: var(--WRfade);
 	}
 
 	:global(.prevRB) {
-		background-color: var(--RB);
+		background-color: var(--RBfade);
 	}
 
 	:global(.prevTE) {
-		background-color: var(--TE);
+		background-color: var(--TEfade);
 	}
 
 	:global(.prevK) {
-		background-color: var(--K);
+		background-color: var(--Kfade);
 	}
 
 	:global(.prevDEF) {
-		background-color: var(--DEF);
+		background-color: var(--DEfadeFfade);
 	}
 
     :global(.prevCB) {
-        background-color: var(--CB);
+        background-color: var(--CBfade);
     }
 
     :global(.prevSS) {
-        background-color: var(--SS);
+        background-color: var(--SSfade);
     }
 
     :global(.prevFS) {
-        background-color: var(--FS);
+        background-color: var(--FSfade);
     }
 
     :global(.prevDE) {
-        background-color: var(--DE);
+        background-color: var(--DEfade);
     }
 
     :global(.prevDL) {
-        background-color: var(--DL);
+        background-color: var(--DLfade);
     }
 
     :global(.prevLB) {
-        background-color: var(--LB);
+        background-color: var(--LBfade);
     }
 
 	.playerAvatar {

@@ -25,49 +25,65 @@
 		height: 32px;
 	}
 
-	:global(.QB) {
-		background-color: #ff2a6d;
+	.QB {
+		background-color: var(--QB);
 	}
 
-	:global(.WR) {
-		background-color: #58a7ff;
+	.WR {
+		background-color: var(--WR);
 	}
 
-	:global(.RB) {
-		background-color: #00ceb8;
+	.RB {
+		background-color: var(--RB);
 	}
 
-	:global(.TE) {
-		background-color: #ffae58;
+	.TE {
+		background-color: var(--TE);
 	}
 
-	:global(.FLEX) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 33.33%, #00ceb8 33.33%, #00ceb8 66.66%, #ffae58 66.66%);
+	.FLEX {
+		background: linear-gradient(to right, var(--WR), var(--WR) 33.33%, var(--RB) 33.33%, var(--RB) 66.66%, var(--TE) 66.66%);
 	}
 
-	:global(.WRRB) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 50%, #00ceb8 50%);
+	.WRRB {
+		background: linear-gradient(to right, var(--WR), var(--WR) 50%, var(--RB) 50%);
 	}
 
-	:global(.K) {
-		background-color: #bd66ff;
+	.K {
+		background-color: var(--K);
 	}
 
-	:global(.S-FLEX) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 25%, #00ceb8 25%, #00ceb8 50%, #ffae58 50%, #ffae58 75%, #ff2a6d);
+	.S-FLEX {
+		background: linear-gradient(to right, var(--WR), var(--WR) 25%, var(--RB) 25%, var(--RB) 50%, var(--TE) 50%, var(--TE) 75%, var(--QB));
 		background-color: #8f66ff;
 	}
 
-	:global(.R-FLEX) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 50%, #ffae58 50%);
+	.R-FLEX {
+		background: linear-gradient(to right, var(--WR), var(--WR) 50%, var(--TE) 50%);
 	}
 
-	:global(.DEF) {
-		background-color: #fff67a;
+	.DEF {
+		background-color: var(--DEF);
 	}
 
-	:global(.BN) {
-		background-color: #b6d0eb;
+	.DL {
+		background-color: var(--DL);
+	}
+
+	.LB {
+		background-color: var(--LB);
+	}
+
+	.DB {
+		background-color: var(--DB);
+	}
+
+	.IDP {
+		background: linear-gradient(to right, var(--DL), var(--DL) 33.33%, var(--LB) 33.33%, var(--LB) 66.66%, var(--DB) 66.66%);
+	}
+
+	.BN {
+		background-color: var(--BN);
 	}
 
 	:global(.slot) {

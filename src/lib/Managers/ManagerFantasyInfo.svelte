@@ -102,30 +102,30 @@
     }
 
     .QB {
-        background-color: #ff2a6d;
+        background-color: var(--QB);
     }
 
     .WR {
-        background-color: #58a7ff;
+        background-color: var(--WR);
     }
 
     .RB {
-        background-color: #00ceb8;
+        background-color: var(--RB);
     }
 
     .TE {
-        background-color: #ffae58;
+        background-color: var(--TE);
     }
 
     .Picks {
         background: #73b647;
     }
     .K {
-        background-color: #bd66ff;
+        background-color: var(--K);
     }
 
     .DEF {
-        background-color: #fff67a;
+        background-color: var(--DEF);
     }
 
     .CB {

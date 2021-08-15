@@ -103,16 +103,27 @@
 	let selected = "0px";
 	let status = "minimized";
 	const toggleSelected = () => {
-		selected = selected == "0px" ? "1200px" : "0px";
+		selected = selected == "0px" ? calcHeight() + "px" : "0px";
 		status = status == "minimized" ? "expanded" : "minimized";
 	}
 
+	let innerWidth;
+
+	const calcHeight = () => {
+		const multiplier = 48;
+		const benchLength = finalBench.length * multiplier + 53;
+		let irLength = 0;
+		if(finalIR) {
+			irLength = finalIR.length * multiplier + 52;
+		}
+		return benchLength + irLength;
+	}
+
 	$: {
-		selected = expanded ? "1200px" : "0px";
+		selected = expanded ? calcHeight() + "px" : "0px";
 		status = expanded ? "expanded" : "minimized";
 	}
 
-    let innerWidth;
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -239,7 +250,7 @@
 	}
 
 	:global(.bench) {
-		background-color: #eee;
+		background-color: var(--ir);
 	}
 </style>
 
@@ -282,7 +293,7 @@
 				<!-- 	IR	 -->
 				{#if finalIR}
 					<Row>
-							<Cell colspan=4 ><h5>IR:</h5></Cell>
+					<Cell colspan=4 ><h5><Icon class="material-icons icon">healing</Icon> Injured Reserve</h5></Cell>
 					</Row>
 					{#each finalIR as ir}
 						<RosterRow player={ir} />
