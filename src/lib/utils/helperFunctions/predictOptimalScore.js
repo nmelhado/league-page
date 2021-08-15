@@ -32,6 +32,9 @@ export const predictScores = (players, week, leagueData) => {
         const rb = rbs[0]?.weeklyInfo[week]?.projection || 0;
         const wr = wrs[0]?.weeklyInfo[week]?.projection || 0;
         const te = tes[0]?.weeklyInfo[week]?.projection || 0;
+        const dl = dls[0]?.weeklyInfo[week]?.projection || 0;
+        const lb = lbs[0]?.weeklyInfo[week]?.projection || 0;
+        const db = dbs[0]?.weeklyInfo[week]?.projection || 0;
         switch (starterPosition) {
             case 'QB':
                 powerScore += parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
@@ -50,9 +53,6 @@ export const predictScores = (players, week, leagueData) => {
                 break;
             case 'K':
                 powerScore += parseFloat(ks.shift()?.weeklyInfo[week]?.projection || 0);
-                break;
-            case 'IDP':
-                powerScore += parseFloat(idps.shift()?.weeklyInfo[week]?.projection || 0);
                 break;
             case 'DL':
                 powerScore += parseFloat(dls.shift()?.weeklyInfo[week]?.projection || 0);
@@ -89,6 +89,15 @@ export const predictScores = (players, week, leagueData) => {
                     powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
                 } else {
                     powerScore += parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
+                }
+                break;
+            case 'IDP':
+                if(dl >= lb && dl >= db) {
+                    powerScore += parseFloat(dls.shift()?.weeklyInfo[week]?.projection || 0);
+                } else if (lb >= dl && lb >= db) {
+                    powerScore += parseFloat(lbs.shift()?.weeklyInfo[week]?.projection || 0);
+                } else {
+                    powerScore += parseFloat(dbs.shift()?.weeklyInfo[week]?.projection || 0);
                 }
                 break;
             default:
