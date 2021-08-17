@@ -183,9 +183,22 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ## III. Updates
 
 - League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
-    - If you first created your league before August 7th, 2021, you may encounter `merge conflicts` when trying to fetch upstream.
-    - In that situation, copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
-    - There should be **NO merge conflicts going forward**.
+> ![fetch upstream](https://storage.googleapis.com/nfl-player-data/fetchUpstream.jpg)
+
+<br />
+
+- Another way to know there's an update available is if you see the following notification on your League Page:
+    > ![update notification](https://storage.googleapis.com/nfl-player-data/updateNotification.jpg)
+    
+    <br />
+
+    - To see what's changed in the newest updates (bugs fixed, features added, etc.), check the [CHANGELOG](https://github.com/nmelhado/league-page/blob/master/CHANGELOG.md)
+
+    <br />
+
+    - **If you first created your league before August 7th, 2021**, you may encounter `merge conflicts` when trying to fetch upstream.
+        - In that situation (if you are new to coding), copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
+        - There should be **NO merge conflicts going forward**.
 
 
 ## IV. Wrapping up

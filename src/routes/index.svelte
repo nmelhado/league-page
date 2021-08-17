@@ -163,7 +163,15 @@
                 <p class="center">Retrieving NFL state...</p>
                 <LinearProgress indeterminate />
             {:then nflStateData}
-                <p class="center">NFL {nflStateData.season} {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}</p>
+                <p class="center">NFL {nflStateData.season} 
+                    {#if nflStateData.season_type == 'pre'}
+                        Preseason
+                    {:else if nflStateData.season_type == 'post'}
+                        Postseason
+                    {:else}
+                        {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}
+                    {/if}
+                </p>
             {:catch error}
                 <p class="center">Something went wrong: {error.message}</p>
             {/await}
