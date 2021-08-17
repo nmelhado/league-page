@@ -1,6 +1,15 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { tabs } from '$lib/utils/tabs';
+	import { onMount } from 'svelte';
+
+	let outOfDate = false;
+
+	onMount(async () => {
+		const res = await fetch('/api/checkVersion', {compress: true})
+		const needUpdate = await res.json();
+		outOfDate = needUpdate;
+	})
 
 	const year = new Date().getFullYear();
 
@@ -62,11 +71,21 @@
 	.navLink:hover {
 		color: #920505;
 	}
+
+	.updateNotice {
+		color: var(--g999);
+		font-style: italic;
+		font-size: 0.8em;
+		margin-top: 0;
+	}
 </style>
 
 <div class="footerSpacer" style="height: {footerHeight}px;" />
 
 <footer bind:this={el}>
+	{#if outOfDate}
+		<p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
+	{/if}
 	<div id="navigation">
 		<ul>
 			{#each tabs as tab}
