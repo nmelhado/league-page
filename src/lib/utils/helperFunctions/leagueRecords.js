@@ -12,7 +12,12 @@ export const getLeagueRecords = async () => {
 		return get(records);
 	}
 	const nflState = await getNflState().catch((err) => { console.error(err); });
-	let week = nflState.week - 1;
+	let week = 0;
+	if(nflState.season_type == 'regular') {
+		week = nflState.week - 1;
+	} else if(nflState.season_type == 'post') {
+		week = 18;
+	}
 
 	let curSeason = leagueID;
 	

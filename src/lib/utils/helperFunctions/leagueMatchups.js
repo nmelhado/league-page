@@ -19,7 +19,12 @@ export const getLeagueMatchups = async () => {
 		getLeagueUsers()
 	).catch((err) => { console.error(err); });
 
-	const week = nflState.display_week == 0 ? 1 : nflState.display_week;
+	let week = 1;
+	if(nflState.season_type == 'regular') {
+		week = nflState.display_week;
+	} else if(nflState.season_type == 'post') {
+		week = 18;
+	}
 	const year = leagueData.season;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
 
