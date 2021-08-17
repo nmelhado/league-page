@@ -1,7 +1,7 @@
 import {version} from '$lib/version';
 
 export async function get() {
-    const res = await fetch('https://league-page.nmelhado.com/api/checkVersion', {compress: true})
+    const res = await fetch('https://league-page.nmelhado.com/api/checkGlobalVersion', {compress: true})
     let needsUpdate = false;
     if(res.ok) {
         const globalVersion = await res.json();
