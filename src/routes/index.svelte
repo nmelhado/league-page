@@ -153,9 +153,10 @@
             <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
-	    <iframe id="frame" style="width: 100%;border:0px solid black;" src="https://www.theffhub.com/Home/PlayoffOdds?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
         </div>
-        
+	<div id="odds">
+	    <iframe id="frame" style="width: 100%;border:0px solid black;" src="https://www.theffhub.com/Home/PlayoffOdds?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
+	</div>
         <PowerRankings />
     </div>
     
