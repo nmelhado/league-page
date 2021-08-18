@@ -94,35 +94,35 @@
 	}
 
 	:global(.QB) {
-		background-color: #ff2a6d;
+		background-color: var(--QB);
 	}
 
 	:global(.WR) {
-		background-color: #58a7ff;
+		background-color: var(--WR);
 	}
 
 	:global(.RB) {
-		background-color: #00ceb8;
+		background-color: var(--RB);
 	}
 
 	:global(.TE) {
-		background-color: #ffae58;
+		background-color: var(--TE);
 	}
 
 	:global(.FLEX) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 33.33%, #00ceb8 33.33%, #00ceb8 66.66%, #ffae58 66.66%);
+		background: linear-gradient(to right, var(--WR), var(--WR) 33.33%, var(--RB) 33.33%, var(--RB) 66.66%, var(--TE) 66.66%);
 	}
 
 	:global(.WRRB) {
-		background: linear-gradient(to right, #58a7ff, #58a7ff 50%, #00ceb8 50%);
+		background: linear-gradient(to right, var(--WR), var(--WR) 50%, var(--RB) 50%);
 	}
 
 	:global(.K) {
-		background-color: #bd66ff;
+		background-color: var(--K);
 	}
 
 	:global(.DEF) {
-		background-color: #fff67a;
+		background-color: var(--DEF);
 	}
 
 	:global(.indicator) {

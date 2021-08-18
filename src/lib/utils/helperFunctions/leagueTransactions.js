@@ -23,7 +23,10 @@ export const getLeagueTransactions = async (preview) => {
 		getNflState(),
 	).catch((err) => { console.error(err); });
 	
-	let week = nflState.week;
+	let week = 18;
+	if(nflState.season_type == 'regular') {
+		week = nflState.week;
+	}
 
 	const {transactionsData, prevManagers, currentManagers, currentSeason} = await combThroughTransactions(week, leagueID).catch((err) => { console.error(err); });
 
@@ -163,8 +166,12 @@ const digestTransactions = (transactionsData, prevManagers, players, currentSeas
 			waiver: 0
 		};
 	}
+
+	// trades can be out of order because they are aded to sleeper when the offer is sent
+	// this sort puts everything in the correct order
+	const transactionOrder = transactionsData.sort((a,b) => b.status_updated - a.status_updated);
 	
-	for(const transaction of transactionsData) {
+	for(const transaction of transactionOrder) {
 		const {digestedTransaction, season, success} = digestTransaction(transaction, prevManagers, players, currentSeason)
 		if(!success) continue;
 		transactions.push(digestedTransaction);

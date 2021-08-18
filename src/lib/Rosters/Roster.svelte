@@ -1,4 +1,5 @@
 <script>
+	import { gotoManager } from '$lib/utils/helper';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"
@@ -102,16 +103,27 @@
 	let selected = "0px";
 	let status = "minimized";
 	const toggleSelected = () => {
-		selected = selected == "0px" ? "1200px" : "0px";
+		selected = selected == "0px" ? calcHeight() + "px" : "0px";
 		status = status == "minimized" ? "expanded" : "minimized";
 	}
 
+	let innerWidth;
+
+	const calcHeight = () => {
+		const multiplier = 48;
+		const benchLength = finalBench.length * multiplier + 53;
+		let irLength = 0;
+		if(finalIR) {
+			irLength = finalIR.length * multiplier + 52;
+		}
+		return benchLength + irLength;
+	}
+
 	$: {
-		selected = expanded ? "1200px" : "0px";
+		selected = expanded ? calcHeight() + "px" : "0px";
 		status = expanded ? "expanded" : "minimized";
 	}
 
-    let innerWidth;
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -132,6 +144,10 @@
 
 	.team {
 		margin: 4px 10px 10px;
+	}
+
+	:global(.clickable) {
+		cursor: pointer;
 	}
 
 	:global(.teamInner) {
@@ -234,7 +250,7 @@
 	}
 
 	:global(.bench) {
-		background-color: #eee;
+		background-color: var(--ir);
 	}
 </style>
 
@@ -242,8 +258,8 @@
 	<DataTable class="teamInner" table$aria-label="Team Name" style="width: {innerWidth * 0.95 > 380 ? 380 : innerWidth * 0.95}px;" >
 		<Head> <!-- Team name  -->
 			<Row>
-				<Cell colspan=4 class="r_{division}">
-					<h3>
+				<Cell colspan=4 class="r_{division} clickable">
+					<h3 on:click={() => gotoManager(roster.roster_id)}>
 						<img alt="team avatar" class="teamAvatar" src="https://sleepercdn.com/avatars/thumbs/{user.avatar}" />
 						{user.metadata.team_name ? user.metadata.team_name : user.display_name}
 					</h3>
@@ -277,7 +293,7 @@
 				<!-- 	IR	 -->
 				{#if finalIR}
 					<Row>
-							<Cell colspan=4 ><h5>IR:</h5></Cell>
+					<Cell colspan=4 ><h5><Icon class="material-icons icon">healing</Icon> Injured Reserve</h5></Cell>
 					</Row>
 					{#each finalIR as ir}
 						<RosterRow player={ir} />

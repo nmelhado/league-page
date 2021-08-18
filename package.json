@@ -1,6 +1,21 @@
 {
-  "name": "legends-league",
-  "version": "2.0.0",
+  "name": "league-page",
+  "version": "1.0.2",
+  "homepage": "https://github.com/nmelhado/league-page#readme",
+  "author": {
+    "name" : "Nicholas Melhado",
+    "email" : "n.melhado@gmail.com",
+    "url" : "http://www.nmelhado.com/"
+  },
+  "funding": {
+    "type": "buy_me_a_coffee",
+    "url": "https://www.buymeacoffee.com/nmelhado"
+  },
+  "bugs": {
+    "url" : "https://github.com/nmelhado/league-page/issues",
+    "email" : "n.melhado@gmail.com"
+  },
+  "license": "MIT",
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=6.0.0"

@@ -1,5 +1,5 @@
 <script>
-	import {cleanName} from '$lib/utils/helper';
+	import {cleanName, gotoManager} from '$lib/utils/helper';
 	export let podium, currentManagers;
 
 	const { year, champion, second, third, divisions, toilet } = podium;
@@ -61,6 +61,7 @@
 		transform: translate(-50%, -50%);
 		bottom: 56.6%;
 		left: 50%;
+		pointer-events: none;
 	}
 
 	.first {
@@ -216,6 +217,10 @@
 		margin: 20px auto 0;
 	}
 
+	.clickable {
+		cursor: pointer;
+	}
+
 	:global(.curOwner) {
 		font-size: 0.75em;
 		color: var(--bbb);
@@ -335,15 +340,15 @@
 		<img src="./podium.png" class="podiumImage" alt="podium" />
 
 		<!-- champs -->
-		<img src="{champion.avatar}" class="first champ" alt="champion" />
+		<img src="{champion.avatar}" class="first champ clickable" on:click={() => gotoManager(champion.rosterID)} alt="champion" />
 		<img src="./laurel.png" class="laurel" alt="laurel" />
-		<span class="label firstLabel">{@html getNames(champion.name, champion.rosterID)}</span>
+		<span class="label firstLabel clickable" on:click={() => gotoManager(champion.rosterID)}>{@html getNames(champion.name, champion.rosterID)}</span>
 
-		<img src="{second.avatar}" class="second champ" alt="2nd" />
-		<span class="label secondLabel">{@html getNames(second.name, second.rosterID)}</span>
+		<img src="{second.avatar}" class="second champ clickable" on:click={() => gotoManager(second.rosterID)} alt="2nd" />
+		<span class="label secondLabel clickable" on:click={() => gotoManager(second.rosterID)}>{@html getNames(second.name, second.rosterID)}</span>
 
-		<img src="{third.avatar}" class="third champ" alt="3rd" />
-		<span class="label thirdLabel">{@html getNames(third.name, third.rosterID)}</span>
+		<img src="{third.avatar}" class="third champ clickable" on:click={() => gotoManager(third.rosterID)} alt="3rd" />
+		<span class="label thirdLabel clickable" on:click={() => gotoManager(third.rosterID)}>{@html getNames(third.name, third.rosterID)}</span>
 	</div>
 	<div class="divisions">
 		{#each divisions as division}
@@ -355,10 +360,10 @@
 						<h6>Regular Season Champion</h6>
 					{/if}
 					<div class="leaderBlock">
-						<img src="{division.manager.avatar}" class="divisionLeader" alt="{division.name} champion" />
+						<img src="{division.manager.avatar}" class="divisionLeader clickable" on:click={() => gotoManager(division.manager.rosterID)} alt="{division.name} champion" />
 						<img src="./medal.png" class="medal" alt="champion" />
 					</div>
-					<span class="genLabel">{@html getNames(division.manager.name, division.manager.rosterID)}</span>
+					<span class="genLabel clickable" on:click={() => gotoManager(division.manager.rosterID)}>{@html getNames(division.manager.name, division.manager.rosterID)}</span>
 				</div>
 			{/if}
 		{/each}
@@ -371,10 +376,10 @@
 			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 
 			<div class="toiletBowl">
-				<img src="{toilet.avatar}" class="toiletWinner" alt="toilet bowl winner" />
+				<img src="{toilet.avatar}" class="toiletWinner clickable" on:click={() => gotoManager(toilet.rosterID)} alt="toilet bowl winner" />
 				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 			</div>
-			<span class="genLabel">{@html getNames(toilet.name, toilet.rosterID)}</span>
+			<span class="genLabel clickable" on:click={() => gotoManager(toilet.rosterID)}>{@html getNames(toilet.name, toilet.rosterID)}</span>
 		</div>
 	{/if}
 </div>
