@@ -155,7 +155,7 @@
             {@html homepageText }
         </div>
 	<div id="odds">
-	    <iframe id="frame" style="width: 100%;border:0px solid black;height: 800px;" src="https://www.theffhub.com/Home/PlayoffOdds?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
+	    <iframe id="frame" style="width: 100%;border:0px solid black;height: auto;" src="https://www.theffhub.com/Home/PlayoffOdds?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
 	</div>
         <PowerRankings />
     </div>
