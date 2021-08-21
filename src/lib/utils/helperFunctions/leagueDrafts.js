@@ -129,7 +129,7 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManager
 }
 
 // Build pre-determined draft board
-const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players = null) => {
+const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players = null, type = null) => {
 	const draftOrder = [];
 	let leagueSize = 0;
 
@@ -145,20 +145,12 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 		draft.push([...row]);
 	}
 
-	if(players) {
-		for(const playerData of players) {
-			const player = {
-				name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
-				position: playerData.metadata.position,
-				team: playerData.metadata.team,
-				avatar: playerData.metadata.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${playerData.player_id.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${playerData.player_id}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-			}
-			draft[playerData.round - 1][playerData.draft_slot - 1] = {player};
-		}
-		for(const pick of picks) {
-			if(pick.owner_id == pick.roster_id) continue;
-			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = originalManagers[pick.owner_id].name;
-		}
+	if(players && type != 'auction') {
+		// non-auction leagues
+		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder});
+	} else if(players) {
+		// auction leagues
+		draft = completedAuction({players, draft, picks, originalManagers, draftOrder, draftOrderObj});
 	} else {
 		for(const pick of picks) {
 			if(pick.owner_id == pick.roster_id) continue;
@@ -167,6 +159,50 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 	}
 
 	return {draft, draftOrder};
+}
+
+const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder}) => {
+	for(const playerData of players) {
+		const player = {
+			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
+			position: playerData.metadata.position,
+			team: playerData.metadata.team,
+			avatar: playerData.metadata.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${playerData.player_id.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${playerData.player_id}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
+		}
+		draft[playerData.round - 1][playerData.draft_slot - 1] = {player};
+	}
+	for(const pick of picks) {
+		if(pick.owner_id == pick.roster_id) continue;
+		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = originalManagers[pick.owner_id].name;
+	}
+	return draft;
+}
+
+const completedAuction = ({players, draft, picks, originalManagers, draftOrder, draftOrderObj}) => {
+	const rosters = {};
+	for (const key in draftOrderObj) {
+		// array to be used for players
+		rosters[draftOrderObj[key]] = [];
+	}
+	for(const playerData of players) {
+		const player = {
+			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
+			position: playerData.metadata.position,
+			team: playerData.metadata.team,
+			amount: playerData.metadata.amount,
+			avatar: playerData.metadata.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${playerData.player_id.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${playerData.player_id}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
+		}
+		rosters[playerData.roster_id].push(player);
+	}
+	for (const roster in rosters) {
+		const col = draftOrder.indexOf(parseInt(roster));
+		const sortedRoster = rosters[roster].sort((a,b) => b.amount - a.amount);
+		for(let i = 0; i < sortedRoster.length; i++) {
+			const player = sortedRoster[i];
+			draft[i][col] = {player};
+		}
+	}
+	return draft;
 }
 
 export const getPreviousDrafts = async () => {
@@ -230,7 +266,7 @@ export const getPreviousDrafts = async () => {
 		let draftOrder;
 
 	
-		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, originalManagers, players);
+		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, originalManagers, players, officialDraft.type);
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
 		

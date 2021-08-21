@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2021-08-21
+
+### Fixed
+
+- Auction leagues did not display drafts correctly
+    - Logic has been addded to handle auction leagues
+
+### Changed
+
+- Changed the display of draft boards in dark mode
+
 ## [1.0.2] - 2021-08-17
 
 ### Fixed
