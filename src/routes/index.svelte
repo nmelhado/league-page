@@ -158,6 +158,9 @@
 	<div id="odds">
 	    <iframe id="frame" style="width: 100%;border:0px solid black;height: 680px; padding: 20px" src="https://www.theffhub.com/Home/PlayoffOdds?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
 	</div>
+	<div id="schedcomp">
+	    <iframe id="frame" style="width: 100%;border:0px solid black;height: 1500px; padding: 20px" src="https://www.theffhub.com/Home/Scheduler?site=Sleeper&leagueId=716328508556668928&userId=&s2=&swid=" frameborder="0"></iframe>
+	</div>
     </div>
     
     <div class="leagueData">
