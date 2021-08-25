@@ -148,10 +148,6 @@
         margin-top: 0;
     }
 
-    hr {
-        border-style: ridge;
-    }
-
     /* media queries */
 
     @media (max-width: 505px) {
@@ -207,14 +203,17 @@
         </h2>
         
         <div class="basicInfo">
-            <span class="infoChild">{viewManager.location}</span>
+            <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
             {#if viewManager.fantasyStart}
                 <!-- fantasyStart is an optional field -->
                 <span class="seperator">|</span>
                 <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
             {/if}
-            <span class="seperator">|</span>
-            <span class="infoChild">{viewManager.preferredContact}<img class="infoChild infoContact" src="/{viewManager.preferredContact}.png" alt="favorite team"/></span>
+            {#if viewManager.preferredContact}
+                <!-- preferredContact is an optional field -->
+                <span class="seperator">|</span>
+                <span class="infoChild">{viewManager.preferredContact}<img class="infoChild infoContact" src="/{viewManager.preferredContact}.png" alt="favorite team"/></span>
+            {/if}
             <!-- <span class="infoChild">{viewManager.preferredContact}</span> -->
             {#if viewManager.favoriteTeam}
                 <!-- favoriteTeam is an optional field -->
@@ -251,8 +250,11 @@
 
         <p class="bio">{@html viewManager.bio}</p>
 
-        <h3>Team Philosophy</h3>
-        <p class="philosophy">{@html viewManager.philosophy}</p>
+        {#if viewManager.philosophy}
+            <!-- philosophy is an optional field -->
+            <h3>Team Philosophy</h3>
+            <p class="philosophy">{@html viewManager.philosophy}</p>
+        {/if}
     </div>
 
     {#await playerData}

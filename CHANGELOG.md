@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2021-08-25
+
+### Fixed
+
+- Made location, favorite team, and preferred contact nullable for managers
+    - Fallback displayed on all managers page (question mark image)
+    - Fallback location of "Undisclosed location" displayed
+    - Other fields are omitted in the Managers pages
+
 ## [1.0.3] - 2021-08-21
 
 ### Fixed
