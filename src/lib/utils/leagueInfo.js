@@ -6,7 +6,7 @@ export const dynasty = false; // true for dynasty leagues, false for redraft and
 
 /*   STEP 2   */
 export const homepageText = `
-    <p> Welcome to the league page for A Fantasy Football League Of Ice And Fire, or AFFLOIAF for short.  AFFLIOAF is also for those that don't want to acknowledge we're still kinda sorta doing a Game of Thrones themed league after that disasterous final season.</p>
+    <p> Welcome to the league page for A Fantasy Football League Of Ice And Fire, or AFFLOIAF for short.  Using the acronym is also for those that don't want to acknowledge we're still kinda sorta doing a Game of Thrones themed league after that disasterous final season.</p>
     <p> AFFLOIAF is a league focused on trying new things, because new and interesting decisions are what we consider to be fun.  Established in 2015, the league is constantly moving, adding keepers, trying new rules and platforms, and always on the lookout for more of those fun, new things in the fantasy football landscape.</p>
     <p> <b>League Podcast and Advanced Stats:</b></p>
     <a href="https://affloiaf.podbean.com/">https://affloiaf.podbean.com/</a>
