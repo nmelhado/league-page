@@ -6,10 +6,22 @@ export const dynasty = false; // true for dynasty leagues, false for redraft and
 
 /*   STEP 2   */
 export const homepageText = `
-    <p> This is a Keeper “Light” Fantasy Football League. In general, this league is quite experimental and often tries things before the industry comes around to them. Living on the cutting edge has its costs, as change is not for everyone. The goal is to have fun, build community, and have serious competition for serious prizes. So far, this league has lived up to it, and we are getting close (I think) to solidifying a lot of our charter. The changes are less and less every year.</p>
-    <p>League Podcast:</p>
+    <p> Welcome to the league page for A Fantasy Football League Of Ice And Fire, or AFFLOIAF for short, and those that don't want to acknowledge we're still doing a Game of Thrones themed league after that disasterous final season.</p>
+    <p> AFFLOIAF is a league focused on trying new things, because new and interesting decisions are what we consider to be fun.  Established in 2015, the league is constantly moving, adding keepers, trying new rules and platforms, and always on the lookout for more of those fun, new things in the fantasy football landscape.
+    </p>
+    <p> This page is best viewed on desktop, but everything *should* work on mobile reasonably well.
+    </p>
+    <p> News:
+    </p>
+    <p> Draft pick trading pre-draft will be allowed before the 2022 draft.  Plan accordingly.
+    </p>
+    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk accordingly.
+    </p>
+    <p> Speaking of, if you want anything in your bio updated (and you probably do, considering the low effort shitposting currently in place) -- email/message your updated bio, favorite players, rivals, anything else of that nature to Matt (you should be able to find my email in your inbox).
+    </p>
+    <p> League Podcast:</p>
     <a href="https://affloiaf.podbean.com/">https://affloiaf.podbean.com/</a>
-    <p>Power Rankings will be displayed below after the draft and will auto-update!</p>
+    <p> Power Rankings will be displayed below after the draft and will auto-update!  The odds/advanced records pages will also automatically update as we play more games, but they give an idea of what is coming.</p>
 `;
 
 /*   STEP 3   */
@@ -287,3 +299,33 @@ export const managers = [
      "preferredContact": "Sleeper", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
    },
 ]
+  
+  /*   !!  !!  IMPORTANT  !!  !! */
+  /*
+  Below is the most up to-date version of a manager. Please leave this commented out
+  and don't delete it. This will be updated if any fields are added, removed or changed
+  and will allow updates without causing merge conflicts
+  */
+  
+    // {
+    //   "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Your Name",
+    //   "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
+    //   "location": "Brooklyn", // (optional)
+    //   "bio": "Lorem ipsum...",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "nyj", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "rival": {
+    //     name: "Rival", // Can be anything (usually your rival's name)
+    //     link: 6, // manager array number within this array, or null to link back to all managers page
+    //     image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+    //   },
+    //   "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    //   "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
+    //   "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy", // (optional)
+    //   "tradingScale": 10, // 1 - 10 (optional)
+    //   "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    // },

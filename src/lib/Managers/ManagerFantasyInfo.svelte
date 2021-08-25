@@ -204,18 +204,20 @@
             </div>
         </div>
     {/if}
-    <!-- Trading Scale -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Desire to Trade
+    {#if viewManager.tradingScale}
+        <!-- Trading Scale -->
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Desire to Trade
+            </div>
+            <div class="infoIcon">
+                <span class="tradingScale">{viewManager.tradingScale}</span>
+            </div>
+            <div class="infoAnswer">
+                {viewManager.tradingScale} out of 10
+            </div>
         </div>
-        <div class="infoIcon">
-            <span class="tradingScale">{viewManager.tradingScale}</span>
-        </div>
-        <div class="infoAnswer">
-            {viewManager.tradingScale} out of 10
-        </div>
-    </div>
+    {/if}
     <!-- Favorite player (optioonal) -->
     {#if viewManager.favoritePlayer}
         <div class="infoSlot">

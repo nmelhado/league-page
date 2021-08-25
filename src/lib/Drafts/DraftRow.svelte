@@ -25,12 +25,12 @@
         top: 0.1em;
         left: 0.1em;
         font-style: italic;
-        color: var(--g444);
+        color: #444;
     }
 
     .newOwner {
         font-style: italic;
-        color: var(--g444);
+        color: #444;
         text-align: center;
         white-space: break-spaces;
         line-height: 1.2em;
@@ -107,6 +107,7 @@
         white-space: break-spaces;
         line-height: 1em;
         bottom: 0.5em;
+        color: rgba(0, 0, 0, 0.87);
     }
 </style>
 
@@ -115,7 +116,11 @@
         {#if !previous || draftCol}
             <Cell class="draftCell{draftCol ? ' changedHands' : ''}{previous ? ` prev${draftCol.player.position}` : ''}">
                 <span class="draftPos{previous ? "Prev" : ""}">
-                    {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {#if draftType == "auction" && previous}
+                        ${draftCol.player?.amount}
+                    {:else}
+                        {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {/if}
                 </span>
                 {#if draftCol && !previous}
                     <div class="newOwner">{draftCol}</div>
