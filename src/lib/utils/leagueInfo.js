@@ -9,6 +9,7 @@ export const homepageText = `
     <p> Welcome to the league page for A Fantasy Football League Of Ice And Fire, or AFFLOIAF for short.  Using the acronym is also for those that don't want to acknowledge we're still kinda sorta doing a Game of Thrones themed league after that disasterous final season.</p>
     <p> AFFLOIAF is a league focused on trying new things, because new and interesting decisions are what we consider to be fun.  Established in 2015, the league is constantly moving, adding keepers, trying new rules and platforms, and always on the lookout for more of those fun, new things in the fantasy football landscape.</p>
     <p> <b>League Podcast and Advanced Stats:</b></p>
+    <iframe title="A Fantasy Football League of Ice and Fire" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=qpgtk-4f310c-pbblog-playlist&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&order=episodic&limit=10&filter=all&ss=a713390a017602015775e868a2cf26b0&btn-skin=7&size=315" allowfullscreen=""></iframe>
     <a href="https://affloiaf.podbean.com/">https://affloiaf.podbean.com/</a>
     <p> Power Rankings will be displayed below after the draft and will auto-update!  The odds/advanced records reports (also below) will automatically update as we play more games, but they give an idea of what is coming.</p>
     <p> <b>News:</b></p>
