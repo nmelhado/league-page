@@ -7,22 +7,15 @@ export const dynasty = false; // true for dynasty leagues, false for redraft and
 /*   STEP 2   */
 export const homepageText = `
     <p> Welcome to the league page for A Fantasy Football League Of Ice And Fire, or AFFLOIAF for short, and those that don't want to acknowledge we're still doing a Game of Thrones themed league after that disasterous final season.</p>
-    <p> AFFLOIAF is a league focused on trying new things, because new and interesting decisions are what we consider to be fun.  Established in 2015, the league is constantly moving, adding keepers, trying new rules and platforms, and always on the lookout for more of those fun, new things in the fantasy football landscape.
-    </p>
-    <p> This page is best viewed on desktop, but everything *should* work on mobile reasonably well.
-    </p>
-    <p> News:
-    </p>
-    <p> Draft pick trading pre-draft will be allowed before the 2022 draft.  Plan accordingly.
-    </p>
-    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk accordingly.
-    </p>
-    <p> Speaking of, if you want anything in your bio updated (and you probably do, considering the low effort shitposting currently in place) -- email/message your updated bio, favorite players, rivals, anything else of that nature to Matt (you should be able to find my email in your inbox).
-    </p>
-    <p> League Podcast:</p>
+    <p> AFFLOIAF is a league focused on trying new things, because new and interesting decisions are what we consider to be fun.  Established in 2015, the league is constantly moving, adding keepers, trying new rules and platforms, and always on the lookout for more of those fun, new things in the fantasy football landscape.</p>
+    <p> <b>League Podcast:</b></p>
     <a href="https://affloiaf.podbean.com/">https://affloiaf.podbean.com/</a>
     <p> Power Rankings will be displayed below after the draft and will auto-update!  The odds/advanced records pages will also automatically update as we play more games, but they give an idea of what is coming.</p>
-`;
+    <p> <b>News:</b></p>
+    <p> Draft pick trading pre-draft will be allowed before the 2022 draft.  Plan accordingly.</p>
+    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk accordingly.</p>
+    <p> Speaking of, if you want anything in your bio updated (and you probably do, considering the low effort shitposting currently in place) -- email/message your updated bio, favorite players, rivals, anything else of that nature to Matt (you should be able to find my email in your inbox).</p>
+    `;
 
 /*   STEP 3   */
 /*
