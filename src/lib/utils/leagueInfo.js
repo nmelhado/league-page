@@ -13,19 +13,10 @@ export const homepageText = `
     <p> Power Rankings will be displayed below after the draft and will auto-update!  The odds/advanced records reports (also below) will automatically update as we play more games, but they give an idea of what is coming.</p>
     <p> <b>News:</b></p>
     <p> Draft pick trading pre-draft will be allowed before the 2022 draft.  Plan accordingly.</p>
-    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk accordingly.</p>
+    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk.</p>
     <p> Speaking of, if you want anything in your bio updated (and you probably do, considering the low effort shitposting currently in place) -- email/message your updated bio, favorite players, rivals, anything else of that nature to Matt (you should be able to find my email in your inbox).</p>
     <p> Sleeper is supposedly making a league history import tool available this week, when it releases we'll be trying to get the ESPN and Yahoo league history imported.</p>
     `;
-
-/*   STEP 3   */
-/*
-3 managers as an example. Uncomment (remove the //) before each line to make it live code
-If you're having trouble, reference the Training Wheels' Manager Section
-https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers
-*/
-
-// To omit an optional field, set it's value to null
 
 export const managers = [
   {
