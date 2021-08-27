@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2021-08-26
+
+### Fixed
+
+- Some league rosters return null for the players, which breaks power rankings and the rosters page
+    - Bug reported in [issue #49](https://github.com/nmelhado/league-page/issues/49)
+    - For rosters, only compute the bench if the players field is valid
+    - For power rankings, skip teams with no players (if no teams have players, don't display the graph)
+
 ## [1.0.4] - 2021-08-25
 
 ### Fixed
