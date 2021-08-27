@@ -70,7 +70,10 @@
 	}
 
 	$: finalStarters = digestData(roster.starters, true);
-	$: finalBench = digestData(roster.players);
+	let finalBench = [];
+	$: if(roster.players) {
+		finalBench = digestData(roster.players);
+	}
 	let finalIR = null;
 	if(roster.reserve) {
 		finalIR = digestData(roster.reserve, false, true);
