@@ -34,7 +34,7 @@ export const managers = [
         link: 7, // manager array number within this array, or null to link back to all managers page
         image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
-      "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+      "favoritePlayer": 5849, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "philosophy": "Win always.",
       "tradingScale": 10, // 1 - 10
     },
@@ -142,27 +142,27 @@ export const managers = [
         link: 8, // manager array number within this array, or null to link back to all managers page
         image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
-      "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+      "favoritePlayer": 9273, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "philosophy": "Win always.",
       "tradingScale": 10, // 1 - 10
     },
     {
       "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Jay Malak",
-      "location": "Washington, D.C.", // (optional)
-      "bio": "",
+      "location": "The Swamp", // (optional)
+      "bio": "My first foray into fantasy was in 2005, when I took Ladainian Tomlinson #1 overall. After torching the league, my friend logged into my team and traded him to himself. I’m somehow still friends with him. If any of you try this, however, I will pull a Liam Neeson on you.\nIn seriousness, fantasy has always been my favorite way to stay in touch with friends. I take it pretty seriously, and often care more about my team than the Panthers. (As you could probably tell, the heels and Tottenham are where my primary allegiances lie). I’m glad to be a part of this group, look forward to hopefully kicking your asses, and more importantly hearing your trash talk in return.\nMay the best man win.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2009, // (optional) when did the manager start playing fantasy football
+      "fantasyStart": 2005, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "car", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Dynasty", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
-        name: "Jay Malak", // Can be anything (usually your rival's name)
-        link: 8, // manager array number within this array, or null to link back to all managers page
+        name: "Lowballers & Anyone he loses to.", // Can be anything (usually your rival's name)
+        link: null, // manager array number within this array, or null to link back to all managers page
         image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
-      "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-      "philosophy": "Win always.",
-      "tradingScale": 10, // 1 - 10
+      "favoritePlayer": 2133, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+      "philosophy": "Bench star players during the week to motivate better performance on the weekend. Engage in psychological warfare with opposing managers when socially acceptable. Outscore opposition.",
+      "tradingScale": 6.5, // 1 - 10
     },
     {
       "roster": 9,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
