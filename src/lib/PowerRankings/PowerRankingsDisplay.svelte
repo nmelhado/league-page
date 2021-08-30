@@ -24,7 +24,14 @@
 
     let max = 0;
 
+    let validGraph = false;
+
     for(const roster of rosters) {
+        // make sure the roster has players on it
+        if(!roster.players) continue;
+        // if at least one team has players, create the graph
+        validGraph = true;
+
         const rosterPlayers = [];
 
         for(const rosterPlayer of roster.players) {
@@ -96,6 +103,8 @@
     }
 </style>
 
-<div class="enclosure" bind:this={el}>
-    <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
-</div>
+{#if validGraph}
+    <div class="enclosure" bind:this={el}>
+        <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
+    </div>
+{/if}
