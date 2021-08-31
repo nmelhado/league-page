@@ -582,6 +582,7 @@
         <li>
             This is meant as a way to allow owners to unplug from Fantasy/NFL during the offseason for a time without a loss of competitive advantage.
         </li>
+    </ol>
 
     <h2 class="sectionHeading" bind:this={f}>Section F: Trading</h2>
     
@@ -656,6 +657,7 @@
         <li>
             If a player decides to trade a future draft pick, 50% of that season’s dues must be paid before doing so
         </li>
+    </ol>
 
     <h2 class="sectionHeading" bind:this={g}>Section G: Tie Breakers</h2>
     

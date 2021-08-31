@@ -7,7 +7,6 @@ export const dynasty = true; // true for dynasty leagues, false for redraft and 
 /*   STEP 2   */
 export const homepageText = `
   <p>Welcome to the home page for the Tomcat Dynasty League! I will put more helpful info here later.</p>
-  <a href="https://docs.google.com/document/d/1S_Z5bCC_erMLJxGznra4-9wfIRVjCGuegXSbAHHTBKk/edit?usp=sharing">League Consitution.</a>
 `;
 
 /*   STEP 3   */
@@ -113,20 +112,20 @@ export const managers = [
     {
       "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Logan Dennis",
-      "location": "Charleston, SC", // (optional)
-      "bio": "",
+      "location": "Charleston, SC. DC soon.", // (optional)
+      "bio": "The team formerly known as Vick Dawgs, we pride ourselves on our ability to be an exciting team for 50% of the season then succumb to injury and or poor lineup decisions and finish in 7th place.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2009, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "ari", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+      "favoriteTeam": "sea", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Dynasty", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
-        name: "Jay Malak", // Can be anything (usually your rival's name)
-        link: 8, // manager array number within this array, or null to link back to all managers page
+        name: "The Dirty Schnitzel", // Can be anything (usually your rival's name)
+        link: 1, // manager array number within this array, or null to link back to all managers page
         image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
-      "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-      "philosophy": "Win always.",
-      "tradingScale": 10, // 1 - 10
+      "favoritePlayer": 5846, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+      "philosophy": "Stop losing to JJ and Bailey at inopportune times. Discount Double Check.",
+      "tradingScale": 7, // 1 - 10
     },
     {
       "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
@@ -203,10 +202,10 @@ export const managers = [
     {
       "roster": 11,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Mike McEvoy",
-      "location": "New York, New York", // (optional)
+      "location": "New York, NY", // (optional)
       "bio": "",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2009, // (optional) when did the manager start playing fantasy football
+      "fantasyStart": "2003 (Fantasy Baseball); 2013 (Fantasy Football)", // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "nyj", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Dynasty", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
@@ -222,19 +221,19 @@ export const managers = [
       "roster": 12,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Tyler Pollack",
       "location": "Arlington, VA", // (optional)
-      "bio": "The future 2022, 2023, 2024 and so on champion, and the benevolent dictator for life of the Tomcat dynasty league.",
+      "bio": "Dr. Evil: The details of my life are quite inconsequential.\nTherapist (Carrie Fisher): Oh no, please, please, let's hear about your childhood.\nDr Evil: Very well, where do I begin? My father was a relentlessly self-improving boulangerie owner from Belgium with low grade narcolepsy and a penchant for buggery. My mother was a fifteen year old French prostitute named Chloe with webbed feet. My father would womanize, he would drink, he would make outrageous claims like he invented the question mark. Sometimes he would accuse chestnuts of being lazy, the sort of general malaise that only the genius possess and the insane lament. My childhood was typical, summers in Rangoon, luge lessons. In the spring we'd make meat helmets. When I was insolent I was placed in a burlap bag and beaten with reeds, pretty standard really. At the age of 12 I received my first scribe. At the age of fourteen, a Zoroastrian named Vilma ritualistically shaved my testicles. There really is nothing like a shorn scrotum, it's breathtaking, I suggest you try it.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2009, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "ari", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Dynasty", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+      "favoriteTeam": "nyj", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "mode": "Rebuild", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
-        name: "Mike McEvoy", // Can be anything (usually your rival's name)
-        link: 12, // manager array number within this array, or null to link back to all managers page
+        name: "JJ Schacht", // Can be anything (usually your rival's name)
+        link: 1, // manager array number within this array, or null to link back to all managers page
         image: "/managers/rival.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
-      "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-      "philosophy": "Win always.",
-      "tradingScale": 10, // 1 - 10
+      "favoritePlayer": 6806, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+      "philosophy": "Watch the Jets, then do the opposite.",
+      "tradingScale": 5, // 1 - 10
     },
                       
   ]
