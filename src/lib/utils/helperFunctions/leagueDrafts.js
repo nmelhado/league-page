@@ -271,8 +271,6 @@ export const getPreviousDrafts = async () => {
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
 
-		console.log(officialDraft.settings)
-		
 		const newDraft = {
 			year,
 			draft,
