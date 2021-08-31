@@ -6,10 +6,10 @@
     import { dues } from '$lib/utils/helper';
     let a, a_1, a_2, a_3, a_4;
     let b, b_1, b_2, b_3, b_4;
-    let c_1, c_2, c_3, c_4;
+    let c, c_1, c_2, c_3, c_4;
     let d;
     let e, e_1, e_2;
-    let f, f_1, f_2, f_3;
+    let f, f_1, f_2, f_3, f_4;
     let g, g_1, g_2, g_3;
     let h, h_1, h_2;
 
@@ -135,7 +135,7 @@
         <h4 class="noUnderscore clickable" on:click={() => goToSection(f_1)}>F.1 General Rules</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(f_2)}>F.2 Conditional Trades</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(f_3)}>F.3 Trade Vetoing</h4>
-	<h4 class="noUnderscore clickable" on:click={() => goToSection(f_4)}>F.4 Trading Draft Picks</h4>
+	   <h4 class="noUnderscore clickable" on:click={() => goToSection(f_4)}>F.4 Trading Draft Picks</h4>
 	
     <h3 class="noUnderscore clickable" on:click={() => goToSection(g)}>Section G: Tie Breakers</h3>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(g_1)}>G.1 General Tiebreakers</h4>
