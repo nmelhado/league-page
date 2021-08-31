@@ -20,7 +20,6 @@ const max = (stats, roundOverride) => {
 }
 
 export const gotoManager = (rosterID) => {
-    console.log(rosterID);
     if(!managers.length) return;
     const managersIndex = managers.findIndex(m => m.roster == rosterID);
     // if no manager exists for that roster, -1 will take you to the main managers page
