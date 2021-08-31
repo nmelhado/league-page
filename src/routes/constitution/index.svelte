@@ -339,7 +339,7 @@
         </li>
     </ol>
     
-    <h3 bind:this={twoThree}>B.3 Annual Rookie Draft</h3>
+    <h3 bind:this={b_3}>B.3 Annual Rookie Draft</h3>
     <ol>
         <li>
             4 rounds
@@ -373,7 +373,7 @@
         </li>
     </ol>
 
-    <h3 bind:this={twoThree}>B.4 Important Dates</h3>
+    <h3 bind:this={b_4}>B.4 Important Dates</h3>
 
     <ol>
         <li>
@@ -405,7 +405,7 @@
         </li>
     </ol>
     
-    <h2 class="sectionHeading" bind:this={three}>Section C: Divisions, Schedule & Playoff Brackets</h2>
+    <h2 class="sectionHeading" bind:this={c}>Section C: Divisions, Schedule & Playoff Brackets</h2>
 
     <h3 bind:this={c_1}>C.1 Divisions</h3>
         <ol>
@@ -574,7 +574,7 @@
         </li>
     </ol>
 
-    <h3 bind:this={e_1}>E.2 Off-Season Free Agency</h3>
+    <h3 bind:this={e_2}>E.2 Off-Season Free Agency</h3>
     <ol>
         <li>
             Free Agency is locked from the conclusion of Week 16 until the Rookie draft.
