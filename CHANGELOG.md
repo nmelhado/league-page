@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2021-08-31
+
+### Added
+
+- Reversal round support
+    - Feature support added by [scottiegarcia](https://github.com/scottiegarcia)
+    - [PR #51](https://github.com/nmelhado/league-page/pull/51)
+
 ## [1.0.5] - 2021-08-26
 
 ### Fixed

@@ -119,11 +119,20 @@
                     {#if draftType == "auction" && previous}
                         ${draftCol.player?.amount}
                     {:else if draftType == "snake" && !reversalRound}
-                        {row}.{row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {row}.{row % 2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
                     {:else if draftType == "snake" && reversalRound}
-                        {row}.{row%2 == 0 && row<reversalRound || row%2 == 1 && row>=reversalRound ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {#if (row < reversalRound && row % 2 == 0) || (row >= reversalRound && row % 2 == 1)}
+                            {row}.{draftRow.length - col}
+                        {:else}
+                            {row}.{col + 1}
+                        {/if}
+                        {draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
                     {:else}
-                        {row}{col+1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {#if !reversalRound || row < reversalRound}
+                            {row}.{col+1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {:else}
+                            {row}.{draftRow.length - col}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {/if}
                     {/if}
                 </span>
                 {#if draftCol && !previous}
