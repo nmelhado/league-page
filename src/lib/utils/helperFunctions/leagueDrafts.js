@@ -129,7 +129,7 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManager
 }
 
 // Build pre-determined draft board
-const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players = null, type = null, reversalRound = null) => {
+const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players = null, type = null) => {
 	const draftOrder = [];
 	let leagueSize = 0;
 
@@ -147,7 +147,7 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 
 	if(players && type != 'auction') {
 		// non-auction leagues
-		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder, reversalRound});
+		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder});
 	} else if(players) {
 		// auction leagues
 		draft = completedAuction({players, draft, picks, originalManagers, draftOrder, draftOrderObj});
@@ -161,7 +161,7 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 	return {draft, draftOrder};
 }
 
-const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder, reversalRound}) => {
+const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder}) => {
 	for(const playerData of players) {
 		const player = {
 			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
