@@ -504,7 +504,7 @@
         </li>
     </ol>
     
-    <h2 class="sectionHeading" bind:this={d}>Section D: Buy-In & Pay Outs/h2>
+    <h2 class="sectionHeading" bind:this={d}>Section D: Buy-In & Pay Outs</h2>
     <ol>
         <li>
             Money is due 1 week prior to rookie draft at the latest.
