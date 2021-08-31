@@ -1,6 +1,6 @@
 <script>
   	import {Row, Cell } from '@smui/data-table';
-    export let draftRow, draftType, row, previous=false;
+    export let draftRow, draftType, row, reversalRound, previous=false;
 </script>
 
 <style>
@@ -118,8 +118,12 @@
                 <span class="draftPos{previous ? "Prev" : ""}">
                     {#if draftType == "auction" && previous}
                         ${draftCol.player?.amount}
+                    {:else if draftType == "snake" && !reversalRound}
+                        {row}.{row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {:else if draftType == "snake" && reversalRound}
+                        {row}.{row%2 == 0 && row<reversalRound || row%2 == 1 && row>=reversalRound ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
                     {:else}
-                        {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {row}{col+1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
                     {/if}
                 </span>
                 {#if draftCol && !previous}

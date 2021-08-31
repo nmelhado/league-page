@@ -7,7 +7,7 @@
     
     export let draftData, previous = false;
 
-    const {draftOrder, draft, currentManagers, originalManagers, accuracy, draftType} = draftData;
+    const {draftOrder, draft, currentManagers, originalManagers, accuracy, draftType, reversalRound} = draftData;
 
     let progress = 0;
     let closed = false;
@@ -132,7 +132,7 @@
     </Head>
     <Body>
         {#each draft as draftRow, row}
-            <DraftRow {draftRow} row={row + 1} {previous} {draftType} />
+            <DraftRow {draftRow} row={row + 1} {previous} {reversalRound} {draftType} />
         {/each}
     </Body>
 </DataTable>
