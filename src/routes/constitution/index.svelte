@@ -4,14 +4,14 @@
 
 <script>
     import { dues } from '$lib/utils/helper';
-    let a, a_1, a_2, a_3, a_4
-    let b, b_1, b_2, b_3, b_4
-    let c_1, c_2, c_3, c_4
-    let d
-    let e, e_1, e_2
-    let f, f_1, f_2, f_3
-    let g, g_1, g_2, g_3
-    let h, h_1, h_2,
+    let a, a_1, a_2, a_3, a_4;
+    let b, b_1, b_2, b_3, b_4;
+    let c_1, c_2, c_3, c_4;
+    let d;
+    let e, e_1, e_2;
+    let f, f_1, f_2, f_3;
+    let g, g_1, g_2, g_3;
+    let h, h_1, h_2;
 
     const goToSection = (section) => {
         const top = section.getBoundingClientRect().top;
