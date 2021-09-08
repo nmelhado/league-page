@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2021-09-08
+
+### Fixed
+
+- Fixed bug in manager pages introduced in [pr #55](https://github.com/nmelhado/league-page/pull/55)
+
 ## [1.0.7] - 2021-09-08
 
 ### Changed
