@@ -72,8 +72,6 @@
             short: "ROS Power Ranking"
         };
 
-        console.log(powerGraph.stats)
-
         graphs = [
             generateGraph(powerGraph, 10)
         ]

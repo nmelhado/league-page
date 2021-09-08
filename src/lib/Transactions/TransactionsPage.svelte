@@ -26,7 +26,6 @@
 	let players = playersInfo.players;
 
 	const refreshPlayers = async () => {
-		console.log('refreshing players...');
 		const newPlayersInfo = await loadPlayers(true);
 		players = newPlayersInfo.players;
 	}
