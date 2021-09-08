@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2021-09-08
+
+### Fixed
+
+- Fixed bug with the trade arrows on the manager page, the bug was introduced in [pr #55](https://github.com/nmelhado/league-page/pull/55)
+
 ## [1.0.8] - 2021-09-08
 
 ### Fixed
