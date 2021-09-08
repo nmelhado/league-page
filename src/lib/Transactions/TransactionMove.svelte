@@ -3,19 +3,12 @@
   	import { Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/tab';
 
-	export let move, type, masterOffset, currentManagers, players;
+	export let move, type, masterOffset, currentManagers;
 	
 	let trade = false;
 	
 	if(type == "trade") {
 		trade = true;
-	}
-
-	const getAvatar = (pos, player) => {
-		if(pos == 'DEF') {
-			return `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${player.toLowerCase()}.png)`;
-		}
-		return `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${player}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`;
 	}
 
 	let origin, destination;
@@ -165,10 +158,10 @@
 					{:else if cell.type == "Dropped"}
 						<Icon class="indicator material-icons">arrow_drop_down</Icon><br />
 					{/if}
-					<span class="position {players[cell.player].position}">{players[cell.player].position}</span> 
-					<div class="playerAvatar" style="{getAvatar(players[cell.player].position, cell.player)}" />
+					<span class="position {cell.player.positions}">{cell.player.positions}</span> 
+					<div class="playerAvatar" style="{cell.player.avatar}" />
 					<br />
-					<span class="name" bind:this={origin}>{`${players[cell.player].first_name} ${players[cell.player].last_name}`}</span>
+					<span class="name" bind:this={origin}>{cell.player.name}</span>
 				</span>
 			</Cell>
 		{:else if cell && cell.pick}

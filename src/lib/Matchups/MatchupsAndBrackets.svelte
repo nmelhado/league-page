@@ -5,31 +5,8 @@
 	import Brackets from './Brackets.svelte';
     import Button, { Group, Label } from '@smui/button';
     import { goto } from '$app/navigation';
-    import { onMount } from 'svelte';
-    import { loadPlayers } from '$lib/utils/helper';
 
 	export let queryWeek, matchupsData, bracketsData, playersData;
-
-    let players, matchupWeeks, year, week, regularSeasonLength, brackets;
-
-    let loading = true;
-
-    onMount(async () => {
-        brackets = await bracketsData;
-        const matchupsInfo = await matchupsData;
-        matchupWeeks = matchupsInfo.matchupWeeks;
-        year = matchupsInfo.year;
-        week = matchupsInfo.week;
-        regularSeasonLength = matchupsInfo.regularSeasonLength;
-        const playersInfo = await playersData;
-        players = playersInfo.players;
-        loading = false;
-
-        if(playersInfo.stale) {
-            const newPlayersInfo = await loadPlayers(true);
-            players = newPlayersInfo.players;
-        }
-    });
 
     const changeSelection = (s) => {
         if(s == 'regular') {
@@ -64,48 +41,76 @@
 
 
 
-{#if loading}
+{#await playersData}
     <!-- promise is pending -->
     <div class="message">
         <p>Loading league matchups...</p>
         <LinearProgress indeterminate />
     </div>
-{:else}
-    {#if matchupWeeks.length}
-        <div class="buttonHolder">
-            <Group variant="outlined">
-                <!-- Regular Season -->
-                <Button class="selectionButtons" on:click={() => changeSelection('regular')} variant="{selection == 'regular' ? "raised" : "outlined"}">
-                    <Label>Regular Season</Label>
-                </Button>
-                <!-- Championship Bracket -->
-                <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' || selection == 'losers' ? "raised" : "outlined"}">
-                    <Label>Playoffs</Label>
-                </Button>
-            </Group>
-            {#if selection == 'champions' || selection == 'losers'}
+{:then players}
+    <!-- Display Regular SeasonMatchups -->
+    {#await matchupsData}
+        <!-- promise is pending -->
+        <div class="message">
+            <p>Loading league matchups...</p>
+            <LinearProgress indeterminate />
+        </div>
+    {:then {matchupWeeks, year, week, regularSeasonLength}}
+        {#if matchupWeeks.length}
+            <div class="buttonHolder">
                 <Group variant="outlined">
-                    <!-- Championship Bracket -->
-                    <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' ? "raised" : "outlined"}">
-                        <Label>Champions' Bracket</Label>
+                    <!-- Regular Season -->
+                    <Button class="selectionButtons" on:click={() => changeSelection('regular')} variant="{selection == 'regular' ? "raised" : "outlined"}">
+                        <Label>Regular Season</Label>
                     </Button>
-                    <!-- Losers Bracket -->
-                    <Button class="selectionButtons" on:click={() => changeSelection('losers')} variant="{selection == 'losers' ? "raised" : "outlined"}">
-                        <Label>Losers' Bracket</Label>
+                    <!-- Championship Bracket -->
+                    <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' || selection == 'losers' ? "raised" : "outlined"}">
+                        <Label>Playoffs</Label>
                     </Button>
                 </Group>
+                {#if selection == 'champions' || selection == 'losers'}
+                    <Group variant="outlined">
+                        <!-- Championship Bracket -->
+                        <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' ? "raised" : "outlined"}">
+                            <Label>Champions' Bracket</Label>
+                        </Button>
+                        <!-- Losers Bracket -->
+                        <Button class="selectionButtons" on:click={() => changeSelection('losers')} variant="{selection == 'losers' ? "raised" : "outlined"}">
+                            <Label>Losers' Bracket</Label>
+                        </Button>
+                    </Group>
+                {/if}
+            </div>
+            {#if selection == 'regular'}
+                <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} />
             {/if}
-        </div>
-        {#if selection == 'regular'}
-            <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} />
+        {:else}
+            <div class="message">
+                <p>No upcoming matchups...</p>
+            </div>
         {/if}
-    {:else}
+    {:catch error}
+        <!-- promise was rejected -->
+        <p>Something went wrong: {error.message}</p>
+    {/await}
+
+    <!-- Display Playoff Brackets -->
+    {#await bracketsData}
+        <!-- promise is pending -->
         <div class="message">
-            <p>No upcoming matchups...</p>
+            <p>Loading playoff brackets...</p>
+            <LinearProgress indeterminate />
         </div>
-    {/if}
-    <!-- {promise has processed -->
-    {#if brackets.champs.bracket[0][0][0].points && (selection == 'champions' || selection == 'losers')}
-        <Brackets {queryWeek} {players} {brackets} bind:selection={selection}/>
-    {/if}
-{/if}
+    {:then brackets}
+        <!-- {promise has processed -->
+        {#if brackets.champs.bracket[0][0][0].points && (selection == 'champions' || selection == 'losers')}
+            <Brackets {queryWeek} {players} {brackets} bind:selection={selection}/>
+        {/if}
+    {:catch error}
+        <!-- promise was rejected -->
+        <p>Something went wrong: {error.message}</p>
+    {/await}
+{:catch error}
+    <!-- promise was rejected -->
+    <p>Something went wrong: {error.message}</p>
+{/await}
