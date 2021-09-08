@@ -1,27 +1,37 @@
 import { getLeagueData } from './leagueData';
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from './nflState';
-import { loadPlayers } from './players';
 import { getLeagueRosters } from './leagueRosters';
 import { getLeagueUsers } from './leagueUsers';
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {transactionsStore} from '$lib/stores';
 
-export const getLeagueTransactions = async (preview) => {
+export const getLeagueTransactions = async (preview, refresh = false) => {
 	const transactionsStoreVal = get(transactionsStore);
+
 	if(transactionsStoreVal.transactions) {
 		return {
 			transactions: checkPreview(preview, transactionsStoreVal.transactions),
 			currentManagers: transactionsStoreVal.currentManagers,
-			totals: transactionsStoreVal.totals
+			totals: transactionsStoreVal.totals,
+			stale: false
 		};
 	}
+
+	// if this isn't a refresh data call, check if there are already transactions stored in localStorage
+	if(!refresh) {
+		let localTransactions = await JSON.parse(localStorage.getItem("transactions"));
+		// check if transactions have been saved to localStorage before
+		if(localTransactions.transactions) {
+			localTransactions.transactions = checkPreview(preview, localTransactions.transactions);
+			localTransactions.stale = true;
+			return localTransactions;
+		}
+	}
+
 	// gather supporting info simultaneously
-	const [players, nflState] = await waitForAll(
-		loadPlayers(),
-		getNflState(),
-	).catch((err) => { console.error(err); });
+	const nflState = await getNflState().catch((err) => { console.error(err); });
 	
 	let week = 18;
 	if(nflState.season_type == 'regular') {
@@ -30,7 +40,7 @@ export const getLeagueTransactions = async (preview) => {
 
 	const {transactionsData, prevManagers, currentManagers, currentSeason} = await combThroughTransactions(week, leagueID).catch((err) => { console.error(err); });
 
-	const { transactions, totals } = digestTransactions(transactionsData, prevManagers, players, currentSeason, Object.keys(currentManagers).length);
+	const { transactions, totals } = digestTransactions(transactionsData, prevManagers, currentSeason, Object.keys(currentManagers).length);
 
 	const transactionPackage = {
 		transactions,
@@ -38,12 +48,17 @@ export const getLeagueTransactions = async (preview) => {
 		totals
 	};
 
+	// update localStorage
+	localStorage.setItem("transactions", JSON.stringify(transactionPackage));
+
+	// update the store
 	transactionsStore.update(() => transactionPackage);
-		
+
 	return {
 		transactions: checkPreview(preview, transactions),
 		currentManagers,
-		totals
+		totals,
+		stale: false
 	};
 }
 
@@ -153,7 +168,7 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	return {transactionsData, prevManagers, currentManagers, currentSeason};
 }
 
-const digestTransactions = (transactionsData, prevManagers, players, currentSeason, numRosters) => {
+const digestTransactions = (transactionsData, prevManagers, currentSeason, numRosters) => {
 	const transactions = [];
 	const totals = {
 		allTime: {},
@@ -172,7 +187,7 @@ const digestTransactions = (transactionsData, prevManagers, players, currentSeas
 	const transactionOrder = transactionsData.sort((a,b) => b.status_updated - a.status_updated);
 	
 	for(const transaction of transactionOrder) {
-		const {digestedTransaction, season, success} = digestTransaction(transaction, prevManagers, players, currentSeason)
+		const {digestedTransaction, season, success} = digestTransaction(transaction, prevManagers, currentSeason)
 		if(!success) continue;
 		transactions.push(digestedTransaction);
 
@@ -210,7 +225,7 @@ const digestDate = (tStamp) => {
 	return month + ' ' + date + ' ' + year + ', ' + (hour % 12 == 0 ? 12 : hour % 12) + ':' + min + (hour / 12 >= 1 ? "PM" : "AM");
 }
 
-const digestTransaction = (transaction, prevManagers, players, currentSeason) => {
+const digestTransaction = (transaction, prevManagers, currentSeason) => {
 	// don't include failed waiver claims
 	if(transaction.status == 'failed') return {success: false};
 	const handled = [];
@@ -244,11 +259,11 @@ const digestTransaction = (transaction, prevManagers, players, currentSeason) =>
 	const draftPicks = transaction.draft_picks;
 
 	for(let player in adds) {
-		if(!players[player]) {
+		if(!player) {
 			continue;
 		}
 		handled.push(player);
-		digestedTransaction.moves.push(handleAdds(transactionRosters, adds, drops, player, bid, players));
+		digestedTransaction.moves.push(handleAdds(transactionRosters, adds, drops, player, bid));
 	}
 
 	for(let player in drops) {
@@ -257,17 +272,12 @@ const digestTransaction = (transaction, prevManagers, players, currentSeason) =>
 		}
 
 		let move = new Array(transactionRosters.length).fill(null);
-		if(!players[player]) {
+		if(!player) {
 			continue;
 		}
 		move[transactionRosters.indexOf(drops[player])] = {
 			type: "Dropped",
-			player: {
-				name: `${players[player].first_name} ${players[player].last_name}`,
-				positions: players[player].position,
-				team: players[player].team,
-				avatar: players[player].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${player.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${player}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-			}
+			player
 		}
 
 		digestedTransaction.moves.push(move);
@@ -318,17 +328,12 @@ const digestTransaction = (transaction, prevManagers, players, currentSeason) =>
 	return {digestedTransaction, season, success: true};
 }
 
-const handleAdds = (rosters, adds, drops, player, bid, players) => {
+const handleAdds = (rosters, adds, drops, player, bid) => {
 	let move = new Array(rosters.length).fill(null);
 	if(drops && drops[player]) {
 		move[rosters.indexOf(drops[player])] = {
 			type: "trade",
-			player: {
-				name: `${players[player].first_name} ${players[player].last_name}`,
-				positions: players[player].position,
-				team: players[player].team,
-				avatar: players[player].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${player.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${player}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-			}
+			player
 		}
 
 		move[rosters.indexOf(adds[player])] = "destination";
@@ -337,12 +342,7 @@ const handleAdds = (rosters, adds, drops, player, bid, players) => {
 
 	move[rosters.indexOf(adds[player])] = {
 		type: "Added",
-		player: {
-			name: `${players[player].first_name} ${players[player].last_name}`,
-			positions: players[player].position,
-			team: players[player].team,
-			avatar: players[player].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${player.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${player}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-		},
+		player,
 		bid
 	}
 

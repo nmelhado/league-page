@@ -1,14 +1,24 @@
 import { get } from 'svelte/store';
 import {players} from '$lib/stores';
 
-export const loadPlayers = async () => {     
+export const loadPlayers = async (refresh = false) => {     
 	if(get(players)[1426]) {
-		return get(players);
+		return {
+            players: get(players),
+            stale: false
+        };
 	} 
     
     const now = Math.round(new Date().getTime() / 1000);
     const playersInfo = JSON.parse(localStorage.getItem("playersInfo"));
     let expiration = parseInt(localStorage.getItem("expiration"));
+
+    if(playersInfo && playersInfo[1426] && expiration && now > expiration && !refresh) {
+        return {
+            players: playersInfo,
+            stale: true
+        }
+    }
     
     if(!playersInfo || !expiration || now > expiration) {
         const res = await fetch(`/api/fetch_players_info`, {compress: true});
@@ -27,8 +37,14 @@ export const loadPlayers = async () => {
 
 		players.update(() => data);
 
-        return data;
+        return {
+            players: data,
+            stale: false
+        };
     }
     players.update(() => playersInfo);
-    return playersInfo;
+    return {
+        players: playersInfo,
+        stale: false
+    };
 }

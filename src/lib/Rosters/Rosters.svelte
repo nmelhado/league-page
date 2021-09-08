@@ -1,7 +1,19 @@
 <script>
+	import { loadPlayers } from '$lib/utils/helper';
 	import RosterSorter from './RosterSorter.svelte'
 
-	export let leagueData, rosterData, users, players;
+	export let leagueData, rosterData, users, playersInfo;
+
+	let players = playersInfo.players;
+
+	const refreshPlayers = async () => {
+		const newPlayersInfo = await loadPlayers(true);
+		players = newPlayersInfo.players;
+	}
+
+	if(playersInfo.stale) {
+		refreshPlayers();
+	}
 </script>
 
 <style>
