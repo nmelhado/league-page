@@ -9,7 +9,7 @@
         transactionsData = newTransaction;
     }
 
-    if(stale) {
+    if(transactionsData.stale) {
         refreshTransactions();
     }
 </script>
