@@ -10,7 +10,7 @@
 
 	let i = 0;
 
-	const digestData = (rawPlayers, startingPlayers = false, reserve = false) => {
+	const digestData = (passedPlayers, rawPlayers, startingPlayers = false, reserve = false) => {
 		let digestedRoster = [];
 	
 		for(const singlePlayer of rawPlayers) {
@@ -37,7 +37,7 @@
 			}
 
 			let injury = null;
-			switch (players[singlePlayer].injury_status) {
+			switch (passedPlayers[singlePlayer].injury_status) {
 				case "Questionable":
 					injury = "Q";
 					break;
@@ -55,10 +55,10 @@
 					break;
 			}
 			player = {
-				name: `${players[singlePlayer].first_name} ${players[singlePlayer].last_name}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata && roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
-				positions: players[singlePlayer].position,
-				team: players[singlePlayer].team,
-				avatar: players[singlePlayer].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${singlePlayer.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${singlePlayer}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
+				name: `${passedPlayers[singlePlayer].first_name} ${passedPlayers[singlePlayer].last_name}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata && roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
+				positions: passedPlayers[singlePlayer].position,
+				team: passedPlayers[singlePlayer].team,
+				avatar: passedPlayers[singlePlayer].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${singlePlayer.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${singlePlayer}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
 				slot: slot
 			}
 			i++;
@@ -69,14 +69,14 @@
 		return digestedRoster;
 	}
 
-	$: finalStarters = digestData(roster.starters, true);
+	$: finalStarters = digestData(players, roster.starters, true);
 	let finalBench = [];
 	$: if(roster.players) {
-		finalBench = digestData(roster.players);
+		finalBench = digestData(players, roster.players);
 	}
 	let finalIR = null;
 	if(roster.reserve) {
-		finalIR = digestData(roster.reserve, false, true);
+		finalIR = digestData(players, roster.reserve, false, true);
 	}
 
 	const buildRecord = (newRoster) => {
