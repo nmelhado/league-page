@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.10] - 2021-09-08
+
+### Fixed
+
+- Fix for [issue #57](https://github.com/nmelhado/league-page/issues/57)
+    - IDP projections were not being properly pulled in (this affected the matchups pages and Power Ranking graph)
+        - Updated the projection URL to pull in IDP projections as well
+    - Also addressed minor bug that caused the matchups page to not refresh projections when the players object refreshes in the background
+
 ## [1.0.9] - 2021-09-08
 
 ### Fixed
