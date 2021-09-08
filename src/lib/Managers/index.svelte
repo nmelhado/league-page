@@ -6,8 +6,8 @@
     export let managers, manager, rostersData, users, leagueData, transactionsData, awards, records;
 
     const refreshTransactions = async () => {
-        newTransactions = await getLeagueTransactions(false, true);
-        transactionsData = newTransaction;
+        const newTransactions = await getLeagueTransactions(false, true);
+        transactionsData = newTransactions;
     }
 
     if(transactionsData.stale) {
