@@ -7,6 +7,7 @@
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
     import ManagerAwards from './ManagerAwards.svelte';
+    import { onMount } from 'svelte';
 
     export let manager, managers, rostersData, users, rosterPositions, transactions, currentManagers, awards, records;
 
@@ -23,7 +24,19 @@
 
     let user = users[roster.owner_id];
 
-    const playerData = loadPlayers();
+    let players;
+    let loading = true;
+
+    onMount(async () => {
+        const playerData = await loadPlayers();
+        players = playerData.players;
+        loading = false;
+
+        if(playerData.stale) {
+            const newPlayerData = await loadPlayers(true);
+            players = newPlayerData.players;
+        }
+    })
 
     const changeManager = (newManager, noscroll = false) => {
         manager = newManager;
@@ -257,24 +270,24 @@
         {/if}
     </div>
 
-    {#await playerData}
+    {#if loading}
         <!-- Do nothing -->
-    {:then players}
+    {:else}
         <!-- Favorite player -->
         <ManagerFantasyInfo {viewManager} {players} />
-    {/await}
+    {/if}
 
     <ManagerAwards tookOver={viewManager.tookOver} {awards} {records} {roster} />
 
-    {#await playerData}
+    {#if loading}
         <!-- promise is pending -->
         <div class="loading">
             <p>Retrieving players...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then players}
+    {:else}
         <Roster division="threeHundred" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
-    {/await}
+    {/if}
     <h3>Team Transactions</h3>
     <div class="managerConstrained" bind:this={el}>
         <TransactionsPage transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
