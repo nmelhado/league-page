@@ -3,15 +3,6 @@
     import Manager from './Manager.svelte'
 
     export let managers, manager, rostersData, users, leagueData, transactionsData, awards, records;
-
-    const refreshTransactions = async () => {
-        newTransactions = await getLeagueTransactions(false, true);
-        transactionsData = newTransaction;
-    }
-
-    if(stale) {
-        refreshTransactions();
-    }
 </script>
 
 <div class="matchups">

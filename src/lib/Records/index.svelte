@@ -2,16 +2,7 @@
     import AllTimeRecords from './AllTimeRecords.svelte';
     import PerSeasonRecords from './PerSeasonRecords.svelte';
 
-    export let leagueRecords, totals, stale;
-
-    const refreshTransactions = async () => {
-        const newTransactions = await getLeagueTransactions(false, true);
-        totals = newTransactions.totals;
-    }
-
-    if(stale) {
-        refreshTransactions();
-    }
+    export let leagueRecords, totals;
 
     const {leagueRosterRecords, leagueWeekRecords, currentManagers, mostSeasonLongPoints, seasonWeekRecords, currentYear, lastYear} = leagueRecords;
 </script>
