@@ -24,16 +24,18 @@
 
     let user = users[roster.owner_id];
 
-    let players;
+    let players, playersInfo;
     let loading = true;
 
     onMount(async () => {
         const playerData = await loadPlayers();
+        playersInfo = playerData;
         players = playerData.players;
         loading = false;
 
         if(playerData.stale) {
             const newPlayerData = await loadPlayers(true);
+            playersInfo = newPlayerData;
             players = newPlayerData.players;
         }
     })
@@ -270,9 +272,7 @@
         {/if}
     </div>
 
-    {#if loading}
-        <!-- Do nothing -->
-    {:else}
+    {#if !loading}
         <!-- Favorite player -->
         <ManagerFantasyInfo {viewManager} {players} />
     {/if}
@@ -286,12 +286,12 @@
             <LinearProgress indeterminate />
         </div>
     {:else}
-        <Roster division="threeHundred" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
+        <Roster division="1" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
+        <h3>Team Transactions</h3>
+        <div class="managerConstrained" bind:this={el}>
+            <TransactionsPage {playersInfo} transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
+        </div>
     {/if}
-    <h3>Team Transactions</h3>
-    <div class="managerConstrained" bind:this={el}>
-        <TransactionsPage transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
-    </div>
 
     <div class="managerNav">
         <Group variant="outlined">
