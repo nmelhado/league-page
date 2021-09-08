@@ -110,7 +110,7 @@
         return round(totalPoints)
     }
 
-    const calculatePotentialPoints = (starters, ix) => {
+    const calculatePotentialPoints = (starters, ix, p) => {
         if(!starters) return 0;
         let totalPoints = 0;
         for(const starter of starters) {
@@ -339,7 +339,7 @@
                         {#if matchup.manager}
                             <div class="points">
                                 <div class="actualPoints">{calculatePoints(matchup.points)}</div>
-                                <div class="projectedPoints">{calculatePotentialPoints(matchup.starters, ix)}</div>
+                                <div class="projectedPoints">{calculatePotentialPoints(matchup.starters, ix, players)}</div>
                             </div>
                         {:else}
                             <span />
