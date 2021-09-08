@@ -2,7 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.5] - 2021-08-31
+## [1.0.7] - 2021-09-08
+
+### Changed
+
+- Refresh large data in the background
+    - Both player data and transaction data can take a while to pull from Sleeper
+    - Display the stale data first, while updating the data in the background
+    - When the new data is available, update the UI to reflect the changes
+
+## [1.0.6] - 2021-08-31
 
 ### Added
 
