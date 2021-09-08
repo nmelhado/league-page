@@ -2,7 +2,6 @@
     import {getNflState, getLeagueRosters, getLeagueUsers, waitForAll, getLeagueRecords, loadPlayers, getLeagueData} from '$lib/utils/helper';
     import PowerRankingsDisplay from './PowerRankingsDisplay.svelte';
     import LinearProgress from '@smui/linear-progress';
-    import { leagueData } from '$lib/stores';
     
     const helperPromises = waitForAll(
         getNflState(),
@@ -30,9 +29,9 @@
         <p>Calculating power rankings...</p>
         <LinearProgress indeterminate />
     </div>
-{:then [nflState, rostersData, users, records, leagueData, players]}
+{:then [nflState, rostersData, users, records, leagueData, playersInfo]}
     {#if leagueData.status != 'pre_draft'}
-        <PowerRankingsDisplay {nflState} {rostersData} {users} {leagueData} {records} {players} />
+        <PowerRankingsDisplay {nflState} {rostersData} {users} {leagueData} {records} {playersInfo} />
     {/if}
 {:catch error}
 	<!-- promise was rejected -->
