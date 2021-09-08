@@ -13,7 +13,8 @@
 
     let winning = "home";
 
-    const digestStarters = (x) => {
+    const digestStarters = (x, p) => {
+        console.log('here');
         home = matchup[0];
         away = matchup[1];
         const homeStarters = home.starters;
@@ -73,7 +74,7 @@
 
     let starters;
     
-    $: digestStarters(ix);
+    $: digestStarters(ix, players);
 
     let el;
 
