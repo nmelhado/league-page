@@ -38,6 +38,7 @@ export const predictScores = (players, week, leagueData) => {
         switch (starterPosition) {
             case 'QB':
                 checkForZero = parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
+                alert(checkforZero);
                 powerScore += checkForZero > 0 ? checkForZero : 17;
                 break;
             case 'RB':
