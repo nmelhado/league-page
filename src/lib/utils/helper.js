@@ -1,5 +1,5 @@
 import {getLeagueData} from './helperFunctions/leagueData';
-import {dues, leagueID, leagueName, dynasty, managers, homepageText} from './leagueInfo';
+import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableContentful} from './leagueInfo';
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
@@ -16,6 +16,7 @@ import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 
 export {
+    enableContentful,
     homepageText,
     gotoManager,
     managers,
