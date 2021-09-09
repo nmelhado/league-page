@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.11] - 2021-09-09
+
+### Fixed
+
+- Pulling in the IDP projections overloaded Vercel's servers
+    - Split up the call into offensive and defensive projections and then combine them afterwards
+
 ## [1.0.10] - 2021-09-08
 
 ### Fixed

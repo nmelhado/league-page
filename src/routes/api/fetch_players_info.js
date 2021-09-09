@@ -26,8 +26,16 @@ export async function get() {
     ];
 
     for(let week = 1; week <= fullSeasonLength + 3; week++) {
+        // offense
         resPromises.push(
-            fetch(`https://api.sleeper.app/projections/nfl/${year}/${week}?season_type=regular&position[]=DB&position[]=DEF&position[]=DL&position[]=FLEX&position[]=IDP_FLEX&position[]=K&position[]=LB&position[]=QB&position[]=RB&position[]=REC_FLEX&position[]=SUPER_FLEX&position[]=TE&position[]=WR&position[]=WRRB_FLEX&order_by=ppr`, {compress: true})
+            fetch(`https://api.sleeper.app/projections/nfl/${year}/${week}?season_type=regular&position[]=FLEX&position[]=K&position[]=QB&position[]=RB&position[]=REC_FLEX&position[]=SUPER_FLEX&position[]=TE&position[]=WR&position[]=WRRB_FLEX&order_by=ppr`, {compress: true})
+        );
+    }
+
+    for(let week = 1; week <= fullSeasonLength + 3; week++) {
+        // defense
+        resPromises.push(
+            fetch(`https://api.sleeper.app/projections/nfl/${year}/${week}?season_type=regular&position[]=DB&position[]=DEF&position[]=DL&position[]=IDP_FLEX&position[]=LB&order_by=ppr`, {compress: true})
         );
     }
 	
@@ -44,9 +52,16 @@ export async function get() {
         resJSONs.push(res.json());
     }
 
-    const weeklyData = await waitForAll(...resJSONs);
+    let weeklyData = await waitForAll(...resJSONs);
 
     const playerData = weeklyData.shift(); // first item is all player data, remaining items are weekly data for projections
+
+    const offset = weeklyData.length / 2; // number of weeks
+
+    for(let i = 0; i < offset; i++) {
+        weeklyData[i] = weeklyData[i].concat(weeklyData[i + offset]);
+    }
+    weeklyData = weeklyData.slice(0, offset);
 
     const scoringSettings = leagueData.scoring_settings;
         
