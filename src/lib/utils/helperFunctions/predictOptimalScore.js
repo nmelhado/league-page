@@ -37,8 +37,11 @@ export const predictScores = (players, week, leagueData) => {
         const db = dbs[0]?.weeklyInfo[week]?.projection || 0;
         switch (starterPosition) {
             case 'QB':
-                checkForZero = parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
-                powerScore += checkForZero > 0 ? checkForZero : 17;
+                if (qb > 0) {
+                    powerScore += parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
+                } else {
+                    powerScore += parseFloat(0);
+                }
                 break;
             case 'RB':
                 powerScore += parseFloat(rbs.shift()?.weeklyInfo[week]?.projection || 0);
@@ -47,12 +50,10 @@ export const predictScores = (players, week, leagueData) => {
                 powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
                 break;
             case 'TE':
-                checkForZero = parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
-                powerScore += checkForZero > 0 ? checkForZero : 7;
+                powerScore += parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
                 break;
             case 'DEF':
-                checkForZero = parseFloat(defs.shift()?.weeklyInfo[week]?.projection || 0);
-                powerScore += checkForZero > 0 ? checkForZero : 8;
+                powerScore += parseFloat(defs.shift()?.weeklyInfo[week]?.projection || 0);
                 break;
             case 'K':
                 powerScore += parseFloat(ks.shift()?.weeklyInfo[week]?.projection || 0);
