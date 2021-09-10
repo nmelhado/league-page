@@ -2,102 +2,123 @@ export const predictScores = (players, week, leagueData) => {
     const starterPositions = getStarterPositions(leagueData);
 
     // sort roster by highest projected points for that week
-    const projectedPlayers = [...players].sort((a, b) => (b.weeklyInfo[week] ? b.weeklyInfo[week].projection : 0) - (a.weeklyInfo[week] ? a.weeklyInfo[week].projection : 0));
+    const projectedPlayers = [...players].sort((a, b) => (b.wi && b.wi[week] ? b.wi[week].p : 0) - (a.wi && a.wi[week] ? a.wi[week].p : 0));
 
     // now that the players are sorted, grab the QBs
-    const qbs = projectedPlayers.filter(p => p.position == 'QB');
+    const qbs = projectedPlayers.filter(p => p.pos == 'QB');
     // and the WRs
-    const wrs = projectedPlayers.filter(p => p.position == 'WR');
+    const wrs = projectedPlayers.filter(p => p.pos == 'WR');
     // and the RBs
-    const rbs = projectedPlayers.filter(p => p.position == 'RB');
+    const rbs = projectedPlayers.filter(p => p.pos == 'RB');
     // and the TEs
-    const tes = projectedPlayers.filter(p => p.position == 'TE');
+    const tes = projectedPlayers.filter(p => p.pos == 'TE');
     // and the DEFs
-    const defs = projectedPlayers.filter(p => p.position == 'DEF');
+    const defs = projectedPlayers.filter(p => p.pos == 'DEF');
     // and the Ks
-    const ks = projectedPlayers.filter(p => p.position == 'K');
-    // and the IDPs
-    const idps = projectedPlayers.filter(p => p.position == 'IDP');
+    const ks = projectedPlayers.filter(p => p.pos == 'K');
     // and the DLs
-    const dls = projectedPlayers.filter(p => p.position == 'DL');
+    const dls = projectedPlayers.filter(p => p.pos == 'DL');
     // and the LBs
-    const lbs = projectedPlayers.filter(p => p.position == 'LB');
+    const lbs = projectedPlayers.filter(p => p.pos == 'LB');
     // and the DBs
-    const dbs = projectedPlayers.filter(p => p.position == 'DB');
+    const dbs = projectedPlayers.filter(p => p.pos == 'DB');
 
     let powerScore = 0;
     // next, use the roster configuration to grab the highest scorer at each position
     for(const starterPosition of starterPositions) {
-        const qb = qbs[0]?.weeklyInfo[week]?.projection || 0;
-        const rb = rbs[0]?.weeklyInfo[week]?.projection || 0;
-        const wr = wrs[0]?.weeklyInfo[week]?.projection || 0;
-        const te = tes[0]?.weeklyInfo[week]?.projection || 0;
-        const dl = dls[0]?.weeklyInfo[week]?.projection || 0;
-        const lb = lbs[0]?.weeklyInfo[week]?.projection || 0;
-        const db = dbs[0]?.weeklyInfo[week]?.projection || 0;
+        const qb = parseFloat(qbs[0]?.wi && qbs[0]?.wi[week] ? qbs[0].wi[week].p : 0);
+        const rb = parseFloat(rbs[0]?.wi && rbs[0]?.wi[week] ? rbs[0].wi[week].p : 0);
+        const wr = parseFloat(wrs[0]?.wi && wrs[0]?.wi[week] ? wrs[0].wi[week].p : 0);
+        const te = parseFloat(tes[0]?.wi && tes[0]?.wi[week] ? tes[0].wi[week].p : 0);
+        const dl = parseFloat(dls[0]?.wi && dls[0]?.wi[week] ? dls[0].wi[week].p : 0);
+        const lb = parseFloat(lbs[0]?.wi && lbs[0]?.wi[week] ? lbs[0].wi[week].p : 0);
+        const db = parseFloat(dbs[0]?.wi && dbs[0]?.wi[week] ? dbs[0].wi[week].p : 0);
+        const k = parseFloat(ks[0]?.wi && ks[0]?.wi[week] ? ks[0].wi[week].p : 0);
+        const def = parseFloat(defs[0]?.wi && defs[0]?.wi[week] ? defs[0].wi[week].p : 0);
         switch (starterPosition) {
             case 'QB':
-                powerScore += parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
+                qbs.shift();
+                powerScore += qb;
                 break;
             case 'RB':
-                powerScore += parseFloat(rbs.shift()?.weeklyInfo[week]?.projection || 0);
+                rbs.shift();
+                powerScore += rb;
                 break;
             case 'WR':
-                powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
+                wrs.shift()
+                powerScore += wr;
                 break;
             case 'TE':
-                powerScore += parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
+                tes.shift();
+                powerScore += te;
                 break;
             case 'DEF':
-                powerScore += parseFloat(defs.shift()?.weeklyInfo[week]?.projection || 0);
+                defs.shift();
+                powerScore += def;
                 break;
             case 'K':
-                powerScore += parseFloat(ks.shift()?.weeklyInfo[week]?.projection || 0);
+                ks.shift();
+                powerScore += k;
                 break;
             case 'DL':
-                powerScore += parseFloat(dls.shift()?.weeklyInfo[week]?.projection || 0);
+                dls.shift();
+                powerScore += dl;
                 break;
             case 'LB':
-                powerScore += parseFloat(lbs.shift()?.weeklyInfo[week]?.projection || 0);
+                lbs.shift();
+                powerScore += lb;
                 break;
             case 'DB':
-                powerScore += parseFloat(dbs.shift()?.weeklyInfo[week]?.projection || 0);
+                dbs.shift();
+                powerScore += db;
                 break;
             // Start of flex players
             case 'FLEX':
                 if(rb >= wr && rb >= te) {
-                    powerScore += parseFloat(rbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    rbs.shift();
+                    powerScore += rb;
                 } else if (wr >= rb && wr >= te) {
-                    powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
+                    wrs.shift();
+                    powerScore += wr;
                 } else {
-                    powerScore += parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
+                    tes.shift();
+                    powerScore += te;
                 }
                 break;
             case 'WRRB_FLEX':
                 if(rb >= wr) {
-                    powerScore += parseFloat(rbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    rbs.shift();
+                    powerScore += rb;
                 } else {
-                    powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
+                    wrs.shift();
+                    powerScore += wr;
                 }
                 break;
             case 'SUPER_FLEX':
                 if(qb >= wr && qb >= te && qb >= rb) {
-                    powerScore += parseFloat(qbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    qbs.shift();
+                    powerScore += qb;
                 } else if (rb >= wr && rb >= te && rb >= qb) {
-                    powerScore += parseFloat(rbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    rbs.shift();
+                    powerScore += rb;
                 } else if (wr >= rb && wr >= te && wr >= qb) {
-                    powerScore += parseFloat(wrs.shift()?.weeklyInfo[week]?.projection || 0);
+                    wrs.shift();
+                    powerScore += wr;
                 } else {
-                    powerScore += parseFloat(tes.shift()?.weeklyInfo[week]?.projection || 0);
+                    tes.shift();
+                    powerScore += te;
                 }
                 break;
             case 'IDP':
                 if(dl >= lb && dl >= db) {
-                    powerScore += parseFloat(dls.shift()?.weeklyInfo[week]?.projection || 0);
+                    dls.shift();
+                    powerScore += dl;
                 } else if (lb >= dl && lb >= db) {
-                    powerScore += parseFloat(lbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    lbs.shift();
+                    powerScore += lb;
                 } else {
-                    powerScore += parseFloat(dbs.shift()?.weeklyInfo[week]?.projection || 0);
+                    dbs.shift();
+                    powerScore += db;
                 }
                 break;
             default:

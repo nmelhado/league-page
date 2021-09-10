@@ -91,7 +91,7 @@
 		white-space: normal;
 	}
 
-	.position {
+	.pos {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -165,10 +165,10 @@
 					{:else if cell.type == "Dropped"}
 						<Icon class="indicator material-icons">arrow_drop_down</Icon><br />
 					{/if}
-					<span class="position {players[cell.player].position}">{players[cell.player].position}</span> 
-					<div class="playerAvatar" style="{getAvatar(players[cell.player].position, cell.player)}" />
+					<span class="pos {players[cell.player].pos}">{players[cell.player].pos}</span> 
+					<div class="playerAvatar" style="{getAvatar(players[cell.player].pos, cell.player)}" />
 					<br />
-					<span class="name" bind:this={origin}>{`${players[cell.player].first_name} ${players[cell.player].last_name}`}</span>
+					<span class="name" bind:this={origin}>{`${players[cell.player].fn} ${players[cell.player].ln}`}</span>
 				</span>
 			</Cell>
 		{:else if cell && cell.pick}
