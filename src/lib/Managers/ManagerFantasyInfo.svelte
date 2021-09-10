@@ -228,7 +228,7 @@
                 <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
             </div>
             <div class="infoAnswer">
-                {players[viewManager.favoritePlayer].first_name} {players[viewManager.favoritePlayer].last_name}
+                {players[viewManager.favoritePlayer].fn} {players[viewManager.favoritePlayer].ln}
             </div>
         </div>
     {/if}

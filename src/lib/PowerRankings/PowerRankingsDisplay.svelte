@@ -37,9 +37,9 @@
 
             for(const rosterPlayer of roster.players) {
                 rosterPlayers.push({
-                    name: players[rosterPlayer].last_name,
-                    position: players[rosterPlayer].position,
-                    weeklyInfo: players[rosterPlayer].weeklyInfo
+                    name: players[rosterPlayer].ln,
+                    pos: players[rosterPlayer].pos,
+                    wi: players[rosterPlayer].wi
                 })
             }
 
@@ -48,7 +48,7 @@
                 manager: currentManagers[roster.roster_id],
                 powerScore: 0,
             }
-            const seasonEnd = Object.keys(rosterPlayers[0].weeklyInfo).length || 18;
+            const seasonEnd = 18;
             for(let i = week; i < seasonEnd; i++) {
                 rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
             }

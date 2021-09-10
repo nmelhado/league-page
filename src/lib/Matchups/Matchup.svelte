@@ -13,7 +13,7 @@
 
     let winning = "home";
 
-    const digestStarters = (x) => {
+    const digestStarters = (x, p) => {
         home = matchup[0];
         away = matchup[1];
         const homeStarters = home.starters;
@@ -47,7 +47,7 @@
                 return {
                     name: "Empty",
                     avatar: null,
-                    positions: null,
+                    poss: null,
                     team: null,
                     opponent: null,
                     projection: 0,
@@ -55,17 +55,17 @@
                 };
             }
             const player = players[starter];
-            let name = player.position == "DEF" ? player.last_name : `${player.first_name[0]}. ${player.last_name}`;
+            let name = player.pos == "DEF" ? player.ln : `${player.fn[0]}. ${player.ln}`;
             let projection = 0;
-            if(player.weeklyInfo[displayWeek]) {
-                projection = parseFloat(player.weeklyInfo[displayWeek].projection);
+            if(player.wi[displayWeek]) {
+                projection = parseFloat(player.wi[displayWeek].p);
             }
             return {
                 name,
-                avatar: player.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${starter.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${starter}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-                position: player.position,
-                team: player.team,
-                opponent: player.weeklyInfo[displayWeek] ? player.weeklyInfo[displayWeek].opponent : null,
+                avatar: player.pos == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${starter.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${starter}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
+                pos: player.pos,
+                team: player.t,
+                opponent: player.wi[displayWeek] ? player.wi[displayWeek].o : null,
                 projection,
                 points,
             };
@@ -73,7 +73,7 @@
 
     let starters;
     
-    $: digestStarters(ix);
+    $: digestStarters(ix, players);
 
     let el;
 
@@ -199,7 +199,7 @@
 		background-repeat: no-repeat;
 		background-size: auto 45px;
 	}
-	.position {
+	.pos {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -471,8 +471,8 @@
             <div class="line">
                 <div class="player playerHome">
                     <span class="iconAndTeam iconAndTeamHome">
-                        {#if player.home.position}
-                            <span class="position {player.home.position}">{player.home.position}</span>
+                        {#if player.home.pos}
+                            <span class="pos {player.home.pos}">{player.home.pos}</span>
                         {/if}
                         {#if player.home.avatar}
                             <div class="playerAvatar playerInfo" style="{player.home.avatar}" />
@@ -482,9 +482,9 @@
                         <span class="playerInfo playerName playerNameHome">{player.home.name}</span>
                         {#if player.home.team}
                             {#if player.home.opponent}
-                                <div class="playerTeam">{player.home.position != "DEF" ? `${player.home.team} ` : ""}vs {player.home.opponent}</div>
+                                <div class="playerTeam">{player.home.pos != "DEF" ? `${player.home.team} ` : ""}vs {player.home.opponent}</div>
                             {:else}
-                                <div class="playerTeam">{player.home.position != "DEF" ? player.home.team : ""}</div>
+                                <div class="playerTeam">{player.home.pos != "DEF" ? player.home.team : ""}</div>
                             {/if}
                         {/if}
                     </div>
@@ -498,16 +498,16 @@
                         {#if player.away.avatar}
                             <div class="playerAvatar playerInfo" style="{player.away.avatar}" />
                         {/if}
-                        {#if player.away.position}
-                            <span class="position {player.away.position}">{player.away.position}</span>
+                        {#if player.away.pos}
+                            <span class="pos {player.away.pos}">{player.away.pos}</span>
                         {/if}
                     </span>
                     <div class="nameHolder nameHolderR{player.away.name == 'Empty'? ' playerEmpty' : ''}">
                         {#if player.away.team}
                             {#if player.away.opponent}
-                                <div class="playerTeam">{player.away.opponent} vs{player.away.position != "DEF" ? ` ${player.away.team}` : ""}</div>
+                                <div class="playerTeam">{player.away.opponent} vs{player.away.pos != "DEF" ? ` ${player.away.team}` : ""}</div>
                             {:else}
-                                <div class="playerTeam">{player.away.position != "DEF" ? player.away.team : ""}</div>
+                                <div class="playerTeam">{player.away.pos != "DEF" ? player.away.team : ""}</div>
                             {/if}
                         {/if}
                         <span class="playerInfo playerName playerNameAway">{player.away.name}</span>
