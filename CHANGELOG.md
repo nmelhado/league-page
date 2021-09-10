@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2021-09-10
+
+### Added
+
+- Blog capabilities using [contentful](contentful.com)
+- Requires the use of api secrets and a contentful account (as well as a specific content-type configuration)
+
 ## [1.0.9] - 2021-09-08
 
 ### Fixed
