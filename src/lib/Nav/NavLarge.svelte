@@ -3,7 +3,7 @@
 	import List, { Item, Graphic, Text, Separator } from '@smui/list';
 	import TabBar from '@smui/tab-bar';
 	import { goto, prefetch } from '$app/navigation';
-	import { enableContentful, managers } from '$lib/utils/leagueInfo';
+	import { enableBlog, managers } from '$lib/utils/leagueInfo';
 
 	export let active, tabs;
 
@@ -118,7 +118,7 @@
 				</Tab>
 			</div>
 		{:else}
-			{#if tab.label != 'Blog' || (tab.label == 'Blog' && enableContentful)}
+			{#if tab.label != 'Blog' || (tab.label == 'Blog' && enableBlog)}
 				<Tab
 					{tab}
 					on:touchstart={() => prefetch(tab.dest)}

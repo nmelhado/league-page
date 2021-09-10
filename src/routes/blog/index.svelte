@@ -1,8 +1,8 @@
 <script context="module">
-	import { enableContentful, getBlogPosts } from '$lib/utils/helper';
+	import { enableBlog, getBlogPosts } from '$lib/utils/helper';
 
     export function load({ page }) {
-        if(!enableContentful) return false;
+        if(!enableBlog) return false;
         const queryPage = page.query.get('page') || 1;
         const filterKey = page.query.get('filter') || '';
 		const postsData = getBlogPosts();

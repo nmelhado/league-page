@@ -1,5 +1,5 @@
 import {getLeagueData} from './helperFunctions/leagueData';
-import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableContentful} from './leagueInfo';
+import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableBlog} from './leagueInfo';
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
@@ -17,7 +17,7 @@ import { getBrackets } from './helperFunctions/leagueBrackets';
 import { getBlogPosts } from './helperFunctions/getBlogPosts';
 
 export {
-    enableContentful,
+    enableBlog,
     homepageText,
     gotoManager,
     managers,
