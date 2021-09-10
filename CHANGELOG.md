@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.12] - 2021-09-09
+
+### Fixed
+
+- Pulling in the IDP projections overloaded Vercel's servers
+    - Reduce the amount returned in player call by shortening variable names
+
 ## [1.0.11] - 2021-09-09
 
 ### Fixed

@@ -109,7 +109,7 @@
 		for(const move of moves) {
 			for(const col of move) {
 				if(!col?.player) continue;
-				return checkMatch(query, col.player.name);
+				return checkMatch(query, `${players[col.player].fn} ${players[col.player].ln}`);
 			}
 		}
 		return false;
