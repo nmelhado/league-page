@@ -8,7 +8,7 @@
   	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import { goto, prefetch } from '$app/navigation';
 	import { leagueName } from '$lib/utils/helper';
-	import { managers } from '$lib/utils/leagueInfo';
+	import { enableContentful, managers } from '$lib/utils/leagueInfo';
 	
 	export let active, tabs;
 
@@ -71,7 +71,7 @@
 	<Content>
 		<List>
 			{#each tabs as tab}
-				{#if !tab.nest}
+				{#if !tab.nest && (tab.label != 'Blog' || (tab.label == 'Blog' && enableContentful))}
 					<Item href="javascript:void(0)" on:click={() => selectTab(tab)} on:touchstart={() => prefetch(tab.dest)} on:mouseover={() => prefetch(tab.dest)} activated={active == tab.dest} >
 						<Graphic class="material-icons{active == tab.dest ? "" : " nav-item"}" aria-hidden="true">{tab.icon}</Graphic>
 						<Text class="{active == tab.dest ? "" : "nav-item"}">{tab.label}</Text>

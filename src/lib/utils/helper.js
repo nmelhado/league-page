@@ -5,7 +5,7 @@ import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
 import {getLeagueUsers} from './helperFunctions/leagueUsers';
 import {getLeagueMatchups} from './helperFunctions/leagueMatchups'
-import {getNews} from './helperFunctions/news';
+import {getNews, stringDate} from './helperFunctions/news';
 import {loadPlayers} from './helperFunctions/players';
 import { waitForAll } from './helperFunctions/multiPromise';
 import { getUpcomingDraft, getPreviousDrafts } from './helperFunctions/leagueDrafts'
@@ -14,6 +14,7 @@ import { getAwards } from './helperFunctions/leagueAwards'
 import { cleanName, round, generateGraph, gotoManager } from './helperFunctions/universalFunctions';
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
+import { getBlogPosts } from './helperFunctions/getBlogPosts';
 
 export {
     enableContentful,
@@ -39,7 +40,9 @@ export {
     leagueName,
     dynasty,
     getAwards,
+    stringDate,
     getBrackets,
     generateGraph,
+    getBlogPosts,
     predictScores
 }

@@ -1,5 +1,8 @@
 <script>
-    export let post, createdAt;
+    import { stringDate } from "$lib/utils/helper";
+    import { fly } from "svelte/transition";
+
+    export let post, createdAt, id = null, direction = 1;
 
     const generatePargaraph = (paragraph, indent = true) => {
         let paragraphText = '';
@@ -44,7 +47,6 @@
             }
 
             // add modifiers
-            console.log(element)
             if(element.marks) {
                 for(const modifier of element.marks) {
                     // add bold text
@@ -126,8 +128,13 @@
         return paragraphText;
     }
 
-    console.log(createdAt);
-    console.log(post);
+    const parseDate = (rawDate) => {
+		const ts = Date.parse(rawDate);
+		const d = new Date(ts);
+		return stringDate(d);
+    }
+
+    const duration = 300;
 </script>
 
 <style>
@@ -136,7 +143,8 @@
         border: 1px solid var(--bbb);
         border-radius: 1.5em;
         color: var(--g333);
-        padding: 1.5em 0 2em;
+        padding: 1.5em 0 1em;
+        margin: 2em 0;
     }
 
     h3 {
@@ -145,17 +153,18 @@
         margin: 0;
     }
 
-    .postType {
-        text-align: center;
-    }
-
-    .postType a {
+    .authorAndDate a {
         background-color: #00316b;
         color: #fff;
         border-radius: 1em;
         text-decoration: none;
         font-size: 0.8em;
         padding: 0.5em 1em;
+        margin-right: 1em;
+    }
+
+    .authorAndDate a:hover {
+        background-color: #0082c3;
     }
 
     :global(.body blockquote) {
@@ -183,24 +192,38 @@
     :global(.body .bodyParagraph a) {
         color: var(--g111);
     }
+
+    .divider {
+        border:0;
+        margin:0;
+        width:100%;
+        height:1px;
+        background: var(--ddd);
+        margin-bottom: 1em;
+    }
+
+    .authorAndDate {
+        color: var(--g999);
+        padding: 0 2em;
+    }
 </style>
 
-<div class="post">
-    <h3>{post.title}</h3>
-    <div class="postType">
-        <a href="/blog?type={post.type}">{post.type}</a>
-    </div>
-    
-    <div class="body">
-        {#each post.body.content as paragraph}
-            {@html generatePargaraph(paragraph)}
-        {/each}
-    </div>
+{#key id}
+    <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
+        <h3>{post.title}</h3>
+        
+        <div class="body">
+            {#each post.body.content as paragraph}
+                {@html generatePargaraph(paragraph)}
+            {/each}
+        </div>
 
-    <hr class="divider" />
+        <hr class="divider" />
 
-    <div class="authorAndDate">
-        <span class="author">{post.author}</span>
-        <span class="date">{createdAt}</span>
+        <div class="authorAndDate">
+            <a href="/blog?filter={post.type}&page=1">{post.type}</a>
+            <span class="author">{post.author} - </span>
+            <span class="date"><i>{parseDate(createdAt)}</i></span>
+        </div>
     </div>
-</div>
+{/key}

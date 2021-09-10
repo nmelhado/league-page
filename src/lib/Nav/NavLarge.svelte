@@ -3,7 +3,7 @@
 	import List, { Item, Graphic, Text, Separator } from '@smui/list';
 	import TabBar from '@smui/tab-bar';
 	import { goto, prefetch } from '$app/navigation';
-	import { managers } from '$lib/utils/leagueInfo';
+	import { enableContentful, managers } from '$lib/utils/leagueInfo';
 
 	export let active, tabs;
 
@@ -118,16 +118,18 @@
 				</Tab>
 			</div>
 		{:else}
-			<Tab
-				{tab}
-				on:touchstart={() => prefetch(tab.dest)}
-				on:mouseover={() => prefetch(tab.dest)}
-				on:click={() => goto(tab.dest)}
-				minWidth
-			>
-				<Icon class="material-icons">{tab.icon}</Icon>
-				<Label>{tab.label}</Label>
-			</Tab>
+			{#if tab.label != 'Blog' || (tab.label == 'Blog' && enableContentful)}
+				<Tab
+					{tab}
+					on:touchstart={() => prefetch(tab.dest)}
+					on:mouseover={() => prefetch(tab.dest)}
+					on:click={() => goto(tab.dest)}
+					minWidth
+				>
+					<Icon class="material-icons">{tab.icon}</Icon>
+					<Label>{tab.label}</Label>
+				</Tab>
+			{/if}
 		{/if}
 	</TabBar>
 	<div class="subMenu" style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length ? 0 : 48) : 0}px; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? "3px" : "0"} 0 #00316b; border: {display ? "1px" : "0"} solid #00316b; border-top: none;">
