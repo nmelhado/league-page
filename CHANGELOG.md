@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2021-09-10
+
+### Added
+
+- Major feature added!
+- Blog capabilities using [contentful](contentful.com)
+- Requires the use of api secrets and a contentful account (as well as a specific content-type configuration)
+- For directions, follow the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog)
+
+### Changed
+
+- Hide pagination if there aren't enough results to paginate
+
+- Preview (3) trades and (3) waivers instead of (2) on the homepage
+
+### Fixed
+
+- A bug that crated the wrong footer offset when an update is available (this used to obscure some of the page)
+
+- If you there are no managers listed, return a 404 on the `/managers` pages instead of empty pages
+
+- Removed static css files generated from smui (they are built at runtime and are unnecessary in the repo)
+
 ## [1.0.12] - 2021-09-09
 
 ### Fixed

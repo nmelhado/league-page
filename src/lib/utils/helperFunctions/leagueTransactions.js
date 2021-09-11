@@ -65,7 +65,7 @@ export const getLeagueTransactions = async (preview, refresh = false) => {
 const checkPreview = (preview, passedTransactions) => {
 	if(preview) {
 		// If this is being used for a preview component, only grab 2 trades and waivers
-		const previewToReturn = 2;
+		const previewToReturn = 3;
 
 		const trades = [];
 		const waivers = [];
