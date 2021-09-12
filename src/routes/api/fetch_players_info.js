@@ -70,11 +70,11 @@ const computePlayers = (playerData, weeklyData, scoringSettings) => {
             ln: projPlayer.last_name,
             pos: projPlayer.position,
         };
-        if(projPlayer.status != 'Inactive') {
+        if(projPlayer.team) {
             player.t = projPlayer.team;
             player.wi = {};
         }
-        if(projPlayer.status != 'Inactive' && projPlayer.injury_status) {
+        if(projPlayer.team && projPlayer.injury_status) {
             player.is = projPlayer.injury_status;
         }
 

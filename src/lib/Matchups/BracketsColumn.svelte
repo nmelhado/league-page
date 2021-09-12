@@ -114,7 +114,7 @@
         if(!starters) return 0;
         let totalPoints = 0;
         for(const starter of starters) {
-            totalPoints += parseFloat(players[starter].wi[playoffsStart - ix]?.p || 0);
+            totalPoints += parseFloat(players[starter].wi && players[starter].wi[playoffsStart - ix]?.p ? players[starter].wi[playoffsStart - ix].p : 0);
         }
         return round(totalPoints);
     }
