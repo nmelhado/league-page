@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2021-09-11
+
+### Fixed
+
+- Bug with the nav bar that would occur when you don't have the blog enabled and visit any of the nested tabs
+- Bug with Inactive players breaking matchups and projections
+
 ## [1.1.0] - 2021-09-10
 
 ### Added
