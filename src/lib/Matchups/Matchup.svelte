@@ -57,7 +57,7 @@
             const player = players[starter];
             let name = player.pos == "DEF" ? player.ln : `${player.fn[0]}. ${player.ln}`;
             let projection = 0;
-            if(player.wi[displayWeek]) {
+            if(player.wi && player.wi[displayWeek]) {
                 projection = parseFloat(player.wi[displayWeek].p);
             }
             return {
@@ -65,7 +65,7 @@
                 avatar: player.pos == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${starter.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${starter}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
                 pos: player.pos,
                 team: player.t,
-                opponent: player.wi[displayWeek] ? player.wi[displayWeek].o : null,
+                opponent: player.wi && player.wi[displayWeek] ? player.wi[displayWeek].o : null,
                 projection,
                 points,
             };

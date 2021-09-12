@@ -100,6 +100,10 @@
 	:global(.subText) {
 		font-size: 0.8em;
 	}
+
+	:global(.dontDisplay) {
+		display: none;
+	}
 </style>
 
 <div class="overlay" style="display: {display ? "block" : "none"};" on:click={() => open(true)} />
@@ -118,32 +122,29 @@
 				</Tab>
 			</div>
 		{:else}
-			{#if tab.label != 'Blog' || (tab.label == 'Blog' && enableBlog)}
-				<Tab
-					{tab}
-					on:touchstart={() => prefetch(tab.dest)}
-					on:mouseover={() => prefetch(tab.dest)}
-					on:click={() => goto(tab.dest)}
-					minWidth
-				>
-					<Icon class="material-icons">{tab.icon}</Icon>
-					<Label>{tab.label}</Label>
-				</Tab>
-			{/if}
+			<Tab
+				class="{tab.label == 'Blog' && !enableBlog ? 'dontDisplay' : ''}"
+				{tab}
+				on:touchstart={() => prefetch(tab.dest)}
+				on:mouseover={() => prefetch(tab.dest)}
+				on:click={() => goto(tab.dest)}
+				minWidth
+			>
+				<Icon class="material-icons">{tab.icon}</Icon>
+				<Label>{tab.label}</Label>
+			</Tab>
 		{/if}
 	</TabBar>
 	<div class="subMenu" style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length ? 0 : 48) : 0}px; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? "3px" : "0"} 0 #00316b; border: {display ? "1px" : "0"} solid #00316b; border-top: none;">
 		<List>
 			{#each tabChildren as subTab, ix}
 				{#if subTab.label == 'Managers'}
-					{#if managers.length}
-						<Item on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => prefetch(subTab.dest)} on:mouseover={() => prefetch(subTab.dest)}>
-							<Graphic class="material-icons">{subTab.icon}</Graphic>
-							<Text class="subText">{subTab.label}</Text>
-						</Item>
-						{#if ix != tabChildren.length - 1}
-							<Separator />
-						{/if}
+					<Item class="{managers.length ? '' : 'dontDisplay'}" on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => prefetch(subTab.dest)} on:mouseover={() => prefetch(subTab.dest)}>
+						<Graphic class="material-icons">{subTab.icon}</Graphic>
+						<Text class="subText">{subTab.label}</Text>
+					</Item>
+					{#if ix != tabChildren.length - 1}
+						<Separator />
 					{/if}
 				{:else}
 					<Item on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => {if(subTab.label != 'Go to Sleeper') prefetch(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') prefetch(subTab.dest)}}>
