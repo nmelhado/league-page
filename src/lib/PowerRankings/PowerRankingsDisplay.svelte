@@ -64,7 +64,7 @@
         
         // Fraser, Sam, Ryan, Matt, Brandon, Trey, Erik, Kyle, Ward Connor, Elliot Foster
         // rosterPower.powerScore = {89, 64, 74, 100, 76, 68, 71, 81, 54, 82, 83, 71};  // draft
-        rosterPower.powerScore = {82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73};  // week 1
+        rosterPower.powerScore = [82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73];  // week 1
 
         const powerGraph = {
             stats: rosterPowers,
