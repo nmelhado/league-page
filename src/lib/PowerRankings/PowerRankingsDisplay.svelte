@@ -49,18 +49,18 @@
                 powerScore: 0,
             }
             const seasonEnd = Object.keys(rosterPlayers[0].weeklyInfo).length || 18;
-            for(let i = week; i < seasonEnd; i++) {
+            /*for(let i = week; i < seasonEnd; i++) {
                 rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
             }
             if(rosterPower.powerScore > max) {
                 max = rosterPower.powerScore;
-            }
+            }*/
             rosterPowers.push(rosterPower);
         }
 
         // Fraser, Sam, Ryan, Matt, Brandon, Trey, Erik, Kyle, Ward Connor, Elliot Foster
         // rosterPower.powerScore = {89, 64, 74, 100, 76, 68, 71, 81, 54, 82, 83, 71};  // draft
-        // manualScores = [82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73];  // week 1
+        manualScores = [82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73];  // week 1
         for(const rosterPower of rosterPowers) {
             rosterPower.powerScore = 100;
         }
