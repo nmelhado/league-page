@@ -27,7 +27,7 @@
         }
         let max = 0;
 
-        /*for(const roster of rosters) {
+        for(const roster of rosters) {
             // make sure the roster has players on it
             if(!roster.players) continue;
             // if at least one team has players, create the graph
@@ -60,7 +60,7 @@
 
         for(const rosterPower of rosterPowers) {
             rosterPower.powerScore = round(rosterPower.powerScore/max * 100);
-        }*/
+        }
         
         // Fraser, Sam, Ryan, Matt, Brandon, Trey, Erik, Kyle, Ward Connor, Elliot Foster
         // rosterPower.powerScore = {89, 64, 74, 100, 76, 68, 71, 81, 54, 82, 83, 71};  // draft
