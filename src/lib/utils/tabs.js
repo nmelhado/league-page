@@ -59,7 +59,7 @@ export const tabs = [
         ]
     },
     {
-        icon: 'feed',
+        icon: 'lightbulb',
         label: 'Resources',
         dest: '/resources',
     },
