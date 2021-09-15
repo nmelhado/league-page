@@ -49,12 +49,12 @@
                 powerScore: 0,
             }
             const seasonEnd = Object.keys(rosterPlayers[0].weeklyInfo).length || 18;
-            /*for(let i = week; i < seasonEnd; i++) {
+            for(let i = week; i < seasonEnd; i++) {
                 rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
             }
             if(rosterPower.powerScore > max) {
                 max = rosterPower.powerScore;
-            }*/
+            }
             rosterPowers.push(rosterPower);
         }
 
