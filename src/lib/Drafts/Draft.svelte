@@ -3,11 +3,11 @@
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';
     import DraftRow from './DraftRow.svelte';
-    import { cleanName } from '$lib/utils/helper'
+    import { cleanName, gotoManager } from '$lib/utils/helper'
     
     export let draftData, previous = false;
 
-    const {draftOrder, draft, currentManagers, originalManagers, accuracy, draftType} = draftData;
+    const {draftOrder, draft, currentManagers, originalManagers, accuracy, reversalRound, draftType} = draftData;
 
     let progress = 0;
     let closed = false;
@@ -94,6 +94,10 @@
         margin: 0.4em 0;
 		border: 0.25px solid #777;
 	}
+
+    .clickable {
+        cursor: pointer;
+    }
 	
 	:global(.curDraftName) {
         color: #888;
@@ -118,8 +122,9 @@
             {#each draftOrder as draftPosition}
                 {#if draftPosition}
                     <Cell class="draftTeam">
-                        <img class="avatar" src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
-                        <br />{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}
+                        <img class="avatar clickable" on:click={() => gotoManager(draftPosition)} src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
+                        <br />
+                        <span class="clickable" on:click={() => gotoManager(draftPosition)}>{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}</span>
                     </Cell>
                 {/if}
             {/each}
@@ -127,7 +132,7 @@
     </Head>
     <Body>
         {#each draft as draftRow, row}
-            <DraftRow {draftRow} row={row + 1} {previous} {draftType} />
+            <DraftRow {draftRow} row={row + 1} {previous} {reversalRound} {draftType} />
         {/each}
     </Body>
 </DataTable>

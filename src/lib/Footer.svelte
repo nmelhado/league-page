@@ -1,22 +1,31 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { tabs } from '$lib/utils/tabs';
+	import { onMount } from 'svelte';
+
+	let outOfDate = false;
+
+	onMount(async () => {
+		const res = await fetch('/api/checkVersion', {compress: true})
+		const needUpdate = await res.json();
+		outOfDate = needUpdate;
+	})
 
 	const year = new Date().getFullYear();
 
-	let el, footerHeight, innerWidth;
+	let el, elNeedUpdate, innerWidth, footerHeight, footerHeightNeedUpdate;
 
 	const resize = (w) => {
 		const top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
 		const bottom = el?.getBoundingClientRect() ? el?.getBoundingClientRect().bottom  : 0;
+		const topNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().top  : 0;
+		const bottomNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().bottom  : 0;
 
 		footerHeight = bottom - top;
+		footerHeightNeedUpdate = bottomNeedUpdate - topNeedUpdate;
 	}
 
-
     $: resize(innerWidth);
-    
-
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -62,11 +71,49 @@
 	.navLink:hover {
 		color: #920505;
 	}
+
+	.updateNotice {
+		color: var(--g999);
+		font-style: italic;
+		font-size: 0.8em;
+		margin-top: 0;
+	}
+
+	.invisible {
+		visibility: hidden;
+		pointer-events: none;
+	}
 </style>
 
-<div class="footerSpacer" style="height: {footerHeight}px;" />
+<div class="footerSpacer" style="height: {outOfDate ? footerHeightNeedUpdate : footerHeight}px;" />
 
-<footer bind:this={el}>
+<!-- footer with update notice -->
+<footer class="{outOfDate ? '' : 'invisible'}" bind:this={elNeedUpdate}>
+	<p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
+	<div id="navigation">
+		<ul>
+			{#each tabs as tab}
+				{#if !tab.nest}
+					<li><div class="navLink" on:click={() => goto(tab.dest)}>{tab.label}</div></li>
+				{:else}
+					{#each tab.children as child}
+						<li><div class="navLink" on:click={() => goto(child.dest)}>{child.label}</div></li>
+					{/each}
+				{/if}
+			{/each}
+		</ul>
+	</div>
+	<!-- PLEASE DO NOT REMOVE THE COPYRIGHT -->
+	<span class="copyright">&copy; 2021 - {year} <a href="https://github.com/nmelhado/league-page">League Page</a></span>
+	<br />
+	<!-- PLEASE DO NOT REMOVE THE BUILT BY -->
+	<span class="creator">Built by <a href="http://www.nmelhado.com/">Nicholas Melhado</a><br /></span>
+	<!-- You can remove the donation link (although any donations to help
+	 maintain and enhance League Page would be greatly appreciated!) -->
+	Love League Page? Please consider <a href="https://www.buymeacoffee.com/nmelhado">donating</a> to support enhancements or just to say thank you!
+</footer>
+
+<footer class="{!outOfDate ? '' : 'invisible'}" bind:this={el}>
 	<div id="navigation">
 		<ul>
 			{#each tabs as tab}

@@ -46,9 +46,13 @@
   --g999: #666;
   --g444: #bbb;
   --g555: #aaa;
+  --g333: #ccc;
+  --g111: #eee;
+  --g000: #fff;
   --boxShadowOne: #070707;
   --boxShadowTwo: #272727;
   --boxShadowThree: #0d0d0d;
+  --ir: #222;
   --champShadow: #111;
   --transactHeader: #202424;
   --draftSwapped: #202025;
@@ -65,19 +69,30 @@
   --r2: #1f1d1d;
   --r3: #181a18;
   // Positions
-  --QB: #311c23;
-  --WR: #2b353f;
-  --RB: #1c3634;
-  --TE: #42382c;
-  --K: #3c3144;
-  --DEF: #2f2f23;
-  --PICKS: #2b441b;
-  --CB: #524126;
-  --SS: #362f41;
-  --FS: #424132;
-  --DE: #2f373d;
-  --DL: #3d2e42;
-  --LB: #334132;
+  --QBfade: #ff8fb2;
+  --WRfade: #afd4ff;
+  --RBfade: #6ccac1;
+  --TEfade: #ffd6aa;
+  --Kfade: #deb4ff;
+  --DEfadeFfade: #fffbbc;
+  --PICKSfade: #73b647;
+  --CBfade: #ffcc7a;
+  --SSfade: #b7a1db;
+  --FSfade: #ebe7b3;
+  --DEfade: #b1d0e9;
+  --DLfade: #c392d3;
+  --LBfade: #98c097;
+
+	--QB: #ff2a6d;
+	--WR: #58a7ff;
+	--RB: #00ceb8;
+	--TE: #ffae58;
+	--K: #bd66ff;
+	--DEF: #fff67a;
+	--DL: #ff795a;
+	--LB: #6d7df5;
+	--DB: #ff7cb6;
+	--BN: #b6d0eb;
 }
 
 html,

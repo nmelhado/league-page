@@ -121,7 +121,7 @@
         line-height: 1.1em;
         left: 50%;
         color: #666;
-        bottom: 103%;
+        bottom: 101%;
         text-align: center;
     }
 

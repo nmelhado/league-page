@@ -102,30 +102,30 @@
     }
 
     .QB {
-        background-color: #ff2a6d;
+        background-color: var(--QB);
     }
 
     .WR {
-        background-color: #58a7ff;
+        background-color: var(--WR);
     }
 
     .RB {
-        background-color: #00ceb8;
+        background-color: var(--RB);
     }
 
     .TE {
-        background-color: #ffae58;
+        background-color: var(--TE);
     }
 
     .Picks {
         background: #73b647;
     }
     .K {
-        background-color: #bd66ff;
+        background-color: var(--K);
     }
 
     .DEF {
-        background-color: #fff67a;
+        background-color: var(--DEF);
     }
 
     .CB {
@@ -204,18 +204,20 @@
             </div>
         </div>
     {/if}
-    <!-- Trading Scale -->
-    <div class="infoSlot">
-        <div class="infoLabel">
-            Desire to Trade
+    {#if viewManager.tradingScale}
+        <!-- Trading Scale -->
+        <div class="infoSlot">
+            <div class="infoLabel">
+                Desire to Trade
+            </div>
+            <div class="infoIcon">
+                <span class="tradingScale">{viewManager.tradingScale}</span>
+            </div>
+            <div class="infoAnswer">
+                {viewManager.tradingScale} out of 10
+            </div>
         </div>
-        <div class="infoIcon">
-            <span class="tradingScale">{viewManager.tradingScale}</span>
-        </div>
-        <div class="infoAnswer">
-            {viewManager.tradingScale} out of 10
-        </div>
-    </div>
+    {/if}
     <!-- Favorite player (optioonal) -->
     {#if viewManager.favoritePlayer}
         <div class="infoSlot">
@@ -226,7 +228,7 @@
                 <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
             </div>
             <div class="infoAnswer">
-                {players[viewManager.favoritePlayer].first_name} {players[viewManager.favoritePlayer].last_name}
+                {players[viewManager.favoritePlayer].fn} {players[viewManager.favoritePlayer].ln}
             </div>
         </div>
     {/if}

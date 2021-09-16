@@ -22,7 +22,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 -----------
 <div align="center">
 
-<i>If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)</i>
+<i>If you and your league like League Page, please consider starring the repo and <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)</i>
 <br>
     <a href="https://www.buymeacoffee.com/nmelhado" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important; width: 217px !important;" width="217px" height="60px" ></a>
 </div>
@@ -54,7 +54,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
   - [x] ~~Test redraft leagues~~
   - [x] ~~Playoff matchups and current bracket~~
   - [ ] Dynasty power rankings
-  - [ ] Hyperlink all manager references
+  - [x] ~~Hyperlink all manager references~~
   - [x] ~~Fix all css issues when actively resizing the window~~
 
 ## Some real-life League Pages
@@ -67,11 +67,22 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)
 - Write your homepage text (league intro/bio) `/src/lib/utils/leagueInfo.js` (lines 9-14)
 ![homepage text](https://storage.googleapis.com/nfl-player-data/homepage_text.png)
-- Next, fill out and uncomment (delete the `// ` at the beginning of each line) the managers' object (lines 27 - 92), also located in `/src/lib/utils/leagueInfo.js`, there should be one object for each manager (for assistance, consult the [Training Wheels guide](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers))
+- Next, fill out and uncomment (delete the `// ` at the beginning of each line) the managers' object (lines 27 - 92), also located in `/src/lib/utils/leagueInfo.js`, there should be one object for each manager (for assistance, consult the [Training Wheels guide](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text))
 ![manager object](https://storage.googleapis.com/nfl-player-data/managersObj.png)
 ![manager rendering](https://storage.googleapis.com/nfl-player-data/managerRendering.png)
 - Add corresponding images for managers to the `/static/managers/` directory and make the sure the name matches with what was provided above
-- If you run into trouble adding managers, reference the [Training Wheels' Manager section](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
+- If you run into trouble adding managers, reference the [Training Wheels' Manager section](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text)
+- Add blog capabilities with [contenful](https://contentful.com/)
+    - Make a free contentful account
+    - Create a content model that matches below 
+    ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
+    - Create an API key
+    - For local development add a `.env` file to the root of your project and add the following variables
+        - `VITE_CONTENTFUL_ACCESS_TOKEN` with the corresponding value obtained from contenful
+        - `VITE_CONTENTFUL_SPACE` with the corresponding value obtained from contenful
+    - To add the variables for production, go to your project settings and add the corresponding keys (using the same names as above) to the environment variables section
+    - For more detailed instructions, follow the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog)
+    - Finally, set `enableBlog` to true in `src/lib/utils/leagueInfo.js`
 - Customize your league constitution `/src/routes/constitution/index.svelte` (remember to adjust the table of contents accordingly)
 -----------
 ## For local developing [npm](https://docs.npmjs.com/getting-started/what-is-npm):

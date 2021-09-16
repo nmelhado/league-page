@@ -1,9 +1,9 @@
 <script>
-	import {cleanName} from '$lib/utils/helper';
+	import {cleanName, gotoManager} from '$lib/utils/helper';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import TransactionMove from './TransactionMove.svelte';
 
-	export let transaction, masterOffset, currentManagers;
+	export let transaction, masterOffset, currentManagers, players;
 </script>
 
 <style>
@@ -49,6 +49,10 @@
 		font-size: 0.8em;
 		color: #aaa;
 	}
+
+	.clickable {
+		cursor: pointer;
+	}
 </style>
 
 <DataTable class="transaction">
@@ -57,12 +61,12 @@
 			{#each transaction.rosters as owner, ix}
 				<Cell class="transactTeam">
 					{#if transaction.previousOwners && cleanName(transaction.previousOwners[ix].name) != cleanName(currentManagers[owner].name)}
-						<img class="avatar" src="{transaction.previousOwners[ix].avatar}" alt="{transaction.previousOwners[ix].name} avatar"/>
-						<br />{transaction.previousOwners[ix].name}
+						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{transaction.previousOwners[ix].avatar}" alt="{transaction.previousOwners[ix].name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{transaction.previousOwners[ix].name}</span>
 						<span class="currentOwner">({currentManagers[owner].name})</span>
 					{:else}
-						<img class="avatar" src="{currentManagers[owner].avatar}" alt="{currentManagers[owner].name} avatar"/>
-						<br />{currentManagers[owner].name}
+						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{currentManagers[owner].avatar}" alt="{currentManagers[owner].name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{currentManagers[owner].name}</span>
 					{/if}
 				</Cell>
 			{/each}
@@ -70,7 +74,7 @@
 	</Head>
 	<Body class="moves">
 		{#each transaction.moves as move}
-			<TransactionMove {move} type={transaction.type} {masterOffset} {currentManagers} />
+			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {currentManagers} />
 		{/each}
 		<Row>
 			<Cell class="transact-date" colspan={transaction.rosters.length}>{transaction.date}</Cell>

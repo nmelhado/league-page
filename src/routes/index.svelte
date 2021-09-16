@@ -1,9 +1,8 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
-	import { getNflState, cleanName, leagueName, homepageText, managers, findManagerLink } from '$lib/utils/helper';
-	import { Transactions, PowerRankings} from '$lib/components';
+	import { getNflState, cleanName, leagueName, homepageText, managers, gotoManager, enableBlog } from '$lib/utils/helper';
+	import { Transactions, PowerRankings, HomePost} from '$lib/components';
     import { getAwards } from "$lib/utils/helper"
-    import { goto } from '$app/navigation';
 
     let nflState = getNflState();
     let podiumsData = getAwards();
@@ -154,6 +153,10 @@
             <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
+            <!-- Most recent Blog Post (if enabled) -->
+            {#if enableBlog}
+                <HomePost />
+            {/if}
         </div>
         <PowerRankings />
     </div>
@@ -167,7 +170,15 @@
                 <p class="center">Retrieving NFL state...</p>
                 <LinearProgress indeterminate />
             {:then nflStateData}
-                <p class="center">NFL {nflStateData.season} {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}</p>
+                <p class="center">NFL {nflStateData.season} 
+                    {#if nflStateData.season_type == 'pre'}
+                        Preseason
+                    {:else if nflStateData.season_type == 'post'}
+                        Postseason
+                    {:else}
+                        {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}
+                    {/if}
+                </p>
             {:catch error}
                 <p class="center">Something went wrong: {error.message}</p>
             {/await}
@@ -180,11 +191,11 @@
             {:then {podiums, currentManagers}}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Champ</h4>
-                    <div id="champ" on:click={() => {if(managers.length) goto(findManagerLink(managers, parseInt(podiums[0].champion.rosterID)))}} >
+                    <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion.rosterID))}} >
                         <img src="{podiums[0].champion.avatar}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
-                    <span class="label" on:click={() => goto(findManagerLink(managers, parseInt(podiums[0].champion.rosterID)))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentManagers)}</span>
+                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentManagers)}</span>
                 {:else}
                     <p class="center">No former champs.</p>
                 {/if}

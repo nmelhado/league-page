@@ -1,7 +1,7 @@
 <script>
     import BarChart from '$lib/BarChart.svelte';
-    import { generateGraph, round, predictScores } from '$lib/utils/helper';
-    export let nflState, rostersData, users, players, leagueData;
+    import { generateGraph, round, predictScores, loadPlayers } from '$lib/utils/helper';
+    export let nflState, rostersData, users, playersInfo, leagueData;
 
     const rosters = rostersData.rosters;
 
@@ -15,58 +15,81 @@
         }
     }
 
-    let week = nflState.week;
-    if(week == 0) {
-        week = 1;
+    let validGraph = false;
+
+    let graphs = [];
+
+    const buildRankings = () => {
+        const rosterPowers = [];
+        let week = nflState.week;
+        if(week == 0) {
+            week = 1;
+        }
+        let max = 0;
+
+        for(const roster of rosters) {
+            // make sure the roster has players on it
+            if(!roster.players) continue;
+            // if at least one team has players, create the graph
+            validGraph = true;
+
+            const rosterPlayers = [];
+
+            for(const rosterPlayer of roster.players) {
+                rosterPlayers.push({
+                    name: players[rosterPlayer].ln,
+                    pos: players[rosterPlayer].pos,
+                    wi: players[rosterPlayer].wi
+                })
+            }
+
+            const rosterPower = {
+                rosterID: roster.roster_id,
+                manager: currentManagers[roster.roster_id],
+                powerScore: 0,
+            }
+            const seasonEnd = 18;
+            for(let i = week; i < seasonEnd; i++) {
+                rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
+            }
+            if(rosterPower.powerScore > max) {
+                max = rosterPower.powerScore;
+            }
+            rosterPowers.push(rosterPower);
+        }
+
+        for(const rosterPower of rosterPowers) {
+            rosterPower.powerScore = round(rosterPower.powerScore/max * 100);
+        }
+
+        const powerGraph = {
+            stats: rosterPowers,
+            x: "Manager",
+            y: "Power Ranking",
+            stat: "",
+            header: "Rest of Season Power Rankings",
+            field: "powerScore",
+            short: "ROS Power Ranking"
+        };
+
+        graphs = [
+            generateGraph(powerGraph, 10)
+        ]
     }
-    
-    const rosterPowers = [];
 
-    let max = 0;
+    let players = playersInfo.players;
 
-    for(const roster of rosters) {
-        const rosterPlayers = [];
+    buildRankings();
 
-        for(const rosterPlayer of roster.players) {
-            rosterPlayers.push({
-                name: players[rosterPlayer].last_name,
-                position: players[rosterPlayer].position,
-                weeklyInfo: players[rosterPlayer].weeklyInfo
-            })
-        }
-
-        const rosterPower = {
-            rosterID: roster.roster_id,
-            manager: currentManagers[roster.roster_id],
-            powerScore: 0,
-        }
-        
-        for(let i = week; i < Object.keys(rosterPlayers[0].weeklyInfo).length; i++) {
-            rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
-        }
-        if(rosterPower.powerScore > max) {
-            max = rosterPower.powerScore;
-        }
-        rosterPowers.push(rosterPower);
+    const refreshPlayers = async () => {
+        const newPlayersInfo = await loadPlayers(true);
+        players = newPlayersInfo.players;
+        buildRankings();
     }
 
-    for(const rosterPower of rosterPowers) {
-        rosterPower.powerScore = round(rosterPower.powerScore/max * 100);
+    if(playersInfo.stale) {
+        refreshPlayers();
     }
-
-    const powerGraph = {
-        stats: rosterPowers,
-        x: "Manager",
-        y: "Power Ranking",
-        stat: "",
-        header: "Rest of Season Power Rankings",
-        field: "powerScore",
-        short: "ROS Power Ranking"
-    };
-
-    const graphs = [
-        generateGraph(powerGraph, 10)
-    ]
 
     let curGraph = 0;
 
@@ -96,6 +119,8 @@
     }
 </style>
 
-<div class="enclosure" bind:this={el}>
-    <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
-</div>
+{#if validGraph}
+    <div class="enclosure" bind:this={el}>
+        <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
+    </div>
+{/if}

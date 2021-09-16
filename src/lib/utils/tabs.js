@@ -17,6 +17,11 @@ export const tabs = [
         dest: '/transactions',
     },
     {
+        icon: 'article',
+        label: 'Blog',
+        dest: '/blog',
+    },
+    {
         icon: 'view_comfy',
         label: 'League Info',
         nest: true,
@@ -59,7 +64,7 @@ export const tabs = [
         ]
     },
     {
-        icon: 'feed',
+        icon: 'lightbulb',
         label: 'Resources',
         dest: '/resources',
     },

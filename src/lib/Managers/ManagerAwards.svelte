@@ -18,7 +18,7 @@
         // first lookl through annual awards (champion, second, etc)
         for(const podium of awards.podiums) {
             for(const award in podium) {
-                if(podium[award].rosterID == currentRoster.roster_id) {
+                if(podium[award]?.rosterID == currentRoster.roster_id) {
                     const former = tookOver && tookOver > podium.year;
                     if(former) {
                         formerGlobal = true;

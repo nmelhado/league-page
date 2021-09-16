@@ -1,6 +1,6 @@
 <script>
   	import {Row, Cell } from '@smui/data-table';
-    export let draftRow, draftType, row, previous=false;
+    export let draftRow, draftType, row, reversalRound, previous=false;
 </script>
 
 <style>
@@ -25,63 +25,63 @@
         top: 0.1em;
         left: 0.1em;
         font-style: italic;
-        color: var(--g444);
+        color: #444;
     }
 
     .newOwner {
         font-style: italic;
-        color: var(--g444);
+        color: #444;
         text-align: center;
         white-space: break-spaces;
         line-height: 1.2em;
     }
 
 	:global(.prevQB) {
-		background-color: var(--QB);
+		background-color: var(--QBfade);
 	}
 
 	:global(.prevWR) {
-		background-color: var(--WR);
+		background-color: var(--WRfade);
 	}
 
 	:global(.prevRB) {
-		background-color: var(--RB);
+		background-color: var(--RBfade);
 	}
 
 	:global(.prevTE) {
-		background-color: var(--TE);
+		background-color: var(--TEfade);
 	}
 
 	:global(.prevK) {
-		background-color: var(--K);
+		background-color: var(--Kfade);
 	}
 
 	:global(.prevDEF) {
-		background-color: var(--DEF);
+		background-color: var(--DEfadeFfade);
 	}
 
     :global(.prevCB) {
-        background-color: var(--CB);
+        background-color: var(--CBfade);
     }
 
     :global(.prevSS) {
-        background-color: var(--SS);
+        background-color: var(--SSfade);
     }
 
     :global(.prevFS) {
-        background-color: var(--FS);
+        background-color: var(--FSfade);
     }
 
     :global(.prevDE) {
-        background-color: var(--DE);
+        background-color: var(--DEfade);
     }
 
     :global(.prevDL) {
-        background-color: var(--DL);
+        background-color: var(--DLfade);
     }
 
     :global(.prevLB) {
-        background-color: var(--LB);
+        background-color: var(--LBfade);
     }
 
 	.playerAvatar {
@@ -107,6 +107,7 @@
         white-space: break-spaces;
         line-height: 1em;
         bottom: 0.5em;
+        color: rgba(0, 0, 0, 0.87);
     }
 </style>
 
@@ -115,7 +116,24 @@
         {#if !previous || draftCol}
             <Cell class="draftCell{draftCol ? ' changedHands' : ''}{previous ? ` prev${draftCol.player.position}` : ''}">
                 <span class="draftPos{previous ? "Prev" : ""}">
-                    {row}.{draftType == "snake" && row%2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {#if draftType == "auction" && previous}
+                        ${draftCol.player?.amount}
+                    {:else if draftType == "snake" && !reversalRound}
+                        {row}.{row % 2 == 0 ? draftRow.length - col : col + 1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {:else if draftType == "snake" && reversalRound}
+                        {#if (row < reversalRound && row % 2 == 0) || (row >= reversalRound && row % 2 == 1)}
+                            {row}.{draftRow.length - col}
+                        {:else}
+                            {row}.{col + 1}
+                        {/if}
+                        {draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                    {:else}
+                        {#if !reversalRound || row < reversalRound}
+                            {row}.{col+1}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {:else}
+                            {row}.{draftRow.length - col}{draftCol?.newOwner ? ` ${draftCol.newOwner}` : ''}
+                        {/if}
+                    {/if}
                 </span>
                 {#if draftCol && !previous}
                     <div class="newOwner">{draftCol}</div>

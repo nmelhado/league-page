@@ -1,4 +1,5 @@
 <script>
+	import { gotoManager } from '$lib/utils/helper';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"
@@ -9,7 +10,7 @@
 
 	let i = 0;
 
-	const digestData = (rawPlayers, startingPlayers = false, reserve = false) => {
+	const digestData = (passedPlayers, rawPlayers, startingPlayers = false, reserve = false) => {
 		let digestedRoster = [];
 	
 		for(const singlePlayer of rawPlayers) {
@@ -25,7 +26,7 @@
 			if(singlePlayer == "0") {
 				player = {
 					name: "Empty",
-					positions: null,
+					poss: null,
 					team: null,
 					avatar: null,
 					slot: slot
@@ -36,7 +37,7 @@
 			}
 
 			let injury = null;
-			switch (players[singlePlayer].injury_status) {
+			switch (passedPlayers[singlePlayer].is) {
 				case "Questionable":
 					injury = "Q";
 					break;
@@ -54,10 +55,10 @@
 					break;
 			}
 			player = {
-				name: `${players[singlePlayer].first_name} ${players[singlePlayer].last_name}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata && roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
-				positions: players[singlePlayer].position,
-				team: players[singlePlayer].team,
-				avatar: players[singlePlayer].position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${singlePlayer.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${singlePlayer}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
+				name: `${passedPlayers[singlePlayer].fn} ${passedPlayers[singlePlayer].ln}${injury ? `<span class="injury ${injury}">${injury}</span>` : ""}${roster.metadata && roster.metadata[`p_nick_${singlePlayer}`] ? `<br /><span class="nickname">"${roster.metadata[`p_nick_${singlePlayer}`]}"</span>` : ""}`,
+				poss: passedPlayers[singlePlayer].pos,
+				team: passedPlayers[singlePlayer].t,
+				avatar: passedPlayers[singlePlayer].pos == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${singlePlayer.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${singlePlayer}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
 				slot: slot
 			}
 			i++;
@@ -68,11 +69,14 @@
 		return digestedRoster;
 	}
 
-	$: finalStarters = digestData(roster.starters, true);
-	$: finalBench = digestData(roster.players);
+	$: finalStarters = digestData(players, roster.starters, true);
+	let finalBench = [];
+	$: if(roster.players) {
+		finalBench = digestData(players, roster.players);
+	}
 	let finalIR = null;
 	if(roster.reserve) {
-		finalIR = digestData(roster.reserve, false, true);
+		finalIR = digestData(players, roster.reserve, false, true);
 	}
 
 	const buildRecord = (newRoster) => {
@@ -102,16 +106,27 @@
 	let selected = "0px";
 	let status = "minimized";
 	const toggleSelected = () => {
-		selected = selected == "0px" ? "1200px" : "0px";
+		selected = selected == "0px" ? calcHeight() + "px" : "0px";
 		status = status == "minimized" ? "expanded" : "minimized";
 	}
 
+	let innerWidth;
+
+	const calcHeight = () => {
+		const multiplier = 48;
+		const benchLength = finalBench.length * multiplier + 53;
+		let irLength = 0;
+		if(finalIR) {
+			irLength = finalIR.length * multiplier + 52;
+		}
+		return benchLength + irLength;
+	}
+
 	$: {
-		selected = expanded ? "1200px" : "0px";
+		selected = expanded ? calcHeight() + "px" : "0px";
 		status = expanded ? "expanded" : "minimized";
 	}
 
-    let innerWidth;
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -132,6 +147,10 @@
 
 	.team {
 		margin: 4px 10px 10px;
+	}
+
+	:global(.clickable) {
+		cursor: pointer;
 	}
 
 	:global(.teamInner) {
@@ -234,7 +253,7 @@
 	}
 
 	:global(.bench) {
-		background-color: #eee;
+		background-color: var(--ir);
 	}
 </style>
 
@@ -242,8 +261,8 @@
 	<DataTable class="teamInner" table$aria-label="Team Name" style="width: {innerWidth * 0.95 > 380 ? 380 : innerWidth * 0.95}px;" >
 		<Head> <!-- Team name  -->
 			<Row>
-				<Cell colspan=4 class="r_{division}">
-					<h3>
+				<Cell colspan=4 class="r_{division} clickable">
+					<h3 on:click={() => gotoManager(roster.roster_id)}>
 						<img alt="team avatar" class="teamAvatar" src="https://sleepercdn.com/avatars/thumbs/{user.avatar}" />
 						{user.metadata.team_name ? user.metadata.team_name : user.display_name}
 					</h3>
@@ -277,7 +296,7 @@
 				<!-- 	IR	 -->
 				{#if finalIR}
 					<Row>
-							<Cell colspan=4 ><h5>IR:</h5></Cell>
+					<Cell colspan=4 ><h5><Icon class="material-icons icon">healing</Icon> Injured Reserve</h5></Cell>
 					</Row>
 					{#each finalIR as ir}
 						<RosterRow player={ir} />

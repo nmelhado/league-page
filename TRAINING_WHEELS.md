@@ -180,13 +180,53 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 > ![managers preview](https://storage.googleapis.com/nfl-player-data/managersRendered.png)
 
-## III. Wrapping up
+## III. Add a Blog
+
+- Add blog capabilities to your League Page with [contenful](https://contentful.com/)
+    - [Make a free contentful account](https://www.contentful.com/sign-up/)
+    - Click on `Content model` in the top bar and create a content model that matches the specs below:
+    ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
+    - Create an API key and copy down the two values (`Space ID` and `Content Delivery API - access token`)
+    ![API key settings](https://storage.googleapis.com/nfl-player-data/apiKeySettings.jpg)
+    ![add API key](https://storage.googleapis.com/nfl-player-data/addApiKey.jpg)
+    ![API key](https://storage.googleapis.com/nfl-player-data/apiKey.jpg)
+    - Now, go back to Vercel go to your project settings
+    ![project settings](https://storage.googleapis.com/nfl-player-data/projectSettings.jpg)
+    - Go to the environment variables section
+    ![environment variables](https://storage.googleapis.com/nfl-player-data/envVariables.jpg)
+    - Add the values using the following names
+        - name: `VITE_CONTENTFUL_SPACE` value: `Space ID (from contentful)`
+        - name: `VITE_CONTENTFUL_ACCESS_TOKEN` value: `Content Delivery API - access token (from contentful)`
+    ![contentful space](https://storage.googleapis.com/nfl-player-data/contentfulSpace.jpg)
+    ![contentful API token](https://storage.googleapis.com/nfl-player-data/contentfulAPIKey.jpg)
+    - Go back to GitHub and scroll back up to the top of `/src/lib/utils/leagueInfo.js`
+    - Click the edit button and set `enableBlog` to true
+    - Scroll down and click `Commit changes`
+
+## IV. Updates
+
+- League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
+> ![fetch upstream](https://storage.googleapis.com/nfl-player-data/fetchUpstream.jpg)
+
+<br />
+
+- Another way to know there's an update available is if you see the following notification on your League Page:
+    > ![update notification](https://storage.googleapis.com/nfl-player-data/updateNotification.jpg)
+    
+    <br />
+
+    - To see what's changed in the newest updates (bugs fixed, features added, etc.), check the [CHANGELOG](https://github.com/nmelhado/league-page/blob/master/CHANGELOG.md)
+
+    <br />
+
+    - **If you first created your league before August 7th, 2021**, you may encounter `merge conflicts` when trying to fetch upstream.
+        - In that situation (if you are new to coding), copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
+        - There should be **NO merge conflicts going forward**.
+
+
+## V. Wrapping up
 
 - That's it. You've built out your own league website!
-- League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
-    - If you first created your league before August 7th, 2021, you may encounter `merge conflicts` when trying to fetch upstream.
-    - In that situation, copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
-    - There should be **NO merge conflicts going forward**.
 - If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`
     - This page is primarily HTML, so you can edit this in a similar way to how you edited the homepage
 - If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)
