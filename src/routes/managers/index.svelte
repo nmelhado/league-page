@@ -31,7 +31,7 @@
             props.manager = manager;
         }
     
-		return { props, managers };
+		return { props };
 	}
 </script>
 
