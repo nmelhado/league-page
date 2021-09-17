@@ -362,8 +362,7 @@
                 <line stroke-width="2px" stroke="#ccc"  x1="{anchors[Math.floor(inx / 2)].xLeft}" y1="{anchors[Math.floor(inx / 2)].yBottom}" x2="{anchors[Math.floor(inx / 2)].xMiddle}" y2="{anchors[Math.floor(inx / 2)].yBottom}" class="line"/>
             </svg>
         {/if}
-    {/each}
-    {#if !matchCol.length}
+    {:else}
         <div class="match spacer" />
-    {/if}
+    {/each}
 </div>

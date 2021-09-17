@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2021-09-17
+
+### Added
+
+- Add standings tab with the current season standings (customizeable rankings by changing line 12 and/or 15 in `src/lib/Standings/index.svelte`)
+
 ## [1.1.1] - 2021-09-11
 
 ### Fixed
