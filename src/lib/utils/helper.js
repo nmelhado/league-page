@@ -15,6 +15,7 @@ import { cleanName, round, generateGraph, gotoManager } from './helperFunctions/
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 import { getBlogPosts } from './helperFunctions/getBlogPosts';
+import { getLeagueStandings } from './helperFunctions/leagueStandings';
 
 export {
     enableBlog,
@@ -44,5 +45,6 @@ export {
     getBrackets,
     generateGraph,
     getBlogPosts,
-    predictScores
+    predictScores,
+    getLeagueStandings,
 }

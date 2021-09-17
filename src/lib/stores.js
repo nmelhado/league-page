@@ -14,3 +14,4 @@ export const players = writable({});
 export const news = writable([]);
 export const posts = writable([]);
 export const brackets = writable({});
+export const standingsStore = writable({});
