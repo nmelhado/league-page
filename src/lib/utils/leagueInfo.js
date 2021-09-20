@@ -12,8 +12,7 @@ export const homepageText = `
     <p> <b>League Podcast and Advanced Stats:</b></p>
     <iframe title="A Fantasy Football League of Ice and Fire" allowtransparency="true" height="315" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=qpgtk-4f310c-pbblog-playlist&share=1&download=1&rtl=0&fonts=Arial&skin=1b1b1b&font-color=auto&order=episodic&limit=10&filter=all&ss=a713390a017602015775e868a2cf26b0&btn-skin=8bbb4e&size=315" allowfullscreen=""></iframe>
     <p> <b>News:</b></p>
-    <p> Draft pick trading pre-draft will be allowed before the 2022 draft.  Plan accordingly.</p>
-    <p> We have two new members -- Erik and Connor! Go check out their bios so you can tailor trash talk.</p>
+    <p> Draft pick trading 1 week pre-draft will be allowed before the 2022 draft.  This includes trading picks and players on last years' team, so last minute keeper upgrades are possible -- this is a big change!  Plan accordingly.</p>
     <p> Speaking of, if you want anything in your bio updated (and you probably do, considering the low effort shitposting currently in place) -- email/message your updated bio, favorite players, rivals, anything else of that nature to Matt (you should be able to find my email in your inbox).  Anyone that doesn't send updates will have their bio continually randomly edited by Matt.</p>
     <p> Sleeper's league history tool is here!  ...for commishes on iOS only.  Pester Fraser to get it added.  :)</p>
     `;
