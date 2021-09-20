@@ -13,7 +13,7 @@ export async function post(req) {
     if(!author) {
         return {
             status: 500,
-            body: "Invalid author"
+            body: JSON.stringify("Invalid author")
         };
     }
 
@@ -34,7 +34,7 @@ export async function post(req) {
         headers: new Headers({
             'Authorization': `Bearer ${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}`, 
             'Content-Type': 'application/vnd.contentful.management.v1+json',
-            'X-Contentful-Content-Type': 'blogComment'
+            'X-Contentful-Content-Type': 'blog_comment'
         }), 
         body: JSON.stringify({
             fields
@@ -48,7 +48,7 @@ export async function post(req) {
         console.error(newComment?.details?.errors);
         return {
             status: 500,
-            body: "Problem adding comment"
+            body: JSON.stringify("Problem adding comment")
         };
     }
 
@@ -59,7 +59,7 @@ export async function post(req) {
         console.error(newComment);
         return {
             status: 500,
-            body: "Problem adding comment"
+            body: JSON.stringify("Problem adding comment")
         };
     }
     
@@ -79,13 +79,9 @@ export async function post(req) {
         console.error(publishJson);
         return {
             status: 500,
-            body: "Problem publishing comment"
+            body: JSON.stringify("Problem publishing comment")
         };
     }
-
-    // for(const fieldKey in newComment.fields) {
-    //     newComment.fields[fieldKey] = newComment.fields[fieldKey][lang];
-    // }
 
     return {
         status: 200,

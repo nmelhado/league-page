@@ -10,6 +10,8 @@
 
     let page = queryPage - 1;
 
+    const lang = "en-US";
+
     let loading = true;
     let allPosts = [];
     let posts = [];
@@ -20,7 +22,7 @@
 
     const filterPosts = (ap, fk) => {
         if(ap.length && fk != '') {
-            posts = ap.filter(p => p.fields.type == fk);
+            posts = ap.filter(p => p.fields.type[lang] == fk);
         } else {
             posts = ap;
         }
@@ -38,7 +40,7 @@
 
         const categoryMap = new Set();
         for(const post of startPostData.posts) {
-            categoryMap.add(post.fields.type);
+            categoryMap.add(post.fields.type[lang]);
         }
         categories = [...categoryMap];
 
@@ -47,7 +49,7 @@
             allPosts = blogResponse.posts;
             const categoryMap = new Set();
             for(const post of blogResponse.posts) {
-                categoryMap.add(post.fields.type);
+                categoryMap.add(post.fields.type[lang]);
             }
             categories = [...categoryMap];
         }

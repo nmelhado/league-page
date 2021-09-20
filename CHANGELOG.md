@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2021-09-20
+
+### Added
+
+- Ability to view and add comments to blog posts
+- :warning: WARNING !:warning:
+    - This will break previous contentful integrations because it requires you to change the type of API key to a [Content Management API key](https://www.contentful.com/developers/docs/references/authentication/#the-content-management-api)
+    - Please refer to the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) to see how to get the new API key (and then replace the old environment variable with the new one)
+
 ## [1.1.2] - 2021-09-17
 
 ### Added

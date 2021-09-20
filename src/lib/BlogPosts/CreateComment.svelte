@@ -13,13 +13,9 @@
 
     let comment = '';
     let author = '';
-    let usernameInput;
 
     const toggleShow = () => {
         showWrite = !showWrite;
-        if(showWrite) {
-            console.log(usernameInput)
-        }
     }
 </script>
 
@@ -32,7 +28,7 @@
         font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
         font-size: var(--mdc-typography-body1-font-size, 1rem);
     }
-    
+
     .commentTextBox:focus {
         outline: none;
         border: 1px solid var(--blueOne);
