@@ -1,5 +1,5 @@
 
-const GET_POSTS= `https://cdn.contentful.com/spaces/${import.meta.env.VITE_CONTENTFUL_SPACE}/environments/master/entries?access_token=${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}`;
+const GET_POSTS= `https://api.contentful.com/spaces/${import.meta.env.VITE_CONTENTFUL_SPACE}/environments/master/entries?access_token=${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}&content_type=blog_post`;
 
 export async function get() {
     const res = await fetch(GET_POSTS, {compress: true}).catch((err) => { console.error(err); });
