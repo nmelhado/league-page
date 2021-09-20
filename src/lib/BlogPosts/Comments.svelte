@@ -1,6 +1,6 @@
 <script>
     import { getAuthor, getAvatar, parseDate } from "$lib/utils/helper";
-    import Icon from "@smui/textfield/icon/Icon.svelte";
+    import Icon from "@smui/textfield/icon";
     import CreateComment from "./CreateComment.svelte";
     import Dialog, { Title, Content, Actions } from '@smui/dialog';
     import Button, {Label} from "@smui/button";

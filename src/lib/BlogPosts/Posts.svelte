@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
     import Pagination from "$lib/Pagination.svelte";
     import { getBlogPosts, leagueName } from "$lib/utils/helper";
-    import LinearProgress from "@smui/linear-progress/LinearProgress.svelte";
+    import LinearProgress from "@smui/linear-progress";
     import { onMount } from "svelte";
     import Post from "./Post.svelte";
 
