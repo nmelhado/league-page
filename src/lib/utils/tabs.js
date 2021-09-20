@@ -17,6 +17,11 @@ export const tabs = [
         dest: '/transactions',
     },
     {
+        icon: 'article',
+        label: 'Blog',
+        dest: '/blog',
+    },
+    {
         icon: 'view_comfy',
         label: 'League Info',
         nest: true,
@@ -30,6 +35,11 @@ export const tabs = [
                 icon: 'groups',
                 label: 'Managers',
                 dest: '/managers',
+            },
+            {
+                icon: 'leaderboard',
+                label: 'Standings',
+                dest: '/standings',
             },
             {
                 icon: 'view_comfy',
@@ -47,7 +57,7 @@ export const tabs = [
                 dest: '/records',
             },
             {
-                icon: 'receipt_long',
+                icon: 'history_edu',
                 label: 'Constitution',
                 dest: '/constitution',
             },
@@ -59,7 +69,7 @@ export const tabs = [
         ]
     },
     {
-        icon: 'feed',
+        icon: 'lightbulb',
         label: 'Resources',
         dest: '/resources',
     },

@@ -27,7 +27,7 @@ export async function get() {
 
     for(let week = 1; week <= fullSeasonLength + 3; week++) {
         resPromises.push(
-            fetch(`https://api.sleeper.app/projections/nfl/${year}/${week}?season_type=regular&position[]=DEF&position[]=FLEX&position[]=K&position[]=QB&position[]=RB&position[]=TE&position[]=WR&position[]=WRRB_FLEX&order_by=ppr`, {compress: true})
+            fetch(`https://api.sleeper.app/projections/nfl/${year}/${week}?season_type=regular&position[]=DB&position[]=DEF&position[]=DL&position[]=FLEX&position[]=IDP_FLEX&position[]=K&position[]=LB&position[]=QB&position[]=RB&position[]=REC_FLEX&position[]=SUPER_FLEX&position[]=TE&position[]=WR&position[]=WRRB_FLEX&order_by=ppr`, {compress: true})
         );
     }
 	
@@ -66,14 +66,16 @@ const computePlayers = (playerData, weeklyData, scoringSettings) => {
         const projPlayer = playerData[id];
         const player = {
             // injury_notes: projPlayer.injury_notes,
-            first_name: projPlayer.first_name,
-            last_name: projPlayer.last_name,
-            position: projPlayer.position,
-            team: projPlayer.team,
-            weeklyInfo: {} //obj filled with projections, key is week #
+            fn: projPlayer.first_name,
+            ln: projPlayer.last_name,
+            pos: projPlayer.position,
         };
-        if(projPlayer.injury_status) {
-            player.injury_status = projPlayer.injury_status;
+        if(projPlayer.team) {
+            player.t = projPlayer.team;
+            player.wi = {};
+        }
+        if(projPlayer.team && projPlayer.injury_status) {
+            player.is = projPlayer.injury_status;
         }
 
         computedPlayers[id] = player;
@@ -83,9 +85,13 @@ const computePlayers = (playerData, weeklyData, scoringSettings) => {
     for(let week = 1; week <= weeklyData.length; week++) {
         for(const player of weeklyData[week - 1]) {
             const id = player.player_id;
-            computedPlayers[id].weeklyInfo[week] = {
-                projection: calculateProjection(player.stats, scoringSettings),
-                opponent: player.opponent
+            
+            // check if the player is active in the NFL
+            if(!computedPlayers[id].wi) continue;
+
+            computedPlayers[id].wi[week] = {
+                p: calculateProjection(player.stats, scoringSettings),
+                o: player.opponent
             }
         }
     }

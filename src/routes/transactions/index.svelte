@@ -1,11 +1,14 @@
 <script context="module">
-	import { getLeagueTransactions } from '$lib/utils/helper';
+	import { getLeagueTransactions, loadPlayers, waitForAll } from '$lib/utils/helper';
+
     export async function load({ page }) {
         const show = page.query.get('show');
         const query = page.query.get('query');
         const curPage = page.query.get('page');
 
-        getLeagueTransactions() // This is done to prefetch the data, since the results are cached
+        const transactionsData = getLeagueTransactions(false);
+
+        const playersData = loadPlayers();
 
         const bannedValued = [
             'undefined',
@@ -14,6 +17,8 @@
         const props = {
             show: "both",
             query: "",
+            playersData,
+            transactionsData,
             page: 0,
         }
         if(show && (show == "trade" || show == "waiver" || show == "both")) {
@@ -35,9 +40,7 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { TransactionsPage } from '$lib/components'
 
-    export let show, query, page;
-
-    const transactionsData = getLeagueTransactions(false);
+    export let show, query, page, playersData, transactionsData;
 
     let el, masterOffset;
 
@@ -77,13 +80,13 @@
 <div id="main" bind:this={el}>
 
 
-    {#await transactionsData}
+    {#await waitForAll(transactionsData, playersData)}
         <div class="loading" >
             <p>Loading league transactions...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then {transactions, currentManagers}}
-        <TransactionsPage {transactions} {currentManagers} {masterOffset} {show} {query} {page} {perPage} postUpdate={true} />
+    {:then [{transactions, currentManagers, stale}, playersInfo]}
+        <TransactionsPage {playersInfo} {stale} {transactions} {currentManagers} {masterOffset} {show} {query} queryPage={page} {perPage} postUpdate={true} />
     {:catch error}
         <p class="center">Something went wrong: {error.message}</p>
     {/await}

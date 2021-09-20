@@ -93,31 +93,29 @@
         text-align: center;
     }
 </style>
-{#if total > 0 }
-    {#if totPages > 1}
-      <div class="paginationBar">
-           {#if page > 0}
-                <Icon class="material-icons button" on:click={() => changePage(page - 1)}>chevron_left</Icon>
-            {:else}
-              <span class="placeholder" />
-            {/if}
-            <div class="numbers">
-                {#each pageLabels as pageLabel}
-                    {#if pageLabel == page + 1}
-                        <span class="selected pg">{pageLabel}</span>
-                    {:else if pageLabel == "..."}
-                        <span class="pg spacer">{pageLabel}</span>
-                    {:else}
-                        <span class="dest pg" on:click={() => changePage(pageLabel - 1)}>{pageLabel}</span>
-                    {/if}
-                {/each}
-            </div>
-            {#if page < totPages - 1}
-                <Icon class="material-icons button" on:click={() => changePage(page + 1)}>chevron_right</Icon>
-            {:else}
-                <span class="placeholder" />
-            {/if}
+{#if total > 0 && totPages > 1 }
+    <div class="paginationBar">
+        {#if page > 0}
+            <Icon class="material-icons button" on:click={() => changePage(page - 1)}>chevron_left</Icon>
+        {:else}
+            <span class="placeholder" />
+        {/if}
+        <div class="numbers">
+            {#each pageLabels as pageLabel}
+                {#if pageLabel == page + 1}
+                    <span class="selected pg">{pageLabel}</span>
+                {:else if pageLabel == "..."}
+                    <span class="pg spacer">{pageLabel}</span>
+                {:else}
+                    <span class="dest pg" on:click={() => changePage(pageLabel - 1)}>{pageLabel}</span>
+                {/if}
+            {/each}
         </div>
-    {/if}
+        {#if page < totPages - 1}
+            <Icon class="material-icons button" on:click={() => changePage(page + 1)}>chevron_right</Icon>
+        {:else}
+            <span class="placeholder" />
+        {/if}
+    </div>
     <div class="totals">{page * perPage + 1} - {page + 1 == totPages ? total : (page + 1) * perPage} of {total}</div>
 {/if}

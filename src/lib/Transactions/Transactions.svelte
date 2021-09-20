@@ -1,12 +1,34 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions } from '$lib/utils/helper';
+	import { getLeagueTransactions, loadPlayers, waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
+	import { onMount } from 'svelte';
 	import Transaction from './Transaction.svelte';
 
 	export let masterOffset = 0;
 
-	let transactionsData = getLeagueTransactions(true);
+	let loading = true;
+	let players;
+	let transactions, currentManagers;
+
+	onMount(async () => {
+		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers());
+		players = playersData.players;
+		transactions = transactionsData.transactions;
+		currentManagers = transactionsData.currentManagers;
+		loading = false;
+
+		if(transactionsData.stale) {
+			const newTransactions = await getLeagueTransactions(true, true);
+			transactions = newTransactions.transactions;
+			currentManagers = newTransactions.currentManagers;
+		}
+
+		if(playersData.stale) {
+			const newPlayersData = await loadPlayers(true);
+			players = newPlayersData.players;
+		}
+	})
 </script>
 
 <style>
@@ -42,15 +64,15 @@
 </style>
 
 <div class="transactions">
-	{#await transactionsData}
+	{#if loading}
 		<p>Loading league transactions...</p>
 		<LinearProgress indeterminate />
-	{:then {transactions, currentManagers}}
+	{:else}
 		<!-- waiver -->
 		{#if transactions.waivers.length}
 			<h5>Recent Waiver Moves</h5>
 			{#each transactions.waivers as transaction }
-				<Transaction {transaction} {masterOffset} {currentManagers} />
+				<Transaction {players} {transaction} {masterOffset} {currentManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
@@ -66,14 +88,12 @@
 		{#if transactions.trades.length}
 			<h5>Recent Trades</h5>
 			{#each transactions.trades as transaction }
-				<Transaction {transaction} {masterOffset} currentManagers={currentManagers} />
+				<Transaction {players} {transaction} {masterOffset} currentManagers={currentManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>
 		{:else}
 			<p class="nothingYet">No trades have been made yet...</p>
 		{/if}
-	{:catch error}
-		<p>Something went wrong: {error.message}</p>
-	{/await}
+	{/if}
 </div>

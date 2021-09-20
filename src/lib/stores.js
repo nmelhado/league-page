@@ -12,4 +12,6 @@ export const users = writable({});
 export const nflState = writable({});
 export const players = writable({});
 export const news = writable([]);
+export const posts = writable([]);
 export const brackets = writable({});
+export const standingsStore = writable({});
