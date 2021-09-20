@@ -6,13 +6,15 @@
     import { onMount } from "svelte";
     import Post from "./Post.svelte";
 
-    export let postsData, queryPage = 1, filterKey = '';
+    export let postsData, usersData, rostersData, queryPage = 1, filterKey = '';
 
     let page = queryPage - 1;
 
     let loading = true;
     let allPosts = [];
     let posts = [];
+    let users = {};
+    let rosters = [];
 
     let categories;
 
@@ -28,6 +30,9 @@
 
     onMount(async ()=> {
         const startPostData = await postsData;
+        users = await usersData;
+        const rostersInfo = await rostersData;
+        rosters = rostersInfo.rosters;
         allPosts = startPostData.posts;
         loading = false;
 
@@ -150,7 +155,7 @@
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={false} />
 
     {#each displayPosts as post}
-        <Post createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
+        <Post {rosters} {users} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
     {/each}
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />
 {/if}
