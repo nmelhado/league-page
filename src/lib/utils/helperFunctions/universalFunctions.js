@@ -43,6 +43,21 @@ export const getAuthor = (rosters, users, author) => {
     return `<a href="/managers?manager=${managers.findIndex(m => m.roster == roster.roster_id)}">${user.metadata.team_name ? user.metadata.team_name : user.display_name}</a>`;
 }
 
+export const getAvatar = (users, author) => {
+    let user = null;
+    for(const userKey of Object.keys(users)) {
+        if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
+            user = users[userKey];
+            break;
+        }
+    }
+    if(!user) {
+        return 'managers/question.jpg';
+    }
+
+    return `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+}
+
 export const parseDate = (rawDate) => {
     const ts = Date.parse(rawDate);
     const d = new Date(ts);

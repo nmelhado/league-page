@@ -11,7 +11,7 @@ import { waitForAll } from './helperFunctions/multiPromise';
 import { getUpcomingDraft, getPreviousDrafts } from './helperFunctions/leagueDrafts'
 import { getLeagueRecords } from './helperFunctions/leagueRecords'
 import { getAwards } from './helperFunctions/leagueAwards'
-import { cleanName, round, generateGraph, gotoManager, getAuthor, parseDate } from './helperFunctions/universalFunctions';
+import { cleanName, round, generateGraph, gotoManager, getAuthor, parseDate, getAvatar } from './helperFunctions/universalFunctions';
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 import { getBlogPosts } from './helperFunctions/getBlogPosts';
@@ -49,4 +49,5 @@ export {
     getLeagueStandings,
     getAuthor,
     parseDate,
+    getAvatar,
 }

@@ -1,5 +1,5 @@
 <script>
-    import { getAuthor, parseDate } from "$lib/utils/helper";
+    import { getAuthor, getAvatar, parseDate } from "$lib/utils/helper";
     import Icon from "@smui/textfield/icon/Icon.svelte";
     import CreateComment from "./CreateComment.svelte";
     import Dialog, { Title, Content, Actions } from '@smui/dialog';
@@ -72,12 +72,15 @@
 <style>
     .comment {
         margin: 0;
-        padding: 1em 2em 0;
+        padding: 1em 0 0;
         background: var(--eee);
         border: 1px solid var(--ccc);
         border-left: none;
         border-right: none;
-        margin-bottom: 0em;
+    }
+
+    .commentText {
+        padding: 0 2em;
     }
     
     .commentHeader {
@@ -92,13 +95,30 @@
 
     .authorAndDate {
         color: var(--g999);
-        padding: 0 2em;
+        padding: 0 2em 1em;
     }
 
     :global(.commentIcon) {
         font-size: 1em;
         vertical-align: middle;
         padding: 0.3em;
+    }
+	
+	.teamAvatar {
+		vertical-align: middle;
+		border-radius: 50%;
+		height: 30px;
+		margin-right: 5px;
+		border: 0.25px solid #777;
+	}
+
+    .divider {
+        border:0;
+        margin:0;
+        width:100%;
+        height:1px;
+        background: var(--ddd);
+        margin: 1em 0;
     }
 </style>
 
@@ -123,8 +143,10 @@
     </div>
     {#each comments as comment}
         <div class="comment">
-            {@html comment.fields.comment[lang]}
+            <div class="commentText">{@html comment.fields.comment[lang]}</div>
+            <hr class="divider" />
             <div class="authorAndDate">
+                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author[lang])}" />
                 <span class="author">{@html getAuthor(rosters, users, comment.fields.author[lang])} - </span>
                 <span class="date"><i>{parseDate(comment.sys.createdAt)}</i></span>
             </div>

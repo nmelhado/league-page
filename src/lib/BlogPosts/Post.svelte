@@ -1,5 +1,5 @@
 <script>
-    import { parseDate, getAuthor } from "$lib/utils/helper";
+    import { parseDate, getAuthor, getAvatar } from "$lib/utils/helper";
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
     import Comments from "./Comments.svelte";
@@ -211,6 +211,14 @@
         background: var(--ddd);
         margin-bottom: 1em;
     }
+	
+	.teamAvatar {
+		vertical-align: middle;
+		border-radius: 50%;
+		height: 30px;
+		margin-right: 5px;
+		border: 0.25px solid #777;
+	}
 
     .commentDivider {
         margin: 1em 0 0;
@@ -241,6 +249,7 @@
 
         <div class="authorAndDate">
             <a href="/blog?filter={post.type[lang]}&page=1">{post.type[lang]}</a>
+            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, post.author[lang])}" />
             <span class="author">{@html getAuthor(rosters, users, post.author[lang])} - </span>
             <span class="date"><i>{parseDate(createdAt)}</i></span>
         </div>

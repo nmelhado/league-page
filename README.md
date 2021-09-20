@@ -77,6 +77,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below:
     ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
     ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
+        - Use sleeper your sleeper username for the author field when creating posts
     - Create a Content Management API key
     - For local development add a `.env` file to the root of your project and add the following variables
         - `VITE_CONTENTFUL_ACCESS_TOKEN` with the corresponding value obtained from contenful
