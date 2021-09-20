@@ -37,6 +37,11 @@ export const tabs = [
                 dest: '/managers',
             },
             {
+                icon: 'leaderboard',
+                label: 'Standings',
+                dest: '/standings',
+            },
+            {
                 icon: 'view_comfy',
                 label: 'Drafts',
                 dest: '/drafts',
@@ -52,7 +57,7 @@ export const tabs = [
                 dest: '/records',
             },
             {
-                icon: 'receipt_long',
+                icon: 'history_edu',
                 label: 'Constitution',
                 dest: '/constitution',
             },

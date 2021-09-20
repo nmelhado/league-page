@@ -184,19 +184,25 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - Add blog capabilities to your League Page with [contenful](https://contentful.com/)
     - [Make a free contentful account](https://www.contentful.com/sign-up/)
-    - Click on `Content model` in the top bar and create a content model that matches the specs below:
+    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below:
     ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
-    - Create an API key and copy down the two values (`Space ID` and `Content Delivery API - access token`)
+    ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
+        - Use sleeper your sleeper username for the author field when creating posts
+    - Copy your `Space ID`
+    ![Space ID](https://storage.googleapis.com/nfl-player-data/getSpaceID.jpg)
+    - Create a Content Management API key and copy down the value
     ![API key settings](https://storage.googleapis.com/nfl-player-data/apiKeySettings.jpg)
     ![add API key](https://storage.googleapis.com/nfl-player-data/addApiKey.jpg)
-    ![API key](https://storage.googleapis.com/nfl-player-data/apiKey.jpg)
+    ![API key](https://storage.googleapis.com/nfl-player-data/generatePersonalToken.jpg)
+    ![API key](https://storage.googleapis.com/nfl-player-data/generate.jpg)
+    ![API key](https://storage.googleapis.com/nfl-player-data/copyPersonalToken.jpg)
     - Now, go back to Vercel go to your project settings
     ![project settings](https://storage.googleapis.com/nfl-player-data/projectSettings.jpg)
     - Go to the environment variables section
     ![environment variables](https://storage.googleapis.com/nfl-player-data/envVariables.jpg)
     - Add the values using the following names
         - name: `VITE_CONTENTFUL_SPACE` value: `Space ID (from contentful)`
-        - name: `VITE_CONTENTFUL_ACCESS_TOKEN` value: `Content Delivery API - access token (from contentful)`
+        - name: `VITE_CONTENTFUL_ACCESS_TOKEN` value: `Content Management API - access token (from contentful)`
     ![contentful space](https://storage.googleapis.com/nfl-player-data/contentfulSpace.jpg)
     ![contentful API token](https://storage.googleapis.com/nfl-player-data/contentfulAPIKey.jpg)
     - Go back to GitHub and scroll back up to the top of `/src/lib/utils/leagueInfo.js`

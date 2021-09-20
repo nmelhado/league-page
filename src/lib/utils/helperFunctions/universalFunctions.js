@@ -1,5 +1,6 @@
 import { managers } from '$lib/utils/leagueInfo';
 import { goto } from "$app/navigation";
+import { stringDate } from './news';
 
 export const cleanName = (name) => {
     return name.replace('Team ', '').toLowerCase().replace(/[ ’'!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/g, "");
@@ -24,6 +25,43 @@ export const gotoManager = (rosterID) => {
     const managersIndex = managers.findIndex(m => m.roster == rosterID);
     // if no manager exists for that roster, -1 will take you to the main managers page
     goto(`/managers?manager=${managersIndex}`);
+}
+
+export const getAuthor = (rosters, users, author) => {
+    let user = null;
+    for(const userKey of Object.keys(users)) {
+        if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
+            user = users[userKey];
+            break;
+        }
+    }
+    if(!user) {
+        return author;
+    }
+    const userID = user.user_id;
+    const roster = rosters.find(r => r.owner_id == userID || (r.co_owners && r.co_owners.indexOf(userID) > -1));
+    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == roster.roster_id)}">${user.metadata.team_name ? user.metadata.team_name : user.display_name}</a>`;
+}
+
+export const getAvatar = (users, author) => {
+    let user = null;
+    for(const userKey of Object.keys(users)) {
+        if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
+            user = users[userKey];
+            break;
+        }
+    }
+    if(!user) {
+        return 'managers/question.jpg';
+    }
+
+    return `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+}
+
+export const parseDate = (rawDate) => {
+    const ts = Date.parse(rawDate);
+    const d = new Date(ts);
+    return stringDate(d);
 }
 
 export const generateGraph = ({stats, x, y, stat, header, field, short, secondField = null}, roundOverride = 10, yMinOverride = null) => {

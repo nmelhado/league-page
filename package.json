@@ -1,7 +1,7 @@
 {
   "name": "league-page",
-  "version": "1.1.1",
-  "homepage": "https://github.com/nmelhado/league-page#readme",
+  "version": "1.2.0",
+  "homepage": "https://github.com/nmelhado/league-page",
   "author": {
     "name": "Nicholas Melhado",
     "email": "n.melhado@gmail.com",
@@ -46,6 +46,7 @@
   "dependencies": {
     "@smui/button": "^4.2.0",
     "@smui/data-table": "^4.2.0",
+    "@smui/dialog": "^4.2.0",
     "@smui/drawer": "^4.2.0",
     "@smui/icon-button": "^4.2.0",
     "@smui/linear-progress": "^4.2.0",

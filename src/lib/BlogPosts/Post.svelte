@@ -1,8 +1,24 @@
 <script>
-    import { stringDate } from "$lib/utils/helper";
+    import { parseDate, getAuthor, getAvatar } from "$lib/utils/helper";
+    import { onMount } from "svelte";
     import { fly } from "svelte/transition";
+    import Comments from "./Comments.svelte";
 
-    export let post, createdAt, id = null, direction = 1;
+    export let rosters, users, post, createdAt, id = null, direction = 1, home = false;
+
+    const lang = "en-US";
+
+    let loadingComments = true;
+    let total, comments;
+
+    onMount(async()=> {
+        const res = await fetch(`/api/getBlogComments/${id}`, {compress: true})
+        const commentsData = await res.json();
+
+        total = commentsData.total;
+        comments = [...commentsData.items].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
+        loadingComments = false;
+    })
 
     const generatePargaraph = (paragraph, indent = true) => {
         let paragraphText = '';
@@ -128,12 +144,6 @@
         return paragraphText;
     }
 
-    const parseDate = (rawDate) => {
-		const ts = Date.parse(rawDate);
-		const d = new Date(ts);
-		return stringDate(d);
-    }
-
     const duration = 300;
 </script>
 
@@ -201,19 +211,36 @@
         background: var(--ddd);
         margin-bottom: 1em;
     }
+	
+	.teamAvatar {
+		vertical-align: middle;
+		border-radius: 50%;
+		height: 30px;
+		margin-right: 5px;
+		border: 0.25px solid #777;
+	}
+
+    .commentDivider {
+        margin: 1em 0 0;
+
+    }
 
     .authorAndDate {
         color: var(--g999);
         padding: 0 2em;
     }
+
+    :global(.authorAndDate a) {
+        color: var(--g999);
+    }
 </style>
 
 {#key id}
     <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
-        <h3>{post.title}</h3>
+        <h3>{post.title[lang]}</h3>
         
         <div class="body">
-            {#each post.body.content as paragraph}
+            {#each post.body[lang].content as paragraph}
                 {@html generatePargaraph(paragraph)}
             {/each}
         </div>
@@ -221,9 +248,17 @@
         <hr class="divider" />
 
         <div class="authorAndDate">
-            <a href="/blog?filter={post.type}&page=1">{post.type}</a>
-            <span class="author">{post.author} - </span>
+            <a href="/blog?filter={post.type[lang]}&page=1">{post.type[lang]}</a>
+            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, post.author[lang])}" />
+            <span class="author">{@html getAuthor(rosters, users, post.author[lang])} - </span>
             <span class="date"><i>{parseDate(createdAt)}</i></span>
         </div>
+
+        <!-- display comments -->
+        {#if !loadingComments && !home}
+            <hr class="divider commentDivider" />
+            <Comments {rosters} {users} {comments} {total} postID={id} />
+        {/if}
+
     </div>
 {/key}
