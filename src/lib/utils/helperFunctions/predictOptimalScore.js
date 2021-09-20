@@ -35,10 +35,15 @@ export const predictScores = (players, week, leagueData) => {
         const db = parseFloat(dbs[0]?.wi && dbs[0]?.wi[week] ? dbs[0].wi[week].p : 0);
         const k = parseFloat(ks[0]?.wi && ks[0]?.wi[week] ? ks[0].wi[week].p : 0);
         const def = parseFloat(defs[0]?.wi && defs[0]?.wi[week] ? defs[0].wi[week].p : 0);
+        
         switch (starterPosition) {
             case 'QB':
                 qbs.shift();
-                powerScore += qb;
+                if (qb > 0) {
+                    powerScore += qb;
+                } else {
+                    powerScore += parseFloat(17);
+                }
                 break;
             case 'RB':
                 rbs.shift();
@@ -50,11 +55,19 @@ export const predictScores = (players, week, leagueData) => {
                 break;
             case 'TE':
                 tes.shift();
-                powerScore += te;
+                if (te > 0) {
+                    powerScore += te;
+                } else {
+                    powerScore += parseFloat(7);
+                }
                 break;
             case 'DEF':
                 defs.shift();
-                powerScore += def;
+                if (def > 0) {
+                    powerScore += def;
+                } else {
+                    powerScore += parseFloat(8);
+                }
                 break;
             case 'K':
                 ks.shift();
