@@ -1,18 +1,8 @@
 <script>
-    import { getLeagueTransactions } from '$lib/utils/helper';
     import AllManagers from './AllManagers.svelte'
     import Manager from './Manager.svelte'
 
     export let managers, manager, rostersData, users, leagueData, transactionsData, awards, records;
-
-    const refreshTransactions = async () => {
-        const newTransactions = await getLeagueTransactions(false, true);
-        transactionsData = newTransactions;
-    }
-
-    if(transactionsData.stale) {
-        refreshTransactions();
-    }
 </script>
 
 <div class="matchups">

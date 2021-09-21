@@ -204,20 +204,18 @@
             </div>
         </div>
     {/if}
-    {#if viewManager.tradingScale}
-        <!-- Trading Scale -->
-        <div class="infoSlot">
-            <div class="infoLabel">
-                Desire to Trade
-            </div>
-            <div class="infoIcon">
-                <span class="tradingScale">{viewManager.tradingScale}</span>
-            </div>
-            <div class="infoAnswer">
-                {viewManager.tradingScale} out of 10
-            </div>
+    <!-- Trading Scale -->
+    <div class="infoSlot">
+        <div class="infoLabel">
+            Desire to Trade
         </div>
-    {/if}
+        <div class="infoIcon">
+            <span class="tradingScale">{viewManager.tradingScale}</span>
+        </div>
+        <div class="infoAnswer">
+            {viewManager.tradingScale} out of 10
+        </div>
+    </div>
     <!-- Favorite player (optioonal) -->
     {#if viewManager.favoritePlayer}
         <div class="infoSlot">
@@ -228,7 +226,7 @@
                 <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
             </div>
             <div class="infoAnswer">
-                {players[viewManager.favoritePlayer].fn} {players[viewManager.favoritePlayer].ln}
+                {players[viewManager.favoritePlayer].first_name} {players[viewManager.favoritePlayer].last_name}
             </div>
         </div>
     {/if}

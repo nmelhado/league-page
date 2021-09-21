@@ -180,36 +180,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 > ![managers preview](https://storage.googleapis.com/nfl-player-data/managersRendered.png)
 
-## III. Add a Blog
-
-- Add blog capabilities to your League Page with [contenful](https://contentful.com/)
-    - [Make a free contentful account](https://www.contentful.com/sign-up/)
-    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below:
-    ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
-    ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
-        - Use sleeper your sleeper username for the author field when creating posts
-    - Copy your `Space ID`
-    ![Space ID](https://storage.googleapis.com/nfl-player-data/getSpaceID.jpg)
-    - Create a Content Management API key and copy down the value
-    ![API key settings](https://storage.googleapis.com/nfl-player-data/apiKeySettings.jpg)
-    ![add API key](https://storage.googleapis.com/nfl-player-data/addApiKey.jpg)
-    ![API key](https://storage.googleapis.com/nfl-player-data/generatePersonalToken.jpg)
-    ![API key](https://storage.googleapis.com/nfl-player-data/generate.jpg)
-    ![API key](https://storage.googleapis.com/nfl-player-data/copyPersonalToken.jpg)
-    - Now, go back to Vercel go to your project settings
-    ![project settings](https://storage.googleapis.com/nfl-player-data/projectSettings.jpg)
-    - Go to the environment variables section
-    ![environment variables](https://storage.googleapis.com/nfl-player-data/envVariables.jpg)
-    - Add the values using the following names
-        - name: `VITE_CONTENTFUL_SPACE` value: `Space ID (from contentful)`
-        - name: `VITE_CONTENTFUL_ACCESS_TOKEN` value: `Content Management API - access token (from contentful)`
-    ![contentful space](https://storage.googleapis.com/nfl-player-data/contentfulSpace.jpg)
-    ![contentful API token](https://storage.googleapis.com/nfl-player-data/contentfulAPIKey.jpg)
-    - Go back to GitHub and scroll back up to the top of `/src/lib/utils/leagueInfo.js`
-    - Click the edit button and set `enableBlog` to true
-    - Scroll down and click `Commit changes`
-
-## IV. Updates
+## III. Updates
 
 - League Page is constantly being updated and improved. Check back on your repo periodically and whenever you see the `fetch update` button, click `fetch update` and commit the changes to get the upgrades
 > ![fetch upstream](https://storage.googleapis.com/nfl-player-data/fetchUpstream.jpg)
@@ -230,7 +201,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - There should be **NO merge conflicts going forward**.
 
 
-## V. Wrapping up
+## IV. Wrapping up
 
 - That's it. You've built out your own league website!
 - If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`

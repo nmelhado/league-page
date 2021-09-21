@@ -72,7 +72,6 @@ export const getUpcomingDraft = async () => {
 		draftOrder,
 		accuracy,
 		draftType: officialDraft.type,
-		reversalRound: officialDraft.settings.reversal_round,
 		originalManagers
 	}
 	
@@ -270,13 +269,12 @@ export const getPreviousDrafts = async () => {
 		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, originalManagers, players, officialDraft.type);
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
-
+		
 		const newDraft = {
 			year,
 			draft,
 			draftOrder,
 			draftType: officialDraft.type,
-			reversalRound: officialDraft.settings.reversal_round,
 			originalManagers
 		}
 		

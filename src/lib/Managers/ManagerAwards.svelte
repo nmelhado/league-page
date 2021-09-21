@@ -333,9 +333,11 @@
                     <div class="subText">{award.year ? `${award.year} ` : ''}{award.week ? `Week ${award.week} ` : ''}{award.year || award.week ? ' - ' : ''}{award.extraInfo}{award.wins ? ' Wins' : ''}{award.iq ? '%' : ''}{!award.wins && !award.iq ? 'pts' : ''}</div>
                 {/if}
             </div>
-        {:else}
-            <p class="sad">...nothing yet</p>
+
         {/each}
+        {#if displayAwards.length == 0}
+            <p class="sad">...nothing yet</p>
+        {/if}
     </div>
     {#if formerGlobal}
         <p class="disclaimer">*Awarded under a previous manager</p>

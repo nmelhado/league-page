@@ -7,32 +7,9 @@
 	import Pagination from '../Pagination.svelte';
 	import { match } from 'fuzzyjs';
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
 
-	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentManagers, stale, perPage, postUpdate=false;
+	export let masterOffset = 0, show, query, page, transactions, currentManagers, perPage, postUpdate=false;
 	const oldQuery = query;
-	let page = queryPage || 0;
-
-	const refreshTransactions = async () => {
-		const newTransactions = await getLeagueTransactions(false, true);
-		transactions = newTransactions.transactions;
-		currentManagers = newTransactions.currentManagers;
-	}
-
-	if(stale) {
-		refreshTransactions();
-	}
-
-	let players = playersInfo.players;
-
-	const refreshPlayers = async () => {
-		const newPlayersInfo = await loadPlayers(true);
-		players = newPlayersInfo.players;
-	}
-
-	if(playersInfo.stale) {
-		refreshPlayers();
-	}
 
 	// filtered subset based on search
 	let subsetTransactions = [];
@@ -68,8 +45,7 @@
 	}
 	$: displayTransactions = setQuery(query, filteredTransactions);
 
-	const changePage = (dest, pageChange = false) => {
-		if(queryPage == dest && pageChange) return;
+	const changePage = (dest) => {
 		page = dest;
 		if(dest > (filteredTransactions.length / perPage) || dest < 0) {
 			page = 0;
@@ -109,13 +85,13 @@
 		for(const move of moves) {
 			for(const col of move) {
 				if(!col?.player) continue;
-				return checkMatch(query, `${players[col.player].fn} ${players[col.player].ln}`);
+				return checkMatch(query, col.player.name);
 			}
 		}
 		return false;
 	}
 
-	$: changePage(page, true);
+	$: changePage(page);
 
 	$: setQuery(query);
 
@@ -255,7 +231,7 @@
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
 		<div class="transactions-child">
 			{#each displayTransactions as transaction (transaction.id)}
-				<Transaction {players} {transaction} masterOffset={masterOffset + 15} {currentManagers} />
+				<Transaction {transaction} masterOffset={masterOffset + 15} {currentManagers} />
 			{/each}
 		</div>
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={true} />

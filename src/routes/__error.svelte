@@ -14,7 +14,7 @@
     }
 
     h4 {
-        color: var(--blueOne);
+        color: #00316b;
         font-weight: 700;
         margin: 3em 0 1em;
     }

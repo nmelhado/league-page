@@ -53,11 +53,13 @@
 			<LinearProgress indeterminate />
 		</div>
 	{:then {podiums, currentManagers} }
+	{#if podiums.length}
 		{#each podiums as podium}
 			<Awards {podium} {currentManagers} />
-		{:else}
-			<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
 		{/each}
+	{:else}
+		<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
+	{/if}
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>

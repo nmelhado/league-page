@@ -3,7 +3,7 @@
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import TransactionMove from './TransactionMove.svelte';
 
-	export let transaction, masterOffset, currentManagers, players;
+	export let transaction, masterOffset, currentManagers;
 </script>
 
 <style>
@@ -74,7 +74,7 @@
 	</Head>
 	<Body class="moves">
 		{#each transaction.moves as move}
-			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {currentManagers} />
+			<TransactionMove {move} type={transaction.type} {masterOffset} {currentManagers} />
 		{/each}
 		<Row>
 			<Cell class="transact-date" colspan={transaction.rosters.length}>{transaction.date}</Cell>

@@ -11,7 +11,6 @@
     } from '$lib/utils/helper';
 	
     export async function load({ page }) {
-        if(!managersObj.length) return false;
         const managersInfo = waitForAll(
             getLeagueRosters(),    
             getLeagueUsers(),

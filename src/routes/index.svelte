@@ -1,7 +1,7 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
-	import { getNflState, cleanName, leagueName, homepageText, managers, gotoManager, enableBlog } from '$lib/utils/helper';
-	import { Transactions, PowerRankings, HomePost} from '$lib/components';
+	import { getNflState, cleanName, leagueName, homepageText, managers, gotoManager } from '$lib/utils/helper';
+	import { Transactions, PowerRankings} from '$lib/components';
     import { getAwards } from "$lib/utils/helper"
 
     let nflState = getNflState();
@@ -153,10 +153,6 @@
             <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
-            <!-- Most recent Blog Post (if enabled) -->
-            {#if enableBlog}
-                <HomePost />
-            {/if}
         </div>
         <PowerRankings />
     </div>
