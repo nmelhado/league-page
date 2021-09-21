@@ -7,6 +7,7 @@
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
     import ManagerAwards from './ManagerAwards.svelte';
+    import { onMount } from 'svelte';
 
     export let manager, managers, rostersData, users, rosterPositions, transactions, currentManagers, awards, records;
 
@@ -23,7 +24,21 @@
 
     let user = users[roster.owner_id];
 
-    const playerData = loadPlayers();
+    let players, playersInfo;
+    let loading = true;
+
+    onMount(async () => {
+        const playerData = await loadPlayers();
+        playersInfo = playerData;
+        players = playerData.players;
+        loading = false;
+
+        if(playerData.stale) {
+            const newPlayerData = await loadPlayers(true);
+            playersInfo = newPlayerData;
+            players = newPlayerData.players;
+        }
+    })
 
     const changeManager = (newManager, noscroll = false) => {
         manager = newManager;
@@ -148,10 +163,6 @@
         margin-top: 0;
     }
 
-    hr {
-        border-style: ridge;
-    }
-
     /* media queries */
 
     @media (max-width: 505px) {
@@ -207,14 +218,17 @@
         </h2>
         
         <div class="basicInfo">
-            <span class="infoChild">{viewManager.location}</span>
+            <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
             {#if viewManager.fantasyStart}
                 <!-- fantasyStart is an optional field -->
                 <span class="seperator">|</span>
                 <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
             {/if}
-            <span class="seperator">|</span>
-            <span class="infoChild">{viewManager.preferredContact}<img class="infoChild infoContact" src="/{viewManager.preferredContact}.png" alt="favorite team"/></span>
+            {#if viewManager.preferredContact}
+                <!-- preferredContact is an optional field -->
+                <span class="seperator">|</span>
+                <span class="infoChild">{viewManager.preferredContact}<img class="infoChild infoContact" src="/{viewManager.preferredContact}.png" alt="favorite team"/></span>
+            {/if}
             <!-- <span class="infoChild">{viewManager.preferredContact}</span> -->
             {#if viewManager.favoriteTeam}
                 <!-- favoriteTeam is an optional field -->
@@ -251,31 +265,41 @@
 
         <p class="bio">{@html viewManager.bio}</p>
 
-        <h3>Team Philosophy</h3>
-        <p class="philosophy">{@html viewManager.philosophy}</p>
+        {#if viewManager.philosophy}
+            <!-- philosophy is an optional field -->
+            <h3>Team Philosophy</h3>
+            <p class="philosophy">{@html viewManager.philosophy}</p>
+        {/if}
     </div>
 
-    {#await playerData}
-        <!-- Do nothing -->
-    {:then players}
+    {#if !loading}
         <!-- Favorite player -->
         <ManagerFantasyInfo {viewManager} {players} />
-    {/await}
+    {/if}
 
     <ManagerAwards tookOver={viewManager.tookOver} {awards} {records} {roster} />
 
-    {#await playerData}
+    {#if loading}
         <!-- promise is pending -->
         <div class="loading">
             <p>Retrieving players...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then players}
-        <Roster division="threeHundred" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
-    {/await}
+    {:else}
+        <Roster division="1" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
+    {/if}
+
     <h3>Team Transactions</h3>
     <div class="managerConstrained" bind:this={el}>
-        <TransactionsPage transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
+        {#if loading}
+            <!-- promise is pending -->
+            <div class="loading">
+                <p>Retrieving players...</p>
+                <LinearProgress indeterminate />
+            </div>
+        {:else}
+            <TransactionsPage {playersInfo} transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
+        {/if}
     </div>
 
     <div class="managerNav">

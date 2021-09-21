@@ -16,7 +16,7 @@
 		background-repeat: no-repeat;
 		background-size: auto 45px;
 	}
-	.position {
+	.pos {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -145,12 +145,12 @@
 </style>
 
 <Row>
-	<Cell class="slot playerCell"><span class="position {playerSLotClass}">{playerSlot}</span></Cell>
+	<Cell class="slot playerCell"><span class="pos {playerSLotClass}">{playerSlot}</span></Cell>
 	{#if player.avatar}
 		<Cell class="avatar playerCell"><div class="playerAvatar" style="{player.avatar}" /></Cell>
 	{/if}
-	{#if player.positions != "DEF"}
+	{#if player.poss != "DEF"}
 		<Cell class="playerCell teamCell">{player.team || ''}</Cell>
 	{/if}
-	<Cell class="playerCell nameCell" colspan={player.name != "Empty" ? (player.positions == "DEF" ? 2 : 1) : 3}>{@html player.name}</Cell>
+	<Cell class="playerCell nameCell" colspan={player.name != "Empty" ? (player.poss == "DEF" ? 2 : 1) : 3}>{@html player.name}</Cell>
 </Row>
