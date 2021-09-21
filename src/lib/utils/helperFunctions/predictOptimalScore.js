@@ -39,11 +39,7 @@ export const predictScores = (players, week, leagueData) => {
         switch (starterPosition) {
             case 'QB':
                 qbs.shift();
-                if (qb > 0) {
-                    powerScore += qb;
-                } else {
-                    powerScore += parseFloat(17);
-                }
+                powerScore += qb;
                 break;
             case 'RB':
                 rbs.shift();
@@ -55,19 +51,11 @@ export const predictScores = (players, week, leagueData) => {
                 break;
             case 'TE':
                 tes.shift();
-                if (te > 0) {
-                    powerScore += te;
-                } else {
-                    powerScore += parseFloat(7);
-                }
+                powerScore += te;
                 break;
             case 'DEF':
                 defs.shift();
-                if (def > 0) {
-                    powerScore += def;
-                } else {
-                    powerScore += parseFloat(8);
-                }
+                powerScore += def;
                 break;
             case 'K':
                 ks.shift();
