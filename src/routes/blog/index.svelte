@@ -1,17 +1,21 @@
 <script context="module">
-	import { enableBlog, getBlogPosts } from '$lib/utils/helper';
+	import { enableBlog, getBlogPosts, getLeagueRosters, getLeagueUsers } from '$lib/utils/helper';
 
     export function load({ page }) {
         if(!enableBlog) return false;
         const queryPage = page.query.get('page') || 1;
         const filterKey = page.query.get('filter') || '';
 		const postsData = getBlogPosts();
+		const usersData = getLeagueUsers();
+		const rostersData = getLeagueRosters();
 	
 		return {
 			props: {
                 queryPage,
 				postsData,
                 filterKey,
+                usersData,
+                rostersData,
 			}
 		};
 	}
@@ -20,7 +24,7 @@
 <script>
     import { Posts } from "$lib/components";
 
-    export let postsData, queryPage, filterKey;
+    export let postsData, queryPage, filterKey, usersData, rostersData;
 </script>
 
 <style>
@@ -36,5 +40,5 @@
 </style>
 
 <div id="main">
-    <Posts {postsData} {queryPage} {filterKey} />
+    <Posts {rostersData} {postsData} {queryPage} {filterKey} {usersData} />
 </div>
