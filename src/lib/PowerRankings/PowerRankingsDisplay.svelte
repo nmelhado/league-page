@@ -61,7 +61,7 @@
         // Fraser, Sam, Ryan, Matt, Brandon, Trey, Erik, Kyle, Ward Connor, Elliot Foster
         // let manualScores = [89, 64, 74, 100, 76, 68, 71, 81, 54, 82, 83, 71];  // draft
         // let manualScores = [82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73];  // after week 1
-        let manualScores = [82, 63, 74, 100, 68, 63, 66, 73, 44, 77, 75, 63];  // after week 2
+        let manualScores = [80, 63, 75, 100, 68, 63, 68, 77, 45, 77, 75, 64];  // after week 2
         let i = 0;
         for(const rosterPower of rosterPowers) {
             rosterPower.powerScore = manualScores[i];
