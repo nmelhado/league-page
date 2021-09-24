@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2021-09-23
+
+### Fixed
+
+- Search bar bug that unfocused the input bar after every character typed
+    - If no input has been detected for 5 seconds, update query parameters in url string (updating will still unfocus the input, but (since 5 seconds have passed) the search should be complete)
+- The matchups page was always starting on week 1
+    - If no query parameter has been set, use the current week
+
+### Changed
+
+- The look of comments on blog posts
+
+### Announcement
+
+- This will be the last update for a while because I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up.
+
 ## [1.2.0] - 2021-09-20
 
 ### Added
