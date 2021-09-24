@@ -10,8 +10,10 @@
 
     onMount(() => {
         if(!queryWeek || queryWeek < 1) {
-            goto(`/matchups?week=${week}`, {noscroll: true});
-            processDisplayMatchup(1)
+            queryWeek = week;
+            displayWeek = queryWeek * 1;
+            goto(`/matchups?week=${queryWeek}`, {noscroll: true});
+            processDisplayMatchup(queryWeek)
             return;
         }
         if(queryWeek > regularSeasonLength) {
