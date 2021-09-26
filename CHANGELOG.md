@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2021-09-26
+
+### Fixed
+
+- Bug in matchups
+
 ## [1.2.2] - 2021-09-26
 
 ### Added
