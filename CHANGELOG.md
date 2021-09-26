@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2021-09-26
+
+### Added
+
+- Added biggest blowout and narrowest victory records
+- Now caching league records for performance
+    - Cached records will load quickly and will be updated after new data is pulled in
+
+### Fixed
+
+- Loading message in blogs page read `Loading transactions` instead of `Loading blog posts`
+
+### Announcement
+
+- This will be the **real** last update for a while (*probably*)... couldn't help myself. I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up. Feel free to keep adding feature requests as they come to you though.
+
 ## [1.2.1] - 2021-09-23
 
 ### Fixed
