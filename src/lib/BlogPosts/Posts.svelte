@@ -140,7 +140,7 @@
 
 {#if loading}
     <div class="loading" >
-        <p>Loading league transactions...</p>
+        <p>Loading league blog posts...</p>
         <LinearProgress indeterminate />
     </div>
 {:else}
