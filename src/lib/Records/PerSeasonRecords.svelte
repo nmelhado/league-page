@@ -28,9 +28,6 @@
         yearsObj[seasonWeekRecord.year].weekRecords = seasonWeekRecord.seasonPointsRecords;
         yearsObj[seasonWeekRecord.year].blowouts = seasonWeekRecord.biggestBlowouts;
         yearsObj[seasonWeekRecord.year].closestMatchups = seasonWeekRecord.closestMatchups;
-        for(const weekRecord of yearsObj[seasonWeekRecord.year].weekRecords) {
-            weekRecord.fpts = round(weekRecord.fpts);
-        }
     }
     
     for(const season in transactionTotals.seasons) {
