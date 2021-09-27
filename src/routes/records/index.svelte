@@ -3,7 +3,7 @@
 
     export async function load() {
         const recordsInfo = waitForAll(
-			getLeagueRecords(),
+			getLeagueRecords(false),
 			getLeagueTransactions(false),
 		)
 	

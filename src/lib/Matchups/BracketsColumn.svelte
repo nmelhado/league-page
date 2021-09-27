@@ -110,11 +110,11 @@
         return round(totalPoints)
     }
 
-    const calculatePotentialPoints = (starters, ix) => {
+    const calculatePotentialPoints = (starters, ix, p) => {
         if(!starters) return 0;
         let totalPoints = 0;
         for(const starter of starters) {
-            totalPoints += parseFloat(players[starter].weeklyInfo[playoffsStart - ix]?.projection || 0);
+            totalPoints += parseFloat(players[starter]?.wi && players[starter].wi[playoffsStart - ix]?.p ? players[starter].wi[playoffsStart - ix].p : 0);
         }
         return round(totalPoints);
     }
@@ -155,8 +155,8 @@
     
     let innerWidth;
 
-    const changeSelection = (m) => {
-        if(m == selected) return;
+    const changeSelection = (m, opponent) => {
+        if(m == selected || !opponent) return;
         selected = m;
     }
 
@@ -326,7 +326,7 @@
     {/if}
     <!-- If we need to draw a bracket, include anchor points and include svgs to draw the  bracket -->
     {#each matchCol as matchups, inx}
-        <div class="match{matchups[0].m == selected ? ' selected' : ''}{matchups[0].m && matchups[1].manager ? ' clickable' : ''}" bind:this={anchors[Math.floor(inx / 2)][inx % 2 == 0 ? 't' : 'b']} on:click={() => {changeSelection(matchups[0].m)}}>
+        <div class="match{matchups[0].m == selected ? ' selected' : ''}{matchups[0].m && matchups[1].manager ? ' clickable' : ''}" bind:this={anchors[Math.floor(inx / 2)][inx % 2 == 0 ? 't' : 'b']} on:click={() => {changeSelection(matchups[0].m, matchups[1].manager)}}>
             {#each matchups as matchup}
                 <div class="manager">
                     <div class="avatarPointsBlock">
@@ -339,7 +339,7 @@
                         {#if matchup.manager}
                             <div class="points">
                                 <div class="actualPoints">{calculatePoints(matchup.points)}</div>
-                                <div class="projectedPoints">{calculatePotentialPoints(matchup.starters, ix)}</div>
+                                <div class="projectedPoints">{calculatePotentialPoints(matchup.starters, ix, players)}</div>
                             </div>
                         {:else}
                             <span />
@@ -362,8 +362,7 @@
                 <line stroke-width="2px" stroke="#ccc"  x1="{anchors[Math.floor(inx / 2)].xLeft}" y1="{anchors[Math.floor(inx / 2)].yBottom}" x2="{anchors[Math.floor(inx / 2)].xMiddle}" y2="{anchors[Math.floor(inx / 2)].yBottom}" class="line"/>
             </svg>
         {/if}
-    {/each}
-    {#if !matchCol.length}
+    {:else}
         <div class="match spacer" />
-    {/if}
+    {/each}
 </div>

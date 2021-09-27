@@ -29,11 +29,13 @@
         const localStarters = [];
         for(let i = 0; i < homeStarters.length; i++) {
             homePointsTotal += homePoints[i];
-            awayPointsTotal += awayPoints[i];
+            const awayPoint = awayPoints ? awayPoints[i] : 0;
+            awayPointsTotal += awayPoint;
             const home = digestStarter(homeStarters[i], homePoints[i]);
-            const away = digestStarter(awayStarters[i], awayPoints[i]);
+            const awayStarter = awayStarters ? awayStarters[i] : null;
+            const away = digestStarter(awayStarter, awayPoint);
             homeProjectionTotal += home.projection;
-            awayProjectionTotal += away.projection;
+            awayProjectionTotal += away ? away.projection : 0;
             localStarters.push({home, away});
         }
         if(awayPointsTotal < homePointsTotal) winning = "home";

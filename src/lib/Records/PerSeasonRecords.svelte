@@ -16,6 +16,8 @@
             fptsHistories: [],
             tradesData: [],
             waiversData: [],
+            blowouts: [],
+            closestMatchups: [],
             showTies: false,
             year: loopYear
         }
@@ -24,9 +26,8 @@
 
     for(const seasonWeekRecord of seasonWeekRecords) {
         yearsObj[seasonWeekRecord.year].weekRecords = seasonWeekRecord.seasonPointsRecords;
-        for(const weekRecord of yearsObj[seasonWeekRecord.year].weekRecords) {
-            weekRecord.fpts = round(weekRecord.fpts);
-        }
+        yearsObj[seasonWeekRecord.year].blowouts = seasonWeekRecord.biggestBlowouts;
+        yearsObj[seasonWeekRecord.year].closestMatchups = seasonWeekRecord.closestMatchups;
     }
     
     for(const season in transactionTotals.seasons) {
@@ -114,7 +115,7 @@
     years.sort((a, b) => b.year - a.year);
 </script>
 
-{#each years as {waiversData, tradesData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year}, ix}
+{#each years as {waiversData, tradesData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year, blowouts, closestMatchups}, ix}
     <RecordsAndRankings
         {waiversData}
         {tradesData}
@@ -124,6 +125,8 @@
         {winPercentages}
         {fptsHistories}
         {lineupIQs}
+        {blowouts}
+        {closestMatchups}
         prefix={year}
         {currentManagers}
         last={ix == years.length - 1}
