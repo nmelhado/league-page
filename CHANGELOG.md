@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4] - 2021-09-27
+
+### Fixed
+
+- Bug in records
+    - Inverse of the correct week was shown (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
+
 ## [1.2.3] - 2021-09-26
 
 ### Fixed

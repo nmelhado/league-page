@@ -137,6 +137,7 @@ export const getLeagueRecords = async (refresh = false) => {
 
 		// loop through each week of the season
 		const matchupsPromises = [];
+		let startWeek = parseInt(week);
 		while(week > 0) {
 			matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curSeason}/matchups/${week}`, {compress: true}))
 			week--;
@@ -162,13 +163,13 @@ export const getLeagueRecords = async (refresh = false) => {
 		let matchupDifferentials = [];
 		
 		// process all the matchups
-		for(let matchupWeek = 0; matchupWeek < matchupsData.length; matchupWeek++) {
+		for(const matchupWeek of matchupsData) {
 			let matchups = {};
-			for(const matchup of matchupsData[matchupWeek]) {
+			for(const matchup of matchupWeek) {
 				const entry = {
 					manager: originalManagers[matchup.roster_id],
 					fpts: matchup.points,
-					week: matchupWeek + 1,
+					week: startWeek,
 					year,
 					rosterID: matchup.roster_id
 				}
@@ -179,7 +180,9 @@ export const getLeagueRecords = async (refresh = false) => {
 					matchups[matchup.matchup_id] = [];
 				}
 				matchups[matchup.matchup_id].push(entry);
+
 			}
+			startWeek--;
 
 			// create matchup differentials from matchups obj
 			for(const matchupKey in matchups) {
