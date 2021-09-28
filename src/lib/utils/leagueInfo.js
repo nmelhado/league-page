@@ -7,7 +7,9 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <img src="https://s3-media0.fl.yelpcdn.com/bphoto/G5xZL68r5bMquxU0goMxVA/o.jpg" alt="SHOTS" height="500">
+  <center>
+    <img src="https://s3-media0.fl.yelpcdn.com/bphoto/G5xZL68r5bMquxU0goMxVA/o.jpg" alt="SHOTS" height="500">
+  </center>
 `;
 
 /*   STEP 3   */
@@ -26,7 +28,7 @@ export const managers = [
       // "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Austin", // (optional)
       "bio": "SHOTS",
-      // "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+      "photo": "/managers/dab.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2020, // (optional) when did the manager start playing fantasy football
       // "favoriteTeam": "nyj", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
@@ -38,7 +40,7 @@ export const managers = [
       // "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "https://www.howmanydayssincemichiganhasbeatenohiostate.com/", // (optional)
+    "philosophy": `<a href="https://www.howmanydayssincemichiganhasbeatenohiostate.com">https://www.howmanydayssincemichiganhasbeatenohiostate.com/</a>`, // (optional)
       // "tradingScale": 10, // 1 - 10 (optional)
       "preferredContact": "Carrier Pigeon",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
