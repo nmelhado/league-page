@@ -23,6 +23,9 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
+    "build-docker": "DOCKER_BUILD=true svelte-kit build --verbose",
+    "docker-build": "docker build . -t $USER/league-page:latest",
+    "docker-run": "npm run docker-build && docker run -p 3000:3000 $USER/league-page:latest",
     "preview": "svelte-kit preview",
     "prepare": "npm run vite-workaround && npm run smui-theme-light && npm run smui-theme-dark",
     "vite-workaround": "node _helper/vite-workaround.js",
