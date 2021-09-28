@@ -7,7 +7,7 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>DOLO</p>
+  <img src="https://s3-media0.fl.yelpcdn.com/bphoto/G5xZL68r5bMquxU0goMxVA/o.jpg" alt="SHOTS" height="500">
 `;
 
 /*   STEP 3   */
