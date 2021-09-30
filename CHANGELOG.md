@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.5] - 2021-09-27
+
+### Fixed
+
+- Bug in records
+    - When the records tab was left and returned to multiple times, the total points column would eventually become NaN (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
+    - This bug was also reported in the same issue below, however I missed it so I ended up having to re-open it.
+
+## [1.2.4] - 2021-09-27
+
+### Fixed
+
+- Bug in records
+    - Inverse of the correct week was shown (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
+
+## [1.2.3] - 2021-09-26
+
+### Fixed
+
+- Bug in matchups
+
+## [1.2.2] - 2021-09-26
+
+### Added
+
+- Added biggest blowout and narrowest victory records
+- Now caching league records for performance
+    - Cached records will load quickly and will be updated after new data is pulled in
+
+### Fixed
+
+- Loading message in blogs page read `Loading transactions` instead of `Loading blog posts`
+
+### Announcement
+
+- This will be the **real** last update for a while (*probably*)... couldn't help myself. I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up. Feel free to keep adding feature requests as they come to you though.
+
+## [1.2.1] - 2021-09-23
+
+### Fixed
+
+- Search bar bug that unfocused the input bar after every character typed
+    - If no input has been detected for 5 seconds, update query parameters in url string (updating will still unfocus the input, but (since 5 seconds have passed) the search should be complete)
+- The matchups page was always starting on week 1
+    - If no query parameter has been set, use the current week
+
+### Changed
+
+- The look of comments on blog posts
+
+### Announcement
+
+- This will be the last update for a while because I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up.
+
 ## [1.2.0] - 2021-09-20
 
 ### Added

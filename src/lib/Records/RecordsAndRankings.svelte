@@ -1,11 +1,11 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
     import BarChart from '../BarChart.svelte'
-    import { cleanName, generateGraph, gotoManager } from '$lib/utils/helper';
+    import { cleanName, generateGraph, gotoManager, round } from '$lib/utils/helper';
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, currentManagers, allTime=false, last=false;
+    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
 
     const lineupIQGraph = {
         stats: lineupIQs,
@@ -267,6 +267,14 @@
         line-height: 1.2em;
     }
 
+    :global(.differentialName) {
+        padding: 0.7em 0;
+    }
+
+    .center {
+        text-align: center;
+    }
+
     /* Start button resizing */
 
     @media (max-width: 540px) {
@@ -293,7 +301,7 @@
 
     /* Start record table resizing */
 
-    @media (max-width: 490px) {
+    @media (max-width: 510px) {
         :global(.recordTable th) {
             font-size: 0.8em;
             padding: 1px 12px;
@@ -304,7 +312,16 @@
         }
     }
 
-    @media (max-width: 390px) {
+    @media (max-width: 435px) {
+        :global(.rank) {
+            padding: 1px 0 1px 5px !important;
+        }
+        :global(.rank) {
+            padding: 1px 0 1px 5px !important;
+        }
+    }
+
+    @media (max-width: 420px) {
         :global(.recordTable th) {
             font-size: 0.6em;
             padding: 1px 12px;
@@ -315,7 +332,7 @@
         }
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 330px) {
         :global(.recordTable th) {
             font-size: 0.5em;
             padding: 1px 8px;
@@ -388,7 +405,7 @@
                     <Cell class="header" colspan=4>{prefix} Single Week Scoring Records</Cell>
                 </Row>
                 <Row>
-                    <Cell class="header"></Cell>
+                    <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
                     <Cell class="header">Week</Cell>
                     <Cell class="header">Total Points</Cell>
@@ -397,7 +414,7 @@
             <Body>
                 {#each weekRecords as leagueWeekRecord, ix}
                     <Row>
-                        <Cell>{ix + 1}</Cell>
+                        <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leagueWeekRecord.rosterID)}>
                             {leagueWeekRecord.manager.name}
                             {#if !allTime  && cleanName(leagueWeekRecord.manager.name) != cleanName(currentManagers[leagueWeekRecord.rosterID].name)}
@@ -405,7 +422,7 @@
                             {/if}
                         </Cell>
                         <Cell>{allTime ? leagueWeekRecord.year + " " : "" }Week {leagueWeekRecord.week}</Cell>
-                        <Cell>{leagueWeekRecord.fpts}</Cell>
+                        <Cell>{round(leagueWeekRecord.fpts)}</Cell>
                     </Row>
                 {/each}
             </Body>
@@ -418,7 +435,7 @@
                 <Cell class="header" colspan=4>{prefix} Season-long Scoring Records</Cell>
             </Row>
             <Row>
-                <Cell class="header"></Cell>
+                <Cell class="header rank"></Cell>
                 <Cell class="header">Manager</Cell>
                 {#if allTime}
                     <Cell class="header">Year</Cell>
@@ -429,7 +446,7 @@
         <Body>
             {#each seasonLongRecords as mostSeasonLongPoint, ix}
                 <Row>
-                    <Cell>{ix + 1}</Cell>
+                    <Cell class="rank">{ix + 1}</Cell>
                     <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
                         {mostSeasonLongPoint.manager.name}
                         {#if !allTime  && cleanName(mostSeasonLongPoint.manager.name) != cleanName(currentManagers[mostSeasonLongPoint.rosterID].name)}
@@ -444,6 +461,86 @@
             {/each}
         </Body>
     </DataTable>
+
+    {#if blowouts && blowouts.length}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=4>{prefix} Largest Blowouts</Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Matchup</Cell>
+                    <Cell class="header">Week</Cell>
+                    <Cell class="header">Differential</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each blowouts as blowout, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName center differentialName">
+                            <div class="center" on:click={() => gotoManager(blowout.home.rosterID)}>
+                                {blowout.home.manager.name} ({round(blowout.home.fpts)})
+                                {#if !allTime  && cleanName(blowout.home.manager.name) != cleanName(currentManagers[blowout.home.rosterID].name)}
+                                    <div class="curRecordManager">({currentManagers[blowout.home.rosterID].name})</div>
+                                {/if}
+                            </div>
+                            vs
+                            <div class="center" on:click={() => gotoManager(blowout.away.rosterID)}>
+                                {blowout.away.manager.name} ({round(blowout.away.fpts)})
+                                {#if !allTime  && cleanName(blowout.away.manager.name) != cleanName(currentManagers[blowout.away.rosterID].name)}
+                                    <div class="curRecordManager">({currentManagers[blowout.away.rosterID].name})</div>
+                                {/if}
+                            </div>
+                        </Cell>
+                        <Cell>{allTime ? blowout.year + " " : "" }Week {blowout.week}</Cell>
+                        <Cell>{round(blowout.differential)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+
+    {#if closestMatchups && closestMatchups.length}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=4>{prefix} Narrowest Wins</Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Matchup</Cell>
+                    <Cell class="header">Week</Cell>
+                    <Cell class="header">Differential</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each closestMatchups as closestMatchup, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName center differentialName">
+                            <div class="center" on:click={() => gotoManager(closestMatchup.home.rosterID)}>
+                                {closestMatchup.home.manager.name} ({round(closestMatchup.home.fpts)})
+                                {#if !allTime  && cleanName(closestMatchup.home.manager.name) != cleanName(currentManagers[closestMatchup.home.rosterID].name)}
+                                    <div class="curRecordManager">({currentManagers[closestMatchup.home.rosterID].name})</div>
+                                {/if}
+                            </div>
+                            vs
+                            <div class="center" on:click={() => gotoManager(closestMatchup.away.rosterID)}>
+                                {closestMatchup.away.manager.name} ({round(closestMatchup.away.fpts)})
+                                {#if !allTime  && cleanName(closestMatchup.away.manager.name) != cleanName(currentManagers[closestMatchup.away.rosterID].name)}
+                                    <div class="curRecordManager">({currentManagers[closestMatchup.away.rosterID].name})</div>
+                                {/if}
+                            </div>
+                        </Cell>
+                        <Cell>{allTime ? closestMatchup.year + " " : "" }Week {closestMatchup.week}</Cell>
+                        <Cell>{round(closestMatchup.differential)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
 </div>
 
 <h4>{prefix} Rankings</h4>

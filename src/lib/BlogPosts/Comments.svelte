@@ -72,15 +72,11 @@
 <style>
     .comment {
         margin: 0;
-        padding: 1em 0 0;
+        padding: 1em 2em 0.5em;
         background: var(--eee);
         border: 1px solid var(--ccc);
         border-left: none;
         border-right: none;
-    }
-
-    .commentText {
-        padding: 0 2em;
     }
     
     .commentHeader {
@@ -93,9 +89,9 @@
         border-right: none;
     }
 
-    .authorAndDate {
+    .date {
         color: var(--g999);
-        padding: 0 2em 1em;
+        padding: 0.5em 0 0;
     }
 
     :global(.commentIcon) {
@@ -112,13 +108,8 @@
 		border: 0.25px solid #777;
 	}
 
-    .divider {
-        border:0;
-        margin:0;
-        width:100%;
-        height:1px;
-        background: var(--ddd);
-        margin: 1em 0;
+    .author {
+        font-weight: 700;
     }
 </style>
 
@@ -143,13 +134,10 @@
     </div>
     {#each comments as comment}
         <div class="comment">
-            <div class="commentText">{@html comment.fields.comment[lang]}</div>
-            <hr class="divider" />
-            <div class="authorAndDate">
-                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author[lang])}" />
-                <span class="author">{@html getAuthor(rosters, users, comment.fields.author[lang])} - </span>
-                <span class="date"><i>{parseDate(comment.sys.createdAt)}</i></span>
-            </div>
+            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author[lang])}" />
+            <span class="author">{@html getAuthor(rosters, users, comment.fields.author[lang])}</span>
+            <span class="commentText">{@html comment.fields.comment[lang]}</span>
+            <div class="date"><i>{parseDate(comment.sys.createdAt)}</i></div>
         </div>
     {/each}
     <CreateComment bind:showWrite={showWrite} on:createComment={addComment}/>
