@@ -55,12 +55,14 @@
             }
 
 			const fpts = round(season.fpts);
+			const fptspg = season.fpts / (season.wins + season.losses + season.ties);
 
             // add season-long scoring record
             yearsObj[season.year].seasonLongRecords.push({
                 manager: season.manager,
 				rosterID,
 				fpts,
+		    		fptspg,
 				year: null,
 			})
 
@@ -93,6 +95,7 @@
                 manager: season.manager,
                 fptsFor: round(season.fpts),
                 fptsAgainst: round(season.fptsAgainst),
+		fptsPerGame: round(season.fpts / (season.wins + season.losses + season.ties)),
             })
         }
     }
