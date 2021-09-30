@@ -93,6 +93,7 @@ export const getLeagueRecords = async (refresh = false) => {
 					fptsFor: 0,
 					fptsAgainst: 0,
 					potentialPoints: 0,
+					fptspg: 0,
 					years: []
 				}
 			}
@@ -100,6 +101,7 @@ export const getLeagueRecords = async (refresh = false) => {
 			const fpts = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
 			const fptsAgainst = roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100);
 			const potentialPoints = roster.settings.ppts + (roster.settings.ppts_decimal / 100);
+			const fptspg = roster.settings.fpts / (roster.settings.wins + roster.settings.losses + roster.settings.ties);
 
 			// add records to league roster record record
 			leagueRosterRecords[rosterID].wins += roster.settings.wins;
@@ -108,6 +110,8 @@ export const getLeagueRecords = async (refresh = false) => {
 			leagueRosterRecords[rosterID].fptsFor += fpts;
 			leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
 			leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
+			leagueRosterRecords[rosterID].fptspg += fptspg;
+			
 
 			// add singleSeason info [`${year}fptsFor`]
 			const singleYearInfo = {
@@ -117,6 +121,7 @@ export const getLeagueRecords = async (refresh = false) => {
 				fpts,
 				fptsAgainst,
 				potentialPoints,
+				fptspg,
 				manager: originalManagers[rosterID],
 				year
 			}
@@ -126,6 +131,7 @@ export const getLeagueRecords = async (refresh = false) => {
 			mostSeasonLongPoints.push({
 				rosterID,
 				fpts,
+				fptspg,
 				year,
 				manager: originalManagers[rosterID]
 			})
