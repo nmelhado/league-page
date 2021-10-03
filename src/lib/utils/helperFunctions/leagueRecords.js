@@ -137,7 +137,7 @@ export const getLeagueRecords = async (refresh = false) => {
 				year,
 				manager: originalManagers[rosterID]
 			})
-			
+			// We don't want the All-Time low scores to include the "season-long" scores from the current season
 			if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
 				leastSeasonLongPoints.push({
 					rosterID,
