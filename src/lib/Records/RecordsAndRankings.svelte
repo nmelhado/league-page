@@ -5,7 +5,7 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
+    export let tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, leastSeasonLongPoints, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
 
     const lineupIQGraph = {
         stats: lineupIQs,
@@ -402,13 +402,16 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Single Week Scoring Records</Cell>
+                    <Cell class="header" colspan=5>{prefix} Single-Week Scoring Records</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
+		    {#if allTime}
+			<Cell class="header">Year</Cell>
+		    {/if}
                     <Cell class="header">Week</Cell>
-                    <Cell class="header">Total Points</Cell>
+                    <Cell class="header">PF</Cell>
                 </Row>
             </Head>
             <Body>
@@ -421,60 +424,134 @@
                                 <div class="curRecordManager">({currentManagers[leagueWeekRecord.rosterID].name})</div>
                             {/if}
                         </Cell>
-                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }Week {leagueWeekRecord.week}</Cell>
-                        <Cell>{round(leagueWeekRecord.fpts)}</Cell>
+			{#if allTime}
+			    <Cell class="center">{leagueWeekRecord.year}</Cell>
+			{/if}
+                        <Cell class="center">{leagueWeekRecord.week}</Cell>
+                        <Cell class="center">{round(leagueWeekRecord.fpts)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+	
+    {#if allTime}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=5>{prefix} Season-Long Scoring Records</Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
+                    <Cell class="header">PF</Cell>
+		    <Cell class="header">PPG</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each seasonLongRecords as mostSeasonLongPoint, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
+                            {mostSeasonLongPoint.manager.name}
+                            {#if !allTime  && cleanName(mostSeasonLongPoint.manager.name) != cleanName(currentManagers[mostSeasonLongPoint.rosterID].name)}
+                            <div class="curRecordManager">({currentManagers[mostSeasonLongPoint.rosterID].name})</div>
+                            {/if}
+                        </Cell>
+                        <Cell class="center">{mostSeasonLongPoint.year}</Cell>
+                        <Cell class="center">{round(mostSeasonLongPoint.fpts)}</Cell>
+	      	        <Cell class="center">{round(mostSeasonLongPoint.fptspg)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+	
+    {#if weekRecords && weekRecords.length}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=5>{prefix} Single-Week Scoring Lows</Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+		    {#if allTime}
+			<Cell class="header">Year</Cell>
+		    {/if}
+                    <Cell class="header">Week</Cell>
+                    <Cell class="header">PF</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each weekLows as leagueWeekLow, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(leagueWeekLow.rosterID)}>
+                            {leagueWeekLow.manager.name}
+                            {#if !allTime  && cleanName(leagueWeekLow.manager.name) != cleanName(currentManagers[leagueWeekLow.rosterID].name)}
+                                <div class="curRecordManager">({currentManagers[leagueWeekLow.rosterID].name})</div>
+                            {/if}
+                        </Cell>
+			{#if allTime}
+			    <Cell class="center">{leagueWeekLow.year}</Cell>
+			{/if}
+                        <Cell class="center">{leagueWeekLow.week}</Cell>
+                        <Cell class="center">{round(leagueWeekLow.fpts)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+	
+    {#if allTime}
+    	<DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=5>{prefix} Season-Long Scoring Lows</Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
+                    <Cell class="header">PF</Cell>
+	    	    <Cell class="header">PPG</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each leastSeasonLongPoints as leastSeasonLongPoint, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(leastSeasonLongPoint.rosterID)}>
+                            {leastSeasonLongPoint.manager.name}
+                            {#if !allTime  && cleanName(leastSeasonLongPoint.manager.name) != cleanName(currentManagers[leastSeasonLongPoint.rosterID].name)}
+                                <div class="curRecordManager">({currentManagers[leastSeasonLongPoint.rosterID].name})</div>
+                            {/if}
+                        </Cell>
+                        <Cell class="center">{leastSeasonLongPoint.year}</Cell>
+                        <Cell class="center">{round(leastSeasonLongPoint.fpts)}</Cell>
+	    	        <Cell class="center">{round(leastSeasonLongPoint.fptspg)}</Cell>
                     </Row>
                 {/each}
             </Body>
         </DataTable>
     {/if}
 
-    <DataTable class="recordTable">
-        <Head>
-            <Row>
-                <Cell class="header" colspan=5>{prefix} Season-long Scoring Records</Cell>
-            </Row>
-            <Row>
-                <Cell class="header rank"></Cell>
-                <Cell class="header">Manager</Cell>
-                {#if allTime}
-                    <Cell class="header">Year</Cell>
-                {/if}
-                <Cell class="header">Total Points</Cell>
-		<Cell class="header">PPG</Cell>
-            </Row>
-        </Head>
-        <Body>
-            {#each seasonLongRecords as mostSeasonLongPoint, ix}
-                <Row>
-                    <Cell class="rank">{ix + 1}</Cell>
-                    <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
-                        {mostSeasonLongPoint.manager.name}
-                        {#if !allTime  && cleanName(mostSeasonLongPoint.manager.name) != cleanName(currentManagers[mostSeasonLongPoint.rosterID].name)}
-                            <div class="curRecordManager">({currentManagers[mostSeasonLongPoint.rosterID].name})</div>
-                        {/if}
-                    </Cell>
-                    {#if allTime}
-                        <Cell>{mostSeasonLongPoint.year}</Cell>
-                    {/if}
-                    <Cell>{mostSeasonLongPoint.fpts}</Cell>
-		    <Cell>{round(mostSeasonLongPoint.fptspg)}</Cell>
-                </Row>
-            {/each}
-        </Body>
-    </DataTable>
-
     {#if blowouts && blowouts.length}
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Largest Blowouts</Cell>
+                    <Cell class="header" colspan=5>{prefix} Largest Blowouts</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Matchup</Cell>
+		    {#if allTime}
+	                <Cell class="header">Year</Cell>
+		    {/if}
                     <Cell class="header">Week</Cell>
-                    <Cell class="header">Differential</Cell>
+                    <Cell class="header">Diff</Cell>
                 </Row>
             </Head>
             <Body>
@@ -496,8 +573,11 @@
                                 {/if}
                             </div>
                         </Cell>
-                        <Cell>{allTime ? blowout.year + " " : "" }Week {blowout.week}</Cell>
-                        <Cell>{round(blowout.differential)}</Cell>
+			{#if allTime}
+			    <Cell class="center">{blowout.year}</Cell>
+			{/if}
+                        <Cell class="center">{blowout.week}</Cell>
+                        <Cell class="center">{round(blowout.differential)}</Cell>
                     </Row>
                 {/each}
             </Body>
@@ -508,13 +588,16 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Narrowest Wins</Cell>
+                    <Cell class="header" colspan=5>{prefix} Narrowest Wins</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Matchup</Cell>
+		    {#if allTime}
+	                <Cell class="header">Year</Cell>
+		    {/if}
                     <Cell class="header">Week</Cell>
-                    <Cell class="header">Differential</Cell>
+                    <Cell class="header">Diff</Cell>
                 </Row>
             </Head>
             <Body>
@@ -536,8 +619,11 @@
                                 {/if}
                             </div>
                         </Cell>
-                        <Cell>{allTime ? closestMatchup.year + " " : "" }Week {closestMatchup.week}</Cell>
-                        <Cell>{round(closestMatchup.differential)}</Cell>
+			{#if allTime}
+			    <Cell class="center">{closestMatchup.year}</Cell>
+			{/if}
+                        <Cell class="center">{closestMatchup.week}</Cell>
+                        <Cell class="center">{round(closestMatchup.differential)}</Cell>
                     </Row>
                 {/each}
             </Body>
@@ -566,9 +652,9 @@
                         <Row>
                             <Cell class="header"></Cell>
                             <Cell class="header">Manager</Cell>
-                            <Cell class="header">Lineup IQ</Cell>
-                            <Cell class="header">Points</Cell>
-                            <Cell class="header">Potential Points</Cell>
+                            <Cell class="header">IQ</Cell>
+                            <Cell class="header">PF</Cell>
+                            <Cell class="header">Poss. PF</Cell>
                         </Row>
                     </Head>
                     <Body>
@@ -581,9 +667,9 @@
                                         <div class="curRecordManager">({currentManagers[lineupIQ.rosterID].name})</div>
                                     {/if}
                                 </Cell>
-                                <Cell>{lineupIQ.iq}%</Cell>
-                                <Cell>{lineupIQ.fpts}</Cell>
-                                <Cell>{lineupIQ.potentialPoints}</Cell>
+                                <Cell class="center">{lineupIQ.iq}%</Cell>
+                                <Cell class="center">{lineupIQ.fpts}</Cell>
+                                <Cell class="center">{lineupIQ.potentialPoints}</Cell>
                             </Row>
                         {/each}
                     </Body>
@@ -601,11 +687,11 @@
                         <Cell class="header"></Cell>
                         <Cell class="header">Manager</Cell>
                         <Cell class="header">Win %</Cell>
-                        <Cell class="header">Wins</Cell>
+                        <Cell class="header">W</Cell>
                         {#if showTies}
-                            <Cell class="header">Ties</Cell>
+                            <Cell class="header">T</Cell>
                         {/if}
-                        <Cell class="header">Losses</Cell>
+                        <Cell class="header">L</Cell>
                     </Row>
                 </Head>
                 <Body>
@@ -618,12 +704,12 @@
                                     <div class="curRecordManager">({currentManagers[winPercentage.rosterID].name})</div>
                                 {/if}
                             </Cell>
-                            <Cell>{winPercentage.percentage}%</Cell>
-                            <Cell>{winPercentage.wins}</Cell>
+                            <Cell class="center">{winPercentage.percentage}%</Cell>
+                            <Cell class="center">{winPercentage.wins}</Cell>
                             {#if showTies}
-                                <Cell>{winPercentage.ties}</Cell>
+                                <Cell class="center">{winPercentage.ties}</Cell>
                             {/if}
-                            <Cell>{winPercentage.losses}</Cell>
+                            <Cell class="center">{winPercentage.losses}</Cell>
                         </Row>
                     {/each}
                 </Body>
@@ -641,8 +727,8 @@
                     <Row>
                         <Cell class="header"></Cell>
                         <Cell class="header">Manager</Cell>
-                        <Cell class="header">Points For</Cell>
-                        <Cell class="header">Points Against</Cell>
+                        <Cell class="header">PF</Cell>
+                        <Cell class="header">PA</Cell>
 			<Cell class="header">PPG</Cell>
                     </Row>
                 </Head>
@@ -656,9 +742,9 @@
                                     <div class="curRecordManager">({currentManagers[fptsHistory.rosterID].name})</div>
                                 {/if}
                             </Cell>
-                            <Cell>{fptsHistory.fptsFor}</Cell>
-                            <Cell>{fptsHistory.fptsAgainst}</Cell>
-			    <Cell>{fptsHistory.fptsPerGame}</Cell>
+                            <Cell class="center">{fptsHistory.fptsFor}</Cell>
+                            <Cell class="center">{fptsHistory.fptsAgainst}</Cell>
+			    <Cell class="center">{fptsHistory.fptsPerGame}</Cell>
                         </Row>
                     {/each}
                 </Body>
@@ -690,8 +776,8 @@
                                     <div class="curRecordManager">({currentManagers[transaction.rosterID].name})</div>
                                 {/if}
                             </Cell>
-                            <Cell>{transaction.trades}</Cell>
-                            <Cell>{transaction.waivers}</Cell>
+                            <Cell class="center">{transaction.trades}</Cell>
+                            <Cell class="center">{transaction.waivers}</Cell>
                         </Row>
                     {/each}
                 </Body>

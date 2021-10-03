@@ -42,7 +42,9 @@ export const getLeagueRecords = async (refresh = false) => {
 	let leagueRosterRecords = {}; // every full season stat point (for each year and all years combined)
 	let seasonWeekRecords = []; // highest weekly points within a single season
 	let leagueWeekRecords = []; // highest weekly points within a single season
+	let leagueWeekLows = []; // lowest weekly points within a single season
 	let mostSeasonLongPoints = []; // 10 highest full season points
+	let leastSeasonLongPoints = []; // 10 lowest full season points
 	let allTimeBiggestBlowouts = []; // 10 biggest blowouts
 	let allTimeClosestMatchups = []; // 10 closest matchups
 
@@ -111,7 +113,7 @@ export const getLeagueRecords = async (refresh = false) => {
 			leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
 			leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
 			leagueRosterRecords[rosterID].fptspg += fptspg;
-			
+
 
 			// add singleSeason info [`${year}fptsFor`]
 			const singleYearInfo = {
@@ -135,6 +137,16 @@ export const getLeagueRecords = async (refresh = false) => {
 				year,
 				manager: originalManagers[rosterID]
 			})
+			// We don't want the All-Time low scores to include the "season-long" scores from the current season
+			if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
+				leastSeasonLongPoints.push({
+					rosterID,
+					fpts,
+					fptspg,
+					year,
+					manager: originalManagers[rosterID]
+				})
+			}
 		}
 		
 		if(!currentManagers) {
@@ -166,6 +178,7 @@ export const getLeagueRecords = async (refresh = false) => {
 		curSeason = leagueData.previous_league_id;
 
 		const seasonPointsRecord = [];
+		const seasonPointsLow = [];
 		let matchupDifferentials = [];
 		
 		// process all the matchups
@@ -180,7 +193,9 @@ export const getLeagueRecords = async (refresh = false) => {
 					rosterID: matchup.roster_id
 				}
 				seasonPointsRecord.push(entry);
+				seasonPointsLow.push(entry);
 				leagueWeekRecords.push(entry);
+				leagueWeekLows.push(entry);
 				// add each entry to the matchup object
 				if(!matchups[matchup.matchup_id]) {
 					matchups[matchup.matchup_id] = [];
@@ -231,15 +246,17 @@ export const getLeagueRecords = async (refresh = false) => {
 			year,
 			biggestBlowouts,
 			closestMatchups,
-			seasonPointsRecords: seasonPointsRecord.sort((a, b) => b.fpts - a.fpts).slice(0, 10)
+			seasonPointsRecords: seasonPointsRecord.sort((a, b) => b.fpts - a.fpts).slice(0, 10),
+			seasonPointsLows: seasonPointsLow.sort((a, b) => a.fpts - b.fpts).slice(0, 10)
 		}
 
 		if(interSeasonEntry.seasonPointsRecords.length > 0) {
 			if(!currentYear) {
 				currentYear = year;
 			}
-			seasonWeekRecords.push(interSeasonEntry)
+			seasonWeekRecords.push(interSeasonEntry);
 		};
+		
 	}
 
 	allTimeMatchupDifferentials = allTimeMatchupDifferentials.sort((a, b) => b.differential - a.differential)
@@ -250,12 +267,16 @@ export const getLeagueRecords = async (refresh = false) => {
 	}
 
 	leagueWeekRecords = leagueWeekRecords.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
+	leagueWeekLows = leagueWeekLows.sort((a, b) => a.fpts - b.fpts).slice(0, 10);
 	mostSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
+	leastSeasonLongPoints = leastSeasonLongPoints.sort((a, b) => a.fpts - b.fpts).slice(0, 10);
 
 	const recordsData = {
 		allTimeBiggestBlowouts,
 		allTimeClosestMatchups,
 		mostSeasonLongPoints,
+		leastSeasonLongPoints,
+		leagueWeekLows,
 		leagueWeekRecords,
 		seasonWeekRecords,
 		leagueRosterRecords,
