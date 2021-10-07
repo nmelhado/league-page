@@ -1,12 +1,30 @@
 {
   "name": "league-page",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "homepage": "https://github.com/nmelhado/league-page",
   "author": {
     "name": "Nicholas Melhado",
     "email": "n.melhado@gmail.com",
     "url": "http://www.nmelhado.com/"
   },
+  "contributors": [
+    {
+      "name": "Shane Tjong-Akiet",
+      "url": "https://github.com/shanetj"
+    },
+    {
+      "name": "Shane Tjong-Akiet",
+      "url": "https://github.com/shanetj"
+    },
+    {
+      "name": "Scottie Garcia",
+      "url": "https://github.com/scottiegarcia"
+    },
+    {
+      "name": "DOLO",
+      "url": "https://github.com/1600dolo"
+    }
+  ],
   "funding": {
     "type": "buy_me_a_coffee",
     "url": "https://www.buymeacoffee.com/nmelhado"
