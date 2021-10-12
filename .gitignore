@@ -5,3 +5,4 @@ node_modules
 .env
 static/smui-dark.css
 static/smui.css
+build
