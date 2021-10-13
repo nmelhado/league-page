@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.6] - 2021-10-07
+
+### Added
+
+- Docker support to address feature request [#68](https://github.com/nmelhado/league-page/issues/68)
+    - Big thank you to [1600dolo](https://github.com/1600dolo) for implementing this
+- **WARNING:** This might cause merge conflicts in `package-lock.json`. Going forward shouldn't happen again.
+    - Follow these instructions to [resolve the conflict](https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github). For the most part, you'll most likely want to keep the changes from master (the second change)
+
 ## [1.2.5] - 2021-09-27
 
 ### Fixed
