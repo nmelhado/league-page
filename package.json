@@ -1,12 +1,30 @@
 {
   "name": "league-page",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "homepage": "https://github.com/nmelhado/league-page",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nmelhado/league-page.git"
+  },
   "author": {
     "name": "Nicholas Melhado",
     "email": "n.melhado@gmail.com",
     "url": "http://www.nmelhado.com/"
   },
+  "contributors": [
+    {
+      "name": "Shane Tjong-Akiet",
+      "url": "https://github.com/shanetj"
+    },
+    {
+      "name": "Scottie Garcia",
+      "url": "https://github.com/scottiegarcia"
+    },
+    {
+      "name": "DOLO",
+      "url": "https://github.com/1600dolo"
+    }
+  ],
   "funding": {
     "type": "buy_me_a_coffee",
     "url": "https://www.buymeacoffee.com/nmelhado"
@@ -23,6 +41,9 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
+    "build-docker": "DOCKER_BUILD=true svelte-kit build --verbose",
+    "docker-build": "docker build . -t $USER/league-page:latest",
+    "docker-run": "npm run docker-build && docker run -p 3000:3000 $USER/league-page:latest",
     "preview": "svelte-kit preview",
     "prepare": "npm run vite-workaround && npm run smui-theme-light && npm run smui-theme-dark",
     "vite-workaround": "node _helper/vite-workaround.js",
@@ -32,15 +53,16 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/adapter-node": "^1.0.0-next.51",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.0",
     "@sveltejs/kit": "next",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.0",
+    "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "smui-theme": "^4.2.0",
-    "svelte": "^3.41.0"
+    "svelte": "^3.44.0"
   },
   "type": "module",
   "dependencies": {
