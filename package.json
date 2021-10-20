@@ -2,16 +2,16 @@
   "name": "league-page",
   "version": "1.2.7",
   "homepage": "https://github.com/nmelhado/league-page",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nmelhado/league-page.git"
+  },
   "author": {
     "name": "Nicholas Melhado",
     "email": "n.melhado@gmail.com",
     "url": "http://www.nmelhado.com/"
   },
   "contributors": [
-    {
-      "name": "Shane Tjong-Akiet",
-      "url": "https://github.com/shanetj"
-    },
     {
       "name": "Shane Tjong-Akiet",
       "url": "https://github.com/shanetj"
@@ -54,15 +54,15 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.51",
-    "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.0",
     "@sveltejs/kit": "next",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.0",
+    "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "smui-theme": "^4.2.0",
-    "svelte": "^3.41.0"
+    "svelte": "^3.44.0"
   },
   "type": "module",
   "dependencies": {
