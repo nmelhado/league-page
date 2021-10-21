@@ -229,6 +229,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
         - In that situation (if you are new to coding), copy the contents of your managers page and your homepage text and delete your repo. Re-follow this guide and re-deploy your page.
         - There should be **NO merge conflicts going forward**.
 
+    - **WARNING:** There may be merge conflicts in `package-lock.json`. *This should be very rare.*
+        - Follow these instructions to [resolve the conflict](https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github). For the most part, you'll most likely want to keep the changes from master (the second change)
+
 
 ## V. Wrapping up
 
