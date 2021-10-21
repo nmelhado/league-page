@@ -26,6 +26,7 @@
 
     for(const seasonWeekRecord of seasonWeekRecords) {
         yearsObj[seasonWeekRecord.year].weekRecords = seasonWeekRecord.seasonPointsRecords;
+        yearsObj[seasonWeekRecord.year].weekLows = seasonWeekRecord.seasonPointsLows;
         yearsObj[seasonWeekRecord.year].blowouts = seasonWeekRecord.biggestBlowouts;
         yearsObj[seasonWeekRecord.year].closestMatchups = seasonWeekRecord.closestMatchups;
     }
@@ -99,6 +100,7 @@
 
     for(const key in yearsObj) {
         // sort records
+        yearsObj[key].seasonLongLows = yearsObj[key].seasonLongRecords.slice().sort((a, b) => a.fpts - b.fpts).slice(0, 10);
         yearsObj[key].seasonLongRecords = yearsObj[key].seasonLongRecords.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
         
         // sort rankings
@@ -115,11 +117,13 @@
     years.sort((a, b) => b.year - a.year);
 </script>
 
-{#each years as {waiversData, tradesData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year, blowouts, closestMatchups}, ix}
+{#each years as {waiversData, tradesData, weekRecords, weekLows, seasonLongLows, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year, blowouts, closestMatchups}, ix}
     <RecordsAndRankings
         {waiversData}
         {tradesData}
         {weekRecords}
+        {weekLows}
+        {seasonLongLows}
         {seasonLongRecords}
         {showTies}
         {winPercentages}
