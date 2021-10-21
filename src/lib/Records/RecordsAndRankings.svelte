@@ -432,7 +432,7 @@
     <DataTable class="recordTable">
         <Head>
             <Row>
-                <Cell class="header" colspan=4>{prefix} Season-long Scoring Records</Cell>
+                <Cell class="header" colspan=5>{prefix} Season-long Scoring Records</Cell>
             </Row>
             <Row>
                 <Cell class="header rank"></Cell>
@@ -441,6 +441,7 @@
                     <Cell class="header">Year</Cell>
                 {/if}
                 <Cell class="header">Total Points</Cell>
+                <Cell class="header">Total PPG</Cell>
             </Row>
         </Head>
         <Body>
@@ -457,6 +458,7 @@
                         <Cell>{mostSeasonLongPoint.year}</Cell>
                     {/if}
                     <Cell>{mostSeasonLongPoint.fpts}</Cell>
+                    <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
                 </Row>
             {/each}
         </Body>
@@ -632,7 +634,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header" colspan=4>
+                        <Cell class="header" colspan=5>
                             {prefix} Fantasy Points Rankings
                         </Cell>
                     </Row>
@@ -641,6 +643,7 @@
                         <Cell class="header">Manager</Cell>
                         <Cell class="header">Points For</Cell>
                         <Cell class="header">Points Against</Cell>
+                        <Cell class="header">Points Per Game</Cell>
                     </Row>
                 </Head>
                 <Body>
@@ -655,6 +658,7 @@
                             </Cell>
                             <Cell>{fptsHistory.fptsFor}</Cell>
                             <Cell>{fptsHistory.fptsAgainst}</Cell>
+                            <Cell>{fptsHistory.fptsPerGame}</Cell>
                         </Row>
                     {/each}
                 </Body>
