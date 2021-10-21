@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.7] - 2021-10-20
+
+### Fixed
+
+- Bug that affects the draft page of keeper leagues 
+    - Reported in issue [#85](https://github.com/nmelhado/league-page/issues/85)
+
 ## [1.2.6] - 2021-10-07
 
 ### Added
