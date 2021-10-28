@@ -204,7 +204,7 @@ export const managers = [
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Atlanta",
     "bio": ".",
-    "photo": "/managers/lee.jpg", // done
+    "photo": "", // done
     "fantasyStart": 2021, // when did the manager start playing fantasy football
     "favoriteTeam": "pit", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
@@ -214,7 +214,7 @@ export const managers = [
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 1335, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-    "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
+    "valuePosition": "QB", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
     "philosophy": "Win.",
     "tradingScale": 1, // 1 - 10
