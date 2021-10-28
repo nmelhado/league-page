@@ -12,7 +12,7 @@ export const managers = [
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Mooch", // Can be anything (usually your rival's name)
-      link: 4, // manager array number within this array, or null to link back to all managers page
+      link: 5, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 7543, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -34,7 +34,7 @@ export const managers = [
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Himself", // Can be anything (usually your rival's name)
-      link: 2, // manager array number within this array, or null to link back to all managers page
+      link: 9, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 6904, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -56,7 +56,7 @@ export const managers = [
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Wolfe", // Can be anything (usually your rival's name)
-      link: 9, // manager array number within this array, or null to link back to all managers page
+      link: 5, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 5927, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -85,7 +85,7 @@ export const managers = [
     "valuePosition": "Flex", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "No Discrimination", // 'Rookies' or 'Vets'
     "philosophy": "Next man up.",
-    "tradingScale": 7, // 1 - 10
+    "tradingScale": 4, // 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
   {
@@ -100,7 +100,7 @@ export const managers = [
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Wolfe", // Can be anything (usually your rival's name)
-      link: 9, // manager array number within this array, or null to link back to all managers page
+      link: 2, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 138, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -151,7 +151,7 @@ export const managers = [
     "valuePosition": "WR", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
     "philosophy": "I have no clue what is hapening.",
-    "tradingScale": 4, // 1 - 10
+    "tradingScale": , // 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
   {
@@ -188,14 +188,14 @@ export const managers = [
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Josh", // Can be anything (usually your rival's name)
-      link: 2, // manager array number within this array, or null to link back to all managers page
+      link: 4, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
     "favoritePlayer": 6809, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
     "valuePosition": "TE", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
     "philosophy": "Kick ass and have fun.",
-    "tradingScale": 5, // 1 - 10
+    "tradingScale": , // 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
     {
