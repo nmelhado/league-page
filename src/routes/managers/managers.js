@@ -125,7 +125,7 @@ export const managers = [
       link: 1, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
-    "favoritePlayer": 4053, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    "favoritePlayer": 7525, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
     "valuePosition": "WR", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
     "philosophy": "GET SOME. (Go Every Time So Others May Everytime)",
@@ -140,7 +140,7 @@ export const managers = [
     "bio": "Some would call him a taco but he has had more fantasy success then anyone else. Is he just faking it?",
     "photo": "/managers/yount.jpg", // done
     "fantasyStart": 2019, // when did the manager start playing fantasy football
-    "favoriteTeam": "dal", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    "favoriteTeam": "pit", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Win Now", // 'Win Now' or 'Rebuild'
     "rival": {
       name: "Dith", // Can be anything (usually your rival's name)
@@ -200,23 +200,23 @@ export const managers = [
   },
     {
     "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-    "name": "Andrew Lee",
+    "name": "Kevin Bolick",
     "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-    "location": "Wilkes",
-    "bio": "Lee shows up when the time comes.",
+    "location": "Atlanta",
+    "bio": ".",
     "photo": "/managers/lee.jpg", // done
-    "fantasyStart": 2018, // when did the manager start playing fantasy football
-    "favoriteTeam": "phi", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    "fantasyStart": 2021, // when did the manager start playing fantasy football
+    "favoriteTeam": "pit", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
     "mode": "Rebuild", // 'Win Now' or 'Rebuild'
     "rival": {
-      name: "Rahm", // Can be anything (usually your rival's name)
+      name: "Josh", // Can be anything (usually your rival's name)
       link: 5, // manager array number within this array, or null to link back to all managers page
       image: "everyone", // either a specific manager photo or 'everyone' or 'question'
     },
-    "favoritePlayer": 3320, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+    "favoritePlayer": 1335, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
     "valuePosition": "RB", // Favorite position (QB, WR, RB, TE, etc.)
     "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
-    "philosophy": "Fuck Bitches Get Mula.",
+    "philosophy": "Win.",
     "tradingScale": 1, // 1 - 10
     "prefferedContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
   },
