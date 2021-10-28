@@ -65,7 +65,8 @@
         // let manualScores = [73, 64, 78, 100, 63, 61, 71, 76, 44, 72, 74, 59];  // after week 3
         // let manualScores = [69, 62, 79, 100, 66, 59, 75, 78, 47, 72, 74, 63];  // after week 4
         // let manualScores = [72, 63, 79, 100, 52, 63, 79, 79, 52, 80, 79, 59];  // after week 5
-        let manualScores = [75, 76, 87, 90, 77, 69, 85, 100, 62, 90, 83, 66];  // after week 5
+        // let manualScores = [75, 76, 87, 90, 77, 69, 85, 100, 62, 90, 83, 66];  // after week 6
+        let manualScores = [77, 87, 95, 84, 80, 77, 92, 100, 74, 99, 91, 69];  // after week 7
         let i = 0;
         for(const rosterPower of rosterPowers) {
             rosterPower.powerScore = manualScores[i];
