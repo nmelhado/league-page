@@ -1,6 +1,6 @@
 {
   "name": "league-page",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "homepage": "https://github.com/nmelhado/league-page",
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
     {
       "name": "DOLO",
       "url": "https://github.com/1600dolo"
+    },
+    {
+      "name": "OldNewsBlues-2",
+      "url": "https://github.com/OldNewsBlues-2"
     }
   ],
   "funding": {

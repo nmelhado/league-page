@@ -5,7 +5,6 @@ import { getLeagueRosters } from "./leagueRosters"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {standingsStore} from '$lib/stores';
-import { match } from 'fuzzyjs';
 
 export const getLeagueStandings = async () => {
 	if(get(standingsStore).matchupWeeks) {
