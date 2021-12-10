@@ -19,6 +19,10 @@ export const getLeagueStandings = async () => {
 
 	const yearData = leagueData.season;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
+	let medianMatch = new Boolean (false);
+	if(leagueData.settings.league_average_match == 1) {
+		medianMatch = true;
+	}
 
 	// if the season hasn't started, standings can't be created
 	if(leagueData.status != "in_season" && leagueData.status != "complete") {
@@ -59,13 +63,14 @@ export const getLeagueStandings = async () => {
 	let standings = {};
 	// process all the matchups
 	for(const matchup of matchupsData) {
-		standings = processStandings(matchup, standings, rosters.rosters);
+		standings = processStandings(matchup, standings, rosters.rosters, medianMatch);
 	}
 
 	const response = {
 		standingsInfo: standings,
 		rostersData: rosters.rosters,
 		yearData,
+		medianMatch,
 	}
 	
 	standingsStore.update(() => response);
@@ -73,8 +78,9 @@ export const getLeagueStandings = async () => {
 	return response;
 }
 
-const processStandings = (matchup, standingsData, rosters) => {
+const processStandings = (matchup, standingsData, rosters, medianMatch) => {
 	const matchups = {};
+	let scoresArray = [];
 	for(const match of matchup) {
 		if(!matchups[match.matchup_id]) {
 			matchups[match.matchup_id] = [];
@@ -99,13 +105,37 @@ const processStandings = (matchup, standingsData, rosters) => {
 			division: rosters[rosterID - 1].settings.division,
 			points: match.points,
 		})
+
+		if(medianMatch == true){
+			scoresArray.push(match.points);
+		}
 	}
+	// calculating median score for the week
+	let medianScore;
+	if(medianMatch == true){
+		const numManagers = scoresArray.length;
+		scoresArray = scoresArray.sort((a, b) => b - a).slice(numManagers / 2 - 1, numManagers / 2 + 1);
+		medianScore = (scoresArray[0] + scoresArray[1]) / 2;
+	}
+
 	for(const matchupKey in matchups) {
 		const teamA = matchups[matchupKey][0];
 		const teamB = matchups[matchupKey][1];
-
 	
 		const divisionMatchup = teamA.division && teamB.division &&teamA.division == teamB.division;
+
+		// league average match
+		if(medianMatch == true) {
+			for(let i = 0; i < 2; i++) {
+				if(matchups[matchupKey][i].points > medianScore) {
+					standingsData[matchups[matchupKey][i].rosterID].wins ++;
+				} else if(matchups[matchupKey][i].points < medianScore) {
+					standingsData[matchups[matchupKey][i].rosterID].losses ++;
+				} else if(matchups[matchupKey][i].points == medianScore) {
+					standingsData[matchups[matchupKey][i].rosterID].ties ++;
+				}
+			}
+		}
 
 		if(teamA.points > teamB.points) {
 			standingsData[teamA.rosterID].wins ++;
