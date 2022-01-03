@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.10] - 2022-01-03
+
+### Fixed
+
+- Bug that affects playoff matchup and standings 
+    - Reported in issue [#98](https://github.com/nmelhado/league-page/issues/98)
+
 ## [1.2.7] - 2021-10-20
 
 ### Fixed

@@ -13,6 +13,10 @@
             queryWeek = week;
             displayWeek = queryWeek * 1;
             goto(`/matchups?week=${queryWeek}`, {noscroll: true});
+            if(queryWeek > regularSeasonLength) {
+                selection = 'champions';
+                return;
+            }
             processDisplayMatchup(queryWeek)
             return;
         }
