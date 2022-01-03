@@ -441,7 +441,7 @@
                     <Cell class="header">Year</Cell>
                 {/if}
                 <Cell class="header">Total Points</Cell>
-                <Cell class="header">Total PPG</Cell>
+                <Cell class="header">PPG</Cell>
             </Row>
         </Head>
         <Body>
