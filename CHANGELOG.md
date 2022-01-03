@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.11] - 2021-01-03
+
+### Added
+
+- PPG Records [#92](https://github.com/nmelhado/league-page/issues/92)
+    - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for implementing this
+
 ## [1.2.10] - 2022-01-03
 
 ### Fixed
