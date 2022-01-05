@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.12] - 2022-01-03
+## [1.2.13] - 2022-01-05
+
+### Fixed
+
+- Trophies page bug reported in [issue #95](https://github.com/nmelhado/league-page/issues/95)
+
+## [1.2.12] - 2022-01-05
 
 ### Fixed
 
