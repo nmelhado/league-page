@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.12] - 2022-01-03
+
+### Fixed
+
+- Minor bug fixes league in pre-season
+
 ## [1.2.11] - 2021-01-03
 
 ### Added
