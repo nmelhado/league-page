@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
     - Added `Single Week Scoring Lows` and `Season-long Scoring Lows`
     - Cleaned up records interface
 
+### Changed
+
+- Season long record tables are now sorted by PPG (to offset the expanded NFL seasons and more accurately capture the rankings)
+
 ## [1.2.12] - 2022-01-05
 
 ### Fixed

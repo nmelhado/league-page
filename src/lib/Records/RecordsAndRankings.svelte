@@ -196,6 +196,12 @@
     :global(.header) {
         text-align: center;
     }
+    .italic {
+        display: block;
+        font-style: italic;
+        font-size: 0.9em;
+        color: var(--g999);
+    }
 
     :global(.recordTable) {
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
@@ -464,7 +470,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=5>{prefix} Season-long Scoring Records</Cell>
+                    <Cell class="header" colspan=5>All-Time Highest Season Points<span class="italic">Ranked by PPG</span></Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -494,13 +500,14 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Season-long Scoring Lows</Cell>
+                    <Cell class="header" colspan=5>All-Time Lowest Season Points<span class="italic">Ranked by PPG</span></Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
                     <Cell class="header">Year</Cell>
                     <Cell class="header">Total Points</Cell>
+                    <Cell class="header">PPG</Cell>
                 </Row>
             </Head>
             <Body>
@@ -512,6 +519,7 @@
                         </Cell>
                         <Cell>{leastSeasonLongPoint.year}</Cell>
                         <Cell>{leastSeasonLongPoint.fpts}</Cell>
+                        <Cell>{leastSeasonLongPoint.fptsPerGame}</Cell>
                     </Row>
                 {/each}
             </Body>

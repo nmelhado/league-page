@@ -250,10 +250,13 @@ export const getLeagueRecords = async (refresh = false) => {
 		allTimeClosestMatchups.push(allTimeMatchupDifferentials.pop());
 	}
 
-	leagueWeekLows = leagueWeekRecords.slice().sort((a, b) => a.fpts - b.fpts).slice(0, 10);
-	leagueWeekRecords = leagueWeekRecords.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
-	leastSeasonLongPoints = mostSeasonLongPoints.slice().filter(s => s.year != currentYear).sort((a, b) => a.fpts - b.fpts).slice(0, 10);
-	mostSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
+	const sortedWeekRecords = leagueWeekRecords.slice().sort((a, b) => b.fpts - a.fpts)
+	leagueWeekRecords = sortedWeekRecords.slice(0, 10);
+	leagueWeekLows = sortedWeekRecords.slice(-10).reverse();
+
+	const sortedSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fptsPerGame - a.fptsPerGame);
+	mostSeasonLongPoints = sortedSeasonLongPoints.slice(0, 10);
+	leastSeasonLongPoints = sortedSeasonLongPoints.filter(s => s.year != currentYear).slice(-10).reverse();
 
 	const recordsData = {
 		allTimeBiggestBlowouts,
