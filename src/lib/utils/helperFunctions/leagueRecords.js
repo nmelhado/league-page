@@ -6,6 +6,7 @@ import { getLeagueUsers } from "./leagueUsers"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {records} from '$lib/stores';
+import { round } from './universalFunctions';
 
 export const getLeagueRecords = async (refresh = false) => {
 	if(get(records).seasonWeekRecords) {
@@ -101,6 +102,7 @@ export const getLeagueRecords = async (refresh = false) => {
 
 			const fpts = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
 			const fptsAgainst = roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100);
+			const fptsPerGame = fpts / (roster.settings.wins + roster.settings.losses + roster.settings.ties);
 			const potentialPoints = roster.settings.ppts + (roster.settings.ppts_decimal / 100);
 
 			// add records to league roster record record
@@ -118,6 +120,7 @@ export const getLeagueRecords = async (refresh = false) => {
 				ties: roster.settings.ties,
 				fpts,
 				fptsAgainst,
+				fptsPerGame,
 				potentialPoints,
 				manager: originalManagers[rosterID],
 				year
@@ -128,6 +131,7 @@ export const getLeagueRecords = async (refresh = false) => {
 			mostSeasonLongPoints.push({
 				rosterID,
 				fpts,
+				fptsPerGame: round(fptsPerGame),
 				year,
 				manager: originalManagers[rosterID]
 			})

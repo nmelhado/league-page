@@ -464,13 +464,14 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Season-long Scoring Records</Cell>
+                    <Cell class="header" colspan=5>{prefix} Season-long Scoring Records</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
                     <Cell class="header">Year</Cell>
                     <Cell class="header">Total Points</Cell>
+                    <Cell class="header">PPG</Cell>
                 </Row>
             </Head>
             <Body>
@@ -482,12 +483,13 @@
                         </Cell>
                         <Cell>{mostSeasonLongPoint.year}</Cell>
                         <Cell>{mostSeasonLongPoint.fpts}</Cell>
+                        <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
                     </Row>
                 {/each}
             </Body>
         </DataTable>
     {/if}
-
+    
     {#if allTime}
         <DataTable class="recordTable">
             <Head>
@@ -686,7 +688,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header" colspan=4>
+                        <Cell class="header" colspan=5>
                             {prefix} Fantasy Points Rankings
                         </Cell>
                     </Row>
@@ -695,6 +697,7 @@
                         <Cell class="header">Manager</Cell>
                         <Cell class="header">Points For</Cell>
                         <Cell class="header">Points Against</Cell>
+                        <Cell class="header">Points Per Game</Cell>
                     </Row>
                 </Head>
                 <Body>
@@ -709,6 +712,7 @@
                             </Cell>
                             <Cell>{fptsHistory.fptsFor}</Cell>
                             <Cell>{fptsHistory.fptsAgainst}</Cell>
+                            <Cell>{fptsHistory.fptsPerGame}</Cell>
                         </Row>
                     {/each}
                 </Body>
@@ -735,8 +739,8 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(transaction.rosterID)}>
-                                {transaction.manager.name}
-                                {#if !allTime  && cleanName(transaction.manager.name) != cleanName(currentManagers[transaction.rosterID].name)}
+                                {transaction.manager?.name}
+                                {#if !allTime  && cleanName(transaction.manager?.name) != cleanName(currentManagers[transaction.rosterID].name)}
                                     <div class="curRecordManager">({currentManagers[transaction.rosterID].name})</div>
                                 {/if}
                             </Cell>
@@ -760,7 +764,3 @@
         {/each}
     </Group>
 </div>
-
-{#if !last}
-    <hr />
-{/if}

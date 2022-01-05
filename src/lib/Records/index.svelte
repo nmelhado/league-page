@@ -1,4 +1,5 @@
 <script>
+    import Button, { Group, Label } from '@smui/button';
     import { getLeagueRecords, getLeagueTransactions } from '$lib/utils/helper';
 
     import AllTimeRecords from './AllTimeRecords.svelte';
@@ -39,6 +40,8 @@
         refreshRecords();
     }
 
+    let display = "allTime"
+
 </script>
 
 <style>
@@ -52,13 +55,58 @@
         margin: 10em 0 4em;
         text-align: center;
     }
+
+    /* Button Styling */
+    .buttonHolder {
+        text-align: center;
+        margin: 2em 0 0;
+    }
+
+    /* Start button resizing */
+
+    @media (max-width: 540px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.6em;
+        }
+    }
+
+    @media (max-width: 415px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.5em;
+            padding: 0 6px;
+        }
+    }
+
+    @media (max-width: 315px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.45em;
+            padding: 0 3px;
+        }
+    }
+
+    /* End button resizing */
 </style>
 
 <div class="rankingsWrapper">
-    {#if leagueWeekRecords.length}
-        <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueRosterRecords} {leagueWeekRecords} {leagueWeekLows} {currentManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} />
+
+    <div class="buttonHolder">
+        <Group variant="outlined">
+            <Button class="selectionButtons" on:click={() => display = "allTime"} variant="{display == "allTime" ? "raised" : "outlined"}">
+                <Label>All-Time Records</Label>
+            </Button>
+            <Button class="selectionButtons" on:click={() => display = "season"} variant="{display == "season" ? "raised" : "outlined"}">
+                <Label>Season Records</Label>
+            </Button>
+        </Group>
+    </div>
+
+    {#if display == "allTime"}
+        {#if leagueWeekRecords.length}
+            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueRosterRecords} {leagueWeekRecords} {leagueWeekLows} {currentManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} />
+        {:else}
+            <p class="empty">No records <i>yet</i>...</p>
+        {/if}
     {:else}
-        <p class="empty">No records <i>yet</i>...</p>
+        <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {currentManagers} {currentYear} {lastYear} />
     {/if}
-    <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {currentManagers} {currentYear} {lastYear} />
 </div>

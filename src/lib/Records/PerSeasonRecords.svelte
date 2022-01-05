@@ -1,4 +1,5 @@
 <script>
+    import Button, { Group, Label } from '@smui/button';
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
@@ -56,12 +57,14 @@
             }
 
 			const fpts = round(season.fpts);
+            const fptsPerGame = round(season.fptsPerGame);
 
             // add season-long scoring record
             yearsObj[season.year].seasonLongRecords.push({
                 manager: season.manager,
 				rosterID,
 				fpts,
+                fptsPerGame,
 				year: null,
 			})
 
@@ -94,6 +97,7 @@
                 manager: season.manager,
                 fptsFor: round(season.fpts),
                 fptsAgainst: round(season.fptsAgainst),
+                fptsPerGame: round(season.fptsPerGame),
             })
         }
     }
@@ -115,24 +119,65 @@
     }
 
     years.sort((a, b) => b.year - a.year);
+
+    let display = 0;
 </script>
 
-{#each years as {waiversData, tradesData, weekRecords, weekLows, seasonLongLows, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, year, blowouts, closestMatchups}, ix}
-    <RecordsAndRankings
-        {waiversData}
-        {tradesData}
-        {weekRecords}
-        {weekLows}
-        {seasonLongLows}
-        {seasonLongRecords}
-        {showTies}
-        {winPercentages}
-        {fptsHistories}
-        {lineupIQs}
-        {blowouts}
-        {closestMatchups}
-        prefix={year}
-        {currentManagers}
-        last={ix == years.length - 1}
-    />
-{/each}
+<style>
+    /* Button Styling */
+    .buttonHolder {
+        text-align: center;
+        margin: 0;
+    }
+
+    /* Start button resizing */
+
+    @media (max-width: 540px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.6em;
+        }
+    }
+
+    @media (max-width: 415px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.5em;
+            padding: 0 6px;
+        }
+    }
+
+    @media (max-width: 315px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.45em;
+            padding: 0 3px;
+        }
+    }
+
+    /* End button resizing */
+</style>
+
+<div class="buttonHolder">
+    <Group variant="outlined">
+        {#each years as {year}, ix}
+            <Button class="selectionButtons" on:click={() => display = ix} variant="{display == ix ? "raised" : "outlined"}">
+                <Label>{year}</Label>
+            </Button>
+        {/each}
+    </Group>
+</div>
+
+<RecordsAndRankings
+    waiversData={years[display].waiversData}
+    tradesData={years[display].tradesData}
+    weekRecords={years[display].weekRecords}
+    weekLows={years[display].weekLows}
+    seasonLongLows={years[display].seasonLongLows}
+    seasonLongRecords={years[display].seasonLongRecords}
+    showTies={years[display].showTies}
+    winPercentages={years[display].winPercentages}
+    fptsHistories={years[display].fptsHistories}
+    lineupIQs={years[display].lineupIQs}
+    blowouts={years[display].blowouts}
+    closestMatchups={years[display].closestMatchups}
+    prefix={years[display].year}
+    {currentManagers}
+/>

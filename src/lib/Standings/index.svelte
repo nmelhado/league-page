@@ -12,12 +12,19 @@
     const sortOrder = ["fptsAgainst", "divisionTies", "divisionWins", "fpts", "ties", "wins"];
 
     // Column order from left to right
-    const columnOrder = [{name: "W", field: "wins"}, {name: "T", field: "ties"}, {name: "L", field: "losses"}, {name: "Div W", field: "divisionWins"}, {name: "Div T", field: "divisionTies"}, {name: "Div L", field: "divisionLosses"}, {name: "FPTS", field: "fpts"}, {name: "FPTS Against", field: "fptsAgainst"}]
+    const columnOrder = [{name: "W", field: "wins"}, {name: "T", field: "ties"}, {name: "L", field: "losses"}, {name: "Div W", field: "divisionWins"}, {name: "Div T", field: "divisionTies"}, {name: "Div L", field: "divisionLosses"}, {name: "FPTS", field: "fpts"}, {name: "FPTS Against", field: "fptsAgainst"}, {name: "Streak", field: "streak"}]
 
     let loading = true;
+    let preseason = false;
     let rosters, standings, year, users;
     onMount(async () => {
-        const {standingsInfo, yearData, rostersData} = await standingsData;
+        const asyncStandingsData = await standingsData;
+        if(!asyncStandingsData) {
+            loading = false;
+            preseason = true;
+            return;
+        }
+        const {standingsInfo, yearData, rostersData} = asyncStandingsData;
         users = await usersData;
         rosters = rostersData;
         year = yearData;
@@ -25,6 +32,7 @@
             const roster = rosters[standingsInfo[standingKey].rosterID - 1];
             standingsInfo[standingKey].fpts = round(roster.settings.fpts + (roster.settings.fpts_decimal / 100));
             standingsInfo[standingKey].fptsAgainst = round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100));
+	    standingsInfo[standingKey].streak = roster.metadata.streak;
         }
 
         let finalStandings = Object.keys(standingsInfo).map((key) => standingsInfo[key]);
@@ -84,6 +92,10 @@
         <p>Loading Standings...</p>
         <LinearProgress indeterminate />
     </div>
+{:else if preseason}
+<div class="loading">
+    <p>Preseason, No Standings Yet</p>
+</div>
 {:else}
     <div class="standingsTable">
         <DataTable table$aria-label="League Standings" >

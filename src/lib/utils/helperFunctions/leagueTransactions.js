@@ -197,17 +197,19 @@ const digestTransactions = (transactionsData, prevManagers, currentSeason, numRo
 			totals.allTime[roster][type]++;
 			
 			// add to season long totals
-			if(!totals.seasons[season]) {
-				totals.seasons[season] = {};
-				for(let i = 1; i <= Object.keys(prevManagers[season]).length; i++) {
-					totals.seasons[season][i] = {
-						trade: 0,
-						waiver: 0,
-						manager: prevManagers[season][i]
-					};
+			if(prevManagers[season]) {
+				if(!totals.seasons[season]) {
+					totals.seasons[season] = {};
+					for(let i = 1; i <= Object.keys(prevManagers[season]).length; i++) {
+						totals.seasons[season][i] = {
+							trade: 0,
+							waiver: 0,
+							manager: prevManagers[season][i]
+						};
+					}
 				}
+				totals.seasons[season][roster][type]++;
 			}
-			totals.seasons[season][roster][type]++;
 		}
 	}
 
@@ -247,7 +249,7 @@ const digestTransaction = (transaction, prevManagers, currentSeason) => {
 		digestedTransaction.type = "trade";
 	}
 	
-	if(season != currentSeason) {
+	if(season != currentSeason && prevManagers[season]) {
 		digestedTransaction.previousOwners = [];
 		for(const roster of transactionRosters) {
 			digestedTransaction.previousOwners.push(prevManagers[season][roster]);
