@@ -15,9 +15,16 @@
     const columnOrder = [{name: "W", field: "wins"}, {name: "T", field: "ties"}, {name: "L", field: "losses"}, {name: "Div W", field: "divisionWins"}, {name: "Div T", field: "divisionTies"}, {name: "Div L", field: "divisionLosses"}, {name: "FPTS", field: "fpts"}, {name: "FPTS Against", field: "fptsAgainst"}, {name: "Streak", field: "streak"}]
 
     let loading = true;
+    let preseason = false;
     let rosters, standings, year, users;
     onMount(async () => {
-        const {standingsInfo, yearData, rostersData} = await standingsData;
+        const asyncStandingsData = await standingsData;
+        if(!asyncStandingsData) {
+            loading = false;
+            preseason = true;
+            return;
+        }
+        const {standingsInfo, yearData, rostersData} = asyncStandingsData;
         users = await usersData;
         rosters = rostersData;
         year = yearData;
@@ -85,6 +92,10 @@
         <p>Loading Standings...</p>
         <LinearProgress indeterminate />
     </div>
+{:else if preseason}
+<div class="loading">
+    <p>Preseason, No Standings Yet</p>
+</div>
 {:else}
     <div class="standingsTable">
         <DataTable table$aria-label="League Standings" >

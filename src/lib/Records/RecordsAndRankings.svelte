@@ -685,8 +685,8 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(transaction.rosterID)}>
-                                {transaction.manager.name}
-                                {#if !allTime  && cleanName(transaction.manager.name) != cleanName(currentManagers[transaction.rosterID].name)}
+                                {transaction.manager?.name}
+                                {#if !allTime  && cleanName(transaction.manager?.name) != cleanName(currentManagers[transaction.rosterID].name)}
                                     <div class="curRecordManager">({currentManagers[transaction.rosterID].name})</div>
                                 {/if}
                             </Cell>
