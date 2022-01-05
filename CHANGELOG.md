@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.13] - 2021-01-05
+## [1.2.14] - 2021-01-05
 
 ### Added
 
@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Season long record tables are now sorted by PPG (to offset the expanded NFL seasons and more accurately capture the rankings)
+
+## [1.2.13] - 2022-01-05
+
+### Fixed
+
+- Trophies page bug reported in [issue #95](https://github.com/nmelhado/league-page/issues/95)
 
 ## [1.2.12] - 2022-01-05
 
