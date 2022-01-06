@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.14] - 2021-01-05
+
+### Added
+
+- Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for implementing this
+    - Added `Single Week Scoring Lows` and `Season-long Scoring Lows`
+    - Cleaned up records interface
+
+### Changed
+
+- Season long record tables are now sorted by PPG (to offset the expanded NFL seasons and more accurately capture the rankings)
+
 ## [1.2.13] - 2022-01-05
 
 ### Fixed

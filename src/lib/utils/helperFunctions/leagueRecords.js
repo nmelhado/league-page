@@ -43,7 +43,9 @@ export const getLeagueRecords = async (refresh = false) => {
 	let leagueRosterRecords = {}; // every full season stat point (for each year and all years combined)
 	let seasonWeekRecords = []; // highest weekly points within a single season
 	let leagueWeekRecords = []; // highest weekly points within a single season
+	let leagueWeekLows = []; // lowest weekly points within a single season
 	let mostSeasonLongPoints = []; // 10 highest full season points
+	let leastSeasonLongPoints = []; // 10 lowest full season points
 	let allTimeBiggestBlowouts = []; // 10 biggest blowouts
 	let allTimeClosestMatchups = []; // 10 closest matchups
 
@@ -229,7 +231,8 @@ export const getLeagueRecords = async (refresh = false) => {
 			year,
 			biggestBlowouts,
 			closestMatchups,
-			seasonPointsRecords: seasonPointsRecord.sort((a, b) => b.fpts - a.fpts).slice(0, 10)
+			seasonPointsLows: seasonPointsRecord.slice().sort((a, b) => a.fpts - b.fpts).slice(0, 10),
+			seasonPointsRecords: seasonPointsRecord.sort((a, b) => b.fpts - a.fpts).slice(0, 10),
 		}
 
 		if(interSeasonEntry.seasonPointsRecords.length > 0) {
@@ -247,13 +250,20 @@ export const getLeagueRecords = async (refresh = false) => {
 		allTimeClosestMatchups.push(allTimeMatchupDifferentials.pop());
 	}
 
-	leagueWeekRecords = leagueWeekRecords.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
-	mostSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fpts - a.fpts).slice(0, 10);
+	const sortedWeekRecords = leagueWeekRecords.slice().sort((a, b) => b.fpts - a.fpts)
+	leagueWeekRecords = sortedWeekRecords.slice(0, 10);
+	leagueWeekLows = sortedWeekRecords.slice(-10).reverse();
+
+	const sortedSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fptsPerGame - a.fptsPerGame);
+	mostSeasonLongPoints = sortedSeasonLongPoints.slice(0, 10);
+	leastSeasonLongPoints = sortedSeasonLongPoints.filter(s => s.year != currentYear).slice(-10).reverse();
 
 	const recordsData = {
 		allTimeBiggestBlowouts,
 		allTimeClosestMatchups,
+		leastSeasonLongPoints,
 		mostSeasonLongPoints,
+		leagueWeekLows,
 		leagueWeekRecords,
 		seasonWeekRecords,
 		leagueRosterRecords,

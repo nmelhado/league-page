@@ -5,7 +5,7 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let tradesData, waiversData, weekRecords, seasonLongRecords, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
+    export let tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
 
     const lineupIQGraph = {
         stats: lineupIQs,
@@ -195,6 +195,12 @@
 <style>
     :global(.header) {
         text-align: center;
+    }
+    .italic {
+        display: block;
+        font-style: italic;
+        font-size: 0.9em;
+        color: var(--g999);
     }
 
     :global(.recordTable) {
@@ -429,40 +435,96 @@
         </DataTable>
     {/if}
 
-    <DataTable class="recordTable">
-        <Head>
-            <Row>
-                <Cell class="header" colspan=5>{prefix} Season-long Scoring Records</Cell>
-            </Row>
-            <Row>
-                <Cell class="header rank"></Cell>
-                <Cell class="header">Manager</Cell>
-                {#if allTime}
-                    <Cell class="header">Year</Cell>
-                {/if}
-                <Cell class="header">Total Points</Cell>
-                <Cell class="header">PPG</Cell>
-            </Row>
-        </Head>
-        <Body>
-            {#each seasonLongRecords as mostSeasonLongPoint, ix}
+    {#if weekLows && weekLows.length}
+        <DataTable class="recordTable">
+            <Head>
                 <Row>
-                    <Cell class="rank">{ix + 1}</Cell>
-                    <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
-                        {mostSeasonLongPoint.manager.name}
-                        {#if !allTime  && cleanName(mostSeasonLongPoint.manager.name) != cleanName(currentManagers[mostSeasonLongPoint.rosterID].name)}
-                            <div class="curRecordManager">({currentManagers[mostSeasonLongPoint.rosterID].name})</div>
-                        {/if}
-                    </Cell>
-                    {#if allTime}
-                        <Cell>{mostSeasonLongPoint.year}</Cell>
-                    {/if}
-                    <Cell>{mostSeasonLongPoint.fpts}</Cell>
-                    <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
+                    <Cell class="header" colspan=4>{prefix} Single Week Scoring Lows</Cell>
                 </Row>
-            {/each}
-        </Body>
-    </DataTable>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Week</Cell>
+                    <Cell class="header">Total Points</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each weekLows as leagueWeekLow, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(leagueWeekLow.rosterID)}>
+                            {leagueWeekLow.manager.name}
+                            {#if !allTime  && cleanName(leagueWeekLow.manager.name) != cleanName(currentManagers[leagueWeekLow.rosterID].name)}
+                                <div class="curRecordManager">({currentManagers[leagueWeekLow.rosterID].name})</div>
+                            {/if}
+                        </Cell>
+                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }Week {leagueWeekLow.week}</Cell>
+                        <Cell>{round(leagueWeekLow.fpts)}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+
+    {#if allTime}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=5>All-Time Highest Season Points<span class="italic">Ranked by PPG</span></Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
+                    <Cell class="header">Total Points</Cell>
+                    <Cell class="header">PPG</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each seasonLongRecords as mostSeasonLongPoint, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
+                            {mostSeasonLongPoint.manager.name}
+                        </Cell>
+                        <Cell>{mostSeasonLongPoint.year}</Cell>
+                        <Cell>{mostSeasonLongPoint.fpts}</Cell>
+                        <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
+    
+    {#if allTime}
+        <DataTable class="recordTable">
+            <Head>
+                <Row>
+                    <Cell class="header" colspan=5>All-Time Lowest Season Points<span class="italic">Ranked by PPG</span></Cell>
+                </Row>
+                <Row>
+                    <Cell class="header rank"></Cell>
+                    <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
+                    <Cell class="header">Total Points</Cell>
+                    <Cell class="header">PPG</Cell>
+                </Row>
+            </Head>
+            <Body>
+                {#each seasonLongLows as leastSeasonLongPoint, ix}
+                    <Row>
+                        <Cell class="rank">{ix + 1}</Cell>
+                        <Cell class="cellName" on:click={() => gotoManager(leastSeasonLongPoint.rosterID)}>
+                            {leastSeasonLongPoint.manager.name}
+                        </Cell>
+                        <Cell>{leastSeasonLongPoint.year}</Cell>
+                        <Cell>{leastSeasonLongPoint.fpts}</Cell>
+                        <Cell>{leastSeasonLongPoint.fptsPerGame}</Cell>
+                    </Row>
+                {/each}
+            </Body>
+        </DataTable>
+    {/if}
 
     {#if blowouts && blowouts.length}
         <DataTable class="recordTable">
@@ -710,7 +772,3 @@
         {/each}
     </Group>
 </div>
-
-{#if !last}
-    <hr />
-{/if}
