@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.15] - 2022-01-06
+
+### Changed
+
+- Upgraded [SMUI](https://sveltematerialui.com/) version from 4 to 6
+    - This gives better compatibility with windows deployments and improves some functionality
+    - Removes the need for the VITE workaround script
+    - Adds TS compatibility for those interested
+
 ## [1.2.14] - 2021-01-05
 
 ### Added
