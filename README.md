@@ -74,7 +74,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - If you run into trouble adding managers, reference the [Training Wheels' Manager section](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text)
 - Add blog capabilities with [contenful](https://contentful.com/)
     - Make a free contentful account
-    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below:
+    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below **(All fields are required)**:
     ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
     ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
         - Use sleeper your sleeper username for the author field when creating posts
