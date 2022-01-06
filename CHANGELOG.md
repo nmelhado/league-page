@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.16] - 2022-01-06
+
+### Fixed
+
+- Bug that would freeze pages if an incomplete draft blog post exists
+
 ## [1.2.15] - 2022-01-06
 
 ### Changed
