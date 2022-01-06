@@ -13,6 +13,9 @@ export async function get() {
 
 	const data = await res.json().catch((err) => { console.error(err); });
 
+    // Make sure only to return published posts
+    data.items = data.items.filter(i => i.sys.publishedVersion)
+
     return {
         status: 200,
         body: JSON.stringify(data)

@@ -184,7 +184,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - Add blog capabilities to your League Page with [contenful](https://contentful.com/)
     - [Make a free contentful account](https://www.contentful.com/sign-up/)
-    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below:
+    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below **(All fields are required)**:
     ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
     ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
         - Use sleeper your sleeper username for the author field when creating posts
