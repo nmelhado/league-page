@@ -2,3 +2,7 @@
 node_modules
 /.svelte-kit
 /package
+.env
+static/smui-dark.css
+static/smui.css
+build

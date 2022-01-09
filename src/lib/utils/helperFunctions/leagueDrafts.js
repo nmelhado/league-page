@@ -117,7 +117,7 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManager
 	}
 
 	for(const pick of picks) {
-		if(pick.owner_id == pick.roster_id) continue;
+		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
 		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = originalManagers[pick.owner_id].name;
 	}
 
@@ -147,13 +147,13 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 
 	if(players && type != 'auction') {
 		// non-auction leagues
-		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder});
+		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder, rounds});
 	} else if(players) {
 		// auction leagues
 		draft = completedAuction({players, draft, picks, originalManagers, draftOrder, draftOrderObj});
 	} else {
 		for(const pick of picks) {
-			if(pick.owner_id == pick.roster_id) continue;
+			if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
 			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = originalManagers[pick.owner_id].name;
 		}
 	}
@@ -161,7 +161,7 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 	return {draft, draftOrder};
 }
 
-const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder}) => {
+const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder, rounds}) => {
 	for(const playerData of players) {
 		const player = {
 			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
@@ -172,7 +172,7 @@ const completedNonAuction = ({players, draft, picks, originalManagers, draftOrde
 		draft[playerData.round - 1][playerData.draft_slot - 1] = {player};
 	}
 	for(const pick of picks) {
-		if(pick.owner_id == pick.roster_id) continue;
+		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
 		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = originalManagers[pick.owner_id].name;
 	}
 	return draft;

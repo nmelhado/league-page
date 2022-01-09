@@ -2,7 +2,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let leagueRosterRecords, leagueWeekRecords, allTimeBiggestBlowouts, allTimeClosestMatchups, currentManagers, mostSeasonLongPoints, transactionTotals;
+    export let leagueRosterRecords, leagueWeekRecords, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
 
     let winPercentages = [];
     let lineupIQs = [];
@@ -28,10 +28,11 @@
 
     for(const key in leagueRosterRecords) {
         const leagueRosterRecord = leagueRosterRecords[key];
+        const denominator = (leagueRosterRecord.wins + leagueRosterRecord.ties + leagueRosterRecord.losses) > 0 ? (leagueRosterRecord.wins + leagueRosterRecord.ties + leagueRosterRecord.losses) : 1;
         winPercentages.push({
             rosterID: key,
             manager: currentManagers[key],
-            percentage: round((leagueRosterRecord.wins + leagueRosterRecord.ties / 2) / (leagueRosterRecord.wins + leagueRosterRecord.ties + leagueRosterRecord.losses) * 100),
+            percentage: round((leagueRosterRecord.wins + leagueRosterRecord.ties / 2) / denominator * 100),
             wins: leagueRosterRecord.wins,
             ties: leagueRosterRecord.ties,
             losses: leagueRosterRecord.losses,
@@ -55,6 +56,7 @@
             manager: currentManagers[key],
             fptsFor: round(leagueRosterRecord.fptsFor),
             fptsAgainst: round(leagueRosterRecord.fptsAgainst),
+            fptsPerGame: round(leagueRosterRecord.fptsFor / denominator),
         })
     
         if(leagueRosterRecord.ties > 0) showTies = true;
@@ -72,7 +74,9 @@
     blowouts={allTimeBiggestBlowouts}
     closestMatchups={allTimeClosestMatchups}
     weekRecords={leagueWeekRecords}
+    weekLows={leagueWeekLows}
     seasonLongRecords={mostSeasonLongPoints}
+    seasonLongLows={leastSeasonLongPoints}
     {showTies}
     {winPercentages}
     {fptsHistories}
