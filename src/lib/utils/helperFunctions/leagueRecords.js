@@ -50,190 +50,25 @@ export const getLeagueRecords = async (refresh = false) => {
 	let allTimeClosestMatchups = []; // 10 closest matchups
 
 	while(curSeason && curSeason != 0) {
-		const [rosterRes, users, leagueData] = await waitForAll(
-			getLeagueRosters(curSeason),
-			getLeagueUsers(curSeason),
-			getLeagueData(curSeason),
-		).catch((err) => { console.error(err); });
-	
-		let year = parseInt(leagueData.season);
+		const {
+			originalManagers,
+			season,
+			year,
+			interSeasonEntry,
+			matchupDifferentials,
+			lRR,
+			mSLP
+		} = await processRegularSeason({curSeason, week, leagueRosterRecords, mostSeasonLongPoints, leagueWeekRecords})
 
-		// on first run, week is provided above from nflState,
-		// after that get the final week of regular season from leagueData
-		if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
-			week = leagueData.settings.playoff_week_start - 1;
-		}
+		leagueRosterRecords = lRR
+		mostSeasonLongPoints = mSLP
 
 		lastYear = year;
-	
-		const rosters = rosterRes.rosters;
-	
-		const originalManagers = {};
-	
-		for(const roster of rosters) {
-			const rosterID = roster.roster_id;
-			const user = users[roster.owner_id];
-
-			if(user) {
-				originalManagers[rosterID] = {
-					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-				}
-			} else {
-				originalManagers[rosterID] = {
-					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
-					name: 'Unknown Manager',
-				}
-			}
-
-			if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) continue;
-
-			if(!leagueRosterRecords[rosterID]) {
-				leagueRosterRecords[rosterID] = {
-					wins: 0,
-					losses: 0,
-					ties: 0,
-					fptsFor: 0,
-					fptsAgainst: 0,
-					potentialPoints: 0,
-					years: []
-				}
-			}
-
-			const fpts = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
-			const fptsAgainst = roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100);
-			const fptsPerGame = fpts / (roster.settings.wins + roster.settings.losses + roster.settings.ties);
-			const potentialPoints = roster.settings.ppts + (roster.settings.ppts_decimal / 100);
-
-			// add records to league roster record record
-			leagueRosterRecords[rosterID].wins += roster.settings.wins;
-			leagueRosterRecords[rosterID].losses += roster.settings.losses;
-			leagueRosterRecords[rosterID].ties += roster.settings.ties;
-			leagueRosterRecords[rosterID].fptsFor += fpts;
-			leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
-			leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
-
-			// add singleSeason info [`${year}fptsFor`]
-			const singleYearInfo = {
-				wins: roster.settings.wins,
-				losses: roster.settings.losses,
-				ties: roster.settings.ties,
-				fpts,
-				fptsAgainst,
-				fptsPerGame,
-				potentialPoints,
-				manager: originalManagers[rosterID],
-				year
-			}
-
-			leagueRosterRecords[rosterID].years.push(singleYearInfo);
-
-			mostSeasonLongPoints.push({
-				rosterID,
-				fpts,
-				fptsPerGame: round(fptsPerGame),
-				year,
-				manager: originalManagers[rosterID]
-			})
-		}
-		
 		if(!currentManagers) {
 			currentManagers = originalManagers;
 		}
 
-		// loop through each week of the season
-		const matchupsPromises = [];
-		let startWeek = parseInt(week);
-		while(week > 0) {
-			matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curSeason}/matchups/${week}`, {compress: true}))
-			week--;
-		}
-	
-		const matchupsRes = await waitForAll(...matchupsPromises).catch((err) => { console.error(err); });
-
-		// convert the json matchup responses
-		const matchupsJsonPromises = [];
-		for(const matchupRes of matchupsRes) {
-			const data = matchupRes.json();
-			matchupsJsonPromises.push(data)
-			if (!matchupRes.ok) {
-				throw new Error(data);
-			}
-		}
-		const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); });
-
-		// now that we've used the current season ID for everything we need, set it to the previous season
-		curSeason = leagueData.previous_league_id;
-
-		const seasonPointsRecord = [];
-		let matchupDifferentials = [];
-		
-		// process all the matchups
-		for(const matchupWeek of matchupsData) {
-			let matchups = {};
-			for(const matchup of matchupWeek) {
-				const entry = {
-					manager: originalManagers[matchup.roster_id],
-					fpts: matchup.points,
-					week: startWeek,
-					year,
-					rosterID: matchup.roster_id
-				}
-				seasonPointsRecord.push(entry);
-				leagueWeekRecords.push(entry);
-				// add each entry to the matchup object
-				if(!matchups[matchup.matchup_id]) {
-					matchups[matchup.matchup_id] = [];
-				}
-				matchups[matchup.matchup_id].push(entry);
-
-			}
-			startWeek--;
-
-			// create matchup differentials from matchups obj
-			for(const matchupKey in matchups) {
-				const matchup = matchups[matchupKey];
-				let home = matchup[0];
-				let away = matchup[1];
-				if(matchup[0].fpts < matchup[1].fpts) {
-					home = matchup[1];
-					away = matchup[0];
-				}
-				const matchupDifferential = {
-					year: home.year,
-					week: home.week,
-					home: {
-						manager: home.manager,
-						fpts: home.fpts,
-						rosterID: home.rosterID,
-					},
-					away: {
-						manager: away.manager,
-						fpts: away.fpts,
-						rosterID: away.rosterID,
-					},
-					differential: home.fpts - away.fpts
-				}
-				allTimeMatchupDifferentials.push(matchupDifferential);
-				matchupDifferentials.push(matchupDifferential);
-			}
-		}
-
-		matchupDifferentials = matchupDifferentials.sort((a, b) => b.differential - a.differential);
-		const biggestBlowouts = matchupDifferentials.slice(0, 10);
-
-		const closestMatchups = [];
-		for(let i = 0; i < 10; i++) {
-			closestMatchups.push(matchupDifferentials.pop());
-		}
-
-		const interSeasonEntry = {
-			year,
-			biggestBlowouts,
-			closestMatchups,
-			seasonPointsLows: seasonPointsRecord.slice().sort((a, b) => a.fpts - b.fpts).slice(0, 10),
-			seasonPointsRecords: seasonPointsRecord.sort((a, b) => b.fpts - a.fpts).slice(0, 10),
-		}
+		allTimeMatchupDifferentials = allTimeMatchupDifferentials.concat(matchupDifferentials);
 
 		if(interSeasonEntry.seasonPointsRecords.length > 0) {
 			if(!currentYear) {
@@ -241,22 +76,22 @@ export const getLeagueRecords = async (refresh = false) => {
 			}
 			seasonWeekRecords.push(interSeasonEntry)
 		};
+
+		curSeason = season;
 	}
 
-	allTimeMatchupDifferentials = allTimeMatchupDifferentials.sort((a, b) => b.differential - a.differential)
-	allTimeBiggestBlowouts = allTimeMatchupDifferentials.slice(0, 10);
+	// sort the various records and return the highest and lowest members of the array
+	const [hATMD, lATMD] = sortHighAndLow(allTimeMatchupDifferentials, 'differential')
+	allTimeBiggestBlowouts = hATMD
+	allTimeClosestMatchups = lATMD
 
-	for(let i = 0; i < 10; i++) {
-		allTimeClosestMatchups.push(allTimeMatchupDifferentials.pop());
-	}
+	const [hLWR, lLWR] = sortHighAndLow(leagueWeekRecords, 'fpts')
+	leagueWeekRecords = hLWR
+	leagueWeekLows = lLWR
 
-	const sortedWeekRecords = leagueWeekRecords.slice().sort((a, b) => b.fpts - a.fpts)
-	leagueWeekRecords = sortedWeekRecords.slice(0, 10);
-	leagueWeekLows = sortedWeekRecords.slice(-10).reverse();
-
-	const sortedSeasonLongPoints = mostSeasonLongPoints.sort((a, b) => b.fptsPerGame - a.fptsPerGame);
-	mostSeasonLongPoints = sortedSeasonLongPoints.slice(0, 10);
-	leastSeasonLongPoints = sortedSeasonLongPoints.filter(s => s.year != currentYear).slice(-10).reverse();
+	const [hSLP, lSLP] = sortHighAndLow(mostSeasonLongPoints, 'fptsPerGame')
+	mostSeasonLongPoints = hSLP
+	leastSeasonLongPoints = lSLP
 
 	const recordsData = {
 		allTimeBiggestBlowouts,
@@ -278,4 +113,230 @@ export const getLeagueRecords = async (refresh = false) => {
 	records.update(() => recordsData);
 
 	return recordsData;
+}
+
+const sortHighAndLow = (arr, field) => {
+	const sorted = arr.sort((a, b) => b[field] - a[field]);
+	const high = sorted.slice(0, 10);
+	const low = sorted.slice(-10).reverse();
+	return [high, low]
+}
+
+const processRegularSeason = async ({curSeason, week, leagueRosterRecords, mostSeasonLongPoints, leagueWeekRecords}) => {
+	const [rosterRes, users, leagueData] = await waitForAll(
+		getLeagueRosters(curSeason),
+		getLeagueUsers(curSeason),
+		getLeagueData(curSeason),
+	).catch((err) => { console.error(err); });
+
+	let year = parseInt(leagueData.season);
+
+	// on first run, week is provided above from nflState,
+	// after that get the final week of regular season from leagueData
+	if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
+		week = leagueData.settings.playoff_week_start - 1;
+	}
+
+	const rosters = rosterRes.rosters;
+
+	let originalManagers = {};
+
+	for(const roster of rosters) {
+		const {lRR, mSLP, oM} = analyzeRosters({year, roster, users, leagueRosterRecords, mostSeasonLongPoints, originalManagers})
+		leagueRosterRecords = lRR;
+		mostSeasonLongPoints = mSLP;
+		originalManagers = oM;
+	}
+
+	// loop through each week of the season
+	const matchupsPromises = [];
+	let startWeek = parseInt(week);
+	while(week > 0) {
+		matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curSeason}/matchups/${week}`, {compress: true}))
+		week--;
+	}
+
+	const matchupsRes = await waitForAll(...matchupsPromises).catch((err) => { console.error(err); });
+
+	// convert the json matchup responses
+	const matchupsJsonPromises = [];
+	for(const matchupRes of matchupsRes) {
+		const data = matchupRes.json();
+		matchupsJsonPromises.push(data)
+		if (!matchupRes.ok) {
+			throw new Error(data);
+		}
+	}
+	const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); });
+
+	// now that we've used the current season ID for everything we need, set it to the previous season
+	curSeason = leagueData.previous_league_id;
+
+	let seasonPointsRecord = [];
+	let matchupDifferentials = [];
+	
+	// process all the matchups
+	for(const matchupWeek of matchupsData) {
+		const {sPR, lWR, mD, sW} = processMatchup({matchupWeek, originalManagers, seasonPointsRecord, leagueWeekRecords, startWeek, matchupDifferentials, year})
+		seasonPointsRecord = sPR;
+		leagueWeekRecords = lWR;
+		matchupDifferentials = mD;
+		startWeek = sW;
+	}
+
+	matchupDifferentials = matchupDifferentials.sort((a, b) => b.differential - a.differential);
+	const biggestBlowouts = matchupDifferentials.slice(0, 10);
+
+	const closestMatchups = matchupDifferentials.slice(-10).reverse();
+
+	// sort season point records
+	const [seasonPointsRecords, seasonPointsLows] = sortHighAndLow(mostSeasonLongPoints, 'fpts')
+
+	const interSeasonEntry = {
+		year,
+		biggestBlowouts,
+		closestMatchups,
+		seasonPointsLows,
+		seasonPointsRecords,
+	}
+
+	return {
+		interSeasonEntry,
+		season: curSeason,
+		year,
+		originalManagers,
+		matchupDifferentials,
+		lRR: leagueRosterRecords,
+		mSLP: mostSeasonLongPoints,
+		lWR: leagueWeekRecords
+	}
+}
+
+const analyzeRosters = ({year, roster, users, leagueRosterRecords, mostSeasonLongPoints, originalManagers}) => {
+	const rosterID = roster.roster_id;
+	const user = users[roster.owner_id];
+
+	if(user) {
+		originalManagers[rosterID] = {
+			avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+			name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+		}
+	} else {
+		originalManagers[rosterID] = {
+			avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+			name: 'Unknown Manager',
+		}
+	}
+
+	if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) return {lRR: leagueRosterRecords, mSLP: mostSeasonLongPoints, oM: originalManagers};
+
+	if(!leagueRosterRecords[rosterID]) {
+		leagueRosterRecords[rosterID] = {
+			wins: 0,
+			losses: 0,
+			ties: 0,
+			fptsFor: 0,
+			fptsAgainst: 0,
+			potentialPoints: 0,
+			years: []
+		}
+	}
+
+	const fpts = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
+	const fptsAgainst = roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100);
+	const fptsPerGame = fpts / (roster.settings.wins + roster.settings.losses + roster.settings.ties);
+	const potentialPoints = roster.settings.ppts + (roster.settings.ppts_decimal / 100);
+
+	// add records to league roster record record
+	leagueRosterRecords[rosterID].wins += roster.settings.wins;
+	leagueRosterRecords[rosterID].losses += roster.settings.losses;
+	leagueRosterRecords[rosterID].ties += roster.settings.ties;
+	leagueRosterRecords[rosterID].fptsFor += fpts;
+	leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
+	leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
+
+	// add singleSeason info [`${year}fptsFor`]
+	const singleYearInfo = {
+		wins: roster.settings.wins,
+		losses: roster.settings.losses,
+		ties: roster.settings.ties,
+		fpts,
+		fptsAgainst,
+		fptsPerGame,
+		potentialPoints,
+		manager: originalManagers[rosterID],
+		year
+	}
+
+	leagueRosterRecords[rosterID].years.push(singleYearInfo);
+
+	mostSeasonLongPoints.push({
+		rosterID,
+		fpts,
+		fptsPerGame: round(fptsPerGame),
+		year,
+		manager: originalManagers[rosterID]
+	})
+
+	return {
+		lRR: leagueRosterRecords,
+		mSLP: mostSeasonLongPoints,
+		oM: originalManagers
+	}
+}
+
+const processMatchup = ({matchupWeek, originalManagers, seasonPointsRecord, leagueWeekRecords, startWeek, matchupDifferentials, year}) => {
+	let matchups = {};
+	for(const matchup of matchupWeek) {
+		const entry = {
+			manager: originalManagers[matchup.roster_id],
+			fpts: matchup.points,
+			week: startWeek,
+			year,
+			rosterID: matchup.roster_id
+		}
+		seasonPointsRecord.push(entry);
+		leagueWeekRecords.push(entry);
+		// add each entry to the matchup object
+		if(!matchups[matchup.matchup_id]) {
+			matchups[matchup.matchup_id] = [];
+		}
+		matchups[matchup.matchup_id].push(entry);
+
+	}
+	startWeek--;
+
+	// create matchup differentials from matchups obj
+	for(const matchupKey in matchups) {
+		const matchup = matchups[matchupKey];
+		let home = matchup[0];
+		let away = matchup[1];
+		if(matchup[0].fpts < matchup[1].fpts) {
+			home = matchup[1];
+			away = matchup[0];
+		}
+		const matchupDifferential = {
+			year: home.year,
+			week: home.week,
+			home: {
+				manager: home.manager,
+				fpts: home.fpts,
+				rosterID: home.rosterID,
+			},
+			away: {
+				manager: away.manager,
+				fpts: away.fpts,
+				rosterID: away.rosterID,
+			},
+			differential: home.fpts - away.fpts
+		}
+		matchupDifferentials.push(matchupDifferential);
+	}
+
+	return {
+		sPR: seasonPointsRecord,
+		lWR: leagueWeekRecords,
+		mD: matchupDifferentials,
+		sw: startWeek
+	}
 }
