@@ -2,7 +2,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let leagueRosterRecords, leagueWeekRecords, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
+    export let leagueRosterRecords, leagueWeekHighs, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
 
     let winPercentages = [];
     let lineupIQs = [];
@@ -73,7 +73,7 @@
     {currentManagers}
     blowouts={allTimeBiggestBlowouts}
     closestMatchups={allTimeClosestMatchups}
-    weekRecords={leagueWeekRecords}
+    weekRecords={leagueWeekHighs}
     weekLows={leagueWeekLows}
     seasonLongRecords={mostSeasonLongPoints}
     seasonLongLows={leastSeasonLongPoints}

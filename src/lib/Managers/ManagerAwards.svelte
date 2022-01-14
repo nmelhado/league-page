@@ -68,8 +68,8 @@
         const pointsRecords = [...leagueRosterRecords].sort((a, b) => b.fptsFor - a.fptsFor);
         const iqRecords = [...leagueRosterRecords].sort((a, b) => (b.fptsFor/b.potentialPoints) - (a.fptsFor/a.potentialPoints));
 
-        for(let i = 0; i < records.leagueWeekRecords.length; i++) {
-            const leagueWeekRecord = records.leagueWeekRecords[i];
+        for(let i = 0; i < records.leagueWeekHighs.length; i++) {
+            const leagueWeekRecord = records.leagueWeekHighs[i];
             const seasonLongRecord = records.mostSeasonLongPoints[i];
             const winRecord = winRecords[i];
             const pointsRecord = pointsRecords[i];
