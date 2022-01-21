@@ -26,7 +26,7 @@
     }
 
     for(const seasonWeekRecord of seasonWeekRecords) {
-        yearsObj[seasonWeekRecord.year].weekRecords = seasonWeekRecord.seasonPointsRecords;
+        yearsObj[seasonWeekRecord.year].weekRecords = seasonWeekRecord.seasonPointsHighs;
         yearsObj[seasonWeekRecord.year].weekLows = seasonWeekRecord.seasonPointsLows;
         yearsObj[seasonWeekRecord.year].blowouts = seasonWeekRecord.biggestBlowouts;
         yearsObj[seasonWeekRecord.year].closestMatchups = seasonWeekRecord.closestMatchups;

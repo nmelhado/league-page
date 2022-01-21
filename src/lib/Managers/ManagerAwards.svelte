@@ -139,7 +139,7 @@
         }
         for(const yearRecords of records.seasonWeekRecords) {
             for(let i = 0; i < 3; i++) {
-                const seasonPointsRecord = yearRecords.seasonPointsRecords[i];
+                const seasonPointsRecord = yearRecords.seasonPointsHighs[i];
 
                 if(seasonPointsRecord.rosterID == currentRoster.roster_id) {
                     const former = tookOver && tookOver > yearRecords.year;
