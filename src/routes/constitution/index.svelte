@@ -100,7 +100,7 @@
 </style>
 
 <div class="constitution">
-    <h1 class="noUnderscore">LEGENDS LEAGUE CONSTITUTION</h1>
+    <h1 class="noUnderscore">UDFFL Constitution</h1>
     
     <h2 class="noUnderscore">TABLE OF CONTENTS</h2>
     
@@ -153,7 +153,7 @@
     
     <h3 class="subSectionHeading" bind:this={oneOne}>1.1 Positional Breakdown</h3>
     
-    <p>28 Total Players</p>
+    <p>29 Total Players</p>
     
     <p class="underscore">Starters</p>
     <ul>
@@ -164,14 +164,18 @@
         <li>WR</li>
         <li>TE</li>
         <li>FLEX (RB/WR/TE)</li>
-        <li>FLEX (RB/WR)</li>
-        <li>D/ST</li>
         <li>K</li>
+        <li>DB</li>
+        <li>DL</li>
+        <li>IDP FLEX (DB/DL/LB)</li>
+        <li>IDP FLEX (DB/DL/LB)</li>
     </ul>
     
-    <p>18 Bench (Expanded by 5 between the keague draft and start of regular season)</p>
+    <p>17 Bench</p>
 
-    <p>1 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
+    <p>2 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
+
+    <p>5 Taxi Spots (Only eligible to players with less than one year of NFL experience)</p>>
     
         <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
         
