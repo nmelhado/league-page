@@ -7,7 +7,8 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Men have hiked Mt. Everest, swam across the English Channel, and have even been on the Moon. But few on this Earth have earned the right to be in the UDFFL.</p>
+  <p>Men have hiked Mt. Everest, swam across the English Channel, and have stepped foot on the Moon. Yet despite these feats, few on this Earth have earned the right to be in the UDFFL.</p>
+  <p>This is what happens when I take adderall and cant sleep</p>
 `;
 
 /*   STEP 3   */
