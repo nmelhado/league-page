@@ -6,7 +6,6 @@
     import PerSeasonRecords from './PerSeasonRecords.svelte';
 
     export let leagueRecords, totals, stale;
-    console.log(leagueRecords)
 
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
