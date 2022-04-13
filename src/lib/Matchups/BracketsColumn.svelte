@@ -101,20 +101,30 @@
         return '';
     }
 
-    const calculatePoints = (points) => {
-        if(!points) return 0;
+    const calculatePoints = (allPoints) => {
         let totalPoints = 0;
-        for(const point of points) {
-            totalPoints += point;
+        for(const k in allPoints) {
+            const points = allPoints[k];
+            if(!points) break;
+            for(const point of points) {
+                totalPoints += point;
+            }
         }
         return round(totalPoints)
     }
 
-    const calculatePotentialPoints = (starters, ix, p) => {
-        if(!starters) return 0;
+    const calculatePotentialPoints = (startersWeeks, ix, p) => {
+        if(!startersWeeks) return 0;
         let totalPoints = 0;
-        for(const starter of starters) {
-            totalPoints += parseFloat(players[starter]?.wi && players[starter].wi[playoffsStart - ix]?.p ? players[starter].wi[playoffsStart - ix].p : 0);
+        
+        for(const k in startersWeeks) {
+            const starters = startersWeeks[k];
+            if(!starters) break;
+
+            const i = ix + k -1;
+            for(const starter of starters) {
+                totalPoints += parseFloat(players[starter]?.wi && players[starter].wi[playoffsStart - i]?.p ? players[starter].wi[playoffsStart - i].p : 0);
+            }
         }
         return round(totalPoints);
     }
@@ -242,13 +252,13 @@
         line-height: 1.1em;
         font-size: 0.85em;
         padding-left: 1em;
-        color: #333;
+        color: var(--g333);
         text-align: right;
     }
 
     .projectedPoints {
         font-size: 0.8em;
-        color: #888;
+        color: var(--g999);
     }
 
     /* SVG styling */
