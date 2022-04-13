@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.17] - 2022-04-13
+
+### Fixed
+
+- Brackets now account for two week per round leagues [issue #97](https://github.com/nmelhado/league-page/issues/97)
+
 ## [1.2.16] - 2022-01-06
 
 ### Fixed
