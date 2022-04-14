@@ -8,6 +8,7 @@ import { get } from 'svelte/store';
 import {records} from '$lib/stores';
 import { round, sortHighAndLow } from './universalFunctions';
 import { Records } from '$lib/utils/dataClasses';
+import { getBrackets } from './leagueBrackets';
 
 /**
  * getLeagueRecords obtains all the record for a league since it was first created
@@ -25,7 +26,7 @@ export const getLeagueRecords = async (refresh = false) => {
 	if(!refresh) {
 		let localRecords = await JSON.parse(localStorage.getItem("records"));
 		// check if transactions have been saved to localStorage before
-		if(localRecords && localRecords.leagueWeekHighs) {
+		if(localRecords && localRecords.playoffData) {
 			localRecords.stale = true;
 			return localRecords;
 		}
@@ -77,6 +78,13 @@ export const getLeagueRecords = async (refresh = false) => {
 
 		const rosters = rosterRes.rosters;
 
+		// on first run, week is provided above from nflState,
+		// after that get the final week of regular season from leagueData
+		if(leagueData.status == 'complete' || week > leagueData.settings.playoff_week_start - 1) {
+			week = 99; // set it high
+		}
+
+		// regular season data
 		const {
 			originalManagers,
 			season,
@@ -85,6 +93,13 @@ export const getLeagueRecords = async (refresh = false) => {
 		} = await processRegularSeason({leagueData, users, rosters, curSeason, week, regularSeason})
 
 		regularSeason = rS; // update the regular season records
+
+		// post season data
+		const pS = await processPlayoffs({year, originalManagers, curSeason, week, playoffRecords})
+
+		if(pS) {
+			playoffRecords = pS; // update the regular season records
+		}
 
 		lastYear = year;
 		if(!currentManagers) {
@@ -98,9 +113,18 @@ export const getLeagueRecords = async (refresh = false) => {
 		curSeason = season;
 	}
 
+	playoffRecords.currentYear = regularSeason.currentYear;
+	playoffRecords.lastYear = regularSeason.lastYear;
+	playoffRecords.currentManagers = regularSeason.currentManagers;
+
 	regularSeason.finalizeAllTimeRecords({currentManagers, currentYear, lastYear});
+	playoffRecords.finalizeAllTimeRecords({currentManagers, currentYear, lastYear});
 	
-	const recordsData = regularSeason.returnRecords()
+	const regularSeasonData = regularSeason.returnRecords()
+	const playoffData = playoffRecords.returnRecords()
+
+	const recordsData = {regularSeasonData, playoffData};
+
 	// update localStorage
 	localStorage.setItem("records", JSON.stringify(recordsData));
 
@@ -167,9 +191,9 @@ const processRegularSeason = async ({rosters, leagueData, users, curSeason, week
 	
 	// process all the matchups
 	for(const matchupWeek of matchupsData) {
-		const {sPR, rS, mD, sW} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, regularSeason, startWeek, matchupDifferentials, year})
+		const {sPR, r, mD, sW} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, record: regularSeason, startWeek, matchupDifferentials, year})
 		seasonPointsRecord = sPR;
-		regularSeason = rS;
+		regularSeason = r;
 		matchupDifferentials = mD;
 		startWeek = sW;
 	}
@@ -282,23 +306,55 @@ const analyzeRosters = ({year, roster, users, regularSeason, originalManagers}) 
  * @param {int} matchupData.year
  * @returns {any}
  */
-const processMatchups = ({matchupWeek, originalManagers, seasonPointsRecord, regularSeason, startWeek, matchupDifferentials, year}) => {
+const processMatchups = ({matchupWeek, originalManagers, seasonPointsRecord, record, startWeek, matchupDifferentials, year}) => {
 	let matchups = {};
+
+	// only used when building post season record
+	let pSD = {};
+
 	for(const matchup of matchupWeek) {
+		const rosterID = matchup.roster_id;
+		if(!rosterID) continue;
+		let mID = matchup.matchup_id;
+		if(!mID) {
+			if(!pSD[rosterID]) {
+				pSD[rosterID] = {
+					wins: 0,
+					losses: 0,
+					ties: 0,
+					fptsFor: 0,
+					fptsAgainst: 0,
+					potentialPoints: 0,
+					fptspg: 0,
+					pOGames: 0,
+					byes: 0,
+					manager: originalManagers[rosterID]
+				}
+			}
+			pSD[rosterID].pOGames = 1;
+			const m = matchup.m;
+			if(!m) {
+				pSD[rosterID].byes = 1;
+				continue;
+			}
+			mID = `PS:${m}`
+		}
+
 		const entry = {
-			manager: originalManagers[matchup.roster_id],
+			manager: originalManagers[rosterID],
 			fpts: matchup.points,
 			week: startWeek,
 			year,
-			rosterID: matchup.roster_id
+			rosterID: rosterID
 		}
 		seasonPointsRecord.push(entry);
-		regularSeason.addLeagueWeekRecord(entry);
+		record.addLeagueWeekRecord(entry);
 		// add each entry to the matchup object
-		if(!matchups[matchup.matchup_id]) {
-			matchups[matchup.matchup_id] = [];
+
+		if(!matchups[mID]) {
+			matchups[mID] = [];
 		}
-		matchups[matchup.matchup_id].push(entry);
+		matchups[mID].push(entry);
 
 	}
 	startWeek--;
@@ -328,32 +384,25 @@ const processMatchups = ({matchupWeek, originalManagers, seasonPointsRecord, reg
 			differential: home.fpts - away.fpts
 		}
 		matchupDifferentials.push(matchupDifferential);
+
+		// handle post-season data
+		if(matchupKey.split(":")[0] == "PS") {
+			pSD[home.rosterID].wins = 1;
+			pSD[home.rosterID].fptsFor = home.fpts;
+			pSD[home.rosterID].fptsAgainst = away.fpts;
+			pSD[away.rosterID].losses = 1;
+			pSD[away.rosterID].fptsFor = away.fpts;
+			pSD[away.rosterID].fptsAgainst = home.fpts;
+		};
 	}
 
 	return {
 		sPR: seasonPointsRecord,
-		rS: regularSeason,
+		r: record,
 		mD: matchupDifferentials,
-		sW: startWeek
+		sW: startWeek,
+		pSD
 	}
-}
-
-const getPlayoffLength = (playoffType, numPOTeams) => {
-	let playoffLength = 3;
-
-	if(numPOTeams == 4) {
-		return playoffLength--;
-	}
-	
-	if(playoffType == 1) {
-		return playoffLength++;
-	}
-	
-	if(playoffType == 2) {
-		return playoffLength *= 2;
-	}
-
-	return playoffLength
 }
 
 const processPlayoffMatchups = (matchups, playoffLength, playoffType) => {
@@ -368,89 +417,119 @@ const processPlayoffMatchups = (matchups, playoffLength, playoffType) => {
 
 }
 
-const processPlayoffs = async ({originalManagers, rosters, leagueData, users, curSeason, week, regularSeason}) => {
-	let year = parseInt(leagueData.season);
+const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, year, week}) => {
+	const {
+        playoffsStart,
+        playoffRounds,
+        loserRounds,
+        champs,
+        losers,
+    } = await getBrackets(curSeason);
 
-	// variables for playoff records
-	let numPOTeams = parseInt(leagueData.settings.playoff_teams);
-	let playoffStart = parseInt(leagueData.settings.playoff_week_start);
-	let playoffType;
-	let playoffCase;	   // for determining relevant (ie. PO bracket) matches
-
-	// before 2020, 1 week/round was only option; in 2020, 2 weeks/rounds added; in 2021, 1 week/round + 2 champ
-	if(year > 2019) {
-		playoffType = parseInt(leagueData.settings.playoff_round_type);
-	} else {
-		playoffType = 0;
+	if(week <= playoffsStart || !year) {
+		return null;
 	}
 
-	if(year == 2020) {
-		if(playoffType == 1) playoffType++;
-	}
+	let seasonPointsRecord = [];
+	let matchupDifferentials = [];
+	let postSeasonData = {};
 
-	const playoffLength = getPlayoffLength(playoffType, numPOTeams)
-
-	const POrecordsWeek = playoffStart + playoffLength - 1;
-
-	for(const roster of rosters) {
-		if(!playoffRosterRecords[recordManID]) {
-			playoffRosterRecords[recordManID] = {
-				wins: 0,
-				losses: 0,
-				ties: 0,
-				fptsFor: 0,
-				fptsAgainst: 0,
-				potentialPoints: 0,
-				fptspg: 0,
-				POgames: 0,
-				manager: originalManagers[recordManID],
-				years: {},
-				recordManID,
+	// process all the championship matches
+	const champBrackets = champs.bracket;
+	for(let i = 0; i < playoffRounds; i++) {
+		let startWeek = "";
+		switch (playoffRounds - i) {
+			case 1:
+				startWeek = "Finals"
+				break;
+			case 2:
+				startWeek = "Semi-Finals"
+				break;
+			case 3:
+				startWeek = "Quarter-Finals"
+				break;
+		
+			default:
+				break;
+		}
+		
+		const matchupWeek = [];
+		for(const matchups of champBrackets[i]) {
+			for(const matchup of matchups) {
+				if(matchup.r) {
+					const newMatchup = {...matchup}
+					let points = 0;
+					for(const k in newMatchup.points) {
+						points += newMatchup.points[k].reduce((t, nV) => t + nV);
+					}
+					newMatchup.points = points;
+					matchupWeek.push(newMatchup);
+				}
 			}
 		}
 
-		playoffRosterRecords[recordManID].years[year] = {
-			wins: 0,
-			losses: 0,
-			ties: 0,
-			fpts: 0,
-			fptsAgainst: 0,
-			potentialPoints: 0,
-			fptspg: 0,
-			POgames: 0,
-			manager: originalManagers[recordManID],
-			year,
-			recordManID,
-		}
-	}
+		const {sPR, r, mD, pSD} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, record: playoffRecords, startWeek, matchupDifferentials, year})
 
-	const POmatchupsPromises = [];
-	let POstartWeek = parseInt(POrecordsWeek);
-
-	while(POrecordsWeek > playoffStart - 1) {
-		POmatchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curSeason}/matchups/${POrecordsWeek}`, {compress: true}))
-		POrecordsWeek--;
-	}
-
-	const POmatchupsRes = await waitForAll(...POmatchupsPromises).catch((err) => { console.error(err); });
-
-	const POmatchupsJsonPromises = [];
-	for(const POmatchupRes of POmatchupsRes) {
-		const POdata = POmatchupRes.json();
-		POmatchupsJsonPromises.push(POdata)
-		if (!POmatchupRes.ok) {
-			throw new Error(POdata);
-		}
-	}
-	const POmatchupsData = await waitForAll(...POmatchupsJsonPromises).catch((err) => { console.error(err); });
-	
-	// process all the matchups
-	for(const matchupWeek of POmatchupsData) {
-		const {sPR, rS, mD, sW} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, regularSeason, startWeek, matchupDifferentials, year})
+		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
 		seasonPointsRecord = sPR;
-		regularSeason = rS;
+		playoffRecords = r;
 		matchupDifferentials = mD;
-		startWeek = sW;
 	}
 
+	for(const rosterID in postSeasonData) {
+		// update the roster records for this roster ID
+		const pSD = postSeasonData[rosterID];
+		const fptsPerGame = round(pSD.fptsFor / (pSD.wins + pSD.losses + pSD.ties));
+		console.log(fptsPerGame);
+		pSD.fptsPerGame = fptsPerGame;
+		pSD.year = year;
+
+		playoffRecords.updateRosterRecord(rosterID, pSD);
+
+		// add season long points entry
+		playoffRecords.addSeasonLongPoints({
+			rosterID,
+			fpts: pSD.fptsFor,
+			fptsPerGame,
+			year,
+			manager: originalManagers[rosterID]
+		})
+	}
+
+	// sort season point records
+	const [biggestBlowouts, closestMatchups] = sortHighAndLow(matchupDifferentials, 'differential')
+
+	// sort season point records
+	const [seasonPointsHighs, seasonPointsLows] = sortHighAndLow(seasonPointsRecord, 'fpts')
+
+	// add matchupDifferentials to tha all time  records
+	playoffRecords.addAllTimeMatchupDifferentials(matchupDifferentials);
+
+
+	if(seasonPointsHighs.length > 0) {
+		playoffRecords.addSeasonWeekRecord({
+			year,
+			biggestBlowouts,
+			closestMatchups,
+			seasonPointsLows,
+			seasonPointsHighs,
+		});
+	}
+	
+	return playoffRecords;
+}
+
+const meshPostSeasonData = (postSeasonData, pSD) => {
+	for(const key in pSD) {
+		if(!postSeasonData[key]) {
+			postSeasonData[key] = pSD[key];
+			continue;
+		}
+		for(const k in pSD[key]) {
+			if(k == 'manager') continue;
+			postSeasonData[key][k] += pSD[key][k];
+		}
+	}
+
+	return postSeasonData;
 }

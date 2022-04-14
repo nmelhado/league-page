@@ -6,16 +6,16 @@ import {waitForAll} from './multiPromise';
 import { get } from 'svelte/store';
 import {brackets} from '$lib/stores';
 
-export const getBrackets = async () => {
-    if(get(brackets).champs) {
+export const getBrackets = async (queryLeagueID = leagueID) => {
+    if(get(brackets).champs && queryLeagueID == leagueID) {
         return get(brackets);
     }
 
     // get roster, user, and league data
     const [rosterRes, users, leagueData] = await waitForAll(
-        getLeagueRosters(),
-        getLeagueUsers(),
-        getLeagueData(),
+        getLeagueRosters(queryLeagueID),
+        getLeagueUsers(queryLeagueID),
+        getLeagueData(queryLeagueID),
     ).catch((err) => { console.error(err); });
 
     const rosters = rosterRes.rosters;
@@ -25,15 +25,14 @@ export const getBrackets = async () => {
 
     // get bracket data for winners and losers
     const bracketsAndMatchupFetches = [
-        fetch(`https://api.sleeper.app/v1/league/${leagueID}/winners_bracket`, {compress: true}),
-        fetch(`https://api.sleeper.app/v1/league/${leagueID}/losers_bracket`, {compress: true}),
+        fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/winners_bracket`, {compress: true}),
+        fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/losers_bracket`, {compress: true}),
     ]
 
     // variables for playoff records
     // let numPOTeams = parseInt(leagueData.settings.playoff_teams);
     let playoffType;
     const year = parseInt(leagueData.season);
-    // let playoffCase; // for determining relevant (ie. PO bracket) matches
     const playoffsStart = parseInt(leagueData.settings.playoff_week_start);
 
     // before 2020, 1 week/round was only option; in 2020, 2 weeks/rounds added; in 2021, 1 week/round + 2 champ
@@ -51,12 +50,10 @@ export const getBrackets = async () => {
         if(playoffType == 1) playoffType++;
     }
 
-    // const playoffLength = getPlayoffLength(playoffType, numPOTeams)
-
     // add each week after the regular season to the fetch array
     for(let i = playoffsStart; i < 19; i++) {
         // Get the matchup data (starters) for the playoff weeks
-        bracketsAndMatchupFetches.push(fetch(`https://api.sleeper.app/v1/league/${leagueID}/matchups/${i}`, {compress: true}));
+        bracketsAndMatchupFetches.push(fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/matchups/${i}`, {compress: true}));
     }
     
     // Simultaneously fetch the bracket and matchup data
@@ -100,7 +97,10 @@ export const getBrackets = async () => {
         losers,
     }
 
-    brackets.update(() => finalBrackets);
+    // only update cache for most recent season
+    if(queryLeagueID == leagueID) {
+        brackets.update(() => finalBrackets);
+    }
 
     return finalBrackets;
 }
@@ -214,6 +214,7 @@ const processPlayoffMatchup = ({playoffBracket, playoffMatchups, i, rosters, use
 const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users, playoffType, winners, fromWinners, consolation, p}) => {
     let matchup = {
         manager: null,
+        roster_id: null,
         points: undefined,
         starters: undefined,
         consolation,
@@ -241,6 +242,7 @@ const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users
 
         matchup.starters = tMatchupStarters;
         matchup.points = tMatchupStartersPoints;
+        matchup.roster_id = t;
 
         if(tuser) {
             matchup.manager = {
@@ -256,22 +258,4 @@ const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users
     }
 
     return matchup;
-}
-
-const getPlayoffLength = (playoffType, numPOTeams) => {
-    let playoffLength = 3;
-
-    if(numPOTeams == 4) {
-        return playoffLength--;
-    }
-    
-    if(playoffType == 1) {
-        return playoffLength++;
-    }
-    
-    if(playoffType == 2) {
-        return playoffLength *= 2;
-    }
-
-    return playoffLength
 }

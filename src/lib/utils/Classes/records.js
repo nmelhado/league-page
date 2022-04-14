@@ -43,6 +43,8 @@ Records.prototype.confirmRosterRecord = function(rosterID) {
             fptsFor: 0,
             fptsAgainst: 0,
             potentialPoints: 0,
+            pOGames: 0,
+            byes: 0,
             years: []
         }
     }
@@ -51,19 +53,21 @@ Records.prototype.confirmRosterRecord = function(rosterID) {
 
 /**
  * Update the internal leagueRosterRecords for a given roster ID
- * @param {int} rosterID
+ * @param {number} rosterID
  * @param {Object} recordsData
  * @param {any} recordsData.manager
- * @param {any} recordsData.year
- * @param {any} recordsData.wins
- * @param {any} recordsData.losses
- * @param {any} recordsData.ties
- * @param {any} recordsData.fptsPerGame
- * @param {any} recordsData.fptsFor
- * @param {any} recordsData.fptsAgainst
- * @param {any} recordsData.potentialPoints
+ * @param {number} recordsData.year
+ * @param {number} recordsData.wins
+ * @param {number} recordsData.losses
+ * @param {number} recordsData.ties
+ * @param {number} recordsData.fptsPerGame
+ * @param {number} recordsData.fptsFor
+ * @param {number} recordsData.fptsAgainst
+ * @param {number} recordsData.potentialPoints
+ * @param {number} recordsData.pOGames
+ * @param {number} recordsData.byes
  */
-Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, losses, ties, fptsPerGame, fptsFor, fptsAgainst, potentialPoints}) {
+Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, losses, ties, fptsPerGame, fptsFor, fptsAgainst, potentialPoints, pOGames, byes}) {
     // check that a roster record has already been started for a given roster ID
     this.confirmRosterRecord(rosterID);
 
@@ -74,6 +78,8 @@ Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, 
     this.leagueRosterRecords[rosterID].fptsFor += fptsFor;
     this.leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
     this.leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
+    this.leagueRosterRecords[rosterID].pOGames += pOGames;
+    this.leagueRosterRecords[rosterID].byes += byes;
 
     // add the single season data
     this.leagueRosterRecords[rosterID].years.push({
@@ -84,6 +90,8 @@ Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, 
         fptsAgainst,
         fptsPerGame,
         potentialPoints,
+        pOGames,
+        byes,
         manager,
         year,
     });

@@ -5,132 +5,19 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
+    export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
 
-    const lineupIQGraph = {
-        stats: lineupIQs,
-        x: "Manager",
-        y: "Lineup IQ",
-        stat: "%",
-        header: "Manager Lineup IQ",
-        field: "iq",
-        short: "Lineup IQ"
-    }
-
-    const potentialPointsGraph = {
-        stats: lineupIQs,
-        x: "Manager",
-        y: "Points",
-        stat: "",
-        header: "Potential Points vs Points",
-        field: "potentialPoints",
-        secondField: "fpts",
-        short: "Potential Points"
-    }
-
-    const winsGraph = {
-        stats: winPercentages,
-        x: "Manager",
-        y: "Wins",
-        stat: "",
-        header: "Team Wins",
-        field: "wins",
-        short: "Wins"
-    }
-
-    const winPercentagesGraph = {
-        stats: winPercentages,
-        x: "Manager",
-        y: "Win Percentage",
-        stat: "%",
-        header: "Team Win Percentages",
-        field: "percentage",
-        short: "Win Percentage"
-    }
-
-    const fptsHistoriesGraph = {
-        stats: fptsHistories,
-        x: "Manager",
-        y: "Fantasy Points",
-        stat: "",
-        header: "Team Fantasy Points",
-        field: "fptsFor",
-        short: "Fantasy Points"
-    }
-
-    for(let i = 1; i <= waiversData.length; i++) {
-        if(!tradesData.find(t => t.rosterID == i)) {
-            tradesData.push({
-                rosterID: i,
-                manager: currentManagers[i],
-                trades: 0,
-            })
-        }
-    }
-
-    const tradesGraph = {
-        stats: tradesData,
-        x: "Manager",
-        y: "# of trades",
-        stat: "",
-        header: "Trades Managers Have Made",
-        field: "trades",
-        short: "Trades"
-    }
-
-    const waiversGraph = {
-        stats: waiversData,
-        x: "Manager",
-        y: "# of Waiver Moves",
-        stat: "",
-        header: "Waivers Managers Have Made",
-        field: "waivers",
-        short: "Waivers"
-    }
-    
-    const graphs = [];
-
-    if(lineupIQs[0]?.potentialPoints) {
-        graphs.push(generateGraph(lineupIQGraph));
-    }
-    graphs.push(generateGraph(winsGraph, 5));
-    graphs.push(generateGraph(winPercentagesGraph));
-    graphs.push(generateGraph(fptsHistoriesGraph));
-    if(lineupIQs[0]?.potentialPoints) {
-        graphs.push(generateGraph(potentialPointsGraph, 10, 0));
-    }
-    graphs.push(generateGraph(tradesGraph));
-    graphs.push(generateGraph(waiversGraph));
-
-    const transactions = [];
-
-    for(let i = 1; i <= waiversData.length; i++) {
-        const waiver = waiversData.find(w => w.rosterID == i);
-        const trades = tradesData.find(t => t.rosterID == i)?.trades || 0;
-        const waivers = waiver?.waivers || 0;
-        const manager = waiver.manager;
-        transactions.push({
-            rosterID: i,
-            manager,
-            trades,
-            waivers,
-        })
-    }
-
+    let graphs = [];
     let curTable = 0;
     let curGraph = 0;
 
     let iqOffset = 0;
-    const tables = [
+    let tables = [
         "Win Percentages",
         "Points",
         "Transactions",
     ]
-    if(!lineupIQs[0]?.potentialPoints) {
-        iqOffset = 1;
-    } else {
-        tables.unshift('Lineup IQs');
-    }
+
     const changeTable = (newGraph) => {
         switch (newGraph) {
             case 0 - iqOffset:
@@ -183,8 +70,146 @@
         }
     }
 
+    const setGraphs = (wD) => {
+        const lineupIQGraph = {
+            stats: lineupIQs,
+            x: "Manager",
+            y: "Lineup IQ",
+            stat: "%",
+            header: "Manager Lineup IQ",
+            field: "iq",
+            short: "Lineup IQ"
+        }
+
+        const potentialPointsGraph = {
+            stats: lineupIQs,
+            x: "Manager",
+            y: "Points",
+            stat: "",
+            header: "Potential Points vs Points",
+            field: "potentialPoints",
+            secondField: "fpts",
+            short: "Potential Points"
+        }
+
+        const winsGraph = {
+            stats: winPercentages,
+            x: "Manager",
+            y: "Wins",
+            stat: "",
+            header: "Team Wins",
+            field: "wins",
+            short: "Wins"
+        }
+
+        const winPercentagesGraph = {
+            stats: winPercentages,
+            x: "Manager",
+            y: "Win Percentage",
+            stat: "%",
+            header: "Team Win Percentages",
+            field: "percentage",
+            short: "Win Percentage"
+        }
+
+        const fptsHistoriesGraph = {
+            stats: fptsHistories,
+            x: "Manager",
+            y: "Fantasy Points",
+            stat: "",
+            header: "Team Fantasy Points",
+            field: "fptsFor",
+            short: "Fantasy Points"
+        }
+
+        const tradesGraph = {
+            stats: tradesData,
+            x: "Manager",
+            y: "# of trades",
+            stat: "",
+            header: "Trades Managers Have Made",
+            field: "trades",
+            short: "Trades"
+        }
+
+        const waiversGraph = {
+            stats: wD,
+            x: "Manager",
+            y: "# of Waiver Moves",
+            stat: "",
+            header: "Waivers Managers Have Made",
+            field: "waivers",
+            short: "Waivers"
+        }
+        const gs = [];
+
+        if(lineupIQs[0]?.potentialPoints) {
+            gs.push(generateGraph(lineupIQGraph));
+        }
+        gs.push(generateGraph(winsGraph, 5));
+        gs.push(generateGraph(winPercentagesGraph));
+        gs.push(generateGraph(fptsHistoriesGraph));
+        if(lineupIQs[0]?.potentialPoints) {
+            gs.push(generateGraph(potentialPointsGraph, 10, 0));
+        }
+        if(key == "regularSeasonData") {
+            gs.push(generateGraph(tradesGraph));
+            gs.push(generateGraph(waiversGraph));
+        }
+
+        curGraph = 0;
+        graphs = gs;
+    }
+
+    const setTransactionsAndGraphs = (wD) => {
+        for(let i = 1; i <= waiversData.length; i++) {
+            if(!tradesData.find(t => t.rosterID == i)) {
+                tradesData.push({
+                    rosterID: i,
+                    manager: currentManagers[i],
+                    trades: 0,
+                })
+            }
+        }
+        const transactions = [];
+
+        for(let i = 1; i <= wD.length; i++) {
+            const waiver = wD.find(w => w.rosterID == i);
+            const trades = tradesData.find(t => t.rosterID == i)?.trades || 0;
+            const waivers = waiver?.waivers || 0;
+            const manager = waiver.manager;
+            transactions.push({
+                rosterID: i,
+                manager,
+                trades,
+                waivers,
+            })
+        }
+
+        setGraphs(wD)
+        return transactions;
+    }
+
+    const setTables = (lIQs) => {
+        const t = [
+            "Win Percentages",
+            "Points",
+        ]
+        if(key == "regularSeasonData") {
+            t.push("Transactions")
+        }
+        if(!lIQs[0]?.potentialPoints) {
+            iqOffset = 1;
+        } else {
+            t.unshift('Lineup IQs');
+        }
+        tables = t
+    }
+
+    $: transactions =  setTransactionsAndGraphs(waiversData)
     $: changeTable(curGraph);
     $: changeGraph(curTable);
+    $: setTables(lineupIQs)
     
     let innerWidth;
 
@@ -609,7 +634,9 @@
 
 <h4>{prefix} Rankings</h4>
 
-<BarChart maxWidth={innerWidth} {graphs} bind:curGraph={curGraph} />
+{#if graphs.length}
+    <BarChart maxWidth={innerWidth} {graphs} bind:curGraph={curGraph} />
+{/if}
 
 <div class="rankingHolder">
     <div class="rankingInner" style="margin-left: -{100 * curTable}%;">
