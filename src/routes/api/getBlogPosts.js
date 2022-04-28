@@ -5,9 +5,13 @@ export async function get() {
     const res = await fetch(GET_POSTS, {compress: true}).catch((err) => { console.error(err); });
 
     if(!res.ok) {
+        const detailedErr = await res.text()
         return {
             status: 500,
-            body: "Problem retrieving blog posts"
+            body: JSON.stringify({
+                basicErr: "Problem retrieving blog posts",
+                detailedErr
+            })
         };
     }
 
