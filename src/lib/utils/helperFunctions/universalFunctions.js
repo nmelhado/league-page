@@ -102,3 +102,18 @@ export const generateGraph = ({stats, x, y, stat, header, field, short, secondFi
 
     return graph;
 }
+
+
+/**
+ * takes an array and array field, sorts the array, and returns
+ * the 10 highest and lowest members of the array in desc and asc order respectively
+ * @param {Object[]} arr the array to be sorted
+ * @param {string} field the field to sort on
+ * @returns {arr|arr} [high, low] an array where the first element is the 10 highest records and the second is the 10 lowest elements
+ */
+ export const sortHighAndLow = (arr, field) => {
+	const sorted = arr.sort((a, b) => b[field] - a[field]);
+	const high = sorted.slice(0, 10);
+	const low = sorted.slice(-10).reverse();
+	return [high, low]
+}
