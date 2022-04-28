@@ -405,25 +405,11 @@ const processMatchups = ({matchupWeek, originalManagers, seasonPointsRecord, rec
 	}
 }
 
-const processPlayoffMatchups = (matchups, playoffLength, playoffType) => {
-	// process all the matchups
-	for(const matchupWeek of matchups) {
-		const {sPR, rS, mD, sW} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, regularSeason, startWeek, matchupDifferentials, year})
-		seasonPointsRecord = sPR;
-		regularSeason = rS;
-		matchupDifferentials = mD;
-		startWeek = sW;
-	}
-
-}
-
 const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, year, week}) => {
 	const {
         playoffsStart,
         playoffRounds,
-        loserRounds,
         champs,
-        losers,
     } = await getBrackets(curSeason);
 
 	if(week <= playoffsStart || !year) {
@@ -435,52 +421,25 @@ const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, yea
 	let postSeasonData = {};
 
 	// process all the championship matches
-	const champBrackets = champs.bracket;
-	for(let i = 0; i < playoffRounds; i++) {
-		let startWeek = "";
-		switch (playoffRounds - i) {
-			case 1:
-				startWeek = "Finals"
-				break;
-			case 2:
-				startWeek = "Semi-Finals"
-				break;
-			case 3:
-				startWeek = "Quarter-Finals"
-				break;
-		
-			default:
-				break;
-		}
-		
-		const matchupWeek = [];
-		for(const matchups of champBrackets[i]) {
-			for(const matchup of matchups) {
-				if(matchup.r) {
-					const newMatchup = {...matchup}
-					let points = 0;
-					for(const k in newMatchup.points) {
-						points += newMatchup.points[k].reduce((t, nV) => t + nV);
-					}
-					newMatchup.points = points;
-					matchupWeek.push(newMatchup);
-				}
-			}
-		}
+	const champBracket = digestBracket({bracket: champs.bracket, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: false, seasonPointsRecord, originalManagers, year});
 
-		const {sPR, r, mD, pSD} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, record: playoffRecords, startWeek, matchupDifferentials, year})
+	postSeasonData = champBracket.postSeasonData;
+	seasonPointsRecord = champBracket.seasonPointsRecord;
+	playoffRecords = champBracket.playoffRecords;
+	matchupDifferentials = champBracket.matchupDifferentials;
 
-		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
-		seasonPointsRecord = sPR;
-		playoffRecords = r;
-		matchupDifferentials = mD;
-	}
+	// process all the consolation matches
+	const consolationBracket = digestBracket({bracket: champs.consolations, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: true, seasonPointsRecord, originalManagers, year});
+
+	postSeasonData = consolationBracket.postSeasonData;
+	seasonPointsRecord = consolationBracket.seasonPointsRecord;
+	playoffRecords = consolationBracket.playoffRecords;
+	matchupDifferentials = consolationBracket.matchupDifferentials;
 
 	for(const rosterID in postSeasonData) {
 		// update the roster records for this roster ID
 		const pSD = postSeasonData[rosterID];
 		const fptsPerGame = round(pSD.fptsFor / (pSD.wins + pSD.losses + pSD.ties));
-		console.log(fptsPerGame);
 		pSD.fptsPerGame = fptsPerGame;
 		pSD.year = year;
 
@@ -519,6 +478,41 @@ const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, yea
 	return playoffRecords;
 }
 
+const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferentials, postSeasonData, consolation, seasonPointsRecord, playoffsStart, originalManagers, year}) => {
+	for(let i = 0; i < bracket.length; i++) {
+		const startWeek = getStartWeek(i + (playoffRounds - bracket.length), playoffRounds, consolation, playoffsStart);
+		const matchupWeek = [];
+
+		for(let matchups of bracket[i]) {
+			if(consolation) {
+				// consolation matchups are nested within an additional array, we need to flatten them before proceeding
+				matchups = matchups.flat();
+			}
+			for(const matchup of matchups) {
+				if(matchup.r) {
+					const newMatchup = {...matchup}
+					let points = 0;
+					for(const k in newMatchup.points) {
+						points += newMatchup.points[k].reduce((t, nV) => t + nV);
+					}
+					newMatchup.points = points;
+					matchupWeek.push(newMatchup);
+				}
+			}
+		}
+		const {sPR, r, mD, pSD} =  processMatchups({matchupWeek, originalManagers, seasonPointsRecord, record: playoffRecords, startWeek, matchupDifferentials, year})
+
+		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
+
+		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
+		seasonPointsRecord = sPR;
+		playoffRecords = r;
+		matchupDifferentials = mD;
+	}
+
+	return {postSeasonData, seasonPointsRecord, playoffRecords, matchupDifferentials}
+}
+
 const meshPostSeasonData = (postSeasonData, pSD) => {
 	for(const key in pSD) {
 		if(!postSeasonData[key]) {
@@ -532,4 +526,22 @@ const meshPostSeasonData = (postSeasonData, pSD) => {
 	}
 
 	return postSeasonData;
+}
+
+const getStartWeek = (i, playoffRounds, consolation, playoffsStart) => {
+	if (consolation) {
+		return `(C) Week ${playoffsStart + i}`;
+	}
+
+	switch (playoffRounds - i) {
+		case 1:
+			return "Finals";
+		case 2:
+			return "Semi-Finals"
+		case 3:
+			return "Quarter-Finals"
+	
+		default:
+			return "Qualifiers";
+	}
 }

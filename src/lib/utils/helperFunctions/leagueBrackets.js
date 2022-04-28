@@ -232,6 +232,7 @@ const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users
         tMatchupStarters[1] = tMatchup?.starters;
         const tMatchupStartersPoints = {};
         tMatchupStartersPoints[1] = tMatchup?.starters_points;
+        
         // playoffType 2: 2 weeks per round
         // playoffType 1: 1 weeks per round, 2 in championship round
         if(playoffType == 2 || (p && p == 1 && playoffType == 1)) {

@@ -452,7 +452,7 @@
                                 <div class="curRecordManager">({currentManagers[leagueWeekRecord.rosterID].name})</div>
                             {/if}
                         </Cell>
-                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }Week {leagueWeekRecord.week}</Cell>
+                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
                         <Cell>{round(leagueWeekRecord.fpts)}</Cell>
                     </Row>
                 {/each}
@@ -483,7 +483,7 @@
                                 <div class="curRecordManager">({currentManagers[leagueWeekLow.rosterID].name})</div>
                             {/if}
                         </Cell>
-                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }Week {leagueWeekLow.week}</Cell>
+                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
                         <Cell>{round(leagueWeekLow.fpts)}</Cell>
                     </Row>
                 {/each}
@@ -513,7 +513,7 @@
                             {mostSeasonLongPoint.manager.name}
                         </Cell>
                         <Cell>{mostSeasonLongPoint.year}</Cell>
-                        <Cell>{mostSeasonLongPoint.fpts}</Cell>
+                        <Cell>{round(mostSeasonLongPoint.fpts)}</Cell>
                         <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
                     </Row>
                 {/each}
@@ -543,7 +543,7 @@
                             {leastSeasonLongPoint.manager.name}
                         </Cell>
                         <Cell>{leastSeasonLongPoint.year}</Cell>
-                        <Cell>{leastSeasonLongPoint.fpts}</Cell>
+                        <Cell>{round(leastSeasonLongPoint.fpts)}</Cell>
                         <Cell>{leastSeasonLongPoint.fptsPerGame}</Cell>
                     </Row>
                 {/each}
@@ -583,7 +583,7 @@
                                 {/if}
                             </div>
                         </Cell>
-                        <Cell>{allTime ? blowout.year + " " : "" }Week {blowout.week}</Cell>
+                        <Cell>{allTime ? blowout.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{blowout.week}</Cell>
                         <Cell>{round(blowout.differential)}</Cell>
                     </Row>
                 {/each}
@@ -623,7 +623,7 @@
                                 {/if}
                             </div>
                         </Cell>
-                        <Cell>{allTime ? closestMatchup.year + " " : "" }Week {closestMatchup.week}</Cell>
+                        <Cell>{allTime ? closestMatchup.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{closestMatchup.week}</Cell>
                         <Cell>{round(closestMatchup.differential)}</Cell>
                     </Row>
                 {/each}
@@ -671,8 +671,8 @@
                                     {/if}
                                 </Cell>
                                 <Cell>{lineupIQ.iq}%</Cell>
-                                <Cell>{lineupIQ.fpts}</Cell>
-                                <Cell>{lineupIQ.potentialPoints}</Cell>
+                                <Cell>{round(lineupIQ.fpts)}</Cell>
+                                <Cell>{round(lineupIQ.potentialPoints)}</Cell>
                             </Row>
                         {/each}
                     </Body>
@@ -745,9 +745,9 @@
                                     <div class="curRecordManager">({currentManagers[fptsHistory.rosterID].name})</div>
                                 {/if}
                             </Cell>
-                            <Cell>{fptsHistory.fptsFor}</Cell>
-                            <Cell>{fptsHistory.fptsAgainst}</Cell>
-                            <Cell>{fptsHistory.fptsPerGame}</Cell>
+                            <Cell>{round(fptsHistory.fptsFor)}</Cell>
+                            <Cell>{round(fptsHistory.fptsAgainst)}</Cell>
+                            <Cell>{round(fptsHistory.fptsPerGame)}</Cell>
                         </Row>
                     {/each}
                 </Body>

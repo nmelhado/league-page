@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2022-04-27
+
+### Added
+
+- Playoff records and rankings [feature suggestion #80](https://github.com/nmelhado/league-page/issues/80)
+    - Only looks at playoff bracket, not toilet bowl
+    - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for the suggestion and investigation
+
+### Fixed
+
+- FTN News changed it's format and broke the news page, the change has been addressed and the news feed is working as expected
+- Bug in blog posts, better error handling to catch issues
+
+### Changed
+
+- Refactored a significant amount of the record logic to make it easier to follow/maintain/upgrade
+
+### Removed
+
+- Removed the `_helper/vite-workaround.js` directory, as it is no longer needed with the current version of Svelte Material UI
+
 ## [1.2.17] - 2022-04-13
 
 ### Fixed

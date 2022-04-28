@@ -45,6 +45,7 @@ Records.prototype.confirmRosterRecord = function(rosterID) {
             potentialPoints: 0,
             pOGames: 0,
             byes: 0,
+            playoffAppearances: 0,
             years: []
         }
     }
@@ -80,6 +81,7 @@ Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, 
     this.leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
     this.leagueRosterRecords[rosterID].pOGames += pOGames;
     this.leagueRosterRecords[rosterID].byes += byes;
+    this.leagueRosterRecords[rosterID].playoffAppearances ++;
 
     // add the single season data
     this.leagueRosterRecords[rosterID].years.push({

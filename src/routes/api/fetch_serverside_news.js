@@ -14,7 +14,7 @@ export async function get() {
 	];
 	if(dynasty) {
 		articles.push(getXMLArticles(DYNASTY_LEAGUE, processDynastyLeague));
-		getXMLArticles(DYNASTY_NERDS, processDynastyNerds);
+		articles.push(getXMLArticles(DYNASTY_NERDS, processDynastyNerds));
 	}
     const responses = await waitForAll(...articles).catch((err) => { console.error(err); });
 
@@ -85,7 +85,7 @@ const processFTN = (rawArticles) => {
 		const icon = 'newsIcons/ftn.png';
 		finalArticles.push({
 			title: article.short_text,
-			article: article.analysis[0].analysis,
+			article: article.text,
 			link: `https://www.ftnfantasy.com/nfl${article.link}`,
 			author: `FTN Fantasy`,
 			ts,
