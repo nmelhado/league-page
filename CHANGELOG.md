@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2022-05-20
+
+### Fixed
+
+- When clicking on a manager from the managers page, the manager indefinitely loads. [issue #117](https://github.com/nmelhado/league-page/issues/117)
+    - RC: [PR #114 Adds playoff records and rankings to the records page](https://github.com/nmelhado/league-page/pull/114)
+
 ## [1.3.1] - 2022-04-28
 
 ### Fixed
