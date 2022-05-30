@@ -89,7 +89,7 @@
 
 <!-- footer with update notice -->
 <footer class="{outOfDate ? '' : 'invisible'}" bind:this={elNeedUpdate}>
-	<p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
+	<p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iv-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
 	<div id="navigation">
 		<ul>
 			{#each tabs as tab}
