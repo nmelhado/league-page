@@ -92,7 +92,7 @@ export const getLeagueRecords = async (refresh = false) => {
 			rS
 		} = await processRegularSeason({leagueData, users, rosters, curSeason, week, regularSeason})
 
-		regularSeason = rS; // update the regular season records
+		regularSeason = rS; // update the regular season record
 
 		// post season data
 		const pS = await processPlayoffs({year, originalManagers, curSeason, week, playoffRecords})
@@ -493,7 +493,7 @@ const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferent
 					const newMatchup = {...matchup}
 					let points = 0;
 					for(const k in newMatchup.points) {
-						points += newMatchup.points[k].reduce((t, nV) => t + nV);
+						points += newMatchup.points[k].reduce((t, nV) => t + nV, 0);
 					}
 					newMatchup.points = points;
 					matchupWeek.push(newMatchup);

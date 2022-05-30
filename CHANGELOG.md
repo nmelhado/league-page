@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2022-05-29
+
+### Fixed
+
+- Empty points were causing a bug in the rankings page. Also, the standings page is throwing an undefined in the preseason. [issue #119](https://github.com/nmelhado/league-page/issues/119)
+
 ## [1.3.2] - 2022-05-20
 
 ### Fixed
