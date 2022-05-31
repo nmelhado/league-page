@@ -8,7 +8,7 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 /*   STEP 2   */
 export const homepageText = `
   <p>This is the League of COACHES! Started in 2020, this is a premier destination for people who kinda care about fantasy football. Welcome the league's website!</p>
-  <h>Current Odds</h>
+  <p>Current Odds</p>
  
 `;
 
