@@ -186,7 +186,7 @@
 {#if trade}
 	<svg class="lineParent">
 		<defs>
-		  <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+		  <marker id="arrowhead" markerWidth="5" markerHeight="7" 
 		  refX="0" refY="2.5" orient="auto" fill="#ccc">
 			<polygon points="0 0, 10 2.5, 0 5" />
 		  </marker>
