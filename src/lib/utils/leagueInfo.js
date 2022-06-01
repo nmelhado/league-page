@@ -9,18 +9,18 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 export const homepageText = `
   <p>This is the League of COACHES! Started in 2020, this is a premier destination for people who kinda care about fantasy football. Welcome the league's website!</p>
   <h4>Current Title Odds</h4>
-  <p>I Have A Chubb Again	+185</p>
-  <p>TitanTravis	+195</p>
-  <p>TheRealCoach	+255</p>
-  <p>RoyceCrowe	+515</p>
-  <p>JosephHill	+530</p>
-  <p>JMisuraca	+990</p>
-  <p>CoachCommish	+1630</p>
-  <p>CymbaltaOverdose	+3570</p>
-  <p>Flying Platapi	+9900</p>
-  <p>BrocknessMonsters	+9900</p>
-  <p>GriffinJ	+9900</p>
-  <p>Roxtops	+9900</p>
+  <p>I Have A Chubb Again	+540
+TitanTravis	+550
+TheRealCoach	+605
+roycecrowe	+745
+josephhill	+755
+jmisuraca	+865
+Coachcommish	+930
+CymbaltaOverdose	+1000
+Flying Platapi	+1030
+BrocknessMonsters	+1515
+griffinj	+1710
+roxtops	+99900</p>
  
 `;
 
