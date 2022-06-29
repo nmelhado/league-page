@@ -34,7 +34,7 @@ export const getAwards = async () => {
 		}
 	}
 
-	let previousSeasonID = leagueData.previous_league_id;
+	let previousSeasonID = leagueData.status == "complete" ? leagueData.league_id : leagueData.previous_league_id;
 
 	const podiums = await getPodiums(previousSeasonID)
 
