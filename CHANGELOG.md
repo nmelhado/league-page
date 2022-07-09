@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4] - 2022-07-09
+
+### Fixed
+
+- NBC Sports Edge changed it's API format which introduced a bug that broke the Resources page [(issue #129)](https://github.com/nmelhado/league-page/issues/129)
+
 ## [1.3.3] - 2022-05-29
 
 ### Fixed
