@@ -7,7 +7,7 @@ export const enableBlog = true // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE
 
 /*   STEP 2   */
 export const homepageText = `
-<p>The Very Big 12 will begin shortly.</p> 
+<p>Please review the <a href="/constitution">constitution</a> before <b>August 8th</b></p>
 `
 
 /*   STEP 3   */
