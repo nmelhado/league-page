@@ -313,7 +313,7 @@
     <h2 class="sectionHeading" bind:this={seven}>Section 7 League Finances</h2>
     
     <h3 bind:this={sevenOne}>7.1 League Dues</h3>
-    <p>League dues are set at ${dues}. Dues are paid through Chase Quickpay/Zelle to the commissioner (Matt Reddy - username reddy1023@gmail.com) <b>no later than August 28th at 11:59pm CST</b>. If you don't have access to Zelle, please contact the commissioner to work out a different method (Commissioner's note: I can't set up Venmo with a European phone number, please don't ask). All managers must be fully paid up before the start of regular season.</p>
+    <p>League dues are set at ${dues}. Dues are paid through Chase Quickpay/Zelle to the commissioner (Matt Reddy - username <code>reddy1023@gmail.com</code>) <b>no later than August 28th at 11:59pm CST</b>. If you don't have access to Zelle, please contact the commissioner to work out a different method (Commissioner's note: I can't set up Venmo with a European phone number, please don't ask). All managers must be fully paid up before the start of regular season.</p>
     <p>In the event that a manager fails to pay before the deadline, they will face a $10 salary cap draft budget reduction per day (CST timezone).</p>
     <p>Every day late from draft finish will incur a $3 FAAB reduction leading up to and through kickoff day.</p>
     <p>In the event that a manager fails to pay before kickoff of the 1st game of the season, they will be ineligible to receive weekly payouts until dues have been received. Continued truancy may also be grounds for a league expulsion vote.</p>
