@@ -130,7 +130,7 @@ export const managers = [
    },
    {
      "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-     "name": "Trey",
+     "name": "Derek",
      "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
      "location": "Florida",
      "bio": "FLORIDA MAN INJECTS SELF WITH SPRAY FOAM, DOES NOT HELP WITH FFL RESULTS",
@@ -146,7 +146,7 @@ export const managers = [
      "favoritePlayer": 3970, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
      "valuePosition": "QB", // Favorite position (QB, WR, RB, TE, etc.)
      "rookieOrVets": "Vets", // 'Rookies' or 'Vets'
-     "philosophy": "Last minute prep is the only way to fly.",
+     "philosophy": "Montreal is not so good at the hockey",
      "tradingScale": 7, // 1 - 10
      "preferredContact": "Sleeper", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
    },
