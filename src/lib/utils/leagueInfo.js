@@ -1,5 +1,5 @@
 /*   STEP 1   */
-export const leagueID = "716328508556668928"; // your league ID
+export const leagueID = "784458462775115776"; // your league ID
 export const leagueName = "A Fantasy Football League of Ice and Fire"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
