@@ -1,12 +1,34 @@
 {
   "name": "league-page",
-  "version": "1.1.2",
-  "homepage": "https://github.com/nmelhado/league-page#readme",
+  "version": "1.3.4",
+  "homepage": "https://github.com/nmelhado/league-page",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nmelhado/league-page.git"
+  },
   "author": {
     "name": "Nicholas Melhado",
     "email": "n.melhado@gmail.com",
     "url": "http://www.nmelhado.com/"
   },
+  "contributors": [
+    {
+      "name": "Shane Tjong-Akiet",
+      "url": "https://github.com/shanetj"
+    },
+    {
+      "name": "Scottie Garcia",
+      "url": "https://github.com/scottiegarcia"
+    },
+    {
+      "name": "DOLO",
+      "url": "https://github.com/1600dolo"
+    },
+    {
+      "name": "OldNewsBlues-2",
+      "url": "https://github.com/OldNewsBlues-2"
+    }
+  ],
   "funding": {
     "type": "buy_me_a_coffee",
     "url": "https://www.buymeacoffee.com/nmelhado"
@@ -23,37 +45,41 @@
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
+    "build-docker": "DOCKER_BUILD=true svelte-kit build --verbose",
+    "docker-build": "docker build . -t $USER/league-page:latest",
+    "docker-run": "npm run docker-build && docker run -p 3000:3000 $USER/league-page:latest",
     "preview": "svelte-kit preview",
-    "prepare": "npm run vite-workaround && npm run smui-theme-light && npm run smui-theme-dark",
-    "vite-workaround": "node _helper/vite-workaround.js",
+    "prepare": "npm run smui-theme-light && npm run smui-theme-dark",
     "smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
     "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/adapter-node": "^1.0.0-next.51",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.0",
     "@sveltejs/kit": "next",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.0",
+    "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "smui-theme": "^4.2.0",
-    "svelte": "^3.41.0"
+    "smui-theme": "6.0.0-beta.13",
+    "svelte": "^3.49.0"
   },
   "type": "module",
   "dependencies": {
-    "@smui/button": "^4.2.0",
-    "@smui/data-table": "^4.2.0",
-    "@smui/drawer": "^4.2.0",
-    "@smui/icon-button": "^4.2.0",
-    "@smui/linear-progress": "^4.2.0",
-    "@smui/list": "^4.2.0",
-    "@smui/paper": "^4.2.0",
-    "@smui/tab": "^4.2.0",
-    "@smui/tab-bar": "^4.2.0",
-    "@smui/textfield": "^4.2.0",
+    "@smui/button": "6.0.0-beta.13",
+    "@smui/data-table": "6.0.0-beta.13",
+    "@smui/dialog": "6.0.0-beta.13",
+    "@smui/drawer": "6.0.0-beta.13",
+    "@smui/icon-button": "6.0.0-beta.13",
+    "@smui/linear-progress": "6.0.0-beta.13",
+    "@smui/list": "6.0.0-beta.13",
+    "@smui/paper": "6.0.0-beta.13",
+    "@smui/tab": "6.0.0-beta.13",
+    "@smui/tab-bar": "6.0.0-beta.13",
+    "@smui/textfield": "6.0.0-beta.13",
     "cookie": "^0.4.1",
     "fast-xml-parser": "^3.19.0",
     "fuzzyjs": "^5.0.1"

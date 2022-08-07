@@ -2,23 +2,27 @@
     import { goto } from "$app/navigation";
     import Pagination from "$lib/Pagination.svelte";
     import { getBlogPosts, leagueName } from "$lib/utils/helper";
-    import LinearProgress from "@smui/linear-progress/LinearProgress.svelte";
+    import LinearProgress from "@smui/linear-progress";
     import { onMount } from "svelte";
     import Post from "./Post.svelte";
 
-    export let postsData, queryPage = 1, filterKey = '';
+    export let postsData, usersData, rostersData, queryPage = 1, filterKey = '';
 
     let page = queryPage - 1;
+
+    const lang = "en-US";
 
     let loading = true;
     let allPosts = [];
     let posts = [];
+    let users = {};
+    let rosters = [];
 
     let categories;
 
     const filterPosts = (ap, fk) => {
         if(ap.length && fk != '') {
-            posts = ap.filter(p => p.fields.type == fk);
+            posts = ap.filter(p => p.fields.type[lang] == fk);
         } else {
             posts = ap;
         }
@@ -28,12 +32,15 @@
 
     onMount(async ()=> {
         const startPostData = await postsData;
+        users = await usersData;
+        const rostersInfo = await rostersData;
+        rosters = rostersInfo.rosters;
         allPosts = startPostData.posts;
         loading = false;
 
         const categoryMap = new Set();
         for(const post of startPostData.posts) {
-            categoryMap.add(post.fields.type);
+            categoryMap.add(post.fields.type[lang]);
         }
         categories = [...categoryMap];
 
@@ -42,7 +49,7 @@
             allPosts = blogResponse.posts;
             const categoryMap = new Set();
             for(const post of blogResponse.posts) {
-                categoryMap.add(post.fields.type);
+                categoryMap.add(post.fields.type[lang]);
             }
             categories = [...categoryMap];
         }
@@ -133,7 +140,7 @@
 
 {#if loading}
     <div class="loading" >
-        <p>Loading league transactions...</p>
+        <p>Loading league blog posts...</p>
         <LinearProgress indeterminate />
     </div>
 {:else}
@@ -150,7 +157,7 @@
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={false} />
 
     {#each displayPosts as post}
-        <Post createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
+        <Post {rosters} {users} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
     {/each}
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />
 {/if}

@@ -34,7 +34,7 @@ export const getAwards = async () => {
 		}
 	}
 
-	let previousSeasonID = leagueData.previous_league_id;
+	let previousSeasonID = leagueData.status == "complete" ? leagueData.league_id : leagueData.previous_league_id;
 
 	const podiums = await getPodiums(previousSeasonID)
 
@@ -87,6 +87,10 @@ const getPodiums = async (previousSeasonID) => {
 
 		const toiletBowlMatch = losersData.filter(m => m.r == toiletRounds && (!m.t1_from || m.t1_from.w))[0];
 		const toilet = prevManagers[toiletBowlMatch.w]
+
+		if(!champion) {
+			continue;
+		}
 
 		const podium = {
 			year,
@@ -176,11 +180,15 @@ const buildDivisionsAndManagers = ({usersData, previousRosters, leagueMetadata, 
 		const user = usersData[roster.owner_id];
 		prevManagers[roster.roster_id] = {
 			rosterID: roster.roster_id,
-			avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+			avatar: 'https://sleepercdn.com/images/v2/icons/player_default.webp',
 			name: 'Unknown Manager',
 		}
 		if(user) {
-			prevManagers[roster.roster_id].avatar = `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+			if(user.avatar) {
+				prevManagers[roster.roster_id].avatar = `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+			} else {
+				prevManagers[roster.roster_id].avatar = 'https://sleepercdn.com/images/v2/icons/player_default.webp';
+			}
 			prevManagers[roster.roster_id].name = user.metadata.team_name ? user.metadata.team_name : user.display_name;
 		}
 	}

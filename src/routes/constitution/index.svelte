@@ -13,7 +13,7 @@
     let seven, sevenOne, sevenTwo, sevenThree;
 
     const goToSection = (section) => {
-        const top = section.getBoundingClientRect().top;
+        const top = section.getBoundingClientRect().top + window.pageYOffset;
         window.scrollTo({left: 0, top, behavior: 'smooth'});
     }
 </script>

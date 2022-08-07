@@ -74,12 +74,14 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 - If you run into trouble adding managers, reference the [Training Wheels' Manager section](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text)
 - Add blog capabilities with [contenful](https://contentful.com/)
     - Make a free contentful account
-    - Create a content model that matches below 
+    - Click on `Content model` in the top bar and create Blog Post (id: `blog_post`) and Blog Comment (id: `blog_comment`) content models that matches the specs below **(All fields are required)**:
     ![content model](https://storage.googleapis.com/nfl-player-data/contentModel.jpg)
-    - Create an API key
+    ![comment model](https://storage.googleapis.com/nfl-player-data/commentModel.jpg)
+        - Use sleeper your sleeper username for the author field when creating posts
+    - Create a Content Management API key
     - For local development add a `.env` file to the root of your project and add the following variables
         - `VITE_CONTENTFUL_ACCESS_TOKEN` with the corresponding value obtained from contenful
-        - `VITE_CONTENTFUL_SPACE` with the corresponding value obtained from contenful
+        - `VITE_CONTENTFUL_SPACE` with your space ID, obtained from contenful
     - To add the variables for production, go to your project settings and add the corresponding keys (using the same names as above) to the environment variables section
     - For more detailed instructions, follow the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog)
     - Finally, set `enableBlog` to true in `src/lib/utils/leagueInfo.js`
@@ -90,6 +92,11 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     npm install
     npm run dev --
     npm run dev -- --host (to test on other devices locally)
+
+## For local developing with a container
+
+    npm run docker-run
+
 ## To deploy on [Vercel](https://vercel.com/) for free:
 - Push up your changes
 - [Link your github repo to Vercel](https://vercel.com/guides/deploying-svelte-with-vercel#step-2:-deploying-your-svelte-app-with-vercel)
