@@ -1,24 +1,20 @@
+import * as contentful from 'contentful';
+
+const client = contentful.createClient({
+    // This is the space ID. A space is like a project folder in Contentful terms
+    space: import.meta.env.VITE_CONTENTFUL_SPACE,
+    // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+    accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
+});
+
 
 const GET_POSTS= `https://api.contentful.com/spaces/${import.meta.env.VITE_CONTENTFUL_SPACE}/environments/master/entries?access_token=${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}&content_type=blog_post`;
 
 export async function get() {
-    const res = await fetch(GET_POSTS, {compress: true}).catch((err) => { console.error(err); });
+	const data = await client.getEntries({content_type: 'blog_post'});
 
-    if(!res.ok) {
-        const detailedErr = await res.text()
-        return {
-            status: 500,
-            body: JSON.stringify({
-                basicErr: "Problem retrieving blog posts",
-                detailedErr
-            })
-        };
-    }
-
-	const data = await res.json().catch((err) => { console.error(err); });
-
-    // Make sure only to return published posts
-    data.items = data.items.filter(i => i.sys.publishedVersion)
+    console.log("getBlogPosts response:");
+    console.log(data);
 
     return {
         status: 200,

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.5] - 2022-08-20
+
+### Fixed
+
+- Blog being anabled crashing pages [(issue #141)](https://github.com/nmelhado/league-page/issues/141)
+- Support images and tables in blogs [(issue #140)](https://github.com/nmelhado/league-page/issues/140)
+
 ## [1.3.4] - 2022-07-09
 
 ### Fixed

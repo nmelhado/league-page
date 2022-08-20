@@ -17,7 +17,7 @@
 		const rostersData = await getLeagueRosters();
 		rosters = rostersData.rosters;
         for(const singlePost of posts) {
-            if(singlePost.fields.featured[lang]) {
+            if(singlePost.fields.featured) {
                 createdAt = singlePost.sys.createdAt;
                 post = singlePost.fields;
                 break;

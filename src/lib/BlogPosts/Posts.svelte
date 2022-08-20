@@ -22,7 +22,7 @@
 
     const filterPosts = (ap, fk) => {
         if(ap.length && fk != '') {
-            posts = ap.filter(p => p.fields.type[lang] == fk);
+            posts = ap.filter(p => p.fields.type == fk);
         } else {
             posts = ap;
         }
@@ -40,7 +40,7 @@
 
         const categoryMap = new Set();
         for(const post of startPostData.posts) {
-            categoryMap.add(post.fields.type[lang]);
+            categoryMap.add(post.fields.type);
         }
         categories = [...categoryMap];
 
@@ -49,7 +49,7 @@
             allPosts = blogResponse.posts;
             const categoryMap = new Set();
             for(const post of blogResponse.posts) {
-                categoryMap.add(post.fields.type[lang]);
+                categoryMap.add(post.fields.type);
             }
             categories = [...categoryMap];
         }

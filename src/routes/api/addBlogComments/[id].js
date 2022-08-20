@@ -25,9 +25,9 @@ export async function post(req) {
         "author": {}
     };
 
-    fields.blogID[lang] = postID;
-    fields.comment[lang] = comment;
-    fields.author[lang] = author;
+    fields.blogID = postID;
+    fields.comment = comment;
+    fields.author = author;
 
     const res = await fetch(POST_COMMENTS, {
         method: 'PUT',

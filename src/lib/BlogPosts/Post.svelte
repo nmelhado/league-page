@@ -1,5 +1,5 @@
 <script>
-    import { parseDate, getAuthor, getAvatar } from "$lib/utils/helper";
+    import { parseDate, getAuthor, getAvatar, generateParagraph } from "$lib/utils/helper";
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
     import Comments from "./Comments.svelte";
@@ -18,131 +18,9 @@
         total = commentsData.total;
         comments = [...commentsData.items].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
         loadingComments = false;
-    })
+    });
 
-    const generatePargaraph = (paragraph, indent = true) => {
-        let paragraphText = '';
-
-        switch (paragraph.nodeType) {
-            case 'paragraph':
-                if(indent) {
-                    paragraphText += '<p class="bodyParagraph">'
-                }
-                break;
-            case 'unordered-list':
-                paragraphText += '<ul>'
-                break;
-            case 'ordered-list':
-                paragraphText += '<ol>'
-                break;
-            case 'blockquote':
-                paragraphText += '<blockquote>'
-                indent = false;
-                break;
-            case 'hr':
-                paragraphText += '<hr />'
-                break;
-        
-            default:
-                break;
-        }
-
-        for(const element of paragraph.content) {
-            // if the node type is a paragraph, then recursively call generatePargaraph on it
-            if(element.nodeType == 'paragraph') {
-                paragraphText += generatePargaraph(element, indent);
-                continue;
-            }
-
-            // add list item
-            if(element.nodeType == 'list-item') {
-                paragraphText += '<li>';
-                paragraphText += generatePargaraph(element, false);
-                paragraphText += '</li>';
-                continue;
-            }
-
-            // add modifiers
-            if(element.marks) {
-                for(const modifier of element.marks) {
-                    // add bold text
-                    if(modifier.type == 'bold') {
-                        paragraphText += '<b>';
-                    }
-
-                    // add italic modifier
-                    if(modifier.type == 'italic') {
-                        paragraphText += '<i>';
-                    }
-
-                    // add underline text
-                    if(modifier.type == 'underline') {
-                        paragraphText += '<u>';
-                    }
-
-                    // add code text
-                    if(modifier.type == 'code') {
-                        paragraphText += '<code>';
-                    }
-                }
-            }
-
-            // add content
-            if(element.nodeType == 'text') {
-                paragraphText += element.value;
-            }
-            if(element.nodeType == 'hyperlink') {
-                paragraphText += `<a href="${element.data.uri}" class="blogLink">`;
-                paragraphText += generatePargaraph(element);
-                paragraphText += '</a>';
-            }
-
-            // add closing modifiers
-            if(element.marks) {
-                for(const modifier of element.marks) {
-                    // add code text
-                    if(modifier.type == 'code') {
-                        paragraphText += '</code>';
-                    }
-
-                    // add underline text
-                    if(modifier.type == 'underline') {
-                        paragraphText += '</u>';
-                    }
-
-                    // add italic modifier
-                    if(modifier.type == 'italic') {
-                        paragraphText += '</i>';
-                    }
-                    
-                    // add bold text
-                    if(modifier.type == 'bold') {
-                        paragraphText += '</b>';
-                    }
-                }
-            }
-        }
-
-        switch (paragraph.nodeType) {
-            case 'paragraph':
-                paragraphText += '</p>'
-                break;
-            case 'unordered-list':
-                paragraphText += '</ul>'
-                break;
-            case 'blockquote':
-                paragraphText += '</blockquote>'
-                break;
-            case 'ordered-list':
-                paragraphText += '</ol>'
-                break;
-
-            default:
-                break;
-        }
-        
-        return paragraphText;
-    }
+    console.log(post);
 
     const duration = 300;
 </script>
@@ -235,30 +113,37 @@
     }
 </style>
 
-{#key id}
-    <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
-        <h3>{post.title[lang]}</h3>
-        
-        <div class="body">
-            {#each post.body[lang].content as paragraph}
-                {@html generatePargaraph(paragraph)}
-            {/each}
+<!--
+    Some users if they've misconfigured their blog can crash their page
+    (bug https://github.com/nmelhado/league-page/issues/141)
+    This if check makes blog enablement more flexible
+-->
+{#if post != null}
+    {#key id}
+        <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
+            <h3>{post.title}</h3>
+            
+            <div class="body">
+                {#each post.body.content as paragraph}
+                    {@html generateParagraph(paragraph)}
+                {/each}
+            </div>
+
+            <hr class="divider" />
+
+            <div class="authorAndDate">
+                <a href="/blog?filter={post.type}&page=1">{post.type}</a>
+                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, post.author)}" />
+                <span class="author">{@html getAuthor(rosters, users, post.author)} - </span>
+                <span class="date"><i>{parseDate(createdAt)}</i></span>
+            </div>
+
+            <!-- display comments -->
+            {#if !loadingComments && !home}
+                <hr class="divider commentDivider" />
+                <Comments {rosters} {users} {comments} {total} postID={id} />
+            {/if}
+
         </div>
-
-        <hr class="divider" />
-
-        <div class="authorAndDate">
-            <a href="/blog?filter={post.type[lang]}&page=1">{post.type[lang]}</a>
-            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, post.author[lang])}" />
-            <span class="author">{@html getAuthor(rosters, users, post.author[lang])} - </span>
-            <span class="date"><i>{parseDate(createdAt)}</i></span>
-        </div>
-
-        <!-- display comments -->
-        {#if !loadingComments && !home}
-            <hr class="divider commentDivider" />
-            <Comments {rosters} {users} {comments} {total} postID={id} />
-        {/if}
-
-    </div>
-{/key}
+    {/key}
+{/if}
