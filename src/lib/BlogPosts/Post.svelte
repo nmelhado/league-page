@@ -20,8 +20,6 @@
         loadingComments = false;
     });
 
-    console.log(post);
-
     const duration = 300;
 </script>
 
@@ -122,7 +120,7 @@
     {#key id}
         <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
             <h3>{post.title}</h3>
-            
+
             <div class="body">
                 {#each post.body.content as paragraph}
                     {@html generateParagraph(paragraph)}

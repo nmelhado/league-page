@@ -29,7 +29,6 @@ export const getBlogPosts = async (bypass = false) => {
 
 // helper function for generateParagraph that shouldn't be exported
 const getImg = (img) => {
-    console.log(img)
     return `https://${img.fields.file.url.split('//')[1]}?fm=jpg&fl=progressive`;
 }
 

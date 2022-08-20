@@ -33,7 +33,6 @@ export const gotoManager = (rosterID) => {
 export const getAuthor = (rosters, users, author) => {
     let user = null;
     for(const userKey of Object.keys(users)) {
-        console.log(users[userKey]);
         if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
             user = users[userKey];
             break;

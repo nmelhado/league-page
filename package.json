@@ -81,6 +81,7 @@
     "@smui/tab-bar": "6.0.0-beta.13",
     "@smui/textfield": "6.0.0-beta.13",
     "contentful": "^9.1.34",
+    "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
     "fast-xml-parser": "^3.19.0",
     "fuzzyjs": "^5.0.1"
