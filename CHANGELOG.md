@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4] - 2022-07-09
+
+### Fixed
+
+- NBC Sports Edge changed it's API format which introduced a bug that broke the Resources page [(issue #129)](https://github.com/nmelhado/league-page/issues/129)
+
+## [1.3.3] - 2022-05-29
+
+### Fixed
+
+- Empty points were causing a bug in the rankings page. Also, the standings page is throwing an undefined in the preseason. [issue #119](https://github.com/nmelhado/league-page/issues/119)
+
+## [1.3.2] - 2022-05-20
+
+### Fixed
+
+- When clicking on a manager from the managers page, the manager indefinitely loads. [issue #117](https://github.com/nmelhado/league-page/issues/117)
+    - RC: [PR #114 Adds playoff records and rankings to the records page](https://github.com/nmelhado/league-page/pull/114)
+
+## [1.3.1] - 2022-04-28
+
+### Fixed
+
+- Scroll to was not functioning properly on the constitution page, reported in [issue #109](https://github.com/nmelhado/league-page/issues/109)
+    - Added an additional offset to counteract the current scroll position
+
+## [1.3.0] - 2022-04-27
+
+### Added
+
+- Playoff records and rankings [feature suggestion #80](https://github.com/nmelhado/league-page/issues/80)
+    - Only looks at playoff bracket, not toilet bowl
+    - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for the suggestion and investigation
+
+### Fixed
+
+- FTN News changed it's format and broke the news page, the change has been addressed and the news feed is working as expected
+- Bug in blog posts, better error handling to catch issues
+
+### Changed
+
+- Refactored a significant amount of the record logic to make it easier to follow/maintain/upgrade
+
+### Removed
+
+- Removed the `_helper/vite-workaround.js` directory, as it is no longer needed with the current version of Svelte Material UI
+
+## [1.2.17] - 2022-04-13
+
+### Fixed
+
+- Brackets now account for two week per round leagues [issue #97](https://github.com/nmelhado/league-page/issues/97)
+
 ## [1.2.16] - 2022-01-06
 
 ### Fixed
