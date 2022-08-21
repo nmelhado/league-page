@@ -218,6 +218,9 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+			<Label>Waivers Costs</Label>
+		</Button>
 	</div>
 	<div class="buttons {show == "waiver" ? "" : "invis-buttons"}">
 		<Button class="{show == "trade" ? "disabled" : ""}" color="primary" on:click={() => setShow("trade")} variant="{show == "trade" ? "raised" : "outlined"}" touch>
@@ -229,6 +232,9 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+			<Label>Waivers Costs</Label>
+		</Button>
 	</div>
 	<div class="buttons {show == "both" ? "" : "invis-buttons"}">
 		<Button class="{show == "trade" ? "disabled" : ""}" color="primary" on:click={() => setShow("trade")} variant="{show == "trade" ? "raised" : "outlined"}" touch>
@@ -239,6 +245,23 @@
 		</Button>
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
+		</Button>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+			<Label>Waivers Costs</Label>
+		</Button>
+	</div>
+	<div class="buttons {show == "waiver claims" ? "" : "invis-buttons"}">
+		<Button class="{show == "trade" ? "disabled" : ""}" color="primary" on:click={() => setShow("trade")} variant="{show == "trade" ? "raised" : "outlined"}" touch>
+			<Label>Trades</Label>
+		</Button>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+			<Label>Waivers</Label>
+		</Button>
+		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
+			<Label>Both</Label>
+		</Button>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+			<Label>Waivers Costs</Label>
 		</Button>
 	</div>
 	<div class="searchContainer">
