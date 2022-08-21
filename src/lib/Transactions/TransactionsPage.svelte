@@ -260,7 +260,7 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
-		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver" ? "raised" : "outlined"}" touch>
+		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver claims" ? "raised" : "outlined"}" touch>
 			<Label>Waivers Costs</Label>
 		</Button>
 	</div>
