@@ -289,6 +289,9 @@
 		{:else if show == "trade"}
 			<!-- trades -->
 			<h5>Recent Trades</h5>
+		{:else if show == "waiver"}
+			<!-- waiver -->
+			<h5>Recent Waivers</h5>
 		{:else}
 			<!-- waiver -->
 			<h5>Recent Waivers</h5>
