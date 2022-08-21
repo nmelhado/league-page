@@ -17,6 +17,23 @@ export const tabs = [
         dest: '/transactions',
     },
     {
+        icon: 'swap_horiz',
+        label: 'Trades & Waivers 2',
+        nest: true,
+        children: [
+            {
+                icon: 'swap_horiz',
+                label: 'Recent Transactions',
+                dest: '/transactions',
+            },
+            {
+                icon: 'swap_horiz',
+                label: 'Waiver Costs',
+                dest: '/waivercost',
+            },
+        ]
+    },
+    {
         icon: 'article',
         label: 'Blog',
         dest: '/blog',
