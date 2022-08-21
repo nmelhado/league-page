@@ -294,7 +294,7 @@
 			<h5>Recent Waivers</h5>
 		{:else}
 			<!-- waiver -->
-			<h5>Recent Waivers</h5>
+			<h5>Waiver Costs</h5>
 		{/if}
 
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
