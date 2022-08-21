@@ -10,7 +10,7 @@ export const homepageText = `
   <p>"All fantasy football drafts are based on deception" - Sun Tzu</p>
   <p>Check out the Records by navigating at the top!</p>
   <p></p>
-  <p>More updates to come...</p>
+  <p></p>
 `;
 
 /*   STEP 3   */
