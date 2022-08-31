@@ -6,3 +6,4 @@ node_modules
 static/smui-dark.css
 static/smui.css
 build
+.vercel_build_output

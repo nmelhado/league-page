@@ -1,4 +1,4 @@
-import * as contentful from 'contentful-management';
+import contentful from 'contentful-management'
 
 import { getLeagueUsers } from "$lib/utils/helper";
 

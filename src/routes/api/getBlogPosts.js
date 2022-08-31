@@ -1,4 +1,4 @@
-import * as contentful from 'contentful';
+import contentful from 'contentful';
 
 const client = contentful.createClient({
     // This is the space ID. A space is like a project folder in Contentful terms
