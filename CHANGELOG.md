@@ -2,12 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.3.5] - 2022-08-20
+## [2.0.0] - 2022-08-30
 
 ### Fixed
 
 - Blog being anabled crashing pages [(issue #141)](https://github.com/nmelhado/league-page/issues/141)
 - Support images and tables in blogs [(issue #140)](https://github.com/nmelhado/league-page/issues/140)
+    - **This is a breaking change for previous blog integrations as it now requires an additional API key!!**
+    - Follow the README or [TRAINING_WHEELS](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) guide to add the additional key and re-enable your blog
 
 ## [1.3.4] - 2022-07-09
 

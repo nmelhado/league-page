@@ -82,6 +82,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - For local development add a `.env` file to the root of your project and add the following variables
         - `VITE_CONTENTFUL_ACCESS_TOKEN` with the corresponding value obtained from contenful
         - `VITE_CONTENTFUL_SPACE` with your space ID, obtained from contenful
+    - Create a Content Delivery / Preview API key
+    - For local development add the following variable to your `.env` file
+        - `VITE_CONTENTFUL_CLIENT_ACCESS_TOKEN` with the `Content Delivery API - access token` from contenful
     - To add the variables for production, go to your project settings and add the corresponding keys (using the same names as above) to the environment variables section
     - For more detailed instructions, follow the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog)
     - Finally, set `enableBlog` to true in `src/lib/utils/leagueInfo.js`
