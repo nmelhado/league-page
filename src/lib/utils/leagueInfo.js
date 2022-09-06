@@ -1,26 +1,25 @@
 /*   STEP 1   */
-export const leagueID = "784169690602827776"; // your league ID
-export const leagueName = "League Of Coaches"; // your league name
-export const dues = 25; // (optional) used in template constitution page
-export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
-export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
+export const leagueID = "845681725366456320"; // your league ID
+export const leagueName = "Gents of the Gridiron"; // your league name
+export const dues = 40; // (optional) used in template constitution page
+export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
+export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>This is the League of COACHES! Started in 2020, this is a premier destination for people who kinda care about fantasy football. Welcome the league's website!</p>
-  <h4>Current Title</h4>
-  <p>I Have A Chubb Again	+540</p>
-  <p>TitanTravis	+550</p>
-  <p>TheRealCoach	+605</p>
-  <p>roycecrowe	+745</p>
-  <p>josephhill	+755</p>
-  <p>jmisuraca	+865</p>
-  <p>Coachcommish	+930</p>
-  <p>CymbaltaOverdose	+1000</p>
-  <p>Flying Platapi	+1030</p>
-  <p>BrocknessMonsters	+1515</p>
-  <p>griffinj	+1710</p>
-  <p>roxtops	+99900</p>
+  <p>Gents of the Gridiron</p>
+  <h4>Current Title Odds</h4>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+ 
  
 `;
 
