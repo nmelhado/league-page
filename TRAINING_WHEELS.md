@@ -118,7 +118,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - Fill each one out as follows:
     - `"roster" :` give the roster ID for this manager
-        - To find the roster ID for the manager, go back to your website and scroll down to the `Power Rankings` graph
+        - To find the roster ID for the manager, go back to your website and scroll down to the `Power Rankings` graph (or to any of the graphs in your records page)
         > ![pRankings](https://storage.googleapis.com/nfl-player-data/pRankings.png)
 
         <br />
