@@ -59,8 +59,8 @@
         }
 
         // Fraser, Sam, Ryan, Matt, Brandon, Derek, Erik, Kyle, Ward, Connor, Elliot, Foster
-        let manualScores = [81, 69, 75, 100, 70, 75, 84, 75, 79, 88, 86, 73];  // draft
-        // let manualScores = [82, 71, 76, 100, 74, 80, 76, 79, 62, 89, 84, 73];  // after week 1
+        // let manualScores = [81, 69, 75, 100, 70, 75, 84, 75, 79, 88, 86, 73];  // draft
+        let manualScores = [95, 70, 83, 100, 73, 89, 97, 79, 72, 99, 98, 78];  // after week 1
         // let manualScores = [80, 63, 75, 100, 68, 63, 68, 77, 45, 77, 75, 64];  // after week 2
         // let manualScores = [73, 64, 78, 100, 63, 61, 71, 76, 44, 72, 74, 59];  // after week 3
         // let manualScores = [69, 62, 79, 100, 66, 59, 75, 78, 47, 72, 74, 63];  // after week 4
