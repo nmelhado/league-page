@@ -43,7 +43,7 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "vite dev",
     "build": "svelte-kit build",
     "build-docker": "DOCKER_BUILD=true svelte-kit build --verbose",
     "docker-build": "docker build . -t $USER/league-page:latest",
@@ -58,14 +58,13 @@
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.51",
     "@sveltejs/adapter-vercel": "^1.0.0-next.0",
-    "@sveltejs/kit": "next",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "smui-theme": "6.0.0-beta.13",
-    "svelte": "^3.49.0"
+    "vite": "^3.0.9"
   },
   "type": "module",
   "dependencies": {
@@ -80,10 +79,12 @@
     "@smui/tab": "6.0.0-beta.13",
     "@smui/tab-bar": "6.0.0-beta.13",
     "@smui/textfield": "6.0.0-beta.13",
+    "@sveltejs/kit": "^1.0.0-next.456",
     "contentful": "^9.1.34",
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
     "fast-xml-parser": "^3.19.0",
-    "fuzzyjs": "^5.0.1"
+    "fuzzyjs": "^5.0.1",
+    "svelte": "^3.49.0"
   }
 }

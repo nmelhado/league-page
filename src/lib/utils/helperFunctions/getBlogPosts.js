@@ -1,11 +1,13 @@
 import { get } from 'svelte/store';
 import {posts} from '$lib/stores';
 
-export const getBlogPosts = async (bypass = false) => {
+export const getBlogPosts = async (servFetch, bypass = false) => {
 	if(get(posts)[0]?.items && !bypass) {
 		return {posts: get(posts), fresh: false};
 	}
-	const res = await fetch('/api/getBlogPosts', {compress: true})
+    const smartFetch = servFetch ?? fetch;
+    
+    const res = await smartFetch(`/api/getBlogPosts`, {compress: true});
     
 	if(!res.ok) {
 		const errs = await res.json();

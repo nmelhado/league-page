@@ -1,4 +1,5 @@
 import contentful from 'contentful';
+import { json, error } from '@sveltejs/kit';
 
 const client = contentful.createClient({
     // This is the space ID. A space is like a project folder in Contentful terms
@@ -7,20 +8,12 @@ const client = contentful.createClient({
     accessToken: import.meta.env.VITE_CONTENTFUL_CLIENT_ACCESS_TOKEN
 });
 
-export async function get() {
+export async function GET() {
 	const data = await client.getEntries({content_type: 'blog_post'})
         .catch(e=> {
             console.error(e);
-            return {
-                status: 500,
-                body: JSON.stringify({
-                    basicErr: "Problem retrieving blog posts",
-                })
-            };
+            return error(500, "Problem retrieving blog posts");
         });
 
-    return {
-        status: 200,
-        body: JSON.stringify(data)
-    };
+    return json(data);
 }

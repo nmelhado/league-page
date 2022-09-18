@@ -32,7 +32,7 @@
             const roster = rosters[standingsInfo[standingKey].rosterID - 1];
             standingsInfo[standingKey].fpts = round(roster.settings.fpts + (roster.settings.fpts_decimal / 100));
             standingsInfo[standingKey].fptsAgainst = round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100));
-	    standingsInfo[standingKey].streak = roster.metadata.streak;
+	        standingsInfo[standingKey].streak = roster.metadata.streak;
         }
 
         let finalStandings = Object.keys(standingsInfo).map((key) => standingsInfo[key]);

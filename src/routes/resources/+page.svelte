@@ -1,23 +1,9 @@
-<script context="module">
-	import { getNews } from '$lib/utils/helper';
-
-    export async function load() {
-		const articlesData = getNews();
-	
-		return {
-			props: {
-				articlesData
-			}
-		};
-	}
-</script>
-
-
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { News, Resources } from '$lib/components';
 
-	export let articlesData;
+	export let data;
+	const articlesData = data.articlesData;
 </script>
 
 <style>

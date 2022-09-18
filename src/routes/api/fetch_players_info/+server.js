@@ -1,8 +1,9 @@
 import { leagueID } from "$lib/utils/leagueInfo"
 import { round } from "$lib/utils/helperFunctions/universalFunctions"
 import { waitForAll } from "$lib/utils/helperFunctions/multiPromise"
+import { json, error } from '@sveltejs/kit';
 
-export async function get() {
+export async function GET() {
     // get NFL state from sleeper (week and year)
     const [nflStateRes, leagueDataRes, playoffsRes] = await waitForAll(
         fetch(`https://api.sleeper.app/v1/state/nfl`, {compress: true}),
@@ -36,10 +37,7 @@ export async function get() {
     const resJSONs = [];
     for(const res of responses) {
         if(!res.ok) {
-            return {
-                status: 500,
-                body: "No luck"
-            };
+            return error(500, "No luck");
         }
         resJSONs.push(res.json());
     }
@@ -49,13 +47,8 @@ export async function get() {
     const playerData = weeklyData.shift(); // first item is all player data, remaining items are weekly data for projections
 
     const scoringSettings = leagueData.scoring_settings;
-        
-    const computedPlayers = computePlayers(playerData, weeklyData, scoringSettings);
 
-    return {
-        status: 200,
-        body: JSON.stringify(computedPlayers)
-    };
+    return json(computePlayers(playerData, weeklyData, scoringSettings));
 }
 
 const computePlayers = (playerData, weeklyData, scoringSettings) => {

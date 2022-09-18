@@ -10,7 +10,8 @@ import MatchupsAndBrackets from './Matchups/MatchupsAndBrackets.svelte';
 import Pagination from './Pagination.svelte';
 import Drafts from './Drafts/index.svelte';
 import Records from './Records/index.svelte';
-import Managers from './Managers/index.svelte';
+import Manager from './Managers/Manager.svelte';
+import AllManagers from './Managers/AllManagers.svelte';
 import PowerRankings from './PowerRankings/index.svelte';
 import HomePost from './BlogPosts/HomePost.svelte';
 import Posts from './BlogPosts/Posts.svelte';
@@ -29,7 +30,8 @@ export {
     Pagination,
     Drafts,
     Records,
-    Managers,
+    Manager,
+    AllManagers,
     PowerRankings,
     HomePost,
     Posts,

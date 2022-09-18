@@ -1,4 +1,5 @@
 import contentful from 'contentful-management'
+import { json, error } from '@sveltejs/kit';
 
 import { getLeagueUsers } from "$lib/utils/helper";
 
@@ -9,22 +10,16 @@ const client = contentful.createClient({
 
 const lang = "en-US";
 
-export async function post(req) {
+export async function POST(req) {
     const space = await client.getSpace(import.meta.env.VITE_CONTENTFUL_SPACE)
         .catch(e => {
             console.error(e);
-            return {
-                status: 500,
-                body: JSON.stringify("Problem getting contentful space")
-            };
+            return error(500, "Problem getting contentful space");
         });
     const environment = await space.getEnvironment('master')
         .catch(e => {
             console.error(e);
-            return {
-                status: 500,
-                body: JSON.stringify("Problem getting contentful environment")
-            };
+            return error(500, "Problem getting contentful environment");
         });
     
     const authorID = req.params.id;
@@ -35,10 +30,7 @@ export async function post(req) {
     const author = validateID(users, authorID);
 
     if(!author) {
-        return {
-            status: 500,
-            body: JSON.stringify("Invalid author")
-        };
+        return error(500, "Invalid author");
     }
 
     let fields = {
@@ -74,10 +66,7 @@ export async function post(req) {
     newComment.fields.comment = comment;
     newComment.fields.author = author;
 
-    return {
-        status: 200,
-        body: JSON.stringify(newComment)
-    };
+    return json(newComment);
 }
 
 const validateID = (users, authorID) => {

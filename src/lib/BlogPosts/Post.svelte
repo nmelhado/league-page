@@ -12,13 +12,36 @@
     let total, comments;
 
     onMount(async()=> {
-        const res = await fetch(`/api/getBlogComments/${id}`, {compress: true})
+        const res = await fetch(`/api/getBlogComments/${id}`, {compress: true});
         const commentsData = await res.json();
 
         total = commentsData.total;
         comments = [...commentsData.items].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
         loadingComments = false;
     });
+
+    let safePost = true;
+    let title, body, type, author;
+    if(post != null) {
+        ({title, body, type, author} = post);
+        if(!title) {
+            console.error('Invalid post: No title provided');
+            safePost = false;
+        } else {
+            if(!body) {
+                console.error(`Invalid post (${title}): No body provided`)
+                safePost = false;
+            }
+            if(!type) {
+                console.error(`Invalid post (${title}): No type provided`)
+                safePost = false;
+            }
+            if(!author) {
+                console.error(`Invalid post (${title}): No author provided`)
+                safePost = false;
+            }
+        }
+    }
 
     const duration = 300;
 </script>
@@ -187,13 +210,13 @@
     (bug https://github.com/nmelhado/league-page/issues/141)
     This if check makes blog enablement more flexible
 -->
-{#if post != null}
+{#if safePost}
     {#key id}
         <div in:fly={{delay: duration, duration: duration, x: 150 * direction}} out:fly={{delay: 0, duration: duration, x: -150 * direction}} class="post">
-            <h3>{post.title}</h3>
+            <h3>{title}</h3>
 
             <div class="body">
-                {#each post.body.content as paragraph}
+                {#each body.content as paragraph}
                     {@html generateParagraph(paragraph)}
                 {/each}
             </div>
@@ -201,9 +224,9 @@
             <hr class="divider" />
 
             <div class="authorAndDate">
-                <a href="/blog?filter={post.type}&page=1">{post.type}</a>
-                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, post.author)}" />
-                <span class="author">{@html getAuthor(rosters, users, post.author)} - </span>
+                <a href="/blog?filter={type}&page=1">{type}</a>
+                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, author)}" />
+                <span class="author">{@html getAuthor(rosters, users, author)} - </span>
                 <span class="date"><i>{parseDate(createdAt)}</i></span>
             </div>
 
