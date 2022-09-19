@@ -10,7 +10,7 @@ const client = contentful.createClient({
 
 const lang = "en-US";
 
-export async function POST(req) {
+export async function POST({request, params}) {
     const space = await client.getSpace(import.meta.env.VITE_CONTENTFUL_SPACE)
         .catch(e => {
             console.error(e);
@@ -22,8 +22,8 @@ export async function POST(req) {
             throw error(500, "Problem getting contentful environment");
         });
     
-    const authorID = req.params.id;
-    const {comment, postID} = JSON.parse(req.body);
+    const authorID = params.id;
+    const {comment, postID} = await request.json();
 
     const users = await getLeagueUsers();
 
@@ -46,19 +46,13 @@ export async function POST(req) {
     const newComment = await environment.createEntry('blog_comment', {fields})
         .catch(e => {
             console.error(e);
-            return {
-                status: 500,
-                body: JSON.stringify("Problem adding comment")
-            };
+            throw error(500, "Problem adding comment");
         });
 
     await newComment.publish()
         .catch((e) => {
             console.error(e);
-            return {
-                status: 500,
-                body: JSON.stringify("Problem publishing comment")
-            };
+            throw error(500, "Problem publishing comment");
         });
 
     // remove lang constraint
