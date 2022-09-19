@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 	import LinearProgress from '@smui/linear-progress';
     import Post from "./Post.svelte";
-    import { getBlogPosts, getLeagueRosters, getLeagueUsers } from "$lib/utils/helper";
+    import { getBlogPosts, getLeagueRosters, getLeagueUsers, waitForAll } from "$lib/utils/helper";
 
     const lang = "en-US";
 
@@ -12,12 +12,11 @@
     let users, rosters = [];
 
     onMount(async() => {
-		const {posts, fresh} = await getBlogPosts();
-		users = await getLeagueUsers();
-		const rostersData = await getLeagueRosters();
+        const [{posts, fresh}, usersData, rostersData] = await waitForAll(getBlogPosts(null), getLeagueUsers(), getLeagueRosters());
+		users = usersData;
 		rosters = rostersData.rosters;
         for(const singlePost of posts) {
-            if(singlePost.fields.featured[lang]) {
+            if(singlePost.fields.featured) {
                 createdAt = singlePost.sys.createdAt;
                 post = singlePost.fields;
                 break;
@@ -25,7 +24,7 @@
         }
 
         if(!fresh) {
-		    const {posts} = await getBlogPosts(true);
+		    const {posts} = await getBlogPosts(null, true);
             for(const singlePost of posts) {
                 if(singlePost.fields.featured) {
                     createdAt = singlePost.sys.createdAt;

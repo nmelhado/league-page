@@ -1,7 +1,3 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
     import { dues } from '$lib/utils/helper';
     let one, oneOne, oneOneOne, oneTwo, oneTwoOne, oneTwoTwo, oneTwoThree, oneTwoFour, oneTwoFive, oneThree;

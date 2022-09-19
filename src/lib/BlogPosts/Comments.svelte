@@ -134,9 +134,9 @@
     </div>
     {#each comments as comment}
         <div class="comment">
-            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author[lang])}" />
-            <span class="author">{@html getAuthor(rosters, users, comment.fields.author[lang])}</span>
-            <span class="commentText">{@html comment.fields.comment[lang]}</span>
+            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author)}" />
+            <span class="author">{@html getAuthor(rosters, users, comment.fields.author)}</span>
+            <span class="commentText">{@html comment.fields.comment}</span>
             <div class="date"><i>{parseDate(comment.sys.createdAt)}</i></div>
         </div>
     {/each}

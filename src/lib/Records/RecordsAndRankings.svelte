@@ -5,7 +5,7 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 
-    export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false, last=false;
+    export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentManagers, allTime=false;
 
     let graphs = [];
     let curTable = 0;
@@ -257,11 +257,6 @@
         font-size: 0.7em;
         color: #888;
         line-height: 1.2em;
-    }
-
-    h5 {
-        text-align: center;
-        margin: 2em 0 1em;
     }
 
     h4 {

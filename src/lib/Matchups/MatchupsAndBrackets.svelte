@@ -26,7 +26,7 @@
         loading = false;
 
         if(playersInfo.stale) {
-            const newPlayersInfo = await loadPlayers(true);
+            const newPlayersInfo = await loadPlayers(null, true);
             players = newPlayersInfo.players;
         }
     });

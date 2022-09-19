@@ -1,13 +1,14 @@
 import parser from 'fast-xml-parser';
 import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
 import { dynasty } from '$lib/utils/helper';
+import { json } from '@sveltejs/kit';
 
 const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';
 const FTN_NEWS= 'https://www.ftnfantasy.com/content/news?type=news&sport=nfl&limit=30';
 const DYNASTY_LEAGUE= 'https://dynastyleaguefootball.com/feed/';
 const DYNASTY_NERDS= 'https://www.dynastynerds.com/feed/';
 
-export async function get() {
+export async function GET() {
 	const articles = [
         getXMLArticles(FF_BALLERS, processFF),
         getJSONArticles(FTN_NEWS, processFTN),
@@ -24,10 +25,7 @@ export async function get() {
 		finalArticles = [...finalArticles, ...response];
 	}
 
-    return {
-        status: 200,
-        body: JSON.stringify(finalArticles)
-    };
+    return json(finalArticles);
 }
 
 const getXMLArticles = async(url, callback) => {

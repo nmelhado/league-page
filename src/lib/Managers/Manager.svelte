@@ -1,7 +1,7 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
 	import LinearProgress from '@smui/linear-progress';
-    import {loadPlayers} from '$lib/utils/helper';
+    import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
 	import Roster from '../Rosters/Roster.svelte';
 	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
     import { goto } from '$app/navigation';
@@ -9,11 +9,15 @@
     import ManagerAwards from './ManagerAwards.svelte';
     import { onMount } from 'svelte';
 
-    export let manager, managers, rostersData, users, rosterPositions, transactions, currentManagers, awards, records;
+    export let manager, managers, rostersData, users, rosterPositions, transactionsData, awards, records;
+
+    let transactions = transactionsData.transactions;
+
+    let currentManagers= transactionsData.currentManagers;
 
     let viewManager = managers[manager];
 
-    let teamTransactions = transactions.filter(t => t.rosters.indexOf(viewManager.roster) > -1);
+    $: teamTransactions = transactions.filter(t => t.rosters.indexOf(viewManager.roster) > -1);
 
     let startersAndReserve = rostersData.startersAndReserve;
     let rosters = rostersData.rosters;
@@ -27,14 +31,23 @@
     let players, playersInfo;
     let loading = true;
 
+    const refreshTransactions = async () => {
+        const newTransactions = await getLeagueTransactions(false, true);
+        transactions = newTransactions.transactions;
+        currentManagers= newTransactions.currentManagers;
+    }
+
     onMount(async () => {
-        const playerData = await loadPlayers();
+        if(transactionsData.stale) {
+            refreshTransactions();
+        }
+        const playerData = await loadPlayers(null);
         playersInfo = playerData;
         players = playerData.players;
         loading = false;
 
         if(playerData.stale) {
-            const newPlayerData = await loadPlayers(true);
+            const newPlayerData = await loadPlayers(null, true);
             playersInfo = newPlayerData;
             players = newPlayerData.players;
         }
@@ -54,7 +67,7 @@
         roster = rosters[rosterArrNum];
 
         user = users[roster.owner_id];
-        goto(`/managers?manager=${manager}`, {noscroll})
+        goto(`/manager?manager=${manager}`, {noscroll})
     }
 
     let el, masterOffset, innerWidth;
