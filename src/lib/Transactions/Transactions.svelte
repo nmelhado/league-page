@@ -12,7 +12,7 @@
 	let transactions, currentManagers;
 
 	onMount(async () => {
-		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers());
+		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null));
 		players = playersData.players;
 		transactions = transactionsData.transactions;
 		currentManagers = transactionsData.currentManagers;

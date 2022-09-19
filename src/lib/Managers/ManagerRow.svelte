@@ -188,7 +188,7 @@
     }
 </style>
 
-<div class="manager" on:click={() => goto(`/managers?manager=${key}`)}>
+<div class="manager" on:click={() => goto(`/manager?manager=${key}`)}>
     <img class="photo" src="{manager.photo}" alt="{manager.name}" />
     <div class="name">{manager.name}</div>
     <div class="team">{user.metadata.team_name ? user.metadata.team_name : user.display_name}</div>

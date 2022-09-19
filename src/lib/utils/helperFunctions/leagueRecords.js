@@ -9,6 +9,7 @@ import {records} from '$lib/stores';
 import { round, sortHighAndLow } from './universalFunctions';
 import { Records } from '$lib/utils/dataClasses';
 import { getBrackets } from './leagueBrackets';
+import { browser } from '$app/environment';
 
 /**
  * getLeagueRecords obtains all the record for a league since it was first created
@@ -23,7 +24,7 @@ export const getLeagueRecords = async (refresh = false) => {
 
 	// if this isn't a refresh data call, check if there are already
 	// transactions stored in localStorage (long term)
-	if(!refresh) {
+	if(!refresh && browser) {
 		let localRecords = await JSON.parse(localStorage.getItem("records"));
 		// check if transactions have been saved to localStorage before
 		if(localRecords && localRecords.playoffData) {
@@ -125,10 +126,12 @@ export const getLeagueRecords = async (refresh = false) => {
 
 	const recordsData = {regularSeasonData, playoffData};
 
-	// update localStorage
-	localStorage.setItem("records", JSON.stringify(recordsData));
-
-	records.update(() => recordsData);
+    if(browser) {
+        // update localStorage
+        localStorage.setItem("records", JSON.stringify(recordsData));
+    
+        records.update(() => recordsData);
+    }
 
 	return recordsData;
 }

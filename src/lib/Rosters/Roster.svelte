@@ -113,7 +113,7 @@
 	let innerWidth;
 
 	const calcHeight = () => {
-		const multiplier = 48;
+		const multiplier = 52;
 		const benchLength = finalBench.length * multiplier + 53;
 		let irLength = 0;
 		if(finalIR) {

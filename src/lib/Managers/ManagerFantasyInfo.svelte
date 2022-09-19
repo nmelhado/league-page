@@ -8,7 +8,7 @@
         if(!rival) {
             goto(`/managers`);
         }
-        goto(`/managers?manager=${rival}`);
+        goto(`/manager?manager=${rival}`);
     }
 </script>
 

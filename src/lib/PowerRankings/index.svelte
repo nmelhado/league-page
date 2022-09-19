@@ -9,7 +9,7 @@
         getLeagueUsers(),
         getLeagueRecords(),
         getLeagueData(),
-        loadPlayers(),
+        loadPlayers(null),
     );
 
 </script>
