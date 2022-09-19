@@ -10,9 +10,8 @@ export const getBlogPosts = async (servFetch, bypass = false) => {
     const res = await smartFetch(`/api/getBlogPosts`, {compress: true});
     
 	if(!res.ok) {
-		const errs = await res.json();
-		console.error(errs.basicErr)
-		console.error(errs.detailedErr)
+		const errs = await res.text();
+		console.error(errs);
 		if(get(posts)[0]?.items) {	
 			return {posts: get(posts), fresh: true}
 		}

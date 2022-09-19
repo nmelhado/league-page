@@ -37,7 +37,7 @@ export async function GET() {
     const resJSONs = [];
     for(const res of responses) {
         if(!res.ok) {
-            return error(500, "No luck");
+            throw error(500, "No luck");
         }
         resJSONs.push(res.json());
     }

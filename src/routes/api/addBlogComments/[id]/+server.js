@@ -14,12 +14,12 @@ export async function POST(req) {
     const space = await client.getSpace(import.meta.env.VITE_CONTENTFUL_SPACE)
         .catch(e => {
             console.error(e);
-            return error(500, "Problem getting contentful space");
+            throw error(500, "Problem getting contentful space");
         });
     const environment = await space.getEnvironment('master')
         .catch(e => {
             console.error(e);
-            return error(500, "Problem getting contentful environment");
+            throw error(500, "Problem getting contentful environment");
         });
     
     const authorID = req.params.id;
@@ -30,7 +30,7 @@ export async function POST(req) {
     const author = validateID(users, authorID);
 
     if(!author) {
-        return error(500, "Invalid author");
+        throw error(500, "Invalid author");
     }
 
     let fields = {

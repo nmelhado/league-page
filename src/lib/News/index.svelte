@@ -11,7 +11,7 @@
         if(!fresh) {
             getFreshNews();
         }
-	})
+	});
 
     const getFreshNews = async () => {
         const newNews = await getNews(null, true);

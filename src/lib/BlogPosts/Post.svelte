@@ -20,26 +20,21 @@
         loadingComments = false;
     });
 
-    let safePost = true;
+    let safePost = false;
     let title, body, type, author;
+
     if(post != null) {
         ({title, body, type, author} = post);
         if(!title) {
             console.error('Invalid post: No title provided');
-            safePost = false;
+        } else if(!body) {
+            console.error(`Invalid post (${title}): No body provided`)
+        } else if(!type) {
+            console.error(`Invalid post (${title}): No type provided`)
+        } else if(!author) {
+            console.error(`Invalid post (${title}): No author provided`)
         } else {
-            if(!body) {
-                console.error(`Invalid post (${title}): No body provided`)
-                safePost = false;
-            }
-            if(!type) {
-                console.error(`Invalid post (${title}): No type provided`)
-                safePost = false;
-            }
-            if(!author) {
-                console.error(`Invalid post (${title}): No author provided`)
-                safePost = false;
-            }
+            safePost = true;
         }
     }
 
