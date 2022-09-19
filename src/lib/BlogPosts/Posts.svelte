@@ -39,9 +39,7 @@
     onMount(async ()=> {
         const startPostData = await postsData;
         users = await usersData;
-        console.log(rostersData);
         const rostersInfo = await rostersData;
-        console.log(rostersInfo);
         rosters = rostersInfo.rosters;
         allPosts = startPostData.posts;
         loading = false;
@@ -80,7 +78,7 @@
             } else {
                 direction = -1;
             }
-            setTimeout(() => {goto(`/blog?page=${dest + 1}&filter=${filterKey}`, {noscroll: true,  keepfocus: true})}, 800);
+            goto(`/blog?page=${dest + 1}&filter=${filterKey}`, {noscroll: true,  keepfocus: true});
         }
     }
 

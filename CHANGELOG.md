@@ -2,7 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.0.0] - 2022-08-30
+## [2.0.0] - 2022-09-18
+
+### Changed
+
+- Upgraded Vite and SvelteKit [(issue #149)](https://github.com/nmelhado/league-page/issues/149)
+    - **This may be a breaking change. It required a very significant rewrite**
 
 ### Fixed
 
@@ -10,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Support images and tables in blogs [(issue #140)](https://github.com/nmelhado/league-page/issues/140)
     - **This is a breaking change for previous blog integrations as it now requires an additional API key!!**
     - Follow the README or [TRAINING_WHEELS](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) guide to add the additional key and re-enable your blog
+- Roster ID mismatch [(issue #155)](https://github.com/nmelhado/league-page/issues/155)
 
 ## [1.3.4] - 2022-07-09
 

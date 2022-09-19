@@ -76,7 +76,7 @@
 		}
 		displayTransactions = setQuery(query, filteredTransactions);
 		if(postUpdate) {
-			setTimeout(() => {goto(`/transactions?show=${show}&query=${query}&page=${page+1}`, {noscroll: true,  keepfocus: true})}, 800);
+            goto(`/transactions?show=${show}&query=${query}&page=${page+1}`, {noscroll: true,  keepfocus: true});
 		}
 	}
 
@@ -88,24 +88,8 @@
 		if(query.trim() == oldQuery) return;
 		page = 0;
 		if(postUpdate) {
-			updateQueryParam(false);
+            goto(`/transactions?show=${show}&query=${query.trim()}&page=${page+1}`, {noscroll: true,  keepfocus: true});
 		}
-	}
-
-	let called = false;
-
-	const updateQueryParam = (stack = true) => {
-		if(called && !stack) {
-			return;
-		}
-		called = true;
-		const FIVE_SECONDS = 5 * 1000; /* five seconds */
-		if(((new Date) - lastUpdate) > FIVE_SECONDS) {
-			called = false;
-			goto(`/transactions?show=${show}&query=${query.trim()}&page=${page+1}`, {noscroll: true,  keepfocus: true});
-			return;
-		}
-		return setTimeout(updateQueryParam, 2000); // check every 2 seconds
 	}
 
 	const clearSearch = () => {

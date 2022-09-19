@@ -44,11 +44,11 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "svelte-kit build",
-    "build-docker": "DOCKER_BUILD=true svelte-kit build --verbose",
+    "build": "vite build",
+    "build-docker": "DOCKER_BUILD=true vite build --verbose",
     "docker-build": "docker build . -t $USER/league-page:latest",
     "docker-run": "npm run docker-build && docker run -p 3000:3000 $USER/league-page:latest",
-    "preview": "svelte-kit preview",
+    "preview": "vite preview",
     "prepare": "npm run smui-theme-light && npm run smui-theme-dark",
     "smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
     "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
@@ -56,15 +56,15 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.51",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.0",
+    "@sveltejs/adapter-node": "^1.0.0-next.92",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.76",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "smui-theme": "6.0.0-beta.13",
-    "vite": "^3.0.9"
+    "vite": "^3.1.0-beta.1"
   },
   "type": "module",
   "dependencies": {
