@@ -2,17 +2,20 @@
 	import SingleNews from "./SingleNews.svelte"
 	import Pagination from "../Pagination.svelte"
     import { getNews } from "$lib/utils/helper";
+	import { onMount } from 'svelte';
 
     export let news;
     let {articles, fresh} = news;
 
-    const getFreshNews = async () => {
-        const newNews = await getNews(true);
-        articles = newNews.articles;
-    }
+	onMount(async () => {
+        if(!fresh) {
+            getFreshNews();
+        }
+	});
 
-    if(!fresh) {
-        getFreshNews();
+    const getFreshNews = async () => {
+        const newNews = await getNews(null, true);
+        articles = newNews.articles;
     }
 
     const perPage = 10;

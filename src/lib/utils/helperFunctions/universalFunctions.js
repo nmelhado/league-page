@@ -27,7 +27,7 @@ export const gotoManager = (rosterID) => {
     if(!managers.length) return;
     const managersIndex = managers.findIndex(m => m.roster == rosterID);
     // if no manager exists for that roster, -1 will take you to the main managers page
-    goto(`/managers?manager=${managersIndex}`);
+    goto(`/manager?manager=${managersIndex}`);
 }
 
 export const getAuthor = (rosters, users, author) => {

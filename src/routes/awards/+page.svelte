@@ -1,22 +1,9 @@
-<script context="module">
-	import { getAwards } from '$lib/utils/helper';
-
-    export async function load() {
-        const awardsData = getAwards();
-	
-		return {
-			props: {
-				awardsData,
-			}
-		};
-	}
-</script>
-
 <script>
 	import { Awards } from '$lib/components'
 	import LinearProgress from '@smui/linear-progress';
 
-    export let awardsData;
+    export let data;
+    const awardsData = data.awardsData;
 </script>
 
 <style>
