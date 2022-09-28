@@ -243,7 +243,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 - That's it. You've built out your own league website!
 - If you want to replace the league page logo with your league's own logo, replece `static/badge.png` with your own 120px x 120px png file (using the same name)
-- If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/index.svelte`
+- If  you want to delve further, you can also edit your league constitution page `/src/routes/constitution/+page.svelte`
     - This page is primarily HTML, so you can edit this in a similar way to how you edited the homepage
 - If you and your league like League Page, please consider <b><a href="https://www.buymeacoffee.com/nmelhado" target="_blank">donating</a></b> (and encouraging your league-mates to too!)
 <div align="center">
