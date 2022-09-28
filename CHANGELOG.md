@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Fixed header handling in blogs [(issue #149)](https://github.com/nmelhado/league-page/issues/149)
+- Fixed header handling in blogs
 - Updated TRAINING WHEELS re: blog instructions [(issue #166)](https://github.com/nmelhado/league-page/issues/166)
 
 ## [2.0.0] - 2022-09-18
