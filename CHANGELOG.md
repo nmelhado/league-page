@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2022-09-28
+
+### Fixed
+
+- Fixed header handling in blogs
+- Updated TRAINING WHEELS re: blog instructions [(issue #166)](https://github.com/nmelhado/league-page/issues/166)
+
 ## [2.0.0] - 2022-09-18
 
 ### Changed

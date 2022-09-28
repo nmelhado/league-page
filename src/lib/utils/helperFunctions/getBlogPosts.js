@@ -118,32 +118,32 @@ const genElementEnd = (nodeType, indent) => {
     switch (nodeType) {
         case 'heading-1':
             if(indent) {
-                return '</h1">';
+                return '</h1>';
             }
             return '';
         case 'heading-2':
             if(indent) {
-                return '</h2">';
+                return '</h2>';
             }
             return '';
         case 'heading-3':
             if(indent) {
-                return '</h3">'
+                return '</h3>'
             }
             return '';
         case 'heading-4':
             if(indent) {
-                return '</h4">';
+                return '</h4>';
             }
             return '';
         case 'heading-5':
             if(indent) {
-                return '</h5">';
+                return '</h5>';
             }
             return '';
         case 'heading-6':
             if(indent) {
-                return '</h6">';
+                return '</h6>';
             }
             return '';
         case 'paragraph':
