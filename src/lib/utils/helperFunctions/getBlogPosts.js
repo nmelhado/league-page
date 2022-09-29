@@ -214,50 +214,52 @@ const getImg = (img) => {
 }
 
 const genOpeningModifiers = (marks) => {
+    let modifiers = '';
     if(marks) {
-        for(const modifier of marks) {
+        for(const mark of marks) {
             // add bold text
-            if(modifier.type == 'bold') {
-                return '<b>';
+            if(mark.type == 'bold') {
+                modifiers += '<b>';
             }
             // add italic modifier
-            if(modifier.type == 'italic') {
-                return '<i>';
+            if(mark.type == 'italic') {
+                modifiers += '<i>';
             }
             // add underline text
-            if(modifier.type == 'underline') {
-                return '<u>';
+            if(mark.type == 'underline') {
+                modifiers += '<u>';
             }
             // add code text
-            if(modifier.type == 'code') {
-                return '<code>';
+            if(mark.type == 'code') {
+                modifiers += '<code>';
             }
         }
     }
-    return '';
+    return modifiers;
 }
 
 const genClosingModifiers = (marks) => {
+    let modifiers = '';
     if(marks) {
-        for(const modifier of marks) {
+        for(const mark of marks) {
             // add code text
-            if(modifier.type == 'code') {
-                return '</code>';
+            if(mark.type == 'code') {
+                modifiers += '</code>';
             }
             // add underline text
-            if(modifier.type == 'underline') {
-                return '</u>';
+            if(mark.type == 'underline') {
+                modifiers += '</u>';
             }
             // add italic modifier
-            if(modifier.type == 'italic') {
-                return '</i>';
+            if(mark.type == 'italic') {
+                modifiers += '</i>';
             }
             
             // add bold text
-            if(modifier.type == 'bold') {
-                return '</b>';
+            if(mark.type == 'bold') {
+                modifiers += '</b>';
             }
         }
     }
-    return '';
+    return modifiers;
 }
