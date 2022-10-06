@@ -5,10 +5,10 @@ import { dynasty } from './utils/helper';
     const today = new Date();
     const resources = [
         {
-            name: "FTN Fantasy",
-            url: "https://www.ftnfantasy.com/nfl",
+            name: "KeepTradeCut Dynasty Rankings",
+            url: "https://www.keeptradecut.com",
             icon: "insights",
-            premium: true,
+            premium: false,
             separator: true,
         },
         {
@@ -56,21 +56,13 @@ import { dynasty } from './utils/helper';
             icon: "article",
             premium: false,
             separator: true,
-            redraftOnly: true,
+            dynastyOnly: true,
         },
         {
             name: "Dynasty 101 Trade Calculator",
             url: "https://dynasty101.com/trade-calculator/",
             icon: "calculate",
             premium: false,
-            separator: true,
-            dynastyOnly: true,
-        },
-        {
-            name: "Dynasty Nerds GM",
-            url: "https://gm.dynastynerds.com/",
-            icon: "insights",
-            premium: true,
             separator: true,
             dynastyOnly: true,
         },

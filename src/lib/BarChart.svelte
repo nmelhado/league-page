@@ -95,9 +95,17 @@
 
     .chartWrapper {
 		background-color: var(--fff);
-        padding: 1em 0 0.5em;
+        padding-right: 100px;
+        padding-top: 100px;
+        padding-left: 15px;
         margin: 0 auto;
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
+    }
+
+    @media (max-width: 850px) { 
+      .chartWrapper {
+        padding: 1em 0 0.5em;
+      }
     }
     .barChart {
         display: block;

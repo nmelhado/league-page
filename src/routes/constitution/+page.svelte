@@ -153,7 +153,7 @@
     
     <h3 class="subSectionHeading" bind:this={oneOne}>1.1 Positional Breakdown</h3>
     
-    <p>18 Total Players</p>
+    <p>10 Total Starters</p>
     
     <p class="underscore">Starters</p>
     <ul>
@@ -165,6 +165,7 @@
         <li>TE</li>
         <li>FLEX (RB/WR/TE)</li>
         <li>D/ST</li>
+        <li>IDP</li>
         <li>K</li>
     </ul>
     
@@ -181,7 +182,8 @@
                 <tr><td>WR</td><td class="right">No Max</td></tr>
                 <tr><td>TE</td><td class="right">6</td></tr>
                 <tr><td>D/ST</td><td class="right">No Max</td></tr>
-                <tr><td>K</td><td class="right">99</td></tr>
+                <tr><td>IDP</td><td class="right">No Max</td></tr>
+                <tr><td>K</td><td class="right">No Max</td></tr>
             </table>
         </div>
 
@@ -214,17 +216,17 @@
     
     <h4 bind:this={oneTwoThree}>1.2.3 Trade Deadline</h4>
     <div class="subBlock">
-        <p>There is no trade deadline.</p>
+        <p>Trades are allowed year round, there is effectively no trade deadline.</p>
     </div>
     
     <h4 bind:this={oneTwoFour}>1.2.4 Trade Restrictions</h4>
     <div class="subBlock">
-        <p>You will not be able to trade draft picks that are more than 3 drafts away. For example, during the 2021 season you cannot trade any picks in or after the 2025 draft.</p>
+        <p>Trading is restricted during the playoffs.</p>
     </div>
     
     <h4 bind:this={oneTwoFive}>1.2.5 Veto/Trade Process</h4>
     <div class="subBlock">
-        <p>A total of 6 veto votes are required to veto a trade. Vetoes are only appropriate in instances of collusion or an egregious mismatch of value (i.e. CMC for a kicker). Not liking a trade does not warrant a veto.</p>
+        <p>A total of 6 veto votes are required to veto a trade. Vetoes are only appropriate in instances of collusion or an egregious mismatch of value (i.e. CMC for a kicker). Not liking a trade does not warrant a veto. Abstaining from the veto vote is allowed.</p>
     </div>
     
     
@@ -252,7 +254,7 @@
 
     <h3 bind:this={threeOne}>3.1 Scoring System</h3>
     <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows typical .5PPR Scoring). The scoring system will never change without a majority league vote. Scoring cannot be changed mid-season.</p>
-    
+
     <h2 class="sectionHeading" bind:this={four}>Section 4 Postseason</h2>
     
     <h3 bind:this={fourOne}>4.1 Playoffs</h3>

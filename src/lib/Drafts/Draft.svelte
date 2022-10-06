@@ -109,8 +109,8 @@
 {#if accuracy  && !closed}
     <div class="accuracy">
         <div class="accuracyText">
-            Upcomig draft order accuracy: {parseInt(progress*100)}%
-            <span class="disclaimer">(accuracy will improve as the regular season progresses)</span>
+            Upcoming draft order accuracy: {parseInt(progress*100)}%
+            <span class="disclaimer">(not a loading bar, tracking accuracy - will increase as the regular season progresses)</span>
         </div>
         <LinearProgress {progress} {closed} />
     </div>
