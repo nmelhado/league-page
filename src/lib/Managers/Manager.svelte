@@ -146,12 +146,12 @@
 
     .bio {
         margin: 2em 1.5em 2em;
-        text-indent: 4em;
+        text-align: center;
     }
 
     .philosophy {
         margin: 2em 1.5em 2em;
-        text-indent: 4em;
+        text-align: center;
     }
 
     .loading {
