@@ -20,6 +20,7 @@
 
     :global(.contrastRow) {
         background-color: var(--f8f8f8);
+        height: 75px;
     }
 
     .team {

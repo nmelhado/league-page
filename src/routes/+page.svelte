@@ -41,7 +41,7 @@
   <div id="main">
     <img class="banner" src={bannerImage} alt="banner-logo" />
     <div class="text">
-      <h6>{leagueName}</h6>
+      <!-- <h6>{leagueName}</h6> -->
       <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
       {@html homepageText}
       <!-- Most recent Blog Post (if enabled) -->
@@ -174,9 +174,13 @@
     text-align: center;
   }
 
-  h6 {
+  /* h6 {
     text-align: center;
-  }
+    font-size: 48px;
+    margin: 80px 0;
+    font-weight: 300;
+    letter-spacing: 5px;
+  } */
 
   /* champ styling */
   #currentChamp {
@@ -215,10 +219,11 @@
   }
 
   .banner {
-    width: 250px;
+    width: 95%;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
   }
 
   h4 {
