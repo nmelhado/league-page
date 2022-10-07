@@ -219,11 +219,23 @@
   }
 
   .banner {
-    width: 95%;
+    width: 99%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
+    margin-top: 0;
+
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  @media (max-width: 950px) {
+    /* width of the large navBar */
+    .banner {
+      width: 90%;
+      /* border: 1px solid gray;
+      border-spacing: 5px; */
+    }
   }
 
   h4 {

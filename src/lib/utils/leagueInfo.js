@@ -8,8 +8,8 @@ export const bannerImage = "bannerlogo.png";
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Welcome to the Really Cool League (RCL). Founded in 2012, the Really Cool League has officially entered our second decade in existence, and barring nuclear annihilation, we’ll be around for many more.</p>
-  <p>Our commitment to building the best league and the greatest dynasty franchises has never been stronger, despite facing many challenges over the years. From the league members (RIP Wildfyre), the struggles of a global pandemic, the YOTK, or the chaos of the replacement refs. Adversity has only made us stronger.</p>
+  <p>Welcome to the Really Cool League (RCL). Founded in 2012, we are officially entering our second decade in existence, and barring nuclear annihilation, we’ll be around for many more.</p>
+  <p>Our commitment to building the best league and the greatest dynasty franchises has never been stronger, despite facing many challenges over the years. From the loss of league members (RIP Wildfyre), to the struggles of a global pandemic, the glory of the YOTK, and even the chaos of the replacement refs. Adversity has only made us stronger.</p>
   <p>Win the Championship. Avoid the Golden Poo. Fear the SAT. This is the RCL.</p>
   `;
 
