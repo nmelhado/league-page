@@ -169,7 +169,7 @@
         <li>K</li>
     </ul>
     
-    <p>18 Bench (Expanded by 5 between the keague draft and start of regular season)</p>
+    <p>8 Bench Spots</p>
 
     <p>1 IR Spots (Player must be labeled as IR, Suspended, or Covid in the Sleeper App)</p>
     
@@ -241,11 +241,13 @@
     <h2 class="sectionHeading" bind:this={two}>Section 2 Drafting</h2>
     
     <h3 bind:this={twoOne}>2.1 Draft Order</h3>
-    <p>The draft order each year will be a linear draft in reverse order of the previous year’s regular season standings.</p>
+    <p>The draft order each year will be a linear draft in reverse order of the previous year’s regular season standings for the last 6 picks. The first 4 picks will be determined by the order of the Consolation Bowl.</p>
 
     <h3 bind:this={twoTwo}>2.2 Rookie Drafts</h3>
     <p>Rookie drafts will consist of 6 round of drafting, with 2 minutes alotted for each pick.</p>
     <p>Any spots not filled during the draft, can be filled immediately afterwards from the waiver wire.</p>
+    <p>If any team should end up with over 18 players after the draft (from acquiring additional draft picks) they will need to reduce their roster size (i.e. dropping or trading players) to 18 before the start of the season.</p>
+
     
     <h3 bind:this={twoThree}>2.3 Draft Day Trades</h3>
     <p>If a trade is being made during the draft, one or both parties can alert the commissioner to pause the draft to allow for extra time to negotiate the trade.</p>
@@ -278,7 +280,7 @@
 
     <h3 bind:this={fiveTwo}>5.2 Last Place</h3>
     <p>The team that finishes in last place during the regular season will be required to take the SAT. The League Champion is encouraged to contribute study guides and/or cover the entry fee for the SAT, but this is not required. If the last place manager chooses not the take the SAT they will be subject to the forfeiture of their 1st round draft pick. If the manager in question has traded away said draft pick, there will be a league meeting to determine a new penalty.</p>
-    <p>Punishment for a second last place finish is not a retake of the SAT, and will be determined by a league vote in the future.</p>
+    <p>Punishment for a second last place finish (i.e. finishing last two consecutive years) is not a retake of the SAT, and will be determined by a league vote in the future.</p>
 
     <h3 bind:this={fiveThree}>5.3 League Recaps</h3>
     <p>At the start of the season, a league recap schedule will be shared determining each manager's obligation to provide an entertaining recap on the events of the preceeding fantasy week. Recaps must be sent out before the following NFL Sunday kickoff. Recap weeks may be swapped between two consenting managers.</p>
@@ -290,7 +292,7 @@
     <p>Short of continuously failing to set a valid lineup, or confirmed collusion, no manager can be removed against their will. Participation, through the league chat, trade offers, and the waiver wire, is strongly encouraged.</p>
     
     <h3 bind:this={sixTwo}>6.2 Replacing Managers</h3>
-    <p>When a manager needs to be replaced, the league members will try to find a suitable candidate with some connection to at least a portion of the existing managers. Priority will be placed on managers who are eager to take on a dynasty commitment and will be very active within the league. Candidates will be asked to submit a video explaining why they want to join which will serve to demonstrate their seriousness and committment to the RCL.</p>
+    <p>When a manager needs to be replaced, the league members will try to find a suitable candidate with some connection to at least a portion of the existing managers. Priority will be placed on managers who are eager to take on a dynasty commitment and will be very active within the league. Candidates will be asked to submit a video explaining why they want to join the league, which will serve to demonstrate their seriousness and committment to the RCL.</p>
     
     <h3 bind:this={sixThree}>6.3 Replacement Incentive</h3>
     <p>In the event that a manager chooses to quit the league or is removed by a comissioner, an incoming manager is offered a 50% reduction on their first year buy-in.</p>
@@ -303,13 +305,13 @@
     <h3 bind:this={sevenTwo}>7.2 Payout</h3>
     <p>League payout is structured as follows:</p>
     <ul>
-        <li>1st place: {dues * 8}$</li>
-        <li>2nd place: {dues * 3}$</li>
-        <li>3rd place: {dues}$</li>
+        <li>1st place: ${dues * 5}</li>
+        <li>2nd place: ${dues * 2}</li>
+        <li>3rd place: ${dues}</li>
     </ul>
     <p>If new managers come into the league and the payout is smaller, the difference will come out of the winner's prize.</p>
     
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
-    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buyin, they may choose to take out a payday loan.</p>
+    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buyin, they may choose to take out a payday loan or trade their Charizard Pokemon card to another league member in exchange for covering their dues.</p>
 
 </div>
