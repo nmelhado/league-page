@@ -243,7 +243,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 25px;
     padding: 30px;
     border: 3px solid white;
     border-radius: 50%;
