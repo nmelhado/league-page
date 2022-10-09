@@ -1,5 +1,5 @@
 import {getLeagueData} from './helperFunctions/leagueData';
-import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableBlog, bannerImage} from './leagueInfo';
+import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableBlog, bannerImage, bannerComputer, bannerFootball, bannerTrophy} from './leagueInfo';
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
@@ -20,6 +20,9 @@ import { getLeagueStandings } from './helperFunctions/leagueStandings';
 export {
     enableBlog,
     bannerImage,
+    bannerComputer,
+    bannerFootball,
+    bannerTrophy,
     homepageText,
     gotoManager,
     managers,

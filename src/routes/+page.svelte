@@ -9,6 +9,9 @@
     gotoManager,
     enableBlog,
     bannerImage,
+    bannerComputer,
+    bannerTrophy,
+    bannerFootball,
   } from "$lib/utils/helper";
   import { Transactions, PowerRankings, HomePost } from "$lib/components";
   import { getAwards } from "$lib/utils/helper";
@@ -39,7 +42,18 @@
 
 <div id="home">
   <div id="main">
-    <img class="banner" src={bannerImage} alt="banner-logo" />
+    <div id="banner-flex">
+      <div class="banner-wrapper">
+        <i class="banner-image-2 icon-color" />
+      </div>
+      <div class="banner-wrapper">
+        <i class="banner-image-1 icon-color" />
+      </div>
+      <div class="banner-wrapper">
+        <i class="banner-image-3 icon-color" />
+      </div>
+    </div>
+    <!-- <img class="banner" src={bannerImage} alt="banner-logo" /> -->
     <div class="text">
       <!-- <h6>{leagueName}</h6> -->
       <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
@@ -218,23 +232,101 @@
     top: 50%;
   }
 
-  .banner {
-    width: 99%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  #banner-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 50px;
-    margin-top: 0;
+  }
 
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  .banner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 30px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background-color: rgba(22, 22, 22, 0.829);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
   @media (max-width: 950px) {
-    /* width of the large navBar */
-    .banner {
-      width: 90%;
-      /* border: 1px solid gray;
-      border-spacing: 5px; */
+    .banner-image-1 {
+      width: 50px !important;
+      height: 50px !important;
+      padding: 5px !important;
+    }
+    .banner-image-2 {
+      width: 30px !important;
+      height: 30px !important;
+      padding: 5px !important;
+    }
+    .banner-image-3 {
+      width: 30px !important;
+      height: 30px !important;
+      padding: 5px !important;
+    }
+
+    .banner-wrapper {
+      margin: 7px;
+
+    }
+  }
+
+  .banner-image-1 {
+    width: 92px;
+    height: 92px;
+    padding: 10px;
+
+    -webkit-mask: url("/banner-computer.svg") no-repeat 50% 50%;
+    mask: url("/banner-computer.svg") no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .banner-image-2 {
+    width: 72px;
+    height: 72px;
+    padding: 10px;
+
+    -webkit-mask: url("/banner-football.svg") no-repeat 50% 50%;
+    mask: url("/banner-football.svg") no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .banner-image-3 {
+    width: 72px;
+    height: 72px;
+    padding: 10px;
+
+    -webkit-mask: url("/banner-trophy.svg") no-repeat 50% 50%;
+    mask: url("/banner-trophy.svg") no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .icon-color {
+    background: linear-gradient(
+      45deg,
+      #f17c58,
+      #e94584,
+      #24aadb,
+      #27dbb1,
+      #ffdc18,
+      #ff3706
+    );
+    background-size: 600% 100%;
+    animation: gradient 10s linear infinite;
+    animation-direction: alternate;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
     }
   }
 

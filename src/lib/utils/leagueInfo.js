@@ -5,6 +5,10 @@ export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 export const bannerImage = "bannerlogo.png";
+export const bannerTrophy = "banner-trophy.svg";
+export const bannerFootball = "banner-football.svg";
+export const bannerComputer = "banner-computer.svg";
+
 
 /*   STEP 2   */
 export const homepageText = `
