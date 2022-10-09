@@ -248,8 +248,8 @@
     border: 3px solid white;
     border-radius: 50%;
     background-color: rgba(22, 22, 22, 0.829);
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
 
   @media (max-width: 950px) {
     .banner-image-1 {
@@ -275,8 +275,8 @@
   }
 
   .banner-image-1 {
-    width: 92px;
-    height: 92px;
+    width: 110px;
+    height: 110px;
     padding: 10px;
 
     -webkit-mask: url("/banner-computer.svg") no-repeat 50% 50%;
