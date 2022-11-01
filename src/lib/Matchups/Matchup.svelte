@@ -1,7 +1,7 @@
 <script>
     import {round} from '$lib/utils/helper'
 
-    export let matchup, players, active, ix, displayWeek, expandOverride=false;
+    export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek;
 
     let home = matchup[0];
     let away = matchup[1];
@@ -16,10 +16,10 @@
     const digestStarters = (x, p) => {
         home = matchup[0];
         away = matchup[1];
-        const homeStarters = home.starters;
-        const awayStarters = away.starters;
-        const homePoints = home.points;
-        const awayPoints = away.points;
+        const homeStarters = matchupWeek ? home.starters[matchupWeek] : home.starters;
+        const awayStarters = matchupWeek ? away.starters[matchupWeek] : away.starters;
+        const homePoints = matchupWeek ? home.points[matchupWeek] : home.points;
+        const awayPoints = matchupWeek ? away.points[matchupWeek] : away.points;
 
         homePointsTotal = 0;
         homeProjectionTotal = 0;
@@ -75,7 +75,7 @@
 
     let starters;
     
-    $: digestStarters(ix, players);
+    $: digestStarters(ix, players, matchupWeek);
 
     let el;
 
@@ -100,7 +100,8 @@
         if(innerWidth < 410) {
             multiplier = 71;
         }
-        return home.starters.length * multiplier + 37;
+        const startersLength = matchupWeek ? home.starters[matchupWeek].length : home.starters.length;
+        return startersLength * multiplier + 37;
     }
 
 </script>

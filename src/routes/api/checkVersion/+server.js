@@ -1,6 +1,7 @@
 import {version} from '$lib/version';
+import { json } from '@sveltejs/kit';
 
-export async function get() {
+export async function GET() {
     const res = await fetch('https://league-page.nmelhado.com/api/checkGlobalVersion', {compress: true})
     let needsUpdate = false;
     if(res.ok) {
@@ -11,8 +12,5 @@ export async function get() {
         needsUpdate = globalVersion != version;
     }
 
-    return {
-        status: 200,
-        body: JSON.stringify(needsUpdate)
-    };
+    return json(needsUpdate);
 }

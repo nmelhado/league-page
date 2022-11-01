@@ -1,25 +1,9 @@
-<script context="module">
-	import { getLeagueRecords, getLeagueTransactions, waitForAll } from '$lib/utils/helper';
-
-    export async function load() {
-        const recordsInfo = waitForAll(
-			getLeagueRecords(false),
-			getLeagueTransactions(false),
-		)
-	
-		return {
-			props: {
-				recordsInfo
-			}
-		};
-	}
-</script>
-
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { Records } from '$lib/components';
 
-    export let recordsInfo;
+    export let data;
+    const recordsInfo = data.recordsInfo;
 </script>
 
 <style>
@@ -42,8 +26,8 @@
             <p>Loading league records...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then [leagueRecords, {totals, stale}]}
-        <Records {leagueRecords} {totals} {stale} />
+    {:then [leagueData, {totals, stale}]}
+        <Records {leagueData} {totals} {stale} />
     {:catch error}
         <!-- promise was rejected -->
         <p>Something went wrong: {error.message}</p>

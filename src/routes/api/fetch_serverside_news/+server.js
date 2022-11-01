@@ -1,20 +1,21 @@
 import parser from 'fast-xml-parser';
 import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
 import { dynasty } from '$lib/utils/helper';
+import { json } from '@sveltejs/kit';
 
 const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';
 const FTN_NEWS= 'https://www.ftnfantasy.com/content/news?type=news&sport=nfl&limit=30';
 const DYNASTY_LEAGUE= 'https://dynastyleaguefootball.com/feed/';
 const DYNASTY_NERDS= 'https://www.dynastynerds.com/feed/';
 
-export async function get() {
+export async function GET() {
 	const articles = [
         getXMLArticles(FF_BALLERS, processFF),
         getJSONArticles(FTN_NEWS, processFTN),
 	];
 	if(dynasty) {
 		articles.push(getXMLArticles(DYNASTY_LEAGUE, processDynastyLeague));
-		getXMLArticles(DYNASTY_NERDS, processDynastyNerds);
+		articles.push(getXMLArticles(DYNASTY_NERDS, processDynastyNerds));
 	}
     const responses = await waitForAll(...articles).catch((err) => { console.error(err); });
 
@@ -24,10 +25,7 @@ export async function get() {
 		finalArticles = [...finalArticles, ...response];
 	}
 
-    return {
-        status: 200,
-        body: JSON.stringify(finalArticles)
-    };
+    return json(finalArticles);
 }
 
 const getXMLArticles = async(url, callback) => {
@@ -85,7 +83,7 @@ const processFTN = (rawArticles) => {
 		const icon = 'newsIcons/ftn.png';
 		finalArticles.push({
 			title: article.short_text,
-			article: article.analysis[0].analysis,
+			article: article.text,
 			link: `https://www.ftnfantasy.com/nfl${article.link}`,
 			author: `FTN Fantasy`,
 			ts,

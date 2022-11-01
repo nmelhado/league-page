@@ -1,7 +1,3 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
     import { dues } from '$lib/utils/helper';
     let one, oneOne, oneOneOne, oneTwo, oneTwoOne, oneTwoTwo, oneTwoThree, oneTwoFour, oneTwoFive, oneThree;
@@ -13,7 +9,7 @@
     let seven, sevenOne, sevenTwo, sevenThree;
 
     const goToSection = (section) => {
-        const top = section.getBoundingClientRect().top;
+        const top = section.getBoundingClientRect().top + window.pageYOffset;
         window.scrollTo({left: 0, top, behavior: 'smooth'});
     }
 </script>

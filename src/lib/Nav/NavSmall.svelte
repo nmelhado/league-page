@@ -15,7 +15,6 @@
 	let open = false;
 
 	const selectTab = (tab) => {
-		active = tab;
 		open = false;
 		goto(tab.dest);
 	}

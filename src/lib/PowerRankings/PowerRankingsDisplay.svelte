@@ -36,6 +36,7 @@
             const rosterPlayers = [];
 
             for(const rosterPlayer of roster.players) {
+                if(!players[rosterPlayer]) contnue;
                 rosterPlayers.push({
                     name: players[rosterPlayer].ln,
                     pos: players[rosterPlayer].pos,
@@ -82,7 +83,7 @@
     buildRankings();
 
     const refreshPlayers = async () => {
-        const newPlayersInfo = await loadPlayers(true);
+        const newPlayersInfo = await loadPlayers(null, true);
         players = newPlayersInfo.players;
         buildRankings();
     }

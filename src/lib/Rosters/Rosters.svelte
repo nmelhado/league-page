@@ -7,7 +7,7 @@
 	let players = playersInfo.players;
 
 	const refreshPlayers = async () => {
-		const newPlayersInfo = await loadPlayers(true);
+		const newPlayersInfo = await loadPlayers(null, true);
 		players = newPlayersInfo.players;
 	}
 
