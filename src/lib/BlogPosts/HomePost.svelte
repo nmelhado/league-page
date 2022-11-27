@@ -73,13 +73,13 @@
 {#if loading}
     <!-- promise is pending -->
     <div class="loading">
-        <p>Loading Blog Posts...</p>
+        <p>Loading RCL Gazette...</p>
         <LinearProgress indeterminate />
     </div>
 {:else}
-    <h2>League Blog</h2>
+    <h2>RCL Gazette</h2>
     <Post {users} {rosters} {post} {createdAt} home={true} />
     <div class="center">
-        <a class="viewAll" href="/blog">View More Blog Posts</a>
+        <a class="viewAll" href="/blog">View More Gazette Articles</a>
     </div>
 {/if}

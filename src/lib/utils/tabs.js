@@ -18,7 +18,7 @@ export const tabs = [
     },
     {
         icon: 'article',
-        label: 'Blog',
+        label: 'RCL Gazette',
         dest: '/blog',
     },
     {

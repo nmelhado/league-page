@@ -123,7 +123,7 @@
 			</div>
 		{:else}
 			<Tab
-				class="{tab.label == 'Blog' && !enableBlog ? 'dontDisplay' : ''}"
+				class="{tab.label == 'RCL Gazette' && !enableBlog ? 'dontDisplay' : ''}"
 				{tab}
 				on:touchstart={() => prefetch(tab.dest)}
 				on:mouseover={() => prefetch(tab.dest)}
