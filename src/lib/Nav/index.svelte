@@ -2,13 +2,11 @@
 	import { tabs } from '$lib/utils/tabs';
 	import NavSmall from './NavSmall.svelte';
 	import NavLarge from './NavLarge.svelte';
-	
+    import { page } from '$app/stores';	
 	import IconButton from '@smui/icon-button';
 	import { Icon } from '@smui/common';
 
-	export let activeTab;
-
-	$: active = tabs.find(tab => tab.dest == activeTab || (tab.nest && tab.children.find(subTab => subTab.dest == activeTab)));
+	$: active = tabs.find(tab => tab.dest == $page.url.pathname || (tab.nest && tab.children.find(subTab => subTab.dest == $page.url.pathname)));
 
 	// toggle dark mode
 	let lightTheme =
@@ -31,7 +29,7 @@
 </script>
 
 <svelte:head>
-	<title>{!activeTab[1] ? 'Home' : activeTab[1].toUpperCase() + activeTab.slice(2)} | League Page</title>
+	<title>{!$page.url.pathname[1] ? 'Home' : $page.url.pathname[1].toUpperCase() + $page.url.pathname.slice(2)} | League Page</title>
 </svelte:head>
 
 <style>
@@ -103,7 +101,7 @@
 	</div>
 
 	<div class="small">
-		<NavSmall {tabs} bind:active={activeTab} />
+		<NavSmall {tabs} bind:active={$page.url.pathname} />
 	</div>
 
 </nav>

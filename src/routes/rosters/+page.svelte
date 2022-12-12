@@ -1,27 +1,9 @@
-<script context="module">
-	import { getLeagueData, getLeagueRosters, getLeagueUsers, loadPlayers, waitForAll } from '$lib/utils/helper';
-
-    export async function load() {
-        const rostersInfo = waitForAll(
-			getLeagueData(),
-			getLeagueRosters(),
-			getLeagueUsers(),
-			loadPlayers(),
-		)
-	
-		return {
-			props: {
-				rostersInfo
-			}
-		};
-	}
-</script>
-
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { Rosters } from '$lib/components'
 
-	export let rostersInfo;
+	export let data;
+	const rostersInfo = data.rostersInfo;
 </script>
 
 <style>

@@ -1,25 +1,9 @@
-<script context="module">
-	import { getLeagueRecords, getLeagueTransactions, waitForAll } from '$lib/utils/helper';
-
-    export async function load() {
-        const recordsInfo = waitForAll(
-			getLeagueRecords(false),
-			getLeagueTransactions(false),
-		)
-	
-		return {
-			props: {
-				recordsInfo
-			}
-		};
-	}
-</script>
-
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { Records } from '$lib/components';
 
-    export let recordsInfo;
+    export let data;
+    const recordsInfo = data.recordsInfo;
 </script>
 
 <style>

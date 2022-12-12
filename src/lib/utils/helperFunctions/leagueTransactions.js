@@ -6,6 +6,7 @@ import { getLeagueUsers } from './leagueUsers';
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {transactionsStore} from '$lib/stores';
+import { browser } from '$app/environment';
 
 export const getLeagueTransactions = async (preview, refresh = false) => {
 	const transactionsStoreVal = get(transactionsStore);
@@ -20,7 +21,7 @@ export const getLeagueTransactions = async (preview, refresh = false) => {
 	}
 
 	// if this isn't a refresh data call, check if there are already transactions stored in localStorage
-	if(!refresh) {
+	if(!refresh && browser) {
 		let localTransactions = await JSON.parse(localStorage.getItem("transactions"));
 		// check if transactions have been saved to localStorage before
 		if(localTransactions) {
@@ -48,11 +49,13 @@ export const getLeagueTransactions = async (preview, refresh = false) => {
 		totals
 	};
 
-	// update localStorage
-	localStorage.setItem("transactions", JSON.stringify(transactionPackage));
-
-	// update the store
-	transactionsStore.update(() => transactionPackage);
+    if(browser) {
+	    // update localStorage
+        localStorage.setItem("transactions", JSON.stringify(transactionPackage));
+    
+        // update the store
+        transactionsStore.update(() => transactionPackage);
+    }
 
 	return {
 		transactions: checkPreview(preview, transactions),

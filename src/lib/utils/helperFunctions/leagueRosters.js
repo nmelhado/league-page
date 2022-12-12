@@ -30,5 +30,5 @@ const processRosters = (rosters) => {
 			}
 		}
 	}
-	return {rosters, startersAndReserve};
+	return {rosters: rosters.sort((a, b) => a.roster_id - b.roster_id), startersAndReserve};
 }
