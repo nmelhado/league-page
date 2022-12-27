@@ -58,15 +58,15 @@
         }
 
         // Next look through record books
-        const leagueManagerRecords = [];
-        for(const key in records.regularSeasonData.leagueManagerRecords) {
-            const record = records.regularSeasonData.leagueManagerRecords[key];
+        const leagueRosterRecords = [];
+        for(const key in records.regularSeasonData.leagueRosterRecords) {
+            const record = records.regularSeasonData.leagueRosterRecords[key];
             record.rosterID = key;
-            leagueManagerRecords.push(record);
+            leagueRosterRecords.push(record);
         }
-        const winRecords = [...leagueManagerRecords].sort((a, b) => b.wins - a.wins);
-        const pointsRecords = [...leagueManagerRecords].sort((a, b) => b.fptsFor - a.fptsFor);
-        const iqRecords = [...leagueManagerRecords].sort((a, b) => (b.fptsFor/b.potentialPoints) - (a.fptsFor/a.potentialPoints));
+        const winRecords = [...leagueRosterRecords].sort((a, b) => b.wins - a.wins);
+        const pointsRecords = [...leagueRosterRecords].sort((a, b) => b.fptsFor - a.fptsFor);
+        const iqRecords = [...leagueRosterRecords].sort((a, b) => (b.fptsFor/b.potentialPoints) - (a.fptsFor/a.potentialPoints));
 
         for(let i = 0; i < records.regularSeasonData.leagueWeekHighs.length; i++) {
             const leagueWeekRecord = records.regularSeasonData.leagueWeekHighs[i];

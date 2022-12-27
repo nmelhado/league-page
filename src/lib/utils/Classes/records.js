@@ -8,7 +8,7 @@ export class Records {
      * Can be used for both regular season, as well as playoff records.
 	 */
 	constructor() { // constructor returns empty records block
-		this.leagueManagerRecords = {}; // every full season stat point (for each year and all years combined)
+		this.leagueRosterRecords = {}; // every full season stat point (for each year and all years combined)
 		this.seasonWeekRecords = []; // highest weekly points within a single season
 		this.leagueWeekRecords = []; // keeps track of weekly points in all seasons combined
 		this.seasonLongPoints = []; // keeps track of season long points
@@ -30,13 +30,13 @@ export class Records {
 // Class functions to help build league records below
 
 /**
- * Check if a manger record exists for a given manager ID and, if not, create one.
- * @param {int} managerID
+ * Check if a roster record exists for a given roster ID and, if not, create one.
+ * @param {int} rosterID
  */
-Records.prototype.confirmManagerRecord = function(managerID) {
-    // if no leagueManagerRecord exists for a roster, create one
-    if(!this.leagueManagerRecords[managerID]) {
-        this.leagueManagerRecords[managerID] = {
+Records.prototype.confirmRosterRecord = function(rosterID) {
+    // if no leagueRosterRecord exists for a roster, create one
+    if(!this.leagueRosterRecords[rosterID]) {
+        this.leagueRosterRecords[rosterID] = {
             wins: 0,
             losses: 0,
             ties: 0,
@@ -53,10 +53,10 @@ Records.prototype.confirmManagerRecord = function(managerID) {
 
 
 /**
- * Update the internal leagueManagerRecords for a given roster ID
- * @param {Object[]} managers array of managers that need this record attached
+ * Update the internal leagueRosterRecords for a given roster ID
+ * @param {number} rosterID
  * @param {Object} recordsData
- * @param {any} recordsData.team
+ * @param {any} recordsData.manager
  * @param {number} recordsData.year
  * @param {number} recordsData.wins
  * @param {number} recordsData.losses
@@ -68,59 +68,55 @@ Records.prototype.confirmManagerRecord = function(managerID) {
  * @param {number} recordsData.pOGames
  * @param {number} recordsData.byes
  */
-Records.prototype.updateManagerRecord = function(managers, {team, year, wins, losses, ties, fptsPerGame, fptsFor, fptsAgainst, potentialPoints, pOGames, byes}) {
+Records.prototype.updateRosterRecord = function(rosterID, {manager, year, wins, losses, ties, fptsPerGame, fptsFor, fptsAgainst, potentialPoints, pOGames, byes}) {
     // check that a roster record has already been started for a given roster ID
-    for(const managerID of managers) {
-        this.confirmManagerRecord(managerID);
+    this.confirmRosterRecord(rosterID);
 
-        // add all-time data
-        this.leagueManagerRecords[managerID].wins += wins;
-        this.leagueManagerRecords[managerID].losses += losses;
-        this.leagueManagerRecords[managerID].ties += ties;
-        this.leagueManagerRecords[managerID].fptsFor += fptsFor;
-        this.leagueManagerRecords[managerID].fptsAgainst += fptsAgainst;
-        this.leagueManagerRecords[managerID].potentialPoints += potentialPoints;
-        this.leagueManagerRecords[managerID].pOGames += pOGames;
-        this.leagueManagerRecords[managerID].byes += byes;
-        this.leagueManagerRecords[managerID].playoffAppearances ++;
-    
-        // add the single season data
-        this.leagueManagerRecords[managerID].years.push({
-            wins,
-            losses,
-            ties,
-            fpts: fptsFor,
-            fptsAgainst,
-            fptsPerGame,
-            potentialPoints,
-            pOGames,
-            byes,
-            team,
-            year,
-        });
-    }
+    // add all-time data
+    this.leagueRosterRecords[rosterID].wins += wins;
+    this.leagueRosterRecords[rosterID].losses += losses;
+    this.leagueRosterRecords[rosterID].ties += ties;
+    this.leagueRosterRecords[rosterID].fptsFor += fptsFor;
+    this.leagueRosterRecords[rosterID].fptsAgainst += fptsAgainst;
+    this.leagueRosterRecords[rosterID].potentialPoints += potentialPoints;
+    this.leagueRosterRecords[rosterID].pOGames += pOGames;
+    this.leagueRosterRecords[rosterID].byes += byes;
+    this.leagueRosterRecords[rosterID].playoffAppearances ++;
+
+    // add the single season data
+    this.leagueRosterRecords[rosterID].years.push({
+        wins,
+        losses,
+        ties,
+        fpts: fptsFor,
+        fptsAgainst,
+        fptsPerGame,
+        potentialPoints,
+        pOGames,
+        byes,
+        manager,
+        year,
+    });
 }
 
 
 /**
  * add an entry to the seasonLongPoints array
  * @param {Object} recordData
- * @param {Object[]} recordData.managers array of managers that need this record attached
+ * @param {int} recordData.rosterID
  * @param {float} recordData.fpts
  * @param {float} recordData.fptsPerGame
  * @param {int} recordData.year
- * @param {Object} recordData.team
+ * @param {Object} recordData.manager
  */
-Records.prototype.addSeasonLongPoints = function({managers, fpts, fptsPerGame, year, team}) {
-    for(const managerID of managers) {
-        this.seasonLongPoints.push({
-            managerID,
-            fpts,
-            fptsPerGame,
-            year,
-            team
-        });
-    }
+Records.prototype.addSeasonLongPoints = function({rosterID, fpts, fptsPerGame, year, manager}) {
+    this.seasonLongPoints.push({
+        rosterID,
+        fpts,
+        fptsPerGame,
+        year,
+        manager
+    })
 }
 
 
@@ -200,7 +196,7 @@ Records.prototype.returnRecords = function() {
         leagueWeekLows: this.leagueWeekLows,
         leagueWeekHighs: this.leagueWeekHighs,
         seasonWeekRecords: this.seasonWeekRecords,
-        leagueManagerRecords: this.leagueManagerRecords,
+        leagueRosterRecords: this.leagueRosterRecords,
         currentManagers: this.currentManagers,
         currentYear: this.currentYear,
         lastYear: this.lastYear,
