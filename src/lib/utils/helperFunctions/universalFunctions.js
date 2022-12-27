@@ -120,3 +120,39 @@ export const generateGraph = ({stats, x, y, stat, header, field, short, secondFi
 	const low = sorted.slice(-10).reverse();
 	return [high, low]
 }
+
+/**
+ * get all managers of a roster
+ * @param {Object} roster an object with all data for a roster
+ * @returns {Object[]} [managerIDs...] an array of manager IDs
+ */
+export const getManagers = (roster) => {
+	const managers = [];
+    if(roster.owner_id) {
+        managers.push(roster.owner_id);
+    }
+    if(roster.co_owners) {
+        managers.concat(...roster.co_owners);
+    }
+    return managers;
+}
+
+/**
+ * takes in a map of users and a owner ID and returns an object with a user's avatar and name
+ * @param {Object} users the map of users
+ * @param {string} ownerID the ID of the owner
+ * @returns {Object} {avatar, name} an object containing a user's avatar image url and their name
+ */
+export const getTeamData = (users, ownerID) => {
+	const user = users[ownerID];
+	if(user) {
+		return {
+			avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+			name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
+		}
+	}
+    return {
+        avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
+        name: 'Unknown Team',
+    }
+}

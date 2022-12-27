@@ -3,7 +3,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let leagueRosterRecords, seasonWeekRecords, currentManagers, currentYear, lastYear, transactionTotals, key;
+    export let leagueManagerRecords, seasonWeekRecords, currentManagers, currentYear, lastYear, transactionTotals, key;
 
     let yearsObj = {};
     let years = [];
@@ -53,8 +53,8 @@
         }
 
         for(const rosterID in lRR) {
-            const leagueRosterRecord = lRR[rosterID];
-            for(const season of leagueRosterRecord.years) {
+            const leagueManagerRecord = lRR[rosterID];
+            for(const season of leagueManagerRecord.years) {
                 // check for ties
                 if(season.ties > 0) {
                     yearsObj[season.year].showTies = true;
@@ -127,7 +127,7 @@
 
     let display = 0;
 
-    $: setData(leagueRosterRecords);
+    $: setData(leagueManagerRecords);
 </script>
 
 <style>
