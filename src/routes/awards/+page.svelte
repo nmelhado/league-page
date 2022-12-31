@@ -39,9 +39,9 @@
 			<p>Retrieving awards data...</p>
 			<LinearProgress indeterminate />
 		</div>
-	{:then {podiums, currentManagers} }
+	{:then {podiums, currentTeams} }
 		{#each podiums as podium}
-			<Awards {podium} {currentManagers} />
+			<Awards {podium} {currentTeams} />
 		{:else}
 			<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
 		{/each}

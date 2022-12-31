@@ -9,19 +9,19 @@
 
 	let loading = true;
 	let players;
-	let transactions, currentManagers;
+	let transactions, currentTeams;
 
 	onMount(async () => {
 		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null));
 		players = playersData.players;
 		transactions = transactionsData.transactions;
-		currentManagers = transactionsData.currentManagers;
+		currentTeams = transactionsData.currentTeams;
 		loading = false;
 
 		if(transactionsData.stale) {
 			const newTransactions = await getLeagueTransactions(true, true);
 			transactions = newTransactions.transactions;
-			currentManagers = newTransactions.currentManagers;
+			currentTeams = newTransactions.currentTeams;
 		}
 
 		if(playersData.stale) {
@@ -72,7 +72,7 @@
 		{#if transactions.waivers.length}
 			<h5>Recent Waiver Moves</h5>
 			{#each transactions.waivers as transaction }
-				<Transaction {players} {transaction} {masterOffset} {currentManagers} />
+				<Transaction {players} {transaction} {masterOffset} {currentTeams} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
@@ -88,7 +88,7 @@
 		{#if transactions.trades.length}
 			<h5>Recent Trades</h5>
 			{#each transactions.trades as transaction }
-				<Transaction {players} {transaction} {masterOffset} currentManagers={currentManagers} />
+				<Transaction {players} {transaction} {masterOffset} currentTeams={currentTeams} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>

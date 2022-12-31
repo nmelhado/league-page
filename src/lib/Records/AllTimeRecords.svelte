@@ -2,7 +2,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let key, leagueManagerRecords, leagueWeekHighs, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
+    export let key, leagueManagerRecords, leagueWeekHighs, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, currentTeams, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
 
     let winPercentages = [];
     let lineupIQs = [];
@@ -15,12 +15,12 @@
     for(const rosterID in transactionTotals.allTime) {
         tradesData.push({
             rosterID,
-            manager: currentManagers[rosterID],
+            manager: currentTeams[rosterID],
             trades: transactionTotals.allTime[rosterID].trade,
         })
         waiversData.push({
             rosterID,
-            manager: currentManagers[rosterID],
+            manager: currentTeams[rosterID],
             waivers: transactionTotals.allTime[rosterID].waiver,
         })
     }
@@ -39,7 +39,7 @@
             const denominator = (leagueManagerRecord.wins + leagueManagerRecord.ties + leagueManagerRecord.losses) > 0 ? (leagueManagerRecord.wins + leagueManagerRecord.ties + leagueManagerRecord.losses) : 1;
             winPercentages.push({
                 rosterID: key,
-                manager: currentManagers[key],
+                manager: currentTeams[key],
                 percentage: round((leagueManagerRecord.wins + leagueManagerRecord.ties / 2) / denominator * 100),
                 wins: leagueManagerRecord.wins,
                 ties: leagueManagerRecord.ties,
@@ -48,7 +48,7 @@
 
             let lineupIQ = {
                 rosterID: key,
-                manager: currentManagers[key],
+                manager: currentTeams[key],
                 fpts: round(leagueManagerRecord.fptsFor),
             }
 
@@ -61,7 +61,7 @@
         
             fptsHistories.push({
                 rosterID: key,
-                manager: currentManagers[key],
+                manager: currentTeams[key],
                 fptsFor: round(leagueManagerRecord.fptsFor),
                 fptsAgainst: round(leagueManagerRecord.fptsAgainst),
                 fptsPerGame: round(leagueManagerRecord.fptsFor / denominator),
@@ -73,12 +73,12 @@
         for(const rosterID in transactionTotals.allTime) {
             tradesData.push({
                 rosterID,
-                manager: currentManagers[rosterID],
+                manager: currentTeams[rosterID],
                 trades: transactionTotals.allTime[rosterID].trade,
             })
             waiversData.push({
                 rosterID,
-                manager: currentManagers[rosterID],
+                manager: currentTeams[rosterID],
                 waivers: transactionTotals.allTime[rosterID].waiver,
             })
         }
@@ -95,7 +95,7 @@
 </script>
 
 <RecordsAndRankings
-    {currentManagers}
+    {currentTeams}
     blowouts={allTimeBiggestBlowouts}
     closestMatchups={allTimeClosestMatchups}
     weekRecords={leagueWeekHighs}

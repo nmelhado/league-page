@@ -14,7 +14,7 @@ import { browser } from '$app/environment';
 /**
  * getLeagueRecords obtains all the record for a league since it was first created
  * @param {bool} refresh if set to false, getLeagueRecords returns the records stored in localStorage
- * @returns {Object} { allTimeBiggestBlowouts, allTimeClosestMatchups, leastSeasonLongPoints, mostSeasonLongPoints, leagueWeekLows, leagueWeekHighs, seasonWeekRecords, leagueManagerRecords, currentManagers, currentYear, lastYear}
+ * @returns {Object} { allTimeBiggestBlowouts, allTimeClosestMatchups, leastSeasonLongPoints, mostSeasonLongPoints, leagueWeekLows, leagueWeekHighs, seasonWeekRecords, leagueManagerRecords, currentTeams, currentYear, lastYear}
  */
 export const getLeagueRecords = async (refresh = false) => {
 	// records temporarily cached for an individual session
@@ -46,11 +46,11 @@ export const getLeagueRecords = async (refresh = false) => {
 	// league page leagueID
 	let curSeason = leagueID;
 	
-	// currentManagers is a placeholder that will eventually
+	// currentTeams is a placeholder that will eventually
 	// hold the most recent season's manager info. This is used
 	// on the front end to tie old team names to the current one,
 	// so that it's easier to track the continuity of records
-	let currentManagers;
+	let currentTeams;
 
 	// currentYear will eventually be assigned as the most recent year
 	// that has record information (current season if past week 1,
@@ -103,8 +103,8 @@ export const getLeagueRecords = async (refresh = false) => {
 		}
 
 		lastYear = year;
-		if(!currentManagers) {
-			currentManagers = originalManagers;
+		if(!currentTeams) {
+			currentTeams = originalManagers;
 		}
 
 		if(!currentYear && year) {
@@ -116,10 +116,10 @@ export const getLeagueRecords = async (refresh = false) => {
 
 	playoffRecords.currentYear = regularSeason.currentYear;
 	playoffRecords.lastYear = regularSeason.lastYear;
-	playoffRecords.currentManagers = regularSeason.currentManagers;
+	playoffRecords.currentTeams = regularSeason.currentTeams;
 
-	regularSeason.finalizeAllTimeRecords({currentManagers, currentYear, lastYear});
-	playoffRecords.finalizeAllTimeRecords({currentManagers, currentYear, lastYear});
+	regularSeason.finalizeAllTimeRecords({currentTeams, currentYear, lastYear});
+	playoffRecords.finalizeAllTimeRecords({currentTeams, currentYear, lastYear});
 	
 	const regularSeasonData = regularSeason.returnRecords()
 	const playoffData = playoffRecords.returnRecords()

@@ -3,7 +3,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let leagueManagerRecords, seasonWeekRecords, currentManagers, currentYear, lastYear, transactionTotals, key;
+    export let leagueManagerRecords, seasonWeekRecords, currentTeams, currentYear, lastYear, transactionTotals, key;
 
     let yearsObj = {};
     let years = [];
@@ -186,6 +186,6 @@
     blowouts={years[display].blowouts}
     closestMatchups={years[display].closestMatchups}
     prefix={years[display].year}
-    {currentManagers}
+    {currentTeams}
     {key}
 />

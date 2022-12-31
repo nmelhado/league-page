@@ -3,7 +3,7 @@
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import TransactionMove from './TransactionMove.svelte';
 
-	export let transaction, masterOffset, currentManagers, players;
+	export let transaction, masterOffset, currentTeams, players;
 </script>
 
 <style>
@@ -60,13 +60,13 @@
 		<Row>
 			{#each transaction.rosters as owner, ix}
 				<Cell class="transactTeam">
-					{#if transaction.previousOwners && cleanName(transaction.previousOwners[ix].name) != cleanName(currentManagers[owner].name)}
+					{#if transaction.previousOwners && cleanName(transaction.previousOwners[ix].name) != cleanName(currentTeams[owner].name)}
 						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{transaction.previousOwners[ix].avatar}" alt="{transaction.previousOwners[ix].name} avatar"/>
 						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{transaction.previousOwners[ix].name}</span>
-						<span class="currentOwner">({currentManagers[owner].name})</span>
+						<span class="currentOwner">({currentTeams[owner].name})</span>
 					{:else}
-						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{currentManagers[owner].avatar}" alt="{currentManagers[owner].name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{currentManagers[owner].name}</span>
+						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{currentTeams[owner].avatar}" alt="{currentTeams[owner].name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{currentTeams[owner].name}</span>
 					{/if}
 				</Cell>
 			{/each}
@@ -74,7 +74,7 @@
 	</Head>
 	<Body class="moves">
 		{#each transaction.moves as move}
-			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {currentManagers} />
+			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {currentTeams} />
 		{/each}
 		<Row>
 			<Cell class="transact-date" colspan={transaction.rosters.length}>{transaction.date}</Cell>

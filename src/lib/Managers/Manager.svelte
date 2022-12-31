@@ -13,7 +13,7 @@
 
     let transactions = transactionsData.transactions;
 
-    let currentManagers= transactionsData.currentManagers;
+    let currentTeams= transactionsData.currentTeams;
 
     let viewManager = managers[manager];
 
@@ -34,7 +34,7 @@
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
         transactions = newTransactions.transactions;
-        currentManagers= newTransactions.currentManagers;
+        currentTeams= newTransactions.currentTeams;
     }
 
     onMount(async () => {
@@ -311,7 +311,7 @@
                 <LinearProgress indeterminate />
             </div>
         {:else}
-            <TransactionsPage {playersInfo} transactions={teamTransactions} {currentManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
+            <TransactionsPage {playersInfo} transactions={teamTransactions} {currentTeams} {masterOffset} show='both' query='' page={0} perPage={5} />
         {/if}
     </div>
 

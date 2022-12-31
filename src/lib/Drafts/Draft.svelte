@@ -7,7 +7,7 @@
     
     export let draftData, previous = false;
 
-    const {draftOrder, draft, currentManagers, originalManagers, accuracy, reversalRound, draftType} = draftData;
+    const {draftOrder, draft, currentTeams, originalManagers, accuracy, reversalRound, draftType} = draftData;
 
     let progress = 0;
     let closed = false;
@@ -124,7 +124,7 @@
                     <Cell class="draftTeam">
                         <img class="avatar clickable" on:click={() => gotoManager(draftPosition)} src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
                         <br />
-                        <span class="clickable" on:click={() => gotoManager(draftPosition)}>{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}</span>
+                        <span class="clickable" on:click={() => gotoManager(draftPosition)}>{originalManagers[draftPosition].name}{@html currentTeams && cleanName(currentTeams[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentTeams[draftPosition].name})</span>` : ''}</span>
                     </Cell>
                 {/if}
             {/each}

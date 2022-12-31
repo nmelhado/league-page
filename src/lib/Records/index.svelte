@@ -11,7 +11,7 @@
         totals = newTransactions.totals;
     }
 
-    let leagueManagerRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
+    let leagueManagerRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, currentTeams, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
 
     const refreshRecords = async () => {
         const newRecords = await getLeagueRecords(true);
@@ -32,7 +32,7 @@
         leagueWeekLows = selectedLeagueData.leagueWeekLows;
         allTimeClosestMatchups = selectedLeagueData.allTimeClosestMatchups;
         allTimeBiggestBlowouts = selectedLeagueData.allTimeBiggestBlowouts;
-        currentManagers = selectedLeagueData.currentManagers;
+        currentTeams = selectedLeagueData.currentTeams;
         mostSeasonLongPoints = selectedLeagueData.mostSeasonLongPoints;
         leastSeasonLongPoints = selectedLeagueData.leastSeasonLongPoints;
         seasonWeekRecords = selectedLeagueData.seasonWeekRecords;
@@ -121,11 +121,11 @@
 
     {#if display == "allTime"}
         {#if leagueWeekHighs?.length}
-            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueManagerRecords} {leagueWeekHighs} {leagueWeekLows} {currentManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} {key} />
+            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueManagerRecords} {leagueWeekHighs} {leagueWeekLows} {currentTeams} {mostSeasonLongPoints} {leastSeasonLongPoints} {key} />
         {:else}
             <p class="empty">No records <i>yet</i>...</p>
         {/if}
     {:else}
-        <PerSeasonRecords transactionTotals={totals} {leagueManagerRecords} {seasonWeekRecords} {currentManagers} {currentYear} {lastYear} {key} />
+        <PerSeasonRecords transactionTotals={totals} {leagueManagerRecords} {seasonWeekRecords} {currentTeams} {currentYear} {lastYear} {key} />
     {/if}
 </div>

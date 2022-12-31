@@ -1,12 +1,12 @@
 <script>
 	import {cleanName, gotoManager} from '$lib/utils/helper';
-	export let podium, currentManagers;
+	export let podium, currentTeams;
 
 	const { year, champion, second, third, divisions, toilet } = podium;
 
 	const getNames = (name, rosterID) => {
-		if(cleanName(name) != cleanName(currentManagers[rosterID].name)) {
-			return `${name}<div class="curOwner">(${currentManagers[rosterID].name})</div>`;
+		if(cleanName(name) != cleanName(currentTeams[rosterID].name)) {
+			return `${name}<div class="curOwner">(${currentTeams[rosterID].name})</div>`;
 		}
 		return name;
 	}

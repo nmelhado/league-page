@@ -214,7 +214,7 @@ export const getPreviousDrafts = async () => {
 
 	const drafts = [];
 	
-	let currentManagers;
+	let currentTeams;
 	while(curSeason && curSeason != 0) {
 		const [rosterRes, users, leagueData] = await waitForAll(
 			getLeagueRosters(curSeason),
@@ -245,8 +245,8 @@ export const getPreviousDrafts = async () => {
 			}
 		}
 		
-		if(!currentManagers) {
-			currentManagers = originalManagers;
+		if(!currentTeams) {
+			currentTeams = originalManagers;
 		}
 	
 		const [officialDraftRes, picksRes, playersRes] = await waitForAll(
@@ -280,8 +280,8 @@ export const getPreviousDrafts = async () => {
 			originalManagers
 		}
 		
-		if(originalManagers != currentManagers) {
-			newDraft.currentManagers = currentManagers;
+		if(originalManagers != currentTeams) {
+			newDraft.currentTeams = currentTeams;
 		}
 	
 		drafts.push(newDraft);

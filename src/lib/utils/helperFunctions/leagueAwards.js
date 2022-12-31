@@ -17,17 +17,17 @@ export const getAwards = async () => {
 
 	const rosters = rosterRes.rosters;
 
-	const currentManagers = {};
+	const currentTeams = {};
 
 	for(const roster of rosters) {
 		const user = users[roster.owner_id];
 		if(user) {
-			currentManagers[roster.roster_id] = {
+			currentTeams[roster.roster_id] = {
 				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
 				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
 			}
 		} else {
-			currentManagers[roster.roster_id] = {
+			currentTeams[roster.roster_id] = {
 				avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
 				name: 'Unknown Manager',
 			}
@@ -40,7 +40,7 @@ export const getAwards = async () => {
 
 	const gatheredAwards = {
 		podiums,
-		currentManagers
+		currentTeams
 	};
 
 	awards.update(() => gatheredAwards);

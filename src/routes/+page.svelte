@@ -7,9 +7,9 @@
     let nflState = getNflState();
     let podiumsData = getAwards();
 
-    const getNames = (name, rosterID, currentManagers) => {
-		if(cleanName(name) != cleanName(currentManagers[rosterID].name)) {
-			return `${name}<div class="curOwner">(${currentManagers[rosterID].name})</div>`;
+    const getNames = (name, rosterID, currentTeams) => {
+		if(cleanName(name) != cleanName(currentTeams[rosterID].name)) {
+			return `${name}<div class="curOwner">(${currentTeams[rosterID].name})</div>`;
 		}
 		return name;
 	}
@@ -185,14 +185,14 @@
             {#await podiumsData}
                 <p class="center">Retrieving awards...</p>
                 <LinearProgress indeterminate />
-            {:then {podiums, currentManagers}}
+            {:then {podiums, currentTeams}}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Champ</h4>
                     <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion.rosterID))}} >
                         <img src="{podiums[0].champion.avatar}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
-                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentManagers)}</span>
+                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentTeams)}</span>
                 {:else}
                     <p class="center">No former champs.</p>
                 {/if}

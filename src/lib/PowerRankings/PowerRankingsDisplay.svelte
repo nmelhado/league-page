@@ -5,11 +5,11 @@
 
     const rosters = rostersData.rosters;
 
-    const currentManagers = {};
+    const currentTeams = {};
 
     for(const roster of rosters) {
         const user = users[roster.owner_id];
-        currentManagers[roster.roster_id] = {
+        currentTeams[roster.roster_id] = {
             avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
             name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
         }
@@ -46,7 +46,7 @@
 
             const rosterPower = {
                 rosterID: roster.roster_id,
-                manager: currentManagers[roster.roster_id],
+                manager: currentTeams[roster.roster_id],
                 powerScore: 0,
             }
             const seasonEnd = 18;

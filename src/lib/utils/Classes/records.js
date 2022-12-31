@@ -21,7 +21,7 @@ export class Records {
 		this.leagueWeekLows = [];
 		this.leagueWeekHighs = [];
 
-		this.currentManagers = [];
+		this.currentTeams = [];
 		this.currentYear = null;
 		this.lastYear = null;
 	}
@@ -161,11 +161,11 @@ Records.prototype.addSeasonWeekRecord = function(entry) {
  * Once all data has been gathered, finalizeAllTimeRecords will compute the allTimeBiggestBlowouts, allTimeClosestMatchups,
  * leagueWeekHighs, leagueWeekLows, mostSeasonLongPoints, and leastSeasonLongPoints as well as adding the current season managers,
  * currentYear, and lastYear to the records Class
- * @param {Object[]} currentManagers
+ * @param {Object[]} currentTeams
  * @param {int} currentYear
  * @param {int} lastYear
  */
- Records.prototype.finalizeAllTimeRecords = function({currentManagers, currentYear, lastYear}) {
+ Records.prototype.finalizeAllTimeRecords = function({currentTeams, currentYear, lastYear}) {
     // sort allTimeMatchupDifferentials and return the biggest blowouts and narrowest victories
     const [allTimeBiggestBlowouts, allTimeClosestMatchups] = sortHighAndLow(this.allTimeMatchupDifferentials, 'differential')
     this.allTimeBiggestBlowouts = allTimeBiggestBlowouts;
@@ -181,7 +181,7 @@ Records.prototype.addSeasonWeekRecord = function(entry) {
     this.mostSeasonLongPoints = mostSeasonLongPoints;
     this.leastSeasonLongPoints = leastSeasonLongPoints;
 
-    this.currentManagers = currentManagers;
+    this.currentTeams = currentTeams;
     this.currentYear = currentYear;
     this.lastYear = lastYear;
 }
@@ -201,7 +201,7 @@ Records.prototype.returnRecords = function() {
         leagueWeekHighs: this.leagueWeekHighs,
         seasonWeekRecords: this.seasonWeekRecords,
         leagueManagerRecords: this.leagueManagerRecords,
-        currentManagers: this.currentManagers,
+        currentTeams: this.currentTeams,
         currentYear: this.currentYear,
         lastYear: this.lastYear,
     }
