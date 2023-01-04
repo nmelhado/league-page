@@ -1,19 +1,9 @@
 <script>
     import BarChart from '$lib/BarChart.svelte';
     import { generateGraph, round, predictScores, loadPlayers } from '$lib/utils/helper';
-    export let nflState, rostersData, users, playersInfo, leagueData;
+    export let nflState, rostersData, teamManagers, playersInfo, leagueData;
 
     const rosters = rostersData.rosters;
-
-    const currentTeams = {};
-
-    for(const roster of rosters) {
-        const user = users[roster.owner_id];
-        currentTeams[roster.roster_id] = {
-            avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-            name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-        }
-    }
 
     let validGraph = false;
 
@@ -46,7 +36,7 @@
 
             const rosterPower = {
                 rosterID: roster.roster_id,
-                manager: currentTeams[roster.roster_id],
+                manager: teamManagers[leagueData.season][roster.roster_id]['team'],
                 powerScore: 0,
             }
             const seasonEnd = 18;

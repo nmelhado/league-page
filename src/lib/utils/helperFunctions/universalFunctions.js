@@ -30,35 +30,32 @@ export const gotoManager = (rosterID) => {
     goto(`/manager?manager=${managersIndex}`);
 }
 
-export const getAuthor = (rosters, users, author) => {
-    let user = null;
-    for(const userKey of Object.keys(users)) {
-        if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
-            user = users[userKey];
-            break;
+export const getAuthor = (leagueTeamManagers, author) => {
+    for(const yearKey in leagueTeamManagers) {
+        for(const rosterKey in leagueTeamManagers[yearKey]) {
+            for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
+                if(manager.display_name.toLowerCase() == author.toLowerCase()) {
+                    user = leagueTeamManagers[yearKey];
+                    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == rosterKey)}">${user.metadata.team_name ? user.metadata.team_name : user.display_name}</a>`;
+                }
+            }
         }
     }
-    if(!user) {
-        return author;
-    }
-    const userID = user.user_id;
-    const roster = rosters.find(r => r.owner_id == userID || (r.co_owners && r.co_owners.indexOf(userID) > -1));
-    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == roster.roster_id)}">${user.metadata.team_name ? user.metadata.team_name : user.display_name}</a>`;
+    return author;
 }
 
-export const getAvatar = (users, author) => {
-    let user = null;
-    for(const userKey of Object.keys(users)) {
-        if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
-            user = users[userKey];
-            break;
+export const getAvatar = (leagueTeamManagers, author) => {
+    for(const yearKey in leagueTeamManagers) {
+        for(const rosterKey in leagueTeamManagers[yearKey]) {
+            for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
+                if(manager.display_name.toLowerCase() == author.toLowerCase()) {
+                    user = leagueTeamManagers[yearKey];
+                    return `https://sleepercdn.com/avatars/thumbs/${manager.avatar}`;
+                }
+            }
         }
     }
-    if(!user) {
-        return 'managers/question.jpg';
-    }
-
-    return `https://sleepercdn.com/avatars/thumbs/${user.avatar}`;
+    return 'managers/question.jpg';
 }
 
 export const parseDate = (rawDate) => {
@@ -124,15 +121,18 @@ export const generateGraph = ({stats, x, y, stat, header, field, short, secondFi
 /**
  * get all managers of a roster
  * @param {Object} roster an object with all data for a roster
+ * @param {Object[]} roster an array with all data for a roster
  * @returns {Object[]} [managerIDs...] an array of manager IDs
  */
-export const getManagers = (roster) => {
+export const getManagers = (roster, processedUsers) => {
 	const managers = [];
     if(roster.owner_id) {
         managers.push(roster.owner_id);
     }
     if(roster.co_owners) {
-        managers.concat(...roster.co_owners);
+        for(const coOwner of roster.co_owners) {
+            managers.push(processedUsers[coOwner]);
+        }
     }
     return managers;
 }
@@ -155,4 +155,17 @@ export const getTeamData = (users, ownerID) => {
         avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
         name: 'Unknown Team',
     }
+}
+
+export const getAvatarFromTeamManagers = (teamManagers, year, rosterID) => {
+    return teamManagers[year][rosterID]['team']['avatar'];
+}
+
+export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID) => {
+    const originalName = teamManagers[year][rosterID]['team']['name'];
+    const currentName = teamManagers[teamManagers.currentYear][rosterID]['team']['name'];
+    if(cleanName(originalName) != cleanName(currentName)) {
+        return `${originalName}<div class="curOwner">(${currentName})</div>`;
+    }
+    return originalName;
 }

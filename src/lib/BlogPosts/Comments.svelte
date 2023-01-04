@@ -7,7 +7,7 @@
 
     const lang = "en-US";
 
-    export let comments, total, rosters, users, postID;
+    export let comments, total, leagueTeamManagers, postID;
 
     let open = false;
     let errorMessage = '';
@@ -53,17 +53,16 @@
     }
 
     const validateID = (author) => {
-        let user = null;
-        for(const userKey of Object.keys(users)) {
-            if(users[userKey].display_name.toLowerCase() == author.toLowerCase()) {
-                user = users[userKey];
-                break;
+        for(const yearKey in leagueTeamManagers) {
+            for(const rosterKey in leagueTeamManagers[yearKey]) {
+                for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
+                    if(manager.display_name.toLowerCase() == author.toLowerCase()) {
+                        return manager.user_id;
+                    }
+                }
             }
         }
-        if(!user) {
-            return false;
-        }
-        return user.user_id;
+        return false;
     }
 
     let showWrite = false;
@@ -134,8 +133,8 @@
     </div>
     {#each comments as comment}
         <div class="comment">
-            <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, comment.fields.author)}" />
-            <span class="author">{@html getAuthor(rosters, users, comment.fields.author)}</span>
+            <img alt="author avatar" class="teamAvatar" src="{getAvatar(leagueTeamManagers, comment.fields.author)}" />
+            <span class="author">{@html getAuthor(leagueTeamManagers, comment.fields.author)} - </span>
             <span class="commentText">{@html comment.fields.comment}</span>
             <div class="date"><i>{parseDate(comment.sys.createdAt)}</i></div>
         </div>

@@ -4,7 +4,7 @@
     import { fly } from "svelte/transition";
     import Comments from "./Comments.svelte";
 
-    export let rosters, users, post, createdAt, id = null, direction = 1, home = false;
+    export let rosters, leagueTeamManagers, post, createdAt, id = null, direction = 1, home = false;
 
     const lang = "en-US";
 
@@ -220,15 +220,15 @@
 
             <div class="authorAndDate">
                 <a href="/blog?filter={type}&page=1">{type}</a>
-                <img alt="author avatar" class="teamAvatar" src="{getAvatar(users, author)}" />
-                <span class="author">{@html getAuthor(rosters, users, author)} - </span>
+                <img alt="author avatar" class="teamAvatar" src="{getAvatar(leagueTeamManagers, author)}" />
+                <span class="author">{@html getAuthor(leagueTeamManagers, author)} - </span>
                 <span class="date"><i>{parseDate(createdAt)}</i></span>
             </div>
 
             <!-- display comments -->
             {#if !loadingComments && !home}
                 <hr class="divider commentDivider" />
-                <Comments {rosters} {users} {comments} {total} postID={id} />
+                <Comments {rosters} {leagueTeamManagers} {comments} {total} postID={id} />
             {/if}
 
         </div>

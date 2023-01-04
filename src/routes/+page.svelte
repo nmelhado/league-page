@@ -1,18 +1,11 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
-	import { getNflState, cleanName, leagueName, homepageText, managers, gotoManager, enableBlog } from '$lib/utils/helper';
+	import { getNflState, leagueName, getAwards, getLeagueTeamManagers, homepageText, managers, gotoManager, enableBlog, waitForAll } from '$lib/utils/helper';
 	import { Transactions, PowerRankings, HomePost} from '$lib/components';
-    import { getAwards } from "$lib/utils/helper"
 
-    let nflState = getNflState();
-    let podiumsData = getAwards();
-
-    const getNames = (name, rosterID, currentTeams) => {
-		if(cleanName(name) != cleanName(currentTeams[rosterID].name)) {
-			return `${name}<div class="curOwner">(${currentTeams[rosterID].name})</div>`;
-		}
-		return name;
-	}
+    const nflState = getNflState();
+    const podiumsData = getAwards();
+    const teamManagersData = getLeagueTeamManagers();
 
     let el, left;
 
@@ -182,17 +175,17 @@
         </div>
 
         <div id="currentChamp">
-            {#await podiumsData}
+            {#await waitForAll(podiumsData, teamManagersData)}
                 <p class="center">Retrieving awards...</p>
                 <LinearProgress indeterminate />
-            {:then {podiums, currentTeams}}
+            {:then [podiums, teamManagers]}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Champ</h4>
                     <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion.rosterID))}} >
-                        <img src="{podiums[0].champion.avatar}" class="first" alt="champion" />
+                        <img src="{teamManagers[podiums[0].year][podiums[0].champion.rosterID]['team'].avatar}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
-                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{@html getNames(podiums[0].champion.name, podiums[0].champion.rosterID, currentTeams)}</span>
+                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{teamManagers[podiums[0].year][podiums[0].champion.rosterID]['team'].name}</span>
                 {:else}
                     <p class="center">No former champs.</p>
                 {/if}

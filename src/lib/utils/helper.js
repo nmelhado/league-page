@@ -3,7 +3,7 @@ import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableBlog}
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
-import {getLeagueUsers} from './helperFunctions/leagueUsers';
+import {getLeagueTeamManagers} from './helperFunctions/leagueTeamManagers';
 import {getLeagueMatchups} from './helperFunctions/leagueMatchups'
 import {getNews, stringDate} from './helperFunctions/news';
 import {loadPlayers} from './helperFunctions/players';
@@ -26,7 +26,7 @@ export {
     getLeagueTransactions,
     getNflState, 
     getLeagueRosters,
-    getLeagueUsers,
+    getLeagueTeamManagers,
     getLeagueMatchups,
     getNews,
     loadPlayers,
