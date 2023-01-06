@@ -6,7 +6,7 @@
 	
 	export let roster, leagueTeamManagers, startersAndReserve, players, rosterPositions, division, expanded;
 
-	$: team = leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][roster.roster_id];
+	$: team = leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][roster.roster_id].team;
 
 	let i = 0;
 
@@ -263,7 +263,7 @@
 			<Row>
 				<Cell colspan=4 class="r_{division} clickable">
 					<h3 on:click={() => gotoManager(roster.roster_id)}>
-						<img alt="team avatar" class="teamAvatar" src="{team ? `https://sleepercdn.com/avatars/thumbs/${team.avatar}` : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
+						<img alt="team avatar" class="teamAvatar" src="{team ? team.avatar : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
 						{team?.name ? team.name : 'No Manager'}
 					</h3>
 

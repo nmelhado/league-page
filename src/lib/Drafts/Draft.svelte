@@ -7,7 +7,7 @@
     
     export let draftData, previous = false;
 
-    const {draftOrder, draft, currentTeams, originalManagers, accuracy, reversalRound, draftType} = draftData;
+    const {draftOrder, draft, currentTeams, accuracy, reversalRound, draftType} = draftData;
 
     let progress = 0;
     let closed = false;

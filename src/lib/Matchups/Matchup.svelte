@@ -4,8 +4,6 @@
 
     export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek, leagueTeamManagers;
 
-    console.log(leagueTeamManagers);
-
     let home = matchup[0];
     let away = matchup[1];
 
@@ -108,8 +106,6 @@
         const startersLength = matchupWeek ? home.starters[matchupWeek].length : home.starters.length;
         return startersLength * multiplier + 37;
     }
-
-    console.log(home)
 
 </script>
 
