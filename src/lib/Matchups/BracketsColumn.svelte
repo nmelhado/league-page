@@ -1,6 +1,6 @@
 <script>
     import { round } from "$lib/utils/helper";
-	import { getAvatarFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
 
     export let leagueTeamManagers, players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters, consolationNum, selected;
 
@@ -92,14 +92,14 @@
         }
     }
 
-    const getPlayoffName = (manager, bye) => {
-        if(manager?.name) {
-            return manager.name;
-        }
-        if(bye) {
+    const getPlayoffName = (manager, bye, season) => {
+        if(bye && !manager) {
             return 'BYE';
         }
-        return '';
+        if(!manager) {
+            return '';
+        }
+        return getTeamNameFromTeamManagers(leagueTeamManagers, manager, season);
     }
 
     const calculatePoints = (allPoints) => {
@@ -345,7 +345,7 @@
                             <span />
                         {/if}
                         {#if matchup.roster_id || (!matchups.bye && !matchup.roster_id)}
-                            <img class="avatar{!matchups.bye && !matchup.roster_id ? ' avatarBye': ''}" src={getAvatarFromTeamManagers(leagueTeamManagers, leagueTeamManagers.currentYear, matchup.roster_id)} alt="team avatar" />
+                            <img class="avatar{!matchups.bye && !matchup.roster_id ? ' avatarBye': ''}" src={getAvatarFromTeamManagers(leagueTeamManagers, matchup.roster_id, leagueTeamManagers.currentYear)} alt="team avatar" />
                         {/if}
                         {#if matchup.roster_id}
                             <div class="points">
@@ -356,7 +356,7 @@
                             <span />
                         {/if}
                     </div>
-                    <div class="name{matchups.bye && !matchup.roster_id ? ' bye': ''}">{getPlayoffName(matchup.roster_id, matchups.bye)}</div>
+                    <div class="name{matchups.bye && !matchup.roster_id ? ' bye': ''}">{getPlayoffName(matchup.roster_id, matchups.bye, leagueTeamManagers.currentYear)}</div>
                 </div>
             {/each}
         </div>

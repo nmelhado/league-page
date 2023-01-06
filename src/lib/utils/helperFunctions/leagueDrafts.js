@@ -1,7 +1,5 @@
 import { getLeagueData } from './leagueData';
 import { leagueID } from '$lib/utils/leagueInfo';
-import { getLeagueRosters } from "./leagueRosters"
-import { getLeagueUsers } from "./leagueTeamManagers"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {upcomingDraft, previousDrafts} from '$lib/stores';
@@ -10,35 +8,12 @@ export const getUpcomingDraft = async () => {
 	if(get(upcomingDraft).draft) {
 		return get(upcomingDraft);
 	}
-	const [rosterRes, users, leagueData] = await waitForAll(
-		getLeagueRosters(),
-		getLeagueUsers(),
-		getLeagueData()
-	).catch((err) => { console.error(err); });
+	const leagueData = await getLeagueData().catch((err) => { console.error(err); });
 
 	const draftID = leagueData.draft_id;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
 
 	let year = parseInt(leagueData.season);
-
-	const rosters = rosterRes.rosters;
-
-	const originalManagers = {};
-
-	for(const roster of rosters) {
-		const user = users[roster.owner_id];
-		if(user) {
-			originalManagers[roster.roster_id] = {
-				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-			}
-		} else {
-			originalManagers[roster.roster_id] = {
-				avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
-				name: 'Unknown Manager',
-			}
-		}
-	}
 
 	const [officialDraftRes, picksRes] = await waitForAll(
 		fetch(`https://api.sleeper.app/v1/draft/${draftID}`, {compress: true}),
@@ -56,12 +31,12 @@ export const getUpcomingDraft = async () => {
 
 	if(officialDraft.status == "complete") {
 		year = year + 1;
-		const buildRes = buildFromScratch(rosters, officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks.filter(pick => parseInt(pick.season) == year), originalManagers, regularSeasonLength);
+		const buildRes = buildFromScratch(rosters, officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks.filter(pick => parseInt(pick.season) == year), regularSeasonLength);
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
 		accuracy = buildRes.accuracy;
 	} else {
-		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks.filter(pick => parseInt(pick.season) == year), originalManagers);
+		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks.filter(pick => parseInt(pick.season) == year));
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
 	}
@@ -73,7 +48,6 @@ export const getUpcomingDraft = async () => {
 		accuracy,
 		draftType: officialDraft.type,
 		reversalRound: officialDraft.settings.reversal_round,
-		originalManagers
 	}
 	
 	upcomingDraft.update(() => draftData);
@@ -82,7 +56,7 @@ export const getUpcomingDraft = async () => {
 }
 
 // Predict draft board
-const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManagers, regularSeasonLength) => {
+const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLength) => {
 	const draftOrder = [];
 	const testRoster = rosters[0].settings;
 	const progression = testRoster.wins + testRoster.ties + testRoster.losses;
@@ -119,7 +93,7 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManager
 
 	for(const pick of picks) {
 		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = originalManagers[pick.owner_id].name;
+		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
 	}
 
 	let accuracy = (progression + 1) / (regularSeasonLength + 1);
@@ -130,7 +104,7 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, originalManager
 }
 
 // Build pre-determined draft board
-const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players = null, type = null) => {
+const buildConfirmed = (draftOrderObj, rounds, picks, players = null, type = null) => {
 	const draftOrder = [];
 	let leagueSize = 0;
 
@@ -148,51 +122,40 @@ const buildConfirmed = (draftOrderObj, rounds, picks, originalManagers, players 
 
 	if(players && type != 'auction') {
 		// non-auction leagues
-		draft = completedNonAuction({players, draft, picks, originalManagers, draftOrder, rounds});
+		draft = completedNonAuction({players, draft, picks, draftOrder, rounds});
 	} else if(players) {
 		// auction leagues
-		draft = completedAuction({players, draft, picks, originalManagers, draftOrder, draftOrderObj});
+		draft = completedAuction({players, draft, draftOrder, draftOrderObj});
 	} else {
 		for(const pick of picks) {
 			if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = originalManagers[pick.owner_id].name;
+			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
 		}
 	}
 
 	return {draft, draftOrder};
 }
 
-const completedNonAuction = ({players, draft, picks, originalManagers, draftOrder, rounds}) => {
+const completedNonAuction = ({players, draft, picks, draftOrder, rounds}) => {
 	for(const playerData of players) {
-		const player = {
-			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
-			position: playerData.metadata.position,
-			team: playerData.metadata.team,
-			avatar: playerData.metadata.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${playerData.player_id.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${playerData.player_id}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-		}
+		const player = playerData.player_id;
 		draft[playerData.round - 1][playerData.draft_slot - 1] = {player};
 	}
 	for(const pick of picks) {
 		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = originalManagers[pick.owner_id].name;
+		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = pick.owner_id;
 	}
 	return draft;
 }
 
-const completedAuction = ({players, draft, picks, originalManagers, draftOrder, draftOrderObj}) => {
+const completedAuction = ({players, draft, draftOrder, draftOrderObj}) => {
 	const rosters = {};
 	for (const key in draftOrderObj) {
 		// array to be used for players
 		rosters[draftOrderObj[key]] = [];
 	}
 	for(const playerData of players) {
-		const player = {
-			name: `${playerData.metadata.first_name} ${playerData.metadata.last_name}`,
-			position: playerData.metadata.position,
-			team: playerData.metadata.team,
-			amount: playerData.metadata.amount,
-			avatar: playerData.metadata.position == "DEF" ? `background-image: url(https://sleepercdn.com/images/team_logos/nfl/${playerData.player_id.toLowerCase()}.png)` : `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${playerData.player_id}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`,
-		}
+		const player = playerData.player_id;
 		rosters[playerData.roster_id].push(player);
 	}
 	for (const roster in rosters) {
@@ -214,40 +177,12 @@ export const getPreviousDrafts = async () => {
 
 	const drafts = [];
 	
-	let currentTeams;
 	while(curSeason && curSeason != 0) {
-		const [rosterRes, users, leagueData] = await waitForAll(
-			getLeagueRosters(curSeason),
-			getLeagueUsers(curSeason),
-			getLeagueData(curSeason)
-		).catch((err) => { console.error(err); });
+		const leagueData = await getLeagueData(curSeason).catch((err) => { console.error(err); });
 	
 		const draftID = leagueData.draft_id;
 		let year = parseInt(leagueData.season);
 		curSeason = leagueData.previous_league_id;
-	
-		const rosters = rosterRes.rosters;
-	
-		const originalManagers = {};
-
-		for(const roster of rosters) {
-			const user = users[roster.owner_id];
-			if(user) {
-				originalManagers[roster.roster_id] = {
-					avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-					name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-				}
-			} else {
-				originalManagers[roster.roster_id] = {
-					avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
-					name: 'Unknown Manager',
-				}
-			}
-		}
-		
-		if(!currentTeams) {
-			currentTeams = originalManagers;
-		}
 	
 		const [officialDraftRes, picksRes, playersRes] = await waitForAll(
 			fetch(`https://api.sleeper.app/v1/draft/${draftID}`, {compress: true}),
@@ -267,7 +202,7 @@ export const getPreviousDrafts = async () => {
 		let draftOrder;
 
 	
-		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, originalManagers, players, officialDraft.type);
+		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, players, officialDraft.type);
 		draft = buildRes.draft;
 		draftOrder = buildRes.draftOrder;
 
@@ -277,11 +212,6 @@ export const getPreviousDrafts = async () => {
 			draftOrder,
 			draftType: officialDraft.type,
 			reversalRound: officialDraft.settings.reversal_round,
-			originalManagers
-		}
-		
-		if(originalManagers != currentTeams) {
-			newDraft.currentTeams = currentTeams;
 		}
 	
 		drafts.push(newDraft);

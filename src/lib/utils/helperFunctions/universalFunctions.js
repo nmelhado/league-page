@@ -31,12 +31,11 @@ export const gotoManager = (rosterID) => {
 }
 
 export const getAuthor = (leagueTeamManagers, author) => {
-    for(const yearKey in leagueTeamManagers) {
-        for(const rosterKey in leagueTeamManagers[yearKey]) {
-            for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
-                if(manager.display_name.toLowerCase() == author.toLowerCase()) {
-                    user = leagueTeamManagers[yearKey];
-                    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == rosterKey)}">${user.metadata.team_name ? user.metadata.team_name : user.display_name}</a>`;
+    for(const yearKey in leagueTeamManagers.teamManagersMap) {
+        for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
+            for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers) {
+                if(leagueTeamManagers.users[manager].display_name.toLowerCase() == author.toLowerCase()) {
+                    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == rosterKey)}">${leagueTeamManagers.users[manager].display_name}</a>`;
                 }
             }
         }
@@ -45,12 +44,11 @@ export const getAuthor = (leagueTeamManagers, author) => {
 }
 
 export const getAvatar = (leagueTeamManagers, author) => {
-    for(const yearKey in leagueTeamManagers) {
-        for(const rosterKey in leagueTeamManagers[yearKey]) {
-            for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
-                if(manager.display_name.toLowerCase() == author.toLowerCase()) {
-                    user = leagueTeamManagers[yearKey];
-                    return `https://sleepercdn.com/avatars/thumbs/${manager.avatar}`;
+    for(const yearKey in leagueTeamManagers.teamManagersMap) {
+        for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
+            for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers) {
+                if(leagueTeamManagers.users[manager].display_name.toLowerCase() == author.toLowerCase()) {
+                    return getTeamFromTeamManagers(leagueTeamManagers, rosterKey).avatar;
                 }
             }
         }
@@ -121,17 +119,16 @@ export const generateGraph = ({stats, x, y, stat, header, field, short, secondFi
 /**
  * get all managers of a roster
  * @param {Object} roster an object with all data for a roster
- * @param {Object[]} roster an array with all data for a roster
  * @returns {Object[]} [managerIDs...] an array of manager IDs
  */
-export const getManagers = (roster, processedUsers) => {
+export const getManagers = (roster) => {
 	const managers = [];
     if(roster.owner_id) {
         managers.push(roster.owner_id);
     }
     if(roster.co_owners) {
         for(const coOwner of roster.co_owners) {
-            managers.push(processedUsers[coOwner]);
+            managers.push(coOwner);
         }
     }
     return managers;
@@ -157,13 +154,30 @@ export const getTeamData = (users, ownerID) => {
     }
 }
 
-export const getAvatarFromTeamManagers = (teamManagers, year, rosterID) => {
-    return teamManagers[year][rosterID]['team']['avatar'];
+export const getAvatarFromTeamManagers = (teamManagers, rosterID, year) => {
+    if(!year || year > teamManagers.currentSeason) {
+        year = teamManagers.currentSeason;
+    }
+    return teamManagers.teamManagersMap[year][rosterID]['team'].avatar;
+}
+
+export const getTeamNameFromTeamManagers = (teamManagers, rosterID, year) => {
+    if(!year || year > teamManagers.currentSeason) {
+        year = teamManagers.currentSeason;
+    }
+    return teamManagers.teamManagersMap[year][rosterID]['team'].name;
+}
+
+export const getTeamFromTeamManagers = (teamManagers, rosterID, year) => {
+    if(!year || year > teamManagers.currentSeason) {
+        year = teamManagers.currentSeason;
+    }
+    return teamManagers.teamManagersMap[year][rosterID]['team'];
 }
 
 export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID) => {
-    const originalName = teamManagers[year][rosterID]['team']['name'];
-    const currentName = teamManagers[teamManagers.currentYear][rosterID]['team']['name'];
+    const originalName = teamManagers.teamManagersMap[year][rosterID]['team']['name'];
+    const currentName = teamManagers.teamManagersMap[teamManagers.currentYear][rosterID]['team']['name'];
     if(cleanName(originalName) != cleanName(currentName)) {
         return `${originalName}<div class="curOwner">(${currentName})</div>`;
     }

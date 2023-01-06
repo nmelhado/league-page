@@ -2,7 +2,7 @@
 	import { loadPlayers } from '$lib/utils/helper';
 	import RosterSorter from './RosterSorter.svelte'
 
-	export let leagueData, rosterData, users, playersInfo;
+	export let leagueData, rosterData, leagueTeamManagers, playersInfo;
 
 	let players = playersInfo.players;
 
@@ -24,5 +24,5 @@
 </style>
 
 <div class="rosters">
-	<RosterSorter rosters={rosterData.rosters} {players} {users} startersAndReserve={rosterData.startersAndReserve} {leagueData} />
+	<RosterSorter rosters={rosterData.rosters} {players} {leagueTeamManagers} startersAndReserve={rosterData.startersAndReserve} {leagueData} />
 </div>

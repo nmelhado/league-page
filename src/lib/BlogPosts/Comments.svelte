@@ -53,11 +53,11 @@
     }
 
     const validateID = (author) => {
-        for(const yearKey in leagueTeamManagers) {
-            for(const rosterKey in leagueTeamManagers[yearKey]) {
-                for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
-                    if(manager.display_name.toLowerCase() == author.toLowerCase()) {
-                        return manager.user_id;
+        for(const yearKey in leagueTeamManagers.teamManagersMap) {
+            for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
+                for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey]) {
+                    if(leagueTeamManagers.users[manager].display_name.toLowerCase() == author.toLowerCase()) {
+                        return manager;
                     }
                 }
             }

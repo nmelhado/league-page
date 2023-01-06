@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions, loadPlayers, waitForAll } from '$lib/utils/helper';
+	import { getLeagueTransactions, getLeagueTeamManagers, loadPlayers, waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from 'svelte';
 	import Transaction from './Transaction.svelte';
@@ -9,19 +9,19 @@
 
 	let loading = true;
 	let players;
-	let transactions, currentTeams;
+	let transactions;
+    let leagueTeamManagers;
 
 	onMount(async () => {
-		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null));
+		const [transactionsData, playersData, leagueTeamManagersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null), getLeagueTeamManagers());
 		players = playersData.players;
 		transactions = transactionsData.transactions;
-		currentTeams = transactionsData.currentTeams;
+        leagueTeamManagers = leagueTeamManagersData;
 		loading = false;
 
 		if(transactionsData.stale) {
 			const newTransactions = await getLeagueTransactions(true, true);
 			transactions = newTransactions.transactions;
-			currentTeams = newTransactions.currentTeams;
 		}
 
 		if(playersData.stale) {
@@ -72,7 +72,7 @@
 		{#if transactions.waivers.length}
 			<h5>Recent Waiver Moves</h5>
 			{#each transactions.waivers as transaction }
-				<Transaction {players} {transaction} {masterOffset} {currentTeams} />
+				<Transaction {players} {transaction} {masterOffset} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
@@ -88,7 +88,7 @@
 		{#if transactions.trades.length}
 			<h5>Recent Trades</h5>
 			{#each transactions.trades as transaction }
-				<Transaction {players} {transaction} {masterOffset} currentTeams={currentTeams} />
+				<Transaction {players} {transaction} {masterOffset} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>

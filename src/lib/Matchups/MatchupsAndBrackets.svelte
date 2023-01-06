@@ -97,7 +97,7 @@
             {/if}
         </div>
         {#if selection == 'regular'}
-            <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} />
+            <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} {leagueTeamManagers} />
         {/if}
     {:else}
         <div class="message">
@@ -106,6 +106,6 @@
     {/if}
     <!-- {promise has processed -->
     {#if brackets.champs.bracket[0][0][0].points && (selection == 'champions' || selection == 'losers')}
-        <Brackets {queryWeek} {leagueTeamManagers} {players} {brackets} bind:selection={selection}/>
+        <Brackets {queryWeek} {leagueTeamManagers} {players} {brackets} bind:selection={selection} />
     {/if}
 {/if}

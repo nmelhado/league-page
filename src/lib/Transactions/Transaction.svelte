@@ -1,9 +1,10 @@
 <script>
-	import {cleanName, gotoManager} from '$lib/utils/helper';
+	import { gotoManager } from '$lib/utils/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import TransactionMove from './TransactionMove.svelte';
 
-	export let transaction, masterOffset, currentTeams, players;
+	export let transaction, masterOffset, players, leagueTeamManagers;
 </script>
 
 <style>
@@ -60,13 +61,13 @@
 		<Row>
 			{#each transaction.rosters as owner, ix}
 				<Cell class="transactTeam">
-					{#if transaction.previousOwners && cleanName(transaction.previousOwners[ix].name) != cleanName(currentTeams[owner].name)}
-						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{transaction.previousOwners[ix].avatar}" alt="{transaction.previousOwners[ix].name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{transaction.previousOwners[ix].name}</span>
-						<span class="currentOwner">({currentTeams[owner].name})</span>
+					{#if getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name != getTeamFromTeamManagers(leagueTeamManagers, owner).name}
+						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
+						<span class="currentOwner">({getTeamFromTeamManagers(leagueTeamManagers, owner).name})</span>
 					{:else}
-						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{currentTeams[owner].avatar}" alt="{currentTeams[owner].name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{currentTeams[owner].name}</span>
+						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
 					{/if}
 				</Cell>
 			{/each}
@@ -74,7 +75,7 @@
 	</Head>
 	<Body class="moves">
 		{#each transaction.moves as move}
-			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {currentTeams} />
+			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {leagueTeamManagers} season={transaction.season} />
 		{/each}
 		<Row>
 			<Cell class="transact-date" colspan={transaction.rosters.length}>{transaction.date}</Cell>

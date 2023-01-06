@@ -1,13 +1,16 @@
 <script>
     import BarChart from '$lib/BarChart.svelte';
     import { generateGraph, round, predictScores, loadPlayers } from '$lib/utils/helper';
-    export let nflState, rostersData, teamManagers, playersInfo, leagueData;
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    export let nflState, rostersData, leagueTeamManagers, playersInfo, leagueData;
 
     const rosters = rostersData.rosters;
 
     let validGraph = false;
 
     let graphs = [];
+
+    let seasonOver = false;
 
     const buildRankings = () => {
         const rosterPowers = [];
@@ -36,10 +39,13 @@
 
             const rosterPower = {
                 rosterID: roster.roster_id,
-                manager: teamManagers[leagueData.season][roster.roster_id]['team'],
+                manager: getTeamFromTeamManagers(leagueTeamManagers, roster.roster_id),
                 powerScore: 0,
             }
             const seasonEnd = 18;
+            if(week >= seasonEnd) {
+                seasonOver = true;
+            }
             for(let i = week; i < seasonEnd; i++) {
                 rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
             }
@@ -110,7 +116,7 @@
     }
 </style>
 
-{#if validGraph}
+{#if validGraph && !seasonOver}
     <div class="enclosure" bind:this={el}>
         <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
     </div>

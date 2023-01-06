@@ -1,7 +1,7 @@
 import {
     waitForAll,
     getLeagueRosters,
-    getLeagueUsers,
+    getLeagueTeamManagers,
     getLeagueData,
     getLeagueTransactions,
     getAwards,
@@ -12,7 +12,7 @@ export async function load({ url }) {
     if(!managersObj.length) return false;
     const managersInfo = waitForAll(
         getLeagueRosters(),    
-        getLeagueUsers(),
+        getLeagueTeamManagers(),
         getLeagueData(),
         getLeagueTransactions(),
         getAwards(),

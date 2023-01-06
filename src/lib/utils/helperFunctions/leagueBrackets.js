@@ -127,7 +127,7 @@ const evaluateBracket = (contestants, rounds, playoffMatchups, playoffType) => {
                 byeMatchup[0].r--;
                 byeMatchup[1].r--;
                 // set the opponent to null
-                byeMatchup[1].manager = null;
+                byeMatchup[1].roster_id = null;
                 if(first) {
                     bracket[i - 2].unshift(byeMatchup);
                     first = false;
@@ -209,7 +209,6 @@ const processPlayoffMatchup = ({playoffBracket, playoffMatchups, i, consolationM
 
 const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, playoffType, winners, fromWinners, consolation, p}) => {
     let matchup = {
-        manager: null,
         roster_id: null,
         points: undefined,
         starters: undefined,

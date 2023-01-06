@@ -1,14 +1,14 @@
 import {
     waitForAll,
     getLeagueRosters,
-    getLeagueUsers,
+    getLeagueTeamManagers,
     managers as managersObj
 } from '$lib/utils/helper';
 export async function load({ url }) {
     if(!managersObj.length) return false;
     const managersInfo = waitForAll(
         getLeagueRosters(),    
-        getLeagueUsers(),
+        getLeagueTeamManagers(),
     );
 
     const manager = url?.searchParams?.get('manager');

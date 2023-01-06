@@ -28,9 +28,9 @@
         <p>Calculating power rankings...</p>
         <LinearProgress indeterminate />
     </div>
-{:then [nflState, rostersData, teamManagers, leagueData, playersInfo]}
+{:then [nflState, rostersData, leagueTeamManagers, leagueData, playersInfo]}
     {#if leagueData.status != 'pre_draft'}
-        <PowerRankingsDisplay {nflState} {rostersData} {teamManagers} {leagueData} {playersInfo} />
+        <PowerRankingsDisplay {nflState} {rostersData} {leagueTeamManagers} {leagueData} {playersInfo} />
     {/if}
 {:catch error}
 	<!-- promise was rejected -->

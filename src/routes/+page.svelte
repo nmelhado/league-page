@@ -2,10 +2,11 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { getNflState, leagueName, getAwards, getLeagueTeamManagers, homepageText, managers, gotoManager, enableBlog, waitForAll } from '$lib/utils/helper';
 	import { Transactions, PowerRankings, HomePost} from '$lib/components';
+	import { getAvatarFromTeamManagers, getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
     const nflState = getNflState();
     const podiumsData = getAwards();
-    const teamManagersData = getLeagueTeamManagers();
+    const leagueTeamManagersData = getLeagueTeamManagers();
 
     let el, left;
 
@@ -175,17 +176,17 @@
         </div>
 
         <div id="currentChamp">
-            {#await waitForAll(podiumsData, teamManagersData)}
+            {#await waitForAll(podiumsData, leagueTeamManagersData)}
                 <p class="center">Retrieving awards...</p>
                 <LinearProgress indeterminate />
-            {:then [podiums, teamManagers]}
+            {:then [podiums, leagueTeamManagers]}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Champ</h4>
-                    <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion.rosterID))}} >
-                        <img src="{teamManagers[podiums[0].year][podiums[0].champion.rosterID]['team'].avatar}" class="first" alt="champion" />
+                    <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion))}} >
+                        <img src="{getAvatarFromTeamManagers(leagueTeamManagers, podiums[0].champion, podiums[0].year)}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
-                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion.rosterID))} >{teamManagers[podiums[0].year][podiums[0].champion.rosterID]['team'].name}</span>
+                    <span class="label" on:click={() => gotoManager(parseInt(podiums[0].champion))} >{getTeamFromTeamManagers(leagueTeamManagers, podiums[0].champion, podiums[0].year).name}</span>
                 {:else}
                     <p class="center">No former champs.</p>
                 {/if}

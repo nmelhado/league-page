@@ -9,7 +9,9 @@
     import ManagerAwards from './ManagerAwards.svelte';
     import { onMount } from 'svelte';
 
-    export let manager, managers, rostersData, users, rosterPositions, transactionsData, awards, records;
+    export let manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
+
+    const {users, teamManagersMap} = leagueTeamManagers;
 
     let transactions = transactionsData.transactions;
 
@@ -27,6 +29,10 @@
     let roster = rosters[rosterArrNum];
 
     let user = users[roster.owner_id];
+    // if using the new userID
+    if(viewManager.userId) {
+        user = users[viewManager.userId];
+    }
 
     let players, playersInfo;
     let loading = true;
@@ -67,6 +73,11 @@
         roster = rosters[rosterArrNum];
 
         user = users[roster.owner_id];
+        // if using the new userID
+        if(viewManager.userId) {
+            user = users[viewManager.userId];
+        }
+
         goto(`/manager?manager=${manager}`, {noscroll})
     }
 

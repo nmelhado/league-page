@@ -1,7 +1,10 @@
 <script>
     import {round} from '$lib/utils/helper'
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-    export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek;
+    export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek, leagueTeamManagers;
+
+    console.log(leagueTeamManagers);
 
     let home = matchup[0];
     let away = matchup[1];
@@ -16,6 +19,8 @@
     const digestStarters = (x, p) => {
         home = matchup[0];
         away = matchup[1];
+        home.manager = getTeamFromTeamManagers(leagueTeamManagers, home.roster_id);
+        away.manager = getTeamFromTeamManagers(leagueTeamManagers, away.roster_id);
         const homeStarters = matchupWeek ? home.starters[matchupWeek] : home.starters;
         const awayStarters = matchupWeek ? away.starters[matchupWeek] : away.starters;
         const homePoints = matchupWeek ? home.points[matchupWeek] : home.points;
@@ -103,6 +108,8 @@
         const startersLength = matchupWeek ? home.starters[matchupWeek].length : home.starters.length;
         return startersLength * multiplier + 37;
     }
+
+    console.log(home)
 
 </script>
 

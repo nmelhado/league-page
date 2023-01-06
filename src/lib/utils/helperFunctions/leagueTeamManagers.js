@@ -6,11 +6,13 @@ import { getManagers, getTeamData } from './universalFunctions';
 import { getLeagueData } from './leagueData';
 
 export const getLeagueTeamManagers = async () => {
-    if(get(teamManagersStore) && Object.keys(get(teamManagersStore)).length > 0) {
+    if(get(teamManagersStore) && teamManagersStore.currentSeason) {
 		return get(teamManagersStore);
 	}
     let currentLeagueID = leagueID;
 	let teamManagersMap = {};
+    let finalUsers = {};
+    let currentSeason = null;
 
     // loop through all seasons and create a [year][roster_id]: team, managers object
 	while(currentLeagueID && currentLeagueID != 0) {
@@ -31,8 +33,12 @@ export const getLeagueTeamManagers = async () => {
         }
 
         currentLeagueID = leagueData.previous_league_id;
+        if(!currentSeason) {
+            currentSeason = leagueData.season;
+        }
         teamManagersMap[year] = {};
         const processedUsers = processUsers(users);
+        finalUsers = {...processedUsers};
         for(const roster of rosters) {
             teamManagersMap[year][roster.roster_id] = {
                 team: getTeamData(processedUsers, roster.owner_id),
@@ -40,8 +46,13 @@ export const getLeagueTeamManagers = async () => {
             };
         }
     }
-    teamManagersStore.update(() => teamManagersMap);
-    return teamManagersMap;
+    const response = {
+        currentSeason,
+        teamManagersMap,
+        users: finalUsers,
+    }
+    teamManagersStore.update(() => response);
+    return response;
 }
 
 const processUsers = (rawUsers) => {

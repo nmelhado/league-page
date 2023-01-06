@@ -2,7 +2,7 @@
     import { gotoManager } from '$lib/utils/helper';
   	import { Row, Cell } from '@smui/data-table';
 
-    export let columnOrder, roster, user, standing;
+    export let columnOrder, roster, team, standing;
 </script>
 
 <style>
@@ -30,9 +30,9 @@
 <Row class="contrastRow">
     <Cell class="">
         <div class="clickable team" on:click={() => gotoManager(roster.roster_id)}>
-            <img alt="team avatar" class="teamAvatar clickable" src="https://sleepercdn.com/avatars/thumbs/{user.avatar}" />
+            <img alt="team avatar" class="teamAvatar clickable" src="{team.avatar}" />
             <div>
-                {user.metadata.team_name ? user.metadata.team_name : user.display_name}
+                {team.name}
             </div>
         </div>
     </Cell>

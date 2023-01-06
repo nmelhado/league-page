@@ -1,7 +1,7 @@
 import contentful from 'contentful-management'
 import { json, error } from '@sveltejs/kit';
 
-import { getLeagueUsers } from "$lib/utils/helper";
+import { getLeagueTeamManagers } from "$lib/utils/helper";
 
 const client = contentful.createClient({
     // This is the access token for this space. Normally you get the token in the Contentful web app
@@ -25,9 +25,9 @@ export async function POST({request, params}) {
     const authorID = params.id;
     const {comment, postID} = await request.json();
 
-    const users = await getLeagueUsers();
+    const leagueTeamManagers = await getLeagueTeamManagers();
 
-    const author = validateID(users, authorID);
+    const author = validateID(leagueTeamManagers, authorID);
 
     if(!author) {
         throw error(500, "Invalid author");
@@ -63,16 +63,16 @@ export async function POST({request, params}) {
     return json(newComment);
 }
 
-const validateID = (users, authorID) => {
-    let user = null;
-    for(const userKey of Object.keys(users)) {
-        if(users[userKey].user_id == authorID) {
-            user = users[userKey];
-            break;
+const validateID = (leagueTeamManagers, authorID) => {
+    for(const yearKey in leagueTeamManagers) {
+        for(const rosterKey in leagueTeamManagers[yearKey]) {
+            for(const manager of leagueTeamManagers[yearKey][rosterKey]) {
+                if(manager == authorID) {
+                    return manager.display_name;
+                }
+            }
         }
     }
-    if(!user) {
-        return false;
-    }
-    return user.display_name;
+    
+    return false;
 }

@@ -26,8 +26,8 @@
             <p>Retrieving managers...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then [rostersData, users,]}
-        <AllManagers {managers} rosters={rostersData} {users}/>
+    {:then [rostersData, leagueTeamManagers]}
+        <AllManagers {managers} rosters={rostersData} {leagueTeamManagers}/>
     {:catch error}
         <!-- promise was rejected -->
         <p>Something went wrong: {error.message}</p>

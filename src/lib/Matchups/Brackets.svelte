@@ -132,6 +132,6 @@
                 </Group>
             </div>
         {/if}
-        <Matchup ix={selected} active={selected} {matchup} {matchupWeek} {players} {displayWeek} expandOverride={true} />
+        <Matchup ix={selected} active={selected} {matchup} {matchupWeek} {players} {displayWeek} expandOverride={true} {leagueTeamManagers} />
     {/if}
 </div>

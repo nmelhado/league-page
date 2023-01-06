@@ -7,7 +7,7 @@
     import Post from "./Post.svelte";
     import { browser } from '$app/environment';
 
-    export let postsData, usersData, rostersData, queryPage = 1, filterKey = '';
+    export let postsData, leagueTeamManagersData, rostersData, queryPage = 1, filterKey = '';
 
     let page = queryPage - 1;
 
@@ -16,7 +16,7 @@
     let loading = true;
     let allPosts = [];
     let posts = [];
-    let users = {};
+    let leagueTeamManagers = {};
     let rosters = [];
 
     let categories;
@@ -38,7 +38,7 @@
 
     onMount(async ()=> {
         const startPostData = await postsData;
-        users = await usersData;
+        leagueTeamManagers = await leagueTeamManagersData;
         const rostersInfo = await rostersData;
         rosters = rostersInfo.rosters;
         allPosts = startPostData.posts;
@@ -166,7 +166,7 @@
 
     {#each displayPosts as post}
         {#key post.sys.id}
-        <Post {rosters} {users} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
+        <Post {rosters} {leagueTeamManagers} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
         {/key}
     {/each}
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />
