@@ -13,7 +13,7 @@ import { browser } from '$app/environment';
 /**
  * getLeagueRecords obtains all the record for a league since it was first created
  * @param {bool} refresh if set to false, getLeagueRecords returns the records stored in localStorage
- * @returns {Object} { allTimeBiggestBlowouts, allTimeClosestMatchups, leastSeasonLongPoints, mostSeasonLongPoints, leagueWeekLows, leagueWeekHighs, seasonWeekRecords, leagueManagerRecords, currentTeams, currentYear, lastYear}
+ * @returns {Object} { allTimeBiggestBlowouts, allTimeClosestMatchups, leastSeasonLongPoints, mostSeasonLongPoints, leagueWeekLows, leagueWeekHighs, seasonWeekRecords, leagueManagerRecords, currentYear, lastYear}
  */
 export const getLeagueRecords = async (refresh = false) => {
 	// records temporarily cached for an individual session
@@ -44,12 +44,6 @@ export const getLeagueRecords = async (refresh = false) => {
 	// initiate current season to be your current
 	// league page leagueID
 	let curSeason = leagueID;
-	
-	// currentTeams is a placeholder that will eventually
-	// hold the most recent season's manager info. This is used
-	// on the front end to tie old team names to the current one,
-	// so that it's easier to track the continuity of records
-	let currentTeams;
 
 	// currentYear will eventually be assigned as the most recent year
 	// that has record information (current season if past week 1,
@@ -85,7 +79,6 @@ export const getLeagueRecords = async (refresh = false) => {
 
 		// regular season data
 		const {
-			originalManagers,
 			season,
 			year,
 			rS
@@ -94,16 +87,13 @@ export const getLeagueRecords = async (refresh = false) => {
 		regularSeason = rS; // update the regular season record
 
 		// post season data
-		const pS = await processPlayoffs({year, originalManagers, curSeason, week, playoffRecords})
+		const pS = await processPlayoffs({year, curSeason, week, playoffRecords, rosters})
 
 		if(pS) {
 			playoffRecords = pS; // update the regular season records
 		}
 
 		lastYear = year;
-		if(!currentTeams) {
-			currentTeams = originalManagers;
-		}
 
 		if(!currentYear && year) {
 			currentYear = year;
@@ -114,10 +104,9 @@ export const getLeagueRecords = async (refresh = false) => {
 
 	playoffRecords.currentYear = regularSeason.currentYear;
 	playoffRecords.lastYear = regularSeason.lastYear;
-	playoffRecords.currentTeams = regularSeason.currentTeams;
 
-	regularSeason.finalizeAllTimeRecords({currentTeams, currentYear, lastYear});
-	playoffRecords.finalizeAllTimeRecords({currentTeams, currentYear, lastYear});
+	regularSeason.finalizeAllTimeRecords({currentYear, lastYear});
+	playoffRecords.finalizeAllTimeRecords({currentYear, lastYear});
 	
 	const regularSeasonData = regularSeason.returnRecords()
 	const playoffData = playoffRecords.returnRecords()
@@ -143,7 +132,7 @@ export const getLeagueRecords = async (refresh = false) => {
  * @param {string} regularSeasonInfo.curSeason the league ID of the current season
  * @param {int} regularSeasonInfo.week the week to start analyzing (most recently completed week)
  * @param {Records} regularSeasonInfo.regularSeason the global regularSeason record object
- * @returns {Object} { interSeasonEntry, season: (curSeason), year, originalManagers, matchupDifferentials, lRR: (leagueManagerRecords), mSLP: (seasonLongPoints), lWR: (leagueWeekRecords)}
+ * @returns {Object} { interSeasonEntry, season: (curSeason), year, matchupDifferentials, lRR: (leagueManagerRecords), mSLP: (seasonLongPoints), lWR: (leagueWeekRecords)}
  */
 const processRegularSeason = async ({rosters, leagueData, curSeason, week, regularSeason}) => {
 	let year = parseInt(leagueData.season);
@@ -154,12 +143,8 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 		week = leagueData.settings.playoff_week_start - 1;
 	}
 
-	let originalManagers = {};
-
 	for(const roster of rosters) {
-		const {oM, rS} = analyzeRosters({year, roster, regularSeason, originalManagers})
-		regularSeason = rS;
-		originalManagers = oM;
+		regularSeason = analyzeRosters({year, roster, regularSeason});
 	}
 
 	// loop through each week of the season
@@ -223,7 +208,6 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 	return {
 		season: curSeason,
 		year,
-		originalManagers,
 		rS: regularSeason
 	}
 }
@@ -236,17 +220,16 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
  * @param {int} rosterData.year the year being analyzed
  * @param {Object} rosterData.roster the roster being analyzed
  * @param {Records} rosterData.regularSeason the global regularSeason object that will be updated and returned
- * @param {Object} rosterData.originalManagers the originalManagers object for that season
- * @returns {Object} {rS: RegularSeason, oM: originalManagers}
+ * @returns {Object} {rS: RegularSeason}
  */
-const analyzeRosters = ({year, roster, regularSeason, originalManagers}) => {
+const analyzeRosters = ({year, roster, regularSeason}) => {
     // team name and logo are tied to the ownerID
     const rosterID = roster.roster_id;
 
     const managers = getManagers(roster);
 
 	// season hasn't started, no records to obtain
-	if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) return {rS: regularSeason, oM: originalManagers};
+	if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) return {rS: regularSeason};
 
 	// fptsFor and fptsPerGame are used for both rosterRecords and seasonLongPoints
 	const fptsFor = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
@@ -275,10 +258,7 @@ const analyzeRosters = ({year, roster, regularSeason, originalManagers}) => {
 		year,
 	})
 
-	return {
-		rS: regularSeason,
-		oM: originalManagers
-	}
+	return regularSeason;
 }
 
 /**
@@ -327,22 +307,22 @@ const processMatchups = ({matchupWeek, seasonPointsRecord, record, startWeek, ma
                 continue;
             }
             mID = `PS:${m}`
-        
-            const entry = {
-                rosterID,
-                fpts: matchup.points,
-                week: startWeek,
-                year,
-            }
-
-            // add each entry to the matchup object
-            if(!matchups[mID]) {
-                matchups[mID] = [];
-            }
-            matchups[mID].push(entry);
-            record.addLeagueWeekRecord(entry);
-            seasonPointsRecord.push(entry);
         }
+        
+        const entry = {
+            rosterID,
+            fpts: matchup.points,
+            week: startWeek,
+            year,
+        }
+
+        // add each entry to the matchup object
+        if(!matchups[mID]) {
+            matchups[mID] = [];
+        }
+        matchups[mID].push(entry);
+        record.addLeagueWeekRecord(entry);
+        seasonPointsRecord.push(entry);
 	}
 	startWeek--;
 
@@ -372,16 +352,13 @@ const processMatchups = ({matchupWeek, seasonPointsRecord, record, startWeek, ma
 
 		// handle post-season data
 		if(matchupKey.split(":")[0] == "PS") {
-            for(const managerID of home.managers) {
-                pSD[managerID].wins = 1;
-                pSD[managerID].fptsFor = home.fpts;
-                pSD[managerID].fptsAgainst = away.fpts;
-            }
-            for(const managerID of away.managers) {
-                pSD[managerID].losses = 1;
-                pSD[managerID].fptsFor = away.fpts;
-                pSD[managerID].fptsAgainst = home.fpts;
-            }
+            pSD[home.rosterID].wins = 1;
+            pSD[home.rosterID].fptsFor = home.fpts;
+            pSD[home.rosterID].fptsAgainst = away.fpts;
+            
+            pSD[away.rosterID].losses = 1;
+            pSD[away.rosterID].fptsFor = away.fpts;
+            pSD[away.rosterID].fptsAgainst = home.fpts;
 		}
 	}
 
@@ -394,7 +371,7 @@ const processMatchups = ({matchupWeek, seasonPointsRecord, record, startWeek, ma
 	}
 }
 
-const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, year, week}) => {
+const processPlayoffs = async ({curSeason, playoffRecords, year, week, rosters}) => {
 	const {
         playoffsStart,
         playoffRounds,
@@ -410,7 +387,7 @@ const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, yea
 	let postSeasonData = {};
 
 	// process all the championship matches
-	const champBracket = digestBracket({bracket: champs.bracket, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: false, seasonPointsRecord, originalManagers, year});
+	const champBracket = digestBracket({bracket: champs.bracket, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: false, seasonPointsRecord, year});
 
 	postSeasonData = champBracket.postSeasonData;
 	seasonPointsRecord = champBracket.seasonPointsRecord;
@@ -418,30 +395,30 @@ const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, yea
 	matchupDifferentials = champBracket.matchupDifferentials;
 
 	// process all the consolation matches
-	const consolationBracket = digestBracket({bracket: champs.consolations, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: true, seasonPointsRecord, originalManagers, year});
+	const consolationBracket = digestBracket({bracket: champs.consolations, playoffsStart, matchupDifferentials, postSeasonData, playoffRecords, playoffRounds, consolation: true, seasonPointsRecord, year});
 
 	postSeasonData = consolationBracket.postSeasonData;
 	seasonPointsRecord = consolationBracket.seasonPointsRecord;
 	playoffRecords = consolationBracket.playoffRecords;
 	matchupDifferentials = consolationBracket.matchupDifferentials;
 
-	for(const managerID in postSeasonData) {
-		// update the roster records for this roster ID
-		const pSD = postSeasonData[managerID];
+	for(const rosterID in postSeasonData) {
+		const pSD = postSeasonData[rosterID];
 		const fptsPerGame = round(pSD.fptsFor / (pSD.wins + pSD.losses + pSD.ties));
 		pSD.fptsPerGame = fptsPerGame;
 		pSD.year = year;
 
-		playoffRecords.updateManagerRecord([managerID], pSD);
-
 		// add season long points entry
 		playoffRecords.addSeasonLongPoints({
-			managers: [managerID],
 			fpts: pSD.fptsFor,
 			fptsPerGame,
 			year,
-			team: originalManagers[managerID]
+			rosterID: rosterID,
 		})
+
+		// update the manager records for this roster ID
+        const managers = getManagers(rosters[rosterID - 1]);
+		playoffRecords.updateManagerRecord(managers, pSD);
 	}
 
 	// sort matchup differentials
@@ -467,7 +444,7 @@ const processPlayoffs = async ({originalManagers, curSeason, playoffRecords, yea
 	return playoffRecords;
 }
 
-const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferentials, postSeasonData, consolation, seasonPointsRecord, playoffsStart, originalManagers, year}) => {
+const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferentials, postSeasonData, consolation, seasonPointsRecord, playoffsStart, year}) => {
 	for(let i = 0; i < bracket.length; i++) {
 		const startWeek = getStartWeek(i + (playoffRounds - bracket.length), playoffRounds, consolation, playoffsStart);
 		const matchupWeek = [];
@@ -475,7 +452,7 @@ const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferent
 		for(let matchups of bracket[i]) {
 			if(consolation) {
 				// consolation matchups are nested within an additional array, we need to flatten them before proceeding
-				matchups = matchups.flat();
+				matchups.flat();
 			}
 			for(const matchup of matchups) {
 				if(matchup.r) {

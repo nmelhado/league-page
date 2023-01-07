@@ -22,7 +22,6 @@ export class Records {
 		this.leagueWeekLows = [];
 		this.leagueWeekHighs = [];
 
-		this.currentTeams = [];
 		this.currentYear = null;
 		this.lastYear = null;
 	}
@@ -125,7 +124,7 @@ Records.prototype.updateManagerRecord = function(managers, {rosterID, year, wins
  * @param {int} recordData.year
  * @param {Object} recordData.team
  */
-Records.prototype.addSeasonLongPoints = function({rosterID, fpts, fptsPerGame, year, team}) {
+Records.prototype.addSeasonLongPoints = function({rosterID, fpts, fptsPerGame, year}) {
     this.seasonLongPoints.push({
         rosterID,
         fpts,
@@ -172,11 +171,10 @@ Records.prototype.addSeasonWeekRecord = function(entry) {
  * Once all data has been gathered, finalizeAllTimeRecords will compute the allTimeBiggestBlowouts, allTimeClosestMatchups,
  * leagueWeekHighs, leagueWeekLows, mostSeasonLongPoints, and leastSeasonLongPoints as well as adding the current season managers,
  * currentYear, and lastYear to the records Class
- * @param {Object[]} currentTeams
  * @param {int} currentYear
  * @param {int} lastYear
  */
- Records.prototype.finalizeAllTimeRecords = function({currentTeams, currentYear, lastYear}) {
+ Records.prototype.finalizeAllTimeRecords = function({currentYear, lastYear}) {
     // sort allTimeMatchupDifferentials and return the biggest blowouts and narrowest victories
     const [allTimeBiggestBlowouts, allTimeClosestMatchups] = sortHighAndLow(this.allTimeMatchupDifferentials, 'differential')
     this.allTimeBiggestBlowouts = allTimeBiggestBlowouts;
@@ -192,7 +190,6 @@ Records.prototype.addSeasonWeekRecord = function(entry) {
     this.mostSeasonLongPoints = mostSeasonLongPoints;
     this.leastSeasonLongPoints = leastSeasonLongPoints;
 
-    this.currentTeams = currentTeams;
     this.currentYear = currentYear;
     this.lastYear = lastYear;
 }
@@ -213,7 +210,6 @@ Records.prototype.returnRecords = function() {
         seasonWeekRecords: this.seasonWeekRecords,
         leagueManagerRecords: this.leagueManagerRecords,
         leagueRosterRecords: this.leagueRosterRecords,
-        currentTeams: this.currentTeams,
         currentYear: this.currentYear,
         lastYear: this.lastYear,
     }

@@ -4,8 +4,9 @@
     import { cleanName, generateGraph, gotoManager, round } from '$lib/utils/helper';
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import { getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-    export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, currentTeams, allTime=false;
+    export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, allTime=false, leagueTeamManagers;
 
     let graphs = [];
     let curTable = 0;
@@ -17,6 +18,8 @@
         "Points",
         "Transactions",
     ]
+
+    const year = allTime ? null : prefix;
 
     const changeTable = (newGraph) => {
         switch (newGraph) {
@@ -144,17 +147,17 @@
         const gs = [];
 
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateGraph(lineupIQGraph));
+            gs.push(generateGraph(lineupIQGraph, leagueTeamManagers, year));
         }
-        gs.push(generateGraph(winsGraph, 5));
-        gs.push(generateGraph(winPercentagesGraph));
-        gs.push(generateGraph(fptsHistoriesGraph));
+        gs.push(generateGraph(winsGraph, leagueTeamManagers, year, 5));
+        gs.push(generateGraph(winPercentagesGraph, leagueTeamManagers, year));
+        gs.push(generateGraph(fptsHistoriesGraph, leagueTeamManagers, year));
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateGraph(potentialPointsGraph, 10, 0));
+            gs.push(generateGraph(potentialPointsGraph, leagueTeamManagers, year, 10, 0));
         }
         if(key == "regularSeasonData") {
-            gs.push(generateGraph(tradesGraph));
-            gs.push(generateGraph(waiversGraph));
+            gs.push(generateGraph(tradesGraph, leagueTeamManagers, year));
+            gs.push(generateGraph(waiversGraph, leagueTeamManagers, year));
         }
 
         curGraph = 0;
@@ -162,25 +165,34 @@
     }
 
     const setTransactionsAndGraphs = (wD) => {
-        for(let i = 1; i <= waiversData.length; i++) {
-            if(!tradesData.find(t => t.rosterID == i)) {
-                tradesData.push({
-                    rosterID: i,
-                    manager: currentTeams[i],
-                    trades: 0,
-                })
+        if(wD[0].rosterID) {
+            for(let i = 1; i <= waiversData.length; i++) {
+                if(!tradesData.find(t => t.rosterID == i)) {
+                    tradesData.push({
+                        rosterID: i,
+                        trades: 0,
+                    })
+                }
+            }
+        }
+        if(wD[0].managerID) {
+            for(const userID in leagueTeamManagers.users) {
+                if(!tradesData.find(t => t.managerID == userID)) {
+                    tradesData.push({
+                        managerID: userID,
+                        trades: 0,
+                    })
+                }
             }
         }
         const transactions = [];
 
-        for(let i = 1; i <= wD.length; i++) {
-            const waiver = wD.find(w => w.rosterID == i);
-            const trades = tradesData.find(t => t.rosterID == i)?.trades || 0;
-            const waivers = waiver?.waivers || 0;
-            const manager = waiver.manager;
+        for(const w of wD) {
+            const trades = tradesData.find(t => t.rosterID == w.rosterID || t.managerID == w.rosterID)?.trades || 0;
+            const waivers = w.waivers;
             transactions.push({
-                rosterID: i,
-                manager,
+                rosterID: w.rosterID,
+                managerID: w.managerID,
                 trades,
                 waivers,
             })
@@ -442,9 +454,9 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leagueWeekRecord.rosterID)}>
-                            {leagueWeekRecord.manager.name}
-                            {#if !allTime  && cleanName(leagueWeekRecord.manager.name) != cleanName(currentTeams[leagueWeekRecord.rosterID].name)}
-                                <div class="curRecordManager">({currentTeams[leagueWeekRecord.rosterID].name})</div>
+                            {getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID, allTime ? leagueWeekRecord.year : prefix)}
+                            {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID, allTime ? leagueWeekRecord.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID)}
+                                <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID)})</div>
                             {/if}
                         </Cell>
                         <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
@@ -473,9 +485,9 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leagueWeekLow.rosterID)}>
-                            {leagueWeekLow.manager.name}
-                            {#if !allTime  && cleanName(leagueWeekLow.manager.name) != cleanName(currentTeams[leagueWeekLow.rosterID].name)}
-                                <div class="curRecordManager">({currentTeams[leagueWeekLow.rosterID].name})</div>
+                            {getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID, allTime ? leagueWeekLow.year : prefix)}
+                            {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID, allTime ? leagueWeekLow.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID)}
+                                <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID)})</div>
                             {/if}
                         </Cell>
                         <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
@@ -505,7 +517,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
-                            {mostSeasonLongPoint.manager.name}
+                            {getTeamNameFromTeamManagers(leagueTeamManagers, mostSeasonLongPoint.rosterID, mostSeasonLongPoint.year)}
                         </Cell>
                         <Cell>{mostSeasonLongPoint.year}</Cell>
                         <Cell>{round(mostSeasonLongPoint.fpts)}</Cell>
@@ -535,7 +547,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leastSeasonLongPoint.rosterID)}>
-                            {leastSeasonLongPoint.manager.name}
+                            {getTeamNameFromTeamManagers(leagueTeamManagers, leastSeasonLongPoint.rosterID, leastSeasonLongPoint.year)}
                         </Cell>
                         <Cell>{leastSeasonLongPoint.year}</Cell>
                         <Cell>{round(leastSeasonLongPoint.fpts)}</Cell>
@@ -565,16 +577,16 @@
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName center differentialName">
                             <div class="center" on:click={() => gotoManager(blowout.home.rosterID)}>
-                                {blowout.home.manager.name} ({round(blowout.home.fpts)})
-                                {#if !allTime  && cleanName(blowout.home.manager.name) != cleanName(currentTeams[blowout.home.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[blowout.home.rosterID].name})</div>
+                                {getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID, allTime ? blowout.home.year : prefix)} ({round(blowout.home.fpts)})
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID, allTime ? blowout.home.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID)})</div>
                                 {/if}
                             </div>
                             vs
                             <div class="center" on:click={() => gotoManager(blowout.away.rosterID)}>
-                                {blowout.away.manager.name} ({round(blowout.away.fpts)})
-                                {#if !allTime  && cleanName(blowout.away.manager.name) != cleanName(currentTeams[blowout.away.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[blowout.away.rosterID].name})</div>
+                                {getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID, allTime ? blowout.away.year : prefix)} ({round(blowout.away.fpts)})
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID, allTime ? blowout.away.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID)})</div>
                                 {/if}
                             </div>
                         </Cell>
@@ -605,16 +617,16 @@
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName center differentialName">
                             <div class="center" on:click={() => gotoManager(closestMatchup.home.rosterID)}>
-                                {closestMatchup.home.manager.name} ({round(closestMatchup.home.fpts)})
-                                {#if !allTime  && cleanName(closestMatchup.home.manager.name) != cleanName(currentTeams[closestMatchup.home.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[closestMatchup.home.rosterID].name})</div>
+                                {getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID, allTime ? closestMatchup.home.year : prefix)} ({round(closestMatchup.home.fpts)})
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID, allTime ? closestMatchup.home.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID)})</div>
                                 {/if}
                             </div>
                             vs
                             <div class="center" on:click={() => gotoManager(closestMatchup.away.rosterID)}>
-                                {closestMatchup.away.manager.name} ({round(closestMatchup.away.fpts)})
-                                {#if !allTime  && cleanName(closestMatchup.away.manager.name) != cleanName(currentTeams[closestMatchup.away.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[closestMatchup.away.rosterID].name})</div>
+                                {getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID, allTime ? closestMatchup.away.year : prefix)} ({round(closestMatchup.away.fpts)})
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID, allTime ? closestMatchup.away.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID)})</div>
                                 {/if}
                             </div>
                         </Cell>
@@ -660,9 +672,9 @@
                             <Row>
                                 <Cell>{ix + 1}</Cell>
                                 <Cell class="cellName" on:click={() => gotoManager(lineupIQ.rosterID)}>
-                                    {lineupIQ.manager.name}
-                                    {#if !allTime  && cleanName(lineupIQ.manager.name) != cleanName(currentTeams[lineupIQ.rosterID].name)}
-                                        <div class="curRecordManager">({currentTeams[lineupIQ.rosterID].name})</div>
+                                    {lineupIQ.managerID ? leagueTeamManagers.users[lineupIQ.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID, allTime ? lineupIQ.year : prefix)}
+                                    {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID, allTime ? lineupIQ.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID)}
+                                        <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID)})</div>
                                     {/if}
                                 </Cell>
                                 <Cell>{lineupIQ.iq}%</Cell>
@@ -697,9 +709,9 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(winPercentage.rosterID)}>
-                                {winPercentage.manager.name}
-                                {#if !allTime  && cleanName(winPercentage.manager.name) != cleanName(currentTeams[winPercentage.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[winPercentage.rosterID].name})</div>
+                                {winPercentage.managerID ? leagueTeamManagers.users[winPercentage.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID, allTime ? winPercentage.year : prefix)}
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID, allTime ? winPercentage.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID)})</div>
                                 {/if}
                             </Cell>
                             <Cell>{winPercentage.percentage}%</Cell>
@@ -735,9 +747,9 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(fptsHistory.rosterID)}>
-                                {fptsHistory.manager.name}
-                                {#if !allTime  && cleanName(fptsHistory.manager.name) != cleanName(currentTeams[fptsHistory.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[fptsHistory.rosterID].name})</div>
+                                {fptsHistory.managerID ? leagueTeamManagers.users[fptsHistory.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID, allTime ? fptsHistory.year : prefix)}
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID, allTime ? fptsHistory.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID)})</div>
                                 {/if}
                             </Cell>
                             <Cell>{round(fptsHistory.fptsFor)}</Cell>
@@ -769,9 +781,9 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(transaction.rosterID)}>
-                                {transaction.manager?.name}
-                                {#if !allTime  && cleanName(transaction.manager?.name) != cleanName(currentTeams[transaction.rosterID].name)}
-                                    <div class="curRecordManager">({currentTeams[transaction.rosterID].name})</div>
+                                {transaction.managerID ? leagueTeamManagers.users[transaction.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID, allTime ? transaction.year : prefix)}
+                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID, allTime ? transaction.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID)}
+                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID)})</div>
                                 {/if}
                             </Cell>
                             <Cell>{transaction.trades}</Cell>

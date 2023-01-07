@@ -62,7 +62,7 @@ export const parseDate = (rawDate) => {
     return stringDate(d);
 }
 
-export const generateGraph = ({stats, x, y, stat, header, field, short, secondField = null}, roundOverride = 10, yMinOverride = null) => {
+export const generateGraph = ({stats, x, y, stat, header, field, short, secondField = null}, leagueTeamManagers, year, roundOverride = 10, yMinOverride = null) => {
     if(!stats) {
         return null;
     }
@@ -78,15 +78,21 @@ export const generateGraph = ({stats, x, y, stat, header, field, short, secondFi
         short
     }
 
-    const sortedStats = [...stats].sort((a, b) => a.rosterID - b.rosterID);
+    const sortedStats = [...stats].sort((a, b) => (a.rosterID || a.managerID) - (b.rosterID || b.managerID));
 
     for(const indivStat of sortedStats) {
         graph.stats.push(Math.round(indivStat[field]));
         if(secondField) {
             graph.secondStats.push(Math.round(indivStat[secondField]));
         }
-        graph.managers.push(indivStat.manager);
-        graph.rosterIDs.push(indivStat.rosterID)
+        if(indivStat.managerID) {
+            graph.managers.push(leagueTeamManagers.users[indivStat.managerID].display_name);
+            graph.rosterIDs.push(indivStat.managerID);
+        }
+        if(indivStat.rosterID) {
+            graph.managers.push(getTeamNameFromTeamManagers(leagueTeamManagers, indivStat.rosterID, year));
+            graph.rosterIDs.push(indivStat.rosterID);
+        }
     }
 
     graph.yMax = max(graph.stats, roundOverride);

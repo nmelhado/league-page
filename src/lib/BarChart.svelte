@@ -236,7 +236,7 @@
             <div class="label xLabel" style="width: {chartWidth}px; font-size: {lFont}em;">{labels.x}</div>
             <div class="xIntervals" style="width: {chartWidth}px; top: {chartHeight + 6}px;">
                 {#each managers as manager, ix}
-                    <div class="xInterval" style="left: {chartWidthInterval * (ix + 0.5)}px; font-size: {xIFont}em; height: {xIHeight}px;">{manager.name}</div>
+                    <div class="xInterval" style="left: {chartWidthInterval * (ix + 0.5)}px; font-size: {xIFont}em; height: {xIHeight}px;">{manager}</div>
                 {/each}
             </div>
         </div>
