@@ -177,7 +177,7 @@ export const getTeamFromTeamManagers = (teamManagers, rosterID, year) => {
 
 export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID) => {
     const originalName = teamManagers.teamManagersMap[year][rosterID]['team']['name'];
-    const currentName = teamManagers.teamManagersMap[teamManagers.currentYear][rosterID]['team']['name'];
+    const currentName = teamManagers.teamManagersMap[teamManagers.currentSeason][rosterID]['team']['name'];
     if(cleanName(originalName) != cleanName(currentName)) {
         return `${originalName}<div class="curOwner">(${currentName})</div>`;
     }
