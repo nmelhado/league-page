@@ -3,12 +3,16 @@ import { leagueID } from '$lib/utils/leagueInfo';
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {upcomingDraft, previousDrafts} from '$lib/stores';
+import { getLeagueRosters } from './leagueRosters';
 
 export const getUpcomingDraft = async () => {
 	if(get(upcomingDraft).draft) {
 		return get(upcomingDraft);
 	}
-	const leagueData = await getLeagueData().catch((err) => { console.error(err); });
+    const [rosterRes, leagueData] = await waitForAll(
+		getLeagueRosters(),
+		getLeagueData()
+	).catch((err) => { console.error(err); });
 
 	const draftID = leagueData.draft_id;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
@@ -28,6 +32,8 @@ export const getUpcomingDraft = async () => {
 	let draft;
 	let draftOrder;
 	let accuracy;
+
+    const rosters = rosterRes.rosters;
 
 	if(officialDraft.status == "complete") {
 		year = year + 1;
