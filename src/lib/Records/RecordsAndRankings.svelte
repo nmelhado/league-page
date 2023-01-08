@@ -234,6 +234,10 @@
     :global(.header) {
         text-align: center;
     }
+
+    :global(.headerPrimary) {
+        background-color: var(--headerPrimary);
+    }
     .italic {
         display: block;
         font-style: italic;
@@ -450,8 +454,8 @@
     {#if weekRecords && weekRecords.length}
         <DataTable class="recordTable">
             <Head>
-                <Row>
-                    <Cell class="header" colspan=4>{prefix} Single Week Scoring Records</Cell>
+                <Row class="rTableHeader">
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Single Week Scoring Records</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -479,7 +483,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Single Week Scoring Lows</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Single Week Scoring Lows</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -507,7 +511,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=5>All-Time Highest Season Points<span class="italic">Ranked by PPG</span></Cell>
+                    <Cell class="header headerPrimary" colspan=5>All-Time Highest Season Points<span class="italic">Ranked by PPG</span></Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -537,7 +541,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=5>All-Time Lowest Season Points<span class="italic">Ranked by PPG</span></Cell>
+                    <Cell class="header headerPrimary" colspan=5>All-Time Lowest Season Points<span class="italic">Ranked by PPG</span></Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -567,7 +571,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Largest Blowouts</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Largest Blowouts</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -603,7 +607,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header" colspan=4>{prefix} Narrowest Wins</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Narrowest Wins</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -649,7 +653,7 @@
                 <DataTable class="rankingTable">
                     <Head>
                         <Row>
-                            <Cell class="header" colspan=5>
+                            <Cell class="header headerPrimary" colspan=5>
                                 {prefix} Lineup IQ Rankings
                                 <div class="subTitle">
                                     The percentage of potential points each manager has captured
@@ -688,7 +692,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header" colspan=6>{prefix} Win Percentages Rankings</Cell>
+                        <Cell class="header headerPrimary" colspan=6>{prefix} Win Percentages Rankings</Cell>
                     </Row>
                     <Row>
                         <Cell class="header"></Cell>
@@ -727,7 +731,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header" colspan=5>
+                        <Cell class="header headerPrimary" colspan=5>
                             {prefix} Fantasy Points Rankings
                         </Cell>
                     </Row>
@@ -762,7 +766,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header" colspan=4>
+                        <Cell class="header headerPrimary" colspan=4>
                             {prefix} Transaction Totals
                         </Cell>
                     </Row>
