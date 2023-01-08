@@ -150,7 +150,7 @@ export const getTeamData = (users, ownerID) => {
 	const user = users[ownerID];
 	if(user) {
 		return {
-			avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
+			avatar: user.metadata?.avatar ? user.metadata.avatar : `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
 			name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
 		}
 	}
@@ -164,14 +164,31 @@ export const getAvatarFromTeamManagers = (teamManagers, rosterID, year) => {
     if(!year || year > teamManagers.currentSeason) {
         year = teamManagers.currentSeason;
     }
-    return teamManagers.teamManagersMap[year][rosterID]['team'].avatar;
+    return teamManagers.teamManagersMap[year][rosterID].team.avatar;
 }
 
 export const getTeamNameFromTeamManagers = (teamManagers, rosterID, year) => {
     if(!year || year > teamManagers.currentSeason) {
         year = teamManagers.currentSeason;
     }
-    return teamManagers.teamManagersMap[year][rosterID]['team'].name;
+    return teamManagers.teamManagersMap[year][rosterID].team.name;
+}
+
+export const renderManagerNames = (teamManagers, rosterID, year) => {
+    if(!year || year > teamManagers.currentSeason) {
+        year = teamManagers.currentSeason;
+    }
+    let managersString = "";
+    for(const managerID of teamManagers.teamManagersMap[year][rosterID].managers) {
+        const manager = teamManagers.users[managerID];
+        if(manager) {
+            if(managersString != "") {
+                managersString += ", "
+            }
+            managersString += manager.display_name;
+        }
+    }
+    return managersString;
 }
 
 export const getTeamFromTeamManagers = (teamManagers, rosterID, year) => {

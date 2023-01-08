@@ -5,6 +5,7 @@
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import RecordTeam from './RecordTeam.svelte';
 
     export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, allTime=false, leagueTeamManagers;
 
@@ -303,6 +304,7 @@
     :global(.cellName) {
         cursor: pointer;
         line-height: 1.2em;
+        padding-left: 8px;
     }
 
     :global(.differentialName) {
@@ -311,6 +313,15 @@
 
     .center {
         text-align: center;
+    }
+
+    :global(.rank) {
+        padding-right: 0;
+    }
+
+    .vs {
+        padding-left: 0.6em;
+        margin: 0.5em 0;
     }
 
     /* Start button resizing */
@@ -454,10 +465,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leagueWeekRecord.rosterID)}>
-                            {getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID, allTime ? leagueWeekRecord.year : prefix)}
-                            {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID, allTime ? leagueWeekRecord.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID)}
-                                <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekRecord.rosterID)})</div>
-                            {/if}
+                            <RecordTeam {leagueTeamManagers} rosterID={leagueWeekRecord.rosterID} year={allTime ? leagueWeekRecord.year : prefix} />
                         </Cell>
                         <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
                         <Cell>{round(leagueWeekRecord.fpts)}</Cell>
@@ -485,10 +493,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leagueWeekLow.rosterID)}>
-                            {getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID, allTime ? leagueWeekLow.year : prefix)}
-                            {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID, allTime ? leagueWeekLow.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID)}
-                                <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, leagueWeekLow.rosterID)})</div>
-                            {/if}
+                            <RecordTeam {leagueTeamManagers} rosterID={leagueWeekLow.rosterID} year={allTime ? leagueWeekLow.year : prefix} />
                         </Cell>
                         <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
                         <Cell>{round(leagueWeekLow.fpts)}</Cell>
@@ -517,7 +522,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(mostSeasonLongPoint.rosterID)}>
-                            {getTeamNameFromTeamManagers(leagueTeamManagers, mostSeasonLongPoint.rosterID, mostSeasonLongPoint.year)}
+                            <RecordTeam {leagueTeamManagers} rosterID={mostSeasonLongPoint.rosterID} year={mostSeasonLongPoint.year} />
                         </Cell>
                         <Cell>{mostSeasonLongPoint.year}</Cell>
                         <Cell>{round(mostSeasonLongPoint.fpts)}</Cell>
@@ -547,7 +552,7 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName" on:click={() => gotoManager(leastSeasonLongPoint.rosterID)}>
-                            {getTeamNameFromTeamManagers(leagueTeamManagers, leastSeasonLongPoint.rosterID, leastSeasonLongPoint.year)}
+                            <RecordTeam {leagueTeamManagers} rosterID={leastSeasonLongPoint.rosterID} year={leastSeasonLongPoint.year} />
                         </Cell>
                         <Cell>{leastSeasonLongPoint.year}</Cell>
                         <Cell>{round(leastSeasonLongPoint.fpts)}</Cell>
@@ -575,19 +580,15 @@
                 {#each blowouts as blowout, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName center differentialName">
-                            <div class="center" on:click={() => gotoManager(blowout.home.rosterID)}>
-                                {getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID, allTime ? blowout.home.year : prefix)} ({round(blowout.home.fpts)})
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID, allTime ? blowout.home.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, blowout.home.rosterID)})</div>
-                                {/if}
+                        <Cell class="cellName differentialName">
+                            <div on:click={() => gotoManager(blowout.home.rosterID)}>
+                                <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.home.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
                             </div>
-                            vs
-                            <div class="center" on:click={() => gotoManager(blowout.away.rosterID)}>
-                                {getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID, allTime ? blowout.away.year : prefix)} ({round(blowout.away.fpts)})
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID, allTime ? blowout.away.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, blowout.away.rosterID)})</div>
-                                {/if}
+                            <p class="vs">
+                                vs
+                            </p>
+                            <div on:click={() => gotoManager(blowout.away.rosterID)}>
+                                <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.away.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
                             </div>
                         </Cell>
                         <Cell>{allTime ? blowout.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{blowout.week}</Cell>
@@ -615,19 +616,15 @@
                 {#each closestMatchups as closestMatchup, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName center differentialName">
-                            <div class="center" on:click={() => gotoManager(closestMatchup.home.rosterID)}>
-                                {getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID, allTime ? closestMatchup.home.year : prefix)} ({round(closestMatchup.home.fpts)})
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID, allTime ? closestMatchup.home.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.home.rosterID)})</div>
-                                {/if}
+                        <Cell class="cellName differentialName">
+                            <div on:click={() => gotoManager(closestMatchup.home.rosterID)}>
+                                <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.home.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
                             </div>
-                            vs
-                            <div class="center" on:click={() => gotoManager(closestMatchup.away.rosterID)}>
-                                {getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID, allTime ? closestMatchup.away.year : prefix)} ({round(closestMatchup.away.fpts)})
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID, allTime ? closestMatchup.away.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, closestMatchup.away.rosterID)})</div>
-                                {/if}
+                            <p class="vs">
+                                vs
+                            </p>
+                            <div on:click={() => gotoManager(closestMatchup.away.rosterID)}>
+                                <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.away.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
                             </div>
                         </Cell>
                         <Cell>{allTime ? closestMatchup.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{closestMatchup.week}</Cell>
