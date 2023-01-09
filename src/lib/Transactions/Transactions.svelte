@@ -4,6 +4,7 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from 'svelte';
 	import Transaction from './Transaction.svelte';
+	import WaiverTransaction from './WaiverTransaction.svelte';
 
 	export let masterOffset = 0;
 
@@ -72,7 +73,7 @@
 		{#if transactions.waivers.length}
 			<h5>Recent Waiver Moves</h5>
 			{#each transactions.waivers as transaction }
-				<Transaction {players} {transaction} {masterOffset} {leagueTeamManagers} />
+				<WaiverTransaction {players} {transaction} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>

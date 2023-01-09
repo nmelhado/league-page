@@ -6,7 +6,7 @@ import { getManagers, getTeamData } from './universalFunctions';
 import { getLeagueData } from './leagueData';
 
 export const getLeagueTeamManagers = async () => {
-    if(get(teamManagersStore) && teamManagersStore.currentSeason) {
+    if(get(teamManagersStore) && get(teamManagersStore).currentSeason) {
 		return get(teamManagersStore);
 	}
     let currentLeagueID = leagueID;

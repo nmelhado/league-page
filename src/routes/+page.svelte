@@ -53,7 +53,7 @@
         min-height: 100%;
 		background-color: var(--ebebeb);
         border-left: var(--eee);
-		box-shadow: inset 0px 3px 3px -2px rgb(0 0 0 / 40%), inset 0px 3px 4px 0px rgb(0 0 0 / 28%), inset 0px 1px 8px 0px rgb(0 0 0 / 24%);
+		box-shadow: inset 8px 0px 6px -6px rgb(0 0 0 / 24%);
     }
 
     @media (max-width: 950px) {
@@ -79,6 +79,14 @@
 
     h6 {
         text-align: center;
+    }
+
+    .homeBanner {
+        background-color: var(--blueOne);
+        color: #fff;
+        padding: 0.5em 0;
+        font-weight: 500;
+        font-size: 1.5em;
     }
 
     /* champ styling */
@@ -119,18 +127,17 @@
 
     h4 {
         text-align: center;
-        font-size: 1.6em;
+        font-size: 1.8em;
         margin: 10px;
+        font-style: italic;
     }
 
     .label {
         display: table;
         text-align: center;
         line-height: 1.1em;
-        padding: 6px 20px;
-        background-color: var(--fff);
-        border: 1px solid #aaa;
-        margin: 10px auto 0;
+        font-size: 1.7em;
+        margin: 6px auto 10px;
         cursor: pointer;
     }
     
@@ -158,20 +165,20 @@
     <div class="leagueData">
         <div class="homeBanner">
             {#await nflState}
-                <p class="center">Retrieving NFL state...</p>
+                <div class="center">Retrieving NFL state...</div>
                 <LinearProgress indeterminate />
             {:then nflStateData}
-                <p class="center">NFL {nflStateData.season} 
+                <div class="center">NFL {nflStateData.season} 
                     {#if nflStateData.season_type == 'pre'}
                         Preseason
                     {:else if nflStateData.season_type == 'post'}
                         Postseason
                     {:else}
-                        {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}
+                        Season - {nflStateData.week > 0 ? `Week ${nflStateData.week}` : "Preseason"}
                     {/if}
-                </p>
+                </div>
             {:catch error}
-                <p class="center">Something went wrong: {error.message}</p>
+                <div class="center">Something went wrong: {error.message}</div>
             {/await}
         </div>
 
@@ -181,7 +188,7 @@
                 <LinearProgress indeterminate />
             {:then [podiums, leagueTeamManagers]}
                 {#if podiums[0]}
-                    <h4>{podiums[0].year} Champ</h4>
+                    <h4>{podiums[0].year} Fantasy Champ</h4>
                     <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion))}} >
                         <img src="{getAvatarFromTeamManagers(leagueTeamManagers, podiums[0].champion, podiums[0].year)}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />

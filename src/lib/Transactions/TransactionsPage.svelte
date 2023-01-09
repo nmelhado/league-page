@@ -8,6 +8,7 @@
 	import { match } from 'fuzzyjs';
 	import { goto } from '$app/navigation';
 	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
+	import WaiverTransaction from './WaiverTransaction.svelte';
 
 	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentTeams, stale, perPage, postUpdate=false, leagueTeamManagers;
 	const oldQuery = query;
@@ -258,7 +259,11 @@
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
 		<div class="transactions-child">
 			{#each displayTransactions as transaction (transaction.id)}
-				<Transaction {players} {transaction} masterOffset={masterOffset + 15} {leagueTeamManagers} />
+                {#if transaction.type == "waiver"}
+				    <WaiverTransaction {players} {transaction} {leagueTeamManagers} />
+                {:else}
+				    <Transaction {players} {transaction} masterOffset={masterOffset + 15} {leagueTeamManagers} />
+                {/if}
 			{/each}
 		</div>
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={true} />
