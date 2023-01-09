@@ -161,15 +161,14 @@ const completedAuction = ({players, draft, draftOrder, draftOrderObj}) => {
 		rosters[draftOrderObj[key]] = [];
 	}
 	for(const playerData of players) {
-		const player = playerData.player_id;
-		rosters[playerData.roster_id].push(player);
+		const data = {player: playerData.player_id, amount: playerData.amount};
+		rosters[playerData.roster_id].push(data);
 	}
 	for (const roster in rosters) {
 		const col = draftOrder.indexOf(parseInt(roster));
 		const sortedRoster = rosters[roster].sort((a,b) => b.amount - a.amount);
 		for(let i = 0; i < sortedRoster.length; i++) {
-			const player = sortedRoster[i];
-			draft[i][col] = {player};
+			draft[i][col] = sortedRoster[i];
 		}
 	}
 	return draft;

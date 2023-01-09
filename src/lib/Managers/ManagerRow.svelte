@@ -1,12 +1,22 @@
 <script>
     import { goto } from "$app/navigation";
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
     import {dynasty} from "$lib/utils/leagueInfo"
 
+    export let manager, leagueTeamManagers, key;
 
-    export let manager, rosters, leagueTeamManagers, key;
+    let retired = false;
 
-    const roster = rosters.rosters[manager.roster - 1];
-    const user = users[roster.owner_id];
+    // manager.roster is deprecated, pages should be using managerID now
+    let rosterID = manager.roster;
+    let year = null;
+
+    if(manager.managerID) {
+        const dates = getDatesActive(leagueTeamManagers, manager.managerID);
+        if(dates.end) retired = true;
+
+        ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, manager.managerID) || {rosterID, year});
+    }
 </script>
 
 <style>
@@ -16,6 +26,8 @@
         align-items: center;
         padding: 1em 0;
         background-color: var(--fff);
+        background-repeat: no-repeat;
+        background-position: 15% 50%;
         margin: 0.5em 0;
         border-radius: 2em;
         border: 1px solid var(--ccc);
@@ -188,10 +200,10 @@
     }
 </style>
 
-<div class="manager" on:click={() => goto(`/manager?manager=${key}`)}>
+<div class="manager" style="{retired ? "background-image: url(/retired.png); background-color: var(--ddd)": ""}" on:click={() => goto(`/manager?manager=${key}`)}>
     <img class="photo" src="{manager.photo}" alt="{manager.name}" />
     <div class="name">{manager.name}</div>
-    <div class="team">{user.metadata.team_name ? user.metadata.team_name : user.display_name}</div>
+    <div class="team">{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</div>
     <div class="spacer" />
     <div class="info">
         <!-- Favorite team (optional) -->

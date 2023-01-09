@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2023-01-10
+
+### Changed
+
+- Rankings are now organize by manager instead of team! [(issue #164)](https://github.com/nmelhado/league-page/issues/164)
+    - This means that if managers have changed throughout the years, you will now see accurate rankings for a given manager
+    - **To take full advantage of this you need to add managerIDs to the managers object in leagueInfo`src/lib/utils/leagueInfo.js`**
+        - More instructions in the updated [Training Wheels managers instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
+- Use league specific avatar if avilable [(issue #156)](https://github.com/nmelhado/league-page/issues/156)
+
+### Fixed
+
+- Standings order issue [(issue #179)](https://github.com/nmelhado/league-page/issues/179)
+    - The re-implememntation of how team and user data is rendered should have fixed this
+
 ## [2.0.2] - 2022-09-29
 
 ### Fixed

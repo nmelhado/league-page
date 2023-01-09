@@ -8,31 +8,28 @@
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
     import ManagerAwards from './ManagerAwards.svelte';
     import { onMount } from 'svelte';
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
     export let manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
-    const {users, teamManagersMap} = leagueTeamManagers;
-
     let transactions = transactionsData.transactions;
 
-    let currentTeams= transactionsData.currentTeams;
+    $: viewManager = managers[manager];
 
-    let viewManager = managers[manager];
+    $: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
 
     $: teamTransactions = transactions.filter(t => t.rosters.indexOf(viewManager.roster) > -1);
 
-    let startersAndReserve = rostersData.startersAndReserve;
+    const  startersAndReserve = rostersData.startersAndReserve;
     let rosters = rostersData.rosters;
 
-    let rosterArrNum = viewManager.roster-1;
+    $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 
-    let roster = rosters[rosterArrNum];
+    $: rosterArrNum = rosterID-1;
 
-    let user = users[roster.owner_id];
-    // if using the new userID
-    if(viewManager.userId) {
-        user = users[viewManager.userId];
-    }
+    $: roster = rosters[rosterArrNum];
+
+    $: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 0 : roster.co_owners;
 
     let players, playersInfo;
     let loading = true;
@@ -40,7 +37,6 @@
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
         transactions = newTransactions.transactions;
-        currentTeams= newTransactions.currentTeams;
     }
 
     onMount(async () => {
@@ -61,22 +57,6 @@
 
     const changeManager = (newManager, noscroll = false) => {
         manager = newManager;
-        viewManager = managers[newManager];
-
-        teamTransactions = transactions.filter(t => t.rosters.indexOf(viewManager.roster) > -1);
-
-        startersAndReserve = rostersData.startersAndReserve;
-        rosters = rostersData.rosters;
-
-        rosterArrNum = viewManager.roster-1;
-
-        roster = rosters[rosterArrNum];
-
-        user = users[roster.owner_id];
-        // if using the new userID
-        if(viewManager.userId) {
-            user = users[viewManager.userId];
-        }
 
         goto(`/manager?manager=${manager}`, {noscroll})
     }
@@ -238,12 +218,19 @@
         <img class="managerPhoto" src="{viewManager.photo}" alt="manager"/>
         <h2>
             {viewManager.name}
-            <div class="teamSub">{roster.co_owners ? 'Co-' : ''}Manager of <i>{user.metadata.team_name ? user.metadata.team_name : user.display_name}</i></div>
+            <div class="teamSub">{coOwners ? 'Co-' : ''}Manager of <i>{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</i></div>
         </h2>
         
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
-            {#if viewManager.fantasyStart}
+            {#if viewManager.managerID && datesActive.start}
+                <span class="seperator">|</span>
+                {#if datesActive.end}
+                    <span class="infoChild">In the league from '{datesActive.start.toString().substr(2)} to '{datesActive.end.toString().substr(2)}</span>
+                {:else}
+                    <span class="infoChild">In the league since '{datesActive.start.toString().substr(2)}</span>
+                {/if}
+            {:else if viewManager.fantasyStart}
                 <!-- fantasyStart is an optional field -->
                 <span class="seperator">|</span>
                 <span class="infoChild">Playing ff since '{viewManager.fantasyStart.toString().substr(2)}</span>
@@ -301,7 +288,7 @@
         <ManagerFantasyInfo {viewManager} {players} />
     {/if}
 
-    <ManagerAwards tookOver={viewManager.tookOver} {awards} {records} {roster} />
+    <ManagerAwards {leagueTeamManagers} tookOver={viewManager.tookOver} {awards} {records} {rosterID} managerID={viewManager.managerID} />
 
     {#if loading}
         <!-- promise is pending -->
@@ -310,7 +297,7 @@
             <LinearProgress indeterminate />
         </div>
     {:else}
-        <Roster division="1" expanded={false} {rosterPositions} {roster} {users} {players} {startersAndReserve} />
+        <Roster division="1" expanded={false} {rosterPositions} {roster} {leagueTeamManagers} {players} {startersAndReserve} />
     {/if}
 
     <h3>Team Transactions</h3>
@@ -322,7 +309,7 @@
                 <LinearProgress indeterminate />
             </div>
         {:else}
-            <TransactionsPage {playersInfo} transactions={teamTransactions} {currentTeams} {masterOffset} show='both' query='' page={0} perPage={5} />
+            <TransactionsPage {playersInfo} transactions={teamTransactions} {leagueTeamManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
         {/if}
     </div>
 

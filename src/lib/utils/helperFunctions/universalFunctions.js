@@ -35,9 +35,14 @@ const max = (stats, roundOverride) => {
     return Math.ceil(num / roundOverride) * roundOverride;
 }
 
-export const gotoManager = (rosterID) => {
+export const gotoManager = ({managerID, rosterID}) => {
     if(!managers.length) return;
-    const managersIndex = managers.findIndex(m => m.roster == rosterID);
+    let managersIndex = -1;
+    if(managerID) {
+        managersIndex = managers.findIndex(m => m.managerID == managerID);
+    } else if(rosterID) {
+        managersIndex = managers.findIndex(m => m.roster == rosterID);
+    }
     // if no manager exists for that roster, -1 will take you to the main managers page
     goto(`/manager?manager=${managersIndex}`);
 }
@@ -217,4 +222,43 @@ export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID)
         return `${originalName}<div class="curOwner">(${currentName})</div>`;
     }
     return originalName;
+}
+
+export const getDatesActive = (teamManagers, managerID) => {
+    if(!managerID) return;
+    let datesActive = {start: null, end: null};
+    for(const year in teamManagers.teamManagersMap) {
+        for(const rosterID in  teamManagers.teamManagersMap[year]) {
+            if(teamManagers.teamManagersMap[year][rosterID].managers.indexOf(managerID) > -1) {
+                if(!datesActive.start || datesActive.start > year) {
+                    datesActive.start = year;
+                }
+                if(!datesActive.end || datesActive.end < year) {
+                    datesActive.end = year;
+                }
+                break;
+            }
+        }
+    }
+    if(datesActive.end == teamManagers.currentSeason) {
+        datesActive.end = null;
+    }
+    return datesActive;
+}
+
+export const getRosterIDFromManagerID = (teamManagers, managerID) => {
+    if(!managerID) return null;
+    for(const year in teamManagers.teamManagersMap) {
+        for(const rosterID in  teamManagers.teamManagersMap[year]) {
+            if(teamManagers.teamManagersMap[year][rosterID].managers.indexOf(managerID) > -1) {
+                return {rosterID, year};
+            }
+        }
+    }
+    return null;
+}
+
+export const checkIfManagerReceivedAward = (teamManagers, awardRosterID, year, managerID) => {
+    if(!managerID) return false;
+    return teamManagers.teamManagersMap[year][awardRosterID].managers.indexOf(managerID) > -1;
 }

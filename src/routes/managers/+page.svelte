@@ -3,7 +3,7 @@
     import {AllManagers} from '$lib/components';
 
 	export let data;
-	const {managers, managersInfo} = data;
+	const {managers, leagueTeamManagersData} = data;
 </script>
 
 <style>
@@ -20,14 +20,14 @@
 </style>
 
 <div class="main">
-    {#await managersInfo}
+    {#await leagueTeamManagersData}
         <!-- promise is pending -->
         <div class="loading">
             <p>Retrieving managers...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then [rostersData, leagueTeamManagers]}
-        <AllManagers {managers} rosters={rostersData} {leagueTeamManagers}/>
+    {:then leagueTeamManagers}
+        <AllManagers {managers}  {leagueTeamManagers}/>
     {:catch error}
         <!-- promise was rejected -->
         <p>Something went wrong: {error.message}</p>

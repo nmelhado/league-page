@@ -152,7 +152,7 @@
                 </span>
             {/if}
         </span>
-        <img class="avatar clickable" on:click={() => gotoManager(owner)} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+        <img class="avatar" src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
     </div>
     <div class="core">
         <div class="avatarAndDetails">

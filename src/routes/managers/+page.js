@@ -1,25 +1,15 @@
 import {
-    waitForAll,
-    getLeagueRosters,
     getLeagueTeamManagers,
     managers as managersObj
 } from '$lib/utils/helper';
+
 export async function load({ url }) {
     if(!managersObj.length) return false;
-    const managersInfo = waitForAll(
-        getLeagueRosters(),    
-        getLeagueTeamManagers(),
-    );
-
-    const manager = url?.searchParams?.get('manager');
+    const leagueTeamManagersData = getLeagueTeamManagers();
 
     const props = {
-        manager: null,
         managers: managersObj,
-        managersInfo
-    }
-    if(manager && (manager >= 0 && manager < managersObj.length)) {
-        props.manager = manager;
+        leagueTeamManagersData
     }
 
     return props;

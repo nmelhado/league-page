@@ -10,14 +10,13 @@
 	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
 	import WaiverTransaction from './WaiverTransaction.svelte';
 
-	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentTeams, stale, perPage, postUpdate=false, leagueTeamManagers;
+	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, stale, perPage, postUpdate=false, leagueTeamManagers;
 	const oldQuery = query;
 	let page = queryPage || 0;
 
 	const refreshTransactions = async () => {
 		const newTransactions = await getLeagueTransactions(false, true);
 		transactions = newTransactions.transactions;
-		currentTeams = newTransactions.currentTeams;
 	}
 
 	if(stale) {
