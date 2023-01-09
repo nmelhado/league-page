@@ -70,7 +70,7 @@
         };
 
         graphs = [
-            generateGraph(powerGraph, 10)
+            generateGraph(powerGraph, leagueTeamManagers)
         ]
     }
 
