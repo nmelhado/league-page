@@ -351,6 +351,10 @@
             font-size: 0.8em;
             padding: 1px 12px;
         }
+
+        .vsRecord {
+            margin: .6em 0;
+        }
     }
 
     @media (max-width: 435px) {
@@ -573,14 +577,16 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName differentialName">
-                            <div on:click={() => gotoManager(blowout.home.rosterID)}>
-                                <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.home.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
-                            </div>
-                            <p class="vs">
-                                vs
-                            </p>
-                            <div on:click={() => gotoManager(blowout.away.rosterID)}>
-                                <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.away.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
+                            <div class="vsRecord">
+                                <div on:click={() => gotoManager(blowout.home.rosterID)}>
+                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.home.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
+                                </div>
+                                <p class="vs">
+                                    vs
+                                </p>
+                                <div on:click={() => gotoManager(blowout.away.rosterID)}>
+                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.away.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
+                                </div>
                             </div>
                         </Cell>
                         <Cell>{allTime ? blowout.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{blowout.week}</Cell>
@@ -609,14 +615,16 @@
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName differentialName">
-                            <div on:click={() => gotoManager(closestMatchup.home.rosterID)}>
-                                <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.home.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
-                            </div>
-                            <p class="vs">
-                                vs
-                            </p>
-                            <div on:click={() => gotoManager(closestMatchup.away.rosterID)}>
-                                <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.away.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
+                            <div class="vsRecord">
+                                <div on:click={() => gotoManager(closestMatchup.home.rosterID)}>
+                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.home.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
+                                </div>
+                                <p class="vs">
+                                    vs
+                                </p>
+                                <div on:click={() => gotoManager(closestMatchup.away.rosterID)}>
+                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.away.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
+                                </div>
                             </div>
                         </Cell>
                         <Cell>{allTime ? closestMatchup.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{closestMatchup.week}</Cell>
