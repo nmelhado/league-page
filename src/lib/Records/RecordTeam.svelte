@@ -1,7 +1,13 @@
 <script>
 	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, renderManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
 
-    export let leagueTeamManagers, rosterID, year, compressed = false, points = null;
+    export let leagueTeamManagers, managerID, rosterID, year, compressed = false, points = null;
+
+    let user = null;
+
+    if(managerID) {
+        user = leagueTeamManagers.users[managerID];
+    }
 </script>
 
 <style>
@@ -35,17 +41,39 @@
 		margin-right: 6px;
     }
 
+    @media (max-width: 405px) {
+        .teamAvatar {
+            height: 25px;
+            margin-right: 8px;
+        }
+
+        .compressed {
+            height: 20px;
+            margin-right: 4px;
+        }
+    }
+
 </style>
 
 <div class="recordTeam">
-    <img alt="team avatar" class="teamAvatar{compressed ? " compressed" : ""}" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
+    {#if user}
+        <img alt="team avatar" class="teamAvatar{compressed ? " compressed" : ""}" src="{`https://sleepercdn.com/avatars/thumbs/${user.avatar}`}" />
+    {:else if rosterID}
+        <img alt="team avatar" class="teamAvatar{compressed ? " compressed" : ""}" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
+    {/if}
     <span class="name">
         <div class="teamName">
-            {getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}
-            {points ? ` (${points})` : ""}
+            {#if user}
+                {user.display_name}
+            {:else if rosterID}
+                {getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}
+                {points ? ` (${points})` : ""}
+            {/if}
         </div>
-        <div class="managerNames">
-            {renderManagerNames(leagueTeamManagers, rosterID, year)}
-        </div>
+        {#if !user}
+            <div class="managerNames">
+                {renderManagerNames(leagueTeamManagers, rosterID, year)}
+            </div>
+        {/if}
     </span>
 </div>

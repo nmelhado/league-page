@@ -1,11 +1,10 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
-    import BarChart from '../BarChart.svelte'
-    import { cleanName, generateGraph, gotoManager, round } from '$lib/utils/helper';
+    import { generateRankingGraph, gotoManager, round } from '$lib/utils/helper';
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
-	import { getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 	import RecordTeam from './RecordTeam.svelte';
+	import HorizontalChart from '$lib/HorizontalChart.svelte';
 
     export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, allTime=false, leagueTeamManagers;
 
@@ -77,8 +76,7 @@
     const setGraphs = (wD) => {
         const lineupIQGraph = {
             stats: lineupIQs,
-            x: "Manager",
-            y: "Lineup IQ",
+            x: "Lineup IQ",
             stat: "%",
             header: "Manager Lineup IQ",
             field: "iq",
@@ -87,8 +85,7 @@
 
         const potentialPointsGraph = {
             stats: lineupIQs,
-            x: "Manager",
-            y: "Points",
+            x: "Points",
             stat: "",
             header: "Potential Points vs Points",
             field: "potentialPoints",
@@ -98,8 +95,7 @@
 
         const winsGraph = {
             stats: winPercentages,
-            x: "Manager",
-            y: "Wins",
+            x: "Wins",
             stat: "",
             header: "Team Wins",
             field: "wins",
@@ -108,8 +104,7 @@
 
         const winPercentagesGraph = {
             stats: winPercentages,
-            x: "Manager",
-            y: "Win Percentage",
+            x: "Win Percentage",
             stat: "%",
             header: "Team Win Percentages",
             field: "percentage",
@@ -118,8 +113,7 @@
 
         const fptsHistoriesGraph = {
             stats: fptsHistories,
-            x: "Manager",
-            y: "Fantasy Points",
+            x: "Fantasy Points",
             stat: "",
             header: "Team Fantasy Points",
             field: "fptsFor",
@@ -128,37 +122,35 @@
 
         const tradesGraph = {
             stats: tradesData,
-            x: "Manager",
-            y: "# of trades",
+            x: "# of trades",
             stat: "",
-            header: "Trades Managers Have Made",
+            header: "Number of Trades Managers Have Made",
             field: "trades",
             short: "Trades"
         }
 
         const waiversGraph = {
             stats: wD,
-            x: "Manager",
-            y: "# of Waiver Moves",
+            x: "# of Waiver Moves",
             stat: "",
-            header: "Waivers Managers Have Made",
+            header: "Waivers Moves Managers Have Made",
             field: "waivers",
             short: "Waivers"
         }
         const gs = [];
 
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateGraph(lineupIQGraph, leagueTeamManagers, year));
+            gs.push(generateRankingGraph(lineupIQGraph, year));
         }
-        gs.push(generateGraph(winsGraph, leagueTeamManagers, year, 5));
-        gs.push(generateGraph(winPercentagesGraph, leagueTeamManagers, year));
-        gs.push(generateGraph(fptsHistoriesGraph, leagueTeamManagers, year));
+        gs.push(generateRankingGraph(winsGraph, year, 5));
+        gs.push(generateRankingGraph(winPercentagesGraph, year));
+        gs.push(generateRankingGraph(fptsHistoriesGraph, year));
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateGraph(potentialPointsGraph, leagueTeamManagers, year, 10, 0));
+            gs.push(generateRankingGraph(potentialPointsGraph, year, 10, 0));
         }
         if(key == "regularSeasonData") {
-            gs.push(generateGraph(tradesGraph, leagueTeamManagers, year));
-            gs.push(generateGraph(waiversGraph, leagueTeamManagers, year));
+            gs.push(generateRankingGraph(tradesGraph, year));
+            gs.push(generateRankingGraph(waiversGraph, year));
         }
 
         curGraph = 0;
@@ -189,7 +181,12 @@
         const transactions = [];
 
         for(const w of wD) {
-            const trades = tradesData.find(t => t.rosterID == w.rosterID || t.managerID == w.rosterID)?.trades || 0;
+            let trades = 0;
+            if(tradesData[0].managerID) {
+                trades = tradesData.find(t => t.managerID == w.managerID)?.trades || 0;
+            } else if(tradesData[0].rosterID) {
+                trades = tradesData.find(t => t.rosterID == w.rosterID)?.trades || 0;
+            }
             const waivers = w.waivers;
             transactions.push({
                 rosterID: w.rosterID,
@@ -231,13 +228,11 @@
 <svelte:window bind:innerWidth={innerWidth} />
 
 <style>
-    :global(.header) {
+    :global(.headerPrimary) {
+        background-color: var(--headerPrimary);
         text-align: center;
     }
 
-    :global(.headerPrimary) {
-        background-color: var(--headerPrimary);
-    }
     .italic {
         display: block;
         font-style: italic;
@@ -281,13 +276,6 @@
         margin: 2em 0 1em;
     }
 
-    .curRecordManager {
-        font-style: italic;
-        color: #999;
-        font-size: 0.8em;
-        line-height: 1.1em;
-    }
-
     .rankingTableWrapper {
         width: 25%;
     }
@@ -315,10 +303,6 @@
         padding: 0.7em 0;
     }
 
-    .center {
-        text-align: center;
-    }
-
     :global(.rank) {
         padding-right: 0;
     }
@@ -326,6 +310,10 @@
     .vs {
         padding-left: 0.6em;
         margin: 0.5em 0;
+    }
+
+    :global(.mdc-data-table__cell, .mdc-data-table__header-cell) {
+        border-bottom-color: var(--borderOverride);
     }
 
     /* Start button resizing */
@@ -455,7 +443,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row class="rTableHeader">
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Single Week Scoring Records</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Records</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -483,7 +471,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Single Week Scoring Lows</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Lows</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -507,7 +495,7 @@
         </DataTable>
     {/if}
 
-    {#if allTime}
+    {#if allTime && key == "regularSeasonData"}
         <DataTable class="recordTable">
             <Head>
                 <Row>
@@ -537,7 +525,7 @@
         </DataTable>
     {/if}
     
-    {#if allTime}
+    {#if allTime && key == "regularSeasonData"}
         <DataTable class="recordTable">
             <Head>
                 <Row>
@@ -571,7 +559,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Largest Blowouts</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Largest {key == "playoffData" ? "Playoff " : ""}Blowouts</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -607,7 +595,7 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Narrowest Wins</Cell>
+                    <Cell class="header headerPrimary" colspan=4>{prefix} Narrowest {key == "playoffData" ? "Playoff " : ""}Wins</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
@@ -640,10 +628,10 @@
     {/if}
 </div>
 
-<h4>{prefix} Rankings</h4>
+<h4>{prefix} {key == "playoffData" ? "Playoff " : ""}Rankings</h4>
 
 {#if graphs.length}
-    <BarChart maxWidth={innerWidth} {graphs} bind:curGraph={curGraph} />
+    <HorizontalChart {graphs} bind:curGraph={curGraph} {leagueTeamManagers} />
 {/if}
 
 <div class="rankingHolder">
@@ -654,7 +642,7 @@
                     <Head>
                         <Row>
                             <Cell class="header headerPrimary" colspan=5>
-                                {prefix} Lineup IQ Rankings
+                                {prefix} {key == "playoffData" ? "Playoff " : ""}Lineup IQ Rankings
                                 <div class="subTitle">
                                     The percentage of potential points each manager has captured
                                 </div>
@@ -673,10 +661,7 @@
                             <Row>
                                 <Cell>{ix + 1}</Cell>
                                 <Cell class="cellName" on:click={() => gotoManager(lineupIQ.rosterID)}>
-                                    {lineupIQ.managerID ? leagueTeamManagers.users[lineupIQ.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID, allTime ? lineupIQ.year : prefix)}
-                                    {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID, allTime ? lineupIQ.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID)}
-                                        <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, lineupIQ.rosterID)})</div>
-                                    {/if}
+                                    <RecordTeam {leagueTeamManagers} managerID={lineupIQ.managerID} rosterID={lineupIQ.rosterID} year={allTime ? lineupIQ.year : prefix} />
                                 </Cell>
                                 <Cell>{lineupIQ.iq}%</Cell>
                                 <Cell>{round(lineupIQ.fpts)}</Cell>
@@ -692,7 +677,7 @@
             <DataTable class="rankingTable">
                 <Head>
                     <Row>
-                        <Cell class="header headerPrimary" colspan=6>{prefix} Win Percentages Rankings</Cell>
+                        <Cell class="header headerPrimary" colspan=6>{prefix} {key == "playoffData" ? "Playoff " : ""}Win Percentages Rankings</Cell>
                     </Row>
                     <Row>
                         <Cell class="header"></Cell>
@@ -710,10 +695,7 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(winPercentage.rosterID)}>
-                                {winPercentage.managerID ? leagueTeamManagers.users[winPercentage.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID, allTime ? winPercentage.year : prefix)}
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID, allTime ? winPercentage.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, winPercentage.rosterID)})</div>
-                                {/if}
+                                <RecordTeam {leagueTeamManagers} managerID={winPercentage.managerID} rosterID={winPercentage.rosterID} year={allTime ? winPercentage.year : prefix} />
                             </Cell>
                             <Cell>{winPercentage.percentage}%</Cell>
                             <Cell>{winPercentage.wins}</Cell>
@@ -732,7 +714,7 @@
                 <Head>
                     <Row>
                         <Cell class="header headerPrimary" colspan=5>
-                            {prefix} Fantasy Points Rankings
+                            {prefix} {key == "playoffData" ? "Playoff " : ""}Fantasy Points Rankings
                         </Cell>
                     </Row>
                     <Row>
@@ -748,10 +730,7 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(fptsHistory.rosterID)}>
-                                {fptsHistory.managerID ? leagueTeamManagers.users[fptsHistory.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID, allTime ? fptsHistory.year : prefix)}
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID, allTime ? fptsHistory.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, fptsHistory.rosterID)})</div>
-                                {/if}
+                                <RecordTeam {leagueTeamManagers} managerID={fptsHistory.managerID} rosterID={fptsHistory.rosterID} year={allTime ? fptsHistory.year : prefix} />
                             </Cell>
                             <Cell>{round(fptsHistory.fptsFor)}</Cell>
                             <Cell>{round(fptsHistory.fptsAgainst)}</Cell>
@@ -782,10 +761,7 @@
                         <Row>
                             <Cell>{ix + 1}</Cell>
                             <Cell class="cellName" on:click={() => gotoManager(transaction.rosterID)}>
-                                {transaction.managerID ? leagueTeamManagers.users[transaction.managerID].display_name : getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID, allTime ? transaction.year : prefix)}
-                                {#if !allTime  && getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID, allTime ? transaction.year : prefix) != getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID)}
-                                    <div class="curRecordManager">({getTeamNameFromTeamManagers(leagueTeamManagers, transaction.rosterID)})</div>
-                                {/if}
+                                <RecordTeam {leagueTeamManagers} managerID={transaction.managerID} rosterID={transaction.rosterID} year={allTime ? transaction.year : prefix} />
                             </Cell>
                             <Cell>{transaction.trades}</Cell>
                             <Cell>{transaction.waivers}</Cell>
