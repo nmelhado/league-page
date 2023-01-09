@@ -43,8 +43,14 @@
         margin: 0 auto;
     }
 
-    .spacer {
+    .leftSpacer {
         width: 40px;
+        height: 1px;
+        display: inline-block;
+    }
+
+    .rightSpacer {
+        width: 20px;
         height: 1px;
         display: inline-block;
     }
@@ -101,8 +107,11 @@
             vertical-align: middle;
             font-size: 0.8em;
         }
-        .spacer {
+        .leftSpacer {
             width: 30px;
+        }
+        .rightSpacer {
+            width: 10px;
         }
         .bar {
             height: 1.2em;
@@ -125,7 +134,7 @@
     </span>
     <div class="vCenter">
         <div class="statBars">
-            <div class="spacer" />
+            <div class="leftSpacer" />
             <div class="bars">
                 <div class="bar{!secondStat  ? '' : ' opacity'}" style="background-color: var({color}); width: {(stat - xMin) / (xMax - xMin == 0 ? 1 : (xMax - xMin)) * 100}%;">
                     {#if !secondStat}
@@ -138,6 +147,7 @@
                     </div>
                 {/if}
             </div>
+            <div class="rightSpacer" />
         </div>
     </div>
 </div>

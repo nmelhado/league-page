@@ -1,10 +1,10 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
-    import { generateRankingGraph, gotoManager, round } from '$lib/utils/helper';
+    import { generateGraph, gotoManager, round } from '$lib/utils/helper';
 
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import RecordTeam from './RecordTeam.svelte';
-	import HorizontalChart from '$lib/HorizontalChart.svelte';
+	import BarChart from '$lib/BarChart.svelte';
 
     export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, allTime=false, leagueTeamManagers;
 
@@ -140,17 +140,17 @@
         const gs = [];
 
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateRankingGraph(lineupIQGraph, year));
+            gs.push(generateGraph(lineupIQGraph, year));
         }
-        gs.push(generateRankingGraph(winsGraph, year, 5));
-        gs.push(generateRankingGraph(winPercentagesGraph, year));
-        gs.push(generateRankingGraph(fptsHistoriesGraph, year));
+        gs.push(generateGraph(winsGraph, year, 5));
+        gs.push(generateGraph(winPercentagesGraph, year));
+        gs.push(generateGraph(fptsHistoriesGraph, year));
         if(lineupIQs[0]?.potentialPoints) {
-            gs.push(generateRankingGraph(potentialPointsGraph, year, 10, 0));
+            gs.push(generateGraph(potentialPointsGraph, year, 10, 0));
         }
         if(key == "regularSeasonData") {
-            gs.push(generateRankingGraph(tradesGraph, year));
-            gs.push(generateRankingGraph(waiversGraph, year));
+            gs.push(generateGraph(tradesGraph, year));
+            gs.push(generateGraph(waiversGraph, year));
         }
 
         curGraph = 0;
@@ -639,7 +639,7 @@
 <h4>{prefix} {key == "playoffData" ? "Playoff " : ""}Rankings</h4>
 
 {#if graphs.length}
-    <HorizontalChart {graphs} bind:curGraph={curGraph} {leagueTeamManagers} />
+    <BarChart {graphs} bind:curGraph={curGraph} {leagueTeamManagers} />
 {/if}
 
 <div class="rankingHolder">

@@ -1,7 +1,7 @@
 <script>
 	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, renderManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
 
-    export let leagueTeamManagers, managerID, rosterID, year, compressed = false, points = null;
+    export let leagueTeamManagers, managerID = null, rosterID = null, year, compressed = false, points = null;
 
     let user = null;
 

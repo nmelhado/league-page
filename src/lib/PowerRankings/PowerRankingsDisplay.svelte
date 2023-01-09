@@ -1,7 +1,6 @@
 <script>
-    import BarChart from '$lib/BarChart.svelte';
-    import { generateGraph, round, predictScores, loadPlayers } from '$lib/utils/helper';
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import BarChart from '$lib/BarChart.svelte';
+    import { generateGraph, getTeamFromTeamManagers, round, predictScores, loadPlayers } from '$lib/utils/helper';
     export let nflState, rostersData, leagueTeamManagers, playersInfo, leagueData;
 
     const rosters = rostersData.rosters;
@@ -70,7 +69,7 @@
         };
 
         graphs = [
-            generateGraph(powerGraph, leagueTeamManagers)
+            generateGraph(powerGraph, leagueData.season),
         ]
     }
 
@@ -90,23 +89,7 @@
 
     let curGraph = 0;
 
-    let el;
-    let maxWidth = 620;
-
-
-    const resize = (w) => {
-        const left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-        const right = el?.getBoundingClientRect() ? el?.getBoundingClientRect().right  : 0;
-
-        maxWidth = right - left;
-    }
-    let innerWidth;
-
-    $: resize(innerWidth);
-
 </script>
-
-<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     .enclosure {
@@ -117,7 +100,7 @@
 </style>
 
 {#if validGraph && !seasonOver}
-    <div class="enclosure" bind:this={el}>
-        <BarChart {maxWidth} {graphs} bind:curGraph={curGraph} />
+    <div class="enclosure">
+        <BarChart {graphs} bind:curGraph={curGraph} {leagueTeamManagers} />
     </div>
 {/if}

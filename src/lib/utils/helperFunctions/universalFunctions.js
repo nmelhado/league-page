@@ -74,52 +74,7 @@ export const parseDate = (rawDate) => {
     return stringDate(d);
 }
 
-export const generateGraph = ({stats, x, y, stat, header, field, short, secondField = null}, leagueTeamManagers, year, roundOverride = 10, yMinOverride = null) => {
-    if(!stats) {
-        return null;
-    }
-    const graph = {
-        stats: [],
-        secondStats: [],
-        managers: [],
-        rosterIDs: [],
-        labels: {x, y, stat},
-        header,
-        yMin: 0,
-        yMax: 0,
-        short
-    }
-
-    const sortedStats = [...stats].sort((a, b) => (a.rosterID || a.managerID) - (b.rosterID || b.managerID));
-
-    for(const indivStat of sortedStats) {
-        graph.stats.push(Math.round(indivStat[field]));
-        if(secondField) {
-            graph.secondStats.push(Math.round(indivStat[secondField]));
-        }
-        if(indivStat.managerID) {
-            graph.managers.push(leagueTeamManagers.users[indivStat.managerID].display_name);
-            graph.rosterIDs.push(indivStat.managerID);
-        }
-        if(indivStat.rosterID) {
-            graph.managers.push(getTeamNameFromTeamManagers(leagueTeamManagers, indivStat.rosterID, year));
-            graph.rosterIDs.push(indivStat.rosterID);
-        }
-    }
-
-    graph.yMax = max(graph.stats, roundOverride);
-    graph.yMin = min(graph.stats, roundOverride);
-    if(secondField) {
-        graph.yMin = min(graph.secondStats, roundOverride);
-    }
-    if(yMinOverride) {
-        graph.yMin = yMinOverride;
-    }
-
-    return graph;
-}
-
-export const generateRankingGraph = ({stats, x, stat, header, field, short, secondField = null}, year, roundOverride = 10, xMinOverride = null) => {
+export const generateGraph = ({stats, x, stat, header, field, short, secondField = null}, year, roundOverride = 10, xMinOverride = null) => {
     if(!stats) {
         return null;
     }
