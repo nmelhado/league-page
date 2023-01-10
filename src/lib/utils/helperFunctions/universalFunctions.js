@@ -35,9 +35,13 @@ const max = (stats, roundOverride) => {
     return Math.ceil(num / roundOverride) * roundOverride;
 }
 
-export const gotoManager = ({leagueTeamManagers, managerID, rosterID}) => {
+export const gotoManager = ({leagueTeamManagers, managerID, rosterID, year}) => {
     if(!managersObj.length) return;
     let managersIndex = -1;
+
+    if(!year || year > leagueTeamManagers.currentSeason) {
+        year = leagueTeamManagers.currentSeason;
+    }
 
     if(managerID) {
         // modern approach
@@ -45,8 +49,8 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID}) => {
 
         // support for league pages still using deprecated roster field
         if(managersIndex) {
-            for(const rID in leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason]) {
-                for(const mID of leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][rID].managers) {
+            for(const rID in leagueTeamManagers.teamManagersMap[year]) {
+                for(const mID of leagueTeamManagers.teamManagersMap[year][rID].managers) {
                     if(mID == managerID) {
                         managersIndex =  managersObj.findIndex(m => m.roster == rID);
                         goto(`/manager?manager=${managersIndex}`);
@@ -57,7 +61,7 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID}) => {
         }
     } else if(rosterID) {
         // check for matching managerID first
-        for(const mID of leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][rosterID].managers) {
+        for(const mID of leagueTeamManagers.teamManagersMap[year][rosterID].managers) {
             managersIndex = managersObj.findIndex(m => m.managerID == mID);
             if(managersIndex > -1) {
                 goto(`/manager?manager=${managersIndex}`);
@@ -253,13 +257,12 @@ export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID)
 export const getDatesActive = (teamManagers, managerID) => {
     if(!managerID) return;
     let datesActive = {start: null, end: null};
-    for(const year in teamManagers.teamManagersMap) {
+    const years = Object.keys(teamManagers.teamManagersMap).sort((a, b) => b - a);
+    for(const year of years) {
         for(const rosterID in  teamManagers.teamManagersMap[year]) {
             if(teamManagers.teamManagersMap[year][rosterID].managers.indexOf(managerID) > -1) {
-                if(!datesActive.start || datesActive.start > year) {
-                    datesActive.start = year;
-                }
-                if(!datesActive.end || datesActive.end < year) {
+                datesActive.start = year;
+                if(!datesActive.end) {
                     datesActive.end = year;
                 }
                 break;
@@ -274,7 +277,8 @@ export const getDatesActive = (teamManagers, managerID) => {
 
 export const getRosterIDFromManagerID = (teamManagers, managerID) => {
     if(!managerID) return null;
-    for(const year in teamManagers.teamManagersMap) {
+    const years = Object.keys(teamManagers.teamManagersMap).sort((a, b) => b - a);
+    for(const year of years) {
         for(const rosterID in  teamManagers.teamManagersMap[year]) {
             if(teamManagers.teamManagersMap[year][rosterID].managers.indexOf(managerID) > -1) {
                 return {rosterID, year};

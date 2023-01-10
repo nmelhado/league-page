@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2023-01-10
+
+### Fixed
+
+- Bug related to going to the correct managaer from the records page
+
 ## [2.1.0] - 2023-01-10
 
 ### Changed
