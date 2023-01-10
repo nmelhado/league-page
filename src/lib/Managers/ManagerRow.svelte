@@ -12,7 +12,6 @@
     let year = null;
 
     if(manager.managerID) {
-        console.log(leagueTeamManagers.users[manager.managerID])
         const dates = getDatesActive(leagueTeamManagers, manager.managerID);
         if(dates.end) retired = true;
 
