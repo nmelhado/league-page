@@ -1,5 +1,5 @@
 /*   STEP 1   */
-export const leagueID = "784583295500464128"; // your league ID
+export const leagueID = "918537087509577728"; // your league ID
 export const leagueName = "The Legends League"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
@@ -25,13 +25,12 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
   {
-    "timestamp": "7/17/2021 18:46:41",
     "roster": 3,
     "tookOver": 2020,
     "name": "Andrew Shapiro",
     "location": "Brooklyn",
     "bio": "I joined the league last year.  I went to high school and college with nick and we were roommates for 3 years.  I have 2 kids both boys one is almost 3 and the other is 6 months.  I love to trade.\nMy favorite teams are: 1) my fantasy team 2) I was a jets fan but dumped them for the dolphins last year",
-    "photo": "/managers/andrew.jpg", // done
+    "photo": "/managers/andrew.jpg",
     "fantasyStart": 2010,
     "favoriteTeam": "mia",
     "mode": "Win Now",
@@ -49,33 +48,32 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 4,  // ID of the roster that the manager manages
-    "name": "Nick Melhado", // (optional) used if a manager took over a team, null or omit otherwise
+    "roster": 4,
+    "name": "Nick Melhado",
     "location": "Brooklyn",
     "bio": "I grew up in New York City and know most of the people in the league from Southampton. I also went to high school with Andrew, Stef, and Rory and went to college and roomed with Seamus and Andrew. I've been married since 2016 and have a son, Grayson, and a daughter on the way.",
-    "photo": "/managers/nick.jpg", // done
-    "fantasyStart": 2014, // when did the manager start playing fantasy football
-    "favoriteTeam": "nyj", // favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-    "mode": "Dynasty", // 'Win Now' or 'Rebuild'
+    "photo": "/managers/nick.jpg",
+    "fantasyStart": 2014,
+    "favoriteTeam": "nyj",
+    "mode": "Dynasty",
     "rival": {
-      name: "Clayton", // Can be anything (usually your rival's name)
-      link: 6, // manager array number within this array, or null to link back to all managers page
-      image: "/managers/clayton.jpg", // either a specific manager photo or 'everyone' or 'question'
+      name: "Clayton",
+      link: 6,
+      image: "/managers/clayton.jpg",
     }, 
-    "favoritePlayer": 1426, // this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-    "valuePosition": "WR", // Favorite position (QB, WR, RB, TE, etc.)
-    "rookieOrVets": "Rookies", // 'Rookies' or 'Vets'
+    "favoritePlayer": 1426,
+    "valuePosition": "WR",
+    "rookieOrVets": "Rookies",
     "philosophy": "Quality over quantity. The team policy is to trade depth for stars, and win on a knife's edge where a single injury can completely derail a season.",
-    "tradingScale": 10, // 1 - 10
-    "preferredContact": "Text", // 'Text', 'WhatsApp', and 'Carrier Pigeon' are currently supplied in the template
+    "tradingScale": 10,
+    "preferredContact": "Text",
   },
   {
-    "timestamp": "7/20/2021 11:25:49",
     "roster": 6,
     "name": "Charles McConnell",
     "location": "Hong Kong",
     "bio": "Diehard Jets fan, most talented manager out there, and mortal enemy of Clayton Almeida.",
-    "photo": "/managers/charles.jpg", // done
+    "photo": "/managers/charles.jpg",
     "fantasyStart": 2015,
     "favoriteTeam": "nyj",
     "mode": "Win Now",
@@ -93,13 +91,12 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/21/2021 1:29:22",
     "roster": 7,
     "tookOver": 2021,
     "name": "Stefano Vaccarino",
     "location": "Brooklyn",
     "bio": "Just a man who loves to win in the trenches",
-    "photo": "/managers/stef.jpg", // done
+    "photo": "/managers/stef.jpg",
     "fantasyStart": 2000,
     "favoriteTeam": "nyj",
     "mode": "Rebuild",
@@ -117,13 +114,12 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/20/2021 21:56:13",
     "roster": 7,
     "tookOver": 2021,
     "name": "Seamus Kerin",
     "location": "New York",
     "bio": "#serious about fitness",
-    "photo": "/managers/seamus.jpg", // done
+    "photo": "/managers/seamus.jpg",
     "fantasyStart": 2005,
     "favoriteTeam": "ne",
     "mode": "Rebuild",
@@ -141,13 +137,12 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "timestamp": "7/20/2021 21:56:13",
     "roster": 7,
     "tookOver": 2021,
     "name": "Rory Kirwan",
     "location": "New York",
     "bio": "CO-MANAGER OF THE HOGS ",
-    "photo": "/managers/rory.jpg", // done
+    "photo": "/managers/rory.jpg",
     "fantasyStart": 1955,
     "favoriteTeam": "nyg",
     "mode": "Rebuild",
@@ -165,12 +160,11 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "timestamp": "7/20/2021 22:43:40",
     "roster": 1,
     "name": "Clayton Almeida",
     "location": "West Palm Beach",
     "bio": "Dual citizen that has been in the USA since 2002. Moved around quite a bit because that's what immigrants do. One of the Founding Fathers of the Legends League. Equally decent at coaching and playing tennis. Vast knowledge about useless or not so useless facts. Never shy away from an argument/discussion. Oh and 3 time fantasy football champion that might retire if I win this year again. Also like financial markets and trading (stocks not players)",
-    "photo": "/managers/clayton.jpg", // done
+    "photo": "/managers/clayton.jpg",
     "fantasyStart": 2010,
     "favoriteTeam": "phi",
     "mode": "Win Now",
@@ -188,12 +182,11 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "timestamp": "7/20/2021 22:43:40",
     "roster": 12,
     "name": "Tom Barth",
     "location": "Solon, Ohio",
     "bio": "The Browns are going to the Super Bowl this year!",
-    "photo": "/managers/tom.jpg", // done
+    "photo": "/managers/tom.jpg",
     "fantasyStart": 2009,
     "favoriteTeam": "cle",
     "mode": "Win Now",
@@ -211,35 +204,33 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/21/2021 13:09:32", // done
     "roster": 5,
-    "name": "Joel Trudel", // done
-    "location": "Newton, MA", // done
-    "bio": "While I live in New England now, I will never be a fan of any of the Boston teams (the Celtics are good, I like Brown/Tatum); my allegiance will always live in Seattle, and ANY of the teams, including the return of the SuperSonics (RIP) and the Kraken!! My co-manager and I got married about a year and ½ ago and bought a house in December, setting up roots in the Boston area. Any of you are welcome to visit, though I couldn’t even get Clayton to come up from CT when he was there… 🤔 Though I don’t work in tennis anymore, it’s been great to me as my wife and I met through tennis, and is also how I know many of you.", // done
-    "photo": "/managers/joel.jpg", // done
-    "fantasyStart": 2014, // done
-    "favoriteTeam": "sea", // done
-    "mode": "Win Now", // done
+    "name": "Joel Trudel",
+    "location": "Newton, MA",
+    "bio": "While I live in New England now, I will never be a fan of any of the Boston teams (the Celtics are good, I like Brown/Tatum); my allegiance will always live in Seattle, and ANY of the teams, including the return of the SuperSonics (RIP) and the Kraken!! My co-manager and I got married about a year and ½ ago and bought a house in December, setting up roots in the Boston area. Any of you are welcome to visit, though I couldn’t even get Clayton to come up from CT when he was there… 🤔 Though I don’t work in tennis anymore, it’s been great to me as my wife and I met through tennis, and is also how I know many of you.",
+    "photo": "/managers/joel.jpg",
+    "fantasyStart": 2014,
+    "favoriteTeam": "sea",
+    "mode": "Win Now",
     "rival": {
       name: "Clayton",
       link: 6,
       image: "/managers/clayton.jpg"
     },
-    "favoritePlayer": 4046, // Mahomes
-    "valuePosition": "QB", // done
-    "rookieOrVets": "Rookies", // done
-    "philosophy": "I don’t see us crushing anyone over the next decade, but the team is certainly willing to go as far as Mahomes and Jefferson will take us…or the draft capital we receive in return for them….! Let’s be honest, one look at my squad, and my team building skills could be called into question. However, team culture is something we’ve never lacked in Seattle (see Pete Carrol and the Super Bowl 47 Champion Seahawks!), and it’s clear that guys love being a part of our team", // done
-    "tradingScale": 6, // done
+    "favoritePlayer": 4046,
+    "valuePosition": "QB",
+    "rookieOrVets": "Rookies",
+    "philosophy": "I don’t see us crushing anyone over the next decade, but the team is certainly willing to go as far as Mahomes and Jefferson will take us…or the draft capital we receive in return for them….! Let’s be honest, one look at my squad, and my team building skills could be called into question. However, team culture is something we’ve never lacked in Seattle (see Pete Carrol and the Super Bowl 47 Champion Seahawks!), and it’s clear that guys love being a part of our team",
+    "tradingScale": 6,
     "contactMethods": "Text, WhatsApp",
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/21/2021 21:01:49",
     "roster": 11,
     "name": "Shea Thomas",
     "location": "Lynchburg, VA",
     "bio": "I’m 29 years old and have been married to my beautiful wife for a little over a year. I played tennis at Liberty University from 2010-14 and was ranked top 20 for doubles. I have been teaching tennis ever since I graduated. I won the inaugural season of the Legends League  and look to dominate the league over the next 10 years and create a dynasty!",
-    "photo": "/managers/shea.jpg", // done
+    "photo": "/managers/shea.jpg",
     "fantasyStart": 2008,
     "favoriteTeam": "sf",
     "mode": "Win Now",
@@ -257,13 +248,12 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/20/2021 22:43:40",
     "roster": 8,
     "tookOver": 2021,
     "name": "Tim Sanford",
     "location": "Fairfield, CT",
     "bio": "Up early. Up late.",
-    "photo": "/managers/tim.jpg", // done
+    "photo": "/managers/tim.jpg",
     "fantasyStart": 2010,
     "favoriteTeam": "nyg",
     "mode": "Rebuild",
@@ -281,12 +271,11 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "timestamp": "7/20/2021 22:43:45",
     "roster": 10,
     "name": "Sebastian Becker",
     "location": "New York",
     "bio": "I am the second-best South American fantasy football manager in this league but the best South American tennis player.",
-    "photo": "/managers/sebastian.jpg", // done
+    "photo": "/managers/sebastian.jpg",
     "fantasyStart": 2018,
     "favoriteTeam": "nyg",
     "mode": "Rebuild",
@@ -304,12 +293,11 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "timestamp": "7/20/2021 22:43:40",
     "roster": 2,
     "name": "Siim Tuus",
     "location": "Rakvere, Estonia",
     "bio": "31-year-old Estonian, once played tennis at a decent level, now playing padel",
-    "photo": "/managers/siim.jpg", // done
+    "photo": "/managers/siim.jpg",
     "fantasyStart": 2014,
     "favoriteTeam": "sea",
     "mode": "Win Now",
@@ -327,12 +315,11 @@ export const managers = [
     "preferredContact": "Carrier Pigeon",
   },
   {
-    "timestamp": "7/20/2021 22:43:40",
     "roster": 2,
     "name": "Harry Jones",
     "location": "New York",
     "bio": "Lorem Ipsum",
-    "photo": "/managers/harry.jpg", // done
+    "photo": "/managers/harry.jpg",
     "fantasyStart": 2018,
     "favoriteTeam": "nyg",
     "mode": "Win Now",
