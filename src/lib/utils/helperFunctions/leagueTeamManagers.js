@@ -28,13 +28,9 @@ export const getLeagueTeamManagers = async () => {
         ).catch((err) => { console.error(err); });
 
         const year = parseInt(leagueData.season);
-        if(!teamManagersMap.currentSeason) {
-            teamManagersMap.currentSeason = year;
-        }
-
         currentLeagueID = leagueData.previous_league_id;
         if(!currentSeason) {
-            currentSeason = leagueData.season;
+            currentSeason = year;
         }
         teamManagersMap[year] = {};
         const processedUsers = processUsers(users);

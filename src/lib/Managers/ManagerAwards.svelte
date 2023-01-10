@@ -37,7 +37,7 @@
         formerGlobal = false;
         displayAwards = [];
 
-        // first lookl through annual awards (champion, second, etc)
+        // first look through annual awards (champion, second, etc)
         for(const podium of awards) {
             for(const award in podium) {
                 if(award == 'year') continue;

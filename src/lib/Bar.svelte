@@ -127,8 +127,8 @@
 </style>
 
 <div class="barParent">
-    <img alt="team avatar" on:click={() => gotoManager({leagueTeamManagers, managerID, rosterID})} style="border-color: var({color});" class="teamAvatar clickable" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
-    <span class="managerName clickable" on:click={() => gotoManager({leagueTeamManagers, managerID, rosterID})}>
+    <img alt="team avatar" on:click={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})} style="border-color: var({color});" class="teamAvatar clickable" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
+    <span class="managerName clickable" on:click={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})}>
         {#if user}
             {user.display_name}
         {:else if rosterID}
