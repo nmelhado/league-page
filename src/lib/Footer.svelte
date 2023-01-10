@@ -6,6 +6,10 @@
 
 	let outOfDate = false;
 
+    let el, footerHeight;
+
+    let innerWidth;
+
     const resize = (e, delay) => {
         const bottom = el?.getBoundingClientRect().bottom;
         const top = el?.getBoundingClientRect().top;
@@ -37,10 +41,6 @@
     }
 
 	const year = new Date().getFullYear();
-
-	let el, footerHeight;
-
-    let innerWidth;
 
     $: resize(el?.getBoundingClientRect(), false, innerWidth);
 </script>
