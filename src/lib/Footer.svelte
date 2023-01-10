@@ -6,6 +6,18 @@
 
 	let outOfDate = false;
 
+    const resize = (e, delay) => {
+        const bottom = el?.getBoundingClientRect().bottom;
+        const top = el?.getBoundingClientRect().top;
+        if(delay) {
+            setTimeout(() => {
+                resize(e, false);
+            }, 100)
+        } else {
+            footerHeight = bottom - top;
+        }
+    }
+
 	onMount(async () => {
 		const res = await fetch('/api/checkVersion', {compress: true})
 		const needUpdate = await res.json();
@@ -27,18 +39,6 @@
 	const year = new Date().getFullYear();
 
 	let el, footerHeight;
-
-	const resize = (e, delay) => {
-        const bottom = el?.getBoundingClientRect().bottom;
-        const top = el?.getBoundingClientRect().top;
-        if(delay) {
-            setTimeout(() => {
-		        resize(e, false);
-            }, 100)
-        } else {
-            footerHeight = bottom - top;
-        }
-	}
 
     let innerWidth;
 
