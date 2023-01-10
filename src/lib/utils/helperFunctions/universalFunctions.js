@@ -48,7 +48,7 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID, year}) => 
         managersIndex = managersObj.findIndex(m => m.managerID == managerID);
 
         // support for league pages still using deprecated roster field
-        if(managersIndex) {
+        if(managersIndex < 0) {
             for(const rID in leagueTeamManagers.teamManagersMap[year]) {
                 for(const mID of leagueTeamManagers.teamManagersMap[year][rID].managers) {
                     if(mID == managerID) {
