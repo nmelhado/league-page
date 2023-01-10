@@ -3,7 +3,7 @@
     import {round} from '$lib/utils/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let leagueRosterRecords, seasonWeekRecords, currentManagers, currentYear, lastYear, transactionTotals, key;
+    export let leagueRosterRecords, seasonWeekRecords, leagueTeamManagers, currentYear, lastYear, transactionTotals, key;
 
     let yearsObj = {};
     let years = [];
@@ -41,20 +41,18 @@
             for(const rosterID in transactionTotals.seasons[season]) {
                 yearsObj[season].tradesData.push({
                     rosterID,
-                    manager: transactionTotals.seasons[season][rosterID].manager,
                     trades: transactionTotals.seasons[season][rosterID].trade,
                 })
                 yearsObj[season].waiversData.push({
                     rosterID,
-                    manager: transactionTotals.seasons[season][rosterID].manager,
                     waivers: transactionTotals.seasons[season][rosterID].waiver,
                 })
             }
         }
 
         for(const rosterID in lRR) {
-            const leagueRosterRecord = lRR[rosterID];
-            for(const season of leagueRosterRecord.years) {
+            const leagueManagerRecord = lRR[rosterID];
+            for(const season of leagueManagerRecord.years) {
                 // check for ties
                 if(season.ties > 0) {
                     yearsObj[season.year].showTies = true;
@@ -65,7 +63,6 @@
 
                 // add season-long scoring record
                 yearsObj[season.year].seasonLongRecords.push({
-                    manager: season.manager,
                     rosterID,
                     fpts,
                     fptsPerGame,
@@ -75,7 +72,6 @@
                 // add win percentage rankings
                 yearsObj[season.year].winPercentages.push({
                     rosterID,
-                    manager: season.manager,
                     percentage: round((season.wins + season.ties / 2) / (season.wins + season.ties + season.losses) * 100),
                     wins: season.wins,
                     ties: season.ties,
@@ -85,7 +81,6 @@
                 // add lineup IQ rankings
                 let lineupIQ = {
                     rosterID,
-                    manager: season.manager,
                     fpts: round(season.fpts),
                 }
                 if(season.potentialPoints) {
@@ -98,7 +93,6 @@
                 // add fantasy points histories
                 yearsObj[season.year].fptsHistories.push({
                     rosterID,
-                    manager: season.manager,
                     fptsFor: round(season.fpts),
                     fptsAgainst: round(season.fptsAgainst),
                     fptsPerGame: round(season.fptsPerGame),
@@ -186,6 +180,6 @@
     blowouts={years[display].blowouts}
     closestMatchups={years[display].closestMatchups}
     prefix={years[display].year}
-    {currentManagers}
+    {leagueTeamManagers}
     {key}
 />

@@ -26,9 +26,9 @@
 			<br />
 			<LinearProgress indeterminate />
 		</div>
-	{:then [leagueData, rosterData, users, playersInfo]}
+	{:then [leagueData, rosterData, leagueTeamManagers, playersInfo]}
 		<!-- promise was fulfilled -->
-		<Rosters {leagueData} {rosterData} {users} {playersInfo} /> <!-- displays rosters -->
+		<Rosters {leagueData} {rosterData} {leagueTeamManagers} {playersInfo} /> <!-- displays rosters -->
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>

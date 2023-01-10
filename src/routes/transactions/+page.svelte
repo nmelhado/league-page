@@ -4,7 +4,7 @@
     import { waitForAll } from '$lib/utils/helper';
 
     export let data;
-    const {show, query, page, playersData, transactionsData} = data;
+    const {show, query, page, playersData, transactionsData, leagueTeamManagersData} = data;
 
     let el, masterOffset;
 
@@ -45,13 +45,13 @@
 <div id="main" bind:this={el}>
 
 
-    {#await waitForAll(transactionsData, playersData)}
+    {#await waitForAll(transactionsData, playersData, leagueTeamManagersData)}
         <div class="loading" >
             <p>Loading league transactions...</p>
             <LinearProgress indeterminate />
         </div>
-    {:then [{transactions, currentManagers, stale}, playersInfo]}
-        <TransactionsPage {playersInfo} {stale} {transactions} {currentManagers} {masterOffset} {show} {query} queryPage={page} {perPage} postUpdate={true} />
+    {:then [{transactions, currentTeams, stale}, playersInfo, leagueTeamManagers]}
+        <TransactionsPage {playersInfo} {stale} {transactions} {currentTeams} {masterOffset} {show} {query} queryPage={page} {perPage} postUpdate={true} {leagueTeamManagers} />
     {:catch error}
         <p class="center">Something went wrong: {error.message}</p>
     {/await}

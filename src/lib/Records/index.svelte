@@ -4,14 +4,14 @@
     import AllTimeRecords from './AllTimeRecords.svelte';
     import PerSeasonRecords from './PerSeasonRecords.svelte';
 
-    export let leagueData, totals, stale;
+    export let leagueData, totals, stale, leagueTeamManagers;
 
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
         totals = newTransactions.totals;
     }
 
-    let leagueRosterRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, currentManagers, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
+    let leagueManagerRecords, leagueRosterRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
 
     const refreshRecords = async () => {
         const newRecords = await getLeagueRecords(true);
@@ -27,12 +27,12 @@
 
         const selectedLeagueData = lD[k];
 
+        leagueManagerRecords = selectedLeagueData.leagueManagerRecords;
         leagueRosterRecords = selectedLeagueData.leagueRosterRecords;
         leagueWeekHighs = selectedLeagueData.leagueWeekHighs;
         leagueWeekLows = selectedLeagueData.leagueWeekLows;
         allTimeClosestMatchups = selectedLeagueData.allTimeClosestMatchups;
         allTimeBiggestBlowouts = selectedLeagueData.allTimeBiggestBlowouts;
-        currentManagers = selectedLeagueData.currentManagers;
         mostSeasonLongPoints = selectedLeagueData.mostSeasonLongPoints;
         leastSeasonLongPoints = selectedLeagueData.leastSeasonLongPoints;
         seasonWeekRecords = selectedLeagueData.seasonWeekRecords;
@@ -121,11 +121,11 @@
 
     {#if display == "allTime"}
         {#if leagueWeekHighs?.length}
-            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueRosterRecords} {leagueWeekHighs} {leagueWeekLows} {currentManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} {key} />
+            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueManagerRecords} {leagueWeekHighs} {leagueWeekLows} {leagueTeamManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} {key} />
         {:else}
             <p class="empty">No records <i>yet</i>...</p>
         {/if}
     {:else}
-        <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {currentManagers} {currentYear} {lastYear} {key} />
+        <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {leagueTeamManagers} {currentYear} {lastYear} {key} />
     {/if}
 </div>

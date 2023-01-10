@@ -8,15 +8,16 @@
     import { onMount } from 'svelte';
     import { loadPlayers } from '$lib/utils/helper';
 
-	export let queryWeek, matchupsData, bracketsData, playersData;
+	export let queryWeek, leagueTeamManagersData, matchupsData, bracketsData, playersData;
 
-    let players, matchupWeeks, year, week, regularSeasonLength, brackets;
+    let players, matchupWeeks, year, week, regularSeasonLength, brackets, leagueTeamManagers;
 
     let loading = true;
 
     onMount(async () => {
         brackets = await bracketsData;
         const matchupsInfo = await matchupsData;
+        leagueTeamManagers = await leagueTeamManagersData;
         matchupWeeks = matchupsInfo.matchupWeeks;
         year = matchupsInfo.year;
         week = matchupsInfo.week;
@@ -43,7 +44,6 @@
     }
 
     let selection = 'regular';
-    let playoffWeek
 </script>
 
 <style>
@@ -97,7 +97,7 @@
             {/if}
         </div>
         {#if selection == 'regular'}
-            <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} />
+            <MatchupWeeks {players} {queryWeek} {matchupWeeks} {regularSeasonLength} {year} {week} bind:selection={selection} {leagueTeamManagers} />
         {/if}
     {:else}
         <div class="message">
@@ -106,6 +106,6 @@
     {/if}
     <!-- {promise has processed -->
     {#if brackets.champs.bracket[0][0][0].points && (selection == 'champions' || selection == 'losers')}
-        <Brackets {queryWeek} {players} {brackets} bind:selection={selection}/>
+        <Brackets {queryWeek} {leagueTeamManagers} {players} {brackets} bind:selection={selection} />
     {/if}
 {/if}

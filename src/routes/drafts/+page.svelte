@@ -2,7 +2,7 @@
 	import { Drafts } from '$lib/components';
 
     export let data;
-    const {upcomingDraftData, previousDraftsData} = data;
+    const {upcomingDraftData, previousDraftsData, leagueTeamManagersData, playersData} = data;
 </script>
 
 <style>
@@ -13,5 +13,5 @@
 </style>
 
 <div id="main">
-	<Drafts {upcomingDraftData} {previousDraftsData} />
+	<Drafts {upcomingDraftData} {previousDraftsData} {leagueTeamManagersData} {playersData} />
 </div>
