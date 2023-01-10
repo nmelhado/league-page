@@ -18,12 +18,12 @@
 
     $: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
 
-    $: teamTransactions = transactions.filter(t => t.rosters.indexOf(viewManager.roster) > -1);
-
     const  startersAndReserve = rostersData.startersAndReserve;
     let rosters = rostersData.rosters;
 
     $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+
+    $: teamTransactions = transactions.filter(t => t.rosters.includes(parseInt(rosterID)));
 
     $: rosterArrNum = rosterID-1;
 
