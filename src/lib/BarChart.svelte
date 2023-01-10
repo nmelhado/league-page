@@ -68,6 +68,13 @@
     @media (max-width: 525px) {
         :global(.buttonHolderG .selectionButtons) {
             font-size: 0.6em;
+            height: 32px;
+        }
+    }
+
+    @media (max-width: 505px) {
+        :global(.buttonHolderG .selectionButtons) {
+            height: 26px;
         }
     }
 
@@ -75,6 +82,15 @@
         :global(.buttonHolderG .selectionButtons) {
             font-size: 0.5em;
             padding: 0 6px;
+        }
+    }
+
+    @media (max-width: 260px) {
+        :global(.buttonHolderG .selectionButtons) {
+            font-size: 0.4em;
+            padding: 0 2px;
+            height: 24px;
+            min-width: 40px;
         }
     }
 

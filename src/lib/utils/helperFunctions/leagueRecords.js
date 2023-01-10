@@ -81,10 +81,7 @@ export const getLeagueRecords = async (refresh = false) => {
 		const {
 			season,
 			year,
-			rS
 		} = await processRegularSeason({leagueData, rosters, curSeason, week, regularSeason})
-
-		regularSeason = rS; // update the regular season record
 
 		// post season data
 		const pS = await processPlayoffs({year, curSeason, week, playoffRecords, rosters})
@@ -132,7 +129,7 @@ export const getLeagueRecords = async (refresh = false) => {
  * @param {string} regularSeasonInfo.curSeason the league ID of the current season
  * @param {int} regularSeasonInfo.week the week to start analyzing (most recently completed week)
  * @param {Records} regularSeasonInfo.regularSeason the global regularSeason record object
- * @returns {Object} { interSeasonEntry, season: (curSeason), year, matchupDifferentials, lRR: (leagueManagerRecords), mSLP: (seasonLongPoints), lWR: (leagueWeekRecords)}
+ * @returns {Object} { season: (curSeason), year}
  */
 const processRegularSeason = async ({rosters, leagueData, curSeason, week, regularSeason}) => {
 	let year = parseInt(leagueData.season);
@@ -144,7 +141,7 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 	}
 
 	for(const roster of rosters) {
-		regularSeason = analyzeRosters({year, roster, regularSeason});
+		analyzeRosters({year, roster, regularSeason});
 	}
 
 	// loop through each week of the season
@@ -176,9 +173,8 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 	
 	// process all the matchups
 	for(const matchupWeek of matchupsData) {
-		const {sPR, r, mD, sW} =  processMatchups({matchupWeek, seasonPointsRecord, record: regularSeason, startWeek, matchupDifferentials, year})
+		const {sPR, mD, sW} =  processMatchups({matchupWeek, seasonPointsRecord, record: regularSeason, startWeek, matchupDifferentials, year})
 		seasonPointsRecord = sPR;
-		regularSeason = r;
 		matchupDifferentials = mD;
 		startWeek = sW;
 	}
@@ -208,7 +204,6 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 	return {
 		season: curSeason,
 		year,
-		rS: regularSeason
 	}
 }
 
@@ -220,7 +215,6 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
  * @param {int} rosterData.year the year being analyzed
  * @param {Object} rosterData.roster the roster being analyzed
  * @param {Records} rosterData.regularSeason the global regularSeason object that will be updated and returned
- * @returns {Object} {rS: RegularSeason}
  */
 const analyzeRosters = ({year, roster, regularSeason}) => {
     // team name and logo are tied to the ownerID
@@ -229,11 +223,11 @@ const analyzeRosters = ({year, roster, regularSeason}) => {
     const managers = getManagers(roster);
 
 	// season hasn't started, no records to obtain
-	if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) return {rS: regularSeason};
+	if(roster.settings.wins == 0 && roster.settings.ties == 0 && roster.settings.losses == 0) return;
 
 	// fptsFor and fptsPerGame are used for both rosterRecords and seasonLongPoints
 	const fptsFor = roster.settings.fpts + (roster.settings.fpts_decimal / 100);
-	const fptsPerGame = round(fptsFor / (roster.settings.wins + roster.settings.losses + roster.settings.ties))
+	const fptsPerGame = round(fptsFor / (roster.settings.wins + roster.settings.losses + roster.settings.ties));
 
 	const rosterRecords = {
 		wins:  roster.settings.wins,
@@ -248,7 +242,7 @@ const analyzeRosters = ({year, roster, regularSeason}) => {
 	}
 
 	// update the roster records for this roster ID
-	regularSeason.updateManagerRecord(managers, rosterRecords)
+	regularSeason.updateManagerRecord(managers, rosterRecords);
 
 	// add season long points entry
 	regularSeason.addSeasonLongPoints({
@@ -256,9 +250,7 @@ const analyzeRosters = ({year, roster, regularSeason}) => {
 		fpts: fptsFor,
 		fptsPerGame,
 		year,
-	})
-
-	return regularSeason;
+	});
 }
 
 /**
@@ -267,7 +259,7 @@ const analyzeRosters = ({year, roster, regularSeason}) => {
  * @param {Object} matchupData the data needed to process a matchup
  * @param {Object[]} matchupData.matchupWeek the week being analyzed
  * @param {Object[]} matchupData.seasonPointsRecord
- * @param {Records} matchupData.regularSeason
+ * @param {Records} matchupData.record
  * @param {int} matchupData.startWeek
  * @param {Object[]} matchupData.matchupDifferentials
  * @param {int} matchupData.year
@@ -364,7 +356,6 @@ const processMatchups = ({matchupWeek, seasonPointsRecord, record, startWeek, ma
 
 	return {
 		sPR: seasonPointsRecord,
-		r: record,
 		mD: matchupDifferentials,
 		sW: startWeek,
 		pSD
@@ -466,13 +457,12 @@ const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferent
 				}
 			}
 		}
-		const {sPR, r, mD, pSD} =  processMatchups({matchupWeek, seasonPointsRecord, record: playoffRecords, startWeek, matchupDifferentials, year})
+		const {sPR, mD, pSD} =  processMatchups({matchupWeek, seasonPointsRecord, record: playoffRecords, startWeek, matchupDifferentials, year})
 
 		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
 
 		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
 		seasonPointsRecord = sPR;
-		playoffRecords = r;
 		matchupDifferentials = mD;
 	}
 

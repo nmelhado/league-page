@@ -10,6 +10,7 @@
 		const res = await fetch('/api/checkVersion', {compress: true})
 		const needUpdate = await res.json();
 		outOfDate = needUpdate;
+        resize(el?.getBoundingClientRect(), true);
 	})
 
     let managersOutOfDate = false;
@@ -17,6 +18,7 @@
         for(const manager of managers) {
             if(manager.roster && !manager.managerID) {
                 managersOutOfDate = true;
+                resize(el?.getBoundingClientRect(), true);
                 break;
             }
         }
@@ -26,12 +28,24 @@
 
 	let el, footerHeight;
 
-	const resize = (top, bottom) => {
-		footerHeight = bottom - top;
+	const resize = (e, delay) => {
+        const bottom = el?.getBoundingClientRect().bottom;
+        const top = el?.getBoundingClientRect().top;
+        if(delay) {
+            setTimeout(() => {
+		        resize(e, false);
+            }, 100)
+        } else {
+            footerHeight = bottom - top;
+        }
 	}
 
-    $: resize(el?.getBoundingClientRect()?.top, el?.getBoundingClientRect()?.bottom);
+    let innerWidth;
+
+    $: resize(el?.getBoundingClientRect(), false, innerWidth);
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
 	footer {

@@ -328,6 +328,7 @@
         :global(.buttonHolder .selectionButtons) {
             font-size: 0.5em;
             padding: 0 6px;
+            height: 30px;
         }
     }
 
@@ -335,6 +336,15 @@
         :global(.buttonHolder .selectionButtons) {
             font-size: 0.45em;
             padding: 0 3px;
+        }
+    }
+
+    @media (max-width: 265px) {
+        :global(.buttonHolder .selectionButtons) {
+            font-size: 0.4em;
+            padding: 0 2px;
+            height: 24px;
+            min-width: 40px;
         }
     }
 
@@ -357,7 +367,7 @@
         }
     }
 
-    @media (max-width: 435px) {
+    @media (max-width: 480px) {
         :global(.rank) {
             padding: 1px 0 1px 5px !important;
         }
@@ -366,7 +376,7 @@
         }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 460px) {
         :global(.recordTable th) {
             font-size: 0.6em;
             padding: 1px 12px;
@@ -377,7 +387,7 @@
         }
     }
 
-    @media (max-width: 330px) {
+    @media (max-width: 365px) {
         :global(.recordTable th) {
             font-size: 0.5em;
             padding: 1px 8px;
@@ -385,6 +395,17 @@
         :global(.recordTable td) {
             font-size: 0.5em;
             padding: 1px 8px;
+        }
+    }
+
+    @media (max-width: 265px) {
+        :global(.recordTable th) {
+            font-size: 0.4em;
+            padding: 1px 5px;
+        }
+        :global(.recordTable td) {
+            font-size: 0.4em;
+            padding: 1px 5px;
         }
     }
 

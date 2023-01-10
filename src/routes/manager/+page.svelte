@@ -8,6 +8,7 @@
 	const {managers, manager, managersInfo} = data;
 
     onMount(() => {
+        if(!managers.length) goto('/');
         if(manager < 0) goto("/managers");
     })
 </script>
@@ -33,7 +34,7 @@
                 <LinearProgress indeterminate />
             </div>
         {:then [rostersData, leagueTeamManagers, leagueData, transactionsData, awards, records]}
-            {#if manager > -1}
+            {#if managers.length && manager > -1}
                 <Manager {awards} {records} {manager} {managers} {rostersData} {leagueTeamManagers} rosterPositions={leagueData.roster_positions} {transactionsData} />
             {/if}
         {:catch error}

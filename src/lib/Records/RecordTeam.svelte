@@ -53,6 +53,12 @@
         }
     }
 
+    @media (max-width: 295px) {
+        .teamAvatar {
+            display: none;
+        }
+    }
+
 </style>
 
 <div class="recordTeam">

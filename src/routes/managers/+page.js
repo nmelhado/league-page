@@ -1,14 +1,14 @@
 import {
     getLeagueTeamManagers,
-    managers as managersObj
+    managers,
 } from '$lib/utils/helper';
 
-export async function load({ url }) {
-    if(!managersObj.length) return false;
+export async function load() {
+    if(!managers.length) return {managers};
     const leagueTeamManagersData = getLeagueTeamManagers();
 
     const props = {
-        managers: managersObj,
+        managers,
         leagueTeamManagersData
     }
 
