@@ -12,11 +12,14 @@
     let year = null;
 
     if(manager.managerID) {
+        console.log(leagueTeamManagers.users[manager.managerID])
         const dates = getDatesActive(leagueTeamManagers, manager.managerID);
         if(dates.end) retired = true;
 
         ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, manager.managerID) || {rosterID, year});
     }
+
+    const commissioner = manager.managerID ? leagueTeamManagers.users[manager.managerID].is_owner : false;
 </script>
 
 <style>
@@ -104,6 +107,27 @@
         width: 63px;
         text-align: center;
         line-height: 1.2em;
+    }
+
+    .avatarHolder {
+        display: inline-flex;
+        position: relative;
+    }
+
+    .commissionerBadge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        height: 25px;
+        width: 25px;
+        font-weight: 600;
+        border-radius: 15px;
+        background-color: var(--blueTwo);
+        border: 1px solid var(--blueOne);
+        color: #fff;
     }
 
 	@media (max-width: 665px) {
@@ -201,7 +225,14 @@
 </style>
 
 <div class="manager" style="{retired ? "background-image: url(/retired.png); background-color: var(--ddd)": ""}" on:click={() => goto(`/manager?manager=${key}`)}>
-    <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+    <div class="avatarHolder">
+        <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+        {#if commissioner}
+            <div class="commissionerBadge">
+                <span>C</span>
+            </div>
+        {/if}
+    </div>
     <div class="name">{manager.name}</div>
     <div class="team">{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</div>
     <div class="spacer" />

@@ -1,4 +1,4 @@
-import { managers } from '$lib/utils/leagueInfo';
+import { managers as managersObj } from '$lib/utils/leagueInfo';
 import { goto } from "$app/navigation";
 import { stringDate } from './news';
 
@@ -36,12 +36,15 @@ const max = (stats, roundOverride) => {
 }
 
 export const gotoManager = ({managerID, rosterID}) => {
-    if(!managers.length) return;
+    if(!managersObj.length) return;
     let managersIndex = -1;
+
     if(managerID) {
-        managersIndex = managers.findIndex(m => m.managerID == managerID);
+        console.log(managersObj[1]);
+        managersIndex = managersObj.findIndex(m => m.managerID == managerID);
     } else if(rosterID) {
-        managersIndex = managers.findIndex(m => m.roster == rosterID);
+        console.log(managersObj[0]);
+        managersIndex = managersObj.findIndex(m => m.roster == rosterID);
     }
     // if no manager exists for that roster, -1 will take you to the main managers page
     goto(`/manager?manager=${managersIndex}`);
@@ -52,7 +55,7 @@ export const getAuthor = (leagueTeamManagers, author) => {
         for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
             for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers) {
                 if(leagueTeamManagers.users[manager].display_name.toLowerCase() == author.toLowerCase()) {
-                    return `<a href="/managers?manager=${managers.findIndex(m => m.roster == rosterKey)}">${leagueTeamManagers.users[manager].display_name}</a>`;
+                    return `<a href="/managers?manager=${managersObj.findIndex(m => m.roster == rosterKey)}">${leagueTeamManagers.users[manager].display_name}</a>`;
                 }
             }
         }

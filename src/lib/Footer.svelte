@@ -24,7 +24,7 @@
 
 	const year = new Date().getFullYear();
 
-	let el, innerWidth, footerHeight;
+	let el, footerHeight;
 
 	const resize = (top, bottom) => {
 		footerHeight = bottom - top;
@@ -32,8 +32,6 @@
 
     $: resize(el?.getBoundingClientRect()?.top, el?.getBoundingClientRect()?.bottom);
 </script>
-
-<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
 	footer {

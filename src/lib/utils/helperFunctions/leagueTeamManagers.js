@@ -38,7 +38,12 @@ export const getLeagueTeamManagers = async () => {
         }
         teamManagersMap[year] = {};
         const processedUsers = processUsers(users);
-        finalUsers = {...finalUsers, ...processedUsers};
+
+        // in order to not overwrite most recent data, only add new entries to finalUsers
+        for(const processedUserKey in processedUsers) {
+            if(finalUsers[processedUserKey]) continue;
+            finalUsers[processedUserKey] = processedUsers[processedUserKey];
+        }
         for(const roster of rosters) {
             teamManagersMap[year][roster.roster_id] = {
                 team: getTeamData(processedUsers, roster.owner_id),

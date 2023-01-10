@@ -1,9 +1,15 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
     import {Manager} from '$lib/components';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	export let data;
 	const {managers, manager, managersInfo} = data;
+
+    onMount(() => {
+        if(manager < 0) goto("/managers");
+    })
 </script>
 
 <style>
@@ -20,16 +26,18 @@
 </style>
 
 <div class="main">
-    {#await managersInfo}
-        <!-- promise is pending -->
-        <div class="loading">
-            <p>Retrieving managers...</p>
-            <LinearProgress indeterminate />
-        </div>
-    {:then [rostersData, leagueTeamManagers, leagueData, transactionsData, awards, records]}
-        <Manager {awards} {records} {manager} {managers} {rostersData} {leagueTeamManagers} rosterPositions={leagueData.roster_positions} {transactionsData} />
-    {:catch error}
-        <!-- promise was rejected -->
-        <p>Something went wrong: {error.message}</p>
-    {/await}
+        {#await managersInfo}
+            <!-- promise is pending -->
+            <div class="loading">
+                <p>Retrieving managers...</p>
+                <LinearProgress indeterminate />
+            </div>
+        {:then [rostersData, leagueTeamManagers, leagueData, transactionsData, awards, records]}
+            {#if manager > -1}
+                <Manager {awards} {records} {manager} {managers} {rostersData} {leagueTeamManagers} rosterPositions={leagueData.roster_positions} {transactionsData} />
+            {/if}
+        {:catch error}
+            <!-- promise was rejected -->
+            <p>Something went wrong: {error.message}</p>
+        {/await}
 </div>

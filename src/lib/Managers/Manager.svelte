@@ -31,6 +31,8 @@
 
     $: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 0 : roster.co_owners;
 
+    $: commissioner = viewManager.managerID ? leagueTeamManagers.users[viewManager.managerID].is_owner : false;
+
     let players, playersInfo;
     let loading = true;
 
@@ -167,6 +169,23 @@
         margin-top: 0;
     }
 
+    .commissionerBadge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25px;
+        width: 25px;
+        font-weight: 600;
+        border-radius: 15px;
+        background-color: var(--blueTwo);
+        border: 1px solid var(--blueOne);
+    }
+
+    .commissionerBadge span {
+        font-style: normal;
+        color: #fff;
+    }
+
     /* media queries */
 
     @media (max-width: 505px) {
@@ -245,6 +264,12 @@
                 <!-- favoriteTeam is an optional field -->
                 <span class="seperator">|</span>
                 <img class="infoChild infoTeam" src="https://sleepercdn.com/images/team_logos/nfl/{viewManager.favoriteTeam}.png" alt="favorite team"/>
+            {/if}
+            {#if commissioner}
+                <span class="seperator">|</span>
+                <div class="infoChild commissionerBadge">
+                    <span>C</span>
+                </div>
             {/if}
         </div>
 

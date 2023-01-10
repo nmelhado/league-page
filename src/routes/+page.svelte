@@ -189,7 +189,7 @@
             {:then [podiums, leagueTeamManagers]}
                 {#if podiums[0]}
                     <h4>{podiums[0].year} Fantasy Champ</h4>
-                    <div id="champ" on:click={() => {if(managers.length) gotoManager(parseInt(podiums[0].champion))}} >
+                    <div id="champ" on:click={() => {if(managers.length) gotoManager({rosterID: parseInt(podiums[0].champion)})}} >
                         <img src="{getAvatarFromTeamManagers(leagueTeamManagers, podiums[0].champion, podiums[0].year)}" class="first" alt="champion" />
                         <img src="./laurel.png" class="laurel" alt="laurel" />
                     </div>
