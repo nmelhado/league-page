@@ -262,7 +262,7 @@
 		<Head> <!-- Team name  -->
 			<Row>
 				<Cell colspan=4 class="r_{division} clickable">
-					<h3 on:click={() => gotoManager(roster.roster_id)}>
+					<h3 on:click={() => gotoManager({rosterID: roster.roster_id})}>
 						<img alt="team avatar" class="teamAvatar" src="{team ? team.avatar : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
 						{team?.name ? team.name : 'No Manager'}
 					</h3>

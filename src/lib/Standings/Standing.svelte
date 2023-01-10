@@ -29,7 +29,7 @@
 
 <Row class="contrastRow">
     <Cell class="">
-        <div class="clickable team" on:click={() => gotoManager(roster.roster_id)}>
+        <div class="clickable team" on:click={() => gotoManager({rosterID: roster.roster_id})}>
             <img alt="team avatar" class="teamAvatar clickable" src="{team.avatar}" />
             <div>
                 {team.name}

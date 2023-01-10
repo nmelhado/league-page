@@ -62,12 +62,12 @@
 			{#each transaction.rosters as owner, ix}
 				<Cell class="transactTeam">
 					{#if getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name != getTeamFromTeamManagers(leagueTeamManagers, owner).name}
-						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
+						<img class="avatar clickable" on:click={() => gotoManager({rosterID: owner})} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager({rosterID: owner})}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
 						<span class="currentOwner">({getTeamFromTeamManagers(leagueTeamManagers, owner).name})</span>
 					{:else}
-						<img class="avatar clickable" on:click={() => gotoManager(owner)} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager(owner)}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
+						<img class="avatar clickable" on:click={() => gotoManager({rosterID: owner})} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+						<br /><span class="clickable" on:click={() => gotoManager({rosterID: owner})}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
 					{/if}
 				</Cell>
 			{/each}

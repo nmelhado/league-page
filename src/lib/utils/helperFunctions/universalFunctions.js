@@ -40,12 +40,11 @@ export const gotoManager = ({managerID, rosterID}) => {
     let managersIndex = -1;
 
     if(managerID) {
-        console.log(managersObj[1]);
         managersIndex = managersObj.findIndex(m => m.managerID == managerID);
     } else if(rosterID) {
-        console.log(managersObj[0]);
         managersIndex = managersObj.findIndex(m => m.roster == rosterID);
     }
+
     // if no manager exists for that roster, -1 will take you to the main managers page
     goto(`/manager?manager=${managersIndex}`);
 }
