@@ -25,8 +25,7 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
   {
-    "roster": 3,
-    "tookOver": 2020,
+    "managerID": "466808847713955840",
     "name": "Andrew Shapiro",
     "location": "Brooklyn",
     "bio": "I joined the league last year.  I went to high school and college with nick and we were roommates for 3 years.  I have 2 kids both boys one is almost 3 and the other is 6 months.  I love to trade.\nMy favorite teams are: 1) my fantasy team 2) I was a jets fan but dumped them for the dolphins last year",
@@ -48,7 +47,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 4,
+    "managerID": "463854522964373504",
     "name": "Nick Melhado",
     "location": "Brooklyn",
     "bio": "I grew up in New York City and know most of the people in the league from Southampton. I also went to high school with Andrew, Stef, and Rory and went to college and roomed with Seamus and Andrew. I've been married since 2016 and have a son, Grayson, and a daughter on the way.",
@@ -69,7 +68,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 6,
+    "managerID": "463861417238327296",
     "name": "Charles McConnell",
     "location": "Hong Kong",
     "bio": "Diehard Jets fan, most talented manager out there, and mortal enemy of Clayton Almeida.",
@@ -91,8 +90,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 7,
-    "tookOver": 2021,
+    "managerID": "703785166493020160",
     "name": "Stefano Vaccarino",
     "location": "Brooklyn",
     "bio": "Just a man who loves to win in the trenches",
@@ -114,8 +112,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 7,
-    "tookOver": 2021,
+    "managerID": "601985300511645696",
     "name": "Seamus Kerin",
     "location": "New York",
     "bio": "#serious about fitness",
@@ -137,8 +134,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 7,
-    "tookOver": 2021,
+    "managerID": "703787086343409664",
     "name": "Rory Kirwan",
     "location": "New York",
     "bio": "CO-MANAGER OF THE HOGS ",
@@ -160,7 +156,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 1,
+    "managerID": "463849884735238144",
     "name": "Clayton Almeida",
     "location": "West Palm Beach",
     "bio": "Dual citizen that has been in the USA since 2002. Moved around quite a bit because that's what immigrants do. One of the Founding Fathers of the Legends League. Equally decent at coaching and playing tennis. Vast knowledge about useless or not so useless facts. Never shy away from an argument/discussion. Oh and 3 time fantasy football champion that might retire if I win this year again. Also like financial markets and trading (stocks not players)",
@@ -182,7 +178,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 12,
+    "managerID": "464469353119608832",
     "name": "Tom Barth",
     "location": "Solon, Ohio",
     "bio": "The Browns are going to the Super Bowl this year!",
@@ -204,7 +200,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 5,
+    "managerID": "463860064092942336",
     "name": "Joel Trudel",
     "location": "Newton, MA",
     "bio": "While I live in New England now, I will never be a fan of any of the Boston teams (the Celtics are good, I like Brown/Tatum); my allegiance will always live in Seattle, and ANY of the teams, including the return of the SuperSonics (RIP) and the Kraken!! My co-manager and I got married about a year and ½ ago and bought a house in December, setting up roots in the Boston area. Any of you are welcome to visit, though I couldn’t even get Clayton to come up from CT when he was there… 🤔 Though I don’t work in tennis anymore, it’s been great to me as my wife and I met through tennis, and is also how I know many of you.",
@@ -226,7 +222,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 11,
+    "managerID": "464270410381258752",
     "name": "Shea Thomas",
     "location": "Lynchburg, VA",
     "bio": "I’m 29 years old and have been married to my beautiful wife for a little over a year. I played tennis at Liberty University from 2010-14 and was ranked top 20 for doubles. I have been teaching tennis ever since I graduated. I won the inaugural season of the Legends League  and look to dominate the league over the next 10 years and create a dynasty!",
@@ -248,8 +244,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 8,
-    "tookOver": 2021,
+    "managerID": "677353154190331904",
     "name": "Tim Sanford",
     "location": "Fairfield, CT",
     "bio": "Up early. Up late.",
@@ -271,7 +266,7 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
-    "roster": 10,
+    "managerID": "464174586712289280",
     "name": "Sebastian Becker",
     "location": "New York",
     "bio": "I am the second-best South American fantasy football manager in this league but the best South American tennis player.",
@@ -293,7 +288,7 @@ export const managers = [
     "preferredContact": "Text",
   },
   {
-    "roster": 2,
+    "managerID": "463851773891702784",
     "name": "Siim Tuus",
     "location": "Rakvere, Estonia",
     "bio": "31-year-old Estonian, once played tennis at a decent level, now playing padel",
@@ -315,7 +310,7 @@ export const managers = [
     "preferredContact": "Carrier Pigeon",
   },
   {
-    "roster": 2,
+    "managerID": "475339393737945088",
     "name": "Harry Jones",
     "location": "New York",
     "bio": "Lorem Ipsum",
