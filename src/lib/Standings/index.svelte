@@ -111,7 +111,7 @@
             <Body>
                 <!-- 	Standing	 -->
                 {#each standings as standing}
-                    <Standing {columnOrder} {standing} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} roster={rosters[standing.rosterID - 1]} />
+                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} roster={rosters[standing.rosterID - 1]} />
                 {/each}
             </Body>
         </DataTable>

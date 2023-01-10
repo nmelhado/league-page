@@ -8,7 +8,7 @@
     
     export let draftData, leagueTeamManagers, previous = false, year, players;
 
-    const {draftOrder, draft, currentTeams, accuracy, reversalRound, draftType} = draftData;
+    const {draftOrder, draft, accuracy, reversalRound, draftType} = draftData;
 
     let progress = 0;
     let closed = false;
@@ -123,9 +123,9 @@
             {#each draftOrder as draftPosition}
                 {#if draftPosition}
                     <Cell class="draftTeam">
-                        <img class="avatar clickable" on:click={() => gotoManager({rosterID: draftPosition})} src="{getAvatarFromTeamManagers(leagueTeamManagers, draftPosition, year)}" alt="{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)} avatar"/>
+                        <img class="avatar clickable" on:click={() => gotoManager({leagueTeamManagers, rosterID: draftPosition})} src="{getAvatarFromTeamManagers(leagueTeamManagers, draftPosition, year)}" alt="{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)} avatar"/>
                         <br />
-                        <span class="clickable" on:click={() => gotoManager({rosterID: draftPosition})}>{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)}{@html getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year) != getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition) ? `<br /><span class="curDraftName">(${getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition)})</span>` : ''}</span>
+                        <span class="clickable" on:click={() => gotoManager({leagueTeamManagers, rosterID: draftPosition})}>{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)}{@html getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year) != getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition) ? `<br /><span class="curDraftName">(${getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition)})</span>` : ''}</span>
                     </Cell>
                 {/if}
             {/each}

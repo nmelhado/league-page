@@ -460,7 +460,7 @@
                 {#each weekRecords as leagueWeekRecord, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" on:click={() => gotoManager({rosterID: leagueWeekRecord.rosterID})}>
+                        <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: leagueWeekRecord.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={leagueWeekRecord.rosterID} year={allTime ? leagueWeekRecord.year : prefix} />
                         </Cell>
                         <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
@@ -488,7 +488,7 @@
                 {#each weekLows as leagueWeekLow, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" on:click={() => gotoManager({rosterID: leagueWeekLow.rosterID})}>
+                        <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: leagueWeekLow.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={leagueWeekLow.rosterID} year={allTime ? leagueWeekLow.year : prefix} />
                         </Cell>
                         <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
@@ -517,7 +517,7 @@
                 {#each seasonLongRecords as mostSeasonLongPoint, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" on:click={() => gotoManager({rosterID: mostSeasonLongPoint.rosterID})}>
+                        <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: mostSeasonLongPoint.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={mostSeasonLongPoint.rosterID} year={mostSeasonLongPoint.year} />
                         </Cell>
                         <Cell>{mostSeasonLongPoint.year}</Cell>
@@ -547,7 +547,7 @@
                 {#each seasonLongLows as leastSeasonLongPoint, ix}
                     <Row>
                         <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" on:click={() => gotoManager({rosterID: leastSeasonLongPoint.rosterID})}>
+                        <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: leastSeasonLongPoint.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={leastSeasonLongPoint.rosterID} year={leastSeasonLongPoint.year} />
                         </Cell>
                         <Cell>{leastSeasonLongPoint.year}</Cell>
@@ -578,13 +578,13 @@
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName differentialName">
                             <div class="vsRecord">
-                                <div on:click={() => gotoManager({rosterID: blowout.home.rosterID})}>
+                                <div on:click={() => gotoManager({leagueTeamManagers, rosterID: blowout.home.rosterID})}>
                                     <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.home.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
                                 </div>
                                 <p class="vs">
                                     vs
                                 </p>
-                                <div on:click={() => gotoManager({rosterID: blowout.away.rosterID})}>
+                                <div on:click={() => gotoManager({leagueTeamManagers, rosterID: blowout.away.rosterID})}>
                                     <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.away.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
                                 </div>
                             </div>
@@ -616,13 +616,13 @@
                         <Cell class="rank">{ix + 1}</Cell>
                         <Cell class="cellName differentialName">
                             <div class="vsRecord">
-                                <div on:click={() => gotoManager({rosterID: closestMatchup.home.rosterID})}>
+                                <div on:click={() => gotoManager({leagueTeamManagers, rosterID: closestMatchup.home.rosterID})}>
                                     <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.home.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
                                 </div>
                                 <p class="vs">
                                     vs
                                 </p>
-                                <div on:click={() => gotoManager({rosterID: closestMatchup.away.rosterID})}>
+                                <div on:click={() => gotoManager({leagueTeamManagers, rosterID: closestMatchup.away.rosterID})}>
                                     <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.away.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
                                 </div>
                             </div>
@@ -668,7 +668,7 @@
                         {#each lineupIQs as lineupIQ, ix}
                             <Row>
                                 <Cell>{ix + 1}</Cell>
-                                <Cell class="cellName" on:click={() => gotoManager({managerID: lineupIQ.managerID, rosterID: lineupIQ.rosterID})}>
+                                <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, managerID: lineupIQ.managerID, rosterID: lineupIQ.rosterID})}>
                                     <RecordTeam {leagueTeamManagers} managerID={lineupIQ.managerID} rosterID={lineupIQ.rosterID} year={allTime ? lineupIQ.year : prefix} />
                                 </Cell>
                                 <Cell>{lineupIQ.iq}%</Cell>
@@ -702,7 +702,7 @@
                     {#each winPercentages as winPercentage, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" on:click={() => gotoManager({rosterID: winPercentage.rosterID, managerID: winPercentage.managerID})}>
+                            <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: winPercentage.rosterID, managerID: winPercentage.managerID})}>
                                 <RecordTeam {leagueTeamManagers} managerID={winPercentage.managerID} rosterID={winPercentage.rosterID} year={allTime ? winPercentage.year : prefix} />
                             </Cell>
                             <Cell>{winPercentage.percentage}%</Cell>
@@ -737,7 +737,7 @@
                     {#each fptsHistories as fptsHistory, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" on:click={() => gotoManager({rosterID: fptsHistory.rosterID, managerID: fptsHistory.managerID})}>
+                            <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: fptsHistory.rosterID, managerID: fptsHistory.managerID})}>
                                 <RecordTeam {leagueTeamManagers} managerID={fptsHistory.managerID} rosterID={fptsHistory.rosterID} year={allTime ? fptsHistory.year : prefix} />
                             </Cell>
                             <Cell>{round(fptsHistory.fptsFor)}</Cell>
@@ -768,7 +768,7 @@
                     {#each transactions as transaction, ix}
                         <Row>
                             <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" on:click={() => gotoManager({rosterID: transaction.rosterID, managerID: transaction.managerID})}>
+                            <Cell class="cellName" on:click={() => gotoManager({leagueTeamManagers, rosterID: transaction.rosterID, managerID: transaction.managerID})}>
                                 <RecordTeam {leagueTeamManagers} managerID={transaction.managerID} rosterID={transaction.rosterID} year={allTime ? transaction.year : prefix} />
                             </Cell>
                             <Cell>{transaction.trades}</Cell>

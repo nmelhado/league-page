@@ -35,13 +35,37 @@ const max = (stats, roundOverride) => {
     return Math.ceil(num / roundOverride) * roundOverride;
 }
 
-export const gotoManager = ({managerID, rosterID}) => {
+export const gotoManager = ({leagueTeamManagers, managerID, rosterID}) => {
     if(!managersObj.length) return;
     let managersIndex = -1;
 
     if(managerID) {
+        // modern approach
         managersIndex = managersObj.findIndex(m => m.managerID == managerID);
+
+        // support for league pages still using deprecated roster field
+        if(managersIndex) {
+            for(const rID in leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason]) {
+                for(const mID of leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][rID].managers) {
+                    if(mID == managerID) {
+                        managersIndex =  managersObj.findIndex(m => m.roster == rID);
+                        goto(`/manager?manager=${managersIndex}`);
+                        return;
+                    }
+                }
+            }
+        }
     } else if(rosterID) {
+        // check for matching managerID first
+        for(const mID of leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][rosterID].managers) {
+            managersIndex = managersObj.findIndex(m => m.managerID == mID);
+            if(managersIndex > -1) {
+                goto(`/manager?manager=${managersIndex}`);
+                return;
+            }
+        }
+        
+        // support for league pages still using deprecated roster field
         managersIndex = managersObj.findIndex(m => m.roster == rosterID);
     }
 

@@ -1,10 +1,9 @@
 <script>
-	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, round } from "./utils/helperFunctions/universalFunctions";
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, gotoManager, round } from "./utils/helperFunctions/universalFunctions";
 
 
     export let leagueTeamManagers, stat, label, xMin, xMax, secondStat, managerID, rosterID, color, year;
 
-    let avatarSize = 40;
     $: user = managerID ? leagueTeamManagers.users[managerID] : null;
 </script>
 
@@ -89,6 +88,10 @@
         margin: auto 0;
     }
 
+    .clickable {
+        cursor: pointer;
+    }
+
     @media (max-width: 600px) {
         .barParent {
             /* margin-bottom: -10px; */
@@ -124,8 +127,8 @@
 </style>
 
 <div class="barParent">
-    <img alt="team avatar" style="border-color: var({color});" class="teamAvatar" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
-    <span class="managerName">
+    <img alt="team avatar" on:click={() => gotoManager({leagueTeamManagers, managerID, rosterID})} style="border-color: var({color});" class="teamAvatar clickable" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
+    <span class="managerName clickable" on:click={() => gotoManager({leagueTeamManagers, managerID, rosterID})}>
         {#if user}
             {user.display_name}
         {:else if rosterID}
