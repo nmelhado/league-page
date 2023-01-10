@@ -1,27 +1,28 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions, loadPlayers, waitForAll } from '$lib/utils/helper';
+	import { getLeagueTransactions, getLeagueTeamManagers, loadPlayers, waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from 'svelte';
 	import Transaction from './Transaction.svelte';
+	import WaiverTransaction from './WaiverTransaction.svelte';
 
 	export let masterOffset = 0;
 
 	let loading = true;
 	let players;
-	let transactions, currentManagers;
+	let transactions;
+    let leagueTeamManagers;
 
 	onMount(async () => {
-		const [transactionsData, playersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null));
+		const [transactionsData, playersData, leagueTeamManagersData] = await waitForAll(getLeagueTransactions(true),loadPlayers(null), getLeagueTeamManagers());
 		players = playersData.players;
 		transactions = transactionsData.transactions;
-		currentManagers = transactionsData.currentManagers;
+        leagueTeamManagers = leagueTeamManagersData;
 		loading = false;
 
 		if(transactionsData.stale) {
 			const newTransactions = await getLeagueTransactions(true, true);
 			transactions = newTransactions.transactions;
-			currentManagers = newTransactions.currentManagers;
 		}
 
 		if(playersData.stale) {
@@ -72,7 +73,7 @@
 		{#if transactions.waivers.length}
 			<h5>Recent Waiver Moves</h5>
 			{#each transactions.waivers as transaction }
-				<Transaction {players} {transaction} {masterOffset} {currentManagers} />
+				<WaiverTransaction {players} {transaction} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
@@ -88,7 +89,7 @@
 		{#if transactions.trades.length}
 			<h5>Recent Trades</h5>
 			{#each transactions.trades as transaction }
-				<Transaction {players} {transaction} {masterOffset} currentManagers={currentManagers} />
+				<Transaction {players} {transaction} {masterOffset} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>

@@ -1,9 +1,9 @@
 <script>
-	import {cleanName} from '$lib/utils/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
   	import { Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/tab';
 
-	export let move, type, masterOffset, currentManagers, players;
+	export let move, type, masterOffset, leagueTeamManagers, players, season;
 	
 	let trade = false;
 	
@@ -172,7 +172,10 @@
 				</span>
 			</Cell>
 		{:else if cell && cell.pick}
-			<Cell class="move {cell.type}"><span bind:this={origin} class="name">{cell.pick.season} Round {cell.pick.round}{@html cell.pick.original_owner ?  `<br /><span class="originalOwner">(${cell.pick.original_owner.original && cleanName(cell.pick.original_owner.original) != cleanName(currentManagers[cell.pick.original_owner.current].name) ? `${cell.pick.original_owner.original} [` : ''}${currentManagers[cell.pick.original_owner.current].name}${cell.pick.original_owner.original && cleanName(cell.pick.original_owner.original) != cleanName(currentManagers[cell.pick.original_owner.current].name)  ? ']' : ''})</span>` : ""}</span></Cell>
+			<Cell class="move {cell.type}"><span bind:this={origin} class="name">{cell.pick.season} Round {cell.pick.round}{@html cell.pick.original_owner ?
+                `<br /><span class="originalOwner">${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name}
+                    ${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name != getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name ? ` (${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name})` : ''}
+                </span>` : ""}</span></Cell>
 		{:else if cell && cell.budget}
 			<Cell class="move {cell.type}"><span bind:this={origin} class="name">{cell.budget.amount}</span></Cell>
 		{:else if cell && cell == "destination"}

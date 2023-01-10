@@ -1,7 +1,8 @@
 <script>
     import { round } from "$lib/utils/helper";
+	import { checkIfManagerReceivedAward, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
 
-    export let awards, records, roster, tookOver;
+    export let awards, records, rosterID, tookOver, leagueTeamManagers, managerID;
 
     let displayAwards = [];
 
@@ -11,30 +12,38 @@
     
     let formerGlobal = false;
 
-    const computePodiums = (currentRoster) => {
+    const checkIfDeserves = (awardRosterID, userRosterID, year) => {
+        if(!managerID || !year || !awardRosterID) {
+            return awardRosterID == userRosterID;
+        }
+        return checkIfManagerReceivedAward(leagueTeamManagers, awardRosterID, year, managerID);
+    }
+
+    const checkIfDeservesWithManagerID = (recordManagerID, userRosterID) => {
+        if(managerID) {
+            return recordManagerID == managerID;
+        }
+        for(const year in leagueTeamManagers.teamManagersMap) {
+            for(const rosterID in  leagueTeamManagers.teamManagersMap[year]) {
+                if(leagueTeamManagers.teamManagersMap[year][rosterID].managers.indexOf(recordManagerID) > -1) {
+                    return rosterID == userRosterID;
+                }
+            }
+        }
+        return false;
+    }
+
+    const computePodiums = (cRosterID) => {
         formerGlobal = false;
         displayAwards = [];
 
         // first lookl through annual awards (champion, second, etc)
-        for(const podium of awards.podiums) {
+        for(const podium of awards) {
             for(const award in podium) {
-                if(podium[award]?.rosterID == currentRoster.roster_id) {
-                    const former = tookOver && tookOver > podium.year;
-                    if(former) {
-                        formerGlobal = true;
-                    }
-                    displayAwards.push({
-                        award: capitalizeFirstLetter(award),
-                        icon: '/awards/' + award + '.png',
-                        type: 'award',
-                        originalName: podium[award].name,
-                        year: podium.year,
-                        former
-                    })
-                }
+                if(award == 'year') continue;
                 if(award == 'divisions') {
                     for(const division of podium[award]) {
-                        if(division.roster == currentRoster.roster_id) {
+                        if(checkIfDeserves(division.rosterID, cRosterID, podium.year)) {
                             const former = tookOver && tookOver > podium.year;
                             if(former) {
                                 formerGlobal = true;
@@ -47,26 +56,39 @@
                                 award: awardTitle,
                                 icon: '/awards/division.png',
                                 type: 'award',
-                                originalName: division.manager.name,
+                                originalName: getTeamNameFromTeamManagers(leagueTeamManagers, cRosterID, podium.year),
                                 year: podium.year,
                                 former
                             })
                         }
                     }
+                } else if(checkIfDeserves(podium[award], cRosterID, podium.year)) {
+                    const former = tookOver && tookOver > podium.year;
+                    if(former) {
+                        formerGlobal = true;
+                    }
+                    displayAwards.push({
+                        award: capitalizeFirstLetter(award),
+                        icon: '/awards/' + award + '.png',
+                        type: 'award',
+                        originalName: getTeamNameFromTeamManagers(leagueTeamManagers, cRosterID, podium.year),
+                        year: podium.year,
+                        former
+                    })
                 }
             }
         }
 
         // Next look through record books
-        const leagueRosterRecords = [];
-        for(const key in records.regularSeasonData.leagueRosterRecords) {
-            const record = records.regularSeasonData.leagueRosterRecords[key];
+        const leagueManagerRecords = [];
+        for(const key in records.regularSeasonData.leagueManagerRecords) {
+            const record = records.regularSeasonData.leagueManagerRecords[key];
             record.rosterID = key;
-            leagueRosterRecords.push(record);
+            leagueManagerRecords.push(record);
         }
-        const winRecords = [...leagueRosterRecords].sort((a, b) => b.wins - a.wins);
-        const pointsRecords = [...leagueRosterRecords].sort((a, b) => b.fptsFor - a.fptsFor);
-        const iqRecords = [...leagueRosterRecords].sort((a, b) => (b.fptsFor/b.potentialPoints) - (a.fptsFor/a.potentialPoints));
+        const winRecords = [...leagueManagerRecords].sort((a, b) => b.wins - a.wins);
+        const pointsRecords = [...leagueManagerRecords].sort((a, b) => b.fptsFor - a.fptsFor);
+        const iqRecords = [...leagueManagerRecords].sort((a, b) => (b.fptsFor/b.potentialPoints) - (a.fptsFor/a.potentialPoints));
 
         for(let i = 0; i < records.regularSeasonData.leagueWeekHighs.length; i++) {
             const leagueWeekRecord = records.regularSeasonData.leagueWeekHighs[i];
@@ -75,7 +97,7 @@
             const pointsRecord = pointsRecords[i];
             const iqRecord = iqRecords[i];
 
-            if(winRecord?.rosterID == currentRoster.roster_id && i < 3) {
+            if(checkIfDeservesWithManagerID(winRecord?.rosterID, cRosterID) && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -85,7 +107,7 @@
                 })
             }
 
-            if(pointsRecord?.rosterID == currentRoster.roster_id && i < 3) {
+            if(checkIfDeservesWithManagerID(pointsRecord?.rosterID, cRosterID) && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -94,7 +116,7 @@
                 })
             }
 
-            if(iqRecord?.rosterID == currentRoster.roster_id && i < 3) {
+            if(checkIfDeservesWithManagerID(iqRecord?.rosterID, cRosterID) && i < 3) {
                 displayAwards.push({
                     award: i + 1,
                     icon: '/awards/record-' + (i+1) + '.png',
@@ -104,7 +126,7 @@
                 })
             }
 
-            if(leagueWeekRecord.rosterID == currentRoster.roster_id) {
+            if(checkIfDeserves(leagueWeekRecord.rosterID, cRosterID, leagueWeekRecord.year)) {
                 const former = tookOver && tookOver > leagueWeekRecord.year;
                 if(former) {
                     formerGlobal = true;
@@ -113,7 +135,7 @@
                     award: i + 1,
                     icon: '/awards/' + (i < 3 ? `record-${i+1}` : 'generic') + '.png',
                     type: 'All-Time Single Week Record',
-                    originalName: leagueWeekRecord.manager.name,
+                    originalName: getTeamNameFromTeamManagers(leagueTeamManagers, cRosterID, leagueWeekRecord.year),
                     year: leagueWeekRecord.year,
                     week: leagueWeekRecord.week,
                     extraInfo: leagueWeekRecord.fpts,
@@ -121,7 +143,7 @@
                 })
             }
 
-            if(seasonLongRecord.rosterID == currentRoster.roster_id) {
+            if(checkIfDeserves(seasonLongRecord.rosterID, cRosterID, seasonLongRecord.year)) {
                 const former = tookOver && tookOver > seasonLongRecord.year;
                 if(former) {
                     formerGlobal = true;
@@ -130,7 +152,7 @@
                     award: i + 1,
                     icon: '/awards/' + (i < 3 ? `record-${i+1}` : 'generic') + '.png',
                     type: 'All-Time Season Long Points',
-                    originalName: seasonLongRecord.manager.name,
+                    originalName: getTeamNameFromTeamManagers(leagueTeamManagers, cRosterID, seasonLongRecord.year),
                     year: seasonLongRecord.year,
                     extraInfo: seasonLongRecord.fpts,
                     former
@@ -140,17 +162,16 @@
         for(const yearRecords of records.regularSeasonData.seasonWeekRecords) {
             for(let i = 0; i < 3; i++) {
                 const seasonPointsRecord = yearRecords.seasonPointsHighs[i];
-
-                if(seasonPointsRecord.rosterID == currentRoster.roster_id) {
+                if(checkIfDeserves(seasonPointsRecord.rosterID, cRosterID, yearRecords.year)) {
                     const former = tookOver && tookOver > yearRecords.year;
-                if(former) {
-                    formerGlobal = true;
-                }
+                    if(former) {
+                        formerGlobal = true;
+                    }
                     displayAwards.push({
                         award: i + 1,
                         icon: '/awards/' + (i < 3 ? `record-${i+1}` : 'generic') + '.png',
                         type: `${yearRecords.year} Single Week Record`,
-                        originalName: seasonPointsRecord.manager.name,
+                        originalName: getTeamNameFromTeamManagers(leagueTeamManagers, cRosterID, seasonPointsRecord.year),
                         year: null,
                         week: seasonPointsRecord.week,
                         extraInfo: seasonPointsRecord.fpts,
@@ -161,7 +182,7 @@
         }
     }
 
-    $: computePodiums(roster);
+    $: computePodiums(rosterID);
 
     const computeAward = (award) => {
         switch (award) {

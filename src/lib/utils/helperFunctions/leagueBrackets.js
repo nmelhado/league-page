@@ -1,7 +1,6 @@
 import { getLeagueData } from './leagueData';
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getLeagueRosters } from './leagueRosters';
-import { getLeagueUsers } from './leagueUsers';
 import {waitForAll} from './multiPromise';
 import { get } from 'svelte/store';
 import {brackets} from '$lib/stores';
@@ -12,16 +11,13 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
     }
 
     // get roster, user, and league data
-    const [rosterRes, users, leagueData] = await waitForAll(
+    const [rosterRes, leagueData] = await waitForAll(
         getLeagueRosters(queryLeagueID),
-        getLeagueUsers(queryLeagueID),
         getLeagueData(queryLeagueID),
     ).catch((err) => { console.error(err); });
 
-    const rosters = rosterRes.rosters;
-
     // Number of rosters (in order to determine the number of places, i.e. 1st - 12th)
-    const numRosters = rosters.length;
+    const numRosters = rosterRes.rosters.length;
 
     // get bracket data for winners and losers
     const bracketsAndMatchupFetches = [
@@ -82,11 +78,11 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
 
     // champBracket is an object where the key will be the round number
     // the value at each key will be an array of matchups
-    const champs = evaluateBracket(winnersData, playoffRounds, playoffMatchups, rosters, users, playoffType);
+    const champs = evaluateBracket(winnersData, playoffRounds, playoffMatchups, playoffType);
 
     // champBracket is an object where the key will be the round number
     // the value at each key will be an array of matchups
-    let losers = evaluateBracket(losersData, loserRounds, playoffMatchups, rosters, users, playoffType);
+    let losers = evaluateBracket(losersData, loserRounds, playoffMatchups, playoffType);
 
     const finalBrackets = {
         numRosters,
@@ -105,7 +101,7 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
     return finalBrackets;
 }
 
-const evaluateBracket = (contestants, rounds, playoffMatchups, rosters, users, playoffType) => {
+const evaluateBracket = (contestants, rounds, playoffMatchups, playoffType) => {
     let bracket = [];
     let consolations = [];
     // which matches in the previous round were consolation matches
@@ -124,14 +120,14 @@ const evaluateBracket = (contestants, rounds, playoffMatchups, rosters, users, p
         for(const playoffBracket of playoffBrackets) {
             if((!playoffBracket.t1_from && playoffBracket.t2_from) || (!teamsSeen[playoffBracket.t1] && teamsSeen[playoffBracket.t2])) {
                 // this was from a team that got a bye
-                let byeMatchup = processPlayoffMatchup({playoffBracket, playoffMatchups, i: i - 2, rosters, users, consolationMs, fromWs, playoffType, teamsSeen});
+                let byeMatchup = processPlayoffMatchup({playoffBracket, playoffMatchups, i: i - 2, consolationMs, fromWs, playoffType, teamsSeen});
                 byeMatchup.bye = true;
                 byeMatchup[0].m = null;
                 byeMatchup[1].m = null;
                 byeMatchup[0].r--;
                 byeMatchup[1].r--;
                 // set the opponent to null
-                byeMatchup[1].manager = null;
+                byeMatchup[1].roster_id = null;
                 if(first) {
                     bracket[i - 2].unshift(byeMatchup);
                     first = false;
@@ -141,7 +137,7 @@ const evaluateBracket = (contestants, rounds, playoffMatchups, rosters, users, p
             }
             teamsSeen[playoffBracket.t1] = playoffBracket.m;
             teamsSeen[playoffBracket.t2] = playoffBracket.m;
-            const roundMatchup = processPlayoffMatchup({playoffBracket, playoffMatchups, i: i - 1, rosters, users, consolationMs, fromWs, playoffType, teamsSeen});
+            const roundMatchup = processPlayoffMatchup({playoffBracket, playoffMatchups, i: i - 1, consolationMs, fromWs, playoffType, teamsSeen});
             if(roundMatchup[0].winners) {
                 // This matchup came from winners
                 localFromWs.push(roundMatchup[0].m)
@@ -184,7 +180,7 @@ const newConsolation = (consolationMatchups, rounds, i) => {
     return newCons;
 }
 
-const processPlayoffMatchup = ({playoffBracket, playoffMatchups, i, rosters, users, consolationMs, fromWs, playoffType, teamsSeen}) => {
+const processPlayoffMatchup = ({playoffBracket, playoffMatchups, i, consolationMs, fromWs, playoffType, teamsSeen}) => {
     const matchup = [];
     const m = playoffBracket.m;
     const r = playoffBracket.r;
@@ -202,18 +198,17 @@ const processPlayoffMatchup = ({playoffBracket, playoffMatchups, i, rosters, use
 
     // first team in matchup
     const t1 = playoffBracket.t1;
-    matchup.push(generateMatchupData(t1, t1From, {m, r, playoffMatchups, i, rosters, users, playoffType, winners, fromWinners, consolation, p}));
+    matchup.push(generateMatchupData(t1, t1From, {m, r, playoffMatchups, i, playoffType, winners, fromWinners, consolation, p}));
 
     // second team in matchup
     const t2 = playoffBracket.t2;
-    matchup.push(generateMatchupData(t2, t2From, {m, r, playoffMatchups, i, rosters, users, playoffType, winners, fromWinners, consolation, p}));
+    matchup.push(generateMatchupData(t2, t2From, {m, r, playoffMatchups, i, playoffType, winners, fromWinners, consolation, p}));
 
     return matchup;
 }
 
-const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users, playoffType, winners, fromWinners, consolation, p}) => {
+const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, playoffType, winners, fromWinners, consolation, p}) => {
     let matchup = {
-        manager: null,
         roster_id: null,
         points: undefined,
         starters: undefined,
@@ -226,7 +221,6 @@ const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users
     }
 
     if(t) {
-        const tuser = users[rosters[t - 1].owner_id];
         const tMatchup = playoffMatchups[i].filter(ma => ma.roster_id == t)[0];
         let tMatchupStarters = {}
         tMatchupStarters[1] = tMatchup?.starters;
@@ -244,18 +238,6 @@ const generateMatchupData = (t, tFrom, {m, r, playoffMatchups, i, rosters, users
         matchup.starters = tMatchupStarters;
         matchup.points = tMatchupStartersPoints;
         matchup.roster_id = t;
-
-        if(tuser) {
-            matchup.manager = {
-                name: tuser.metadata.team_name ? tuser.metadata.team_name : tuser.display_name,
-                avatar: `https://sleepercdn.com/avatars/thumbs/${tuser.avatar}`,
-            };
-        } else {
-            matchup.manager = {
-                name: 'Unknown Manager',
-                avatar: `https://sleepercdn.com/images/v2/icons/player_default.webp`,
-            };
-        }
     }
 
     return matchup;

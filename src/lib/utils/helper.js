@@ -3,7 +3,7 @@ import {dues, leagueID, leagueName, dynasty, managers, homepageText, enableBlog}
 import {getLeagueTransactions} from './helperFunctions/leagueTransactions';
 import {getNflState} from './helperFunctions/nflState';
 import {getLeagueRosters} from './helperFunctions/leagueRosters';
-import {getLeagueUsers} from './helperFunctions/leagueUsers';
+import {getLeagueTeamManagers} from './helperFunctions/leagueTeamManagers';
 import {getLeagueMatchups} from './helperFunctions/leagueMatchups'
 import {getNews, stringDate} from './helperFunctions/news';
 import {loadPlayers} from './helperFunctions/players';
@@ -11,7 +11,7 @@ import { waitForAll } from './helperFunctions/multiPromise';
 import { getUpcomingDraft, getPreviousDrafts } from './helperFunctions/leagueDrafts'
 import { getLeagueRecords } from './helperFunctions/leagueRecords'
 import { getAwards } from './helperFunctions/leagueAwards'
-import { cleanName, round, generateGraph, gotoManager, getAuthor, parseDate, getAvatar } from './helperFunctions/universalFunctions';
+import { cleanName, round, generateGraph, getTeamFromTeamManagers, gotoManager, getAuthor, parseDate, getAvatar } from './helperFunctions/universalFunctions';
 import { predictScores } from './helperFunctions/predictOptimalScore';
 import { getBrackets } from './helperFunctions/leagueBrackets';
 import { getBlogPosts, generateParagraph } from './helperFunctions/getBlogPosts';
@@ -26,7 +26,7 @@ export {
     getLeagueTransactions,
     getNflState, 
     getLeagueRosters,
-    getLeagueUsers,
+    getLeagueTeamManagers,
     getLeagueMatchups,
     getNews,
     loadPlayers,
@@ -51,4 +51,5 @@ export {
     getAuthor,
     parseDate,
     getAvatar,
+    getTeamFromTeamManagers,
 }

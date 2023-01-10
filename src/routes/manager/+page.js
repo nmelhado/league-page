@@ -1,7 +1,7 @@
 import {
     waitForAll,
     getLeagueRosters,
-    getLeagueUsers,
+    getLeagueTeamManagers,
     getLeagueData,
     getLeagueTransactions,
     getAwards,
@@ -12,7 +12,7 @@ export async function load({ url }) {
     if(!managersObj.length) return false;
     const managersInfo = waitForAll(
         getLeagueRosters(),    
-        getLeagueUsers(),
+        getLeagueTeamManagers(),
         getLeagueData(),
         getLeagueTransactions(),
         getAwards(),
@@ -22,12 +22,9 @@ export async function load({ url }) {
     const manager = url?.searchParams?.get('manager');
 
     const props = {
-        manager: null,
+        manager: manager && manager < managersObj.length ? manager : -1,
         managers: managersObj,
         managersInfo
-    }
-    if(manager && (manager >= 0 && manager < managersObj.length)) {
-        props.manager = manager;
     }
 
     return props;

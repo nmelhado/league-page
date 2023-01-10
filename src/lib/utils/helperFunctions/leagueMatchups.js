@@ -2,7 +2,6 @@ import { getLeagueData } from "./leagueData"
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from "./nflState"
 import { getLeagueRosters } from "./leagueRosters"
-import { getLeagueUsers } from "./leagueUsers"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {matchupsStore} from '$lib/stores';
@@ -12,11 +11,10 @@ export const getLeagueMatchups = async () => {
 		return get(matchupsStore);
 	}
 
-	const [nflState, leagueData, rosterRes, users] = await waitForAll(
+	const [nflState, leagueData, rosterRes] = await waitForAll(
 		getNflState(),
 		getLeagueData(),
 		getLeagueRosters(),
-		getLeagueUsers()
 	).catch((err) => { console.error(err); });
 
 	let week = 1;
@@ -51,7 +49,7 @@ export const getLeagueMatchups = async () => {
 	const matchupWeeks = [];
 	// process all the matchups
 	for(let i = 1; i < matchupsData.length + 1; i++) {
-		const processed = processMatchups(matchupsData[i - 1], rosters, users, i);
+		const processed = processMatchups(matchupsData[i - 1], rosters, i);
 		if(processed) {
 			matchupWeeks.push({
 				matchups: processed.matchups,
@@ -72,7 +70,7 @@ export const getLeagueMatchups = async () => {
 	return matchupsResponse;
 }
 
-const processMatchups = (inputMatchups, rosters, users, week) => {
+const processMatchups = (inputMatchups, rosters, week) => {
 	if(!inputMatchups || inputMatchups.length == 0) {
 		return false;
 	}
@@ -81,12 +79,8 @@ const processMatchups = (inputMatchups, rosters, users, week) => {
 		if(!matchups[match.matchup_id]) {
 			matchups[match.matchup_id] = [];
 		}
-		let user = users[rosters[match.roster_id - 1].owner_id];
 		matchups[match.matchup_id].push({
-			manager: {
-				name: user.metadata.team_name ? user.metadata.team_name : user.display_name,
-				avatar: `https://sleepercdn.com/avatars/thumbs/${user.avatar}`,
-			},
+			roster_id: match.roster_id,
 			starters: match.starters,
 			points: match.starters_points,
 		})

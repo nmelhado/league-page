@@ -1,11 +1,12 @@
 <script>
     import { leagueName, round } from '$lib/utils/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';
     import Standing from './Standing.svelte';
 
-    export let standingsData, usersData;
+    export let standingsData, leagueTeamManagersData;
 
     // Least important to most important (i.e. the most important [usually wins] goes last)
     // Edit this to match your leagues settings
@@ -16,7 +17,7 @@
 
     let loading = true;
     let preseason = false;
-    let rosters, standings, year, users;
+    let rosters, standings, year, leagueTeamManagers;
     onMount(async () => {
         const asyncStandingsData = await standingsData;
         if(!asyncStandingsData) {
@@ -25,7 +26,7 @@
             return;
         }
         const {standingsInfo, yearData, rostersData} = asyncStandingsData;
-        users = await usersData;
+        leagueTeamManagers = await leagueTeamManagersData;
         rosters = rostersData;
         year = yearData;
         for(const standingKey in standingsInfo) {
@@ -110,7 +111,7 @@
             <Body>
                 <!-- 	Standing	 -->
                 {#each standings as standing}
-                    <Standing {columnOrder} {standing} user={users[rosters[standing.rosterID - 1].owner_id]} roster={rosters[standing.rosterID - 1]} />
+                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} roster={rosters[standing.rosterID - 1]} />
                 {/each}
             </Body>
         </DataTable>
