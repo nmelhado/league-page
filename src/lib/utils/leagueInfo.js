@@ -60,7 +60,7 @@ export const managers = [
       link: 6,
       image: "/managers/clayton.jpg",
     }, 
-    "favoritePlayer": 1426,
+    "favoritePlayer": 4149,
     "valuePosition": "WR",
     "rookieOrVets": "Rookies",
     "philosophy": "Quality over quantity. The team policy is to trade depth for stars, and win on a knife's edge where a single injury can completely derail a season.",
