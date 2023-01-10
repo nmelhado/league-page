@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+    import { managers } from '$lib/utils/helper';
 	import { tabs } from '$lib/utils/tabs';
 	import { onMount } from 'svelte';
 
@@ -11,21 +12,25 @@
 		outOfDate = needUpdate;
 	})
 
+    let managersOutOfDate = false;
+    if(managers) {
+        for(const manager of managers) {
+            if(manager.roster && !manager.managerID) {
+                managersOutOfDate = true;
+                break;
+            }
+        }
+    }
+
 	const year = new Date().getFullYear();
 
-	let el, elNeedUpdate, innerWidth, footerHeight, footerHeightNeedUpdate;
+	let el, innerWidth, footerHeight;
 
-	const resize = (w) => {
-		const top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
-		const bottom = el?.getBoundingClientRect() ? el?.getBoundingClientRect().bottom  : 0;
-		const topNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().top  : 0;
-		const bottomNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().bottom  : 0;
-
+	const resize = (top, bottom) => {
 		footerHeight = bottom - top;
-		footerHeightNeedUpdate = bottomNeedUpdate - topNeedUpdate;
 	}
 
-    $: resize(innerWidth);
+    $: resize(el?.getBoundingClientRect()?.top, el?.getBoundingClientRect()?.bottom);
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -78,42 +83,18 @@
 		font-size: 0.8em;
 		margin-top: 0;
 	}
-
-	.invisible {
-		visibility: hidden;
-		pointer-events: none;
-	}
 </style>
 
-<div class="footerSpacer" style="height: {outOfDate ? footerHeightNeedUpdate : footerHeight}px;" />
+<div class="footerSpacer" style="height: {footerHeight}px;" />
 
 <!-- footer with update notice -->
-<footer class="{outOfDate ? '' : 'invisible'}" bind:this={elNeedUpdate}>
-	<p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iv-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
-	<div id="navigation">
-		<ul>
-			{#each tabs as tab}
-				{#if !tab.nest}
-					<li><div class="navLink" on:click={() => goto(tab.dest)}>{tab.label}</div></li>
-				{:else}
-					{#each tab.children as child}
-						<li><div class="navLink" on:click={() => goto(child.dest)}>{child.label}</div></li>
-					{/each}
-				{/if}
-			{/each}
-		</ul>
-	</div>
-	<!-- PLEASE DO NOT REMOVE THE COPYRIGHT -->
-	<span class="copyright">&copy; 2021 - {year} <a href="https://github.com/nmelhado/league-page">League Page</a></span>
-	<br />
-	<!-- PLEASE DO NOT REMOVE THE BUILT BY -->
-	<span class="creator">Built by <a href="http://www.nmelhado.com/">Nicholas Melhado</a><br /></span>
-	<!-- You can remove the donation link (although any donations to help
-	 maintain and enhance League Page would be greatly appreciated!) -->
-	Love League Page? Please consider <a href="https://www.buymeacoffee.com/nmelhado">donating</a> to support enhancements or just to say thank you!
-</footer>
-
-<footer class="{!outOfDate ? '' : 'invisible'}" bind:this={el}>
+<footer bind:this={el}>
+    {#if outOfDate}
+	    <p class="updateNotice">There is an update available for your League Page. <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iv-updates">Follow the Update Instructions</a> to get all of the newest features!</p>
+    {/if}
+    {#if managersOutOfDate}
+	    <p class="updateNotice">Your managers page needs an update, <a href="https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers">please follow the instructions</a> to get the most up-to-date experience.</p>
+    {/if}
 	<div id="navigation">
 		<ul>
 			{#each tabs as tab}
