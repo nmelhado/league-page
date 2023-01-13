@@ -82,7 +82,7 @@
         width: 50%;
         background-color: var(--aaa);
         position: absolute;
-        top: 42px;
+        top: 34px;
 	}
 
     .lineL {
@@ -100,6 +100,9 @@
     .nameHolder {
         margin: 4px 0 0;
         display: inline-flex;
+        justify-content: center;
+        line-height: 1.1em;
+        flex-wrap: wrap;
         font-size: 0.8em;
     }
 
@@ -137,23 +140,18 @@
     }
 
     .playerInfo {
-        font-size: 0.6em;
+        font-size: 0.8em;
         color: var(--g555);
-        padding-left: 1em;
-    }
-
-    .add {
-        color: #00ceb8;
-    }
-
-    .drop {
-        color: #ff2a6d;
+        padding: 0 1em;
     }
 
     .indicator {
         position: absolute;
         bottom: -8px;
         right: -8px;
+        color: #00ceb8;
+        background-color: white;
+        border-radius: 50%;
     }
 
     .avatarHolder {
@@ -165,12 +163,15 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        padding: 16px 0 0;
+        padding: 8px 0 0;
     }
 
     .origin {
         border-style: dashed;
         background-color: var(--fff);
+        height: 30px;
+        width: 30px;
+        margin-top: 10px;
     }
 
     .hidden {
@@ -178,34 +179,46 @@
     }
 
     .round {
-        font-size: 0.6em;
+        font-size: 1em;
+        color: var(--ccc);
         position: absolute;
         transform: translate(-50%, -50%);
         left: 50%;
-        bottom: -20%;
+        bottom: 0%;
     }
 
-    .budgetInfo {
-        padding: 0;
-        font-size: 1.8em;
-        transform: translate(-50%, -50%);
-        position: absolute;
+    .budget {
+        font-size: 1.4em;
+        color: var(--ccc);
+        position: absolute;transform: translate(-50%, -50%) rotate(-45deg);
         left: 50%;
-        top: 40%;
+        bottom: 0%;
     }
 
     .pickInfo {
         padding: 0;
-        font-size: 1.8em;
+        font-size: 1.6em;
         transform: translate(-50%, -50%);
         position: absolute;
         left: 50%;
-        top: 30%;
+        top: 50%;
+        color: var(--g444);
+        font-weight: 500;
+    }
+
+    .pick {
+        border-color: var(--PICKSfade);
+    }
+
+    .budgetHolder {
+        border-color: var(--Budget);
     }
 
     .numEnd {
+        position: absolute;
+        top: -1em;
+        right: -1em;
         font-size: 0.3em;
-        vertical-align: text-top;
     }
 
     .direction {
@@ -213,21 +226,27 @@
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
-        font-size: 3.5em;
+        font-size: 2.5em;
         color: var(--ccc);
+    }
+
+    @media (max-width: 420px) {
+        .nameHolder {
+            font-size: 0.7em;
+        }
     }
 </style>
 
 <tr>
 	{#each move as cell, ix}
-        <td class="move"  style="width: {1 / move.length * 100}%;">
+        <td class="move">
             <div class="cellParent">
                 <div class="line lineL {checkL(cell, ix) ? "hidden" : ""}" />
                 <div class="line lineR {checkR(cell, ix) ? "hidden" : ""}" />
                 {#if cell && cell.player}
                     <div class="playerSlot">
                             <div class="tradeSlot playerAvatar" style="border-color: var(--{players[cell.player].pos}); {getAvatar(players[cell.player].pos, cell.player)}">
-                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                                <i class="indicator material-icons" aria-hidden="true">add_circle</i>
                             </div>
                         <div class="nameHolder">
                             <span class="name">{`${players[cell.player].fn} ${players[cell.player].ln}`}</span>
@@ -243,12 +262,12 @@
                 {:else if cell && cell.pick}
                     <div class="playerSlot">
                         <div class="avatarHolder">
-                            <div class="tradeSlot">
+                            <div class="tradeSlot pick">
+                                <span class="round">Round</span>
                                 <span class="pickInfo">
                                     {cell.pick.round}<span class="numEnd">{getNumEnd(cell.pick.round)}</span>
                                 </span>
-                                <span class="round">Round</span>
-                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                                <i class="indicator material-icons" aria-hidden="true">add_circle</i>
                             </div>
                         </div>
                         <div class="pickNameHolder">
@@ -263,11 +282,12 @@
                 {:else if cell && cell.budget}
                     <div class="playerSlot">
                         <div class="avatarHolder">
-                            <div class="tradeSlot">
-                                <span class="budgetInfo">
-                                    <span class="numEnd">$</span>{cell.budget.amount}
+                            <div class="tradeSlot budgetHolder">
+                                <span class="budget">faab</span>
+                                <span class="pickInfo">
+                                    {cell.budget.amount}<span class="numEnd">$</span>
                                 </span>
-                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                                <i class="indicator material-icons" aria-hidden="true">add_circle</i>
                             </div>
                         </div>
                     </div>

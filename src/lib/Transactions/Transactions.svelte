@@ -3,10 +3,8 @@
 	import { getLeagueTransactions, getLeagueTeamManagers, loadPlayers, waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from 'svelte';
-	import Transaction from './Transaction.svelte';
+	import TradeTransaction from './TradeTransaction.svelte';
 	import WaiverTransaction from './WaiverTransaction.svelte';
-
-	export let masterOffset = 0;
 
 	let loading = true;
 	let players;
@@ -89,7 +87,7 @@
 		{#if transactions.trades.length}
 			<h5>Recent Trades</h5>
 			{#each transactions.trades as transaction }
-				<Transaction {players} {transaction} {masterOffset} {leagueTeamManagers} />
+				<TradeTransaction {players} {transaction} {leagueTeamManagers} />
 			{/each}
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>

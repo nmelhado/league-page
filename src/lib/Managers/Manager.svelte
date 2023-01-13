@@ -62,17 +62,7 @@
 
         goto(`/manager?manager=${manager}`, {noscroll})
     }
-
-    let el, masterOffset, innerWidth;
-
-    const setOffset = (w) => {
-        return el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-    }
-
-    $: masterOffset = setOffset(innerWidth);
 </script>
-
-<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     .managerContainer {
@@ -326,7 +316,7 @@
     {/if}
 
     <h3>Team Transactions</h3>
-    <div class="managerConstrained" bind:this={el}>
+    <div class="managerConstrained">
         {#if loading}
             <!-- promise is pending -->
             <div class="loading">
@@ -334,7 +324,7 @@
                 <LinearProgress indeterminate />
             </div>
         {:else}
-            <TransactionsPage {playersInfo} transactions={teamTransactions} {leagueTeamManagers} {masterOffset} show='both' query='' page={0} perPage={5} />
+            <TransactionsPage {playersInfo} transactions={teamTransactions} {leagueTeamManagers} show='both' query='' page={0} perPage={5} />
         {/if}
     </div>
 

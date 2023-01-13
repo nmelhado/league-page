@@ -6,17 +6,18 @@
 
     $: totPages = Math.ceil(total / perPage);
 
-    const computePages = (curPage, pages) => {
+    const computePages = (curPage, pages, iW) => {
         let tempPageLabels = []
         let before = false;
         let after = false;
+        const limit = iW && iW > 380 ? 3 : 2;
         for(let i = 0; i < pages; i++) {
-            if(i == 0 || i == (pages - 1) || ((curPage - 3) < i && i < (curPage +  3))) {
+            if(i == 0 || (i == (pages - 1) && (!iW || iW > 300)) || ((curPage - limit) < i && i < (curPage +  limit))) {
                 tempPageLabels.push(i + 1);
-            } else if(!before && (curPage - 3) < i) {
+            } else if(!before && (curPage - limit) < i && (!iW || iW > 300)) {
                 before = true;
                 tempPageLabels.push("...");
-            } else if(!after && i < (curPage +  3)) {
+            } else if(!after && i < (curPage +  limit)) {
                 after = true;
                 tempPageLabels.push("...");
             }
@@ -31,8 +32,11 @@
         page = dest;
     }
 
-    $: computePages(page, totPages);
+    let innerWidth;
+    $: computePages(page, totPages, innerWidth);
 </script>
+
+<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     :global(.button) {

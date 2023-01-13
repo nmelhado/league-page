@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.3] - 2023-01-13
+
+### Changed
+
+- Updated trades to look similar to the new waiver style for better consistency
+
 ## [2.1.2] - 2023-01-10
 
 ### Fixed

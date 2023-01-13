@@ -9,6 +9,7 @@
 <style>
     .tradeTransaction {
         display: flex;
+        position: relative;
         flex-direction: column;
         margin-bottom: 1em;
     }
@@ -29,13 +30,14 @@
     .ownerName {
         display: inline-block;
         font-weight: normal;
-        line-height: 1.1em;
-        margin-top: 0.2em;
+        line-height: 1em;
+        margin: 0.2em;
     }
 
     .currentOwner {
         font-style: italic;
         color: var(--aaa);
+        font-size: 0.7em;
     }
 
     .clickable {
@@ -50,6 +52,8 @@
         padding: 0.7em 0 1em;
         background-color: var(--fff);
         border-radius: 0 0 0 40px;
+        border-left: 2px solid var(--blueOne);
+        border-right: 1px solid var(--ddd);
         margin-bottom: 3em;
     }
 
@@ -57,11 +61,19 @@
         width: 100%;
         border-collapse: collapse;
         table-layout: fixed;
+        /*
+            the height setting is ignored, but
+            allows the holder class div to have
+            a height of 100%
+        */
+        height: 1px;
     }
 
     tbody {
         background-color: var(--fff);
         border-top: 2px solid var(--blueOne);
+        border-left: 2px solid var(--blueOne);
+        border-right: 1px solid var(--ddd);
     }
 
     .holder {
@@ -69,6 +81,13 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        height: 100%;
+    }
+
+    @media (max-width: 420px) {
+        .ownerName {
+            font-size: 0.8em;
+        }
     }
 </style>
 
@@ -83,6 +102,7 @@
                             <span class="ownerName">
                                 {getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}
                                 {#if getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name != getTeamFromTeamManagers(leagueTeamManagers, owner).name}
+                                    <br />
                                     <span class="currentOwner">({getTeamFromTeamManagers(leagueTeamManagers, owner).name})</span>
                                 {/if}
                             </span>
