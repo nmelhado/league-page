@@ -258,7 +258,7 @@ const digestTransaction = ({transaction, currentSeason}) => {
 
 		let move = new Array(transactionRosters.length).fill(null);
 
-		move[transactionRosters.indexOf(pick.previous_owner_id)] = {
+		move[transactionRosters.indexOf(pick.owner_id)] = {
 			type: "trade",
 			pick: {
 				season: pick.season,
@@ -268,10 +268,10 @@ const digestTransaction = ({transaction, currentSeason}) => {
 		}
 
 		if(pick.roster_id != pick.previous_owner_id) {
-			move[transactionRosters.indexOf(pick.previous_owner_id)].pick.original_owner = pick.roster_id;
+			move[transactionRosters.indexOf(pick.owner_id)].pick.original_owner = pick.roster_id;
 		}
 
-		move[transactionRosters.indexOf(pick.owner_id)] = "destination";
+		move[transactionRosters.indexOf(pick.previous_owner_id)] = "origin";
 
 		digestedTransaction.moves.push(move);
 	}
@@ -280,14 +280,14 @@ const digestTransaction = ({transaction, currentSeason}) => {
 
 		let move = new Array(transactionRosters.length).fill(null);
 
-		move[transactionRosters.indexOf(wBudget.sender)] = {
+		move[transactionRosters.indexOf(wBudget.receiver)] = {
 			type: "trade",
 			budget: {
-				amount: `${wBudget.amount}$`,
+				amount: wBudget.amount,
 			},
 		}
 
-		move[transactionRosters.indexOf(wBudget.receiver)] = "destination";
+		move[transactionRosters.indexOf(wBudget.sender)] = "origin";
 
 		digestedTransaction.moves.push(move);
 	}
@@ -298,12 +298,12 @@ const digestTransaction = ({transaction, currentSeason}) => {
 const handleAdds = (rosters, adds, drops, player, bid) => {
 	let move = new Array(rosters.length).fill(null);
 	if(drops && drops[player]) {
-		move[rosters.indexOf(drops[player])] = {
+		move[rosters.indexOf(adds[player])] = {
 			type: "trade",
 			player
 		}
 
-		move[rosters.indexOf(adds[player])] = "destination";
+		move[rosters.indexOf(drops[player])] = "origin";
 		return move;
 	}
 

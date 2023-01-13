@@ -7,20 +7,7 @@
     const nflState = getNflState();
     const podiumsData = getAwards();
     const leagueTeamManagersData = getLeagueTeamManagers();
-
-    let el, left;
-
-    const resize = (w) => {
-        left = el?.getBoundingClientRect() ? el?.getBoundingClientRect().left  : 0;
-    }
-
-    $: resize(innerWidth);
-
-    let innerWidth;
-
 </script>
-
-<svelte:window bind:innerWidth={innerWidth} />
 
 <style>
     #home {
@@ -202,8 +189,8 @@
             {/await}
         </div>
 
-        <div class="transactions" bind:this={el} >
-            <Transactions masterOffset={left} />
+        <div class="transactions" >
+            <Transactions />
         </div>
     </div>
 </div>

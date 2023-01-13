@@ -114,7 +114,10 @@
 					<li><div class="navLink" on:click={() => goto(tab.dest)}>{tab.label}</div></li>
 				{:else}
 					{#each tab.children as child}
-						<li><div class="navLink" on:click={() => goto(child.dest)}>{child.label}</div></li>
+                        <!-- Shouldn't show Managers tab unless managers has been populated -->
+				        {#if child.label != "Managers" || managers.length > 0}
+                            <li><div class="navLink" on:click={() => goto(child.dest)}>{child.label}</div></li>
+                        {/if}
 					{/each}
 				{/if}
 			{/each}

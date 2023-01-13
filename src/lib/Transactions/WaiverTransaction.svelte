@@ -15,7 +15,6 @@
 </script>
 
 <style>
-
     .waiverTransaction {
         display: flex;
         flex-direction: column;
@@ -29,33 +28,34 @@
     .core {
         display: flex;
         flex-direction: column;
-        height: 110px;
         border-radius: 0 0 0 40px;
         border: 1px solid var(--ddd);
+        border-left: 2px solid var(--blueTwo);
+        border-bottom: none;
         background-color: var(--fff);
     }
 
     .avatarAndDetails {
         display: flex;
-        height: 80px;
+        padding: 25px 0 0;
         flex-direction: column;
         justify-content: end;
     }
 
     .avatar {
         position: absolute;
-        left: 1px;
+        left: 0px;
         top: 6px;
         border-radius: 50%;
         height: 40px;
         width: 40px;
-        border: 2px solid var(--blueOne);
+        border: 2px solid var(--blueTwo);
         background-color: var(--fff);
     }
 
     .ownerName {
         display: inline-block;
-        border-bottom: 2px solid var(--blueOne);
+        border-bottom: 2px solid var(--blueTwo);
         margin: 0 0 0 22px;
         padding-right: 30px;
         padding-left: 30px;
@@ -86,8 +86,9 @@
     .details {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
+        justify-content: space-between;
+        width: 80%;
+        padding: 0 10%;
     }
 
     .player {
@@ -96,13 +97,14 @@
 
     .playerName {
         font-size: 0.8em;
-
+        line-height: 1em;
+        text-align: center;
     }
 
     .playerInfo {
         font-size: 0.6em;
         color: var(--g555);
-        margin-top: -0.5em;
+        line-height: 1em;
     }
 
     .add {
@@ -123,6 +125,8 @@
         display: flex;
         flex-direction: column;
         padding-left: 0.5em;
+        justify-content: center;
+        align-items: center;
     }
 
     .bid {
@@ -136,6 +140,24 @@
         font-size: 0.7em;
         text-align: center;
         margin-top: 0.7em;
+    }
+
+    @media (max-width: 410px) {
+        .player {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .details {
+            width: 90%;
+            padding: 0 5%;
+        }
+
+        .nameHolder {
+            margin-top: 0.5em;
+            padding-left: 0;
+            font-size: 0.9em;
+        }
     }
 </style>
 
