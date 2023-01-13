@@ -1,15 +1,7 @@
 <script>
 	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-  	import { Row, Cell } from '@smui/data-table';
-	import { Icon } from '@smui/tab';
 
-	export let move, type, masterOffset, leagueTeamManagers, players, season;
-	
-	let trade = false;
-	
-	if(type == "trade") {
-		trade = true;
-	}
+	export let move, leagueTeamManagers, players, season;
 
 	const getAvatar = (pos, player) => {
 		if(pos == 'DEF') {
@@ -18,188 +10,277 @@
 		return `background-image: url(https://sleepercdn.com/content/nfl/players/thumb/${player}.jpg), url(https://sleepercdn.com/images/v2/icons/player_default.webp)`;
 	}
 
-	let origin, destination;
+    let origin, dest;
 
-	const offset = 18;
-	const originOffset = 10;
-
-
-
-	let x1, x2;
-    let innerWidth;
-
-    const resize = (width) => {
-		x1 = origin?.getBoundingClientRect() && destination?.getBoundingClientRect() ? (destination?.getBoundingClientRect().left > origin?.getBoundingClientRect().left ? origin?.getBoundingClientRect().right + originOffset - masterOffset : origin?.getBoundingClientRect().left - originOffset - masterOffset)  : 0;
-		x2 = origin?.getBoundingClientRect() && destination?.getBoundingClientRect() ? (destination?.getBoundingClientRect().left > origin?.getBoundingClientRect().left ? destination?.getBoundingClientRect().left - offset - masterOffset : destination?.getBoundingClientRect().right + offset - masterOffset)  : 0;
+    for(let i = 0; i < move.length; i++) {
+        if(move[i] && move[i] == "origin") origin = i;
+        if(move[i] && (move[i].pick || move[i].player || move[i].budget)) {
+            dest = i;
+        }
     }
 
-    $: resize(innerWidth);
-    $: resize(masterOffset);
+    const checkL = (cell, ix) => {
+        // if the cell is lower than the origin and destination
+        // or higher than both, it shouldn't have a line
+        if(!cell) {
+            if(ix < origin && ix < dest) return true;
+            if(ix > origin && ix > dest) return true;
+            return false;
+        }
+        // if this is the origin cell
+        if(ix == origin) {
+            return dest > origin;
+        }
+        // otherwise, it's the destination cell
+        return ix < origin;
+    }
 
-	const y = -28;
+    const checkR = (cell, ix) => {
+        // if the cell is lower than the origin and destination
+        // or higher than both, it shouldn't have a line
+        if(!cell) {
+            if(ix < origin && ix < dest) return true;
+            if(ix > origin && ix > dest) return true;
+            return false;
+        }
+        // if this is the origin cell
+        if(ix == origin) {
+            return dest < origin;
+        }
+        // otherwise, it's the destination cell
+        return ix > origin;
+    }
+
+    const getNumEnd = (num) => {
+        switch (num) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
+    }
 </script>
 
-<svelte:window bind:innerWidth={innerWidth} />
-
 <style>
-	:global(.move) {
+	.move {
 		text-align: center;
+        padding: 0;
+        vertical-align: top;
 	}
 
-	:global(.originalOwner) {
+	.originalOwner {
 		color: #aaa;
 		font-style: italic;
 	}
 
-	:global(.trade) {
-		background-color: var(--fff);
-	}
-
-	:global(.Added) {
-		background-color: var(--waiverAdd);
-	}
-
-	:global(.Dropped) {
-		background-color: var(--waiverDrop);
-	}
-
-	.lineParent {
-		position: absolute;
-		overflow: visible;
-		width: 1px;
-		height: 1px;
-		pointer-events: none;
-	}
-
-	.line{
-		position: absolute;
-		z-index: 2;
-	}
-
-	.playerAvatar {
-		display: inline-block;
-		vertical-align: middle;
-		height: 35px;
-		width: 35px;
-		background-position: center;
-		border-radius: 100%;
-		background-repeat: no-repeat;
-		background-size: auto 35px;
-	}
-
-	.name {
-		white-space: normal;
-	}
-
-	.pos {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 8px;
-		width: 32px;
-		height: 24px;
-	}
-
-	:global(.QB) {
-		background-color: var(--QB);
-	}
-
-	:global(.WR) {
-		background-color: var(--WR);
-	}
-
-	:global(.RB) {
-		background-color: var(--RB);
-	}
-
-	:global(.TE) {
-		background-color: var(--TE);
-	}
-
-	:global(.FLEX) {
-		background: linear-gradient(to right, var(--WR), var(--WR) 33.33%, var(--RB) 33.33%, var(--RB) 66.66%, var(--TE) 66.66%);
-	}
-
-	:global(.WRRB) {
-		background: linear-gradient(to right, var(--WR), var(--WR) 50%, var(--RB) 50%);
-	}
-
-	:global(.K) {
-		background-color: var(--K);
-	}
-
-	:global(.DEF) {
-		background-color: var(--DEF);
-	}
-
-	:global(.indicator) {
-		vertical-align: middle;
-	}
-
-	.nameHolder {
-		margin: 6px 0;
-    	display: inline-block;
-	}
-
-	.destination {
-		display: block;
-		margin: 0 auto;
-		width: 0px;
+	.line {
 		height: 2px;
+        width: 50%;
+        background-color: var(--aaa);
+        position: absolute;
+        top: 42px;
 	}
+
+    .lineL {
+        left: 0;
+    }
+
+    .lineR {
+        right: 0;
+    }
+
+	.indicator {
+		vertical-align: middle;
+	}
+
+    .nameHolder {
+        margin: 4px 0 0;
+        display: inline-flex;
+        font-size: 0.8em;
+    }
+
+    .pickNameHolder {
+        margin: 4px 0 0;
+        display: inline-flex;
+        flex-direction: column;
+        font-size: 0.8em;
+        line-height: 1em;
+    }
+
+    .tradeSlot {
+        display: inline-block;
+        vertical-align: middle;
+        height: 50px;
+        width: 50px;
+        background-position: center;
+        border: 2px solid;
+        border-radius: 100%;
+        position: relative;
+        border-color: var(--aaa);
+        background-color: var(--eee);
+    }
+
+    .playerAvatar {
+        background-repeat: no-repeat;
+        background-size: auto 50px;
+    }
+
+    .playerSlot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .playerInfo {
+        font-size: 0.6em;
+        color: var(--g555);
+        padding-left: 1em;
+    }
+
+    .add {
+        color: #00ceb8;
+    }
+
+    .drop {
+        color: #ff2a6d;
+    }
+
+    .indicator {
+        position: absolute;
+        bottom: -8px;
+        right: -8px;
+    }
+
+    .avatarHolder {
+        text-align: center;
+    }
+
+    .cellParent {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 16px 0 0;
+    }
+
+    .origin {
+        border-style: dashed;
+        background-color: var(--fff);
+    }
+
+    .hidden {
+        background: none;
+    }
+
+    .round {
+        font-size: 0.6em;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        bottom: -20%;
+    }
+
+    .budgetInfo {
+        padding: 0;
+        font-size: 1.8em;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 40%;
+    }
+
+    .pickInfo {
+        padding: 0;
+        font-size: 1.8em;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 30%;
+    }
+
+    .numEnd {
+        font-size: 0.3em;
+        vertical-align: text-top;
+    }
+
+    .direction {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        font-size: 3.5em;
+        color: var(--ccc);
+    }
 </style>
 
-<Row>
-	{#each move as cell}
-		{#if cell && cell.player}
-			<Cell class="move {cell.type}">
-				<span class="nameHolder">
-					{#if cell.type == "Added"}
-						<Icon class="indicator material-icons">arrow_drop_up</Icon>
-					{:else if cell.type == "Dropped"}
-						<Icon class="indicator material-icons">arrow_drop_down</Icon>
-					{/if}
-					{cell.type == "Added" || cell.type == "Dropped" ?  cell.type + `${cell.bid ? " " + cell.bid + "$" : ""}` : ""}
-					{#if cell.type == "Added"}
-						<Icon class="indicator material-icons">arrow_drop_up</Icon><br />
-					{:else if cell.type == "Dropped"}
-						<Icon class="indicator material-icons">arrow_drop_down</Icon><br />
-					{/if}
-					<span class="pos {players[cell.player].pos}">{players[cell.player].pos}</span> 
-					<div class="playerAvatar" style="{getAvatar(players[cell.player].pos, cell.player)}" />
-					<br />
-					<span class="name" bind:this={origin}>{`${players[cell.player].fn} ${players[cell.player].ln}`}</span>
-				</span>
-			</Cell>
-		{:else if cell && cell.pick}
-			<Cell class="move {cell.type}"><span bind:this={origin} class="name">{cell.pick.season} Round {cell.pick.round}{@html cell.pick.original_owner ?
-                `<br /><span class="originalOwner">${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name}
-                    ${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name != getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name ? ` (${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name})` : ''}
-                </span>` : ""}</span></Cell>
-		{:else if cell && cell.budget}
-			<Cell class="move {cell.type}"><span bind:this={origin} class="name">{cell.budget.amount}</span></Cell>
-		{:else if cell && cell == "destination"}
-			<Cell class="move trade"><span class="destination" bind:this={destination} /></Cell>
-		{:else}
-			<Cell class="trade"/>
-		{/if}
+<tr>
+	{#each move as cell, ix}
+        <td class="move"  style="width: {1 / move.length * 100}%;">
+            <div class="cellParent">
+                <div class="line lineL {checkL(cell, ix) ? "hidden" : ""}" />
+                <div class="line lineR {checkR(cell, ix) ? "hidden" : ""}" />
+                {#if cell && cell.player}
+                    <div class="playerSlot">
+                            <div class="tradeSlot playerAvatar" style="border-color: var(--{players[cell.player].pos}); {getAvatar(players[cell.player].pos, cell.player)}">
+                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                            </div>
+                        <div class="nameHolder">
+                            <span class="name">{`${players[cell.player].fn} ${players[cell.player].ln}`}</span>
+                            <span class="playerInfo">
+                                <span>{players[cell.player].pos}</span>
+                                {#if players[cell.player].t}
+                                    -
+                                    <span>{players[cell.player].t}</span> 
+                                {/if}
+                            </span>
+                        </div>
+                    </div>
+                {:else if cell && cell.pick}
+                    <div class="playerSlot">
+                        <div class="avatarHolder">
+                            <div class="tradeSlot">
+                                <span class="pickInfo">
+                                    {cell.pick.round}<span class="numEnd">{getNumEnd(cell.pick.round)}</span>
+                                </span>
+                                <span class="round">Round</span>
+                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                            </div>
+                        </div>
+                        <div class="pickNameHolder">
+                            <span class="year">{cell.pick.season}</span>
+                            {#if cell.pick.original_owner}
+                                <span class="originalOwner">{getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name}
+                                    {getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner, season).name != getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name ? ` (${getTeamFromTeamManagers(leagueTeamManagers, cell.pick.original_owner).name})` : ''}
+                                </span>
+                            {/if}
+                        </div>
+                    </div>
+                {:else if cell && cell.budget}
+                    <div class="playerSlot">
+                        <div class="avatarHolder">
+                            <div class="tradeSlot">
+                                <span class="budgetInfo">
+                                    <span class="numEnd">$</span>{cell.budget.amount}
+                                </span>
+                                <i class="add indicator material-icons" aria-hidden="true">add_circle</i>
+                            </div>
+                        </div>
+                    </div>
+                {:else if cell && cell == "origin"}
+                    <div class="playerSlot">
+                        <div class="avatarHolder">
+                            <div class="tradeSlot origin">
+                                <i class="direction material-icons" aria-hidden="true">chevron_{dest - origin < 0 ? "left" : "right"}</i>
+                            </div>
+                        </div>
+                    </div>
+                {/if}
+            </div>
+        </td>
 	{/each}
-</Row>
-
-{#if trade}
-	<svg class="lineParent">
-		<defs>
-		  <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-		  refX="0" refY="2.5" orient="auto" fill="#ccc">
-			<polygon points="0 0, 10 2.5, 0 5" />
-		  </marker>
-		</defs>
-		<line stroke-width="2px" stroke="#ccc"  x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" class="line" marker-end="url(#arrowhead)"/>
-	</svg>
-{/if}
-
-
-
-
-
-
+</tr>

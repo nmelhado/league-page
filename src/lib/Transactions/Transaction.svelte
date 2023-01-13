@@ -1,89 +1,103 @@
 <script>
 	import { gotoManager } from '$lib/utils/helper';
 	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-  	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import TransactionMove from './TransactionMove.svelte';
 
-	export let transaction, masterOffset, players, leagueTeamManagers;
+	export let transaction, players, leagueTeamManagers;
 </script>
 
 <style>
-	:global(.transaction) {
-		display: block;
-		width: 100%;
-		margin: 15px auto;
-		border: 1px solid var(--ccc);
-		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
-	}
+    .tradeTransaction {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+    }
+    
+    .name {
+        position: relative;
+        text-align: center;
+    }
 
-	:global(.transaction table) {
-		table-layout:fixed !important;
-		width: 100%;
-	}
+    .avatar {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        border: 2px solid var(--blueOne);
+        background-color: var(--fff);
+    }
 
-	:global(.transactTeam) {
-		text-align: center;
-		padding: 5px 0;
-		background-color: var(--transactHeader);
-	}
+    .ownerName {
+        display: inline-block;
+        font-weight: normal;
+        line-height: 1.1em;
+        margin-top: 0.2em;
+    }
 
-	:global(.transact-date) {
-		text-align: center;
-		padding: 5px 0;
-		background-color: var(--transactHeader);
-		color: #888;
-		font-style: italic;
-	}
+    .currentOwner {
+        font-style: italic;
+        color: var(--aaa);
+    }
 
-	.avatar {
-		vertical-align: middle;
-		border-radius: 50%;
-		height: 25px;
-		width: 25px;
-		margin: 0;
-		border: 0.25px solid #777;
-	}
+    .clickable {
+        cursor: pointer;
+    }
 
-	.currentOwner {
-		display: block;
-		font-style: italic;
-		font-size: 0.8em;
-		color: #aaa;
-	}
+    .date {
+        color: var(--g999);
+        font-style: italic;
+        font-size: 0.7em;
+        text-align: center;
+        padding: 0.7em 0 1em;
+        background-color: var(--fff);
+        border-radius: 0 0 0 40px;
+        margin-bottom: 3em;
+    }
 
-	.clickable {
-		cursor: pointer;
-	}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    tbody {
+        background-color: var(--fff);
+        border-top: 2px solid var(--blueOne);
+    }
+
+    .holder {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 
-<DataTable class="transaction">
-	<Head class="teams">
-		<Row>
-			{#each transaction.rosters as owner, ix}
-				<Cell class="transactTeam">
-					{#if getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name != getTeamFromTeamManagers(leagueTeamManagers, owner).name}
-						<img class="avatar clickable" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
-						<span class="currentOwner">({getTeamFromTeamManagers(leagueTeamManagers, owner).name})</span>
-					{:else}
-						<img class="avatar clickable" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})} src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
-						<br /><span class="clickable" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}</span>
-					{/if}
-				</Cell>
-			{/each}
-		</Row>
-	</Head>
-	<Body class="moves">
-		{#each transaction.moves as move}
-			<TransactionMove {players} {move} type={transaction.type} {masterOffset} {leagueTeamManagers} season={transaction.season} />
-		{/each}
-		<Row>
-			<Cell class="transact-date" colspan={transaction.rosters.length}>{transaction.date}</Cell>
-		</Row>
-	</Body>
-</DataTable>
-
-
-
-
-
+<div class="tradeTransaction">
+    <table>
+        <thead>
+            <tr>
+                {#each transaction.rosters as owner}
+                    <th class="name clickable" style="width: {1 / transaction.rosters.length * 100}%;" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>
+                        <div class="holder">
+                            <img class="avatar" src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
+                            <span class="ownerName">
+                                {getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}
+                                {#if getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name != getTeamFromTeamManagers(leagueTeamManagers, owner).name}
+                                    <span class="currentOwner">({getTeamFromTeamManagers(leagueTeamManagers, owner).name})</span>
+                                {/if}
+                            </span>
+                        </div>
+                    </th>
+                {/each}
+            </tr>
+        </thead>
+        <tbody>
+            {#each transaction.moves as move}
+                <TransactionMove {players} {move} type={transaction.type} {leagueTeamManagers} season={transaction.season} />
+            {/each}
+        </tbody>
+    </table>
+    <span class="date">
+        {transaction.date}
+    </span>
+</div>

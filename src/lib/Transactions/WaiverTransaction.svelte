@@ -15,7 +15,6 @@
 </script>
 
 <style>
-
     .waiverTransaction {
         display: flex;
         flex-direction: column;
