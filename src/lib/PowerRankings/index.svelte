@@ -29,7 +29,7 @@
         <LinearProgress indeterminate />
     </div>
 {:then [nflState, rostersData, leagueTeamManagers, leagueData, playersInfo]}
-    {#if leagueData.status != 'pre_draft'}
+    {#if leagueData.status != 'pre_draft' && leagueData.status != 'complete'}
         <PowerRankingsDisplay {nflState} {rostersData} {leagueTeamManagers} {leagueData} {playersInfo} />
     {/if}
 {:catch error}
