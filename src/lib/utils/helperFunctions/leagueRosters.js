@@ -20,6 +20,7 @@ export const getLeagueRosters = async (queryLeagueID = leagueID) => {
 
 const processRosters = (rosters) => {
 	const startersAndReserve = [];
+    const rosterMap = {};
 	for(const roster of rosters) {
 		for(const starter of roster.starters) {
 			startersAndReserve.push(starter);
@@ -29,6 +30,8 @@ const processRosters = (rosters) => {
 				startersAndReserve.push(ir);
 			}
 		}
+        rosterMap[roster.roster_id] = roster;
 	}
-	return {rosters: rosters.sort((a, b) => a.roster_id - b.roster_id), startersAndReserve};
+    console.log(rosterMap)
+	return {rosters: rosterMap, startersAndReserve};
 }

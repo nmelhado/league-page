@@ -17,7 +17,7 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
     ).catch((err) => { console.error(err); });
 
     // Number of rosters (in order to determine the number of places, i.e. 1st - 12th)
-    const numRosters = rosterRes.rosters.length;
+    const numRosters = Object.keys(rosterRes.rosters).length;
 
     // get bracket data for winners and losers
     const bracketsAndMatchupFetches = [

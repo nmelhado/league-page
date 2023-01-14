@@ -19,7 +19,8 @@
         }
         let max = 0;
 
-        for(const roster of rosters) {
+        for(const rosterID in rosters) {
+            const roster = rosters[rosterID];
             // make sure the roster has players on it
             if(!roster.players) continue;
             // if at least one team has players, create the graph
@@ -37,8 +38,8 @@
             }
 
             const rosterPower = {
-                rosterID: roster.roster_id,
-                manager: getTeamFromTeamManagers(leagueTeamManagers, roster.roster_id),
+                rosterID,
+                manager: getTeamFromTeamManagers(leagueTeamManagers, rosterID),
                 powerScore: 0,
             }
             const seasonEnd = 18;

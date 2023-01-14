@@ -5,6 +5,7 @@ import { getLeagueRosters } from "./leagueRosters"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {standingsStore} from '$lib/stores';
+import { round } from './universalFunctions';
 
 export const getLeagueStandings = async () => {
 	if(get(standingsStore).matchupWeeks) {
@@ -57,6 +58,8 @@ export const getLeagueStandings = async () => {
 	}
 	const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); }).catch((err) => { console.error(err); });
 
+    console.log(rosters);
+    // console.log(Object.keys(rosters.rosters));
 	let standings = {};
 	// process all the matchups
 	for(const matchup of matchupsData) {
@@ -83,6 +86,8 @@ const processStandings = (matchup, standingsData, rosters, medianMatch) => {
 			matchups[match.matchup_id] = [];
 		}
 		const rosterID = match.roster_id;
+        // console.log(rosterID)
+        // console.log(rosters[rosterID])
 
 		// build the standings object if this is the first time the roster ID is seen
 		if(!standingsData[rosterID]) {
@@ -91,15 +96,15 @@ const processStandings = (matchup, standingsData, rosters, medianMatch) => {
 				wins: 0,
 				losses: 0,
 				ties: 0,
-				divisionWins: rosters[rosterID - 1].settings.division ? 0 : null,
-				divisionLosses: rosters[rosterID - 1].settings.division ? 0 : null,
-				divisionTies: rosters[rosterID - 1].settings.division ? 0 : null,
+				divisionWins: rosters[rosterID].settings.division ? 0 : null,
+				divisionLosses: rosters[rosterID].settings.division ? 0 : null,
+				divisionTies: rosters[rosterID].settings.division ? 0 : null,
 			}
 		}
 
 		matchups[match.matchup_id].push({
 			rosterID,
-			division: rosters[rosterID - 1].settings.division,
+			division: rosters[rosterID].settings.division,
 			points: match.points,
 		})
 
@@ -159,5 +164,11 @@ const processStandings = (matchup, standingsData, rosters, medianMatch) => {
 			standingsData[teamB.rosterID].divisionTies ++;
 		}
 	}
+    for(const standingKey in standingsData) {
+        const roster = rosters[standingsData[standingKey].rosterID];
+        standingsData[standingKey].fpts = round(roster.settings.fpts + (roster.settings.fpts_decimal / 100));
+        standingsData[standingKey].fptsAgainst = round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100));
+        standingsData[standingKey].streak = roster.metadata.streak;
+    }
 	return standingsData;
 }
