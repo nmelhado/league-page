@@ -154,6 +154,12 @@
             margin-left: 0.5em;
         }
 
+        .commissionerBadge {
+            height: 15px;
+            width: 15px;
+            font-size: 0.8em;
+        }
+
         .infoSlot {
             text-align: center;
             margin: 0 0.4em;

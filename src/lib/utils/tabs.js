@@ -37,6 +37,11 @@ export const tabs = [
                 dest: '/managers',
             },
             {
+                icon: 'safety_divider',
+                label: 'Rivalry',
+                dest: '/rivalry',
+            },
+            {
                 icon: 'leaderboard',
                 label: 'Standings',
                 dest: '/standings',
