@@ -295,7 +295,11 @@
                     <div class="playerSlot">
                         <div class="avatarHolder">
                             <div class="tradeSlot origin">
-                                <i class="direction material-icons" aria-hidden="true">chevron_{dest - origin < 0 ? "left" : "right"}</i>
+                                {#if dest - origin < 0}
+                                    <i class="direction material-icons" aria-hidden="true">chevron_left</i>
+                                {:else}
+                                    <i class="direction material-icons" aria-hidden="true">chevron_right</i>
+                                {/if}
                             </div>
                         </div>
                     </div>

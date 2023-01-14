@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.4] - 2023-01-13
+
+### Fixed
+
+- Minor css bug related to transactions on mobile
+
 ## [2.1.3] - 2023-01-13
 
 ### Changed
