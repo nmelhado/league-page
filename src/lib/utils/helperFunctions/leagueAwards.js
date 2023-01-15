@@ -5,20 +5,18 @@ import { get } from 'svelte/store';
 import { awards } from '$lib/stores';
 
 export const getAwards = async () => {
-	if(get(awards).podiums) {
+	if(get(awards).length) {
 		return get(awards);
 	}
 	const leagueData = await getLeagueData().catch((err) => { console.error(err); });
 
 	let previousSeasonID = leagueData.status == "complete" ? leagueData.league_id : leagueData.previous_league_id;
 
-	const podiums = await getPodiums(previousSeasonID)
+	const podiums = await getPodiums(previousSeasonID);
 
-	const gatheredAwards = podiums;
+	awards.update(() => podiums);
 
-	awards.update(() => gatheredAwards);
-
-	return gatheredAwards;
+	return podiums;
 }
 
 const getPodiums = async (previousSeasonID) => {
