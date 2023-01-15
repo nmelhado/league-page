@@ -140,8 +140,8 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 		week = leagueData.settings.playoff_week_start - 1;
 	}
 
-	for(const roster of rosters) {
-		analyzeRosters({year, roster, regularSeason});
+	for(const rosterID in rosters) {
+		analyzeRosters({year, roster: rosters[rosterID], regularSeason});
 	}
 
 	// loop through each week of the season
@@ -408,7 +408,7 @@ const processPlayoffs = async ({curSeason, playoffRecords, year, week, rosters})
 		})
 
 		// update the manager records for this roster ID
-        const managers = getManagers(rosters[rosterID - 1]);
+        const managers = getManagers(rosters[rosterID]);
 		playoffRecords.updateManagerRecord(managers, pSD);
 	}
 

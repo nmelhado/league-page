@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.5] - 2023-01-14
+
+### Fixed
+
+- Fix standings order issue
+    - Turn rosters into a map instead of an array in order to deliver the correct data
+
 ## [2.1.4] - 2023-01-13
 
 ### Fixed

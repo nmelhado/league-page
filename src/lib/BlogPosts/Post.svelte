@@ -4,9 +4,7 @@
     import { fly } from "svelte/transition";
     import Comments from "./Comments.svelte";
 
-    export let rosters, leagueTeamManagers, post, createdAt, id = null, direction = 1, home = false;
-
-    const lang = "en-US";
+    export let leagueTeamManagers, post, createdAt, id = null, direction = 1, home = false;
 
     let loadingComments = true;
     let total, comments;
@@ -228,7 +226,7 @@
             <!-- display comments -->
             {#if !loadingComments && !home}
                 <hr class="divider commentDivider" />
-                <Comments {rosters} {leagueTeamManagers} {comments} {total} postID={id} />
+                <Comments {leagueTeamManagers} {comments} {total} postID={id} />
             {/if}
 
         </div>

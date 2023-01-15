@@ -1,7 +1,6 @@
 import { getLeagueData } from "./leagueData"
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from "./nflState"
-import { getLeagueRosters } from "./leagueRosters"
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {matchupsStore} from '$lib/stores';
@@ -11,10 +10,9 @@ export const getLeagueMatchups = async () => {
 		return get(matchupsStore);
 	}
 
-	const [nflState, leagueData, rosterRes] = await waitForAll(
+	const [nflState, leagueData] = await waitForAll(
 		getNflState(),
 		getLeagueData(),
-		getLeagueRosters(),
 	).catch((err) => { console.error(err); });
 
 	let week = 1;
@@ -25,8 +23,6 @@ export const getLeagueMatchups = async () => {
 	}
 	const year = leagueData.season;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
-
-	const rosters = rosterRes.rosters;
 
 	// pull in all matchup data for the season
 	const matchupsPromises = [];
@@ -49,7 +45,7 @@ export const getLeagueMatchups = async () => {
 	const matchupWeeks = [];
 	// process all the matchups
 	for(let i = 1; i < matchupsData.length + 1; i++) {
-		const processed = processMatchups(matchupsData[i - 1], rosters, i);
+		const processed = processMatchups(matchupsData[i - 1], i);
 		if(processed) {
 			matchupWeeks.push({
 				matchups: processed.matchups,
@@ -70,7 +66,7 @@ export const getLeagueMatchups = async () => {
 	return matchupsResponse;
 }
 
-const processMatchups = (inputMatchups, rosters, week) => {
+const processMatchups = (inputMatchups, week) => {
 	if(!inputMatchups || inputMatchups.length == 0) {
 		return false;
 	}
