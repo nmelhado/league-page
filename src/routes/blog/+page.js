@@ -8,13 +8,11 @@ export function load({ url, fetch }) {
     const filterKey = url?.searchParams?.get('filter') || '';
     const postsData = getBlogPosts(fetch);
     const leagueTeamManagersData = getLeagueTeamManagers();
-    const rostersData = getLeagueRosters();
 
     return {
         queryPage,
         postsData,
         filterKey,
         leagueTeamManagersData,
-        rostersData,
     };
 }

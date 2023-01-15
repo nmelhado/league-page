@@ -48,6 +48,7 @@
             max-width: 100%;
             min-width: 100%;
             width: 100%;
+		    box-shadow: none;
         }
         #home {
             flex-wrap: wrap;
