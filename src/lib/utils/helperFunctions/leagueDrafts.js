@@ -64,7 +64,8 @@ export const getUpcomingDraft = async () => {
 // Predict draft board
 const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLength) => {
 	const draftOrder = [];
-	const testRoster = rosters[0].settings;
+    const rosterKeys = Object.keys(rosters);
+    const testRoster = rosters[rosterKeys[0]].settings;
 	const progression = testRoster.wins + testRoster.ties + testRoster.losses;
 
 	// Build starting order. If the season has started and some games have been played,
@@ -74,9 +75,9 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLe
 			draftOrder.push(previousOrder[key]);
 		}
 	} else {
-		const sortedRosters = rosters.sort((a, b) => {
-			const rosterA = a.settings;
-			const rosterB = b.settings;
+		const sortedRosterKeys = rosterKeys.sort((a, b) => {
+			const rosterA = rosters[a].settings;
+			const rosterB = rosters[b].settings;
 			if(rosterA.wins != rosterB.wins) {
 				return rosterA.wins - rosterB.wins;
 			}
@@ -85,12 +86,12 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLe
 			}
 			return (rosterA.fpts + rosterA.fpts_decimal / 100) - (rosterB.fpts + rosterB.fpts_decimal / 100);
 		})
-		for (const key in sortedRosters) {
-			draftOrder.push(sortedRosters[key].roster_id);
+		for (const key of sortedRosterKeys) {
+			draftOrder.push(key);
 		}
 	}
 
-	const row = new Array(rosters.length);
+	const row = new Array(rosterKeys.length);
 	let draft = [];
 
 	for(let i = 0; i < rounds; i++) {

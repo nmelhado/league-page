@@ -98,6 +98,7 @@
 		left: 50%;
 		border-radius: 100%;
 		border: 1px solid var(--bbb);
+		background-color: var(--fff);
 		z-index: 3;
 	}
 
@@ -346,7 +347,7 @@
 	</div>
 	<div class="divisions">
 		{#each divisions as division}
-			{#if division.manager}
+			{#if division.rosterID}
 				<div class="division">
 					{#if division.name}
 						<h6>{division.name} Division</h6>

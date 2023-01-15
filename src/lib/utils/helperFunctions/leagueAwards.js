@@ -5,20 +5,18 @@ import { get } from 'svelte/store';
 import { awards } from '$lib/stores';
 
 export const getAwards = async () => {
-	if(get(awards).podiums) {
+	if(get(awards).length) {
 		return get(awards);
 	}
 	const leagueData = await getLeagueData().catch((err) => { console.error(err); });
 
 	let previousSeasonID = leagueData.status == "complete" ? leagueData.league_id : leagueData.previous_league_id;
 
-	const podiums = await getPodiums(previousSeasonID)
+	const podiums = await getPodiums(previousSeasonID);
 
-	const gatheredAwards = podiums;
+	awards.update(() => podiums);
 
-	awards.update(() => gatheredAwards);
-
-	return gatheredAwards;
+	return podiums;
 }
 
 const getPodiums = async (previousSeasonID) => {
@@ -127,22 +125,21 @@ const getPreviousLeagueData = async (previousSeasonID) => {
 const buildDivisionsAndManagers = ({previousRosters, leagueMetadata, numDivisions}) => {
 	const divisions = {};
 
-	for(let i = 0; i < numDivisions; i++) {
-		divisions[i+1] = {
-			name: leagueMetadata ? leagueMetadata[`division_${i + 1}`] : null,
-			roster: null,
+	for(let i = 1; i <= numDivisions; i++) {
+		divisions[i] = {
+			name: leagueMetadata ? leagueMetadata[`division_${i}`] : null,
 			wins: -1,
 			points: -1
 		}
 	}
 
-	for(const roster of previousRosters) {
-		const rSettings = roster.settings;
+	for(const rosterID in previousRosters) {
+		const rSettings = previousRosters[rosterID].settings;
 		const div = rSettings.division ? rSettings.division : 1;
 		if(rSettings.wins > divisions[div].wins || (rSettings.wins == divisions[div].wins && (rSettings.fpts  + rSettings.fpts_decimal / 100)  == divisions[div].points)) {
 			divisions[div].points = rSettings.fpts  + rSettings.fpts_decimal / 100;
 			divisions[div].wins = rSettings.wins;
-			divisions[div].rosterID = roster.roster_id;
+			divisions[div].rosterID = rosterID;
 		}
 	}
 
