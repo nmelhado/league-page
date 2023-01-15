@@ -95,7 +95,7 @@ export const getAvatar = (leagueTeamManagers, author) => {
         for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
             for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers) {
                 if(leagueTeamManagers.users[manager].display_name.toLowerCase() == author.toLowerCase()) {
-                    return getTeamFromTeamManagers(leagueTeamManagers, rosterKey).avatar;
+                    return getAvatarFromTeamManagers(leagueTeamManagers, rosterKey, yearKey);
                 }
             }
         }

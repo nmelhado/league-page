@@ -127,18 +127,16 @@ const getPreviousLeagueData = async (previousSeasonID) => {
 const buildDivisionsAndManagers = ({previousRosters, leagueMetadata, numDivisions}) => {
 	const divisions = {};
 
-	for(let i = 0; i < numDivisions; i++) {
-		divisions[i+1] = {
-			name: leagueMetadata ? leagueMetadata[`division_${i + 1}`] : null,
-			roster: null,
+	for(let i = 1; i <= numDivisions; i++) {
+		divisions[i] = {
+			name: leagueMetadata ? leagueMetadata[`division_${i}`] : null,
 			wins: -1,
 			points: -1
 		}
 	}
 
 	for(const rosterID in previousRosters) {
-        const roster = previousRosters[rosterID];
-		const rSettings = roster.settings;
+		const rSettings = previousRosters[rosterID].settings;
 		const div = rSettings.division ? rSettings.division : 1;
 		if(rSettings.wins > divisions[div].wins || (rSettings.wins == divisions[div].wins && (rSettings.fpts  + rSettings.fpts_decimal / 100)  == divisions[div].points)) {
 			divisions[div].points = rSettings.fpts  + rSettings.fpts_decimal / 100;

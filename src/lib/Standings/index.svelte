@@ -17,7 +17,7 @@
 
     let loading = true;
     let preseason = false;
-    let rosters, standings, year, leagueTeamManagers;
+    let standings, year, leagueTeamManagers;
     onMount(async () => {
         const asyncStandingsData = await standingsData;
         if(!asyncStandingsData) {
@@ -25,16 +25,9 @@
             preseason = true;
             return;
         }
-        const {standingsInfo, yearData, rostersData} = asyncStandingsData;
+        const {standingsInfo, yearData} = asyncStandingsData;
         leagueTeamManagers = await leagueTeamManagersData;
-        rosters = rostersData;
         year = yearData;
-        // for(const standingKey in standingsInfo) {
-        //     const roster = rosters[standingsInfo[standingKey].rosterID];
-        //     standingsInfo[standingKey].fpts = round(roster.settings.fpts + (roster.settings.fpts_decimal / 100));
-        //     standingsInfo[standingKey].fptsAgainst = round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100));
-	    //     standingsInfo[standingKey].streak = roster.metadata.streak;
-        // }
 
         let finalStandings = Object.keys(standingsInfo).map((key) => standingsInfo[key]);
 
@@ -111,7 +104,7 @@
             <Body>
                 <!-- 	Standing	 -->
                 {#each standings as standing}
-                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} roster={rosters[standing.rosterID - 1]} />
+                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} />
                 {/each}
             </Body>
         </DataTable>

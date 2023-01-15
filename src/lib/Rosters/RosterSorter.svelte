@@ -18,7 +18,8 @@
 		})
 	}
 
-	for(const roster of rosters) {
+	for(const rosterID in rosters) {
+        const roster = rosters[rosterID];
 		divisions[roster.settings.division ? roster.settings.division - 1 : 0].rosters.push(roster);
 	}
 
