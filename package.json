@@ -79,7 +79,7 @@
     "@smui/tab": "6.0.0-beta.13",
     "@smui/tab-bar": "6.0.0-beta.13",
     "@smui/textfield": "6.0.0-beta.13",
-    "@sveltejs/kit": "^1.0.0-next.484",
+    "@sveltejs/kit": "^1.15.2",
     "contentful": "^9.1.34",
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
