@@ -29,6 +29,7 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
+      "roster": 2,  
       "name": "Tom",
       "managerID": "555883019396665344",  
       "location": "League Office", // (optional)
@@ -50,6 +51,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 3,  
       "name": "Montel the ASSMAN",
       "managerID": "592777217533071360",  
       "location": "The Bay", // (optional)
@@ -71,6 +73,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 11,  
       "name": "Pat Liou",
       "managerID": "595008156376027136",  
       "location": "Somewhere On The Blockchain", // (optional)
@@ -92,6 +95,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 9,  
       "name": "Naad",
       "managerID": "603809364112916480",  
       "location": "Penthouse", // (optional)
@@ -113,6 +117,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 5,  
       "name": "Patrick",
       "managerID": "601595363828228096",  
       "location": "Behind VPN", // (optional)
@@ -134,6 +139,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 6,  
       "name": "Aviel",
       "managerID": "601602903572008960",  
       "location": "The Bay", // (optional)
@@ -155,6 +161,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 7,  
       "name": "Conor",
       "managerID": "601603444272336896",  
       "location": "", // (optional)
@@ -176,6 +183,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
+      "roster": 8,  
       "name": "Hosta",
       "managerID": "603799471259713536",  
       "location": "Deep South", // (optional)
@@ -197,6 +205,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },  
     {
+      "roster": 4,  
       "name": "JP",
       "managerID": "601591788666413056",  
       "location": "Pasadena", // (optional)
@@ -218,6 +227,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     }, 
     {
+      "roster": 12,  
       "name": "Randy",
       "managerID": "603843842738814976",  
       "location": "DTA", // (optional)
@@ -239,6 +249,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },  
     {
+      "roster": 10,  
       "name": "Zac",
       "managerID": "603825766995660800",  
       "location": "Santa Monica", // (optional)
@@ -260,6 +271,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },   
     {
+      "roster": 1,  
       "name": "Tommy",
       "managerID": "467215902824198144",  
       "location": "Unknown", // (optional)
