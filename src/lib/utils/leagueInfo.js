@@ -12,9 +12,9 @@ export const homepageText = `
   <p><em><a href="https://pbs.twimg.com/media/FnsRwmeaYAA6KCS?format=jpg&name=large">Site Under Construction</a></em></p>
   <p>Champions: Tommy* (2022), Naad (2021), Hosta (2020) </p>
   <p><strong>League History<strong></p>
-  <p>2022-23: League Champ - Tommy (*Contested) | Runner-Up - Tom<br>Regular Season Best Record - Hosta (11-3) | Regular Season Worst Record - Conor (1-13)<br>Regular Season Most Points - Tom (1,967) | Regular Season Least Points - Logan (1,383)</p>
-  <p>2021-22: League Champ - Naad | Runner-Up - Tom<br>Regular Season Best Record - Zac (10-4) | Regular Season Worst Record - Conor (3-11)<br>Regular Season Most Points - Tom (1,995) | Regular Season Least Points - Conor (1,503)</p>
-  <p>2021-22: League Champ - Hosta | Runner-Up - Tom<br>Regular Season Best Record - Hosta (9-4) | Regular Season Worst Record - Montel + Aviel (3-11, Tied)<br>Regular Season Most Points - Hosta (1,885) | Regular Season Least Points - Monty (1,382)</p>
+  <p>2022-23: League Champ - Tommy* | Runner-Up - Tom<br>Regular Season Best Record - Hosta (11-3) | Worst Record - Conor (1-13)<br>Regular Season Most Points - Tom (1,967) | Least Points - Logan (1,383)</p>
+  <p>2021-22: League Champ - Naad | Runner-Up - Tom<br>Regular Season Best Record - Zac (10-4) | Worst Record - Conor (3-11)<br>Regular Season Most Points - Tom (1,995) | Least Points - Conor (1,503)</p>
+  <p>2021-22: League Champ - Hosta | Runner-Up - Tom<br>Regular Season Best Record - Hosta (9-4) | Worst Record - Montel + Aviel (3-11, Tied)<br>Regular Season Most Points - Hosta (1,885) | Least Points - Monty (1,382)</p>
   <p><em><a href="https://pbs.twimg.com/media/FnsRwmeaYAA6KCS?format=jpg&name=large">Site Under Construction</a></em></p>
 `;
 
