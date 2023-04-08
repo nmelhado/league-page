@@ -3,7 +3,7 @@ export const leagueID = "917507729030352896"; // your league ID
 export const leagueName = "Dynasty Fantasy Insanity "; // your league name
 export const dues = 275; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
-export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
+export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
@@ -28,10 +28,9 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 // To omit an optional field, set it's value to null
 
 export const managers = [
-    {
-      "roster": 2,  
-      "name": "Tom",
-      "managerID": "555883019396665344",  
+    {  
+      "managerID": "555883019396665344",
+      "name": "Tom",  
       "location": "League Office", 
       "bio": "Commissioner + Perennial Runner Up",
       "photo": "/managers/tbellis.png", 
@@ -50,10 +49,9 @@ export const managers = [
       "tradingScale": 10, 
       "preferredContact": "Text", 
     },
-    {
-      "roster": 3,  
-      "name": "Montel the ASSMAN",
-      "managerID": "592777217533071360",  
+    { 
+      "managerID": "592777217533071360",
+      "name": "Montel the ASSMAN",  
       "location": "The Bay", // (optional)
       "bio": "TBD",
       "photo": "/managers/montel.png", // square ratio recommended (no larger than 500x500)
@@ -73,9 +71,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 11,  
-      "name": "Pat Liou",
       "managerID": "595008156376027136",  
+      "name": "Pat Liou",
       "location": "Somewhere On The Blockchain", // (optional)
       "bio": "That New Guy",
       "photo": "/managers/patl.png", // square ratio recommended (no larger than 500x500)
@@ -95,9 +92,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 9,  
-      "name": "Naad",
       "managerID": "603809364112916480",  
+      "name": "Naad",
       "location": "Penthouse", // (optional)
       "bio": "",
       "photo": "/managers/banki.png", // square ratio recommended (no larger than 500x500)
@@ -117,9 +113,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 5,  
-      "name": "Patrick",
       "managerID": "601595363828228096",  
+      "name": "Patrick",
       "location": "Behind VPN", // (optional)
       "bio": "",
       "photo": "/managers/trick.png", // square ratio recommended (no larger than 500x500)
@@ -139,9 +134,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 6,  
-      "name": "Aviel",
-      "managerID": "601602903572008960",  
+      "managerID": "601602903572008960", 
+      "name": "Aviel", 
       "location": "The Bay", // (optional)
       "bio": "Aviel Change",
       "photo": "/managers/aviel.png", // square ratio recommended (no larger than 500x500)
@@ -161,9 +155,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 7,  
+      "managerID": "601603444272336896",        
       "name": "Conor",
-      "managerID": "601603444272336896",  
       "location": "", // (optional)
       "bio": "Go Vikes",
       "photo": "/managers/conor.png", // square ratio recommended (no larger than 500x500)
@@ -183,9 +176,8 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 8,  
-      "name": "Hosta",
-      "managerID": "603799471259713536",  
+      "managerID": "603799471259713536",
+      "name": "Hosta",  
       "location": "Deep South", // (optional)
       "bio": "Hail to the Redskins",
       "photo": "/managers/nhosta.png", // square ratio recommended (no larger than 500x500)
@@ -204,10 +196,9 @@ export const managers = [
       "tradingScale": 1, // 1 - 10
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },  
-    {
-      "roster": 4,  
-      "name": "JP",
-      "managerID": "601591788666413056",  
+    {  
+      "managerID": "601591788666413056", 
+      "name": "JP", 
       "location": "Pasadena", // (optional)
       "bio": "Orange Crush",
       "photo": "/managers/jpee.png", // square ratio recommended (no larger than 500x500)
@@ -226,10 +217,9 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     }, 
-    {
-      "roster": 12,  
-      "name": "Randy",
-      "managerID": "603843842738814976",  
+    { 
+      "managerID": "603843842738814976",
+      "name": "Randy", 
       "location": "DTA", // (optional)
       "bio": "[REDACTED]",
       "photo": "/managers/randy.png", // square ratio recommended (no larger than 500x500)
@@ -248,10 +238,9 @@ export const managers = [
       "tradingScale": 1, // 1 - 10
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },  
-    {
-      "roster": 10,  
-      "name": "Zac",
-      "managerID": "603825766995660800",  
+    { 
+      "managerID": "603825766995660800",
+      "name": "Zac",  
       "location": "Santa Monica", 
       "bio": "GOFFrey",
       "photo": "/managers/zac.png", 
@@ -270,10 +259,9 @@ export const managers = [
       "tradingScale": 9, // 1 - 10
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },   
-    {
-      "roster": 1,  
+    { 
+      "managerID": "467215902824198144",
       "name": "Tommy",
-      "managerID": "467215902824198144",  
       "location": "Unknown", // (optional)
       "bio": "TsaoTsao",
       "photo": "/managers/tommy.png", // square ratio recommended (no larger than 500x500)
