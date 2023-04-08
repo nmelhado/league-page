@@ -7,11 +7,14 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>This is the homepage of the exclusive Dynasty Fantasy Insanity Experience.</p>
-  <p> </p>
-  <p>Welcome to new member, Pat!</p>
-  <p>NOTICE - DRAFT IN VEGAS</p>
-  <p>Previous Champions - (2022-23) Tommy Tsao (*Contested) - (2021-22) Naader Banki - (2020-21) Dick Pasta </p>
+  <p>This is the homepage of the exclusive Dynasty Fantasy Insanity Experience. Welcome to New Guy, Pat! Look forward to a competitive roster in 2026! #AnyoneButM____e</p>
+  <p>NOTICE - DRAFT IN VEGAS - VIVA LAS VEGAS</p>
+  <p>!Site Under Construction!</p>
+  <p>Champions: Tommy (2022), Naad (2021), Hosta (2020) </p>
+  <p>League History</p>
+  <p>2022-23: League Champ - Tommy (*Contested), Runner-Up - Tom, Regular Season Best Record - Hosta (11-3), Regular Season Most Points - Tom (1,967), Regular Season Worst Record - Conor (1-13), Regular Season Least Points - Logan (1,383)</p>
+  <p>2021-22: League Champ - Naad, Runner-Up - Tom, Regular Season Best Record - Zac (10-4), Regular Season Most Points - Tom (1,995), Regular Season Worst Record - Conor (3-11), Regular Season Least Points - Conor (1,503)</p>
+  <p>2021-22: League Champ - Hosta, Runner-Up - Tom, Regular Season Best Record - Hosta (9-4), Regular Season Most Points - Hosta (1,885), Regular Season Worst Record - Montel + Aviel (3-11, Tied), Regular Season Least Points - Monty (1,382)</p>
   <p> !Site Under Construction! </p>
 `;
 
