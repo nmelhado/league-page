@@ -20,7 +20,8 @@
 
 	for(const rosterID in rosters) {
         const roster = rosters[rosterID];
-		divisions[roster.settings.division ? roster.settings.division - 1 : 0].rosters.push(roster);
+        const division = !roster.settings.division || roster.settings.division > numDivisions ? 0 : roster.settings.division - 1;
+		divisions[division].rosters.push(roster);
 	}
 
 	let expanded = false;
