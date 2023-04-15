@@ -135,7 +135,7 @@ const buildDivisionsAndManagers = ({previousRosters, leagueMetadata, numDivision
 
 	for(const rosterID in previousRosters) {
 		const rSettings = previousRosters[rosterID].settings;
-		const div = rSettings.division ? rSettings.division : 1;
+        const div = !rSettings.division || rSettings.division > numDivisions ? 1 : rSettings.division;
 		if(rSettings.wins > divisions[div].wins || (rSettings.wins == divisions[div].wins && (rSettings.fpts  + rSettings.fpts_decimal / 100)  == divisions[div].points)) {
 			divisions[div].points = rSettings.fpts  + rSettings.fpts_decimal / 100;
 			divisions[div].wins = rSettings.wins;
