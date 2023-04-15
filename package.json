@@ -56,8 +56,8 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.92",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.76",
+    "@sveltejs/adapter-node": "^1.2.3",
+    "@sveltejs/adapter-vercel": "^2.4.1",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.1",
