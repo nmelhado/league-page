@@ -95,6 +95,12 @@ export const getRivalryMatchups = async (userOneID, userTwoID) => {
         week = 18;
     }
 
+    rivalry.matchups.sort((a, b) => {
+        var yearOrder = b.year - a.year;
+        var weekOrder = b.week - a.week;
+        return yearOrder || weekOrder;
+    });
+
 	return rivalry;
 }
 
