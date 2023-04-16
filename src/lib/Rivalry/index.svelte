@@ -24,25 +24,22 @@
     }
 </style>
 
-<h3>Head to Head</h3>
+{#if rivalryInfo.matchups.length > 0 }
+    <h3>Head to Head</h3>
 
-<div class="scoreBoard">
-    {#if rivalryInfo.wins.one > 0 || rivalryInfo.wins.two > 0 }
+    <div class="scoreBoard">
         <h4>Wins</h4>
         <ComparissonBar sideOne={rivalryInfo.wins.one} sideTwo={rivalryInfo.wins.two} />
-    {/if}
-    {#if rivalryInfo.ties > 0}
-        <h4>Ties</h4>
-    {/if}
-    {#if rivalryInfo.wins.one > 0 || rivalryInfo.wins.two > 0 }
+        {#if rivalryInfo.ties > 0}
+            <h4>Ties</h4>
+        {/if}
         <h4>Points</h4>
         <ComparissonBar sideOne={rivalryInfo.points.one} sideTwo={rivalryInfo.points.two} />
-    {/if}
-</div>
+    </div>
 
-<h3>Matchups</h3>
+    <h3>Matchups</h3>
 
-<h4>{year} Week {displayWeek}</h4>
+    <h4>{year} Week {displayWeek}</h4>
 
-<Matchup ix={selected} active={selected} {matchup} players={playersInfo.players} {displayWeek} expandOverride={true} {leagueTeamManagers} />
-
+    <Matchup ix={selected} active={selected} {matchup} players={playersInfo.players} {displayWeek} expandOverride={true} {leagueTeamManagers} />
+{/if}

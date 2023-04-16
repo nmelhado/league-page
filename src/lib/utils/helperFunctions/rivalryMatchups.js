@@ -75,12 +75,12 @@ export const getRivalryMatchups = async (userOneID, userTwoID) => {
                 const sideB = matchup[1];
                 let sideAPoints = sideA.points.reduce((t, nV) => t + nV, 0);
                 let sideBPoints = sideB.points.reduce((t, nV) => t + nV, 0);
-                rivalry.points[sideA.roster_id == rosterIDOne ? "one" : "two"] += sideAPoints;
-                rivalry.points[sideB.roster_id == rosterIDOne ? "one" : "two"] += sideBPoints;
+                rivalry.points.one += sideAPoints;
+                rivalry.points.two += sideBPoints;
                 if(sideAPoints > sideBPoints) {
-                    rivalry.wins[sideA.roster_id == rosterIDOne ? "one" : "two"]++;
+                    rivalry.wins.one++;
                 } else if(sideAPoints < sideBPoints) {
-                    rivalry.wins[sideB.roster_id == rosterIDOne ? "one" : "two"]++;
+                    rivalry.wins.two++;
                 } else {
                     rivalry.ties++;
                 }
@@ -122,6 +122,7 @@ const processRivalryMatchups = (inputMatchups, week, rosterIDOne, rosterIDTwo) =
     if(keys.length > 1 || matchup.length == 1) {
         return;
     }
+    // make sure that the order matches
     if(matchup[0].roster_id == rosterIDTwo) {
         const two = matchup.shift();
         matchup.push(two);
