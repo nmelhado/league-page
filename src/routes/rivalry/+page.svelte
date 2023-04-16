@@ -4,7 +4,7 @@
 	import { waitForAll } from '$lib/utils/helper';
 
 	export let data;
-	const {leagueTeamManagerData, playersData} = data;
+	const {leagueTeamManagerData, playersData, rivalryData} = data;
 </script>
 
 <style>
@@ -21,15 +21,15 @@
 </style>
 
 <div class="holder">
-	{#await waitForAll(leagueTeamManagerData, playersData)}
+	{#await waitForAll(leagueTeamManagerData, playersData, rivalryData)}
 		<div class="loading">
 			<p>Retrieving roster data...</p>
 			<br />
 			<LinearProgress indeterminate />
 		</div>
-	{:then [leagueTeamManagers, playersInfo]}
+	{:then [leagueTeamManagers, playersInfo, rivalryInfo]}
 		<!-- promise was fulfilled -->
-		<Rivalry {leagueTeamManagers} {playersInfo} />
+		<Rivalry {leagueTeamManagers} {playersInfo} {rivalryInfo} />
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>
