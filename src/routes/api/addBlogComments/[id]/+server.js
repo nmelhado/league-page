@@ -3,14 +3,13 @@ import { json, error } from '@sveltejs/kit';
 
 import { getLeagueTeamManagers } from "$lib/utils/helper";
 
-const client = contentful.createClient({
-    // This is the access token for this space. Normally you get the token in the Contentful web app
-    accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
-});
-
 const lang = "en-US";
 
 export async function POST({request, params}) {
+    const client = contentful.createClient({
+        // This is the access token for this space. Normally you get the token in the Contentful web app
+        accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+    });
     const space = await client.getSpace(import.meta.env.VITE_CONTENTFUL_SPACE)
         .catch(e => {
             console.error(e);
