@@ -288,6 +288,16 @@ export const getRosterIDFromManagerID = (teamManagers, managerID) => {
     return null;
 }
 
+export const getRosterIDFromManagerIDAndYear = (teamManagers, managerID, year) => {
+    if(!managerID || !year) return null;
+    for(const rosterID in  teamManagers.teamManagersMap[year]) {
+        if(teamManagers.teamManagersMap[year][rosterID].managers.indexOf(managerID) > -1) {
+            return rosterID;
+        }
+    }
+    return null;
+}
+
 export const checkIfManagerReceivedAward = (teamManagers, awardRosterID, year, managerID) => {
     if(!managerID) return false;
     return teamManagers.teamManagersMap[year][awardRosterID].managers.indexOf(managerID) > -1;
