@@ -24,8 +24,6 @@
         }
     })
 
-    $: console.log(playersInfo);
-
     let rivalry = null;
     let loading = true;
 

@@ -160,7 +160,7 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 		const data = matchupRes.json();
 		matchupsJsonPromises.push(data)
 		if (!matchupRes.ok) {
-			throw new Error(data);
+			console.error(data);
 		}
 	}
 	const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); });
