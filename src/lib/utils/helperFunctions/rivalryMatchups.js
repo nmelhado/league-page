@@ -42,7 +42,7 @@ export const getRivalryMatchups = async (userOneID, userTwoID) => {
         const year = leagueData.season;
         const rosterIDOne = getRosterIDFromManagerIDAndYear(teamManagers, userOneID, year);
         const rosterIDTwo = getRosterIDFromManagerIDAndYear(teamManagers, userTwoID, year);
-        if(!rosterIDOne || !rosterIDTwo) {
+        if(!rosterIDOne || !rosterIDTwo || rosterIDOne == rosterIDTwo) {
             curLeagueID = leagueData.previous_league_id;
             week = 18;
             continue;

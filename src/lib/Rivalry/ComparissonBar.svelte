@@ -33,7 +33,7 @@
     }
     h4 {
         text-align: center;
-        font-size: 1.6em;
+        font-size: 1.4em;
         margin: 10px;
     }
     .stats {
@@ -41,6 +41,16 @@
         width: 75%;
         margin: 0 auto;
         justify-content: space-between;
+    }
+    @media (max-width: 650px) {
+        h4 {
+            font-size: 1.2em;
+        }
+    }
+    @media (max-width: 400px) {
+        h4 {
+            font-size: 1.1em;
+        }
     }
 </style>
 

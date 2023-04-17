@@ -8,6 +8,7 @@
         leagueTeamManagerData,
         playersData,
         transactionsData,
+        recordsData,
         playerOne,
         playerTwo,
     } = data;
@@ -27,15 +28,15 @@
 </style>
 
 <div class="holder">
-	{#await waitForAll(leagueTeamManagerData, playersData, transactionsData)}
+	{#await waitForAll(leagueTeamManagerData, playersData, transactionsData, recordsData)}
 		<div class="loading">
 			<p>Gathering information...</p>
 			<br />
 			<LinearProgress indeterminate />
 		</div>
-	{:then [leagueTeamManagers, playersInfo, transactionsInfo]}
+	{:then [leagueTeamManagers, playersInfo, transactionsInfo, recordsInfo]}
 		<!-- promise was fulfilled -->
-		<Rivalry {leagueTeamManagers} {playersInfo} {playerOne} {playerTwo} {transactionsInfo} />
+		<Rivalry {leagueTeamManagers} {playersInfo} {transactionsInfo} {recordsInfo} {playerOne} {playerTwo} />
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>

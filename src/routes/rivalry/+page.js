@@ -1,4 +1,4 @@
-import { getLeagueTeamManagers, getRivalryMatchups, loadPlayers, getLeagueTransactions } from '$lib/utils/helper';
+import { getLeagueTeamManagers, loadPlayers, getLeagueTransactions, getLeagueRecords } from '$lib/utils/helper';
 
 export async function load({url, fetch}) {
 
@@ -9,6 +9,7 @@ export async function load({url, fetch}) {
         leagueTeamManagerData: getLeagueTeamManagers(),
         playersData: loadPlayers(fetch),
         transactionsData: getLeagueTransactions(),
+        recordsData: getLeagueRecords(),
         playerOne,
         playerTwo,
     };
