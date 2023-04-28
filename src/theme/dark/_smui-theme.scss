@@ -65,9 +65,22 @@
   --fadeThree: rgba(0, 0, 0, 0.9) 90%;
   --fadeFour: rgba(0, 0, 0, 1) 100%;
   --blueOne: #0082c3;
+  --blueTwo: #003c86;
   --r1: #1c1c1d;
   --r2: #1f1d1d;
   --r3: #181a18;
+  --headerPrimary: #2a2e31;
+  --borderOverride: rgba(255,255,255,.3);
+  --rivalryBack: #333;
+
+  // Chart bar colors
+  --barChartOne: #446a88;
+  --barChartTwo: #32788f;
+  --barChartThree: #1d808d;
+  --barChartFour: #198886;
+  --barChartFive: #2b8673;
+  --barChartSix: #448864;
+  
   // Positions
   --QBfade: #ff8fb2;
   --WRfade: #afd4ff;
@@ -88,6 +101,7 @@
 	--RB: #00ceb8;
 	--TE: #ffae58;
 	--K: #bd66ff;
+	--Budget: #7947d4;
 	--DEF: #fff67a;
 	--DL: #ff795a;
 	--LB: #6d7df5;

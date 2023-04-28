@@ -1,22 +1,22 @@
 <script>
 	import Textfield from '@smui/textfield';
   	import Icon from '@smui/textfield/icon';
-	import Transaction from './Transaction.svelte';
+	import TradeTransaction from './TradeTransaction.svelte';
 	import Button, { Label } from '@smui/button';
 	import IconButton from '@smui/icon-button';
 	import Pagination from '../Pagination.svelte';
 	import { match } from 'fuzzyjs';
 	import { goto } from '$app/navigation';
 	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
+	import WaiverTransaction from './WaiverTransaction.svelte';
 
-	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentManagers, stale, perPage, postUpdate=false;
+	export let show, playersInfo, query, queryPage, transactions, stale, perPage, postUpdate=false, leagueTeamManagers;
 	const oldQuery = query;
 	let page = queryPage || 0;
 
 	const refreshTransactions = async () => {
 		const newTransactions = await getLeagueTransactions(false, true);
 		transactions = newTransactions.transactions;
-		currentManagers = newTransactions.currentManagers;
 	}
 
 	if(stale) {
@@ -258,7 +258,11 @@
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
 		<div class="transactions-child">
 			{#each displayTransactions as transaction (transaction.id)}
-				<Transaction {players} {transaction} masterOffset={masterOffset + 15} {currentManagers} />
+                {#if transaction.type == "waiver"}
+				    <WaiverTransaction {players} {transaction} {leagueTeamManagers} />
+                {:else}
+				    <TradeTransaction {players} {transaction} {leagueTeamManagers} />
+                {/if}
 			{/each}
 		</div>
 		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={true} />

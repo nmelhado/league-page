@@ -1,4 +1,4 @@
-import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
+import { getLeagueTransactions, loadPlayers, getLeagueTeamManagers } from '$lib/utils/helper';
 
 export async function load({ url, fetch }) {
     const show = url?.searchParams?.get('show');
@@ -6,6 +6,7 @@ export async function load({ url, fetch }) {
     const curPage = url?.searchParams?.get('page');
 
     const transactionsData = getLeagueTransactions(false);
+    const leagueTeamManagersData = getLeagueTeamManagers();
 
     const playersData = loadPlayers(fetch);
 
@@ -18,6 +19,7 @@ export async function load({ url, fetch }) {
         query: "",
         playersData,
         transactionsData,
+        leagueTeamManagersData,
         page: 0,
     }
     if(show && (show == "trade" || show == "waiver" || show == "both")) {

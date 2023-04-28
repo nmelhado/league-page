@@ -2,6 +2,78 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2023-04-17
+
+### Added
+
+- Added the all new Rivalry page! ([(feature #160)](https://github.com/nmelhado/league-page/issues/160) & [(issue #181)](https://github.com/nmelhado/league-page/issues/181))
+    - The Rivalry page renders a comparisson between any 2 managers (past or prsent in the league)
+    - Possibly the best page on League Page...
+
+### Fixed
+
+- Fix rror thrown when no blog is present [(issue #202)](https://github.com/nmelhado/league-page/issues/202)
+    - Turn rosters into a map instead of an array in order to deliver the correct data
+
+## [2.1.6] - 2023-04-15
+
+### Changed
+
+- Upgraded Vite and SvelteKit due to vulnerability issue
+- Fixed bugs due to Sleeper division bug 
+    - Bug broke roster, records, and awards pages
+
+### Fixed
+
+- Fix standings order issue[(issue #199)](https://github.com/nmelhado/league-page/issues/199)
+    - Turn rosters into a map instead of an array in order to deliver the correct data
+
+## [2.1.5] - 2023-01-14
+
+### Fixed
+
+- Fix standings order issue
+    - Turn rosters into a map instead of an array in order to deliver the correct data
+
+## [2.1.4] - 2023-01-13
+
+### Fixed
+
+- Minor css bug related to transactions on mobile
+
+## [2.1.3] - 2023-01-13
+
+### Changed
+
+- Updated trades to look similar to the new waiver style for better consistency
+
+## [2.1.2] - 2023-01-10
+
+### Fixed
+
+- Bug related to displaying transactions for a manager
+
+## [2.1.1] - 2023-01-10
+
+### Fixed
+
+- Bug related to going to the correct managaer from the records page
+
+## [2.1.0] - 2023-01-10
+
+### Changed
+
+- Rankings are now organize by manager instead of team! [(issue #164)](https://github.com/nmelhado/league-page/issues/164)
+    - This means that if managers have changed throughout the years, you will now see accurate rankings for a given manager
+    - **To take full advantage of this you need to add managerIDs to the managers object in leagueInfo`src/lib/utils/leagueInfo.js`**
+        - More instructions in the updated [Training Wheels managers instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
+- Use league specific avatar if avilable [(issue #156)](https://github.com/nmelhado/league-page/issues/156)
+
+### Fixed
+
+- Standings order issue [(issue #179)](https://github.com/nmelhado/league-page/issues/179)
+    - The re-implememntation of how team and user data is rendered should have fixed this
+
 ## [2.0.2] - 2022-09-29
 
 ### Fixed

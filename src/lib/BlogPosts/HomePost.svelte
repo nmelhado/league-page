@@ -2,19 +2,18 @@
     import { onMount } from "svelte";
 	import LinearProgress from '@smui/linear-progress';
     import Post from "./Post.svelte";
-    import { getBlogPosts, getLeagueRosters, getLeagueUsers, waitForAll } from "$lib/utils/helper";
+    import { getBlogPosts, getLeagueTeamManagers, waitForAll } from "$lib/utils/helper";
 
     const lang = "en-US";
 
     let post;
     let createdAt;
     let loading = true;
-    let users, rosters = [];
+    let leagueTeamManagers = {};
 
     onMount(async() => {
-        const [{posts, fresh}, usersData, rostersData] = await waitForAll(getBlogPosts(null), getLeagueUsers(), getLeagueRosters());
-		users = usersData;
-		rosters = rostersData.rosters;
+        const [{posts, fresh}, leagueTeamManagersData] = await waitForAll(getBlogPosts(null), getLeagueTeamManagers());
+		leagueTeamManagers = leagueTeamManagersData;
         for(const singlePost of posts) {
             if(singlePost.fields.featured) {
                 createdAt = singlePost.sys.createdAt;
@@ -78,7 +77,7 @@
     </div>
 {:else}
     <h2>League Blog</h2>
-    <Post {users} {rosters} {post} {createdAt} home={true} />
+    <Post {leagueTeamManagers} {post} {createdAt} home={true} />
     <div class="center">
         <a class="viewAll" href="/blog">View More Blog Posts</a>
     </div>
