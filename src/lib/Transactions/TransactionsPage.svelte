@@ -82,13 +82,23 @@
 
 	let lastUpdate = new Date;
 
+    let timer;
+
+	const debounce = (dest) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+            goto(dest,{noscroll: true,  keepfocus: true});
+		}, 750);
+	}
+
 	const search = () => {
 		lastUpdate = new Date;
 		query = query.trimLeft();
 		if(query.trim() == oldQuery) return;
 		page = 0;
 		if(postUpdate) {
-            goto(`/transactions?show=${show}&query=${query.trim()}&page=${page+1}`, {noscroll: true,  keepfocus: true});
+            const dest = `/transactions?show=${show}&query=${query.trim()}&page=${page+1}`;
+            debounce(dest);
 		}
 	}
 

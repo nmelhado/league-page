@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - 2023-04-30
+
+### Fixed
+
+- Fix the error thrown on the rivalry page when the pevious league ID is 0 [(issue #204)](https://github.com/nmelhado/league-page/issues/204)
+
+- Fix transaction search bar to debounce the ur change (focus was changing after every letter typed)
+
 ## [2.2.0] - 2023-04-17
 
 ### Added
@@ -12,7 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Fix rror thrown when no blog is present [(issue #202)](https://github.com/nmelhado/league-page/issues/202)
+- Fix error thrown when no blog is present [(issue #202)](https://github.com/nmelhado/league-page/issues/202)
     - Turn rosters into a map instead of an array in order to deliver the correct data
 
 ## [2.1.6] - 2023-04-15
