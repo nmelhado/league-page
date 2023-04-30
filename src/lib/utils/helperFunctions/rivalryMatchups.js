@@ -37,7 +37,7 @@ export const getRivalryMatchups = async (userOneID, userTwoID) => {
         matchups: []
     }
 
-    while(curLeagueID) {
+    while(curLeagueID && curLeagueID != 0) {
         const leagueData = await getLeagueData(curLeagueID).catch((err) => { console.error(err); });
         const year = leagueData.season;
         const rosterIDOne = getRosterIDFromManagerIDAndYear(teamManagers, userOneID, year);
