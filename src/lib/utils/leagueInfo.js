@@ -1,18 +1,18 @@
 /*   STEP 1   */
-export const leagueID = "your_league_id"; // your league ID
-export const leagueName = "your_league_name"; // your league name
+export const leagueID = "916483679701090304"; // your league ID
+export const leagueName = "M4D Dynasty"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>This site is designed to be a one stop shop for all the info needed in regards to the M4D Dynasty Fantasy Football League.</p>
+  <p>This edition of the Official Playing Rules of the Moshpit for dubs contains all current rules governing the playing of fantasy football that are in effect for the entire league, in perpetuity.</p>
+  <p>Member clubs of the League may amend the rules from time to time, pursuant to the applicable voting procedures of the M4D Constitution and Bylaws.</p>
+  <p>Any intra-League dispute or call for interpretation in connection with these rules will be decided by the Commissioners office, whose ruling will be final.</p>
+  <p>All rules contained in this book apply uniformly to all twelve members of the League. Where the word “illegal” appears in this rule book, it is an institutional term of art pertaining strictly to actions that violate M4D playing rules. </p>
+  <p>It is not meant to connote illegality under any public law or the rules or regulations of any other organization.</p>
 `;
 
 /*   STEP 3   */
