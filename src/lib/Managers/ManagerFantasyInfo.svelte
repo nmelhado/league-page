@@ -4,8 +4,6 @@
 
     export let viewManager, players;
 	
-    $: viewRival = managers[{viewManager.rival.Link}];
-	
     const gotoRival = (rival) => {
         if(!rival) {
             goto(`/managers`);
