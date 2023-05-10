@@ -20,15 +20,11 @@
 
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 
-	$: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 1 : roster.co_owners;
-
-	$: commissioner = viewManager.managerID ? leagueTeamManagers.users[viewManager.managerID].is_owner : false;
-
 	const gotoRival = (rival) => {
 	if(!rival) {
-	goto(`/managers`);
+	    goto(`/managers`);
 	}
-	goto(`/manager?manager=${rival}`);
+	    goto(`/manager?manager=${rival}`);
 	}
 </script>
 
