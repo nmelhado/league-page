@@ -255,10 +255,10 @@
             Rival
         </div>
         <div class="infoIcon">
-            <img class="rival" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" alt="rival"/>
+            <img class="rival" src="{getAvatarFromTeamManagers(leagueTeamManagers, viewManager.rival.link, year)}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-            {viewManager.rival.ID}
-        </div>
+			{viewManager.rival.name}
+		</div>
     </div>
 </div>
