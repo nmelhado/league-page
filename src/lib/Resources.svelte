@@ -90,20 +90,6 @@
 		separator: false,
 		},
 		{
-		name: "Reddit FF Trade Analyzer",
-		url: "https://www.reddit.com/r/TradeAnalyzerFF/",
-		icon: "assessment",
-		premium: false,
-		separator: false,
-		},
-		{
-		name: "Reddit FF Trade Analyzer",
-		url: "https://www.reddit.com/r/TradeAnalyzerFF/",
-		icon: "assessment",
-		premium: false,
-		separator: false,
-		},
-		{
 		name: "Keep Trade Cut",
 		url: "https://keeptradecut.com/trade-calculator",
 		icon: "assessment",
