@@ -12,7 +12,7 @@
         if(!rival) {
             goto(`/managers`);
         }
-        goto(`/manager?manager=${rival}`);
+        goto(`/managers`);
     }
 </script>
 
@@ -251,7 +251,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: viewManager.rival.link})}>
+    <div class="infoSlot infoRival" on:click={() => gotoRival({viewManager.rival.link})}>
         <div class="infoLabel">
             Rival
         </div>
