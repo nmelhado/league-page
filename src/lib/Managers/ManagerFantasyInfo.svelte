@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-    import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
     export let viewManager, players, leagueTeamManagers;
 
