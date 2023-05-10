@@ -2,13 +2,13 @@
 	import { goto } from "$app/navigation";
 	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-	export let viewManager, players;
+	export let viewManager, players, leagueTeamManagers;
 
 	const gotoRival = (rival) => {
 	if(!rival) {
-	    goto(`/managers`);
+	goto(`/managers`);
 	}
-	    goto(`/manager?manager=${rival}`);
+	goto(`/manager?manager=${rival}`);
 	}
 </script>
 
