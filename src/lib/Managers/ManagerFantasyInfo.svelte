@@ -14,8 +14,6 @@
 
 	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
-	let transactions = transactionsData.transactions;
-
 	$: viewManager = managers[manager];
 
 	$: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
@@ -24,8 +22,6 @@
 	let rosters = rostersData.rosters;
 
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
-
-	$: teamTransactions = transactions.filter(t => t.rosters.includes(parseInt(rosterID)));
 
 	$: roster = rosters[rosterID];
 
