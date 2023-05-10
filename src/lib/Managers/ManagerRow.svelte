@@ -1,24 +1,25 @@
 <script>
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
-    import {dynasty} from "$lib/utils/leagueInfo"
+	import {dynasty} from "$lib/utils/leagueInfo"
+	import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-    export let manager, leagueTeamManagers, key;
+	export let manager, leagueTeamManagers, key;
 
-    let retired = false;
+	let retired = false;
 
-    // manager.roster is deprecated, pages should be using managerID now
-    let rosterID = manager.roster;
-    let year = null;
+	// manager.roster is deprecated, pages should be using managerID now
+	let rosterID = manager.roster;
+	let year = null;
 
-    if(manager.managerID) {
-        const dates = getDatesActive(leagueTeamManagers, manager.managerID);
-        if(dates.end) retired = true;
+	if(manager.managerID) {
+	const dates = getDatesActive(leagueTeamManagers, manager.managerID);
+	if(dates.end) retired = true;
 
-        ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, manager.managerID) || {rosterID, year});
-    }
+	({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, manager.managerID) || {rosterID, year});
+	}
 
-    const commissioner = manager.managerID ? leagueTeamManagers.users[manager.managerID].is_owner : false;
+	const commissioner = manager.managerID ? leagueTeamManagers.users[manager.managerID].is_owner : false;
 </script>
 
 <style>
