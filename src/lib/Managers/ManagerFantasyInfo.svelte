@@ -257,7 +257,7 @@
             <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-			{viewManager.mangerID}
+			{viewManager.managerID}
 		</div>
     </div>
 </div>
