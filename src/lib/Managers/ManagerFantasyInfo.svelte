@@ -16,8 +16,6 @@
 
 	$: viewManager = managers[manager];
 
-	$: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
-
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 
 	const gotoRival = (rival) => {
