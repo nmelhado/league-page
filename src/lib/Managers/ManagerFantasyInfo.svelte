@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
     import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	
     export let viewManager, players, leagueTeamManagers;
 
     $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
