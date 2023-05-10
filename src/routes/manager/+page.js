@@ -19,15 +19,12 @@ export async function load({ url }) {
         getLeagueRecords(),
     );
 
-    const leagueTeamManagersData = getLeagueTeamManagers();
-
     const manager = url?.searchParams?.get('manager');
 
     const props = {
         manager: manager && manager < managersObj.length ? manager : -1,
         managers: managersObj,
-        managersInfo,
-        leagueTeamManagersData
+        managersInfo
     }
 
     return props;
