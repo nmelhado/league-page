@@ -11,7 +11,7 @@ import {
 export async function load({ url }) {
     if(!managersObj.length) return false;
     const managersInfo = waitForAll(
-        getLeagueRosters(),    
+        getLeagueRosters(),
         getLeagueTeamManagers(),
         getLeagueData(),
         getLeagueTransactions(),
@@ -19,12 +19,15 @@ export async function load({ url }) {
         getLeagueRecords(),
     );
 
+    const leagueTeamManagersData = getLeagueTeamManagers();
+
     const manager = url?.searchParams?.get('manager');
 
     const props = {
         manager: manager && manager < managersObj.length ? manager : -1,
         managers: managersObj,
-        managersInfo
+        managersInfo,
+        leagueTeamManagersData
     }
 
     return props;

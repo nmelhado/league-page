@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 
 	export let data;
-	const {managers, manager, managersInfo} = data;
+	const {managers, manager, managersInfo, leagueTeamManagersData} = data;
 
     onMount(() => {
         if(!managers.length) goto('/');
