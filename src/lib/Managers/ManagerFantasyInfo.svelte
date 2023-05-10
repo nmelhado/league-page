@@ -5,7 +5,7 @@
 
 	export let viewManager, players, leagueTeamManagers;
 
-	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+	$: ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID);
 
 	const gotoRival = (rival) => {
 	if(!rival) {
