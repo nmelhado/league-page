@@ -3,10 +3,10 @@
 	import { getRosterIDFromManagerID } from '$lib/utils/helperFunctions/universalFunctions';
 
 
-	export let viewManager, players;
+	export let viewManager, players, leagueTeamManagers;
 
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
-	
+
 	const gotoRival = (rival) => {
 	if(!rival) {
 	goto(`/managers`);
