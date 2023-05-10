@@ -8,11 +8,21 @@
 
     $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 	
-    const gotoRival = (rival) => {
+    const gotoRival = (TeamManagers, rival) => {
         if(!rival) {
             goto(`/managers`);
         }
-        goto(`/managers`);
+        // check for matching managerID first
+        for(const mID of leagueTeamManagers.teamManagersMap[year][rosterID].managers) {
+            managersIndex = managersObj.findIndex(m => m.managerID == mID);
+            if(managersIndex > -1) {
+                goto(`/manager?manager=${managersIndex}`);
+                return;
+            }
+        }
+        
+        // support for league pages still using deprecated roster field
+        managersIndex = managersObj.findIndex(m => m.roster == rosterID);
     }
 </script>
 
@@ -251,7 +261,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
+    <div class="infoSlot infoRival" on:click={() => gotoRival(leagueTeamManagers, viewManager.rival.link)}>
         <div class="infoLabel">
             Rival
         </div>
