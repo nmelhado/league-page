@@ -15,84 +15,105 @@
 </script>
 
 <style>
-    .constitution {
-        position: relative;
-        z-index: 1;
-        width: 92%;
-        max-width: 800px;
-        margin: 8em auto 10em;
-    }
+	/*Floating Back-To-Top Button*/
+	#myBtn {
+	    position: fixed;
+	    bottom: 10px;
+	    float: right;
+	    right: 18.5%;
+	    left: 77.25%;
+	    max-width: 30px;
+	    width: 100%;
+	    font-size: 12px;
+	    border-color: rgba(85, 85, 85, 0.2);
+	    background-color: rgb(100,100,100);
+	    padding: .5px;
+	    border-radius: 4px;
 
-    h1 {
-        font-size: 2em;
-        line-height: 1.2em;
-        text-align: center;
-        margin: 2em 0 1.5em;
-    }
+	}
 
-    h2 {
-        font-size: 1.5em;
-        line-height: 1.2em;
-    }
+	/*On Hover Color Change*/
+	#myBtn:hover {
+	    background-color: #7dbbf1;
+	}
+	.constitution {
+	position: relative;
+	z-index: 1;
+	width: 92%;
+	max-width: 800px;
+	margin: 8em auto 10em;
+	}
 
-    h3 {
-        text-decoration: underline;
-        font-size: 1.3em;
-        line-height: 1.2em;
-    }
+	h1 {
+	font-size: 2em;
+	line-height: 1.2em;
+	text-align: center;
+	margin: 2em 0 1.5em;
+	}
 
-    h4 {
-        text-decoration: underline;
-        margin-left: 2em;
-        font-size: 1.2em;
-        line-height: 1.2em;
-    }
+	h2 {
+	font-size: 1.5em;
+	line-height: 1.2em;
+	}
 
-    h5 {
-        margin-left: 6em;
-        font-size: 0.8em;
-        line-height: 1.1em;
-    }
+	h3 {
+	text-decoration: underline;
+	font-size: 1.3em;
+	line-height: 1.2em;
+	}
 
-    .subBlock {
-        margin-left: 2.4em;
-    }
+	h4 {
+	text-decoration: underline;
+	margin-left: 2em;
+	font-size: 1.2em;
+	line-height: 1.2em;
+	}
 
-    .sectionHeading {
-        margin: 4em 0 1.5em;
-    }
+	h5 {
+	margin-left: 6em;
+	font-size: 0.8em;
+	line-height: 1.1em;
+	}
 
-    .subSectionHeading {
-        margin: 1.5em 0 1.5em;
-    }
+	.subBlock {
+	margin-left: 2.4em;
+	}
 
-    .underscore {
-        text-decoration: underline;
-    }
+	.sectionHeading {
+	margin: 4em 0 1.5em;
+	}
 
-    .right {
-        text-align: right;
-    }
+	.subSectionHeading {
+	margin: 1.5em 0 1.5em;
+	}
 
-    .positionMaximums td {
-        min-width: 3em;
-    }
+	.underscore {
+	text-decoration: underline;
+	}
 
-    .noUnderscore {
-        text-decoration: none;
-    }
+	.right {
+	text-align: right;
+	}
 
-    .clickable {
-        cursor: pointer;
-    }
+	.positionMaximums td {
+	min-width: 3em;
+	}
 
-    .clickable:hover {
-        color: #00316b;
-    }
+	.noUnderscore {
+	text-decoration: none;
+	}
 
-    p {
-        color: #777;
-    }
+	.clickable {
+	cursor: pointer;
+	}
+
+	.clickable:hover {
+	color: #00316b;
+	}
+
+	p {
+	color: #777;
+	}
 </style>
 
 <div class="constitution">
@@ -299,5 +320,9 @@
 
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buying, finding a co-manager to split the cost is recommended.</p>
+
+	<button id="myBtn">
+		<a href="#top" style="color: white">Top</a>
+	</button>
 
 </div>
