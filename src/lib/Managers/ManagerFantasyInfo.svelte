@@ -1,15 +1,44 @@
 <script>
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
 
+	import Button, { Group, Label } from '@smui/button';
+	import LinearProgress from '@smui/linear-progress';
+	import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
+	import Roster from '../Rosters/Roster.svelte';
+	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
+	import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
+	import ManagerAwards from './ManagerAwards.svelte';
+	import { onMount } from 'svelte';
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-    export let viewManager, players, leagueTeamManagers;
+	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
-    const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
-        }
-        goto(`/manager?manager=${rival}`);
-    }
+	let transactions = transactionsData.transactions;
+
+	$: viewManager = managers[manager];
+
+	$: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
+
+	const  startersAndReserve = rostersData.startersAndReserve;
+	let rosters = rostersData.rosters;
+
+	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+
+	$: teamTransactions = transactions.filter(t => t.rosters.includes(parseInt(rosterID)));
+
+	$: roster = rosters[rosterID];
+
+	$: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 1 : roster.co_owners;
+
+	$: commissioner = viewManager.managerID ? leagueTeamManagers.users[viewManager.managerID].is_owner : false;
+
+	const gotoRival = (rival) => {
+	if(!rival) {
+	goto(`/managers`);
+	}
+	goto(`/manager?manager=${rival}`);
+	}
 </script>
 
 <style>
