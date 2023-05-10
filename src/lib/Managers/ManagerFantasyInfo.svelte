@@ -1,15 +1,15 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { getTeamData } from "$lib/utils/helperFunctions/universalFunctions";
+    import { goto } from "$app/navigation";
 
-	export let viewManager, leagueTeamManagers, players;
 
-	const gotoRival = (rival) => {
-	if(!rival) {
-	goto(`/managers`);
-	}
-	goto(`/manager?manager=${rival}`);
-	}
+    export let viewManager, players;
+
+    const gotoRival = (rival) => {
+        if(!rival) {
+            goto(`/managers`);
+        }
+        goto(`/manager?manager=${rival}`);
+    }
 </script>
 
 <style>
@@ -252,7 +252,7 @@
             Rival
         </div>
         <div class="infoIcon">
-            <img class="rival" src="{getTeamData(leagueTeamManagers.users, viewManager.managerID).avatar}" alt="rival"/>
+            <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
             {viewManager.rival.name}
