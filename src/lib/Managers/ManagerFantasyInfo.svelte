@@ -1,11 +1,17 @@
 <script>
 	import { goto } from "$app/navigation";
-	import { getRosterIDFromManagerID } from '$lib/utils/helperFunctions/universalFunctions';
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
+	import ManagerAwards from './ManagerAwards.svelte';
+	import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
+	import Roster from '../Rosters/Roster.svelte';
+	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
 
+	export let
+	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
-	export let viewManager, players, leagueTeamManagers;
-
-	$: ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID);
+	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 
 	const gotoRival = (rival) => {
 	if(!rival) {
