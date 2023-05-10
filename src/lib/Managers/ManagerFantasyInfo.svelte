@@ -1,18 +1,15 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	import { getRosterIDFromManagerID} from '$lib/utils/helperFunctions/universalFunctions';
+    import { goto } from "$app/navigation";
 
-	export let viewManager, players, leagueTeamManagers;
 
-	$: ({rivalID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rivalID: viewManager.roster, year: null});
+    export let viewManager, players;
 
-	const gotoRival = (rival) => {
-	if(!rival) {
-	goto(`/managers`);
-	}
-	goto(`/manager?manager=${rival}`);
-	}
+    const gotoRival = (rival) => {
+        if(!rival) {
+            goto(`/managers`);
+        }
+        goto(`/manager?manager=${rival}`);
+    }
 </script>
 
 <style>
@@ -255,7 +252,7 @@
             Rival
         </div>
         <div class="infoIcon">
-			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, rivalID, year)}" class="rival" alt="rival"/>
+            <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
             {viewManager.rival.name}
