@@ -18,11 +18,7 @@
 
 	$: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
 
-	let rosters = rostersData.rosters;
-
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
-
-	$: roster = rosters[rosterID];
 
 	$: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 1 : roster.co_owners;
 
