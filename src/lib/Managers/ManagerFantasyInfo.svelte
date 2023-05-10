@@ -1,19 +1,18 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	import { gotoManager } from '$lib/utils/helper';
-	import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import { goto } from "$app/navigation";
+    import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	
+    export let viewManager, players, leagueTeamManagers;
 
-	export let viewManager, players, leagueTeamManagers;
-
-	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
-
-	const gotoRival = (rival) => {
-	if(!rival) {
-	goto(`/managers`);
-	}
-	goto(`/manager?manager=${rival}`);
-	}
+    $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+	
+    const gotoRival = (rival) => {
+        if(!rival) {
+            goto(`/managers`);
+        }
+        goto(`/manager?manager=${rival}`);
+    }
 </script>
 
 <style>
@@ -251,8 +250,8 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoManager({leagueTeamManagers, rosterID: viewManager.rival.link})}>
-		<div class="infoLabel">
+    <div class="infoSlot infoRival" on:click={() => gotoRival(1)}>
+        <div class="infoLabel">
             Rival
         </div>
         <div class="infoIcon">
