@@ -60,6 +60,9 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ## Some real-life League Pages
 - [Legends League](https://www.legendsleagueff.com/)
 
+## Vercel Project Link
+- [Soup Hat Dynasty](https://vercel.com/pmann8/soup-hat-dynasty)
+
 ### Setup your own League Page
 *If you've never touched a line of code, use the [Training Wheels Guide](./TRAINING_WHEELS.md) instead*
 - Fork this repo
