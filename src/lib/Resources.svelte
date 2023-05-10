@@ -87,7 +87,7 @@
 		url: "https://www.reddit.com/r/TradeAnalyzerFF/",
 		icon: "assessment",
 		premium: false,
-		separator: false,
+		separator: true,
 		},
 		{
 		name: "Keep Trade Cut",
@@ -95,6 +95,7 @@
 		icon: "assessment",
 		premium: false,
 		separator: false,
+		dynastyOnly: true,
 		},
 	];
 </script>
