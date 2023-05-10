@@ -251,7 +251,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoRival({viewManager.rival.link})}>
+    <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
         <div class="infoLabel">
             Rival
         </div>
