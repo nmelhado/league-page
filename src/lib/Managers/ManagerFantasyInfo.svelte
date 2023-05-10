@@ -1,23 +1,15 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
-	import ManagerAwards from './ManagerAwards.svelte';
-	import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
-	import Roster from '../Rosters/Roster.svelte';
-	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
+    import { goto } from "$app/navigation";
 
-	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
-	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+    export let viewManager, players;
 
-	const gotoRival = (rival) => {
-	if(!rival) {
-	goto(`/managers`);
-	}
-	goto(`/manager?manager=${rival}`);
-	}
+    const gotoRival = (rival) => {
+        if(!rival) {
+            goto(`/managers`);
+        }
+        goto(`/manager?manager=${rival}`);
+    }
 </script>
 
 <style>
@@ -263,7 +255,7 @@
             <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-			{rosterID}
-		</div>
+            {viewManager.rival.name}
+        </div>
     </div>
 </div>
