@@ -1,14 +1,17 @@
 <script>
 	import { goto } from "$app/navigation";
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
 	export let viewManager, players, leagueTeamManagers;
 
+	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
+	
 	const gotoRival = (rival) => {
 	if(!rival) {
-	goto(`/managers`);
+	    goto(`/managers`);
 	}
-	goto(`/manager?manager=${rival}`);
+	    goto(`/manager?manager=${rival}`);
 	}
 </script>
 
