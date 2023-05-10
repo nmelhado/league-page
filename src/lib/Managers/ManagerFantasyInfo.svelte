@@ -1,29 +1,15 @@
 <script>
-	import { goto } from "$app/navigation";
+    import { goto } from "$app/navigation";
 
-	import Button, { Group, Label } from '@smui/button';
-	import LinearProgress from '@smui/linear-progress';
-	import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
-	import Roster from '../Rosters/Roster.svelte';
-	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
-	import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
-	import ManagerAwards from './ManagerAwards.svelte';
-	import { onMount } from 'svelte';
-	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
+    export let viewManager, players;
 
-	$: viewManager = managers[manager];
-
-	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
-
-	const gotoRival = (rival) => {
-	if(!rival) {
-	    goto(`/managers`);
-	}
-	    goto(`/manager?manager=${rival}`);
-	}
+    const gotoRival = (rival) => {
+        if(!rival) {
+            goto(`/managers`);
+        }
+        goto(`/manager?manager=${rival}`);
+    }
 </script>
 
 <style>
@@ -269,7 +255,7 @@
             <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-			{leagueTeamManagers.teamManagersMap[year][rosterID].managers.length}
-		</div>
+            {viewManager.rival.name}
+        </div>
     </div>
 </div>
