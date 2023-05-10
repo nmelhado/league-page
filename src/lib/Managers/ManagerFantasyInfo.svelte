@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
 
 
-    export let viewManager, players;
+    export let viewManager, players, leagueTeamManagers;
 
     const gotoRival = (rival) => {
         if(!rival) {
@@ -255,7 +255,7 @@
             <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-            {viewManager.rival.name}
-        </div>
+			{leagueTeamManagers.teamManagersMap[year][rosterID].managers.length}
+		</div>
     </div>
 </div>
