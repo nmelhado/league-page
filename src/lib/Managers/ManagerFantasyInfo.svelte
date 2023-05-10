@@ -254,10 +254,10 @@ import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers }
             Rival
         </div>
         <div class="infoIcon">
-            <img class="rival" src="{viewManager.rival.ID}" alt="rival"/>
+            <img class="rival" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-            {viewManager.rival.name}
+            {viewManager.rival.ID}
         </div>
     </div>
 </div>
