@@ -1,15 +1,15 @@
 <script>
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
+	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
+	export let viewManager, players;
 
-    export let viewManager, players;
-
-    const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
-        }
-        goto(`/manager?manager=${rival}`);
-    }
+	const gotoRival = (rival) => {
+	if(!rival) {
+	    goto(`/managers`);
+	}
+	    goto(`/manager?manager=${rival}`);
+	}
 </script>
 
 <style>
