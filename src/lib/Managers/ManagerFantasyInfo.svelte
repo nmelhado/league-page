@@ -8,10 +8,13 @@
     $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 	
     const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
+        for(const mID of leagueTeamManagers.teamManagersMap[year][rival].managers) {
+            managersIndex = managersObj.findIndex(m => m.managerID == mID);
+            if(managersIndex > -1) {
+                goto(`/manager?manager=${managersIndex}`);
+                return;
+            }
         }
-        goto(`/manager?manager=${rival}`);
     }
 </script>
 
@@ -250,7 +253,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoRival(1)}>
+    <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
         <div class="infoLabel">
             Rival
         </div>
