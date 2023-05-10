@@ -8,7 +8,6 @@
 	import Roster from '../Rosters/Roster.svelte';
 	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
 
-	export let
 	export let viewManager, players, manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
