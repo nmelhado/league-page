@@ -34,8 +34,7 @@
 
     let players, playersInfo;
     let loading = true;
-    let leagueTeamManagers2 = leagueTeamManagers;
-	
+
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
         transactions = newTransactions.transactions;
