@@ -252,7 +252,8 @@
             Rival
         </div>
         <div class="infoIcon">
-            <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
+			<img alt="rival" class="rival" src="{team ? team.avatar : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
+			<!-- <img class="rival" src="{viewManager.rival.image}" alt="rival"/> -->
         </div>
         <div class="infoAnswer">
             {viewManager.rival.name}
