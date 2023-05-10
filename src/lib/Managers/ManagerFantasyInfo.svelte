@@ -18,7 +18,6 @@
 
 	$: datesActive = getDatesActive(leagueTeamManagers, viewManager.managerID);
 
-	const  startersAndReserve = rostersData.startersAndReserve;
 	let rosters = rostersData.rosters;
 
 	$: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
