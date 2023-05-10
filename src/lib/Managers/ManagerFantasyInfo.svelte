@@ -252,8 +252,9 @@
             Rival
         </div>
         <div class="infoIcon">
-            <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
-        </div>
+			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" class="rival" alt="rival"/>
+			<!-- <img class="rival" src="{viewManager.rival.image}" alt="rival"/> -->
+		</div>
         <div class="infoAnswer">
             {viewManager.rival.name}
         </div>
