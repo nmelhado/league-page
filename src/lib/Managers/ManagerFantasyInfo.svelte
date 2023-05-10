@@ -1,15 +1,16 @@
 <script>
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
 
-    export let viewManager, players;
+	export let viewManager, players;
 
-    const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
-        }
-        goto(`/manager?manager=${rival}`);
-    }
+	const gotoRival = (rival) => {
+	if(!rival) {
+	goto(`/managers`);
+	}
+	goto(`/manager?manager=${rival}`);
+	}
 </script>
 
 <style>
@@ -252,7 +253,7 @@
             Rival
         </div>
         <div class="infoIcon">
-			<img alt="rival" class="rival" src="{team ? team.avatar : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
+			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, rival, year)}" class="rival" alt="rival"/>
 			<!-- <img class="rival" src="{viewManager.rival.image}" alt="rival"/> -->
         </div>
         <div class="infoAnswer">
