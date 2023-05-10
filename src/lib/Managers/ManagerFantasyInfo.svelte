@@ -3,7 +3,9 @@
 
 
     export let viewManager, players;
-
+	
+    $: viewRival = managers[{viewManager.rival.Link}];
+	
     const gotoRival = (rival) => {
         if(!rival) {
             goto(`/managers`);
@@ -255,7 +257,7 @@
             <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
         </div>
         <div class="infoAnswer">
-            {viewManager.rival.name}
-        </div>
+			{viewManager.mangerID}
+		</div>
     </div>
 </div>
