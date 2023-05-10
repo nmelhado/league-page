@@ -1,15 +1,15 @@
 <script>
-    import { goto } from "$app/navigation";
+	import { goto } from "$app/navigation";
+	import { getTeamData } from "$lib/utils/helperFunctions/universalFunctions";
 
+	export let viewManager, leagueTeamManagers, players;
 
-    export let viewManager, players;
-
-    const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
-        }
-        goto(`/manager?manager=${rival}`);
-    }
+	const gotoRival = (rival) => {
+	if(!rival) {
+	goto(`/managers`);
+	}
+	goto(`/manager?manager=${rival}`);
+	}
 </script>
 
 <style>
