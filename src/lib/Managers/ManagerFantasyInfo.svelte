@@ -8,13 +8,10 @@
     $: ({rosterID, year} = viewManager.managerID ? getRosterIDFromManagerID(leagueTeamManagers, viewManager.managerID) : {rosterID: viewManager.roster, year: null});
 	
     const gotoRival = (rival) => {
-        for(const mID of leagueTeamManagers.teamManagersMap[year][rival].managers) {
-            managersIndex = managersObj.findIndex(m => m.managerID == mID);
-            if(managersIndex > -1) {
-                goto(`/manager?manager=${managersIndex}`);
-                return;
-            }
+        if(!rival) {
+            goto(`/managers`);
         }
+        goto(`/manager?manager=${rival}`);
     }
 </script>
 
