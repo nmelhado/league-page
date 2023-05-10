@@ -291,9 +291,9 @@
     <h3 bind:this={sevenTwo}>7.2 Payout</h3>
     <p>League payout is structured as follows:</p>
     <ul>
-        <li>1st place: ${dues * 6}</li>
-        <li>2nd place: ${dues * 3}</li>
-        <li>3rd place: ${dues}</li>
+        <li>1<sup>st</sup> place: ${dues * 6}</li>
+        <li>2<sup>nd</sup> place: ${dues * 3}</li>
+        <li>3<sup>rd</sup> place: ${dues}</li>
     </ul>
     <p>In the event that a manager was fined due to late payment, their extra fee will be added to the winner's payout. Similarly, if new managers come into the league and the payout is smaller, the difference will come out of the winner's prize.</p>
 
