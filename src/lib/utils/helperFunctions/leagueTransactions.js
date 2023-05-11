@@ -150,7 +150,12 @@ const digestTransactions = async ({transactionsData, currentSeason}) => {
 	const transactionOrder = transactionsData.sort((a,b) => b.status_updated - a.status_updated);
 	
 	for(const transaction of transactionOrder) {
-		let {digestedTransaction, season, success} = digestTransaction({transaction, currentSeason})
+		let { digestedTransaction, season, success } = digestTransaction({ transaction, currentSeason })
+
+		if (isNaN(season)) {
+			season = currentSeason
+		}
+
 		if(!success) continue;
 		transactions.push(digestedTransaction);
         if(!leagueTeamManagers.teamManagersMap[season]) {

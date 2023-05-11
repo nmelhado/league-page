@@ -21,6 +21,7 @@
         width: 92%;
         max-width: 800px;
         margin: 8em auto 10em;
+        color: #777;
     }
 
     h1 {
@@ -50,7 +51,7 @@
 
     h5 {
         margin-left: 6em;
-        font-size: 0.8em;
+        font-size: 1em;
         line-height: 1.1em;
     }
 
@@ -88,10 +89,6 @@
 
     .clickable:hover {
         color: #00316b;
-    }
-
-    p {
-        color: #777;
     }
 </style>
 
@@ -149,7 +146,7 @@
 
     <h3 class="subSectionHeading" bind:this={oneOne}>1.1 Positional Breakdown</h3>
 
-    <p>28 Total Players</p>
+    <p>33 Total Players</p>
 
     <p class="underscore">Starters</p>
     <ul>
@@ -158,28 +155,23 @@
         <li>RB</li>
         <li>WR</li>
         <li>WR</li>
+        <li>WR</li>
         <li>TE</li>
         <li>FLEX (RB/WR/TE)</li>
-        <li>FLEX (RB/WR)</li>
-        <li>D/ST</li>
-        <li>K</li>
+        <li>FLEX (RB/WR/TE)</li>
+        <li>SUPERFLEX (QB/RB/WR/TE)</li>
     </ul>
 
-    <p>18 Bench (Expanded by 5 between the league draft and start of regular season)</p>
+    <p>16 Bench Spents</p>
 
-    <p>1 IR Spots (Player must be labeled as IR, Out, or COVID in the Sleeper App)</p>
+    <p>3 Taxi Spots (Player must be a rookie)</p>
+
+    <p>4 IR Spots (Player must be labeled as IR, Out, or COVID in the Sleeper App)</p>
 
         <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
 
         <div class="subBlock">
-            <table class="positionMaximums">
-                <tr><td>QB</td><td class="right">3 active, 5 total</td></tr>
-                <tr><td>RB</td><td class="right">20</td></tr>
-                <tr><td>WR</td><td class="right">20</td></tr>
-                <tr><td>TE</td><td class="right">10</td></tr>
-                <tr><td>D/ST</td><td class="right">3</td></tr>
-                <tr><td>K</td><td class="right">3</td></tr>
-            </table>
+            <p>No position maximums</p>
         </div>
 
 
@@ -199,7 +191,6 @@
 
         <p>All trades that are found guilty of collusion, will be reversed/denied. If the trade had affected the outcome of previous games, the results of those games will be revised.  </p>
 
-        <p>*Collusion includes the organizing of veto votes against an acceptable trade.</p>
 
         <p>The commissioner will err on the side of letting owners manage their teams the way they see fit. Any collusion will need to be clear. The commissioner reserves the right to step in and at the very least assess the thinking of any team involved in a heavily lop-sided trade. </p>
     </div>
@@ -219,11 +210,6 @@
         <p>You will not be able to trade draft picks that are more than 3 drafts away. For example, during the 2021 season you cannot trade any picks in or after the 2025 draft. You may only trade FAAB $ from the current season.</p>
     </div>
 
-    <h4 bind:this={oneTwoFive}>1.2.5 Veto/Trade Process</h4>
-    <div class="subBlock">
-        <p>A total of 7 veto votes are required to veto a trade. Vetoes are only appropriate in instances of collusion or an egregious mismatch of value (i.e. CMC for a backup kicker). Not liking a trade does not warrant a veto.</p>
-    </div>
-
 
 
     <h3 bind:this={oneThree}>1.3 Waiver Wire</h3>
@@ -239,21 +225,18 @@
     <p>The draft order each year will be a linear draft in reverse order of the previous year’s regular season standings.</p>
 
     <h3 bind:this={twoTwo}>2.2 Rookie Drafts</h3>
-    <p>Rookie drafts will consist of 3 round of drafting, with 5 minutes allotted for each pick. To make room for the incoming players, benches will be expanded by (5) spots. These spots will be removed in mid-August, at which point you will need to have cut the necessary players.</p>
+    <p>Rookie drafts will consist of 4 rounds of drafting, with 24 hours allotted for each pick.</p>
     <p>Any spots not filled during the draft, can be filled immediately afterwards from the waiver wire.</p>
-
-    <h3 bind:this={twoThree}>2.3 Draft Day Trades</h3>
-    <p>If a trade is being made during the draft, one or both parties can alert the commissioner to pause the draft to allow for extra time to negotiate the trade.</p>
 
     <h2 class="sectionHeading" bind:this={three}>Section 3 Scoring System</h2>
 
     <h3 bind:this={threeOne}>3.1 Scoring System</h3>
-    <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows typical .5PPR Scoring). The scoring system will never change without a majority league vote.</p>
+    <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows typical 1 PPR Scoring). The scoring system will never change without a majority league vote.</p>
 
     <h2 class="sectionHeading" bind:this={four}>Section 4 Postseason</h2>
 
     <h3 bind:this={fourOne}>4.1 Playoffs</h3>
-    <p>At the end of the season 6 teams will make the playoffs. The first round of playoffs will commence in week 15. Each team that wins their division and the 4 wild card teams that finish with the best records, will receive a playoff berth. The 2 teams that win their division will receive a bye week in the first round of the playoffs. Each playoff matchup will only last one week and the winner will advance. Week 18 will not be used.</p>
+    <p>At the end of the season 6 teams will make the playoffs. The first round of playoffs will commence in week 15. Each playoff matchup will only last one week and the winner will advance. Week 18 will not be used.</p>
 
     <h3 bind:this={fourTwo}>4.2 Seeding Tiebreakers</h3>
     <p>If two teams finish with the same record the tiebreakers will go as followed:</p>
@@ -300,6 +283,7 @@
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buying, finding a co-manager to split the cost is recommended.</p>
 
-	<a href="#" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()">Back to the top</a>
+	<!-- svelte-ignore a11y-invalid-attribute -->
+	<a class="backToTop" href="#" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()">Back to the top</a>
 
 </div>
