@@ -63,8 +63,10 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID, year}) => 
         // check for matching managerID first
         for(const mID of leagueTeamManagers.teamManagersMap[year][rosterID].managers) {
             managersIndex = managersObj.findIndex(m => m.managerID == mID);
-            if(managersIndex > -1) {
-                goto(`/manager?manager=${managersIndex}`);
+            if (managersIndex > -1) {
+                const host = window.location.protocol + "//" + window.location.host;
+                window.location.href = host + `/manager?manager=${managersIndex}`;
+                //goto(`/manager?manager=${managersIndex}`);
                 return;
             }
         }

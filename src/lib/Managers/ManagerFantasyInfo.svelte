@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-    import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import {  getRosterIDFromManagerID } from '$lib/utils/helperFunctions/universalFunctions';
     import { getAvatarFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 	import { gotoManager } from '$lib/utils/helper'
 	
@@ -251,7 +251,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
+    <div class="infoSlot infoRival" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: viewManager.rival.link})}>
         <div class="infoLabel">
             Rival
         </div>
