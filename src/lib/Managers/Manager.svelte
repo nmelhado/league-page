@@ -219,6 +219,14 @@
             height: 24px;
         }
     }
+
+    .editInfo {
+        display: flex;
+        color: #0082c3;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5em 0 0em;
+    }
 </style>
 
 <div class="managerContainer">
@@ -228,7 +236,9 @@
             {viewManager.name}
             <div class="teamSub">{coOwners ? 'Co-' : ''}Manager of <i>{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</i></div>
         </h2>
-        
+        <a href="#" class="editInfo">
+            <span class="glyphicon glyphicon-edit"></span> Edit Manager Information
+        </a>
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
             {#if viewManager.managerID && datesActive.start}
