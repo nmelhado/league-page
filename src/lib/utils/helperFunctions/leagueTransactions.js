@@ -145,7 +145,7 @@ const digestTransactions = async ({transactionsData, currentSeason}) => {
 
     const leagueTeamManagers = await getLeagueTeamManagers();
 
-	// trades can be out of order because they are aded to sleeper when the offer is sent
+	// trades can be out of order because they are added to sleeper when the offer is sent
 	// this sort puts everything in the correct order
 	const transactionOrder = transactionsData.sort((a,b) => b.status_updated - a.status_updated);
 	
