@@ -4,10 +4,10 @@
 
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #0082c3,
-  $secondary: #00316b,
-  $surface: #000000,
-  $background: #000000,
+  $primary: #00316b,
+  $secondary: #0082c3,
+  $surface: #fff,
+  $background: #fff,
   $error: color-palette.$red-900,
 );
 
@@ -33,54 +33,54 @@
 @use '@material/typography/index' as typography;
 
 :root {
-  --fff: #000000;
-  --f8f8f8: #070707;
-  --f3f3f3: #0d0d0d;
-  --eee: #1b1b1b;
-  --ebebeb: #333;
-  --ddd: #282828;
-  --d7d7d7: #171717;
-  --ccc: #444;
-  --bbb: #444;
-  --aaa: #555;
-  --g999: #666;
-  --g444: #bbb;
-  --g555: #aaa;
-  --g333: #ccc;
-  --g111: #eee;
-  --g000: #fff;
-  --boxShadowOne: #070707;
-  --boxShadowTwo: #272727;
-  --boxShadowThree: #0d0d0d;
-  --ir: #222;
-  --champShadow: #111;
-  --transactHeader: #202424;
-  --draftSwapped: #202025;
-  --waiverAdd: #3e4741;
-  --waiverDrop: #423a3a;
-  --bracketMatch: #010102;
-  --matchupSelected: #2f2f35;
-  --fadeOne: rgba(0, 0, 0, 0) 0%;
-  --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
-  --fadeThree: rgba(0, 0, 0, 0.9) 90%;
-  --fadeFour: rgba(0, 0, 0, 1) 100%;
-  --blueOne: #0082c3;
-  --blueTwo: #003c86;
-  --r1: #1c1c1d;
-  --r2: #1f1d1d;
-  --r3: #181a18;
-  --headerPrimary: #2a2e31;
-  --borderOverride: rgba(255,255,255,.3);
-  --rivalryBack: #333;
+  --fff: #fff;
+  --f8f8f8: #f8f8f8;
+  --f3f3f3: #f3f3f3;
+  --eee: #eee;
+  --ebebeb: #ebebeb;
+  --ddd: #ddd;
+  --d7d7d7: #d7d7d7;
+  --ccc: #ccc;
+  --bbb: #bbb;
+  --aaa: #aaa;
+  --g999: #999;
+  --g555: #555;
+  --g444: #444;
+  --g333: #333;
+  --g111: #111;
+  --g000: #000;
+  --boxShadowOne: #ccc;
+  --boxShadowTwo: #cacaca;
+  --boxShadowThree: #d4d4d4;
+  --ir: #ddd;
+  --champShadow: #555;
+  --transactHeader: #f5fcff;
+  --draftSwapped: #f8fcff;
+  --waiverAdd: #e9fff1;
+  --waiverDrop: #ffe9e9;
+  --bracketMatch: #fafeff;
+  --matchupSelected: #fff;
+  --fadeOne: rgba(255, 255, 255, 0) 0%;
+  --fadeTwo: rgba(255, 255, 255, 0.7) 50%;
+  --fadeThree: rgba(255, 255, 255, 0.9) 90%;
+  --fadeFour: rgba(255, 255, 255, 1) 100%;
+  --blueOne: #00316b;
+  --blueTwo: #0082c3;
+  --r1: #f7f9fd;
+  --r2: #fbf7f7;
+  --r3: #f7fbf7;
+  --headerPrimary: #ddedfa;
+  --borderOverride: rgba(0,0,0,.12);
+  --rivalryBack: #f8f8f8;
 
   // Chart bar colors
-  --barChartOne: #446a88;
-  --barChartTwo: #32788f;
-  --barChartThree: #1d808d;
-  --barChartFour: #198886;
-  --barChartFive: #2b8673;
-  --barChartSix: #448864;
-  
+  --barChartOne: #7fc4f5;
+  --barChartTwo: #5bcff7;
+  --barChartThree: #38daf0;
+  --barChartFour: #2fe2e0;
+  --barChartFive: #4fe9c9;
+  --barChartSix: #79edad;
+
   // Positions
   --QBfade: #ff8fb2;
   --WRfade: #afd4ff;
@@ -102,7 +102,7 @@
 	--TE: #ffae58;
 	--K: #bd66ff;
 	--Budget: #7947d4;
-	--DEF: #fff67a;
+	--DEF: #eee45e;
 	--DL: #ff795a;
 	--LB: #6d7df5;
 	--DB: #ff7cb6;
@@ -116,9 +116,9 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #222;
-  background: linear-gradient(to bottom right, #111,#222 );
-  background: -webkit-linear-gradient(to bottom right, #111,#222 );
+  background: #f4f4f4;
+  background: linear-gradient(to bottom right, #f4f4f4,#ebebeb );
+  background: -webkit-linear-gradient(to bottom right, #f4f4f4,#ebebeb );
 }
  
 //
@@ -184,5 +184,5 @@ a:visited {
 }
 
 .mdc-button--outlined:not(:disabled) {
-  background-color: #070707 !important;
+  background-color: #f9f9f9 !important;
 }
