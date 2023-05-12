@@ -34,10 +34,6 @@
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
-
-	const tradeScale = () => {
-		tradingScaleValue = 8
-	}
 </script>
 
 <style>
