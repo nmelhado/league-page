@@ -17,6 +17,7 @@ import PowerRankings from './PowerRankings/index.svelte';
 import HomePost from './BlogPosts/HomePost.svelte';
 import Posts from './BlogPosts/Posts.svelte';
 import Standings from './Standings/index.svelte';
+import Editor from './Editor/Editor.svelte';
 
 export {
     Nav,
@@ -38,4 +39,5 @@ export {
     HomePost,
     Posts,
     Standings,
+    Editor,
 };
