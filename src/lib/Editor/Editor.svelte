@@ -8,7 +8,6 @@
 	import Slider from '@smui/slider';
     import AllManagers from '$lib/Managers/AllManagers.svelte';
 
-
 	export let teamManagersData;
 
 	$: managerList = getAllManagerNames(teamManagersData);
@@ -41,7 +40,7 @@
 		display: box;
 		margin-right: auto;
 		margin-left: auto;
-		width: 600px;
+		width: 75%;
 		height: auto;
 	}
 	.managerMenu {
@@ -99,35 +98,19 @@
 		justify-content: right;
 	}
 
-	.favoriteTeam {
-		font-size: 2.8em;
-		align-items: left;
-		display: inline-block;
-		margin-right: 0.5em;
-		justify-content: left;
-	}
-
-	.favoritePlayer {
-		font-size: 2.8em;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		transform: translateX(5%);
-		align-items: right;
-		justify-content: right;
-	}
-
 	.modeRival {
 		display: box;
 		margin-right: auto;
 		margin-left: auto;
-		width: 600px;
+		width: 75%;
 	}
 
 	.mode {
 		font-size: 2.8em;
 		align-items: left;
 		display: inline-block;
+		left: 50%;
+		transform: translateX(-47%);
 		margin-right: 0.5em;
 		justify-content: left;
 	}
@@ -146,13 +129,15 @@
 		display: box;
 		margin-right: auto;
 		margin-left: auto;
-		width: 600px;
+		width: 75%;
 	}
 
 	.rookieOrVets {
 		font-size: 2.8em;
 		align-items: left;
 		display: inline-block;
+		left: 50%;
+		transform: translateX(-47%);
 		margin-right: 0.5em;
 		justify-content: left;
 	}
@@ -170,7 +155,7 @@
 
 <div class="editor" >
 	<div class="managerMenu">
-		<Select style="width: 89%;" bind:value={managerDropdownValue} label="Manager " on:change="{() => managerDropdown = ''}" size="10" required>
+		<Select style="width: 89%;" bind:value={managerDropdownValue} label="Manager " on:change="{() => managerDropdown = '', rivalList.splice(managerDropdownValue), rivalList = rivalList}" size="10" required>
 			<!--<Option value="" />-->
 			{#each managerList as manager}
 				<Option value={manager}>{manager}</Option>
@@ -182,10 +167,10 @@
 		{/if}
 	</div>
 	<div class="managerInfo">
-		<Textfield style="width: 160%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
+		<Textfield style="width: 200%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
 	</div>
 	<div class="location">
-		<Textfield style="width: 160%;" bind:value={locationValue} label="Location"></Textfield>
+		<Textfield style="width: 200%;" bind:value={locationValue} label="Location"></Textfield>
 	</div>
 	<div class="bio">
 		<Textfield style="width: 100%;" textarea input$maxlength={100} bind:value={bioValue} label="Biography">
@@ -198,14 +183,14 @@
 		</Textfield>
 	</div>
 	<div class="favoriteTeam">
-		<Textfield style="width: 160%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
+		<Textfield style="width: 200%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
 	</div>
 	<div class="favoritePlayer">
-		<Textfield style="width: 160%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
+		<Textfield style="width: 200%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
 	</div>
 	<div class="modeRival">
 		<div class="mode">
-			<Select style="width: 145%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
+			<Select style="width: 183%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
 				<!--<Option value="" />-->
 				{#each modeList as mode}
 					<Option value={mode}>{mode}</Option>
@@ -213,7 +198,7 @@
 			</Select>
 		</div>
 		<div class="rival">
-			<Select style="width: 145%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
+			<Select style="width: 183%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
 				<!--<Option value="" />-->
 				{#each rivalList as rival}
 					<Option value={rival}>{rival}</Option>
@@ -226,7 +211,7 @@
 	</div>
 	<div class="rookieContact">
 		<div class="rookieOrVets">
-			<Select style="width: 145%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
+			<Select style="width: 183%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
 				<!--<Option value="" />-->
 				{#each rookieOrVetsList as rookieOrVets}
 					<Option value={rookieOrVets}>{rookieOrVets}</Option>
@@ -234,7 +219,7 @@
 			</Select>
 		</div>
 			<div class="preferredContact">
-			<Select  style="width: 145%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
+			<Select  style="width: 183%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
 				<!--<Option value="" />-->
 				{#each preferredContactList as preferredContact}
 					<Option value={preferredContact}>{preferredContact}</Option>
