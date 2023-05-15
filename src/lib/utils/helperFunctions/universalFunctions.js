@@ -221,21 +221,6 @@ export const getTeamNameFromTeamManagers = (teamManagers, rosterID, year) => {
     }
     return teamManagers.teamManagersMap[year][rosterID].team.name;
 }
-export const getAllManagerNames = (teamManagers, year) => {
-    if (!year || year > teamManagers.currentSeason) {
-        year = teamManagers.currentSeason;
-    }
-    let managersArray = [];
-    for (const rosterID in teamManagers.teamManagersMap[year]) {
-        for (const managerID of teamManagers.teamManagersMap[year][rosterID].managers) {
-            const manager = teamManagers.users[managerID];
-            if (manager) {
-                managersArray.push(manager.display_name);
-            }
-        }
-    }
-    return managersArray;
-}
 
 export const renderManagerNames = (teamManagers, rosterID, year) => {
     if(!year || year > teamManagers.currentSeason) {

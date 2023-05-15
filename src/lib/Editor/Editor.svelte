@@ -1,17 +1,16 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { getTeamData, gotoManager } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getTeamData, gotoManager, getRosterIDFromManagerID } from "$lib/utils/helperFunctions/universalFunctions";
     import Button, { Label } from '@smui/button';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 	import Slider from '@smui/slider';
+	import { managers } from '$lib/utils/leagueInfo';
 
     export let leagueTeamManagers;
 
     const users = Object.keys(leagueTeamManagers.users);
 
-	$: year = null;
     $: managerList = users.filter(u => u !== rivalDropdownValue);
 	$: managerDropdownValue = '';
     $: managerNameValue = '';
@@ -34,7 +33,8 @@
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
-
+	$: currManager = users.filter(u => u == managerDropdownValue)[0];
+	$: ({rosterID,year} = currManager ? getRosterIDFromManagerID(leagueTeamManagers, currManager) : {rosterID:currManager, year: null});
 </script>
 
 <style>
