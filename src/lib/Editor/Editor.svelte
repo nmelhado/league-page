@@ -12,7 +12,6 @@
     const users = Object.keys(leagueTeamManagers.users);
 
     $: managerList = users.filter(u => u !== rivalDropdownValue);
-	$: managerDropdown = '';
 	$: managerDropdownValue = '';
     $: managerNameValue = '';
 	$: locationValue = '';
@@ -35,9 +34,6 @@
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
 
-	const removeRival = ()  => {
-		rivalList = rivalList.splice(managerDropdownValue);
-	}
 </script>
 
 <style>
