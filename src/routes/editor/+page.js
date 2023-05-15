@@ -1,11 +1,14 @@
-import { getAwards, getLeagueTeamManagers } from '$lib/utils/helper';
+import { getLeagueTeamManagers } from '$lib/utils/helper';
 
-export async function load() {
-    const awardsData = getAwards();
-    const teamManagersData = getLeagueTeamManagers();
+export async function load({ url, fetch }) {
+
+    const playerOne = url?.searchParams?.get('player_one');
+
+    const playerTwo = url?.searchParams?.get('player_two');
 
     return {
-        awardsData,
-        teamManagersData,
+        leagueTeamManagerData: getLeagueTeamManagers(),
+        playerOne,
+        playerTwo
     };
 }

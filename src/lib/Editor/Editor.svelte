@@ -1,16 +1,17 @@
 <script>
-    import { gotoManager } from '$lib/utils/helper';
-	import { getAvatar, getAllManagerNames } from '$lib/utils/helperFunctions/universalFunctions';
-	import Button, { Label } from '@smui/button';
+	import { goto } from "$app/navigation";
+	import { getTeamData, getAvatar, getAllManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
+    import Button, { Label } from '@smui/button';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 	import Slider from '@smui/slider';
-    import AllManagers from '$lib/Managers/AllManagers.svelte';
 
-	export let teamManagersData;
+    export let leagueTeamManagers;
 
-	$: managerList = getAllManagerNames(teamManagersData);
+    const users = Object.keys(leagueTeamManagers.users);
+
+    $: managerList = users.filter(u => u !== rivalDropdownValue);
 	$: managerDropdown = '';
 	$: managerDropdownValue = '';
     $: managerNameValue = '';
@@ -20,7 +21,7 @@
 	$: modeList = ['Win Now', 'Dynasty', 'Rebuild'];
 	$: modeDropdown = '';
 	$: modeDropdownValue = '';
-	$: rivalList = getAllManagerNames(teamManagersData);
+	$: rivalList = users.filter(u => u !== managerDropdownValue);
 	$: rivalDropdown = '';
 	$: rivalDropdownValue = '';
 	$: favoritePlayerValue = '';
@@ -33,144 +34,215 @@
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
+
+	const removeRival = ()  => {
+		rivalList = rivalList.splice(managerDropdownValue);
+	}
 </script>
 
 <style>
 	.editor {
-		display: box;
-		margin-right: auto;
-		margin-left: auto;
-		width: 75%;
-		height: auto;
+        align-items: left;
+        max-width: 900px;
+        margin: 3em auto 2em;
 	}
+
 	.managerMenu {
-		font-size: 2.8em;
-		align-items: center;
-	}
-
-	.managerInfo {
-		font-size: 2.8em;
-		align-items: left;
-		display: inline-block;
-		margin-right: 0.5em;
-		justify-content: left;
-	}
-
-	.location {
-		font-size: 2.8em;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		transform: translateX(5%);
-		align-items: right;
-		justify-content: right;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.managerPhoto {
-        display: inline-block;
-        border-radius: 100%;
-		position: absolute;
-        max-width: auto;
-        height: 55px;
-		margin-left: 0.25em;
+		/*display: inline-block;*/
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid;
+        transform: translate(0%, 25%);
+        top: 50%;
+        background-color: var(--fff);
     }
 
+	.managerInfo {
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
+	}
+
+	.location {
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
+	}
+
 	.bio {
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: var(--g000);
+	}
+
+	.philosophy {
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.favoriteTeam {
-		font-size: 2.8em;
-		align-items: left;
-		display: inline-block;
-		margin-right: 0.5em;
-		justify-content: left;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.favoritePlayer {
-		font-size: 2.8em;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		transform: translateX(5%);
-		align-items: right;
-		justify-content: right;
-	}
-
-	.modeRival {
-		display: box;
-		margin-right: auto;
-		margin-left: auto;
-		width: 75%;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.mode {
-		font-size: 2.8em;
-		align-items: left;
-		display: inline-block;
-		left: 50%;
-		transform: translateX(-47%);
-		margin-right: 0.5em;
-		justify-content: left;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.rival {
-		font-size: 2.8em;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		transform: translateX(5%);
-		align-items: right;
-		justify-content: right;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
-
-	.rookieContact {
-		display: box;
-		margin-right: auto;
-		margin-left: auto;
-		width: 75%;
+	
+	.valuePosition {
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.rookieOrVets {
-		font-size: 2.8em;
-		align-items: left;
-		display: inline-block;
-		left: 50%;
-		transform: translateX(-47%);
-		margin-right: 0.5em;
-		justify-content: left;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
 	}
 
 	.preferredContact {
-		font-size: 2.8em;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		transform: translateX(5%);
-		align-items: right;
-		justify-content: right;
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
+	}
+
+	.tradingScale {
+		padding: 0.5em 2em;
+        font-size: 1.2em;
+        border-radius: 6px;
+        background-color: var(--fff);
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        text-align: center;
+        color: var(--g000);
+	}
+
+	.submitBtn {
+        align-items: left;
+        max-width: 900px;
+        margin: 3em auto 2em;
+		padding-bottom: 5em;
 	}
 </style>
 
 <div class="editor" >
 	<div class="managerMenu">
-		<Select style="width: 89%;" bind:value={managerDropdownValue} label="Manager " on:change="{() => managerDropdown = '', rivalList.splice(managerDropdownValue), rivalList = rivalList}" size="10" required>
+		<Select style="width: 92%;" class="selectManager" label="Manager" id="managerOne" name="managerOne" bind:value={managerDropdownValue}>
 			<!--<Option value="" />-->
 			{#each managerList as manager}
-				<Option value={manager}>{manager}</Option>
+				<Option value={manager}>{leagueTeamManagers.users[manager].display_name}</Option>
 			{/each}
 		</Select>
 		{#if managerDropdownValue}
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<img src="{getAvatar(teamManagersData, managerDropdownValue)}" class="managerPhoto"/>
+			<img src="{getTeamData(leagueTeamManagers.users, managerDropdownValue).avatar}" class="managerPhoto"/>
 		{/if}
 	</div>
 	<div class="managerInfo">
-		<Textfield style="width: 200%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
+		<Textfield style="width: 100%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
 	</div>
 	<div class="location">
-		<Textfield style="width: 200%;" bind:value={locationValue} label="Location"></Textfield>
+		<Textfield style="width: 100%;" bind:value={locationValue} label="Location"></Textfield>
 	</div>
 	<div class="bio">
 		<Textfield style="width: 100%;" textarea input$maxlength={100} bind:value={bioValue} label="Biography">
@@ -183,53 +255,49 @@
 		</Textfield>
 	</div>
 	<div class="favoriteTeam">
-		<Textfield style="width: 200%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
+		<Textfield style="width: 100%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
 	</div>
 	<div class="favoritePlayer">
-		<Textfield style="width: 200%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
+		<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
 	</div>
-	<div class="modeRival">
-		<div class="mode">
-			<Select style="width: 183%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
-				<!--<Option value="" />-->
-				{#each modeList as mode}
-					<Option value={mode}>{mode}</Option>
-				{/each}
-			</Select>
-		</div>
-		<div class="rival">
-			<Select style="width: 183%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
-				<!--<Option value="" />-->
-				{#each rivalList as rival}
-					<Option value={rival}>{rival}</Option>
-				{/each}
-			</Select>
-		</div>
+	<div class="mode">
+		<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
+			<!--<Option value="" />-->
+			{#each modeList as mode}
+				<Option value={mode}>{mode}</Option>
+			{/each}
+		</Select>
+	</div>
+	<div class="rival">
+		<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
+			<!--<Option value="" />-->
+			{#each rivalList as rival}
+				<Option value={rival}>{leagueTeamManagers.users[rival].display_name}</Option>
+			{/each}
+		</Select>
 	</div>
 	<div class="valuePosition">
 		<Textfield style="width: 100%;" bind:value={valuePositionValue} label="Value Position"></Textfield>
 	</div>
-	<div class="rookieContact">
-		<div class="rookieOrVets">
-			<Select style="width: 183%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
-				<!--<Option value="" />-->
-				{#each rookieOrVetsList as rookieOrVets}
-					<Option value={rookieOrVets}>{rookieOrVets}</Option>
-				{/each}
-			</Select>
-		</div>
-			<div class="preferredContact">
-			<Select  style="width: 183%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
-				<!--<Option value="" />-->
-				{#each preferredContactList as preferredContact}
-					<Option value={preferredContact}>{preferredContact}</Option>
-				{/each}
-			</Select>
-		</div>
+	<div class="rookieOrVets">
+		<Select style="width: 100%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
+			<!--<Option value="" />-->
+			{#each rookieOrVetsList as rookieOrVets}
+				<Option value={rookieOrVets}>{rookieOrVets}</Option>
+			{/each}
+		</Select>
+	</div>
+		<div class="preferredContact">
+		<Select style="width: 100%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
+			<!--<Option value="" />-->
+			{#each preferredContactList as preferredContact}
+				<Option value={preferredContact}>{preferredContact}</Option>
+			{/each}
+		</Select>
 	</div>
 	<div class="tradingScale">
 		<Textfield style="width: 100%;" bind:value={tradingScaleValue} label="Trading Scale" disabled=true ></Textfield>
-		<Slider style="width: 96%;"
+		<Slider
 		  bind:value={tradingScaleValue}
 		  min={1}
 		  max={10}
@@ -238,9 +306,9 @@
 		  input$aria-label="Discrete slider"
 		/>
 	</div>
-	<div class="submitBtn">
-		<Button variant="unelevated">
-			<Label>Submit</Label>
-		</Button>
-	</div>
+</div>
+<div class="submitBtn">
+	<Button variant="unelevated">
+		<Label>Submit</Label>
+	</Button>
 </div>
