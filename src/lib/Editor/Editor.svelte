@@ -41,6 +41,12 @@
 </script>
 
 <style>
+	h2 {
+        text-align: center;
+        font-size: 2.4em;
+        margin: 1.3em 0 0;
+    }
+
 	.editor {
         align-items: left;
         max-width: 900px;
@@ -70,7 +76,9 @@
         background-color: var(--fff);
     }
 
-	.managerInfo {
+	.managerLocation {
+        display: flex;
+        position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
         border-radius: 6px;
@@ -80,18 +88,14 @@
         -moz-appearance: none !important;
         text-align: center;
         color: var(--g000);
-	}
+    }
 
+	.managerInfo {
+		flex: 2;
+		padding-right: 1em;
+	}
 	.location {
-		padding: 0.5em 2em;
-        font-size: 1.2em;
-        border-radius: 6px;
-        background-color: var(--fff);
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        text-align: center;
-        color: var(--g000);
+		flex:2;
 	}
 
 	.bio {
@@ -120,7 +124,9 @@
         color: var(--g000);
 	}
 
-	.favoriteTeam {
+	.favorites {
+        display: flex;
+        position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
         border-radius: 6px;
@@ -128,12 +134,21 @@
         appearance: none !important;
         -webkit-appearance: none !important;
         -moz-appearance: none !important;
-        background-repeat: no-repeat;
         text-align: center;
         color: var(--g000);
+    }
+
+	.favoriteTeam {
+		flex: 2;
+		padding-right: 1em;
+	}
+	.favoritePlayer {
+		flex:2;
 	}
 
-	.favoritePlayer {
+	.modeRival {
+        display: flex;
+        position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
         border-radius: 6px;
@@ -143,33 +158,19 @@
         -moz-appearance: none !important;
         text-align: center;
         color: var(--g000);
-	}
+    }
 
 	.mode {
-		padding: 0.5em 2em;
-        font-size: 1.2em;
-        border-radius: 6px;
-        background-color: var(--fff);
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        text-align: center;
-        color: var(--g000);
+		flex: 2;
+		padding-right: 1em;
 	}
-
 	.rival {
-		padding: 0.5em 2em;
-        font-size: 1.2em;
-        border-radius: 6px;
-        background-color: var(--fff);
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        text-align: center;
-        color: var(--g000);
+		flex:2;
 	}
 	
-	.valuePosition {
+	.positionRookie {
+        display: flex;
+        position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
         border-radius: 6px;
@@ -179,9 +180,19 @@
         -moz-appearance: none !important;
         text-align: center;
         color: var(--g000);
+    }
+
+	.valuePosition {
+		flex: 2;
+		padding-right: 1em;
+	}
+	.rookieOrVets {
+		flex:2;
 	}
 
-	.rookieOrVets {
+	.contactTrading {
+        display: flex;
+        position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
         border-radius: 6px;
@@ -191,30 +202,14 @@
         -moz-appearance: none !important;
         text-align: center;
         color: var(--g000);
-	}
+    }
 
 	.preferredContact {
-		padding: 0.5em 2em;
-        font-size: 1.2em;
-        border-radius: 6px;
-        background-color: var(--fff);
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        text-align: center;
-        color: var(--g000);
+		flex: 2;
+		padding-right: 1em;
 	}
-
 	.tradingScale {
-		padding: 0.5em 2em;
-        font-size: 1.2em;
-        border-radius: 6px;
-        background-color: var(--fff);
-        appearance: none !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        text-align: center;
-        color: var(--g000);
+		flex:2;
 	}
 
 	.submitBtn {
@@ -224,6 +219,8 @@
 		padding-bottom: 5em;
 	}
 </style>
+
+<h2>Manager Editor</h2>
 
 <div class="editor" >
 	<div class="managerMenu">
@@ -238,11 +235,13 @@
 			<img src="{getTeamData(leagueTeamManagers.users, managerDropdownValue).avatar}" class="managerPhoto"/>
 		{/if}
 	</div>
-	<div class="managerInfo">
-		<Textfield style="width: 100%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
-	</div>
-	<div class="location">
-		<Textfield style="width: 100%;" bind:value={locationValue} label="Location"></Textfield>
+	<div class="managerLocation">
+		<span class="managerInfo">
+			<Textfield style="width: 100%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
+		</span>
+		<span class="location">
+			<Textfield style="width: 100%;" bind:value={locationValue} label="Location"></Textfield>
+		</span>
 	</div>
 	<div class="bio">
 		<Textfield style="width: 100%;" textarea input$maxlength={100} bind:value={bioValue} label="Biography">
@@ -254,57 +253,65 @@
 			<CharacterCounter slot="internalCounter">0 / 100</CharacterCounter>
 		</Textfield>
 	</div>
-	<div class="favoriteTeam">
-		<Textfield style="width: 100%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
+	<div class="favorites">
+		<span class="favoriteTeam">
+			<Textfield style="width: 100%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
+		</span>
+		<span class="favoritePlayer">
+			<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
+		</span>
 	</div>
-	<div class="favoritePlayer">
-		<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
+	<div class="modeRival">
+		<span class="mode">
+			<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
+				<!--<Option value="" />-->
+				{#each modeList as mode}
+					<Option value={mode}>{mode}</Option>
+				{/each}
+			</Select>
+		</span>
+		<span class="rival">
+			<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
+				<!--<Option value="" />-->
+				{#each rivalList as rival}
+					<Option value={rival}>{leagueTeamManagers.users[rival].display_name}</Option>
+				{/each}
+			</Select>
+		</span>
 	</div>
-	<div class="mode">
-		<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
-			<!--<Option value="" />-->
-			{#each modeList as mode}
-				<Option value={mode}>{mode}</Option>
-			{/each}
-		</Select>
+	<div class="positionRookie">
+		<span class="valuePosition">
+			<Textfield style="width: 100%;" bind:value={valuePositionValue} label="Value Position"></Textfield>
+		</span>
+		<span class="rookieOrVets">
+			<Select style="width: 100%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
+				<!--<Option value="" />-->
+				{#each rookieOrVetsList as rookieOrVets}
+					<Option value={rookieOrVets}>{rookieOrVets}</Option>
+				{/each}
+			</Select>
+		</span>
 	</div>
-	<div class="rival">
-		<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
-			<!--<Option value="" />-->
-			{#each rivalList as rival}
-				<Option value={rival}>{leagueTeamManagers.users[rival].display_name}</Option>
-			{/each}
-		</Select>
-	</div>
-	<div class="valuePosition">
-		<Textfield style="width: 100%;" bind:value={valuePositionValue} label="Value Position"></Textfield>
-	</div>
-	<div class="rookieOrVets">
-		<Select style="width: 100%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
-			<!--<Option value="" />-->
-			{#each rookieOrVetsList as rookieOrVets}
-				<Option value={rookieOrVets}>{rookieOrVets}</Option>
-			{/each}
-		</Select>
-	</div>
-		<div class="preferredContact">
-		<Select style="width: 100%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
-			<!--<Option value="" />-->
-			{#each preferredContactList as preferredContact}
-				<Option value={preferredContact}>{preferredContact}</Option>
-			{/each}
-		</Select>
-	</div>
-	<div class="tradingScale">
-		<Textfield style="width: 100%;" bind:value={tradingScaleValue} label="Trading Scale" disabled=true ></Textfield>
-		<Slider
-		  bind:value={tradingScaleValue}
-		  min={1}
-		  max={10}
-		  step={1}
-		  discrete
-		  input$aria-label="Discrete slider"
-		/>
+	<div class="contactTrading">
+		<span class="preferredContact">
+			<Select style="width: 100%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
+				<!--<Option value="" />-->
+				{#each preferredContactList as preferredContact}
+					<Option value={preferredContact}>{preferredContact}</Option>
+				{/each}
+			</Select>
+		</span>
+		<span class="tradingScale">
+			<Textfield style="width: 100%;" bind:value={tradingScaleValue} label="Trading Scale" disabled=true ></Textfield>
+			<Slider
+			  bind:value={tradingScaleValue}
+			  min={1}
+			  max={10}
+			  step={1}
+			  discrete
+			  input$aria-label="Discrete slider"
+			/>
+		</span>
 	</div>
 </div>
 <div class="submitBtn">
