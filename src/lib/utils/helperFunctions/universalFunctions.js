@@ -66,7 +66,6 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID, year}) => 
             if (managersIndex > -1) {
                 const host = window.location.protocol + "//" + window.location.host;
                 window.location.href = host + `/manager?manager=${managersIndex}`;
-                //goto(`/manager?manager=${managersIndex}`);
                 return;
             }
         }

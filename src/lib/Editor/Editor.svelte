@@ -1,6 +1,6 @@
 <script>
 	import { goto } from "$app/navigation";
-	import { getTeamData, getAvatar, getAllManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getTeamData, gotoManager } from "$lib/utils/helperFunctions/universalFunctions";
     import Button, { Label } from '@smui/button';
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
@@ -11,6 +11,7 @@
 
     const users = Object.keys(leagueTeamManagers.users);
 
+	$: year = null;
     $: managerList = users.filter(u => u !== rivalDropdownValue);
 	$: managerDropdownValue = '';
     $: managerNameValue = '';
@@ -33,7 +34,13 @@
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
+	$: manager = '';
 
+	const changeManager = (newManager, noscroll = false) => {
+        manager = newManager;
+
+        goto(`/manager?manager=${manager}`, {noscroll})
+    }
 </script>
 
 <style>
@@ -52,8 +59,8 @@
 	.managerMenu {
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
+		border-radius: 6px 6px 0px 0px;
         appearance: none !important;
         -webkit-appearance: none !important;
         -moz-appearance: none !important;
@@ -62,7 +69,6 @@
 	}
 
 	.managerPhoto {
-		/*display: inline-block;*/
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -77,7 +83,6 @@
         position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -97,7 +102,6 @@
 	.bio {
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -110,7 +114,6 @@
 	.philosophy {
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -120,12 +123,11 @@
         color: var(--g000);
 	}
 
-	.favorites {
+	.teamMode {
         display: flex;
         position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -138,16 +140,15 @@
 		flex: 2;
 		padding-right: 1em;
 	}
-	.favoritePlayer {
+	.mode {
 		flex:2;
 	}
 
-	.modeRival {
+	.modePlayer {
         display: flex;
         position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -156,7 +157,7 @@
         color: var(--g000);
     }
 
-	.mode {
+	.favoritePlayer {
 		flex: 2;
 		padding-right: 1em;
 	}
@@ -169,7 +170,6 @@
         position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -191,7 +191,7 @@
         position: relative;
 		padding: 0.5em 2em;
         font-size: 1.2em;
-        border-radius: 6px;
+		border-radius: 0px 0px 6px 0px;
         background-color: var(--fff);
         appearance: none !important;
         -webkit-appearance: none !important;
@@ -233,7 +233,7 @@
 	</div>
 	<div class="managerLocation">
 		<span class="managerInfo">
-			<Textfield style="width: 100%;" bind:value={managerNameValue} label="Manager Name"></Textfield>
+			<Textfield style="width: 100%;"bind:value={managerNameValue} label="Manager Name"></Textfield>
 		</span>
 		<span class="location">
 			<Textfield style="width: 100%;" bind:value={locationValue} label="Location"></Textfield>
@@ -249,15 +249,10 @@
 			<CharacterCounter slot="internalCounter">0 / 100</CharacterCounter>
 		</Textfield>
 	</div>
-	<div class="favorites">
+	<div class="teamMode">
 		<span class="favoriteTeam">
 			<Textfield style="width: 100%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
 		</span>
-		<span class="favoritePlayer">
-			<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
-		</span>
-	</div>
-	<div class="modeRival">
 		<span class="mode">
 			<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
 				<!--<Option value="" />-->
@@ -265,6 +260,12 @@
 					<Option value={mode}>{mode}</Option>
 				{/each}
 			</Select>
+		</span>
+		
+	</div>
+	<div class="modePlayer">
+		<span class="favoritePlayer">
+			<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
 		</span>
 		<span class="rival">
 			<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
@@ -311,7 +312,7 @@
 	</div>
 </div>
 <div class="submitBtn">
-	<Button variant="unelevated">
+	<Button on:click={() => gotoManager({year, leagueTeamManagers, managerID: leagueTeamManagers.users[managerDropdownValue].user_id})} variant="unelevated">
 		<Label>Submit</Label>
 	</Button>
 </div>
