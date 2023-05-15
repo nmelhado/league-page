@@ -5,6 +5,7 @@
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 	import Slider from '@smui/slider';
+	//import { writable } from 'svelte/store'
 	import { managers } from '$lib/utils/leagueInfo';
 
     export let leagueTeamManagers;
@@ -35,6 +36,11 @@
 	$: preferredContactDropdownValue = '';
 	$: currManager = users.filter(u => u == managerDropdownValue)[0];
 	$: ({rosterID,year} = currManager ? getRosterIDFromManagerID(leagueTeamManagers, currManager) : {rosterID:currManager, year: null});
+
+	//function updateManager() {
+	//	let store = writable({});
+	//	store.update(assoc(123, "four"));
+	//}
 </script>
 
 <style>
@@ -209,6 +215,10 @@
 		padding-bottom: 5em;
 	}
 </style>
+
+<!--{#if managerDropdownValue}
+	{JSON.stringify(managers[rosterID-1])}
+{/if}-->
 
 <h2>Manager Editor</h2>
 
