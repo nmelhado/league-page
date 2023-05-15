@@ -34,13 +34,7 @@
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
 	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
-	$: manager = '';
 
-	const changeManager = (newManager, noscroll = false) => {
-        manager = newManager;
-
-        goto(`/manager?manager=${manager}`, {noscroll})
-    }
 </script>
 
 <style>
