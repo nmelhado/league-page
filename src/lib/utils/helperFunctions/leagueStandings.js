@@ -25,7 +25,7 @@ export const getLeagueStandings = async () => {
     const rosters = rostersData.rosters;
 
 	// if the season hasn't started, standings can't be created
-	if(leagueData.status != "in_season" && leagueData.status != "post_season" && leagueData.status != "complete") {
+	if(leagueData.status != "in_season" && leagueData.status != "post_season" && leagueData.status != "complete" || nflState.week == 0) {
 		return null;
 	}
 
@@ -40,9 +40,6 @@ export const getLeagueStandings = async () => {
             fpts: round(roster.settings.fpts + (roster.settings.fpts_decimal / 100)),
             fptsAgainst: round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100)),
             streak: roster.metadata.streak,
-            divisionWins: divisions ? 0 : null,
-            divisionLosses: divisions ? 0 : null,
-            divisionTies: divisions ? 0 : null,
         }
     }
 
@@ -140,21 +137,6 @@ const processStandings = (matchup, standingsData, medianMatch, rosters) => {
 				}
 			}
 		}
-
-        if(divisionMatchup) {
-            if(teamA.points > teamB.points) {
-                standingsData[teamA.rosterID].divisionWins ++;
-                standingsData[teamB.rosterID].divisionLosses ++;
-                continue;
-            } else if(teamB.points > teamA.points) {
-                standingsData[teamB.rosterID].divisionWins ++;
-                standingsData[teamA.rosterID].divisionLosses ++;
-                continue;
-            } else {
-                standingsData[teamA.rosterID].divisionTies ++;
-                standingsData[teamB.rosterID].divisionTies ++;
-            }
-        }
 	}
 	return standingsData;
 }

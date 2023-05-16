@@ -1,5 +1,5 @@
 <script>
-	import Button, { Group, Label } from '@smui/button';
+	import Button, { Group, Label, Icon } from '@smui/button';
 	import LinearProgress from '@smui/linear-progress';
 	import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
 	import Roster from '../Rosters/Roster.svelte';
@@ -10,6 +10,7 @@
 	import { onMount } from 'svelte';
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import {enableEditor} from '$lib/utils/leagueInfo';
 
 	export let manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
@@ -219,6 +220,14 @@
             height: 24px;
         }
     }
+
+    .editManagerInfo {
+        display: flex; /* or grid */
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin: 1.5em 0 0em;
+    }
 </style>
 
 <div class="managerContainer">
@@ -228,7 +237,14 @@
             {viewManager.name}
             <div class="teamSub">{coOwners ? 'Co-' : ''}Manager of <i>{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</i></div>
         </h2>
-        
+        {#if enableEditor}
+            <div class="editManagerInfo">
+                <Button on:click={() => window.location.href = window.location.protocol + "//" + window.location.host +`/editor`}>
+                  <Icon class="material-icons">edit</Icon>
+                  <Label>Edit Manager Information</Label>
+                </Button>
+            </div>
+        {/if}
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
             {#if viewManager.managerID && datesActive.start}
