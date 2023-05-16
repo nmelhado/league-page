@@ -10,6 +10,7 @@
 	import { onMount } from 'svelte';
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import {enableEditor} from '$lib/utils/leagueInfo';
 
 	export let manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
@@ -236,12 +237,14 @@
             {viewManager.name}
             <div class="teamSub">{coOwners ? 'Co-' : ''}Manager of <i>{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</i></div>
         </h2>
-        <div class="editManagerInfo">
-            <Button on:click={() => window.location.href = window.location.protocol + "//" + window.location.host +`/editor`}>
-              <Icon class="material-icons">edit</Icon>
-              <Label>Edit Manager Information</Label>
-            </Button>
-        </div>
+        {#if enableEditor}
+            <div class="editManagerInfo">
+                <Button on:click={() => window.location.href = window.location.protocol + "//" + window.location.host +`/editor`}>
+                  <Icon class="material-icons">edit</Icon>
+                  <Label>Edit Manager Information</Label>
+                </Button>
+            </div>
+        {/if}
         <div class="basicInfo">
             <span class="infoChild">{viewManager.location || 'Undisclosed Location'}</span>
             {#if viewManager.managerID && datesActive.start}
