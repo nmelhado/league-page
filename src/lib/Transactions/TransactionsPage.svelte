@@ -109,20 +109,30 @@
 		}
 	}
 	
-	const checkMatch = (query, name) => {
-		const nameMatch = match(query, name)
-		if(nameMatch.match && nameMatch.score > 0) {
-			(nameMatch.score);
-			return true;
-		}
-	}
+	//const checkMatch = (query, name) => {
+	//	query = query.toLowerCase()
+	//	name = name.toLowerCase()
+	//	const nameMatch = name.includes(query)
+	//	if(nameMatch) {
+	//		return true;
+	//	}
+	//}
 
 	const checkForQuery = (transaction) => {
 		const moves = transaction.moves;
 		for(const move of moves) {
 			for(const col of move) {
 				if(!col?.player) continue;
-				return checkMatch(query, `${players[col.player].fn} ${players[col.player].ln}`);
+
+				name = `${players[col.player].fn} ${players[col.player].ln}`
+				query = query.toLowerCase()
+				name = name.toLowerCase().replace(/\s/g, '')
+				const nameMatch = name.includes(query)
+
+				if(nameMatch) {
+					return true;
+				}
+				//return checkMatch(query, `${players[col.player].fn} ${players[col.player].ln}`);
 			}
 		}
 		return false;
