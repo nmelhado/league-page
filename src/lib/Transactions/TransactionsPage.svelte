@@ -126,7 +126,7 @@
 
 				name = `${players[col.player].fn} ${players[col.player].ln}`
 				query = query.toLowerCase()
-				name = name.toLowerCase().replace(/\s/g, '')
+				name = name.toLowerCase().replace(/\s+/g, '');
 				const nameMatch = name.includes(query)
 
 				if(nameMatch) {
