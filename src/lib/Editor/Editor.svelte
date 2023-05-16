@@ -19,23 +19,35 @@
 	$: bioValue = '';
 	$: favoriteTeamValue = '';
 	$: modeList = ['Win Now', 'Dynasty', 'Rebuild'];
-	$: modeDropdown = '';
 	$: modeDropdownValue = '';
 	$: rivalList = users.filter(u => u !== managerDropdownValue);
-	$: rivalDropdown = '';
 	$: rivalDropdownValue = '';
 	$: favoritePlayerValue = '';
 	$: valuePositionValue = '';
 	$: rookieOrVetsList = ['Rookie', 'Vets'];
-	$: rookieOrVetsDropdown = '';
 	$: rookieOrVetsDropdownValue = '';
 	$: philosophyValue = '';
 	$: tradingScaleValue = 1;
 	$: preferredContactList = ['Text', 'WhatsApp', 'Sleeper', 'Email', 'Discord', 'Carrier Pigeon'];
-	$: preferredContactDropdown = '';
 	$: preferredContactDropdownValue = '';
 	$: currManager = users.filter(u => u == managerDropdownValue)[0];
 	$: ({rosterID,year} = currManager ? getRosterIDFromManagerID(leagueTeamManagers, currManager) : {rosterID:currManager, year: null});
+
+	function clearData() {
+		managerDropdownValue = '';
+		managerNameValue = '';
+		locationValue = '';
+		bioValue = '';
+		favoriteTeamValue = '';
+		modeDropdownValue = '';
+		rivalDropdownValue = '';
+		favoritePlayerValue = '';
+		valuePositionValue = '';
+		rookieOrVetsDropdownValue = '';
+		philosophyValue = '';
+		tradingScaleValue = 1;
+		preferredContactDropdownValue = '';
+	}
 
 	//function updateManager() {
 	//	let store = writable({});
@@ -258,7 +270,7 @@
 			<Textfield style="width: 100%;" bind:value={favoriteTeamValue} label="Favorite Team"></Textfield>
 		</span>
 		<span class="mode">
-			<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode " on:change="{() => modeDropdown = ''}">
+			<Select style="width: 100%;" bind:value={modeDropdownValue} label="Mode">
 				<!--<Option value="" />-->
 				{#each modeList as mode}
 					<Option value={mode}>{mode}</Option>
@@ -272,7 +284,7 @@
 			<Textfield style="width: 100%;" bind:value={favoritePlayerValue} label="Favorite Player"></Textfield>
 		</span>
 		<span class="rival">
-			<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival " on:change="{() => rivalDropdown = ''}" >
+			<Select style="width: 100%;" bind:value={rivalDropdownValue} label="Rival">
 				<!--<Option value="" />-->
 				{#each rivalList as rival}
 					<Option value={rival}>{leagueTeamManagers.users[rival].display_name}</Option>
@@ -285,7 +297,7 @@
 			<Textfield style="width: 100%;" bind:value={valuePositionValue} label="Value Position"></Textfield>
 		</span>
 		<span class="rookieOrVets">
-			<Select style="width: 100%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets " on:change="{() => rookieOrVetsDropdown = ''}">
+			<Select style="width: 100%;" bind:value={rookieOrVetsDropdownValue} label="Rookie or Vets">
 				<!--<Option value="" />-->
 				{#each rookieOrVetsList as rookieOrVets}
 					<Option value={rookieOrVets}>{rookieOrVets}</Option>
@@ -295,7 +307,7 @@
 	</div>
 	<div class="contactTrading">
 		<span class="preferredContact">
-			<Select style="width: 100%;" bind:value={preferredContactDropdownValue} label="Preferred Contact " on:change="{() => preferredContactDropdown = ''}">
+			<Select style="width: 100%;" bind:value={preferredContactDropdownValue} label="Preferred Contact">
 				<!--<Option value="" />-->
 				{#each preferredContactList as preferredContact}
 					<Option value={preferredContact}>{preferredContact}</Option>
@@ -318,5 +330,8 @@
 <div class="submitBtn">
 	<Button on:click={() => gotoManager({year, leagueTeamManagers, managerID: leagueTeamManagers.users[managerDropdownValue].user_id})} variant="unelevated">
 		<Label>Submit</Label>
+	</Button>
+	<Button on:click={clearData} variant="unelevated">
+		<Label>Clear</Label>
 	</Button>
 </div>
