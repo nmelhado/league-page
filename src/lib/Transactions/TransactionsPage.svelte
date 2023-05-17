@@ -310,25 +310,39 @@
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
-	<!--{#if show != "most_traded_players"}-->
-		<div class="searchContainer">
-			<span class="clearPlaceholder" />
-			<Textfield
-				class="shaped-outlined"
-				variant="outlined"
-				bind:value={query}
-				label="Search for a player..."
-				on:input={() => search()}
-			>
-				<Icon class="material-icons" slot="leadingIcon">search</Icon>
-			</Textfield>
-			{#if query.length > 0}
-				  <IconButton class="material-icons" on:click={() => clearSearch()}>clear</IconButton>
-			{:else}
+		{#if show == "most_traded_players"}
+			<div class="searchContainer">
 				<span class="clearPlaceholder" />
-			{/if}
-		</div>
-	<!--{/if}-->
+				<Textfield
+					disabled value=""
+					class="shaped-outlined"
+					variant="outlined"
+					label="Search for a player..."
+					on:input={() => search()}
+				>
+					<Icon class="material-icons" slot="leadingIcon">search</Icon>
+				</Textfield>
+				<span class="clearPlaceholder" />
+			</div>
+		{:else}
+			<div class="searchContainer">
+				<span class="clearPlaceholder" />
+				<Textfield
+					class="shaped-outlined"
+					variant="outlined"
+					bind:value={query}
+					label="Search for a player..."
+					on:input={() => search()}
+				>
+					<Icon class="material-icons" slot="leadingIcon">search</Icon>
+				</Textfield>
+				{#if query.length > 0}
+					  <IconButton class="material-icons" on:click={() => clearSearch()}>clear</IconButton>
+				{:else}
+					<span class="clearPlaceholder" />
+				{/if}
+			</div>
+		{/if}
 
 	<div class="transactions" bind:this={el}>
 		{#if show == "both"}
