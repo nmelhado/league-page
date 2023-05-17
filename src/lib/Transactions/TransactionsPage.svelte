@@ -45,7 +45,7 @@
 		if(filterBy == "both") {
 			return transactions;
 		} else if (filterBy == "most_traded_players") {
-			return transactions.filter( transaction => transaction.type == "trade");
+			return mostTradedPlayers();
 		}  else {
 			return transactions.filter( transaction => transaction.type == filterBy);
 		}
@@ -58,19 +58,57 @@
 		if(!filteredTransactions) {
 			return [];
 		}
-		if(query && query.trim() != "") {
-			subsetTransactions = filteredTransactions.filter( transaction => checkForQuery(transaction));
-			totalTransactions = subsetTransactions.length;
-		} else {
+		if (show == "most_traded_players")
+		{
 			subsetTransactions = filteredTransactions;
-			totalTransactions = subsetTransactions.length;
-		}
+			totalTransactions = Object.keys(filteredTransactions).length
 
-		const start = page * perPage;
-		const end = (page + 1) * perPage;
-		return subsetTransactions.slice(start, end);
+			const start = page * perPage;
+			const end = (page + 1) * perPage;
+			return Object.entries(filteredTransactions).slice(start, end);
+		} else{
+			if(query && query.trim() != "") {
+				subsetTransactions = filteredTransactions.filter( transaction => checkForQuery(transaction));
+				totalTransactions = subsetTransactions.length;
+			} else {
+				subsetTransactions = filteredTransactions;
+				totalTransactions = subsetTransactions.length;
+			}
+
+			const start = page * perPage;
+			const end = (page + 1) * perPage;
+			return subsetTransactions.slice(start, end);
+		}
 	}
 	$: displayTransactions = setQuery(query, filteredTransactions);
+
+	const mostTradedPlayers = (transaction) => {
+		transaction = transactions.filter( transaction => transaction.type == "trade");
+		if(transaction.length === 0) return null;
+		var playersTradedCount = {};
+        var playersTraded = []
+		for (var i = 0; i < transaction.length; i++)
+		{
+			for (var k = 0; k < transaction[i].moves.length; k++)
+			{	
+				for (var j = 0; j <transaction[i].moves[k].length; j++)
+				{
+					if (transaction[i].moves[k][j].player) {
+						playersTraded.push(transaction[i].moves[k][j].player)
+					}
+				}
+			}
+		}
+
+		for (const num of playersTraded)
+		{
+			playersTradedCount[num] = playersTradedCount[num] ? playersTradedCount[num] + 1 : 1;
+		}
+		playersTraded = playersTradedCount;
+		return playersTraded;
+	}
+
+    let playersTraded2 = mostTradedPlayers(transactions);
 
 	const changePage = (dest, pageChange = false) => {
 		if(queryPage == dest && pageChange) return;
@@ -120,7 +158,7 @@
 				if(!col?.player) continue;
 
 				name = `${players[col.player].fn} ${players[col.player].ln}`
-				query = query.toLowerCase()
+				query = query.toLowerCase().replace(/\s+/g, '')
 				name = name.toLowerCase().replace(/\s+/g, '');
 				const nameMatch = name.includes(query)
 
@@ -262,23 +300,25 @@
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
-	<div class="searchContainer">
-		<span class="clearPlaceholder" />
-		<Textfield
-			class="shaped-outlined"
-			variant="outlined"
-			bind:value={query}
-			label="Search for a player..."
-			on:input={() => search()}
-		>
-			<Icon class="material-icons" slot="leadingIcon">search</Icon>
-		</Textfield>
-		{#if query.length > 0}
-			  <IconButton class="material-icons" on:click={() => clearSearch()}>clear</IconButton>
-		{:else}
+	<!--{#if show != "most_traded_players"}-->
+		<div class="searchContainer">
 			<span class="clearPlaceholder" />
-		{/if}
-	</div>
+			<Textfield
+				class="shaped-outlined"
+				variant="outlined"
+				bind:value={query}
+				label="Search for a player..."
+				on:input={() => search()}
+			>
+				<Icon class="material-icons" slot="leadingIcon">search</Icon>
+			</Textfield>
+			{#if query.length > 0}
+				  <IconButton class="material-icons" on:click={() => clearSearch()}>clear</IconButton>
+			{:else}
+				<span class="clearPlaceholder" />
+			{/if}
+		</div>
+	<!--{/if}-->
 
 	<div class="transactions" bind:this={el}>
 		{#if show == "both"}
@@ -295,22 +335,23 @@
 			<h5>Most Traded Players</h5>
 		{/if}
 
-		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
-		<div class="transactions-child">
-			{#if show == "most_traded_players"}
-					<MostTradedTransaction {players} {transactions} {leagueTeamManagers} />
-			{:else}
-				{#each displayTransactions as transaction (transaction.id)}
-					{#if transaction.type == "waiver"}
-						<WaiverTransaction {players} {transaction} {leagueTeamManagers} />
-					{:else}
-						<TradeTransaction {players} {transaction} {leagueTeamManagers} />
-					{/if}
-				{/each}
-			{/if}
-		</div>
-		<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={true} />
-
+		{#if show == "most_traded_players"}
+			<div class="transactions-child">
+				<MostTradedTransaction {players} {playersTraded2} {leagueTeamManagers} />
+			</div>
+		{:else}
+			<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
+			<div class="transactions-child">
+					{#each displayTransactions as transaction (transaction.id)}
+						{#if transaction.type == "waiver"}
+							<WaiverTransaction {players} {transaction} {leagueTeamManagers} />
+						{:else}
+							<TradeTransaction {players} {transaction} {leagueTeamManagers} />
+						{/if}
+					{/each}
+			</div>
+			<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={true} />
+		{/if}
 	</div>
 
 	{#if totalTransactions == 0}
