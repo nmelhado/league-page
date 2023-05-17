@@ -1,6 +1,6 @@
 <script>
     import Transactions from './Transactions.svelte';
-    import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+    import DataTable, { Head, Body, Row, Cell, Label } from '@smui/data-table';
 
 	export let playersTraded2, players;
 
@@ -18,6 +18,8 @@
 <style>
     .mostTraded {
         display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         flex-direction: column;
         margin-bottom: 1em;
@@ -43,21 +45,26 @@
 </style>
 
 <div class="mostTraded">
-    <DataTable class="dataTable" table$aria-label="Most Traded Players" style="max-width: 100%;">
+    <DataTable 
+        class="dataTable" 
+        table$aria-label="Most Traded Players" 
+        style="max-width: 100%;"
+        sortable
+    >
         <Head>
             <Row>
-                <Cell>Player</Cell>
-                <Cell>Trade Count</Cell>
+                <Cell columnID="player" style="width 50%; text-align: center;">Player</Cell>
+                <Cell columnID="tradeCount" style="width 100%; text-align: center;">Trade Count</Cell>
             </Row>
         </Head>
         <Body>
             {#each sorted as [player, count]}
                 <Row>
-                    <Cell>
+                    <Cell style="width 100%; text-align: left;">
                         <div class="tradeSlot playerAvatar" style="border-color: var(--{players[player].pos}); {getAvatar(players[player].pos, player)}"></div>
                         {`${players[player].fn} ${players[player].ln}`}
                         </Cell>
-                    <Cell>{count}</Cell>
+                    <Cell style="width 100%; text-align: center;">{count}</Cell>
                 </Row>
             {/each}
         </Body>
