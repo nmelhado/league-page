@@ -170,7 +170,7 @@
             {/if}
             {#if transaction.moves[0][0].bid}
                 <span class="bid">
-                    - {transaction.moves[0][0].bid}$
+                    - ${transaction.moves[0][0].bid}
                 </span>
             {/if}
         </span>
