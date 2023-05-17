@@ -42,7 +42,7 @@
 	const setFilter = (filterBy, transactions) => {
 		if(filterBy == "both") {
 			return transactions;
-		} else if (filterBy == "most_traded_players") {
+		} else if (filterBy == "player_trade_count") {
 			return mostTradedPlayers();
 		}  else {
 			return transactions.filter( transaction => transaction.type == filterBy);
@@ -56,15 +56,13 @@
 		if(!filteredTransactions) {
 			return [];
 		}
-		if (show == "most_traded_players")
+		if (show == "player_trade_count")
 		{
 			subsetTransactions = filteredTransactions;
 			totalTransactions = Object.keys(filteredTransactions).length
-
-			const start = page * perPage;
-			const end = (page + 1) * perPage;
-			return Object.entries(filteredTransactions).slice(start, end);
-		} else{
+		} 
+		else
+		{
 			if(query && query.trim() != "") {
 				subsetTransactions = filteredTransactions.filter( transaction => checkForQuery(transaction));
 				totalTransactions = subsetTransactions.length;
@@ -109,7 +107,7 @@
     let playersTraded2 = mostTradedPlayers(transactions);
 
 	const changePage = (dest, pageChange = false) => {
-		if (show != "most_traded_players")
+		if (show != "player_trade_count")
 		{
 			if(queryPage == dest && pageChange) return;
 			page = dest;
@@ -262,7 +260,7 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
-		<Button class="{show == "most_traded_players" ? "disabled" : ""}" color="primary" on:click={() => setShow("most_traded_players")} variant="{show == "most_traded_players" ? "raised" : "outlined"}" touch>
+		<Button class="{show == "player_trade_count" ? "disabled" : ""}" color="primary" on:click={() => setShow("player_trade_count")} variant="{show == "player_trade_count" ? "raised" : "outlined"}" touch>
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
@@ -276,7 +274,7 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
-		<Button class="{show == "most_traded_players" ? "disabled" : ""}" color="primary" on:click={() => setShow("most_traded_players")} variant="{show == "most_traded_players" ? "raised" : "outlined"}" touch>
+		<Button class="{show == "player_trade_count" ? "disabled" : ""}" color="primary" on:click={() => setShow("player_trade_count")} variant="{show == "player_trade_count" ? "raised" : "outlined"}" touch>
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
@@ -290,11 +288,11 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
-		<Button class="{show == "most_traded_players" ? "disabled" : ""}" color="primary" on:click={() => setShow("most_traded_players")} variant="{show == "most_traded_players" ? "raised" : "outlined"}" touch>
+		<Button class="{show == "player_trade_count" ? "disabled" : ""}" color="primary" on:click={() => setShow("player_trade_count")} variant="{show == "player_trade_count" ? "raised" : "outlined"}" touch>
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
-	<div class="buttons {show == "most_traded_players" ? "" : "invis-buttons"}">
+	<div class="buttons {show == "player_trade_count" ? "" : "invis-buttons"}">
 		<Button class="{show == "trade" ? "disabled" : ""}" color="primary" on:click={() => setShow("trade")} variant="{show == "trade" ? "raised" : "outlined"}" touch>
 			<Label>Trades</Label>
 		</Button>
@@ -304,11 +302,11 @@
 		<Button class="{show == "both" ? "disabled" : ""}" color="primary" on:click={() => setShow("both")} variant="{show == "both" ? "raised" : "outlined"}" touch>
 			<Label>Both</Label>
 		</Button>
-		<Button class="{show == "most_traded_players" ? "disabled" : ""}" color="primary" on:click={() => setShow("most_traded_players")} variant="{show == "most_traded_players" ? "raised" : "outlined"}" touch>
+		<Button class="{show == "player_trade_count" ? "disabled" : ""}" color="primary" on:click={() => setShow("player_trade_count")} variant="{show == "player_trade_count" ? "raised" : "outlined"}" touch>
 			<Label>Most Traded Players</Label>
 		</Button>
 	</div>
-		{#if show == "most_traded_players"}
+		{#if show == "player_trade_count"}
 			<div class="searchContainer">
 				<span class="clearPlaceholder" />
 				<Textfield
@@ -353,11 +351,11 @@
 			<!-- waiver -->
 			<h5>Recent Waivers</h5>
 		{:else}
-			<!-- Most Traded Players -->
-			<h5>Most Traded Players</h5>
+			<!-- Player Trade Count -->
+			<h5>Player Trade Count</h5>
 		{/if}
 
-		{#if show == "most_traded_players"}
+		{#if show == "player_trade_count"}
 			<div class="transactions-child">
 				<MostTradedTransaction {players} {playersTraded2} />
 			</div>
