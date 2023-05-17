@@ -45,12 +45,7 @@
 </style>
 
 <div class="mostTraded">
-    <DataTable 
-        class="dataTable" 
-        table$aria-label="Most Traded Players" 
-        style="max-width: 100%;"
-        sortable
-    >
+    <DataTable class="dataTable" table$aria-label="Most Traded Players" style="max-width: 100%;">
         <Head>
             <Row>
                 <Cell columnID="player" style="width 50%; text-align: center;">Player</Cell>
