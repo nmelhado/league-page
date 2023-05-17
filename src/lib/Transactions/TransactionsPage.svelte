@@ -111,14 +111,24 @@
     let playersTraded2 = mostTradedPlayers(transactions);
 
 	const changePage = (dest, pageChange = false) => {
-		if(queryPage == dest && pageChange) return;
-		page = dest;
-		if(dest > (filteredTransactions.length / perPage) || dest < 0) {
-			page = 0;
-		}
-		displayTransactions = setQuery(query, filteredTransactions);
-		if(postUpdate) {
-            goto(`/transactions?show=${show}&query=${query}&page=${page+1}`, {noscroll: true,  keepfocus: true});
+		if (show != "most_traded_players")
+		{
+			if(queryPage == dest && pageChange) return;
+			page = dest;
+			if(dest > (filteredTransactions.length / perPage) || dest < 0) {
+				page = 0;
+			}
+			filteredTransactions = setFilter(show, transactions);
+			displayTransactions = setQuery(query, filteredTransactions);
+			if(postUpdate) {
+				goto(`/transactions?show=${show}&query=${query}&page=${page+1}`, {noscroll: true,  keepfocus: true});
+			}
+		} 
+		else
+		{
+			if(postUpdate) {
+				goto(`/transactions?show=${show}`, {noscroll: true,  keepfocus: true});
+			}
 		}
 	}
 
@@ -337,7 +347,7 @@
 
 		{#if show == "most_traded_players"}
 			<div class="transactions-child">
-				<MostTradedTransaction {players} {playersTraded2} {leagueTeamManagers} />
+				<MostTradedTransaction {players} {playersTraded2} />
 			</div>
 		{:else}
 			<Pagination {perPage} total={totalTransactions} bind:page={page} target={top} scroll={false} />
