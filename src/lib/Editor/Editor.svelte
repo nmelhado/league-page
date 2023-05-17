@@ -5,7 +5,6 @@
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 	import Slider from '@smui/slider';
-	//import { writable } from 'svelte/store'
 	import { managers } from '$lib/utils/leagueInfo';
 
     export let leagueTeamManagers;
@@ -48,11 +47,6 @@
 		tradingScaleValue = 1;
 		preferredContactDropdownValue = '';
 	}
-
-	//function updateManager() {
-	//	let store = writable({});
-	//	store.update(assoc(123, "four"));
-	//}
 </script>
 
 <style>
