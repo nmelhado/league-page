@@ -9,8 +9,6 @@
 	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
 	import WaiverTransaction from './WaiverTransaction.svelte';
 	import MostTradedTransaction from './MostTradedTransaction.svelte';
-    import AllManagers from '$lib/Managers/AllManagers.svelte';
-    import AllTimeRecords from '$lib/Records/AllTimeRecords.svelte';
 
 	export let show, playersInfo, query, queryPage, transactions, stale, perPage, postUpdate=false, leagueTeamManagers;
 	const oldQuery = query;
