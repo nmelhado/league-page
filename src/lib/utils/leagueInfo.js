@@ -136,52 +136,52 @@ export const managers = [
         "tradingScale": 4, // 1 - 10
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-//         {
-//         "roster": 6, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)      
-//         "managerID": "923033990964064256",  
-//         "name": "Mark",
-//         "tookOver": 2023,
-//         "location": "Takamatsu, JP", // (optional)
-//         "bio": "This man will wager on anything sports related. Time zones don't matter - this guy is in. A career 52.5% win rate in Yahoo, he's a solid member of the Platinum club.",
-//         "photo": "/managers/mark.jpg", 
-//         "fantasyStart": 2000, // (optional)
-//         "favoriteTeam": "min", // (optional) MUST BE LOWERCASE
-//         "mode": "Dynasty", // (optional) Win NOw, Dynasty, Rebuild
-//         "rival":   {
-//             name: "House", 
-//             link: 1, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 1123, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "RB", // (optional)
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "You betcha I'm in.",
-//         "tradingScale": 5, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
-//         {
-//         "roster": 7, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "709158421466791936",  
-//         "name": "Jas",
-//         "tookOver": 2023,
-//         "location": "Surrey, CA", // (optional)
-//         "bio": "Solid rosters year in year out - he's the Toronto Maple Leafs of Fantasy Football. A career 52.9% Win rate in Yahoo, he's a member of the Silver Club.",
-//         "photo": "/managers/question.jpg", 
-//         "fantasyStart": 2007, // (optional)
-//         "favoriteTeam": "sea", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-//         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "Friesen", 
-//             link: 3, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 632, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "WR", // (optional)
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "Foundations are the key",
-//         "tradingScale": 6, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
+        {
+        "roster": 6, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)      
+        "managerID": "923033990964064256",  
+        "name": "Mark",
+        "tookOver": 2023,
+        "location": "Takamatsu, JP", // (optional)
+        "bio": "This man will wager on anything sports related. Time zones don't matter - this guy is in. A career 52.5% win rate in Yahoo, he's a solid member of the Platinum club.",
+        "photo": "/managers/mark.jpg", 
+        "fantasyStart": 2000, // (optional)
+        "favoriteTeam": "min", // (optional) MUST BE LOWERCASE
+        "mode": "Dynasty", // (optional) Win NOw, Dynasty, Rebuild
+        "rival":   {
+            name: "House", 
+            link: 1, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 1123, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "RB", // (optional)
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "You betcha I'm in.",
+        "tradingScale": 5, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
+        {
+        "roster": 7, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "709158421466791936",  
+        "name": "Jas",
+        "tookOver": 2023,
+        "location": "Surrey, CA", // (optional)
+        "bio": "Solid rosters year in year out - he's the Toronto Maple Leafs of Fantasy Football. A career 52.9% Win rate in Yahoo, he's a member of the Silver Club.",
+        "photo": "/managers/question.jpg", 
+        "fantasyStart": 2007, // (optional)
+        "favoriteTeam": "sea", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+        "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "Friesen", 
+            link: 3, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 632, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "WR", // (optional)
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "Foundations are the key",
+        "tradingScale": 6, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
 //         {
 //         "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
 //         "managerID": "561303290777518080",  
