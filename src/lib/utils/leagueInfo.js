@@ -182,121 +182,121 @@ export const managers = [
         "tradingScale": 6, // 1 - 10
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-//         {
-//         "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "561303290777518080",  
-//         "name": "Craig B",
-//         "tookOver": 2023,
-//         "location": "Abbotsford, CA", // (optional)
-//         "bio": "<placeholder for more information",
-//         "photo": "/managers/question.jpg", 
-//         "fantasyStart": 2015, // (optional)
-//         "favoriteTeam": "was", // (optional) MUST BE LOWERCASE
-//         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "House", 
-//             link: 1, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 987, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "RB", // (optional) 
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' 
-//         "philosophy": "My philosophy is to be a fun, active league mate. I find fantasy is way more fun when people are wheeling and dealing.",
-//         "tradingScale": 5, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
-//       {
-//         "roster": 9, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "584245720849092608",  
-//         "name": "Jesse",
-//         "tookOver": 2023,
-//         "location": "Delta, CA", // (optional)
-//         "bio": "placeholder for more information",
-//         "photo": "/managers/question.jpg", 
-//         "fantasyStart": 2000, // (optional)
-//         "favoriteTeam": "lav", // (optional) MUST BE LOWERCASE
-//         "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "MJ",
-//             link: 2, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 567, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "WR", // (optional) 
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "I like em young!",
-//         "tradingScale": 8, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
-//         {
-//         "roster": 10, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "923071576252178432",  
-//         "name": "Simon",
-//         "tookOver": 2023,
-//         "location": "Vegreville, CA", // (optional)
-//         "bio": "Church mouse who loves fanstasy. The question is - can this mouse scare an elephant?",
-//         "photo": "/managers/simon.jpg", 
-//         "fantasyStart": 2017, // (optional) 
-//         "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
-//         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "Friesen", 
-//             link: 3, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 345, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "K", // (optional)
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "Pick the best players and hope they play like the best players",
-//         "tradingScale": 3, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
-//           {
-//         "roster": 11, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "737036675762548736",  
-//         "name": "Andrew",
-//         "tookOver": 2023,
-//         "location": "Thunder Bay, CA", // (optional)
-//         "bio": "He's our highest flying manager and definitely the one with the most air miles. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
-//         "photo": "/managers/andrew.jpg", 
-//         "fantasyStart": 2012, // (optional)
-//         "favoriteTeam": "min", // (optional) MUST BE LOWERCASE
-//         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "Bryan", 
-//             link: 5, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/bryan.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 6794, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "WR", // (optional)
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "Air Raid Offense!",
-//         "tradingScale": 5, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },
-//           {
-//         "roster": 12, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "923021999067283456",  
-//         "name": "Craig H",
-//         "tookOver": 2023,
-//         "location": "Vancouver, CA", // (optional)
-//         "bio": "<placeholder for bio>",
-//         "photo": "/managers/question.jpg",
-//         "fantasyStart": 2014, 
-//         "favoriteTeam": "sf", // (optional) MUST BE LOWERCASE
-//         "mode": "Rebuild", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "MJ",
-//             link: 2, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 654, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "WR", // (optional) 
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-//         "philosophy": "Air Raid Offense!",
-//         "tradingScale": 5, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     }, 
+        {
+        "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "561303290777518080",  
+        "name": "Craig B",
+        "tookOver": 2023,
+        "location": "Abbotsford, CA", // (optional)
+        "bio": "<placeholder for more information",
+        "photo": "/managers/question.jpg", 
+        "fantasyStart": 2015, // (optional)
+        "favoriteTeam": "was", // (optional) MUST BE LOWERCASE
+        "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "House", 
+            link: 1, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 987, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "RB", // (optional) 
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' 
+        "philosophy": "My philosophy is to be a fun, active league mate. I find fantasy is way more fun when people are wheeling and dealing.",
+        "tradingScale": 5, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
+      {
+        "roster": 9, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "584245720849092608",  
+        "name": "Jesse",
+        "tookOver": 2023,
+        "location": "Delta, CA", // (optional)
+        "bio": "placeholder for more information",
+        "photo": "/managers/question.jpg", 
+        "fantasyStart": 2000, // (optional)
+        "favoriteTeam": "lav", // (optional) MUST BE LOWERCASE
+        "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "MJ",
+            link: 2, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 567, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "WR", // (optional) 
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "I like em young!",
+        "tradingScale": 8, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
+        {
+        "roster": 10, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "923071576252178432",  
+        "name": "Simon",
+        "tookOver": 2023,
+        "location": "Vegreville, CA", // (optional)
+        "bio": "Church mouse who loves fanstasy. The question is - can this mouse scare an elephant?",
+        "photo": "/managers/simon.jpg", 
+        "fantasyStart": 2017, // (optional) 
+        "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
+        "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "Friesen", 
+            link: 3, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 345, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "K", // (optional)
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "Pick the best players and hope they play like the best players",
+        "tradingScale": 3, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
+          {
+        "roster": 11, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "737036675762548736",  
+        "name": "Andrew",
+        "tookOver": 2023,
+        "location": "Thunder Bay, CA", // (optional)
+        "bio": "He's our highest flying manager and definitely the one with the most air miles. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
+        "photo": "/managers/andrew.jpg", 
+        "fantasyStart": 2012, // (optional)
+        "favoriteTeam": "min", // (optional) MUST BE LOWERCASE
+        "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "Bryan", 
+            link: 5, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/bryan.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 6794, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "WR", // (optional)
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "Air Raid Offense!",
+        "tradingScale": 5, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },
+          {
+        "roster": 12, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "923021999067283456",  
+        "name": "Craig H",
+        "tookOver": 2023,
+        "location": "Vancouver, CA", // (optional)
+        "bio": "<placeholder for bio>",
+        "photo": "/managers/question.jpg",
+        "fantasyStart": 2014, 
+        "favoriteTeam": "sf", // (optional) MUST BE LOWERCASE
+        "mode": "Rebuild", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "MJ",
+            link: 2, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 654, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "WR", // (optional) 
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+        "philosophy": "Air Raid Offense!",
+        "tradingScale": 5, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    }, 
   ]
   
   
