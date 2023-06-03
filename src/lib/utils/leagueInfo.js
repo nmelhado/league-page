@@ -90,29 +90,29 @@ export const managers = [
         "tradingScale": 5, // 1 - 10
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-//       {
-//         "roster": 4, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-//         "managerID": "516138229067358208", 
-//         "name": "Dino",
-//         "tookOver": 2023,
-//         "location": "Kelowna, CA", // (optional)
-//         "bio": "If he could only see through the fantasy predictions like he can see through a human body. A career 47.7% win rate and a Bronze club member, per Yahoo Fantasy.",
-//         "photo": "/managers/dino.jpg", 
-//         "fantasyStart": 2008, // (optional) 
-//         "favoriteTeam": "ind", // (optional) MUST BE LOWERCASE
-//         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-//         "rival":   {
-//             name: "House",
-//             link: 1, // manager array number within this array, or null to link back to all managers page
-//             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-//                   },
-//         "favoritePlayer": 888, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-//         "valuePosition": "RB", // (optional) 
-//         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' 
-//         "philosophy": "Quantity over quality",
-//         "tradingScale": 3, // 1 - 10
-//         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-//     },    
+      {
+        "roster": 4, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "managerID": "516138229067358208", 
+        "name": "Dino",
+        "tookOver": 2023,
+        "location": "Kelowna, CA", // (optional)
+        "bio": "If he could only see through the fantasy predictions like he can see through a human body. A career 47.7% win rate and a Bronze club member, per Yahoo Fantasy.",
+        "photo": "/managers/dino.jpg", 
+        "fantasyStart": 2008, // (optional) 
+        "favoriteTeam": "ind", // (optional) MUST BE LOWERCASE
+        "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+        "rival":   {
+            name: "House",
+            link: 1, // manager array number within this array, or null to link back to all managers page
+            image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+                  },
+        "favoritePlayer": 888, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+        "valuePosition": "RB", // (optional) 
+        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' 
+        "philosophy": "Quantity over quality",
+        "tradingScale": 3, // 1 - 10
+        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+    },    
 //         {
 //         "roster": 5, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
 //         "managerID": "860600061682368512",  
