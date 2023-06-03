@@ -22,8 +22,10 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "managerID": "325892484276170752"
+    // "roster": 3, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": "325892484276170752",
       "name": "House",
+    //  "tookOver": 2020, // (DEPRECATED! You don't need to use this anymore) (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Coquitlam, CA", // (optional)
       "bio": "25 years in Fantasy Football with a career 57.0% win rate in Yahoo (19 seasons, 59 teams). 16 championships. A member of the Yahoo Platinum club.",
       "photo": "/managers/house.jpg", 
