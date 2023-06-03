@@ -42,7 +42,7 @@ export const managers = [
        "tradingScale": 8, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-      {
+/*       {
       "managerID": "862180378536976384", 
       "name": "MJ",
       "location": "Delta, CA", // (optional)
@@ -58,7 +58,7 @@ export const managers = [
                 },
     //   "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "TE", // (optional) 
-    //   "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
+    //   "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
        "philosophy": "Swing for the fences",
        "tradingScale": 5, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
@@ -112,19 +112,19 @@ export const managers = [
       "bio": "Between thrill seeking adventures this guy is found in a gym or behind the Bat Bar pondering his 56.3% win rate in Yahoo and his Yahoo Gold Club membership.",
       "photo": "/managers/bryan.jpg",
       "fantasyStart": 2008, // (optional) 
-       "favoriteTeam": "chi", // (optional) MUST BE LOWERCASE
-       "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
-       "rival":   {
+      "favoriteTeam": "chi", // (optional) MUST BE LOWERCASE
+      "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
+      "rival":   {
          name: "Andrew",
          link: 12, // manager array number within this array, or null to link back to all managers page
          image: "/managers/andrew.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
     //   "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-       "valuePosition": "RB", // (optional) 
+      "valuePosition": "RB", // (optional) 
     //   "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-       "philosophy": "If you're not a pro, you're not an athlete.",
-       "tradingScale": 4, // 1 - 10
-       "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+      "philosophy": "If you're not a pro, you're not an athlete.",
+      "tradingScale": 4, // 1 - 10
+      "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
         {
       "managerID": "923033990964064256",  
@@ -193,7 +193,7 @@ export const managers = [
       "managerID": "584245720849092608",  
       "name": "Jesse",
       "location": "Delta, CA", // (optional)
-      "bio": "<placeholder for more information",
+      "bio": "placeholder for more information",
       "photo": "/managers/question.jpg", 
 //      "fantasyStart": 2000, // (optional)
       "favoriteTeam": "lav", // (optional) MUST BE LOWERCASE
@@ -272,7 +272,7 @@ export const managers = [
       "philosophy": "Air Raid Offense!",
       "tradingScale": 5, // 1 - 10
       "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-    },
+    }, */
   ]
   
   
