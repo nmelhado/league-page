@@ -22,7 +22,7 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 1, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "roster": 6, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
       "managerID": "325892484276170752",
       "name": "House",
       "tookOver": 2023, // (DEPRECATED! You don't need to use this anymore) (optional) used if a manager took over a team, delete this line or change to null otherwise
@@ -45,7 +45,7 @@ export const managers = [
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
        {
-      "roster": 2, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "roster": 11, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
       "managerID": "862180378536976384", 
       "name": "MJ",
       "tookOver": 2023,
@@ -57,7 +57,7 @@ export const managers = [
       "mode": "Dynasty", // (optional) Win Now, Rebuild, Dynasty
       "rival":  {
          name: "House", 
-         link: 1, // manager array number within this array, or null to link back to all managers page
+         link: 6, // manager array number within this array, or null to link back to all managers page
          image: "/managers/question.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                 },
       "favoritePlayer": 234, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -68,7 +68,7 @@ export const managers = [
       "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-        "roster": 3, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 10, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "737238894550130688",
         "name": "Friesen",
         "tookOver": 2023,
@@ -80,7 +80,7 @@ export const managers = [
         "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "MJ",
-            link: 2, // manager array number within this array, or null to link back to all managers page
+            link: 11, // manager array number within this array, or null to link back to all managers page
             image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 1234, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -91,7 +91,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-        "roster": 4, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 5, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "516138229067358208", 
         "name": "Dino",
         "tookOver": 2023,
@@ -103,7 +103,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "House",
-            link: 1, // manager array number within this array, or null to link back to all managers page
+            link: 6, // manager array number within this array, or null to link back to all managers page
             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 888, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -114,7 +114,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },    
         {
-        "roster": 5, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 2, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "860600061682368512",  
         "name": "Bryan",
         "tookOver": 2023,
@@ -126,7 +126,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Andrew",
-            link: 12, // manager array number within this array, or null to link back to all managers page
+            link: 1, // manager array number within this array, or null to link back to all managers page
             image: "/managers/andrew.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 6794, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -137,7 +137,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
         {
-        "roster": 6, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)      
+        "roster": 9, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)      
         "managerID": "923033990964064256",  
         "name": "Mark",
         "tookOver": 2023,
@@ -149,7 +149,7 @@ export const managers = [
         "mode": "Dynasty", // (optional) Win NOw, Dynasty, Rebuild
         "rival":   {
             name: "House", 
-            link: 1, // manager array number within this array, or null to link back to all managers page
+            link: 6, // manager array number within this array, or null to link back to all managers page
             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 1123, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -172,7 +172,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Friesen", 
-            link: 3, // manager array number within this array, or null to link back to all managers page
+            link: 10, // manager array number within this array, or null to link back to all managers page
             image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 632, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -183,7 +183,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
         {
-        "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 3, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "561303290777518080",  
         "name": "Craig B",
         "tookOver": 2023,
@@ -195,7 +195,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "House", 
-            link: 1, // manager array number within this array, or null to link back to all managers page
+            link: 6, // manager array number within this array, or null to link back to all managers page
             image: "/managers/house.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 987, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -206,7 +206,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-        "roster": 9, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "584245720849092608",  
         "name": "Jesse",
         "tookOver": 2023,
@@ -218,7 +218,7 @@ export const managers = [
         "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "MJ",
-            link: 2, // manager array number within this array, or null to link back to all managers page
+            link: 11, // manager array number within this array, or null to link back to all managers page
             image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 567, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -229,7 +229,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
         {
-        "roster": 10, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 12, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "923071576252178432",  
         "name": "Simon",
         "tookOver": 2023,
@@ -241,7 +241,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Friesen", 
-            link: 3, // manager array number within this array, or null to link back to all managers page
+            link: 10, // manager array number within this array, or null to link back to all managers page
             image: "/managers/friesen.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 345, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -252,7 +252,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
           {
-        "roster": 11, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 1, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "737036675762548736",  
         "name": "Andrew",
         "tookOver": 2023,
@@ -264,7 +264,7 @@ export const managers = [
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Bryan", 
-            link: 5, // manager array number within this array, or null to link back to all managers page
+            link: 2, // manager array number within this array, or null to link back to all managers page
             image: "/managers/bryan.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 6794, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -275,7 +275,7 @@ export const managers = [
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
           {
-        "roster": 12, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+        "roster": 4, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "923021999067283456",  
         "name": "Craig H",
         "tookOver": 2023,
@@ -287,7 +287,7 @@ export const managers = [
         "mode": "Rebuild", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "MJ",
-            link: 2, // manager array number within this array, or null to link back to all managers page
+            link: 11, // manager array number within this array, or null to link back to all managers page
             image: "/managers/mj.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                   },
         "favoritePlayer": 654, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
