@@ -44,29 +44,29 @@ export const managers = [
        "tradingScale": 8, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-       {
-      "roster": 2, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "managerID": "862180378536976384", 
-      "name": "MJ",
-      "tookOver": 2023,
-      "location": "Delta, CA", // (optional)
-      "bio": "Gambling degen who loves him a good Titans Tight End. A career 58.0% win rate in Yahoo Fantasy Football, he's currently a member of the Diamond Rating Club going into the 2023 season.",
-      "photo": "/managers/mj.jpg", 
-      "fantasyStart": 2000, // (optional) 
-      "favoriteTeam": "ten", // (optional) MUST BE LOWERCASE
-      "mode": "Dynasty", // (optional) Win Now, Rebuild, Dynasty
-      "rival":  {
-         name: "Everyone", 
-         link: , // manager array number within this array, or null to link back to all managers page
-         image: "/managers/everyone.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
-                },
-      "favoritePlayer": 234, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-      "valuePosition": "TE", // (optional) 
-      "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-      "philosophy": "Swing for the fences",
-      "tradingScale": 5, // 1 - 10
-      "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-    },
+//        {
+//       "roster": 2, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+//       "managerID": "862180378536976384", 
+//       "name": "MJ",
+//       "tookOver": 2023,
+//       "location": "Delta, CA", // (optional)
+//       "bio": "Gambling degen who loves him a good Titans Tight End. A career 58.0% win rate in Yahoo Fantasy Football, he's currently a member of the Diamond Rating Club going into the 2023 season.",
+//       "photo": "/managers/mj.jpg", 
+//       "fantasyStart": 2000, // (optional) 
+//       "favoriteTeam": "ten", // (optional) MUST BE LOWERCASE
+//       "mode": "Dynasty", // (optional) Win Now, Rebuild, Dynasty
+//       "rival":  {
+//          name: "Everyone", 
+//          link: , // manager array number within this array, or null to link back to all managers page
+//          image: "/managers/everyone.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+//                 },
+//       "favoritePlayer": 234, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
+//       "valuePosition": "TE", // (optional) 
+//       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
+//       "philosophy": "Swing for the fences",
+//       "tradingScale": 5, // 1 - 10
+//       "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
+//     },
 //       {
 //         "roster": 3, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
 //         "managerID": "737238894550130688",
