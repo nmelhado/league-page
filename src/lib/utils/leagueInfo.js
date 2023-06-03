@@ -48,7 +48,7 @@ export const managers = [
       "roster": 2, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
       "managerID": "862180378536976384", 
       "name": "MJ",
-      "tookOver": 2023
+      "tookOver": 2023,
       "location": "Delta, CA", // (optional)
       "bio": "Gambling degen who loves him a good Titans Tight End. A career 58.0% win rate in Yahoo Fantasy Football, he's currently a member of the Diamond Rating Club going into the 2023 season.",
       "photo": "/managers/mj.jpg", 
@@ -71,7 +71,7 @@ export const managers = [
         "roster": 3, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "737238894550130688",
         "name": "Friesen",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Vancouver, CA", // (optional)
         "bio": "Analytic who loves taking advantage during trades. Tends to build a solid core RB committee and runs to the title. A career 57.1% win rate according to Yahoo, he's a current member of the Diamond Club.",
         "photo": "/managers/friesen.jpg", 
@@ -94,7 +94,7 @@ export const managers = [
         "roster": 4, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "516138229067358208", 
         "name": "Dino",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Kelowna, CA", // (optional)
         "bio": "If he could only see through the fantasy predictions like he can see through a human body. A career 47.7% win rate and a Bronze club member, per Yahoo Fantasy.",
         "photo": "/managers/dino.jpg", 
@@ -117,7 +117,7 @@ export const managers = [
         "roster": 5, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "860600061682368512",  
         "name": "Bryan",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Brussells, BE", // (optional)
         "bio": "Between thrill seeking adventures this guy is found in a gym or behind the Bat Bar pondering his 56.3% win rate in Yahoo and his Yahoo Gold Club membership.",
         "photo": "/managers/bryan.jpg",
@@ -140,7 +140,7 @@ export const managers = [
         "roster": 6, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)      
         "managerID": "923033990964064256",  
         "name": "Mark",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Takamatsu, JP", // (optional)
         "bio": "This man will wager on anything sports related. Time zones don't matter - this guy is in. A career 52.5% win rate in Yahoo, he's a solid member of the Platinum club.",
         "photo": "/managers/mark.jpg", 
@@ -163,7 +163,7 @@ export const managers = [
         "roster": 7, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "709158421466791936",  
         "name": "Jas",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Surrey, CA", // (optional)
         "bio": "Solid rosters year in year out - he's the Toronto Maple Leafs of Fantasy Football. A career 52.9% Win rate in Yahoo, he's a member of the Silver Club.",
         "photo": "/managers/question.jpg", 
@@ -186,7 +186,7 @@ export const managers = [
         "roster": 8, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "561303290777518080",  
         "name": "Craig B",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Abbotsford, CA", // (optional)
         "bio": "<placeholder for more information",
         "photo": "/managers/question.jpg", 
@@ -209,7 +209,7 @@ export const managers = [
         "roster": 9, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "584245720849092608",  
         "name": "Jesse",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Delta, CA", // (optional)
         "bio": "placeholder for more information",
         "photo": "/managers/question.jpg", 
@@ -232,7 +232,7 @@ export const managers = [
         "roster": 10, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "923071576252178432",  
         "name": "Simon",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Vegreville, CA", // (optional)
         "bio": "Church mouse who loves fanstasy. The question is - can this mouse scare an elephant?",
         "photo": "/managers/simon.jpg", 
@@ -255,7 +255,7 @@ export const managers = [
         "roster": 11, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "737036675762548736",  
         "name": "Andrew",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Thunder Bay, CA", // (optional)
         "bio": "He's our highest flying manager and definitely the one with the most air miles. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
         "photo": "/managers/andrew.jpg", 
@@ -278,7 +278,7 @@ export const managers = [
         "roster": 12, // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
         "managerID": "923021999067283456",  
         "name": "Craig H",
-        "tookOver": 2023
+        "tookOver": 2023,
         "location": "Vancouver, CA", // (optional)
         "bio": "<placeholder for bio>",
         "photo": "/managers/question.jpg",
