@@ -13,12 +13,12 @@ export const homepageText = `
   <p>The <b>Shulaces Out Dan</b> dynasty league arose from the ongoing comments and thoughts and chats from multiple keeper leagues that people were curious about the Dynasty front, sometimes stemming from frustration of having to give up a keeper due to the year limitation or having too many quality players and being forced to lose a high caliber player, sometimes for nothing in return.</p>
   <p></p>
   <p>Therein arrives the idea of kickstarting a dynasty league - combining managers from multiple leagues who've shown engagement, both on the social front and the league transaction perspective. Our league members are from all over the world, spanning a -8GMT to a +8GMT time zone variance.</p>
-  <p><img src="././static/worldmapofmanagers.png" alt="worldmap"</p>
+  <p><img src="../../static/worldmapofmanagers.png" alt="worldmap"</p>
   <p></p>
   <p>Our history will be made in the coming years. But if history has taught us one thing, it's this:</p>
   <h4><p>LACES OUT DAN!</p></h4>
   <p></p>
-  <p><img src="././static/shulacesoutdan-rayfinkleteamphoto.jpg" alt"Ray Finkle Team Photo" width="400px" height="295px"></p>
+  <p><img src="../../static/shulacesoutdan-rayfinkleteamphoto.jpg" alt"Ray Finkle Team Photo" width="400px" height="295px"></p>
 `;
 
 /*   STEP 3   */
