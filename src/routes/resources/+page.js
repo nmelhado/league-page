@@ -1,8 +1,8 @@
 import { getNews } from '$lib/utils/helper';
 
-// Added by JCH - Jun 5, 2023
-import {getLeagueMatchups} from '$lib/utils/helperFunctions/leagueMatchups'
-// End Edit
+// // Added by JCH - Jun 5, 2023
+// import {getLeagueMatchups} from '$lib/utils/helperFunctions/leagueMatchups'
+// // End Edit
 
 export async function load({fetch}) {
     const articlesData = getNews(fetch);
@@ -12,9 +12,9 @@ export async function load({fetch}) {
     };
 }
 
-//Edit by JCH - Jun 5, 2023
-export {
-    getLeagueMatchups,
-}
+// //Edit by JCH - Jun 5, 2023
+// export {
+//     getLeagueMatchups,
+// }
 
-// End Edit
+// // End Edit
