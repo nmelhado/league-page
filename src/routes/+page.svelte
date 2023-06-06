@@ -1,6 +1,7 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { getNflState, leagueName, getAwards, getLeagueTeamManagers, homepageText, managers, gotoManager, enableBlog, waitForAll } from '$lib/utils/helper';
+	import {getLeagueMatchups} from '$lib/utils/helperFunctions/leagueMatchups';
 	import { Transactions, PowerRankings, HomePost} from '$lib/components';
 	import { getAvatarFromTeamManagers, getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
@@ -53,6 +54,12 @@
         #home {
             flex-wrap: wrap;
         }
+    }
+	
+    .matchups {
+	display: block;
+	width: 95%;
+	margin: 10px auto;
     }
 
     .transactions {
@@ -190,7 +197,12 @@
             {/await}
         </div>
 
-        <div class="transactions" >
+	    
+	<div class="matchups" >
+		<Matchups />
+	</div>
+        
+	<div class="transactions" >
             <Transactions />
         </div>
     </div>
