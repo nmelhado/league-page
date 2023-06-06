@@ -153,7 +153,7 @@ export const managers = [
       "tookOver": 2023, // (DEPRECATED! You don't need to use this anymore) (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Coquitlam, CA", // (optional)
       "bio": "25 years in Fantasy Football with a career 57.0% win rate in Yahoo (19 seasons, 59 teams). 16 championships. A member of the Yahoo Platinum club.",
-      "photo": "/managers/house.jpg", 
+      "photo": "/managers/house2.jpg", 
       "fantasyStart": 1998, // (optional) 
       "favoriteTeam": "mia", // (optional) MUST BE LOWERCASE
       "mode": "Dynasty", // (optional) Win Now, Rebuild, Dynasty
