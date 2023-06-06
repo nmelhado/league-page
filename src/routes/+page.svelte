@@ -1,7 +1,6 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
 	import { getNflState, leagueName, getAwards, getLeagueTeamManagers, homepageText, managers, gotoManager, enableBlog, waitForAll } from '$lib/utils/helper';
-	import {getLeagueMatchups} from '$lib/utils/helperFunctions/leagueMatchups';
 	import { Transactions, PowerRankings, HomePost} from '$lib/components';
 	import { getAvatarFromTeamManagers, getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
@@ -196,11 +195,6 @@
                 <p class="center">Something went wrong: {error.message}</p>
             {/await}
         </div>
-
-	    
-	<div class="matchups" >
-		<Matchups />
-	</div>
         
 	<div class="transactions" >
             <Transactions />
