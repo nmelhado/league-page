@@ -40,7 +40,7 @@ export const managers = [
         "bio": "He's our highest flying manager and definitely the one with the most air miles. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
         "photo": "/managers/andrew.jpg", 
         "fantasyStart": 2012, // (optional)
-        "favoriteTeam": "min", // (optional) MUST BE LOWERCASE
+        "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
         "mode": "Win Now", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Bryan", 
@@ -83,7 +83,7 @@ export const managers = [
         "name": "Craig B",
         "tookOver": 2023,
         "location": "Abbotsford, CA", // (optional)
-        "bio": "<placeholder for more information",
+        "bio": "placeholder for more information",
         "photo": "/managers/craigb.jpg", 
         "fantasyStart": 2015, // (optional)
         "favoriteTeam": "was", // (optional) MUST BE LOWERCASE
@@ -106,7 +106,7 @@ export const managers = [
         "name": "Craig H",
         "tookOver": 2023,
         "location": "Vancouver, CA", // (optional)
-        "bio": "<placeholder for bio>",
+        "bio": "placeholder for bio",
         "photo": "/managers/craigh.jpg",
         "fantasyStart": 2014, 
         "favoriteTeam": "lav", // (optional) MUST BE LOWERCASE
@@ -142,7 +142,7 @@ export const managers = [
         "favoritePlayer": 888, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         "valuePosition": "RB", // (optional) 
         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' 
-        "philosophy": "Don't draft with heard, draft to win.",
+        "philosophy": "Don't draft with heart, draft to win.",
         "tradingScale": 3, // 1 - 10
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },   
@@ -201,7 +201,7 @@ export const managers = [
         "bio": "placeholder for more information",
         "photo": "/managers/jesse.jpg", 
         "fantasyStart": 2017, // (optional)
-        "favoriteTeam": "sEA", // (optional) MUST BE LOWERCASE
+        "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
         "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Craig B",
