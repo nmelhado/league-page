@@ -200,7 +200,7 @@
                 Favorite Fantasy Asset
             </div>
             <div class="infoIcon">
-		    <imgclass="valuePosition" src="/{viewManager.valuePosition}.png" alt="Valued Position Preference"/>
+		    <img class="valuePosition" src="/{viewManager.valuePosition}.png" alt="Valued Position Preference"/>
 		</div>
 	    <!--
  	    <div class="infoIcon {viewManager.valuePosition}">
