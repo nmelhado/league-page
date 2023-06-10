@@ -309,7 +309,7 @@
     - New Owner and Outgoing Owner will agree to a portion of the deposit ($0-100) that the Outgoing Manager gets back, while the new owner will use the remaining amount towards their own deposit (ex. $50 to outgoing manager means $50 for deposit of New Owner and New Owner tops up with $50) as well as paying their own dues (assuming no future draft pick trades have been made by the outgoing  manager). </p>
     <p>Keep in mind that any funds paid for any future draft picks that have been traded away in the future (next year or two years down the road) are not refundable at all.</p>
     <p>The Commissioner will review all trades for that outgoing manager with additional scrutiny to ensure they are not screwing the franchise over for the new owner.</p>
-    <p>The exception to receiving future deposits back would occur if the league dues were increased in the meantime and the manager chose to withdraw from the league (see 7.3)
+    <p>The exception to receiving future deposits back would occur if the league dues were increased in the meantime and the manager chose to withdraw from the league (see 7.3)</p>
 
     <p><b><u>Simple Example</u></b><br/>
     February 2023<br/>
