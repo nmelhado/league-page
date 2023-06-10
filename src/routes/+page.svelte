@@ -146,7 +146,7 @@
     <div id="main">
         <div class="text">
 		<h4>{leagueName}</h4>
-		<h4>(Founded in 2023)</h4>
+		<h6>(Founded in 2023)</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
             <!-- Most recent Blog Post (if enabled) -->
