@@ -207,6 +207,9 @@
                 <span class="valuePosition">{viewManager.valuePosition}</span>
             </div>
 	    -->
+	    <div class="infoAnswer">
+		{viewManager.valuePosition}
+	    </div>
         </div>
     {/if}
     {#if viewManager.tradingScale}
