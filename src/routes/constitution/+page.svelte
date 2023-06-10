@@ -380,7 +380,7 @@
         <li>$125</li>
     </ul>
     
-    <p>In the event that a manager was fined due to late payment, their extra fee will be added to the 's Regular Season 1st place finisher's payout.</p>
+    <p>In the event that a manager was fined due to late payment, their extra fee will be added to the Regular Season 1st place finisher's payout.</p>
     
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buy-in, they can opt to find a co-manager or withdraw from the league with all deposits returned in full, including deposits made for trades.</p>
