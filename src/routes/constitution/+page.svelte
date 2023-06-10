@@ -286,11 +286,11 @@
     <p>If two teams finish with the same record the tiebreakers will go as followed:</p>
 
     <ol>
-        <li>1. Points For - Most Points For is awarded the highest spot available of the teams tied and second most is awarded the second highest spot available, and so on.</li>
-        <li>2. Head to Head Record - the team with the better head to head record (highest winning percent amongst the teams tied) will prevail.</li>
-        <li>3. Total Points Scored in Head to Head matches - Most Points scored in head to head matches amongst the teams still tied,  totalling all matches played (ex. If two matches played, total points for both matches combined; if two versus one team and one versus the other, all three matches are combined)</li>
-        <li>4. Higher Points Against - Most Points Against is awarded the higher spot available of the teams tied and second most is awarded the next highest spot available, and so on.</li>
-        <li>5. The winner of the coin flip will be automatically awarded the lower seed (1st is lower than 2nd; 2nd is lower than 3rd, and so)</li>
+        <li>Points For - Most Points For is awarded the highest spot available of the teams tied and second most is awarded the second highest spot available, and so on.</li>
+        <li>Head to Head Record - the team with the better head to head record (highest winning percent amongst the teams tied) will prevail.</li>
+        <li>Total Points Scored in Head to Head matches - Most Points scored in head to head matches amongst the teams still tied,  totalling all matches played (ex. If two matches played, total points for both matches combined; if two versus one team and one versus the other, all three matches are combined)</li>
+        <li>Higher Points Against - Most Points Against is awarded the higher spot available of the teams tied and second most is awarded the next highest spot available, and so on.</li>
+        <li>The winner of the coin flip will be automatically awarded the lower seed (1st is lower than 2nd; 2nd is lower than 3rd, and so)</li>
     </ol>
 
     <h2 class="sectionHeading" bind:this={five}>Section 5: Tanking Policy</h2>
