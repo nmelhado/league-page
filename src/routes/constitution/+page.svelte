@@ -133,7 +133,7 @@
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sevenOne)}>7.1 League Dues</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sixTwo)}>7.2 Payout</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sixThree)}>7.3 Raising Dues</h4>
-    
+    <p></p>
     
     <hr />
     
@@ -375,7 +375,7 @@
         <li>2nd place: $290</li>
         <li>3rd place: $215</li>
     </ul>
-    <Most Points For - Regular Season</p>
+    <p>Most Points For - Regular Season</p>
     <ul>
         <li>$125</li>
     </ul>
