@@ -96,11 +96,10 @@
 </style>
 
 <div class="constitution">
-    <h1 class="noUnderscore">LEGENDS LEAGUE CONSTITUTION</h1>
+    <h1 class="noUnderscore">SHULACES OUT DAN LEAGUE CONSTITUTION</h1>
     
     <h2 class="noUnderscore">TABLE OF CONTENTS</h2>
-    
-    <h3 class="noUnderscore clickable" on:click={() => goToSection(one)}>Section 1: Roster</h3>
+    <h3 class="noUnderscore clickable" on:click={() => goToSection(one)}>Section 1: Roster Requirements</h3>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(oneOne)}>1.1 Positional Breakdown</h4>
             <h5 class="noUnderscore clickable" on:click={() => goToSection(oneOneOne)}>1.1.1 Position Maximums</h5>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(oneTwo)}>1.2 Trading</h4>
@@ -112,29 +111,22 @@
         <h4 class="noUnderscore clickable" on:click={() => goToSection(oneThree)}>1.3 Waiver Wire</h4>
     
     <h3 class="noUnderscore clickable" on:click={() => goToSection(two)}>Section 2: Drafting</h3>
-    
         <h4 class="noUnderscore clickable" on:click={() => goToSection(twoOne)}>2.1 Draft Order</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(twoTwo)}>2.2 Rookie Drafts</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(twoThree)}>2.3 Draft Day Trades</h4>
     
     <h3 class="noUnderscore clickable" on:click={() => goToSection(three)}>Section 3: Scoring System</h3>
-    
         <h4 class="noUnderscore clickable" on:click={() => goToSection(threeOne)}>3.1 Voting on Scoring System</h4>
     
     <h3 class="noUnderscore clickable" on:click={() => goToSection(four)}>Section 4: Postseason</h3>
-    
         <h4 class="noUnderscore clickable" on:click={() => goToSection(fourOne)}>4.1 Playoffs</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(fourTwo)}>4.2 Playoff Tiebreakers</h4>
 
     <h3 class="noUnderscore clickable" on:click={() => goToSection(five)}>Section 5: Tanking Policy</h3>
-    
         <h4 class="noUnderscore clickable" on:click={() => goToSection(fiveOne)}>5.1 League Tanking Policy</h4>
 
-    <h3 class="noUnderscore clickable" on:click={() => goToSection(six)}>Section 6: Replacing Managers</h3>
-    
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixOne)}>6.1 Removing Managers</h4>
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixTwo)}>6.2 Replacing Managers</h4>
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixThree)}>6.3 Replacement Incentive</h4>
+    <h3 class="noUnderscore clickable" on:click={() => goToSection(six)}>Section 6: Manager Turnover</h3>
+        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixOne)}>6.1 Manager Leaving</h4>
 
     <h3 class="noUnderscore clickable" on:click={() => goToSection(seven)}>Section 7: League Finances</h3>
     
@@ -145,11 +137,11 @@
     
     <hr />
     
-    <h2 class="sectionHeading" bind:this={one}>Section 1 Roster Breakdown</h2>
+    <h2 class="sectionHeading" bind:this={one}>Section 1 Roster Requirements</h2>
     
     <h3 class="subSectionHeading" bind:this={oneOne}>1.1 Positional Breakdown</h3>
     
-    <p>28 Total Players</p>
+    <p>25 Total Players</p>
     
     <p class="underscore">Starters</p>
     <ul>
@@ -158,34 +150,43 @@
         <li>RB</li>
         <li>WR</li>
         <li>WR</li>
+        <li>WR</li>
         <li>TE</li>
-        <li>FLEX (RB/WR/TE)</li>
-        <li>FLEX (RB/WR)</li>
-        <li>D/ST</li>
-        <li>K</li>
+        <li>FLEX (WRT)</li>
+        <li>SFLEX (QWRT)</li>
     </ul>
     
-    <p>18 Bench (Expanded by 5 between the keague draft and start of regular season)</p>
+    <p>16 Bench (Expanded by 5 between the annual Rookie draft and Labour Day Monday)</p>
 
-    <p>1 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
+    <p>2 IR Spots (Player must be labeled as IR, or NFI-R in the Sleeper App)</p>
+    
+    <p>No players are allowed in IR spots between March 1st and Labour Day Monday each year.</p>
     
         <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
         
         <div class="subBlock">
             <table class="positionMaximums">
-                <tr><td>QB</td><td class="right">3 active, 5 total</td></tr>
-                <tr><td>RB</td><td class="right">20</td></tr>
-                <tr><td>WR</td><td class="right">20</td></tr>
-                <tr><td>TE</td><td class="right">10</td></tr>
-                <tr><td>D/ST</td><td class="right">3</td></tr>
-                <tr><td>K</td><td class="right">3</td></tr>
+                <tr><td>QB</td><td class="right">No maximum</td></tr>
+                <tr><td>RB</td><td class="right">No maximum</td></tr>
+                <tr><td>WR</td><td class="right">No maximum</td></tr>
+                <tr><td>TE</td><td class="right">No maximum</td></tr>
             </table>
         </div>
 
 
     <h3 class="subSectionHeading" bind:this={oneTwo}>1.2 Trading</h3>
     
-    <p>Trading of players and draft picks (up to 3 drafts away) are allowed. Trades will process immediately and will be reversed if vetoed or under investigation for collusion. Tradable assets include players, draft picks, and FAAB $.</p>
+    <p>Trading of players and draft picks (up to 2 drafts away) are allowed. Trades will require Commissioner approval. If deemed unfair or imbalanced, the trade will be reversed if vetoed or under investigation is suspicion of collusion. Tradable assets include players, draft picks, and FAAB $.</p>
+    
+    <p>Trades involving draft picks will require a non-refundable deposit for the league dues foe each year impacted. If the managers trades a pick for the following season, he or she pays $200 (or the current league dues) and plays the following season tha tmanager will be considered paid in full for that upcoming season (ex. Oct 2023 trades the 1st round for May 2024; Manager pays $200 for the 2024 season; If that manager reamins in the league come March 1st, 2024, that manager will be considered paid in full for the 2024 season; If that Manager was to leave the league after the 2023 season, the $200 for the following season in non-refundable and will remain as payment for the new owner for the 2024 season)</p>
+    
+    <p>If a Manager trades draft picks for multiple years (ex. 1st Rounder in 2024 and 2nd rounder in 2025, that manager is required to pay 2 full non-refundable payments, one for 2024, one for 2025. If that manager leaves the league before the 2024 season, that manager forfeits both season's dues (ex. $400). If that manager leaves after the 2024 season, but before the 2025 season, that manager forfeits the 2025 dues (ex. $200).</p>
+    
+    <p>Deposits for trades must be made within 24-hours of the trade's acceptance for the trade to be approved and finalized. Any delay will result in the trade being reversed, unless approved by the Commissioner.</p>
+    
+    <p>The inseason Trade Deadline will be the end of Week 11 (Tuesday before US Thanksgiving is the last day a trade may be accepted - it must still be approved).</p>
+    
+    <p>Trades do not require an equal number of players and/or draft picks to be exchanged, but roster limits must be adhered to upcon the completion of the trade.</p>
     
     <h4 bind:this={oneTwoOne}>1.2.1 Trade Collusion</h4>
     <div class="subBlock">
@@ -211,93 +212,177 @@
     
     <h4 bind:this={oneTwoThree}>1.2.3 Trade Deadline</h4>
     <div class="subBlock">
-        <p>The trade deadline will be set for the Saturday of the week 11 games of the NFL season.</p>
+        <p>The trade deadline will be set for the Tuesday after Week 11 games of the NFL season. The last day a trade can be accepted is that Tuesday - it must still be approved.</p>
     </div>
     
     <h4 bind:this={oneTwoFour}>1.2.4 Trade Restrictions</h4>
     <div class="subBlock">
-        <p>You will not be able to trade draft picks that are more than 3 drafts away. For example, during the 2021 season you cannot trade any picks in or after the 2025 draft. You may only trade FAAB $ from the current season.</p>
+        <p>You will not be able to trade draft picks that are more than 2 drafts away. For example, during the 2023 season you cannot trade any picks in the 2026 draft - you may only trade picks from the 2024 and the 2025 draft.</p>
+        <p>You may only trade FAAB $ from the current season.</p>
     </div>
     
     <h4 bind:this={oneTwoFive}>1.2.5 Veto/Trade Process</h4>
     <div class="subBlock">
-        <p>A total of 7 veto votes are required to veto a trade. Vetoes are only appropriate in instances of collusion or an egregious mismatch of value (i.e. CMC for a backup kicker). Not liking a trade does not warrant a veto.</p>
+        <p>The Commissioner will be responsible for handling any and all Trade Vetos.</p>
     </div>
     
     
     
     <h3 bind:this={oneThree}>1.3 Waiver Wire</h3>
     
-    <p>FAAB Waiver wire system. Each team will begin the season with $100. $0 bids are allowed. Bids will process Thursdays and Sundays at 9AM EST.</p>
+    <p>FAAB Waiver wire system. Each team will begin the season with $1000. $0 bids are allowed. Bids will process Wednesdays at 6am PT.</p>
 
-    <p>FAAB budgets will reset each season in January.</p>
+    <p>FAAB budgets will reset each season on the Thursday after Week 17 (ex. Jan 11, 2024).</p>
     
     
-    <h2 class="sectionHeading" bind:this={two}>Section 2 Drafting</h2>
+    <h2 class="sectionHeading" bind:this={two}>Section 2: Drafting</h2>
     
     <h3 bind:this={twoOne}>2.1 Draft Order</h3>
-    <p>The draft order each year will be a linear draft in reverse order of the previous year’s regular season standings.</p>
+    <p>The Annual Rookie Draft is a Linear draft.</p>
+    <p>The Annual Rookie Draft consists of 5 rounds and will include all rookies.</p>
+    <p>It will take place approximately 2 weeks after the actual NFL draft. The date may fluctuate due to unforeseen circumstances, but dates will be set by the end of March each year.</p>
+    <p>The order will be:</p>
+    <ul>
+        <li>1st: Winner of Toilet Bowl</li>
+        <li>2nd: Loser of Toiler Bowl</li>
+        <li>3rd: Winner of Draft Bonanza Playoffs</li>
+        <li>4th: Runner Up of Draft Bonanza Playoffs</li>
+        <li>5th: Winner of Draft Bonanza Consolation</li>
+        <li>6th: Loser of Draft Bonanza Consolation</li>
+        <li>7th: Team finishing 6th in the Regular Season</li>
+        <li>8th: Team finishing 5th in the Regular Season</li>
+        <li>9th: Team finishing 4th in the Regular Season</li>
+        <li>10th: Team finishing 3rd in the Regular Season</li>
+        <li>11th: Team finishing 2nd in the Regular Season</li>
+        <li>12th: Team finishing 1st in the Regular Season</li>
+    </ul>
 
-    <h3 bind:this={twoTwo}>2.2 Rookie Drafts</h3>
-    <p>Rokkie drafts will consist of 3 round of drafting, with 5 minutes alotted for each pick. To make room for the incoming players, benches will be expanded by (5) spots. These spots will be removed in mid-August, at which point you will need to have cut the necessary players.</p>
+    <h3 bind:this={twoTwo}>2.2 Annual Rookie Drafts</h3>
+    <p>Rookie drafts will consist of 5 rounds of drafting, with 5 minutes alotted for each pick.</p>
+    <p>To make room for the incoming players, benches will be expanded by (5) spots.</p>
+    <p>These spots will be removed on Labour Day Monday.</p>
     <p>Any spots not filled during the draft, can be filled immediately afterwards from the waiver wire.</p>
+    <p> Please refer to the League Calendar for Roster Size Maximums and corresponding dates for when these values change.</p>
     
     <h3 bind:this={twoThree}>2.3 Draft Day Trades</h3>
     <p>If a trade is being made during the draft, one or both parties can alert the commissioner to pause the draft to allow for extra time to negotiate the trade.</p>
     
-    <h2 class="sectionHeading" bind:this={three}>Section 3 Scoring System</h2>
+    <h2 class="sectionHeading" bind:this={three}>Section 3: Scoring System</h2>
 
     <h3 bind:this={threeOne}>3.1 Scoring System</h3>
-    <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows typical .5PPR Scoring). The scoring system will never change without a majority league vote.</p>
+    <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows typical 1.0 PPR Scoring). The scoring system will never change without a super majority league vote (9 votes to pass).</p>
     
-    <h2 class="sectionHeading" bind:this={four}>Section 4 Postseason</h2>
+    <h2 class="sectionHeading" bind:this={four}>Section 4: Postseason</h2>
     
     <h3 bind:this={fourOne}>4.1 Playoffs</h3>
-    <p>At the end of the season 6 teams will make the playoffs. The first round of playoffs will commence in week 15. Each team that wins their division and the 4 wild card teams that finish with the best records, will receive a playoff berth. The 2 teams that win their division will receive a bye week in the first round of the playoffs. Each playoff matchup will only last one week and the winner will advance. Week 18 will not be used.</p>
+    <p>At the end of the season, 6 teams will make the playoffs.<p>
+    <p>Teams will be seeded 1-6 based on the regular season finish, tie broken per the tiebreakers.</p>
+    <p>Top 2 seeds get a bye in week 15</p>
+    <p>Week 15: Seed 3 vs Seed 6; Seed 4 vs Seed 5</p>
+    <p>Reseeding occurs after the first round of the playoffs where the #1 seed plays the lowest remaining seed (ex. if #6 upsets #3, #1 plays #6; if #3 wins, #3 plays #2 and the winner of teh #4 vs #5 match plays #1). 
+    <p>Week 18 will not be used.</p>
     
     <h3 bind:this={fourTwo}>4.2 Seeding Tiebreakers</h3>
     <p>If two teams finish with the same record the tiebreakers will go as followed:</p>
 
     <ol>
-        <li>Points For</li>
-        <li>Head 2 Head Record</li>
-        <li>Division Record</li>
-        <li>Total Points Against</li>
-        <li>Coin Flip</li>
-        <li>Duel to the death</li>
+        <li>1. Points For - Most Points For is awarded the highest spot available of the teams tied and second most is awarded the second highest spot available, and so on.</li>
+        <li>2. Head to Head Record - the team with the better head to head record (highest winning percent amongst the teams tied) will prevail.</li>
+        <li>3. Total Points Scored in Head to Head matches - Most Points scored in head to head matches amongst the teams still tied,  totalling all matches played (ex. If two matches played, total points for both matches combined; if two versus one team and one versus the other, all three matches are combined)</li>
+        <li>4. Higher Points Against - Most Points Against is awarded the higher spot available of the teams tied and second most is awarded the next highest spot available, and so on.</li>
+        <li>5. The winner of the coin flip will be automatically awarded the lower seed (1st is lower than 2nd; 2nd is lower than 3rd, and so)</li>
     </ol>
 
-    <h2 class="sectionHeading" bind:this={five}>Section 5 Tanking Policy</h2>
+    <h2 class="sectionHeading" bind:this={five}>Section 5: Tanking Policy</h2>
     
     <h3 bind:this={fiveOne}>5.1 League Tanking Policy</h3>
     <p>No team may intentionally leave starting roster spots empty. Any evidence of intentionally leaving roster spots empty in order to improve your draft position may be subject to punishment, including but not limited to the forfeiture of draft selections.</p>
+    <p>The Commissioner can be made aware of efforts to tank on purpose and will review each case individually.</p>
+    <p>The penalty for tanking will be loss of 1st round pick (1st round would only have 11 picks if a team was deemed to be tanking).</p>
+    <p>A second case of tanking would be removal from the league with no refunds for any future league fees paid or any deposits made for leaving the league.</p>
 
-    <h2 class="sectionHeading" bind:this={six}>Section 6 Replacing Managers</h2>
+    <h2 class="sectionHeading" bind:this={six}>Section 6: Manager Turnover</h2>
     
-    <h3 bind:this={sixOne}>6.1 Removing Managers</h3>
-    <p>Short of continuously failing to set a valid lineup, or confirmed collusion, no manager can be removed against their will. Participation, through the league chat, trade offers, and the waiver wire, is strongly encouraged but generally grounds for removal.</p>
-    
-    <h3 bind:this={sixTwo}>6.2 Replacing Managers</h3>
-    <p>When a manager needs to be replaced, the commisiooners will try to find a suitable candidate with some connection to at least a portion of the existing managers. Priority will be placed on managers who are eager to take on a dynasty commitment and will be very active within the league.</p>
-    
-    <h3 bind:this={sixThree}>6.3 Replacement Incentive</h3>
-    <p>In the event that a manager chooses to quit the league or is removed by a comissioner, an incoming manager is offered a 50% reductioon on their first year buy-in.</p>
+    <h3 bind:this={sixOne}>6.1 Manager Leaving</h3>
+    <p>If a manager wants to leave the league, they must give 24 months notice in order to acquire their full deposit back without penalty.</p>
+    <p>If a manager wants to leave the league in less than 24 months notice, the following will take place:<br/>
+    - New Owner and Outgoing Owner will agree to a portion of the deposit ($0-100) that the Outgoing Manager gets back, while the new owner will use the remaining amount towards their own deposit (ex. $50 to outgoing manager means $50 for deposit of New Owner and New Owner tops up with $50) as well as paying their own dues (assuming no future draft pick trades have been made by the outgoing  manager). </p>
+    <p>Keep in mind that any funds paid for any future draft picks that have been traded away in the future (next year or two years down the road) are not refundable at all.</p>
+    <p>The Commissioner will review all trades for that outgoing manager with additional scrutiny to ensure they are not screwing the franchise over for the new owner.</p>
+    <p>The exception to receiving future deposits back would occur if the league dues were increased in the meantime and the manager chose to withdraw from the league (see 7.3)
 
-    <h2 class="sectionHeading" bind:this={seven}>Section 7 League Finances</h2>
+    <p><b><u>Simple Example</u></b><br/>
+    February 2023<br/>
+    All owners pay a $100 deposit. <br/><br/>
+
+    November 20, 2025<br/>
+    Owner 1 indicates they are leaving the league. <br/>
+    Owner 1 has not made any trades involving future draft picks.<br/> 
+    Owner 1 wants to leave immediately following this 2025 season (which ends technically February 28th, 2026)<br/><br/>
+
+    February 15, 2026<br/>
+    League agrees on New Owner for the franchise.<br/>
+    Owner 1 (outgoing) and New Owner (incoming) agree that Owner 1 gets $50 of their deposit back. <br/>
+    Owner 1 receives $50 and is no longer in the league. <br/>
+    New owner pays $50 deposit. ($50 from Owner 1's deposit + $50 of their own)<br/>
+    New owners pays $200 for 2026 season.<br/><br/>
+
+    Everything going forward for New Owner is like everyone else.</p>
+    
+    <p><b><u>Complex Example</u></b><br/>
+    February 2023<br/>
+    All owners pay $200 league dues for 2023 season <br/>
+    All owners pay a $100 deposit. <br/><br/>
+
+    November 20, 2025<br/>
+    Owner 1 indicates they are leaving the league. <br/>
+    Owner 1 has made a trade in the past that involved draft picks for the May 2027 Rookie Draft ($200 paid and is non-refundable). <br/>
+    Owner 1 wants to leave immediately following this 2025 season (which ends technically February 28th, 2026). <br/><br/>
+
+    February 15, 2026<br/>
+    League agrees on New Owner for the franchise.<br/>
+    Owner 1 (outgoing) and New Owner (incoming) agree that Owner 1 gets $50 of their deposit back. <br/>
+    Owner 1 receives $50 and is no longer in the league. <br/>
+    New owner pays $50 deposit. ($50 from Owner 1's deposit + $50 of their own)<br/>
+    New owners pays $200 for 2026 season. <br/>
+    New owner does not make any trades for picks in the future during the 2026 season. <br/><br/>
+
+    February 27, 2027<br/>
+    New Owner pays $0 for 2027 season due to non-refundable future draft pick trade involving May 2027 Rookie Draft <br/><br/>
+
+    February 25, 2028<br/>
+    New owner pays $200 for the 2028 season (like everyone else)</p>
+    
+
+
+    <h2 class="sectionHeading" bind:this={seven}>Section 7: League Finances</h2>
     
     <h3 bind:this={sevenOne}>7.1 League Dues</h3>
-    <p>League dues are set at {dues}$. Dues are collected through <a href="https://www.leaguesafe.com/league/3949641">LeagueSafe</a> and collection will be sent out no later than the first of August. All managers must be fully paid up before the start of regular season. In the event that a manager fails to pay before the deadline, a 10% penalty will be addd to their payment and will go towards the payouts at the end of the year.</p>
+    <p>League dues are set at {dues}$. Dues are collected via e-transfer and all dues are required to be made by February 28th.</p>
+    <p>In the event that a manager fails to pay before the deadline, a 10% penalty will be added to their outstanding payment and will go towards the payouts at the end of the year.</p>
     
-    <h3 bind:this={sevenTwo}>7.2 Payout</h3>
-    <p>League payout is structured as follows:</p>
+    <h3 bind:this={sevenTwo}>7.2 Payouts</h3>
+    <p>There are 3 levels of payouts - Regular Season, Playoffs, and Regular Season Most Points For.</p>
+    <p>Regular Season</p>
     <ul>
-        <li>1st place: {dues * 8}$</li>
-        <li>2nd place: {dues * 3}$</li>
-        <li>3rd place: {dues}$</li>
+        <li>1st place: $360</li>
+        <li>2nd place: $240</li>
+        <li>3rd place: $170</li>
     </ul>
-    <p>In the event that a manager was fined due to late payment, their extra fee will be added to the winner's payout. Similarly, if new managers come into the league and the payout is smaller, the difference will come out of the winner's prize.</p>
+    <p>Playoffs</p>
+    <ul>
+        <li>1st place: $1,000</li>
+        <li>2nd place: $290</li>
+        <li>3rd place: $215</li>
+    </ul>
+    <Most Points For - Regular Season</p>
+    <ul>
+        <li>$125</li>
+    </ul>
+    
+    <p>In the event that a manager was fined due to late payment, their extra fee will be added to the 's Regular Season 1st place finisher's payout.</p>
     
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
-    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buyin, finding a co-manager to split the cost is reccomended.</p>
+    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buy-in, they can opt to find a co-manager or withdraw from the league with all deposits returned in full, including deposits made for trades.</p>
 
 </div>
