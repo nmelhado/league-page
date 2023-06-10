@@ -199,9 +199,14 @@
             <div class="infoLabel">
                 Favorite Fantasy Asset
             </div>
-            <div class="infoIcon {viewManager.valuePosition}">
+            <div class="infoIcon">
+		    <imgclass="valuePosition" src="/{viewManager.valuePosition}.png" alt="Valued Position Preference"/>
+		</div>
+	    <!--
+ 	    <div class="infoIcon {viewManager.valuePosition}">
                 <span class="valuePosition">{viewManager.valuePosition}</span>
             </div>
+	    -->
         </div>
     {/if}
     {#if viewManager.tradingScale}
