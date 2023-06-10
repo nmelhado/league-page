@@ -276,7 +276,7 @@ export const managers = [
          image: "/managers/house2.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
                 },
       "favoritePlayer": 234, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
-      "valuePosition": "TE", // (optional) 
+      "valuePosition": "QB", // (optional) 
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
       "philosophy": "Swing for the fences",
       "tradingScale": 5, // 1 - 10
