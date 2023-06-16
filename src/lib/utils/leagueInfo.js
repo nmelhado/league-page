@@ -196,7 +196,7 @@ export const managers = [
         "name": "Jesse",
         "tookOver": 2023,
         "location": "Surrey, CA", // (optional)
-        "bio": "placeholder for more information",
+        "bio": "Long time hockey pool enthusiast since the inception of OfficePools around 1997. Has since switched to NFL and betting on golf majors. Always betting, never winning",
         "photo": "/managers/jesse.jpg", 
         "fantasyStart": 2017, // (optional)
         "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
