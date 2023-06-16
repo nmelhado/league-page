@@ -81,7 +81,7 @@ export const managers = [
         "name": "Craig B",
         "tookOver": 2023,
         "location": "Abbotsford, CA", // (optional)
-        "bio": "placeholder for more information",
+        "bio": "Been playing fantasy poorly for ten years. Started with redraft and graduated to dynasty five years ago.   Love the building involved with fantasy football so play exclusively dynasty now.",
         "photo": "/managers/craigb.jpg", 
         "fantasyStart": 2015, // (optional)
         "favoriteTeam": "was", // (optional) MUST BE LOWERCASE
@@ -104,7 +104,7 @@ export const managers = [
         "name": "Craig H",
         "tookOver": 2023,
         "location": "Vancouver, CA", // (optional)
-        "bio": "placeholder for bio",
+        "bio": "Been playing Yahoo fantasy since 2013.  More of a hockey specialist.  Fodder for football.  46.7% win rate on Yahoo Football.  Currently participating in 3 redraft/keeper leagues.  This is my first crack at Dynasty here in 2023.",
         "photo": "/managers/craigh.jpg",
         "fantasyStart": 2014, 
         "favoriteTeam": "lav", // (optional) MUST BE LOWERCASE
