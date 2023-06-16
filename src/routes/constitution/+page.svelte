@@ -391,5 +391,5 @@
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buy-in, they can opt to find a co-manager or withdraw from the league with all deposits returned in full, including deposits made for trades.</p>
 
     <h2 class="sectionHeading" bind:this={eight}>Section 8: League Calendar</h2>
-<iframe height=2000 width=400 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS1pHBWpmtq9r-pTqfp3_rgfriIMGW-qNWTmMvcnxASyt2jrj4OImOuKSUojhJlBN3qNji_yUnIq7Hp/pubhtml?gid=715003089&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe height=3000 width=400 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS1pHBWpmtq9r-pTqfp3_rgfriIMGW-qNWTmMvcnxASyt2jrj4OImOuKSUojhJlBN3qNji_yUnIq7Hp/pubhtml?gid=715003089&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 </div>
