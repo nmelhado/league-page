@@ -132,8 +132,8 @@
     <h3 class="noUnderscore clickable" on:click={() => goToSection(seven)}>Section 7: League Finances</h3>
     
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sevenOne)}>7.1 League Dues</h4>
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixTwo)}>7.2 Payout</h4>
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(sixThree)}>7.3 Raising Dues</h4>
+        <h4 class="noUnderscore clickable" on:click={() => goToSection(sevenTwo)}>7.2 Payout</h4>
+        <h4 class="noUnderscore clickable" on:click={() => goToSection(sevenThree)}>7.3 Raising Dues</h4>
     <p></p>
 
     <h3 class="noUnderscore clickable" on:click={() => goToSection(eight)}>Section 8: League Calendar</h3>
@@ -390,6 +390,6 @@
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buy-in, they can opt to find a co-manager or withdraw from the league with all deposits returned in full, including deposits made for trades.</p>
 
-    <h2 class="sectionHeading" bind:this={seven}>Section 8: League Calendar</h2>
+    <h2 class="sectionHeading" bind:this={eight}>Section 8: League Calendar</h2>
 
 </div>
