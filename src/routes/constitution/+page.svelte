@@ -107,32 +107,24 @@
             <h4 class="noUnderscore clickable" on:click={() => goToSection(oneTwoThree)}>1.2.3 Trade Deadline</h4>
             <h4 class="noUnderscore clickable" on:click={() => goToSection(oneTwoFour)}>1.2.4 Trade Restrictions</h4>
             <h4 class="noUnderscore clickable" on:click={() => goToSection(oneTwoFive)}>1.2.5 Veto/Trade Process</h4>
-        <h4 class="noUnderscore clickable" on:click={() => goToSection(oneThree)}>1.3 Waiver Wire</h3>
-    
-    <h4 class="noUnderscore clickable" on:click={() => goToSection(two)}>Section 2: Drafting</h2>
+        <h3 class="noUnderscore clickable" on:click={() => goToSection(oneThree)}>1.3 Waiver Wire</h3>
+    <h2 class="noUnderscore clickable" on:click={() => goToSection(two)}>Section 2: Drafting</h2>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(twoOne)}>2.1 Draft Order</h3>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(twoTwo)}>2.2 Rookie Drafts</h3>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(twoThree)}>2.3 Draft Day Trades</h3>
-    
     <h2 class="noUnderscore clickable" on:click={() => goToSection(three)}>Section 3: Scoring System</h2>
-        <h3 class="noUnderscore clickable" on:click={() => goToSection(threeOne)}>3.1 Voting on Scoring System</h3>
-    
+        <h3 class="noUnderscore clickable" on:click={() => goToSection(threeOne)}>3.1 Voting on Scoring System</h3>    
     <h2 class="noUnderscore clickable" on:click={() => goToSection(four)}>Section 4: Postseason</h2>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(fourOne)}>4.1 Playoffs</h3>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(fourTwo)}>4.2 Playoff Tiebreakers</h3>
-
     <h2 class="noUnderscore clickable" on:click={() => goToSection(five)}>Section 5: Tanking Policy</h2>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(fiveOne)}>5.1 League Tanking Policy</h3>
-
     <h2 class="noUnderscore clickable" on:click={() => goToSection(six)}>Section 6: Manager Turnover</h2>
-        <h3 class="noUnderscore clickable" on:click={() => goToSection(sixOne)}>6.1 Manager Leaving</h2>
-
+        <h3 class="noUnderscore clickable" on:click={() => goToSection(sixOne)}>6.1 Manager Leaving</h3>
     <h2 class="noUnderscore clickable" on:click={() => goToSection(seven)}>Section 7: League Finances</h2>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(sevenOne)}>7.1 League Dues</h3>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(sevenTwo)}>7.2 Payout</h3>
         <h3 class="noUnderscore clickable" on:click={() => goToSection(sevenThree)}>7.3 Raising Dues</h3>
-    <p></p>
-
     <h2 class="noUnderscore clickable" on:click={() => goToSection(eight)}>Section 8: League Calendar</h2>
     
     <p></p>
