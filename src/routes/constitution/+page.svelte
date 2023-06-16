@@ -29,6 +29,7 @@
         line-height: 1.2em;
         text-align: center;
         margin: 2em 0 1.5em;
+        color: #005778;
     }
 
     h2 {
