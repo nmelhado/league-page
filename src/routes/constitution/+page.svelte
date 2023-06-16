@@ -42,6 +42,7 @@
         text-decoration: underline;
         font-size: 1.3em;
         line-height: 1.2em;
+        color: #005778;
     }
 
     h4 {
@@ -49,6 +50,7 @@
         margin-left: 2em;
         font-size: 1.2em;
         line-height: 1.2em;
+        color: #008E97;
     }
 
     h5 {
