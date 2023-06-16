@@ -138,8 +138,9 @@
         <h3 class="noUnderscore clickable" on:click={() => goToSection(sevenThree)}>7.3 Raising Dues</h3>
 <br/>
     <h2 class="noUnderscore clickable" on:click={() => goToSection(eight)}>Section 8: League Calendar</h2>
-    
+<br/>    
     <p></p>
+
 
     <hr />
     
