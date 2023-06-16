@@ -34,6 +34,7 @@
     h2 {
         font-size: 1.5em;
         line-height: 1.2em;
+        color: 008E97;
     }
 
     h3 {
