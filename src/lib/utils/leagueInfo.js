@@ -200,7 +200,7 @@ export const managers = [
         "photo": "/managers/jesse.jpg", 
         "fantasyStart": 2017, // (optional)
         "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
-        "mode": "Dynasty", // (optional) Win Now, Dynasty, Rebuild
+        "mode": "Rebuild", // (optional) Win Now, Dynasty, Rebuild
         "rival":   {
             name: "Craig B",
             link: 2, // manager array number within this array, or null to link back to all managers page
@@ -209,7 +209,7 @@ export const managers = [
         "favoritePlayer": 567, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         "valuePosition": "RB", // (optional) 
         "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets'
-        "philosophy": "Perpetual rebuilder",
+        "philosophy": "Random number generator",
         "tradingScale": 8, // 1 - 10
         "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
