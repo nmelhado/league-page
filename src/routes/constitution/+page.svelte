@@ -134,7 +134,11 @@
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sixTwo)}>7.2 Payout</h4>
         <h4 class="noUnderscore clickable" on:click={() => goToSection(sixThree)}>7.3 Raising Dues</h4>
     <p></p>
+
+    <h3 class="noUnderscore clickable" on:click={() => goToSection(seven)}>Section 8: League Calendar</h3>
     
+    <p></p>
+
     <hr />
     
     <h2 class="sectionHeading" bind:this={one}>Section 1 Roster Requirements</h2>
@@ -385,4 +389,116 @@
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
     <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buy-in, they can opt to find a co-manager or withdraw from the league with all deposits returned in full, including deposits made for trades.</p>
 
+    <h2 class="sectionHeading" bind:this={seven}>Section 8: League Calendar</h2>
+[
+    {
+        "dates": "Inaugural Season Only"
+    },
+    {
+        "dates": "Feb 25-Mar 15, 2023",
+        "details": "We draft 25 into our initial rosters",
+        "rosterSizes": "25"
+    },
+    {
+        "dates": "End of Draft until March 31",
+        "details": "All undrafted playes remain on Waivers; \nAll rosters remain locked until after the Rookie Draft",
+        "rosterSizes": "25"
+    },
+    {
+        "dates": "May 13th",
+        "details": "Rookie & Free Agent Draft\nRosters increase in size to 30 (this year)\nWeekly Waivers continue after this draft",
+        "rosterSizes": "30"
+    },
+    {
+        "dates": "May 13th (After Rooke Draft)",
+        "details": "Trades may be processed beginning post-draft (keeping roster limits in mind)",
+        "rosterSizes": "30"
+    },
+    {
+        "dates": "May 24th",
+        "details": "Weekly Waiver season begins with waiver claims being processed weekly on Wednesdays. \nFree Agency remains closed until September\nAll unclaimed players remain on waivers.",
+        "rosterSizes": "30"
+    },
+    {
+        "dates": "Post Rookie Draft - Labour Day Monday",
+        "details": "All Rosters must be at 30 players or less. \nIf Rosters go above 30 due to a trade, the team >30 roster spots can hold all players, but cannot participate in Waiver Wire claims until their roster is at 30 players or less.\nNo players may be in IR spots in the offseason\nFree Agency remains closed\nWeekly waivers continue",
+        "rosterSizes": "30*\n\n* can go over if you have more than 5 draft picks or due to a trade"
+    },
+    {
+        "dates": "September 4th\nLabour Day Monday",
+        "details": "All rosters must be at 25 players maximum; \nException is the allowance of 2 players in IR Spots\nFree Agency remains closed. \nWeekly waivers continue",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "September 6th",
+        "details": "Free Agency season opens\nWaivers will follow the Sleeper rules:\n- Weekly Waiver claims are processed on Wednesdays at 12am PT (or whenever Sleeper processes them)\n- Players are locked at 5 minutes before their game starts until Wednesday at 12am PT (after Waivers are processed)\n- Players dropped are on Waivers for 1 day",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "1st Wednesday After Labour Day",
+        "details": "Free Agency season opens\nWaivers will follow the Sleeper rules:\n- Weekly Waiver claims are processed on Wednesdays at 12am PT (or whenever Sleeper processes them)\n- Players are locked at 5 minutes before their game starts until Wednesday at 12am PT (after Waivers are processed)\n- Players dropped are on Waivers for 1 day",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "Week 1 - Week 17",
+        "details": "Free Agency season opens\nWaivers will follow the Sleeper rules:\n- Weekly Waiver claims are processed on Wednesdays at 12am PT (or whenever Sleeper processes them)\n- Players are locked at 5 minutes before their game starts until Wednesday at 12am PT (after Waivers are processed)\n- Players dropped are on Waivers for 1 day",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "Wednesday After Week 17\n(Ex. Jan 15, 2025)",
+        "details": "Last Day of the Season",
+        "rosterSizes": "25 + 2IR*\n\n* Owners have until March 1st each year to get to 25 total (no IR spots)"
+    },
+    {
+        "dates": "Annual Calendar"
+    },
+    {
+        "dates": "Wednesday After Week 17\n(Ex. Jan 10, 2024)",
+        "details": "Last Day of Regular Season\nThe season officially ends after the waiver claims are processed that day. \nFree Agency is now officially closed until after Labour Day.",
+        "rosterSizes": "25 + 2IR*\n\n* Owners have until March 1st each year to get to 25 total (no IR spots)"
+    },
+    {
+        "dates": "Thursday After Week 17\n(Ex. Jan 11, 2024)",
+        "details": "Official Start of New Season\nOffseason officially begins.\nFAAB is reset to $1000 (no carry forward). \nRosters are locked and owners have until March 1st to get down to 25 total players\nNo IR spots in the offseason; \nTrades may continue keeping Roster limits in mind and the impact of going over 30 rostered players; \nFree Agency is closed until September.",
+        "rosterSizes": "25 + 2IR*\n\n* Owners have until March 1st each year to get to 25 total (no IR spots)"
+    },
+    {
+        "dates": "March 1st",
+        "details": "All Rosters must be at 25 of less. \nFree Agency remains closed\nWeekly Waivers continue (Wednesdays)",
+        "rosterSizes": "25"
+    },
+    {
+        "dates": "May (dates vary)",
+        "details": "Rookies Only Draft;\nRosters grow to 25 + rookie picks; \nFree Agency remains closed. \nWeekly waivers continue (Wednesdays)",
+        "rosterSizes": "25 + Draft Picks"
+    },
+    {
+        "dates": "Post Rookie Draft - Labour Day Monday",
+        "details": "Roster sizes are limited to 25 that were already on the roster + any draft picks. \nPlayers may also add Waiver Claims to increase their roster size to 30. \nIf an owner has 25 on their roster and more than 5 draft picks, resulting in a total roster size of 31 or more, they may keep all players on their roster until Labour Day Monday, but while carrying 31 or more players on their roster, they forego any Waiver Wire participation (Sleeper will not allow them to make changes). \nNo players are allowed in IR spots",
+        "rosterSizes": "30*\n\n* can go over if you have more than 5 draft picks or due to a trade"
+    },
+    {
+        "dates": "Labour Day Monday",
+        "details": "Rosters must be trimmed to 25 players; \nYou may place up to two players in IR spots if available;",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "1st Wednesday After Labour Day",
+        "details": "Free Agency season opens\nWaivers will follow the Sleeper rules:\n- Weekly Waiver claims are processed on Wednesdays at 12am PT (or whenever Sleeper processes them)\n- Players are locked at 5 minutes before their game starts until Wednesday at 12am PT (after Waivers are processed)\n- Players dropped are on Waivers for 1 day",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "Week 1 - Week 17",
+        "details": "Free Agency season opens\nWaivers will follow the Sleeper rules:\n- Weekly Waiver claims are processed on Wednesdays at 12am PT (or whenever Sleeper processes them)\n- Players are locked at 5 minutes before their game starts until Wednesday at 12am PT (after Waivers are processed)\n- Players dropped are on Waivers for 1 day",
+        "rosterSizes": "25 + IRx2"
+    },
+    {
+        "dates": "Wednesday After Week 17\n(Ex. Jan 15, 2025)",
+        "details": "Last Day of the Season",
+        "rosterSizes": "25 + 2IR*\n\n* Owners have until March 1st each year to get to 25 total (no IR spots)"
+    },
+    {
+        "dates": "And repeat..."
+    }
+]
 </div>
