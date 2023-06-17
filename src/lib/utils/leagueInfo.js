@@ -35,7 +35,7 @@ export const managers = [
         "name": "Andrew",
         "tookOver": 2023,
         "location": "Thunder Bay, CA", // (optional)
-        "bio": "He's our highest flying manager and definitely the one with the most air miles. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
+        "bio": "He's our highest flying manager and definitely the one with the most air miles. His Yahoo fantasy profile shows he's been into the fantasy sports world since 2009, spreading his seed across a variety of sports - golf, hoops, hockey, baseball, and football. A career 54.5% win rate on Yahoo, he's a proud member of the Platinum Club (and the Mile High probably).",
         "photo": "/managers/andrew.jpg", 
         "fantasyStart": 2012, // (optional)
         "favoriteTeam": "sea", // (optional) MUST BE LOWERCASE
