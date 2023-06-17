@@ -30,6 +30,7 @@
         text-align: center;
         margin: 2em 0 1.5em;
         color: #005778;
+        font-weight:bold;
     }
 
     h2 {
