@@ -242,7 +242,7 @@ export const managers = [
         "name": "Friesen",
         "tookOver": 2023,
         "location": "Vancouver, CA", // (optional)
-        "bio": "Analytic who loves taking advantage during trades. Tends to build a solid core RB committee and runs to the title. A career 57.1% win rate according to Yahoo, he's a current member of the Diamond Club.",
+        "bio": "Every year Mike starts the season with a question: how can I be a different animal, and the same beast? After 20 years of fantasy sports, he still doesn't have the answer. But that doesn't stop him from putting together balanced rosters to challenge for titles..",
         "photo": "/managers/friesen.jpg", 
         "fantasyStart": 1999, // (optional)
         "favoriteTeam": "det", // (optional) MUST BE LOWERCASE
