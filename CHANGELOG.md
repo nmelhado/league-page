@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.4] - 2023-06-25
+
+### Fixed
+
+- Fix weird bug where stats comparisson dissapeared from rivalry page
+
 ## [2.2.3] - 2023-06-25
 
 ### Added
