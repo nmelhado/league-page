@@ -98,8 +98,8 @@
         {field: "fptsAgainst", label: "Fantasy Points Against", unit: "fpts against"},
     ]
 
-    const playerOneRecords = recordsInfo.regularSeasonData.leagueManagerRecords[playerOne];
-    const playerTwoRecords = recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo];
+    const playerOneRecords = recordsInfo?.regularSeasonData?.leagueManagerRecords ? recordsInfo.regularSeasonData.leagueManagerRecords[playerOne] : null;
+    const playerTwoRecords = recordsInfo?.regularSeasonData?.leagueManagerRecords ? recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo] : null;
 </script>
 
 <style>
@@ -200,7 +200,7 @@
             </div>
         {/if}
     </div>
-    {#if playerOne && playerTwo && recordsInfo?.regularSeasonData?.leagueManagerRecords && playerOneRecords && playerTwoRecords }
+    {#if playerOne && playerTwo && playerOneRecords && playerTwoRecords }
         <div class="scoreBoard">
             <!-- record comparisson -->
             <h3>Performance Comparisson</h3>
