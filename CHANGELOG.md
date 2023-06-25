@@ -14,6 +14,10 @@ All notable changes to this project will be documented in this file.
 
 - Fix standings page during preseason [(issue #221)](https://github.com/nmelhado/league-page/issues/221)
 
+### Changed
+
+- Use name from managers array (if available) instead of username [(issue #227)](https://github.com/nmelhado/league-page/issues/227)
+
 ## [2.2.1] - 2023-04-30
 
 ### Fixed
