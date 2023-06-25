@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added fbpts/game and win % to the rivalry page as well as emphasizing which manager is leading in each category
+- Added fpts/game and win % to the rivalry page as well as emphasizing which manager is leading in each category
 
 ## [2.2.2] - 2023-06-25
 
