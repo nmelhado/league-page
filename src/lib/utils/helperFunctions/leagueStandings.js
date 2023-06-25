@@ -25,7 +25,7 @@ export const getLeagueStandings = async () => {
     const rosters = rostersData.rosters;
 
 	// if the season hasn't started, standings can't be created
-	if(leagueData.status != "in_season" && leagueData.status != "post_season" && leagueData.status != "complete") {
+	if((leagueData.status != "in_season" && leagueData.status != "post_season" && leagueData.status != "complete") || nflState.week < 1) {
 		return null;
 	}
 
@@ -39,7 +39,7 @@ export const getLeagueStandings = async () => {
             ties: roster.settings.ties,
             fpts: round(roster.settings.fpts + (roster.settings.fpts_decimal / 100)),
             fptsAgainst: round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100)),
-            streak: roster.metadata.streak,
+            streak: roster.metadata?.streak || 0,
             divisionWins: divisions ? 0 : null,
             divisionLosses: divisions ? 0 : null,
             divisionTies: divisions ? 0 : null,

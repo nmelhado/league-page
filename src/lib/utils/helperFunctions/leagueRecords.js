@@ -398,6 +398,7 @@ const processPlayoffs = async ({curSeason, playoffRecords, year, week, rosters})
 		const fptsPerGame = round(pSD.fptsFor / (pSD.wins + pSD.losses + pSD.ties));
 		pSD.fptsPerGame = fptsPerGame;
 		pSD.year = year;
+		pSD.rosterID = rosterID;
 
 		// add season long points entry
 		playoffRecords.addSeasonLongPoints({

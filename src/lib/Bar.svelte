@@ -131,7 +131,7 @@
     <span class="managerName clickable" on:click={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})}>
         {#if user}
             {user.display_name}
-        {:else if rosterID}
+        {:else if rosterID != null}
             {getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}
         {/if}
     </span>
