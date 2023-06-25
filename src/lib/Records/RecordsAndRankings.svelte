@@ -600,13 +600,13 @@
                         <Cell class="cellName differentialName">
                             <div class="vsRecord">
                                 <div on:click={() => gotoManager({year: blowout.home.year || prefix, leagueTeamManagers, rosterID: blowout.home.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.home.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
+                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
                                 </div>
                                 <p class="vs">
                                     vs
                                 </p>
                                 <div on:click={() => gotoManager({year: blowout.away.year || prefix, leagueTeamManagers, rosterID: blowout.away.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.away.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
+                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
                                 </div>
                             </div>
                         </Cell>
@@ -638,13 +638,13 @@
                         <Cell class="cellName differentialName">
                             <div class="vsRecord">
                                 <div on:click={() => gotoManager({year: closestMatchup.home.year || prefix, leagueTeamManagers, rosterID: closestMatchup.home.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.home.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
+                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
                                 </div>
                                 <p class="vs">
                                     vs
                                 </p>
                                 <div on:click={() => gotoManager({year: closestMatchup.away.year || prefix, leagueTeamManagers, rosterID: closestMatchup.away.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.away.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
+                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
                                 </div>
                             </div>
                         </Cell>

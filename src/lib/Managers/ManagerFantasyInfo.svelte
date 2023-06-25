@@ -1,15 +1,5 @@
 <script>
-    import { goto } from "$app/navigation";
-
-
-    export let viewManager, players;
-
-    const gotoRival = (rival) => {
-        if(!rival) {
-            goto(`/managers`);
-        }
-        goto(`/manager?manager=${rival}`);
-    }
+    export let viewManager, players, changeManager;
 </script>
 
 <style>
@@ -247,7 +237,7 @@
         </div>
     {/if}
     <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => gotoRival(viewManager.rival.link)}>
+    <div class="infoSlot infoRival" on:click={() => changeManager(viewManager.rival.link)}>
         <div class="infoLabel">
             Rival
         </div>

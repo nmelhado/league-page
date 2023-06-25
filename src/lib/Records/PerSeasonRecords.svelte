@@ -49,7 +49,6 @@
                 })
             }
         }
-
         for(const rosterID in lRR) {
             const leagueManagerRecord = lRR[rosterID];
             for(const season of leagueManagerRecord.years) {

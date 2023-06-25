@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.2] - 2023-06-25
+
+### Fixed
+
+- Fix edge case from transactions in the calendar year before the first fantasy season [(issue #206)](https://github.com/nmelhado/league-page/issues/206)
+
+- Fix navigation when clicking on rival [(issue #212)](https://github.com/nmelhado/league-page/issues/212)
+
+- Fix page freeze on records > playoffs > season records [(issue #213)](https://github.com/nmelhado/league-page/issues/213)
+
+- Fix standings page during preseason [(issue #221)](https://github.com/nmelhado/league-page/issues/221)
+
+### Changed
+
+- Use name from managers array (if available) instead of username [(issue #227)](https://github.com/nmelhado/league-page/issues/227)
+
 ## [2.2.1] - 2023-04-30
 
 ### Fixed

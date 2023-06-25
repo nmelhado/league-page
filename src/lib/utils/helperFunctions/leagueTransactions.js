@@ -150,11 +150,17 @@ const digestTransactions = async ({transactionsData, currentSeason}) => {
 	const transactionOrder = transactionsData.sort((a,b) => b.status_updated - a.status_updated);
 	
 	for(const transaction of transactionOrder) {
-		let {digestedTransaction, season, success} = digestTransaction({transaction, currentSeason})
+		let {digestedTransaction, season, success} = digestTransaction({transaction, currentSeason});
 		if(!success) continue;
 		transactions.push(digestedTransaction);
         if(!leagueTeamManagers.teamManagersMap[season]) {
+            // the league may not have converted over yet
             season--;
+            // there is an edge case when a league is created in the calendar
+            // year before the first fantasy season (issue #206)
+            if(!leagueTeamManagers.teamManagersMap[season]) {
+                season += 2;
+            }
         }
 
 		for(const roster of digestedTransaction.rosters) {
