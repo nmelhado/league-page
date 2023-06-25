@@ -1,4 +1,4 @@
-import { leagueID } from '$lib/utils/leagueInfo';
+import { leagueID, managers } from '$lib/utils/leagueInfo';
 import { get } from 'svelte/store';
 import { teamManagersStore } from '$lib/stores';
 import { waitForAll } from './multiPromise';
@@ -60,6 +60,10 @@ const processUsers = (rawUsers) => {
 	let finalUsers = {};
 	for(const user of rawUsers) {
 		finalUsers[user.user_id] = user;
+        const manager = managers.find(m => m.managerID === user.user_id);
+        if(manager) {
+            finalUsers[user.user_id].display_name = manager.name;
+        }
 	}
 	return finalUsers;
 }
