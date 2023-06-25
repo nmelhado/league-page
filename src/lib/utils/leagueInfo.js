@@ -332,6 +332,28 @@ export const managers = [
     "preferredContact": "WhatsApp",
   },
   {
+    "managerID": "746817802953953280",
+    "name": "James Buonadonna",
+    "location": "South Florida",
+    "bio": "South Florida native my roots have stayed. Huge fan of the major four sports teams that reside in the Sunshine state! I am married to my amazing partner and life and have two beautiful children ages 10 and 4. I am very competitive and enjoy the competition brought about by other managers around our league. I was given this opportunity by one of the legends in our game and hope to relish in what I have learned in under that respected leadership. With that said! It’s time to work!",
+    "photo": "/managers/james.jpg",
+    "fantasyStart": 2022,
+    "favoriteTeam": "mia",
+    "mode": "Win Now",
+    "rival": {
+      name: "Hudson",
+      link: 15,
+      image: "/managers/hudson.jpg"
+    },
+    "favoritePlayer": 4039,
+    "valuePosition": "RB",
+    "rookieOrVets": "Vets",
+    "philosophy": "Culture! This team will compete every minute of every game. From top to bottom we want to instill a winning identity. Competition is a privilege and it’s something this team won’t take for granted. We expect to be there when it’s all said and done.",
+    "tradingScale": 10,
+    "contactMethods": "Text, WhatsApp, Sleeper, Carrier Pigeon",
+    "preferredContact": "WhatsApp",
+  },
+  {
     "managerID": "810214986625421312",
     "name": "Hudson Schantz",
     "location": "Ann Arbor, Michigan",
