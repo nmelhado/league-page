@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.3] - 2023-06-25
+
+### Added
+
+- Added fpts/game and win % to the rivalry page as well as emphasizing which manager is leading in each category
+
 ## [2.2.2] - 2023-06-25
 
 ### Fixed

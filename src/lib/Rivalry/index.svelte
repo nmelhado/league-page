@@ -87,13 +87,19 @@
 
     $: tradeHistory = setTradeHistory(playerOne, playerTwo);
 
-    const performanceOrder = [
+    const performanceOrderOne = [
         {field: "wins", label: "Wins", unit: "wins"},
         {field: "losses", label: "Losses", unit: "losses"},
         {field: "ties", label: "Ties", unit: "ties"},
+    ]
+
+    const performanceOrderTwo = [
         {field: "fptsFor", label: "Fantasy Points For", unit: "fpts"},
         {field: "fptsAgainst", label: "Fantasy Points Against", unit: "fpts against"},
     ]
+
+    const playerOneRecords = recordsInfo.regularSeasonData.leagueManagerRecords[playerOne];
+    const playerTwoRecords = recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo];
 </script>
 
 <style>
@@ -194,24 +200,52 @@
             </div>
         {/if}
     </div>
-    {#if playerOne && playerTwo && recordsInfo?.regularSeasonData?.leagueManagerRecords && recordsInfo.regularSeasonData.leagueManagerRecords[playerOne] && recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo] }
+    {#if playerOne && playerTwo && recordsInfo?.regularSeasonData?.leagueManagerRecords && playerOneRecords && playerTwoRecords }
         <div class="scoreBoard">
             <!-- record comparisson -->
             <h3>Performance Comparisson</h3>
-            {#each performanceOrder as stat }
+            <ComparissonBar
+                sideOne={parseFloat(round(
+                    playerOneRecords.wins/(playerOneRecords.wins + playerOneRecords.ties + playerOneRecords.losses) * 100
+                    ))}
+                sideTwo={parseFloat(round(
+                    playerTwoRecords.wins/(playerTwoRecords.wins + playerTwoRecords.ties + playerTwoRecords.losses) * 100
+                    ))}
+                label="Win Percentage"
+                unit="%"
+            />
+            {#each performanceOrderOne as stat }
                 <ComparissonBar
-                    sideOne={parseFloat(round(recordsInfo.regularSeasonData.leagueManagerRecords[playerOne][stat.field]))}
-                    sideTwo={parseFloat(round(recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo][stat.field]))}
+                    sideOne={parseFloat(round(playerOneRecords[stat.field]))}
+                    sideTwo={parseFloat(round(playerTwoRecords[stat.field]))}
                     label={stat.label}
                     unit={stat.unit}
                 />
             {/each}
             <ComparissonBar
                 sideOne={parseFloat(round(
-                    recordsInfo.regularSeasonData.leagueManagerRecords[playerOne].fptsFor/recordsInfo.regularSeasonData.leagueManagerRecords[playerOne].potentialPoints * 100
+                    playerOneRecords.fptsFor/(playerOneRecords.wins + playerOneRecords.ties + playerOneRecords.losses)
                     ))}
                 sideTwo={parseFloat(round(
-                    recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo].fptsFor/recordsInfo.regularSeasonData.leagueManagerRecords[playerTwo].potentialPoints * 100
+                    playerTwoRecords.fptsFor/(playerTwoRecords.wins + playerTwoRecords.ties + playerTwoRecords.losses)
+                    ))}
+                label="Fantasy Points per Game"
+                unit="fpts/game"
+            />
+            {#each performanceOrderTwo as stat }
+                <ComparissonBar
+                    sideOne={parseFloat(round(playerOneRecords[stat.field]))}
+                    sideTwo={parseFloat(round(playerTwoRecords[stat.field]))}
+                    label={stat.label}
+                    unit={stat.unit}
+                />
+            {/each}
+            <ComparissonBar
+                sideOne={parseFloat(round(
+                    playerOneRecords.fptsFor/playerOneRecords.potentialPoints * 100
+                    ))}
+                sideTwo={parseFloat(round(
+                    playerTwoRecords.fptsFor/playerTwoRecords.potentialPoints * 100
                     ))}
                 label="Lineup IQ"
                 unit="%"
