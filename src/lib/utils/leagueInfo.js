@@ -331,6 +331,28 @@ export const managers = [
     "contactMethods": "Text, WhatsApp",
     "preferredContact": "WhatsApp",
   },
+  {
+    "managerID": "810214986625421312",
+    "name": "Hudson Schantz",
+    "location": "Ann Arbor, Michigan",
+    "bio": "Born and raised in the suburbs of New York City, many wonder why I am neither a Jets nor Giants fan. I’ve always loved fantasy football because I get to be in control of my own destiny. I trained with Clayton on the tennis court for many years and am super excited to kick off my inaugural season in the league.",
+    "photo": "/managers/hudson.jpg",
+    "fantasyStart": 2014,
+    "favoriteTeam": "nyg",
+    "mode": "Rebuild",
+    "rival": {
+      name: "TBD",
+      link: null,
+      image: "/managers/everyone.png"
+    },
+    "favoritePlayer": 8205,
+    "valuePosition": "WR",
+    "rookieOrVets": "Rookies",
+    "philosophy": "Know your role… don’t try to be a hero",
+    "tradingScale": 4,
+    "contactMethods": "Text, WhatsApp, Sleeper",
+    "preferredContact": "Text",
+  },
 ]
   
   
