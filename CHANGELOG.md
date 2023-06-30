@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.5] - 2023-06-30
+
+### Fixed
+
+- Fix resources bug. NBC Sports Edge API no longer works and was breaking the resources page [(issue #230)](https://github.com/nmelhado/league-page/issues/230)
+    - Removed it for now. Will try to add it back if I can find the new API
+
 ## [2.2.4] - 2023-06-25
 
 ### Fixed
