@@ -3,7 +3,6 @@ import { get } from 'svelte/store';
 import {news} from '$lib/stores';
 import { dynasty } from '$lib/utils/leagueInfo';
 
-const NBC_URL = 'https://www.nbcsportsedge.com/api/player_news?sort=-created&page%5Blimit%5D=10&page%5Boffset%5D=0&filter%5Bleague.meta.drupal_internal__id%5D=21&include=player,position,team,team.secondary_logo,player.image,related_players,related_teams';
 const REDDIT_DYNASTY = 'https://www.reddit.com/r/DynastyFF/new.json';
 const REDDIT_FANTASY = 'https://www.reddit.com/r/fantasyfootball/new.json';
 const SERVER_API = '/api/fetch_serverside_news';
@@ -14,8 +13,7 @@ export const getNews = async (servFetch, bypass = false) => {
 	}
     const smartFetch = servFetch ?? fetch;
 	const newsSources = [
-		getFeed(NBC_URL, processNBC),
-		smartFetch(SERVER_API, {compress: true}),
+		smartFetch(SERVER_API, {compress: true}), 
 	];
 	if(dynasty) {
 		newsSources.push(getFeed(REDDIT_DYNASTY, processReddit));
@@ -23,10 +21,11 @@ export const getNews = async (servFetch, bypass = false) => {
 		newsSources.push(getFeed(REDDIT_FANTASY, processReddit));
 	}
 
-	const [nbcNews, serverRes, reddit] = await waitForAll(...newsSources).catch((err) => { console.error(err); });
+	const [serverRes, reddit] = await waitForAll(...newsSources).catch((err) => { console.error(err); });
+    console.log(serverRes);
 	const serverData = await serverRes.json().catch((err) => { console.error(err); });
 
-	const articles = [...nbcNews, ...reddit, ...serverData].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
+	const articles = [...reddit, ...serverData].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
 	news.update(() => articles);
 
 	return {articles, fresh: true};
@@ -36,30 +35,11 @@ const getFeed = async (feed, callback) => {
 	const res = await fetch(feed, {compress: true}).catch((err) => { console.error(err); });
 	const data = await res.json().catch((err) => { console.error(err); });
 	
-	if (res.ok) {
+	if (res.ok && data && data.data) {
 		return callback(data.data);
 	} else {
 		throw new Error(data);
 	}
-}
-
-const processNBC = (rawArticles) => {
-	let finalArticles = [];
-	for(const rawArticle of rawArticles) {
-		const ts = Date.parse(rawArticle.attributes.changed);
-		const d = new Date(ts);
-		const date = stringDate(d);
-		finalArticles.push({
-			title: rawArticle.attributes.headline,
-			article: `${rawArticle.attributes.news.processed}${rawArticle.attributes.analysis ? rawArticle.attributes.analysis.processed : ''}`,
-			link: rawArticle.attributes.source_url,
-			author: rawArticle.attributes.source,
-			ts,
-			date,
-			icon: 'newsIcons/nbcSportsEdge.jpeg',
-		});
-	}
-	return finalArticles;
 }
 
 const processReddit = (rawArticles) => {
