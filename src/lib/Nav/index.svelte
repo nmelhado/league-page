@@ -29,7 +29,7 @@
 </script>
 
 <svelte:head>
-	<title>{!$page.url.pathname[1] ? 'Home' : $page.url.pathname[1].toUpperCase() + $page.url.pathname.slice(2)} | League Page</title>
+	<title>{!$page.url.pathname[1] ? 'Home' : $page.url.pathname[1].toUpperCase() + $page.url.pathname.slice(2)} | Make Fantasy Great Again</title>
 </svelte:head>
 
 <style>
@@ -82,7 +82,7 @@
 </style>
 
 <nav>
-	<a href="/"><img id="logo" alt="league logo" src="./badge.png" /></a>
+	<a href="/"><img id="logo" alt="league logo" src="./mfga.jpg" /></a>
 
 	<div class="container">
 		<IconButton
