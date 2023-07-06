@@ -1,4 +1,4 @@
-import parser from 'fast-xml-parser';
+import {XMLParser, XMLValidator} from 'fast-xml-parser';
 import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
 import { dynasty } from '$lib/utils/helper';
 import { json } from '@sveltejs/kit';
@@ -32,12 +32,13 @@ const getXMLArticles = async(url, callback) => {
     const res = await fetch(url, {compress: true}).catch((err) => { console.error(err); });
     const text = await res.text().catch((err) => { console.error(err); });
 
-    let jsonObj;
-    if( parser.validate(text) === true) { //optional (it'll return an object in case it's not valid)
-        jsonObj = parser.parse(text);
+    let xmlData;
+    if(XMLValidator.validate(text) === true){
+        const parser = new XMLParser();
+        xmlData = parser.parse(text);
     }
     
-    return callback(jsonObj.rss.channel.item);
+    return callback(xmlData.rss.channel.item);
 }
 
 const getJSONArticles = async (feed, callback) => {
@@ -62,7 +63,7 @@ const processFF = (articles) => {
 			title: article.title,
 			article: article.description,
 			link: article.link,
-			author: `FTN Fantasy`,
+			author: `Fantasy Footballers`,
 			ts,
 			date,
 			icon,

@@ -22,14 +22,24 @@
         top: 0;
     }
     .side_one {
-        background-color: var(--barChartOne);
+        background-color: var(--compBarOne);
         right: 50%;
         border-radius: 4px 0 0 4px;
     }
     .side_two {
-        background-color: var(--barChartSix);
+        background-color: var(--compBarTwo);
         left: 50%;
         border-radius: 0 4px 4px 0;
+    }
+    .oneWinner {
+        color: var(--compBarOneText);
+        font-weight: 800;
+        text-decoration: underline;
+    }
+    .twoWinner {
+        color: var(--compBarTwoText);
+        font-weight: 800;
+        text-decoration: underline;
     }
     h4 {
         text-align: center;
@@ -62,7 +72,7 @@
         <div class="side side_two" style="width: {sideTwo / (sideOne + sideTwo) * 50}%"/>
     </div>
     <div class="stats">
-        <span class="stat">{sideOne} {unit}</span>
-        <span class="stat">{sideTwo} {unit}</span>
+        <span class="stat{sideOne > sideTwo ? ' oneWinner' : ''}">{sideOne} {unit}</span>
+        <span class="stat{sideTwo > sideOne ? ' twoWinner' : ''}">{sideTwo} {unit}</span>
     </div>
 </div>
