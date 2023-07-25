@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.5] - 2023-07-25
+
+### Fixed
+
+- Small bug that was causing the performance comparisson to not always show up in the rivalry page
+
 ## [2.2.5] - 2023-06-30
 
 ### Fixed
