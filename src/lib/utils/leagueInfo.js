@@ -39,7 +39,7 @@ export const managers = [
        "favoritePlayer": 6803, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-       "philosophy": "Bouncing Back: a book that's been described as "lovely stuff". Not my words, Michael, the words of Shakin' Stevens.",
+       "philosophy": "Bouncing Back: a book that's been described as 'lovely stuff'. Not my words, Michael, the words of Shakin' Stevens.",
        "tradingScale": 10, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
