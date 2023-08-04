@@ -48,7 +48,7 @@ export const managers = [
        "name": "Mik",
        "location": "Letchworth Garden City", // (optional)
        "bio": "From the Midlands and sort of bounced around since uni. Just wanna eat the rich tbh",
-       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+       "photo": "/managers/Mik.png", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2015, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
        "mode": "Rebuild", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
@@ -222,7 +222,7 @@ export const managers = [
        "name": "Steve/Giff",
        "location": "Colliers Wood", // (optional)
        "bio": "Bengals and Crystal Palace bemoaner for 10+ years, big bazball fan and Oasis worshipper. Milk last for a brew, I'm not a heathen.",
-       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+       "photo": "/managers/Giff.png", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2013, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "cin", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
        "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
