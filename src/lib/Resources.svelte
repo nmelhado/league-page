@@ -87,7 +87,15 @@ import { dynasty } from './utils/helper';
             url: "https://www.reddit.com/r/TradeAnalyzerFF/",
             icon: "assessment",
             premium: false,
+            separator: true,
+        },
+        {
+            name: "FantasyCalc Trade Calculator",
+            url: "https://www.fantasycalc.com/trade-calculator",
+            icon: "calculate",
+            premium: false,
             separator: false,
+            dynastyOnly: false,
         },
     ];
 </script>
