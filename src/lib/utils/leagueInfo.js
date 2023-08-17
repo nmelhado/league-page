@@ -68,7 +68,7 @@ export const managers = [
     },
     {
       "roster": 609950720200028160,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Thom Zente",
+      "name": "Tommy Zente",
   
       "location": "Raleigh", // (optional)
       "bio": "",
