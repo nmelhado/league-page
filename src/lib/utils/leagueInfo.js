@@ -23,7 +23,7 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 552955517024108544,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 552955517024108544,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Luke Zente",
      
       "location": "Gisbourne", // (optional)
@@ -45,7 +45,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 552957004627574784,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 552957004627574784,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Matt Loftus",
 
       "location": "Greensboro", // (optional)
@@ -67,7 +67,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-      "roster": 609950720200028160,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 609950720200028160,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Tommy Zente",
   
       "location": "Raleigh", // (optional)
@@ -89,7 +89,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
    {
-      "roster": 868191989932400640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 868191989932400640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Austen Zente",
   
       "location": "Raleigh", // (optional)
@@ -111,7 +111,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
    {
-      "roster": 990668128696766464,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 990668128696766464,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Matt Boles",
   
       "location": "High Point", // (optional)
@@ -133,7 +133,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
    {
-      "roster": 990668902197751808,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 990668902197751808,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Forest Wirz",
   
       "location": "Greensboro", // (optional)
@@ -155,7 +155,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
    {
-      "roster": 991497147843457024,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 991497147843457024,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "John Loftus",
   
       "location": "Oak Ridge", // (optional)
@@ -177,7 +177,7 @@ export const managers = [
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
    {
-      "roster": 991506085108404224,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 991506085108404224,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Josh Poznanski",
   
       "location": "Charlotte", // (optional)
