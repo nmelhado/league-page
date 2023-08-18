@@ -54,7 +54,7 @@ export const managers = [
       "bio": "TBD",
       "photo": "/managers/loftus.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart":2023 , // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "car", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Rival", // Can be anything (usually your rival's name)
@@ -146,7 +146,7 @@ export const managers = [
       "bio": "TBD",
       "photo": "/managers/forest.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart":2023 , // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "car", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "nyg", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Jush", // Can be anything (usually your rival's name)
