@@ -323,7 +323,11 @@ const processMatchups = ({matchupWeek, seasonPointsRecord, record, startWeek, ma
 		const matchup = matchups[matchupKey];
 		let home = matchup[0];
 		let away = matchup[1];
-		if(matchup[0].fpts < matchup[1].fpts) {
+
+        // if there are no teams or only one, continue
+        if(!away || !home) continue;
+        
+		if(home.fpts < away.fpts) {
 			home = matchup[1];
 			away = matchup[0];
 		}
