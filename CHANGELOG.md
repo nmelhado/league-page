@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.8] - 2023-08-21
+
+### Fixed
+
+- If a league did multiple drafts in the same season (startup and rookie for example), only the most recent was displayed. This ensures that all drafts from a particular season are displayed. [(issue #240)](https://github.com/nmelhado/league-page/issues/240)
+
+## [2.2.7] - 2023-08-21
+
+### Fixed
+
+- Some matchups only had one team in the matchup (playing themselves ????), which caused bugs in any page that touched league records [(issue #244)](https://github.com/nmelhado/league-page/issues/244)
+
+## [2.2.6] - 2023-07-25
+
+### Fixed
+
+- Small bug that was causing the performance comparisson to not always show up in the rivalry page
+
 ## [2.2.5] - 2023-06-30
 
 ### Fixed
