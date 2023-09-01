@@ -184,43 +184,51 @@ export const getPreviousDrafts = async () => {
 	const drafts = [];
 	
 	while(curSeason && curSeason != 0) {
-		const leagueData = await getLeagueData(curSeason).catch((err) => { console.error(err); });
-	
-		const draftID = leagueData.draft_id;
-		let year = parseInt(leagueData.season);
-		curSeason = leagueData.previous_league_id;
-	
-		const [officialDraftRes, picksRes, playersRes] = await waitForAll(
-			fetch(`https://api.sleeper.app/v1/draft/${draftID}`, {compress: true}),
-			fetch(`https://api.sleeper.app/v1/draft/${draftID}/traded_picks`, {compress: true}),
-			fetch(`https://api.sleeper.app/v1/draft/${draftID}/picks`, {compress: true}),
-		).catch((err) => { console.error(err); });
-	
-		const [officialDraft, picks, players] = await waitForAll(
-			officialDraftRes.json(),
-			picksRes.json(),
-			playersRes.json(),
-		).catch((err) => { console.error(err); });
+		const [leagueData, completedDraftsInfo] = await waitForAll(
+            getLeagueData(curSeason).catch((err) => { console.error(err); }),
+            fetch(`https://api.sleeper.app/v1/league/${curSeason}/drafts`, {compress: true}),
+        ).catch((err) => { console.error(err); });
 
-		if(officialDraft.status != "complete") continue;
-	
-		let draft;
-		let draftOrder;
+        const completedDrafts = await completedDraftsInfo.json();
+        curSeason = leagueData.previous_league_id;
 
-	
-		const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, players, officialDraft.type);
-		draft = buildRes.draft;
-		draftOrder = buildRes.draftOrder;
+        for(const completedDraft of completedDrafts) {
+            const draftID = completedDraft.draft_id;
+            const year = parseInt(completedDraft.season);
+        
+            const [officialDraftRes, picksRes, playersRes] = await waitForAll(
+                fetch(`https://api.sleeper.app/v1/draft/${draftID}`, {compress: true}),
+                fetch(`https://api.sleeper.app/v1/draft/${draftID}/traded_picks`, {compress: true}),
+                fetch(`https://api.sleeper.app/v1/draft/${draftID}/picks`, {compress: true}),
+            ).catch((err) => { console.error(err); });
+        
+            const [officialDraft, picks, players] = await waitForAll(
+                officialDraftRes.json(),
+                picksRes.json(),
+                playersRes.json(),
+            ).catch((err) => { console.error(err); });
 
-		const newDraft = {
-			year,
-			draft,
-			draftOrder,
-			draftType: officialDraft.type,
-			reversalRound: officialDraft.settings.reversal_round,
-		}
+            if(officialDraft.status != "complete") continue;
+        
+            let draft;
+            let draftOrder;
+
+        
+            const buildRes = buildConfirmed(officialDraft.slot_to_roster_id, officialDraft.settings.rounds, picks, players, officialDraft.type);
+            draft = buildRes.draft;
+            draftOrder = buildRes.draftOrder;
+
+            const newDraft = {
+                year,
+                draft,
+                draftOrder,
+                draftType: officialDraft.type,
+                reversalRound: officialDraft.settings.reversal_round,
+            }
+        
+            drafts.push(newDraft);
+        }
 	
-		drafts.push(newDraft);
 	}
 	
 	previousDrafts.update(() => drafts);
