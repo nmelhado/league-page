@@ -89,7 +89,7 @@ export const managers = [
        "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
        "name": "Greg Holmes",
        "location": "Hull aka 'ull", // (optional)
-       "bio": "Lorem ipsum...",
+       "bio": "fairly new to NFL and fantasy on a whole but love it all, work at MINI shifting cars so always ready to do a deal 🤝 2 kids which is great for the off season too haha",
        "photo": "/managers/Greg.png", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2016, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "ten", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
