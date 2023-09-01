@@ -255,7 +255,7 @@ export const managers = [
      },
      {
        "roster": 12,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-       "name": "Andy Baards",
+       "name": "Andy Baarda",
        "location": "Hull", // (optional)
        "bio": "Divorced 42yo Dad of two, Operations Manager, simple sarcastic Yorkshire lad",
        "photo": "/managers/Andy.png", // square ratio recommended (no larger than 500x500)
@@ -271,7 +271,7 @@ export const managers = [
        "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
        "philosophy": "Always choke",
-       "tradingScale": 10, // 1 - 10
+       "tradingScale": -10, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
   ]
