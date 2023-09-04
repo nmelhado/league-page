@@ -2,7 +2,7 @@
     import { Posts } from "$lib/components";
 
     export let data;
-    const {postsData, queryPage, filterKey, usersData, rostersData} = data;
+    const {postsData, queryPage, filterKey, leagueTeamManagersData} = data;
 </script>
 
 <style>
@@ -18,5 +18,5 @@
 </style>
 
 <div id="main">
-    <Posts {rostersData} {postsData} {queryPage} {filterKey} {usersData} />
+    <Posts {postsData} {queryPage} {filterKey} {leagueTeamManagersData} />
 </div>

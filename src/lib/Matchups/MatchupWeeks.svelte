@@ -4,7 +4,7 @@
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
 
-    export let queryWeek, players, matchupWeeks, year, week, regularSeasonLength, selection;
+    export let queryWeek, players, matchupWeeks, year, week, regularSeasonLength, selection, leagueTeamManagers;
 
     let displayWeek = queryWeek * 1 || 1;
 
@@ -119,6 +119,6 @@
         {/if}
     </div>
     {#each matchupArray as matchup, ix (rand * (ix + 1))}
-        <Matchup {ix} {matchup} {players} {displayWeek} bind:active={active} />
+        <Matchup {ix} {matchup} {players} {displayWeek} bind:active={active} {leagueTeamManagers} />
     {/each}
 </div>

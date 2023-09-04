@@ -4,9 +4,9 @@
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"
 	
-	export let roster, users, startersAndReserve, players, rosterPositions, division, expanded;
+	export let roster, leagueTeamManagers, startersAndReserve, players, rosterPositions, division, expanded;
 
-	$: user = users[roster.owner_id];
+	$: team = leagueTeamManagers.teamManagersMap[leagueTeamManagers.currentSeason][roster.roster_id].team;
 
 	let i = 0;
 
@@ -262,9 +262,9 @@
 		<Head> <!-- Team name  -->
 			<Row>
 				<Cell colspan=4 class="r_{division} clickable">
-					<h3 on:click={() => gotoManager(roster.roster_id)}>
-						<img alt="team avatar" class="teamAvatar" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
-						{user?.metadata.team_name ? user.metadata.team_name : (user?.display_name ? user?.display_name : 'No Manager')}
+					<h3 on:click={() => gotoManager({leagueTeamManagers, rosterID: roster.roster_id})}>
+						<img alt="team avatar" class="teamAvatar" src="{team ? team.avatar : 'https://sleepercdn.com/images/v2/icons/player_default.webp'}" />
+						{team?.name ? team.name : 'No Manager'}
 					</h3>
 
 					<div class="record">
