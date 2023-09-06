@@ -162,7 +162,7 @@ const completedAuction = ({players, draft, draftOrder, draftOrderObj}) => {
 		rosters[draftOrderObj[key]] = [];
 	}
 	for(const playerData of players) {
-		const data = {player: playerData.player_id, amount: playerData.amount};
+		const data = {player: playerData.player_id, amount: playerData.metadata.amount};
 		rosters[playerData.roster_id].push(data);
 	}
 	for (const roster in rosters) {

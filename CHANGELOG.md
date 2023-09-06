@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2023-09-06
+
+### Fixed
+
+- Auction leagues weren't correctly displaying the bid amount. [(issue #254)](https://github.com/nmelhado/league-page/issues/254)
+
+### Changed
+
+- Blogs are now displayed as previews. This umproves the UI by avoiding massive walls of text. I've also added dedicated full blog post pages to display the full post and comments. This gives individual blog posts their own links for improved shareability.
+
 ## [2.2.8] - 2023-08-21
 
 ### Fixed
