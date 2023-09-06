@@ -2,21 +2,8 @@
     import { parseDate, getAuthor, getAvatar, generateParagraph } from "$lib/utils/helper";
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
-    import Comments from "./Comments.svelte";
 
-    export let leagueTeamManagers, post, createdAt, id = null, direction = 1, home = false;
-
-    let loadingComments = true;
-    let total, comments;
-
-    onMount(async()=> {
-        const res = await fetch(`/api/getBlogComments/${id}`, {compress: true});
-        const commentsData = await res.json();
-
-        total = commentsData.total;
-        comments = [...commentsData.items].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
-        loadingComments = false;
-    });
+    export let leagueTeamManagers, post, createdAt, id = null, direction = 1;
 
     let safePost = false;
     let title, body, type, author;
@@ -186,11 +173,6 @@
 		margin-right: 5px;
 		border: 0.25px solid #777;
 	}
-
-    .commentDivider {
-        margin: 1em 0 0;
-
-    }
 
     .authorAndDate {
         color: var(--g999);
