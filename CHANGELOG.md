@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2023-09-06
+
+### Fixed
+
+- Darkmode fix for blog post preview
+
 ## [2.3.0] - 2023-09-06
 
 ### Fixed
