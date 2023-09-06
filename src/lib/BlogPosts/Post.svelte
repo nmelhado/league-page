@@ -53,7 +53,7 @@
         font-size: 0.8em;
         padding: 0.5em 1em;
         margin-right: 1em;
-        color: var(--fff);
+        color: white;
     }
 
     .large {
@@ -195,13 +195,13 @@
     .fadeTop {
         height: 2em;
         width: 100%;
-        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255, 255, 255, 1));
+        background-image: linear-gradient(to bottom, var(--fffTransparent), var(--fff));
     }
 
     .fadeBottom {
         height: 1em;
         width: 100%;
-        background-color: white;
+        background-color: var(--fff);
     }
 
     .viewFull {
