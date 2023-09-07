@@ -1,7 +1,7 @@
 <script>
-    import { parseDate, getAuthor, getAvatar, generateParagraph } from "$lib/utils/helper";
-    import { onMount } from "svelte";
+    import { generateParagraph } from "$lib/utils/helper";
     import { fly } from "svelte/transition";
+	import AuthorAndDate from "./AuthorAndDate.svelte";
 
     export let leagueTeamManagers, post, createdAt, id = null, direction = 1;
 
@@ -47,26 +47,16 @@
     }
 
     .button {
-        background-color: #00316b;
+        background-color: #0082c3;
+        font-size: 1em;
         border-radius: 1em;
         text-decoration: none;
-        font-size: 0.8em;
         padding: 0.5em 1em;
         margin-right: 1em;
         color: white;
     }
 
-    .large {
-        font-size: 1em;
-        padding: 0.5em 1em;
-        background-color: #0082c3;
-    }
-
     .button:hover {
-        background-color: #0082c3;
-    }
-
-    .large:hover {
         background-color: #00316b;
     }
 
@@ -165,19 +155,6 @@
         background: var(--ddd);
         margin-bottom: 1em;
     }
-	
-	.teamAvatar {
-		vertical-align: middle;
-		border-radius: 50%;
-		height: 30px;
-		margin-right: 5px;
-		border: 0.25px solid #777;
-	}
-
-    .authorAndDate {
-        color: var(--g999);
-        padding: 0 2em;
-    }
 
     .body {
         position: relative;
@@ -232,17 +209,12 @@
             </div>
             
             <div class="viewFull">
-                <a class="button large" href="/blog/{id}">View Full Post</a>
+                <a class="button" href="/blog/{id}">View Full Post</a>
             </div>
 
             <hr class="divider" />
 
-            <div class="authorAndDate">
-                <a class="button" href="/blog?filter={type}&page=1">{type}</a>
-                <img alt="author avatar" class="teamAvatar" src="{getAvatar(leagueTeamManagers, author)}" />
-                <span class="author">{@html getAuthor(leagueTeamManagers, author)} - </span>
-                <span class="date"><i>{parseDate(createdAt)}</i></span>
-            </div>
+            <AuthorAndDate {type} {leagueTeamManagers} {author} {createdAt} />
         </div>
     {/key}
 {/if}

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.2] - 2023-09-07
+
+### Fixed
+
+- Correctly display author and commenter names and images
+
 ## [2.3.1] - 2023-09-06
 
 ### Fixed
