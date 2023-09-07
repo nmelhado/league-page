@@ -59,6 +59,7 @@ export const getLeagueTeamManagers = async () => {
 const processUsers = (rawUsers) => {
 	let finalUsers = {};
 	for(const user of rawUsers) {
+        user.user_name = user.user_name ?? user.display_name;
 		finalUsers[user.user_id] = user;
         const manager = managers.find(m => m.managerID === user.user_id);
         if(manager) {
