@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.3] - 2023-09-08
+
+### Fixed
+
+- Use most recent user avatar for author and comment image
+
+### Added
+
+- Add positional key to rosters. [(enhancement #261)](https://github.com/nmelhado/league-page/issues/261)
+    - Aso added team logo and removed the large team text to better use the space
+
 ## [2.3.2] - 2023-09-07
 
 ### Fixed
