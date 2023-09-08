@@ -87,19 +87,9 @@ export const getAuthor = (leagueTeamManagers, author) => {
 }
 
 export const getAvatar = (leagueTeamManagers, author) => {
-    let userID;
     for(const uID in leagueTeamManagers.users) {
         if(leagueTeamManagers.users[uID].user_name.toLowerCase() == author.toLowerCase()) {
-            userID = uID;
-        }
-    }
-    if(userID) {
-        for(const yearKey in leagueTeamManagers.teamManagersMap) {
-            for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
-                if(leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers.includes(userID)) {
-                    return getAvatarFromTeamManagers(leagueTeamManagers, rosterKey, yearKey);
-                }
-            }
+            return `https://sleepercdn.com/avatars/thumbs/${leagueTeamManagers.users[uID].avatar}`;
         }
     }
     return 'managers/question.jpg';
