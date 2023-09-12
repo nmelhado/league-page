@@ -129,14 +129,13 @@
 
     .bio {
         margin: 2em 1.5em 2em;
-        text-indent: 4em;
 	text-align: center;
     }
 
     .philosophy {
         margin: 2em 1.5em 2em;
-        text-indent: 4em;
 	text-align: center;
+	font-style: italic;
     }
 
     .loading {
@@ -292,7 +291,7 @@
         </div>
 
 	<h3>Bio</h3>
-        ><p class="bio">{@html viewManager.bio}</p>
+        <p class="bio">{@html viewManager.bio}</p>
 
         {#if viewManager.philosophy}
             <!-- philosophy is an optional field -->
