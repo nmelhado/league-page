@@ -1,13 +1,20 @@
 /*   STEP 1   */
 export const leagueID = "992181047900819456"; // your league ID
-export const leagueName = "Fantasies 🤪😋"; // your league name
+export const leagueName = "Welcome!"; // your league name
 export const dues = 50; // (optional) used in template constitution page
 export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Welcome to the official Fantasies 🤪😋 league website</p>
+  <p>Welcome to the official Fantasies 🤪😋 league website. </p>
+  <p> Welcome to the hottest fantasy football league on the internet, where touchdowns are elusive,
+  trash talk is epic, and our intelligence levels range from 'football genius' to 'still trying to figure out 
+  why they kick the ball so much.' We've got more power rankings than a superhero convention, standings so detailed 
+  even your grandma will understand, and in-depth records that make your high school yearbook look like a menu. Join our league, 
+  where diversity isn't just in our team rosters but in the range of strategies, and where we take winning as seriously as we take our weekly 
+  taco night. Get ready for the ride of your fantasy football life! </p>
+  
 `;
 
 /*   STEP 3   */
