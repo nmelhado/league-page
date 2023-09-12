@@ -206,16 +206,6 @@
 		box-shadow: 0 12px 9px -12px rgba(0,0,0,0.4);
 	}
 
-	.pastParent {
-		width: 100%;
-		text-align: center;
-		padding: 25px 0 40px;
-		margin-top: 30px;
-		box-shadow: 0 12px 9px -12px rgba(0,0,0,0.4);
-		display:inline-block;
-
-	}
-
 	.banner {
 		display: block;
 		width: 65%;
@@ -444,11 +434,22 @@
 	<h4>2019</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
-	<div class="pastParent">
+	<div id="podium">
+
+		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
+		
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
-		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
-		<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 8)}</span>
 	</div>
-	
+
+	<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+
+			<div class="toiletBowl">
+				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 8)}</span>
+	</div>
 </div>
