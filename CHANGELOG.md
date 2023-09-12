@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.3] - 2023-09-08
+
+### Fixed
+
+- Use most recent user avatar for author and comment image
+
+### Added
+
+- Add positional key to rosters. [(enhancement #261)](https://github.com/nmelhado/league-page/issues/261)
+    - Aso added team logo and removed the large team text to better use the space
+
+## [2.3.2] - 2023-09-07
+
+### Fixed
+
+- Correctly display author and commenter names and images
+
+## [2.3.1] - 2023-09-06
+
+### Fixed
+
+- Darkmode fix for blog post preview
+
+## [2.3.0] - 2023-09-06
+
+### Fixed
+
+- Auction leagues weren't correctly displaying the bid amount. [(issue #254)](https://github.com/nmelhado/league-page/issues/254)
+
+### Changed
+
+- Blogs are now displayed as previews. This umproves the UI by avoiding massive walls of text. I've also added dedicated full blog post pages to display the full post and comments. This gives individual blog posts their own links for improved shareability.
+
 ## [2.2.8] - 2023-08-21
 
 ### Fixed
