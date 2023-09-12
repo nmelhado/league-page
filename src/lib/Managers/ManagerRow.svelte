@@ -88,8 +88,8 @@
 
     .infoIcon {
         display: inline-flex;
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         justify-content: center;
         align-items: center;
         border-radius: 100%;
@@ -99,7 +99,7 @@
     }
 
     .infoImg {
-        height: 30px;
+        height: 40px;
     }
 
     .infoAnswer {
