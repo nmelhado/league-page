@@ -8,10 +8,9 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 /*   STEP 2   */
 export const homepageText = `
   <p> Welcome to our fantasy league website, where intelligence is elusive, where diversity is nearly non-existent,
-  and where Some of us still haven't realized Demarco Murray is no longer in the league.</P>
+  and where some of us still haven't realized Demarco Murray is no longer in the league.</P>
 
   <p>This site has detailed power rankings, standings, waiver/trade transactions, past records, and a head-to-head past matchup analyzer</p>
-  
 `;
 
 /*   STEP 3   */
