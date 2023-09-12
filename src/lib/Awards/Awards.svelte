@@ -226,7 +226,6 @@
 
 	:global(.curOwner) {
 		font-size: 0.75em;
-		color: var(--bbb);
 		font-style: italic;
 	}
 
@@ -392,7 +391,6 @@
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
-		<img src="./podium.png" class="podiumImage" alt="podium" />
 
 		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})} alt="champion" />
@@ -409,5 +407,49 @@
 				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 			</div>
 			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 9)}</span>
+	</div>
+
+	<h4>2020</h4>
+	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+
+	<div id="podium">
+
+		<!-- champs -->
+		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 1, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 1})} alt="champion" />
+		
+		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 1})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 1)}</span>
+	</div>
+
+	<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+
+			<div class="toiletBowl">
+				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
+	</div>
+
+	<h4>2019</h4>
+	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+
+	<div id="podium">
+
+		<!-- champs -->
+		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
+		
+		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
+	</div>
+
+	<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+
+			<div class="toiletBowl">
+				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 8)}</span>
 	</div>
 </div>
