@@ -1,13 +1,13 @@
 /*   STEP 1   */
 export const leagueID = "992181047900819456"; // your league ID
-export const leagueName = "Welcome!"; // your league name
+export const leagueName = "Fantasies 🤪😋"; // your league name
 export const dues = 50; // (optional) used in template constitution page
 export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p> Welcome to the Fantasies 🤪😋 league website, where intelligence is elusive, where diversity is nearly non-existent,
+  <p> Welcome to our fantasy league website, where intelligence is elusive, where diversity is nearly non-existent,
   and where Some of us still haven't realized Demarco Murray is no longer in the league.</P>
 
   <p>This site has detailed power rankings, standings, waiver/trade transactions, past records, and a head-to-head past matchup analyzer</p>
