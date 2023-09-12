@@ -180,7 +180,7 @@ export const managers = [
         "favoritePlayer": 6789, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
         // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-        "philosophy": "I only draft players who watch anime and like Goodwill, not those other *thugs*",
+        "philosophy": "I don't draft thugs*",
         // "tradingScale": 10, // 1 - 10
         // "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
