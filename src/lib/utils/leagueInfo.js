@@ -204,7 +204,7 @@ export const managers = [
       "bio": "Most leagues don't operate with a handicap, but we, unfortunately, do.",
       "photo": "/managers/braxton.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "az", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "ari", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Himself", // Can be anything (usually your rival's name)
@@ -231,7 +231,7 @@ export const managers = [
       "rival": {
         name: "Nikhil", // Can be anything (usually your rival's name)
         link: 2, // manager array number within this array, or null to link back to all managers page
-        image: "/managers/nikhil.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+        image: "/managers/nikhil.png", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
         },
         // "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
@@ -275,7 +275,7 @@ export const managers = [
       "rival": {
         name: "Connor", // Can be anything (usually your rival's name)
         link: 3, // manager array number within this array, or null to link back to all managers page
-        image: "/managers/connor2.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+        image: "/managers/connor2.png", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
         },
         // "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
