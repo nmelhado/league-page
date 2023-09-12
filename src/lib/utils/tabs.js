@@ -7,6 +7,11 @@ export const tabs = [
         dest: '/',
     },
     {
+        icon: 'groups',
+        label: 'Members',
+        dest: '/managers',
+    },
+    {
         icon: 'sports',
         label: 'Matchups',
         dest: '/matchups',
@@ -31,11 +36,11 @@ export const tabs = [
                 label: 'Rosters',
                 dest: '/rosters',
             },
-            {
-                icon: 'groups',
-                label: 'Managers',
-                dest: '/managers',
-            },
+            // {
+            //     icon: 'groups',
+            //     label: 'Managers',
+            //     dest: '/managers',
+            // },
             {
                 icon: 'local_fire_department',
                 label: 'Rivalry',
