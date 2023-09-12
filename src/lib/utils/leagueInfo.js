@@ -47,7 +47,7 @@ export const managers = [
       "name": "Blake",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "The Clouds", // (optional)
-      "bio": "In the world of numbers, he's a maestro. In the world of fantasy football, he's the king of mediocrity, and he wouldn't have it any other way. When the smoke clears, you'll find him and Leo laughing their way to the middle of the pack",
+      "bio": "In the world of numbers, he's a maestro. In the world of fantasy football, he's the king of mediocrity, and he wouldn't have it any other way. When the smoke clears, you'll find him laughing his way to the sacko",
       "photo": "/managers/blake.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -69,7 +69,7 @@ export const managers = [
       "name": "Nikhil",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Atlanta, GA", // (optional)
-      "bio": "Our resident data wizard, wielding spreadsheets like a sorcerer, but using them for decisions that would make a Magic 8-Ball blush",
+      "bio": "Our resident data bitch, wielding spreadsheets like a sorcerer, but using them for decisions that would make a Magic 8-Ball blush",
       "photo": "/managers/nikhil.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -91,7 +91,7 @@ export const managers = [
       "name": "Connor",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Ron Desanctimonious' State", // (optional)
-      "bio": "Conner (Connor?) rides his one championship like a Bentley when it's really a Hyuandai. That asterisk may never fade, but neither will his smug grin",
+      "bio": "Conner (Connor?) rides his one championship like a Bentley when it's really a Hyundai. That asterisk may never fade, but neither will his smug grin",
       "photo": "/managers/connor2.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -113,10 +113,10 @@ export const managers = [
       "name": "Moose",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Wherever He Has Family", // (optional)
-      "bio": "Hailing from the heart of rural Alabama with the cleanest fade this side of the Mason-Dixon, Moose is our doctor friend. We implore Moose to get in contact with his various fatherless children - they deserve to know their daddy's our reigning champion",
+      "bio": "Hailing from the heart of rural Alabama with the cleanest fade this side of the Mason-Dixon, Moose is our doctor friend. We implore Moose to get in contact with his various fatherless children -- they deserve to know their daddy's our reigning champion",
       "photo": "/managers/mousa.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "nola", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "no", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Nikhil", // Can be anything (usually your rival's name)
@@ -157,7 +157,7 @@ export const managers = [
       "name": "Tyler",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Atlanta, GA", // (optional)
-      "bio": "Prior to 2019, Tyler couldn't tell you what touchdown was or how to unclasp a bra. Since then, he's undergone a major transformation, placing him in the top 12 of our league every year.",
+      "bio": "Prior to 2019, Tyler couldn't tell you what a touchdown was or how to unclasp a bra. Since then, he's undergone a major transformation, placing him in the top 12 of our league every year.",
       "photo": "/managers/tyler.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -201,10 +201,10 @@ export const managers = [
       "name": "Braxton",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Atlanta, GA", // (optional)
-      "bio": "Most leagues don't operate with a handicap, but we, unfortunately do.",
+      "bio": "Most leagues don't operate with a handicap, but we, unfortunately, do.",
       "photo": "/managers/braxton.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "phx", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "az", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Himself", // Can be anything (usually your rival's name)
@@ -224,14 +224,14 @@ export const managers = [
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "His Parents' Basement", // (optional)
       "bio": "Getting angry texts from Manthena for calling him Dicky in 3..2..1..In all reality, Manthena is the nicest guy you'll ever meet. He must be compensating for something",
-      "photo": "/managers/braxton.jpg", // square ratio recommended (no larger than 500x500)
+      "photo": "/managers/manthena.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "la", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Nikhil", // Can be anything (usually your rival's name)
         link: 2, // manager array number within this array, or null to link back to all managers page
-        image: "/managers/manthena.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+        image: "/managers/nikhil.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
         },
         // "favoritePlayer": 1426, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
@@ -246,7 +246,7 @@ export const managers = [
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Also His Parents' Basement", // (optional)
       "bio": "[No bio, just like the man's go no neck]",
-      "photo": "/managers/braxton.jpg", // square ratio recommended (no larger than 500x500)
+      "photo": "/managers/austinh.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
@@ -270,7 +270,7 @@ export const managers = [
       "bio": "Tripod Mike is a boomeranger to this league. Here's to hoping he doesn't offer any trades he might later regret!",
       "photo": "/managers/michael.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "nyc", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "favoriteTeam": "nyg", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Connor", // Can be anything (usually your rival's name)
