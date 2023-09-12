@@ -1,15 +1,13 @@
 /*   STEP 1   */
 export const leagueID = "992181047900819456"; // your league ID
-export const leagueName = "The NUT Fantasy Football League"; // your league name
-export const dues = 100; // (optional) used in template constitution page
-export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
+export const leagueName = "Fantasies 🤪😋"; // your league name
+export const dues = 50; // (optional) used in template constitution page
+export const dynasty = false; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Founded in 2023, The NUT Fantasy Football League began as a group of friends living in the same neighborhood as the casual ESPN Auction or Yahoo Fantasy Football League. Then at the beginning of 2023, a couple of them discussed transitioning to a full-fledged long-term commitment, Dynasty League. </p>
-  <p>Now in our inaugural season, the managers will compete to win the NUT Cup and avoid trying to fly the ever-humiliating losers flag.</p>
-  
+  <p>Welcome to the official Fantasies 🤪😋 league website</p>
 `;
 
 /*   STEP 3   */
@@ -24,13 +22,13 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 export const managers = [
     {
       "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Jeff Peterson",
+      "name": "Mr. Commissioner - Austin Paul Tamblyn",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Auburn, WA", // (optional)
-      "bio": "Lorem ipsum...",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "Seahawks", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+      "location": "ATL/PDX/HOES", // (optional)
+      "bio": "Commissioner by day, Four Roses Bourboon spokesperson by night. Treat this man wih integrity, and he will [mostly] reciprocate. Approach with caution when the drinks start flowing",
+      "photo": "/managers/austin.jpg", // square ratio recommended (no larger than 500x500)
+      "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
+      "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "Rival", // Can be anything (usually your rival's name)
