@@ -290,7 +290,7 @@
             </Group>
         </div>
 
-	<h3>Bio</h3>
+	<h3>About {viewManager.name}</h3>
         <p class="bio">{@html viewManager.bio}</p>
 
         {#if viewManager.philosophy}
