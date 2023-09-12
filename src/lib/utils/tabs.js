@@ -17,10 +17,25 @@ export const tabs = [
         dest: '/matchups',
     },
     {
-        icon: 'swap_horiz',
-        label: 'Trades & Waivers',
-        dest: '/transactions',
+    icon: 'emoji_events',
+    label: 'Trophies',
+    dest: '/awards',
     },
+    {
+    icon: 'military_tech',
+    label: 'All Time Records',
+    dest: '/records',
+    },
+    {
+    icon: 'local_fire_department',
+    label: 'Rivalry',
+    dest: '/rivalry',
+    },
+    // {
+    //     icon: 'swap_horiz',
+    //     label: 'Trades & Waivers',
+    //     dest: '/transactions',
+    // },
     {
         icon: 'article',
         label: 'Blog',
@@ -42,11 +57,6 @@ export const tabs = [
             //     dest: '/managers',
             // },
             {
-                icon: 'local_fire_department',
-                label: 'Rivalry',
-                dest: '/rivalry',
-            },
-            {
                 icon: 'leaderboard',
                 label: 'Standings',
                 dest: '/standings',
@@ -57,20 +67,15 @@ export const tabs = [
                 dest: '/drafts',
             },
             {
-                icon: 'emoji_events',
-                label: 'Trophy Room',
-                dest: '/awards',
+                icon: 'swap_horiz',
+                label: 'Trades & Waivers',
+                dest: '/transactions',
             },
-            {
-                icon: 'military_tech',
-                label: 'Records',
-                dest: '/records',
-            },
-            {
-                icon: 'history_edu',
-                label: 'Constitution',
-                dest: '/constitution',
-            },
+            // {
+            //     icon: 'history_edu',
+            //     label: 'Constitution',
+            //     dest: '/constitution',
+            // },
             {
                 icon: 'sports_football',
                 label: 'Go to Sleeper',
