@@ -43,8 +43,8 @@
     }
 
     .photo {
-        height: 40px;
-        width: 40px;
+        height: 100px;
+        width: 100px;
         border-radius: 100%;
         vertical-align: middle;
         margin-left: 1em;
