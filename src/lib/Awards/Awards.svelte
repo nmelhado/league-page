@@ -15,6 +15,10 @@
 		margin: 2.5em 0 1.5em;
 	}
 
+	h4 {
+		margin: 2.5em 0 1.5em;
+	}
+
 	.awards {
 		display: block;
 		position: relative;
@@ -77,6 +81,10 @@
 		text-align: center;
 	}
 
+	h4 {
+		text-align: center;
+	}
+	
 	.leaderBlock {
 		position: relative;
 		width: 80px;
@@ -380,6 +388,7 @@
 
 	<h3>Pre-Sleeper Awards</h3>
 
+	<h4>2021</strong></h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
@@ -389,5 +398,16 @@
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})} alt="champion" />
 		
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 4)}</span>
+	</div>
+
+	<div class="toiletParent">
+			
+			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+
+			<div class="toiletBowl">
+				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 9, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})} alt="toilet bowl winner" />
+				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+			</div>
+			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 9)}</span>
 	</div>
 </div>
