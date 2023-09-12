@@ -39,7 +39,7 @@
 </style>
 
 <div class="managerContainer">
-    <h2>{leagueName} Managers</h2>
+    <h2>{leagueName} Members</h2>
     <div class="managerConstrained">
         {#each managers as manager, key}
             <ManagerRow {manager} {leagueTeamManagers} {key} />
