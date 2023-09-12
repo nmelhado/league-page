@@ -388,7 +388,7 @@
 
 	<h3>Pre-Sleeper Awards</h3>
 
-	<h4>2021</strong></h4>
+	<h4>2021</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
