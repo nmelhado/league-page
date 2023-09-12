@@ -389,7 +389,5 @@
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})} alt="champion" />
 		
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 4)}</span>
-
-		d})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, third)}</span>
 	</div>
 </div>
