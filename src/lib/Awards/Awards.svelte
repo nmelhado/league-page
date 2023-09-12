@@ -206,6 +206,16 @@
 		box-shadow: 0 12px 9px -12px rgba(0,0,0,0.4);
 	}
 
+	.pastParent {
+		width: 100%;
+		text-align: center;
+		padding: 25px 0 40px;
+		margin-top: 30px;
+		box-shadow: 0 12px 9px -12px rgba(0,0,0,0.4);
+		display:inline-block;
+
+	}
+
 	.banner {
 		display: block;
 		width: 65%;
@@ -441,13 +451,11 @@
 	Second DIV
 	</div>
 
-	<div style="float:center; height:100px; margin:10px">
+	<div class="pastParent">
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
-	</div>
-
-	<div style="float:center; height:100px; margin:10px">
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
 		<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 8)}</span>
 	</div>
+	
 </div>
