@@ -58,6 +58,7 @@
         line-height: 1.2em;
         margin-left: 1em;
         font-weight: 700;
+	font-size: 30px;
     }
 
     .team {
@@ -68,6 +69,7 @@
         color: var(--g555);
         font-weight: 300;
         margin-left: 1em;
+	font-size: 25px;
     }
 
     .spacer {
