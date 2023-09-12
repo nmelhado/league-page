@@ -390,7 +390,7 @@
 	<h4>2021</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
-	<div id="toiletParent">
+	<div id="podium">
 
 		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})} alt="champion" />
@@ -412,7 +412,7 @@
 	<h4>2020</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
-	<div id="toiletParent">
+	<div id="podium">
 
 		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 1, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 1})} alt="champion" />
@@ -434,7 +434,7 @@
 	<h4>2019</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
-	<div id="toiletParent">
+	<div id="podium">
 
 		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
