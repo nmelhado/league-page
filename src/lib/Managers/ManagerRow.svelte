@@ -257,7 +257,7 @@
             {/if}
         </div>
         <!-- Preferred contact -->
-        <div class="infoSlot">
+        <!-- <div class="infoSlot">
             {#if manager.preferredContact}
                 <div class="infoIcon">
                     <img class="infoImg" src="/{manager.preferredContact}.png" alt="{manager.preferredContact}"/>
@@ -270,7 +270,7 @@
                     <img class="infoImg" src="/managers/question.jpg" alt="favorite team"/>
                 </div>
             {/if}
-        </div>
+        </div> -->
         <!-- Rebuild mode (optional and only displayed for dynasty leagues) -->
         {#if dynasty}
             <div class="infoSlot infoRebuild">
