@@ -29,7 +29,7 @@ export const managers = [
       "name": "Mr. Commissioner",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "ATL/PDX/HOES", // (optional)
-      "bio": "Commissioner by day, Four Roses Bourboon spokesperson by night. Treat this man wih integrity, and he will [mostly] reciprocate. Approach with caution when the drinks start flowing",
+      "bio": "Commissioner by day, Four Roses Bourbon spokesperson by night. Treat this man wih integrity, and he will [mostly] reciprocate. Approach with caution when the drinks start flowing",
       "photo": "/managers/austin2.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "atl", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -203,7 +203,7 @@ export const managers = [
         "favoritePlayer": 4273, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
         // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
         // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-        "philosophy": "I can't draft, my thumbs are getting in the way",
+        "philosophy": "Almost missed the draft cause I couldn't figure out how to get there",
         // "tradingScale": 10, // 1 - 10
         // "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
