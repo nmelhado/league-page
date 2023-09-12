@@ -23,7 +23,7 @@ export const tabs = [
     },
     {
     icon: 'military_tech',
-    label: 'All Time Records',
+    label: 'Records',
     dest: '/records',
     },
     {
