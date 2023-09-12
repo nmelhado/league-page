@@ -444,13 +444,6 @@
 	<h4>2019</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 
-	<div style="width: 100px; float:left; height:100px; background:gray; margin:10px">
-	First DIV
-	</div>
-	<div style="width: 100px; float:left; height:100px; background:yellow; margin:10px">
-	Second DIV
-	</div>
-
 	<div class="pastParent">
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
