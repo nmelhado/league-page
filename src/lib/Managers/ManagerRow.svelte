@@ -151,8 +151,8 @@
         }
 
         .photo {
-            height: 50px;
-            width: 50px;
+            height: 30px;
+            width: 30px;
             margin-left: 0.5em;
         }
 
@@ -195,8 +195,8 @@
         }
 
         .photo {
-            height: 50px;
-            width: 30px;
+            height: 25px;
+            width: 25px;
         }
 
         .infoSlot {
