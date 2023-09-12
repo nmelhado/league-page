@@ -290,7 +290,7 @@
         </div>
 
 	<h3>Bio</h3>
-        <p class="bio">{@html viewManager.bio}</p>
+        <center><p class="bio">{@html viewManager.bio}</p></center>
 
         {#if viewManager.philosophy}
             <!-- philosophy is an optional field -->
