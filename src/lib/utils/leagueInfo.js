@@ -111,7 +111,7 @@ export const managers = [
       "favoritePlayer": 4984, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I follow the girlfriends of my players on OnlyFans",
+      "philosophy": "I follow my players\' girlfriends on OnlyFans",
       // "tradingScale": 10, // 1 - 10
       // "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -213,7 +213,7 @@ export const managers = [
       "name": "Braxton",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Atlanta, GA", // (optional)
-      "bio": "Most leagues don't operate with a handicap, but we, unfortunately, do. Look out for Braxton this year, though, he's on the up-and-up, just like Trump's number of indictments",
+      "bio": "Most leagues don't operate with a handicap, but we, unfortunately, do. Look out for Braxton this year, though, he's on the up-and-up, just like Trump\'s number of indictments",
       "photo": "/managers/braxton2.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2019, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "ari", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
