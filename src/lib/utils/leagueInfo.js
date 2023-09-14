@@ -111,7 +111,7 @@ export const managers = [
       "favoritePlayer": 4984, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       // "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       // "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I follow my players' girlfriends on OnlyFans",
+      "philosophy": "I follow the girlfriends of my players on OnlyFans",
       // "tradingScale": 10, // 1 - 10
       // "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -281,7 +281,7 @@ export const managers = [
       "managerID": "1004157565439209472",
       "name": "Michael",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Your Mom's House", // (optional)
+      "location": "Your Moms House", // (optional)
       "bio": "Tripod Mike is a boomeranger to this league. Here's to hoping he doesn't offer any trades he might later regret!",
       "photo": "/managers/michael.png", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
