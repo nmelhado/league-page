@@ -63,15 +63,9 @@ export async function POST({request, params}) {
 }
 
 const validateID = (leagueTeamManagers, authorID) => {
-    for(const yearKey in leagueTeamManagers.teamManagersMap) {
-        for(const rosterKey in leagueTeamManagers.teamManagersMap[yearKey]) {
-            for(const manager of leagueTeamManagers.teamManagersMap[yearKey][rosterKey].managers) {
-                if(manager == authorID) {
-                    return leagueTeamManagers.users[manager].display_name;
-                }
-            }
-        }
+    if(leagueTeamManagers.users[authorID]) {
+        return leagueTeamManagers.users[authorID].user_name.toLowerCase();
     }
-    
+        
     return false;
 }
