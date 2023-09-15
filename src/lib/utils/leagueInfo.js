@@ -25,7 +25,7 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 1,
+      "roster": null,
       "managerID" : 76748153545965568,
       "name": "Seth",
       "tookOver": null,
@@ -44,7 +44,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
      {
-      "roster": 2,
+      "roster": null,
       "managerID" : 86713839919710208,
       "name": "Joe",
       "tookOver": null,
@@ -63,7 +63,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
        {
-      "roster": 3,
+      "roster": null,
       "managerID" : 461971199233093632,
       "name": "Andy",
       "tookOver": null,
@@ -82,7 +82,7 @@ export const managers = [
       "preferredContact": "Sleeper", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 4,
+      "roster": null,
       "managerID" : 506532552412807168,
       "name": "Brandon",
       "tookOver": null,
@@ -101,7 +101,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 5,
+      "roster": null,
       "managerID" : 599323969325170688,
       "name": "Patrick",
       "tookOver": null,
@@ -120,7 +120,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 6,
+      "roster": null,
       "managerID" : 627356848126754816,
       "name": "Carter",
       "tookOver": null,
@@ -139,7 +139,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 7,
+      "roster": null,
       "managerID" : 627357544234430464,
       "name": "Weston",
       "tookOver": null,
@@ -158,7 +158,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 8,
+      "roster": null,
       "managerID" : 627358262001479680,
       "name": "Tyler",
       "tookOver": null,
@@ -177,7 +177,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 9,
+      "roster": null,
       "managerID" : 627359864607277056,
       "name": "Mike",
       "tookOver": null,
@@ -196,7 +196,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 10,
+      "roster": null,
       "managerID" : 627679130321874944,
       "name": "Justen",
       "tookOver": null,
@@ -215,7 +215,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 11,
+      "roster": null,
       "managerID" : 630882921305161728,
       "name": "Adam",
       "tookOver": null,
@@ -234,7 +234,7 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 12,
+      "roster": null,
       "managerID" : 631191024458559488,
       "name": "Dave",
       "tookOver": null,
