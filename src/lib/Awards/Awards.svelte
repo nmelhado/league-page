@@ -329,14 +329,14 @@
 <div class="awards">
 	<h3>{year} Awards</h3>
 
-	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+	<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
-		<img src="./podium.png" class="podiumImage" alt="podium" />
+		<img src="/podium.png" class="podiumImage" alt="podium" />
 
 		<!-- champs -->
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, champion, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: champion})} alt="champion" />
-		<img src="./laurel.png" class="laurel" alt="laurel" />
+		<img src="/laurel.png" class="laurel" alt="laurel" />
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: champion})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, champion)}</span>
 
 		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, second, year)}" class="second champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: second})} alt="2nd" />
@@ -356,7 +356,7 @@
 					{/if}
 					<div class="leaderBlock">
 						<img src="{getAvatarFromTeamManagers(leagueTeamManagers, division.rosterID, year)}" class="divisionLeader clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: division.rosterID})} alt="{division.name} champion" />
-						<img src="./medal.png" class="medal" alt="champion" />
+						<img src="/medal.png" class="medal" alt="champion" />
 					</div>
 					<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: division.rosterID})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, division.rosterID)}</span>
 				</div>
@@ -368,11 +368,11 @@
 	{#if toilet}
 		<div class="toiletParent">
 			
-			<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+			<img src="/toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 
 			<div class="toiletBowl">
 				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, toilet, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: toilet})} alt="toilet bowl winner" />
-				<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+				<img src="/toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 			</div>
 			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: toilet})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, toilet)}</span>
 		</div>

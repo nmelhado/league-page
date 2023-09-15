@@ -270,7 +270,7 @@
 
 					<div class="record">
 						{#each record as result}
-							<img alt="match result" class="result" src="./{result}.png" />
+							<img alt="match result" class="result" src="/{result}.png" />
 						{/each}
 					</div>
 				</Cell>
