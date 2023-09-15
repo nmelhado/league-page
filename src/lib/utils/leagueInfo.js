@@ -25,8 +25,8 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 
-      "managerID" : 76748153545965568"
+      "roster": 1,
+      "managerID" : 76748153545965568,
       "name": "Seth",
       "tookOver": null,
       "location": "Chattanooga", // (optional)
@@ -44,8 +44,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
      {
-      "roster": 
-      "managerID" : 86713839919710208"
+      "roster": 2,
+      "managerID" : 86713839919710208,
       "name": "Joe",
       "tookOver": null,
       "location": "Durham", // (optional)
@@ -63,8 +63,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
        {
-      "roster": 
-      "managerID" : 461971199233093632"
+      "roster": 3,
+      "managerID" : 461971199233093632,
       "name": "Andy",
       "tookOver": null,
       "location": "Tampa", // (optional)
@@ -82,8 +82,8 @@ export const managers = [
       "preferredContact": "Sleeper", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 506532552412807168"
+      "roster": 4,
+      "managerID" : 506532552412807168,
       "name": "Brandon",
       "tookOver": null,
       "location": "Denver", // (optional)
@@ -101,8 +101,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 599323969325170688"
+      "roster": 5,
+      "managerID" : 599323969325170688,
       "name": "Patrick",
       "tookOver": null,
       "location": "Oahu", // (optional)
@@ -120,8 +120,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 627356848126754816"
+      "roster": 6,
+      "managerID" : 627356848126754816,
       "name": "Carter",
       "tookOver": null,
       "location": "Boston", // (optional)
@@ -139,8 +139,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 627357544234430464"
+      "roster": 7,
+      "managerID" : 627357544234430464,
       "name": "Weston",
       "tookOver": null,
       "location": "Seattle", // (optional)
@@ -158,8 +158,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 627358262001479680"
+      "roster": 8,
+      "managerID" : 627358262001479680,
       "name": "Tyler",
       "tookOver": null,
       "location": "Apex", // (optional)
@@ -177,8 +177,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 627359864607277056"
+      "roster": 9,
+      "managerID" : 627359864607277056,
       "name": "Mike",
       "tookOver": null,
       "location": "Raleigh", // (optional)
@@ -196,8 +196,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 627679130321874944"
+      "roster": 10,
+      "managerID" : 627679130321874944,
       "name": "Justen",
       "tookOver": null,
       "location": "Greenville", // (optional)
@@ -215,8 +215,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 630882921305161728"
+      "roster": 11,
+      "managerID" : 630882921305161728,
       "name": "Adam",
       "tookOver": null,
       "location": "Denver", // (optional)
@@ -234,8 +234,8 @@ export const managers = [
       "preferredContact": "Discord", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
       {
-      "roster": 
-      "managerID" : 631191024458559488"
+      "roster": 12,
+      "managerID" : 631191024458559488,
       "name": "Dave",
       "tookOver": null,
       "location": "San Diego", // (optional)
