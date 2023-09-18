@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2023-09-13
+
+### Fixed
+
+- Users were unable to add comments. [(issue #268)](https://github.com/nmelhado/league-page/issues/268)
+
 ## [2.3.3] - 2023-09-08
 
 ### Fixed
