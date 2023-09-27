@@ -1,31 +1,48 @@
 <script>
 	import { goto } from '$app/navigation';
+    import { managers } from '$lib/utils/helper';
 	import { tabs } from '$lib/utils/tabs';
 	import { onMount } from 'svelte';
 
 	let outOfDate = false;
 
+    let el, footerHeight;
+
+    let innerWidth;
+
+    const resize = (e, delay) => {
+        const bottom = el?.getBoundingClientRect().bottom;
+        const top = el?.getBoundingClientRect().top;
+        if(delay) {
+            setTimeout(() => {
+                resize(e, false);
+            }, 100)
+        } else {
+            footerHeight = bottom - top;
+        }
+    }
+
 	onMount(async () => {
 		const res = await fetch('/api/checkVersion', {compress: true})
 		const needUpdate = await res.json();
 		outOfDate = needUpdate;
+        resize(el?.getBoundingClientRect(), true);
 	})
+
+    let managersOutOfDate = false;
+    if(managers) {
+        for(const manager of managers) {
+            if(manager.roster && !manager.managerID) {
+                managersOutOfDate = true;
+                resize(el?.getBoundingClientRect(), true);
+                break;
+            }
+        }
+    }
 
 	const year = new Date().getFullYear();
 
-	let el, elNeedUpdate, innerWidth, footerHeight, footerHeightNeedUpdate;
-
-	const resize = (w) => {
-		const top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
-		const bottom = el?.getBoundingClientRect() ? el?.getBoundingClientRect().bottom  : 0;
-		const topNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().top  : 0;
-		const bottomNeedUpdate = elNeedUpdate?.getBoundingClientRect() ? elNeedUpdate?.getBoundingClientRect().bottom  : 0;
-
-		footerHeight = bottom - top;
-		footerHeightNeedUpdate = bottomNeedUpdate - topNeedUpdate;
-	}
-
-    $: resize(innerWidth);
+    $: resize(el?.getBoundingClientRect(), false, innerWidth);
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -78,14 +95,9 @@
 		font-size: 0.8em;
 		margin-top: 0;
 	}
-
-	.invisible {
-		visibility: hidden;
-		pointer-events: none;
-	}
 </style>
 
-<div class="footerSpacer" style="height: {outOfDate ? footerHeightNeedUpdate : footerHeight}px;" />
+<div class="footerSpacer" style="height: {footerHeight}px;" />
 
 <!-- footer with update notice -->
 <footer class="{outOfDate ? '' : 'invisible'}" bind:this={elNeedUpdate}>

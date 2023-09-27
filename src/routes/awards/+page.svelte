@@ -1,9 +1,10 @@
 <script>
 	import { Awards } from '$lib/components'
+	import { waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
 
     export let data;
-    const awardsData = data.awardsData;
+    const {awardsData, teamManagersData} = data;
 </script>
 
 <style>
@@ -34,14 +35,14 @@
 </style>
 
 <div class="awards">
-	{#await awardsData }
+	{#await waitForAll(awardsData, teamManagersData) }
 		<div class="loading">
 			<p>Retrieving awards data...</p>
 			<LinearProgress indeterminate />
 		</div>
-	{:then {podiums, currentManagers} }
+	{:then [podiums, leagueTeamManagers] }
 		{#each podiums as podium}
-			<Awards {podium} {currentManagers} />
+			<Awards {podium} {leagueTeamManagers} />
 		{:else}
 			<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
 		{/each}

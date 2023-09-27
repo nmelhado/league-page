@@ -4,13 +4,18 @@
   import AllTimeRecords from "./AllTimeRecords.svelte";
   import PerSeasonRecords from "./PerSeasonRecords.svelte";
 
+<<<<<<< HEAD
   export let leagueData, totals, stale;
+=======
+    export let leagueData, totals, stale, leagueTeamManagers;
+>>>>>>> upstream/master
 
   const refreshTransactions = async () => {
     const newTransactions = await getLeagueTransactions(false, true);
     totals = newTransactions.totals;
   };
 
+<<<<<<< HEAD
   let leagueRosterRecords,
     leagueWeekHighs,
     leagueWeekLows,
@@ -22,6 +27,9 @@
     seasonWeekRecords,
     currentYear,
     lastYear;
+=======
+    let leagueManagerRecords, leagueRosterRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
+>>>>>>> upstream/master
 
   const refreshRecords = async () => {
     const newRecords = await getLeagueRecords(true);
@@ -37,6 +45,7 @@
 
     const selectedLeagueData = lD[k];
 
+<<<<<<< HEAD
     leagueRosterRecords = selectedLeagueData.leagueRosterRecords;
     leagueWeekHighs = selectedLeagueData.leagueWeekHighs;
     leagueWeekLows = selectedLeagueData.leagueWeekLows;
@@ -49,6 +58,20 @@
     currentYear = selectedLeagueData.currentYear;
     lastYear = selectedLeagueData.lastYear;
   };
+=======
+        leagueManagerRecords = selectedLeagueData.leagueManagerRecords;
+        leagueRosterRecords = selectedLeagueData.leagueRosterRecords;
+        leagueWeekHighs = selectedLeagueData.leagueWeekHighs;
+        leagueWeekLows = selectedLeagueData.leagueWeekLows;
+        allTimeClosestMatchups = selectedLeagueData.allTimeClosestMatchups;
+        allTimeBiggestBlowouts = selectedLeagueData.allTimeBiggestBlowouts;
+        mostSeasonLongPoints = selectedLeagueData.mostSeasonLongPoints;
+        leastSeasonLongPoints = selectedLeagueData.leastSeasonLongPoints;
+        seasonWeekRecords = selectedLeagueData.seasonWeekRecords;
+        currentYear = selectedLeagueData.currentYear;
+        lastYear = selectedLeagueData.lastYear;
+    }
+>>>>>>> upstream/master
 
   $: refreshData(leagueData, key);
 
@@ -100,6 +123,7 @@
     </Group>
   </div>
 
+<<<<<<< HEAD
   {#if display == "allTime"}
     {#if leagueWeekHighs?.length}
       <AllTimeRecords
@@ -116,6 +140,36 @@
       />
     {:else}
       <p class="empty">No records <i>yet</i>...</p>
+=======
+    <div class="buttonHolder">
+        <Group variant="outlined">
+            <Button class="selectionButtons" on:click={() => key = "regularSeasonData"} variant="{key == "regularSeasonData" ? "raised" : "outlined"}">
+                <Label>Regular Season</Label>
+            </Button>
+            <Button class="selectionButtons" on:click={() => key = "playoffData"} variant="{key == "playoffData" ? "raised" : "outlined"}">
+                <Label>Playoffs</Label>
+            </Button>
+        </Group>
+        <br />
+        <Group variant="outlined">
+            <Button class="selectionButtons" on:click={() => display = "allTime"} variant="{display == "allTime" ? "raised" : "outlined"}">
+                <Label>All-Time Records</Label>
+            </Button>
+            <Button class="selectionButtons" on:click={() => display = "season"} variant="{display == "season" ? "raised" : "outlined"}">
+                <Label>Season Records</Label>
+            </Button>
+        </Group>
+    </div>
+
+    {#if display == "allTime"}
+        {#if leagueWeekHighs?.length}
+            <AllTimeRecords transactionTotals={totals} {allTimeClosestMatchups} {allTimeBiggestBlowouts} {leagueManagerRecords} {leagueWeekHighs} {leagueWeekLows} {leagueTeamManagers} {mostSeasonLongPoints} {leastSeasonLongPoints} {key} />
+        {:else}
+            <p class="empty">No records <i>yet</i>...</p>
+        {/if}
+    {:else}
+        <PerSeasonRecords transactionTotals={totals} {leagueRosterRecords} {seasonWeekRecords} {leagueTeamManagers} {currentYear} {lastYear} {key} />
+>>>>>>> upstream/master
     {/if}
   {:else}
     <PerSeasonRecords

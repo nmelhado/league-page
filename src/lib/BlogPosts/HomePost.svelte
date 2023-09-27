@@ -2,23 +2,24 @@
     import { onMount } from "svelte";
 	import LinearProgress from '@smui/linear-progress';
     import Post from "./Post.svelte";
-    import { getBlogPosts, getLeagueRosters, getLeagueUsers, waitForAll } from "$lib/utils/helper";
+    import { getBlogPosts, getLeagueTeamManagers, waitForAll } from "$lib/utils/helper";
 
     const lang = "en-US";
 
     let post;
     let createdAt;
+    let id;
     let loading = true;
-    let users, rosters = [];
+    let leagueTeamManagers = {};
 
     onMount(async() => {
-        const [{posts, fresh}, usersData, rostersData] = await waitForAll(getBlogPosts(null), getLeagueUsers(), getLeagueRosters());
-		users = usersData;
-		rosters = rostersData.rosters;
+        const [{posts, fresh}, leagueTeamManagersData] = await waitForAll(getBlogPosts(null), getLeagueTeamManagers());
+		leagueTeamManagers = leagueTeamManagersData;
         for(const singlePost of posts) {
             if(singlePost.fields.featured) {
                 createdAt = singlePost.sys.createdAt;
                 post = singlePost.fields;
+                id = singlePost.sys.id;
                 break;
             }
         }
@@ -29,6 +30,7 @@
                 if(singlePost.fields.featured) {
                     createdAt = singlePost.sys.createdAt;
                     post = singlePost.fields;
+                    id = singlePost.sys.id;
                     break;
                 }
             }
@@ -77,8 +79,8 @@
         <LinearProgress indeterminate />
     </div>
 {:else}
-    <h2>RCL Gazette</h2>
-    <Post {users} {rosters} {post} {createdAt} home={true} />
+<h2>RCL Gazette</h2>
+<Post {leagueTeamManagers} {post} {createdAt} {id} />
     <div class="center">
         <a class="viewAll" href="/blog">View More Gazette Articles</a>
     </div>

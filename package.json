@@ -1,6 +1,6 @@
 {
   "name": "league-page",
-  "version": "2.0.2",
+  "version": "2.3.4",
   "homepage": "https://github.com/nmelhado/league-page",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=v16.15.0",
+    "node": ">=v18.0.0",
     "npm": ">=6.0.0"
   },
   "scripts": {
@@ -60,15 +60,14 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.92",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.76",
+    "@sveltejs/adapter-node": "^1.2.3",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "smui-theme": "6.0.0-beta.13",
-    "vite": "^3.1.0-beta.1"
+    "vite": "^4.0.0"
   },
   "type": "module",
   "dependencies": {
@@ -83,11 +82,12 @@
     "@smui/tab": "6.0.0-beta.13",
     "@smui/tab-bar": "6.0.0-beta.13",
     "@smui/textfield": "6.0.0-beta.13",
-    "@sveltejs/kit": "^1.0.0-next.484",
+    "@sveltejs/adapter-vercel": "^3.0.1",
+    "@sveltejs/kit": "^1.15.2",
     "contentful": "^9.1.34",
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
-    "fast-xml-parser": "^3.19.0",
+    "fast-xml-parser": "^4.2.5",
     "fuzzyjs": "^5.0.1",
     "svelte": "^3.50.1"
   }

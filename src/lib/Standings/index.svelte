@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
   import { leagueName, round } from "$lib/utils/helper";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import LinearProgress from "@smui/linear-progress";
@@ -6,6 +7,16 @@
   import Standing from "./Standing.svelte";
 
   export let standingsData, usersData;
+=======
+    import { leagueName, round } from '$lib/utils/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+  	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import LinearProgress from '@smui/linear-progress';
+    import { onMount } from 'svelte';
+    import Standing from './Standing.svelte';
+
+    export let standingsData, leagueTeamManagersData;
+>>>>>>> upstream/master
 
   // Least important to most important (i.e. the most important [usually wins] goes last)
   // Edit this to match your leagues settings
@@ -28,6 +39,7 @@
     { name: "Streak", field: "streak" },
   ];
 
+<<<<<<< HEAD
   let loading = true;
   let preseason = false;
   let rosters, standings, year, users;
@@ -53,6 +65,21 @@
       );
       standingsInfo[standingKey].streak = roster.metadata.streak;
     }
+=======
+    let loading = true;
+    let preseason = false;
+    let standings, year, leagueTeamManagers;
+    onMount(async () => {
+        const asyncStandingsData = await standingsData;
+        if(!asyncStandingsData) {
+            loading = false;
+            preseason = true;
+            return;
+        }
+        const {standingsInfo, yearData} = asyncStandingsData;
+        leagueTeamManagers = await leagueTeamManagersData;
+        year = yearData;
+>>>>>>> upstream/master
 
     let finalStandings = Object.keys(standingsInfo).map(
       (key) => standingsInfo[key]
@@ -89,6 +116,7 @@
     <p>Preseason, No Standings Yet</p>
   </div>
 {:else}
+<<<<<<< HEAD
   <div class="standingsTable">
     <DataTable table$aria-label="League Standings">
       <Head>
@@ -113,6 +141,26 @@
       </Body>
     </DataTable>
   </div>
+=======
+    <div class="standingsTable">
+        <DataTable table$aria-label="League Standings" >
+            <Head> <!-- Team name  -->
+                <Row>
+                    <Cell class="center">Team</Cell>
+                    {#each columnOrder as column}
+                        <Cell class="center wrappable">{column.name}</Cell>
+                    {/each}
+                </Row>
+            </Head>
+            <Body>
+                <!-- 	Standing	 -->
+                {#each standings as standing}
+                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} />
+                {/each}
+            </Body>
+        </DataTable>
+    </div>
+>>>>>>> upstream/master
 {/if}
 
 <style>

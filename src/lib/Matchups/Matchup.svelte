@@ -1,7 +1,8 @@
 <script>
     import {round} from '$lib/utils/helper'
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
-    export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek;
+    export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek, leagueTeamManagers, year;
 
     let home = matchup[0];
     let away = matchup[1];
@@ -16,6 +17,8 @@
     const digestStarters = (x, p) => {
         home = matchup[0];
         away = matchup[1];
+        home.manager = getTeamFromTeamManagers(leagueTeamManagers, home.roster_id, year);
+        away.manager = getTeamFromTeamManagers(leagueTeamManagers, away.roster_id, year);
         const homeStarters = matchupWeek ? home.starters[matchupWeek] : home.starters;
         const awayStarters = matchupWeek ? away.starters[matchupWeek] : away.starters;
         const homePoints = matchupWeek ? home.points[matchupWeek] : home.points;
@@ -195,6 +198,7 @@
 	}
 
 	.playerAvatar {
+        position: relative;
 		vertical-align: middle;
 		height: 45px;
 		width: 45px;
@@ -452,6 +456,28 @@
         display: flex;
         align-items: center;
     }
+    .teamLogo {
+        width: 21px;
+        position: absolute;
+        top: 0;
+    }
+    .teamHomeLogo {
+        right: -16px;
+    }
+    .teamAwayLogo {
+        left: -16px;
+    }
+    @media (max-width: 340px) {
+        .teamLogo {
+            width: 20px;
+        }
+        .teamHomeLogo {
+            right: -7px;
+        }
+        .teamAwayLogo {
+            left: -7px;
+        }
+    }
 </style>
 
 <div class="matchup">
@@ -478,7 +504,11 @@
                             <span class="pos {player.home.pos}">{player.home.pos}</span>
                         {/if}
                         {#if player.home.avatar}
-                            <div class="playerAvatar playerInfo" style="{player.home.avatar}" />
+                            <div class="playerAvatar playerInfo" style="{player.home.avatar}">
+                                {#if player.home.team && player.home.pos != "DEF"}
+                                    <img src="https://sleepercdn.com/images/team_logos/nfl/{player.home.team.toLowerCase()}.png" class="teamLogo teamHomeLogo" alt="team logo"/>
+                                {/if}
+                            </div>
                         {/if}
                     </span>
                     <div class="nameHolder nameHolderL{player.home.name == 'Empty'? ' playerEmpty' : ''}">
@@ -499,7 +529,11 @@
                 <div class="player playerAway">
                     <span class="iconAndTeam iconAndTeamAway">
                         {#if player.away.avatar}
-                            <div class="playerAvatar playerInfo" style="{player.away.avatar}" />
+                            <div class="playerAvatar playerInfo" style="{player.away.avatar}">
+                                {#if player.away.team && player.away.pos != "DEF"}
+                                    <img src="https://sleepercdn.com/images/team_logos/nfl/{player.away.team.toLowerCase()}.png" class="teamLogo teamAwayLogo" alt="team logo"/>
+                                {/if}
+                            </div>
                         {/if}
                         {#if player.away.pos}
                             <span class="pos {player.away.pos}">{player.away.pos}</span>

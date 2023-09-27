@@ -1,13 +1,13 @@
 <script>
     import { goto } from "$app/navigation";
     import Pagination from "$lib/Pagination.svelte";
-    import { getBlogPosts, leagueName } from "$lib/utils/helper";
+    import { getBlogPosts, leagueName, waitForAll } from "$lib/utils/helper";
     import LinearProgress from "@smui/linear-progress";
     import { onMount } from "svelte";
     import Post from "./Post.svelte";
     import { browser } from '$app/environment';
 
-    export let postsData, usersData, rostersData, queryPage = 1, filterKey = '';
+    export let postsData, leagueTeamManagersData, queryPage = 1, filterKey = '';
 
     let page = queryPage - 1;
 
@@ -16,8 +16,7 @@
     let loading = true;
     let allPosts = [];
     let posts = [];
-    let users = {};
-    let rosters = [];
+    let leagueTeamManagers = {};
 
     let categories;
 
@@ -37,10 +36,8 @@
     $: filterPosts(allPosts, filterKey);
 
     onMount(async ()=> {
-        const startPostData = await postsData;
-        users = await usersData;
-        const rostersInfo = await rostersData;
-        rosters = rostersInfo.rosters;
+        const [startPostData, leagueTeamManagersResp] = await waitForAll(postsData, leagueTeamManagersData);
+        leagueTeamManagers = leagueTeamManagersResp;
         allPosts = startPostData.posts;
         loading = false;
 
@@ -166,7 +163,7 @@
 
     {#each displayPosts as post}
         {#key post.sys.id}
-        <Post {rosters} {users} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
+        <Post {leagueTeamManagers} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
         {/key}
     {/each}
     <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />

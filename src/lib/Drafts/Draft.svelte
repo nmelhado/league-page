@@ -3,11 +3,12 @@
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';
     import DraftRow from './DraftRow.svelte';
-    import { cleanName, gotoManager } from '$lib/utils/helper'
+    import { gotoManager } from '$lib/utils/helper'
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
     
-    export let draftData, previous = false;
+    export let draftData, leagueTeamManagers, previous = false, year, players;
 
-    const {draftOrder, draft, currentManagers, originalManagers, accuracy, reversalRound, draftType} = draftData;
+    const {draftOrder, draft, accuracy, reversalRound, draftType} = draftData;
 
     let progress = 0;
     let closed = false;
@@ -122,9 +123,9 @@
             {#each draftOrder as draftPosition}
                 {#if draftPosition}
                     <Cell class="draftTeam">
-                        <img class="avatar clickable" on:click={() => gotoManager(draftPosition)} src="{originalManagers[draftPosition].avatar}" alt="{originalManagers[draftPosition].name} avatar"/>
+                        <img class="avatar clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})} src="{getAvatarFromTeamManagers(leagueTeamManagers, draftPosition, year)}" alt="{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)} avatar"/>
                         <br />
-                        <span class="clickable" on:click={() => gotoManager(draftPosition)}>{originalManagers[draftPosition].name}{@html currentManagers && cleanName(currentManagers[draftPosition].name) != cleanName(originalManagers[draftPosition].name) ? `<br /><span class="curDraftName">(${currentManagers[draftPosition].name})</span>` : ''}</span>
+                        <span class="clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})}>{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)}{@html getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year) != getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition) ? `<br /><span class="curDraftName">(${getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition)})</span>` : ''}</span>
                     </Cell>
                 {/if}
             {/each}
@@ -132,7 +133,7 @@
     </Head>
     <Body>
         {#each draft as draftRow, row}
-            <DraftRow {draftRow} row={row + 1} {previous} {reversalRound} {draftType} />
+            <DraftRow {draftRow} row={row + 1} {previous} {reversalRound} {draftType} {players} {leagueTeamManagers} {year} />
         {/each}
     </Body>
 </DataTable>

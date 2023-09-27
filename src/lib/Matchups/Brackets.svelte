@@ -5,7 +5,7 @@
     import BracketsColumn from "./BracketsColumn.svelte";
     import Matchup from "./Matchup.svelte";
 
-    export let players, brackets, selection, queryWeek;
+    export let leagueTeamManagers, players, brackets, selection, queryWeek;
 
     const {playoffsStart, champs, losers, numRosters} = brackets;
 
@@ -103,14 +103,14 @@
 <div class="brackets">
     <div class="bracket">
         {#each bracket as matchCol, ix}
-            <BracketsColumn bind:selected={selected} {matchCol} {ix} {players} {playoffsStart} playoffLength={bracket.length} losers={selection == 'losers'} />
+            <BracketsColumn bind:selected={selected} {leagueTeamManagers} {matchCol} {ix} {players} {playoffsStart} playoffLength={bracket.length} losers={selection == 'losers'} />
         {/each}
     </div>
 
     {#each consolations as consolation, consolationNum}
         <div class="bracket">
             {#each consolation as matchCol, ix}
-                <BracketsColumn bind:selected={selected} {consolationNum} {matchCol} {ix} {players} {playoffsStart} playoffLength={consolation.length} {numRosters} consolation={true} losers={selection == 'losers'} />
+                <BracketsColumn bind:selected={selected} {leagueTeamManagers} {consolationNum} {matchCol} {ix} {players} {playoffsStart} playoffLength={consolation.length} {numRosters} consolation={true} losers={selection == 'losers'} />
             {/each}
         </div>
     {/each}
@@ -132,6 +132,6 @@
                 </Group>
             </div>
         {/if}
-        <Matchup ix={selected} active={selected} {matchup} {matchupWeek} {players} {displayWeek} expandOverride={true} />
+        <Matchup ix={selected} active={selected} {matchup} {matchupWeek} {players} {displayWeek} expandOverride={true} {leagueTeamManagers} />
     {/if}
 </div>

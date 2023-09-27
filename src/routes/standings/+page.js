@@ -1,12 +1,12 @@
-import { getLeagueStandings, getLeagueUsers } from '$lib/utils/helper';
+import { getLeagueStandings, getLeagueTeamManagers } from '$lib/utils/helper';
 
 export async function load() {
 
     const standingsData = getLeagueStandings();
-    const usersData = getLeagueUsers();
+    const leagueTeamManagersData = getLeagueTeamManagers();
 
     return {
         standingsData,
-        usersData,
+        leagueTeamManagersData,
     };
 }
