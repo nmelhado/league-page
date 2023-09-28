@@ -5,13 +5,6 @@ import { dynasty } from './utils/helper';
     const today = new Date();
     const resources = [
         {
-            name: "FTN Fantasy",
-            url: "https://www.ftnfantasy.com/nfl",
-            icon: "insights",
-            premium: true,
-            separator: true,
-        },
-        {
             name: "Sleeper",
             url: "https://www.sleeper.com/",
             icon: "insights",
