@@ -24,7 +24,7 @@ import { dynasty } from './utils/helper';
             icon: "podcasts",
             premium: false,
             separator: true,
-            dynastyOnly: true,
+            dynastyOnly: false,
         },
         {
             name: "Yahoo Sports",
@@ -32,7 +32,7 @@ import { dynasty } from './utils/helper';
             icon: "insights",
             premium: false,
             separator: true,
-            dynastyOnly: true,
+            dynastyOnly: false,
         },
         {
             name: "NFL Fantasy",
@@ -56,7 +56,7 @@ import { dynasty } from './utils/helper';
             icon: "article",
             premium: false,
             separator: true,
-            redraftOnly: true,
+            dynastyOnly: true,
         },
         {
             name: "Dynasty 101 Trade Calculator",
@@ -72,7 +72,7 @@ import { dynasty } from './utils/helper';
             icon: "insights",
             premium: true,
             separator: true,
-            dynastyOnly: true,
+            dynastyOnly: false,
         },
         {
             name: "Fantasy Football Trade Analyzer",
