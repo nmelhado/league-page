@@ -21,9 +21,8 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 68731036607332352,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 68731036607332352,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Matt Tobolt",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "Perennial average fantasy football manager",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -34,9 +33,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 201505784566120448,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 201505784566120448,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Jordan Zeken",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -47,9 +45,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 325785602354065408,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 325785602354065408,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Travis Leffel",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Chicago", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -60,9 +57,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 336579788619657216,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 336579788619657216,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Ian Meador",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Chicago", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -73,9 +69,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 336608308263661568,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 336608308263661568,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Tyler Splitt",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -86,9 +81,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 336677484311379968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 336677484311379968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Adam Kinross",
-      "tookOver": 2012, 2014, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -99,9 +93,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 458065983806894080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 458065983806894080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Sam Hader",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Chicago", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -112,9 +105,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 461291218484064256,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 461291218484064256,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Matthew Lundine",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Chicago", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -125,9 +117,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 463904106323374080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 463904106323374080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Tom Hanigan",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -138,9 +129,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 471480425026416640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 471480425026416640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Adam Eibel",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Pittsburgh", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -151,9 +141,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 730966401187155968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 730966401187155968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Noah Kalter",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -164,9 +153,8 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
     },
     {
-      "roster": 857014932217143296,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": 857014932217143296,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Mike Dobek",
-      "tookOver": 2012, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Nashville", // (optional)
       "bio": "tbd",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
