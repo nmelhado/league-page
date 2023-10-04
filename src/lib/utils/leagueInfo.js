@@ -20,150 +20,161 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 // To omit an optional field, set it's value to null
 
 export const managers = [
-    {
-      "managerID": 68731036607332352,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    // {
+    //   "managerID": 68731036607332352,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Matt Tobolt",
+    //   "location": "Denver", // (optional)
+    //   "bio": "Perennial average fantasy football manager",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+   {
+      "roster": null,  // (DEPRECATED! Don't use this anymore) ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "managerID": "68731036607332352",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Matt Tobolt",
+      "tookOver": null, // (DEPRECATED! You don't need to use this anymore) (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Denver", // (optional)
-      "bio": "Perennial average fantasy football manager",
+      "bio": "Testing",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 201505784566120448,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Jordan Zeken",
-      "location": "Denver", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 325785602354065408,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Travis Leffel",
-      "location": "Chicago", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 336579788619657216,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Ian Meador",
-      "location": "Chicago", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 336608308263661568,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Tyler Splitt",
-      "location": "Denver", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 336677484311379968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Adam Kinross",
-      "location": "Denver", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 458065983806894080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Sam Hader",
-      "location": "Chicago", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 461291218484064256,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Matthew Lundine",
-      "location": "Chicago", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 463904106323374080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Tom Hanigan",
-      "location": "Denver", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 471480425026416640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Adam Eibel",
-      "location": "Pittsburgh", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "pit", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 730966401187155968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Noah Kalter",
-      "location": "Denver", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
-    {
-      "managerID": 857014932217143296,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "name": "Mike Dobek",
-      "location": "Nashville", // (optional)
-      "bio": "tbd",
-      "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
-      "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
-      "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
-      "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
-      "philosophy": "Your fantasy team's philosophy",
-      "tradingScale": 10, // 1 - 10
-    },
+    // {
+    //   "managerID": 201505784566120448,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Jordan Zeken",
+    //   "location": "Denver", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 325785602354065408,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Travis Leffel",
+    //   "location": "Chicago", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 336579788619657216,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Ian Meador",
+    //   "location": "Chicago", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 336608308263661568,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Tyler Splitt",
+    //   "location": "Denver", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 336677484311379968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Adam Kinross",
+    //   "location": "Denver", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 458065983806894080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Sam Hader",
+    //   "location": "Chicago", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 461291218484064256,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Matthew Lundine",
+    //   "location": "Chicago", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 463904106323374080,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Tom Hanigan",
+    //   "location": "Denver", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 471480425026416640,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Adam Eibel",
+    //   "location": "Pittsburgh", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "pit", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 730966401187155968,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Noah Kalter",
+    //   "location": "Denver", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "chi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
+    // {
+    //   "managerID": 857014932217143296,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    //   "name": "Mike Dobek",
+    //   "location": "Nashville", // (optional)
+    //   "bio": "tbd",
+    //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
+    //   "fantasyStart": 2012, // (optional) when did the manager start playing fantasy football
+    //   "favoriteTeam": "gb", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+    //   "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
+    //   "philosophy": "Your fantasy team's philosophy",
+    //   "tradingScale": 10, // 1 - 10
+    // },
   ]
   
   
