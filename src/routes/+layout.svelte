@@ -8,5 +8,4 @@
   
     <slot />
 
-    <Footer /> <!-- adds the footer -->
 </main>
