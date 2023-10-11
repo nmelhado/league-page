@@ -124,7 +124,7 @@
 		</ul>
 	</div>
 	<!-- PLEASE DO NOT REMOVE THE COPYRIGHT -->
-	<span class="copyright">&copy; 2021 - {year} <a>Show Me The Money Leauge</a></span>
+	<span class="copyright">&copy; 2021 - {year} <a>Dynasty</a></span>
 	<br />
 	<!-- PLEASE DO NOT REMOVE THE BUILT BY
 	<span class="creator">Built by <a href="https://github.com/jsmalls05">James Smalls</a><br /></span>
@@ -132,3 +132,4 @@
 	 maintain and enhance League Page would be greatly appreciated!)
 	 Love League Page? Please consider <a href="https://www.buymeacoffee.com/nmelhado">donating</a> to support enhancements or just to say thank you! -->
 </footer>
+
