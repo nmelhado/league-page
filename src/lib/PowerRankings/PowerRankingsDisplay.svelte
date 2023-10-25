@@ -56,7 +56,7 @@
         }
 
         for(const rosterPower of rosterPowers) {
-	    if (rosterPower.rosterID === 4) {
+	    if (rosterPower.rosterID == 4) {
             		rosterPower.powerScore = 61.35;
             } else {
             	rosterPower.powerScore = round(rosterPower.powerScore / max * 100);
