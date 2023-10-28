@@ -144,6 +144,11 @@
         padding: 0 2em;
         display: flex;
         justify-content: center;
+        max-width: 90%;
+    }
+
+    :global(.body .innerImg) {
+        max-width: 100%;
     }
 
     :global(.body table) {
