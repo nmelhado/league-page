@@ -1,12 +1,24 @@
 <script>
     import { goto } from "$app/navigation";
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
     import {dynasty} from "$lib/utils/leagueInfo"
 
+    export let manager, leagueTeamManagers, key;
 
-    export let manager, rosters, users, key;
+    let retired = false;
 
-    const roster = rosters.rosters[manager.roster - 1];
-    const user = users[roster.owner_id];
+    // manager.roster is deprecated, pages should be using managerID now
+    let rosterID = manager.roster;
+    let year = null;
+
+    if(manager.managerID) {
+        const dates = getDatesActive(leagueTeamManagers, manager.managerID);
+        if(dates.end) retired = true;
+
+        ({rosterID, year} = getRosterIDFromManagerID(leagueTeamManagers, manager.managerID) || {rosterID, year});
+    }
+
+    const commissioner = manager.managerID ? leagueTeamManagers.users[manager.managerID].is_owner : false;
 </script>
 
 <style>
@@ -16,6 +28,8 @@
         align-items: center;
         padding: 1em 0;
         background-color: var(--fff);
+        background-repeat: no-repeat;
+        background-position: 15% 50%;
         margin: 0.5em 0;
         border-radius: 2em;
         border: 1px solid var(--ccc);
@@ -94,6 +108,27 @@
         line-height: 1.2em;
     }
 
+    .avatarHolder {
+        display: inline-flex;
+        position: relative;
+    }
+
+    .commissionerBadge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        height: 25px;
+        width: 25px;
+        font-weight: 600;
+        border-radius: 15px;
+        background-color: var(--blueTwo);
+        border: 1px solid var(--blueOne);
+        color: #fff;
+    }
+
 	@media (max-width: 665px) {
         .name {
             font-size: 0.9em;
@@ -117,6 +152,12 @@
             height: 30px;
             width: 30px;
             margin-left: 0.5em;
+        }
+
+        .commissionerBadge {
+            height: 15px;
+            width: 15px;
+            font-size: 0.8em;
         }
 
         .infoSlot {
@@ -188,10 +229,17 @@
     }
 </style>
 
-<div class="manager" on:click={() => goto(`/manager?manager=${key}`)}>
-    <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+<div class="manager" style="{retired ? "background-image: url(/retired.png); background-color: var(--ddd)": ""}" on:click={() => goto(`/manager?manager=${key}`)}>
+    <div class="avatarHolder">
+        <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+        {#if commissioner}
+            <div class="commissionerBadge">
+                <span>C</span>
+            </div>
+        {/if}
+    </div>
     <div class="name">{manager.name}</div>
-    <div class="team">{user.metadata.team_name ? user.metadata.team_name : user.display_name}</div>
+    <div class="team">{getTeamNameFromTeamManagers(leagueTeamManagers, rosterID, year)}</div>
     <div class="spacer" />
     <div class="info">
         <!-- Favorite team (optional) -->

@@ -67,7 +67,7 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 ![league ID instructions](https://storage.googleapis.com/nfl-player-data/league_id_instructions.png)
 - Write your homepage text (league intro/bio) `/src/lib/utils/leagueInfo.js` (lines 9-14)
 ![homepage text](https://storage.googleapis.com/nfl-player-data/homepage_text.png)
-- Next, fill out and uncomment (delete the `// ` at the beginning of each line) the managers' object (lines 27 - 92), also located in `/src/lib/utils/leagueInfo.js`, there should be one object for each manager (for assistance, consult the [Training Wheels guide](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text))
+- Next, fill out and uncomment (delete the `// ` at the beginning of each line) the managers' object (lines 27 - 92), also located in `/src/lib/utils/leagueInfo.js`, there should be one object for each manager. The structure may change in the future (it has already 😅). The source of truth is down at the bottom, lines 104-126 (for assistance, consult the [Training Wheels guide](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding-managers-and-changing-the-homepage-text)).
 ![manager object](https://storage.googleapis.com/nfl-player-data/managersObj.png)
 ![manager rendering](https://storage.googleapis.com/nfl-player-data/managerRendering.png)
 - Add corresponding images for managers to the `/static/managers/` directory and make the sure the name matches with what was provided above

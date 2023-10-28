@@ -1,11 +1,12 @@
 <script>
     import { leagueName, round } from '$lib/utils/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';
     import Standing from './Standing.svelte';
 
-    export let standingsData, usersData;
+    export let standingsData, leagueTeamManagersData;
 
     // Least important to most important (i.e. the most important [usually wins] goes last)
     // Edit this to match your leagues settings
@@ -16,7 +17,7 @@
 
     let loading = true;
     let preseason = false;
-    let rosters, standings, year, users;
+    let standings, year, leagueTeamManagers;
     onMount(async () => {
         const asyncStandingsData = await standingsData;
         if(!asyncStandingsData) {
@@ -24,16 +25,9 @@
             preseason = true;
             return;
         }
-        const {standingsInfo, yearData, rostersData} = asyncStandingsData;
-        users = await usersData;
-        rosters = rostersData;
+        const {standingsInfo, yearData} = asyncStandingsData;
+        leagueTeamManagers = await leagueTeamManagersData;
         year = yearData;
-        for(const standingKey in standingsInfo) {
-            const roster = rosters[standingsInfo[standingKey].rosterID - 1];
-            standingsInfo[standingKey].fpts = round(roster.settings.fpts + (roster.settings.fpts_decimal / 100));
-            standingsInfo[standingKey].fptsAgainst = round(roster.settings.fpts_against + (roster.settings.fpts_against_decimal / 100));
-	        standingsInfo[standingKey].streak = roster.metadata.streak;
-        }
 
         let finalStandings = Object.keys(standingsInfo).map((key) => standingsInfo[key]);
 
@@ -110,7 +104,7 @@
             <Body>
                 <!-- 	Standing	 -->
                 {#each standings as standing}
-                    <Standing {columnOrder} {standing} user={users[rosters[standing.rosterID - 1].owner_id]} roster={rosters[standing.rosterID - 1]} />
+                    <Standing {columnOrder} {standing} {leagueTeamManagers} team={getTeamFromTeamManagers(leagueTeamManagers, standing.rosterID)} />
                 {/each}
             </Body>
         </DataTable>
