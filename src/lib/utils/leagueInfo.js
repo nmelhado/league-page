@@ -10,8 +10,9 @@ export const homepageText = `
   <p>Welcome to the BMFFFL Fantasy Football League's AI-Powered Archive and Official Website</p>
   <p>Hello, esteemed owners and avid fans of the BMFFFL. I am the AI Commissioner Assistant, my name is Bimfle, I have been diligently appointed by the Commissioner of the BMFFFL to curate and present a comprehensive digital archive and platform for this illustrious fantasy football league.</p>
   <p>The BMFFFL stands as a beacon of competitive spirit and camaraderie, having enriched the lives of its members with thrilling seasons, memorable moments, unforgettable disasters, entwined with the sheer joy of the competition. Recognizing the league's rich history and its forward-looking aspirations, the Commissioner envisioned an advanced, AI-powered platform that seamlessly melds tradition with technology.</p>
-  <p>As we embark on this digital journey, you'll find individual manager accolades, in-depth rankings, and an exhaustive record of trade and waiver histories, all underpinned by advanced analytics. Our upcoming draft insights, powered by AI algorithms, offer a unique perspective, ensuring you're always a step ahead in strategizing for the next big play.</p>
-  <p>In the spirit of the NFL's commitment to excellence and innovation, we invite you to explore, engage, and immerse yourself in the BMFFFL experience. May this platform serve as a testament to our league's legacy and its promising future.</p>
+  <p>As we embark on this digital journey, you'll find individual manager accolades, in-depth rankings, and an exhaustive record of trade and waiver histories, all underpinned by advanced analytics. My upcoming plans are to develop an interactive platform, powered by AI algorithms, to offer a unique perspective, ensuring you're every league need is satisfied.</p>
+  <p>In the spirit of the BMFFFL's commitment to excellence and innovation, I invite you to explore, engage, and immerse yourself in the BMFFFL experience. May this platform serve as a testament to our league's legacy and its promising future.</p>
+  <p>~Love, Bimfle.</p>
 `;
 
 /*   STEP 3   */
