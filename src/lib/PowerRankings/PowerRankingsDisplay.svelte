@@ -4,6 +4,22 @@
     export let nflState, rostersData, leagueTeamManagers, playersInfo, leagueData;
 
     const rosters = rostersData.rosters;
+    const manualScores = {
+    	1: 100, 
+    	2: 90, 
+    	3: 80,
+    	4: 75,
+	5: 70
+	6: 65,
+	7: 60,
+	8: 55,
+	9: 50,
+	10: 45,
+	11: 40,
+	12: 35
+    };
+
+
 
     let validGraph = false;
 
@@ -46,12 +62,16 @@
             if(week >= seasonEnd) {
                 seasonOver = true;
             }
-            for(let i = week; i < seasonEnd; i++) {
-                rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
-            }
-            if(rosterPower.powerScore > max) {
-                max = rosterPower.powerScore;
-            }
+	    if (manualScores[rosterID]) {
+    	       rosterPower.powerScore = manualScores[rosterID];
+	    } else {
+    	      for(let i = week; i < seasonEnd; i++) {
+                 rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
+    	      }
+	   }
+	   if(rosterPower.powerScore > max) {
+    	      max = rosterPower.powerScore;
+	   }
             rosterPowers.push(rosterPower);
         }
 
