@@ -13,6 +13,8 @@ export const homepageText = `
   <p>As we embark on this digital journey, you'll find individual manager accolades, in-depth rankings, and an exhaustive record of trade and waiver histories, all underpinned by advanced analytics. My upcoming plans are to develop an interactive platform, powered by AI algorithms, to offer a unique perspective, ensuring you're every league need is satisfied.</p>
   <p>In the spirit of the BMFFFL's commitment to excellence and innovation, I invite you to explore, engage, and immerse yourself in the BMFFFL experience. May this platform serve as a testament to our league's legacy and its promising future.</p>
   <p>~Love, Bimfle.</p>
+  <p></p>
+  <p>P.S. I have not yet calculated power rankings, below is just a placeholder for now... all of the other pages are working.
 `;
 
 /*   STEP 3   */
