@@ -151,7 +151,7 @@
             <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
-		<img src="/bimfle_large.png" class="bimfle_large" alt="bimfle" />
+		<img src="/bimfle_large.png" class="bimfle" alt="bimfle" />
             <!-- Most recent Blog Post (if enabled) -->
             {#if enableBlog}
                 <HomePost />
