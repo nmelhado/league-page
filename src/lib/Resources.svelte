@@ -5,21 +5,21 @@ import { dynasty } from './utils/helper';
     const today = new Date();
     const resources = [
         {
-            name: "FTN Fantasy",
-            url: "https://www.ftnfantasy.com/nfl",
-            icon: "insights",
+            name: "The BMFFFL AI League Historian *Coming Soon",
+            url: "https://bmfffl.vercel.app/resources",
+            icon: "articles",
             premium: true,
             separator: true,
         },
         {
-            name: "The Fantasy Footballers",
-            url: "https://www.thefantasyfootballers.com/",
+            name: "The BMFFFL AI League Podcast *Coming Soon",
+            url: "https://bmfffl.vercel.app/resources",
             icon: "podcasts",
             premium: true,
             separator: true,
         },
         {
-            name: "FantasyPros Dynasty Trade Value Chart",
+            name: "The BMFFFL AI League Analytics *Coming Soon",
             url: `https://www.fantasypros.com/${today.getFullYear()}/${today.getMonth() + 1}/fantasy-football-rankings-dynasty-trade-value-chart-${today.toLocaleString('default', { month: 'long' }).toLowerCase()}-${today.getFullYear()}-update/`,
             icon: "assessment",
             premium: false,
@@ -27,7 +27,7 @@ import { dynasty } from './utils/helper';
             dynastyOnly: true,
         },
         {
-            name: "DynastyProcess Trade Calculator",
+            name: "The BMFFFL AI League Calculator Bot *Coming Soon",
             url: "https://apps.dynastyprocess.com/calculator/",
             icon: "calculate",
             premium: false,
@@ -35,67 +35,12 @@ import { dynasty } from './utils/helper';
             dynastyOnly: true,
         },
         {
-            name: "Dynasty League Football",
-            url: "https://dynastyleaguefootball.com/",
+            name: "The BMFFFL AI Prediction Bot *Coming Soon",
+            url: "https://bmfffl.vercel.app/resources",
             icon: "insights",
             premium: true,
             separator: true,
             dynastyOnly: true,
-        },
-        {
-            name: "Reddit Dynasty Fantasy Football",
-            url: "https://www.reddit.com/r/DynastyFF/",
-            icon: "article",
-            premium: false,
-            separator: true,
-            dynastyOnly: true,
-        },
-        {
-            name: "Reddit Fantasy Football",
-            url: "https://www.reddit.com/r/fantasyfootball/",
-            icon: "article",
-            premium: false,
-            separator: true,
-            redraftOnly: true,
-        },
-        {
-            name: "Dynasty 101 Trade Calculator",
-            url: "https://dynasty101.com/trade-calculator/",
-            icon: "calculate",
-            premium: false,
-            separator: true,
-            dynastyOnly: true,
-        },
-        {
-            name: "Dynasty Nerds GM",
-            url: "https://gm.dynastynerds.com/",
-            icon: "insights",
-            premium: true,
-            separator: true,
-            dynastyOnly: true,
-        },
-        {
-            name: "Fantasy Football Trade Analyzer",
-            url: `https://fantasyfootballcalculator.com/trade-analyzer`,
-            icon: "calculate",
-            premium: false,
-            separator: true,
-            redraftOnly: true,
-        },
-        {
-            name: "Reddit FF Trade Analyzer",
-            url: "https://www.reddit.com/r/TradeAnalyzerFF/",
-            icon: "assessment",
-            premium: false,
-            separator: true,
-        },
-        {
-            name: "FantasyCalc Trade Calculator",
-            url: "https://www.fantasycalc.com/trade-calculator",
-            icon: "calculate",
-            premium: false,
-            separator: false,
-            dynastyOnly: false,
         },
     ];
 </script>
@@ -139,7 +84,7 @@ import { dynasty } from './utils/helper';
 
 <div class="pageBody">
     <div class="banner">
-        <h4>Helpful Dynasty Resources</h4>
+        <h4>This is where you will interact with AI Chatbot Resources</h4>
     </div>
 
     <List class="list" dense>
