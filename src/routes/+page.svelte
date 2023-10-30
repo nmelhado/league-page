@@ -113,6 +113,15 @@
         top: 50%;
     }
 
+    .bimfle {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 576px;
+        height: auto;
+        left: 50%;
+        top: 50%;
+    }
+
     h4 {
         text-align: center;
         font-size: 1.8em;
@@ -142,6 +151,7 @@
             <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
+		<img src="/bimfle_large.png" class="bimfle_large" alt="bimfle" />
             <!-- Most recent Blog Post (if enabled) -->
             {#if enableBlog}
                 <HomePost />
