@@ -61,12 +61,12 @@
 
         const powerGraph = {
             stats: rosterPowers,
-            x: "Manager",
+            x: "Owner",
             y: "Power Ranking",
             stat: "",
-            header: "Rest of Season Power Rankings",
+            header: "Official Power Rankings",
             field: "powerScore",
-            short: "ROS Power Ranking"
+            short: "Power Ranking"
         };
 
         graphs = [
