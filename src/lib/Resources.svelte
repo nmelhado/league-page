@@ -84,7 +84,7 @@ import { dynasty } from './utils/helper';
 
 <div class="pageBody">
     <div class="banner">
-        <h4>AI Chatbot Resources</h4>
+        <h4>Bimfle AI Assistant Resources</h4>
     </div>
 
     <List class="list" dense>
