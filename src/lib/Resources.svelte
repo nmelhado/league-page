@@ -84,7 +84,7 @@ import { dynasty } from './utils/helper';
 
 <div class="pageBody">
     <div class="banner">
-        <h4>This is where you will interact with AI Chatbot Resources</h4>
+        <h4>AI Chatbot Resources</h4>
     </div>
 
     <List class="list" dense>
@@ -128,5 +128,5 @@ import { dynasty } from './utils/helper';
             {/if}
         {/each}
     </List>
-    <p class="disclaimer">*Some or all content is behind a paywall</p>
+    <p class="disclaimer">*As of right now, I am a simple AI... but soon you will know me. ~Love, Bimfle*</p>
 </div>
