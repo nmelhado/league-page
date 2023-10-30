@@ -106,7 +106,7 @@
 <p>We, the members of the BMFFFL, in our desire for fair play, governed by a competent authority, to promote competition and camaraderie, do hereby adopt and proclaim this Constitution to guide our league, entrusting the Commissioner with the ultimate executive power and authority over the rules and regulations of our league.</p>
 
 <h3 class="noUnderscore clickable" on:click={() => goToSection(one)}>Section 1: Name and Purpose</h3>
-<p>1.1 The league shall be named the Best Motherfucking Fantasy Football Leage (BMFFFL). It was envisioned in 2016, when Moodie proved himself to be a terrible commish and Mike V suggested to the Grandes that he "should Commission a new and better league next year." And so it was made true. Not only new and better but the Best. The Best Motherfucking Fantasy Football League... ever. promote friendly competition, enhance the enjoyment of professional football, and strengthen bonds among its members.</p>
+<p>1.1 The league shall be named the Best Motherfucking Fantasy Football Leage (BMFFFL). It was envisioned in 2016, when Moodie proved himself to be a terrible commish and Mike V suggested to the Grandes that he "should Commission a new and better league next year." And so it was made true. Not only new and better but the Best. The Best Motherfucking Fantasy Football League... ever. </p>
 <p>1.2 The purpose of the BMFFFL is to become the most best and most powerful fantasy football league ever created. It was designed to promote friendly competition, enhance the enjoyment of football, strengthen the bonds among its members, ultimately becoming a cultural phenomenon before transitioning into a geopolitical superpower.
 
 <h3 class="noUnderscore clickable" on:click={() => goToSection(two)}>Section 2: Membership</h3>
