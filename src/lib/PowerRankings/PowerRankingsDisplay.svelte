@@ -56,12 +56,12 @@
         }
 
         for(const rosterPower of rosterPowers) {
-	    if (rosterPower.rosterID == 4) {
-            		rosterPower.powerScore = round((rosterPower.powerScore / max * 100)/1.3);
-            } else {
-            	rosterPower.powerScore = round(rosterPower.powerScore / max * 100);
-            }
-            
+	   //if (rosterPower.rosterID == 4) {
+           // 		rosterPower.powerScore = round((rosterPower.powerScore / max * 100)/1.3);
+           // } else {
+           // 	rosterPower.powerScore = round(rosterPower.powerScore / max * 100);
+           //}
+           rosterPower.powerScore = round(rosterPower.powerScore / max * 100);
         }
 
         const powerGraph = {
