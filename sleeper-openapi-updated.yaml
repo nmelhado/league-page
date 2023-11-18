@@ -1,0 +1,2411 @@
+openapi: 3.0.3
+info:
+  title: Sleeper API
+  description: The Sleeper API is a read-only HTTP API that is free to use and allows             access
+    to a users leagues, drafts, and rosters. No API Token is necessary, as you cannot
+    modify contents via this API. Be mindful of the frequency of calls. A general
+    rule is to stay under 1000 API calls per minute, otherwise, you risk being IP-blocked.
+  version: 1.0.0
+externalDocs:
+  description: Find out more about the sleeper api at
+  url: https://docs.sleeper.app/
+servers:
+- url: https://api.sleeper.app/v1
+tags:
+- name: User
+  description: Via the user resource, you can GET the user object by either providing
+  externalDocs:
+    description: Find out more
+    url: https://docs.sleeper.app/#user
+- name: Avatars
+  description: Users and leagues have avatar images. There are thumbnail and full-size
+    images for each avatar.
+- name: Leagues
+  description: Deals with NFL leagues
+- name: Drafts
+  description: Deals with all drafts
+- name: Players
+  description: Deals with all players
+paths:
+  /user/{username}:
+    get:
+      tags:
+      - User
+      summary: Get user information
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        example: sleeperuser
+        required: true
+        description: The username to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                username: sleeperuser
+                user_id: '12345678'
+                display_name: SleeperUser
+                avatar: cc12ec49965eb7856f84d71cf85306af
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getUserUsername
+  /user/{userId}:
+    get:
+      tags:
+      - User
+      summary: Update an existing pet
+      parameters:
+      - in: path
+        name: userId
+        schema:
+          type: string
+        example: 12345678
+        required: true
+        description: The id of the user to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                username: sleeperuser
+                user_id: '12345678'
+                display_name: SleeperUser
+                avatar: cc12ec49965eb7856f84d71cf85306af
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getUserUserid
+  /avatars/{avatarId}:
+    get:
+      tags:
+      - Avatars
+      summary: Get an avatar
+      description: Get a full size avatar image
+      parameters:
+      - in: path
+        name: avatarId
+        schema:
+          type: string
+        example: cc12ec49965eb7856f84d71cf85306af
+        required: true
+        description: The avatar id to get
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getAvatarsAvatarid
+  /avatars/thumbs/{avatarId}:
+    get:
+      tags:
+      - Avatars
+      summary: Get an avatar thumbnail
+      description: Get a thumbnail for the avatar
+      parameters:
+      - in: path
+        name: avatarId
+        schema:
+          type: string
+        example: cc12ec49965eb7856f84d71cf85306af
+        required: true
+        description: The avatar id to get
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getAvatarsThumbsAvatarid
+  /user/{userId}/leagues/{sport}/{season}:
+    get:
+      tags:
+      - Leagues
+      summary: This endpoint retrieves all leagues.
+      parameters:
+      - in: path
+        name: userId
+        schema:
+          type: string
+        example: cc12ec49965eb7856f84d71cf85306af
+        required: true
+        description: the user is to get
+      - in: path
+        name: sport
+        schema:
+          type: string
+        example: nfl
+        required: true
+        description: Only "nfl" is supported right now
+      - in: path
+        name: season
+        schema:
+          type: number
+        example: 2020
+        required: true
+        description: The NFL season to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Leagues'
+              example:
+              - total_rosters: 12
+                status: pre_draft
+                sport: nfl
+                settings: {}
+                season_type: regular
+                season: '2018'
+                scoring_settings: {}
+                roster_positions: []
+                previous_league_id: '198946952535085056'
+                name: Sleeperbot Friends League
+                league_id: '289646328504385536'
+                draft_id: '289646328508579840'
+                avatar: efaefa889ae24046a53265a3c71b8b64
+              - total_rosters: 12
+                status: in_season
+                sport: nfl
+                settings: {}
+                season_type: regular
+                season: '2018'
+                scoring_settings: {}
+                roster_positions: []
+                previous_league_id: '198946952535085056'
+                name: Sleeperbot Dynasty
+                league_id: '289646328504385536'
+                draft_id: '289646328508579840'
+                avatar: efaefa889ae24046a53265a3c71b8b64
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getUserUseridLeaguesSportSeason
+  /league/{leagueId}:
+    get:
+      tags:
+      - Leagues
+      summary: Get a specific league
+      description: This endpoint retrieves all leagues.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: the league to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/League'
+              example:
+                total_rosters: 12
+                status: in_season
+                sport: nfl
+                settings: {}
+                season_type: regular
+                season: '2018'
+                scoring_settings: {}
+                roster_positions: []
+                previous_league_id: '198946952535085056'
+                name: Sleeperbot Dynasty
+                league_id: '289646328504385536'
+                draft_id: '289646328508579840'
+                avatar: efaefa889ae24046a53265a3c71b8b64
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueid
+  /league/{leagueId}/rosters:
+    get:
+      tags:
+      - Leagues
+      summary: Getting rosters in a league
+      description: This endpoint retrieves all rosters in a league.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: the league to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rosters'
+              example:
+              - starters:
+                - '2307'
+                - '2257'
+                - '4034'
+                - '147'
+                - '642'
+                - '4039'
+                - '515'
+                - '4149'
+                - DET
+                settings:
+                  wins: 5
+                  waiver_position: 7
+                  waiver_budget_used: 0
+                  total_moves: 0
+                  ties: 0
+                  losses: 9
+                  fpts_decimal: 78
+                  fpts_against_decimal: 32
+                  fpts_against: 1670
+                  fpts: 1617
+                roster_id: 1
+                reserve: []
+                players:
+                - '1046'
+                - '138'
+                - '147'
+                - '2257'
+                - '2307'
+                - '2319'
+                - '4034'
+                - '4039'
+                - '4040'
+                - '4149'
+                - '421'
+                - '515'
+                - '642'
+                - '745'
+                - DET
+                owner_id: '188815879448829952'
+                league_id: '206827432160788480'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidRosters
+  /league/{leagueId}/users:
+    get:
+      tags:
+      - Leagues
+      summary: Getting users in a league
+      description: This endpoint retrieves all users in a league. This also includes
+        each users display_name, avatar, and their metadata which sometimes includes
+        a nickname they gave their team.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: the league to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersInLeague'
+              example:
+              - user_id: <user_id>
+                username: <username>
+                display_name: <display_name>
+                avatar: '1233456789'
+                metadata:
+                  team_name: Dezpacito
+                is_owner: true
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidUsers
+  /league/{leagueId}/matchups/{week}:
+    get:
+      tags:
+      - Leagues
+      summary: Getting matchups in a league
+      description: This endpoint retrieves all matchups in a league for a given week.
+        Each object in the list represents one team. The two teams with the same matchup_id
+        match up against each other. The starters is in an ordered list of player_ids,
+        and players is a list of all player_ids in this matchup. The bench can be
+        deduced by removing the starters from the players field.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: The ID of the league to retrieve matchups from
+      - in: path
+        name: week
+        schema:
+          type: number
+        example: 1
+        required: true
+        description: The week these matchups take place
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matchups'
+              example:
+              - starters:
+                - '421'
+                - '4035'
+                - '3242'
+                - '2133'
+                - '2449'
+                - '4531'
+                - '2257'
+                - '788'
+                - PHI
+                roster_id: 1
+                players:
+                - '1352'
+                - '1387'
+                - '2118'
+                - '2133'
+                - '2182'
+                - '223'
+                - '2319'
+                - '2449'
+                - '3208'
+                - '4035'
+                - '421'
+                - '4881'
+                - '4892'
+                - '788'
+                - CLE
+                matchup_id: 2
+                points: 20
+                custom_points: null
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidMatchupsWeek
+  /league/{leagueId}/winners_bracket:
+    get:
+      tags:
+      - Leagues
+      summary: Getting the winners playoff bracket
+      description: This endpoint retrieves the playoff bracket for a league for 4,
+        6, and 8 team playoffs. Each row represents a matchup between 2 teams.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: The ID of the league to retrieve matchups from
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayoffBracket'
+              example:
+              - r: 1
+                m: 1
+                t1: 3
+                t2: 6
+                w: null
+                l: null
+              - r: 1
+                m: 2
+                t1: 4
+                t2: 5
+                w: null
+                l: null
+              - r: 2
+                m: 3
+                t1: 1
+                t2: null
+                t2_from:
+                  w: 1
+                w: null
+                l: null
+              - r: 2
+                m: 4
+                t1: 2
+                t2: null
+                t2_from:
+                  w: 2
+                w: null
+                l: null
+              - r: 2
+                m: 5
+                t1: null
+                t2: null
+                t1_from:
+                  l: 1
+                t2_from:
+                  l: 2
+                w: null
+                l: null
+                p: 5
+              - r: 3
+                m: 6
+                t1: null
+                t2: null
+                t1_from:
+                  w: 3
+                t2_from:
+                  w: 4
+                w: null
+                l: null
+                p: 1
+              - r: 3
+                m: 7
+                t1: null
+                t2: null
+                t1_from:
+                  l: 3
+                t2_from:
+                  l: 4
+                w: null
+                l: null
+                p: 3
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidWinners_bracket
+  /league/{leagueId}/loses_bracket:
+    get:
+      tags:
+      - Leagues
+      summary: Getting the loosers playoff bracket
+      description: This endpoint retrieves the playoff bracket for a league for 4,
+        6, and 8 team playoffs. Each row represents a matchup between 2 teams.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: The ID of the league to retrieve matchups from
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayoffBracket'
+              example:
+              - r: 1
+                m: 1
+                t1: 3
+                t2: 6
+                w: null
+                l: null
+              - r: 1
+                m: 2
+                t1: 4
+                t2: 5
+                w: null
+                l: null
+              - r: 2
+                m: 3
+                t1: 1
+                t2: null
+                t2_from:
+                  w: 1
+                w: null
+                l: null
+              - r: 2
+                m: 4
+                t1: 2
+                t2: null
+                t2_from:
+                  w: 2
+                w: null
+                l: null
+              - r: 2
+                m: 5
+                t1: null
+                t2: null
+                t1_from:
+                  l: 1
+                t2_from:
+                  l: 2
+                w: null
+                l: null
+                p: 5
+              - r: 3
+                m: 6
+                t1: null
+                t2: null
+                t1_from:
+                  w: 3
+                t2_from:
+                  w: 4
+                w: null
+                l: null
+                p: 1
+              - r: 3
+                m: 7
+                t1: null
+                t2: null
+                t1_from:
+                  l: 3
+                t2_from:
+                  l: 4
+                w: null
+                l: null
+                p: 3
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidLoses_bracket
+  /league/{leagueId}/transactions/{round}:
+    get:
+      tags:
+      - Leagues
+      summary: Get Transactions
+      description: This endpoint retrieves the playoff bracket for a league for 4,
+        6, and 8 team playoffs. Each row represents a matchup between 2 teams.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: The ID of the league to retrieve matchups from
+      - in: path
+        name: round
+        schema:
+          type: number
+        example: 289646328504385536
+        required: true
+        description: The week you want to pull from
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayoffBracket'
+              example:
+              - type: trade
+                transaction_id: '434852362033561600'
+                status_updated: 1558039402803
+                status: complete
+                settings: null
+                roster_ids:
+                - 2
+                - 1
+                metadata: null
+                leg: 1
+                drops: null
+                draft_picks:
+                - season: '2019'
+                  round: 5
+                  roster_id: 1
+                  previous_owner_id: 1
+                  owner_id: 2
+                - season: '2019'
+                  round: 3
+                  roster_id: 2
+                  previous_owner_id: 2
+                  owner_id: 1
+                creator: '160000000000000000'
+                created: 1558039391576
+                consenter_ids:
+                - 2
+                - 1
+                adds: null
+                waiver_budget:
+                - sender: 2
+                  receiver: 3
+                  amount: 55
+              - type: free_agent
+                transaction_id: '434890120798142464'
+                status_updated: 1558048393967
+                status: complete
+                settings: null
+                roster_ids:
+                - 1
+                metadata: null
+                leg: 1
+                drops:
+                  '1736': 1
+                draft_picks: []
+                creator: '160000000000000000'
+                created: 1558048393967
+                consenter_ids:
+                - 1
+                adds:
+                  '2315': 1
+                waiver_budget: []
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidTransactionsRound
+  /league/{leagueId}/traded_picks:
+    get:
+      tags:
+      - Leagues
+      summary: Get traded picks
+      description: This endpoint retrieves all traded picks in a league, including
+        future picks.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: 289646328504385536
+        required: true
+        description: The ID of the league to retrieve matchups from
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradedPicks'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidTraded_picks
+  /state/{sport}:
+    get:
+      tags:
+      - Leagues
+      summary: Get NFL State
+      description: This endpoint retrieves all traded picks in a league, including
+        future picks.
+      parameters:
+      - in: path
+        name: sport
+        schema:
+          type: string
+          enum:
+          - nfl
+          - nba
+          - lcs
+        example: nfl
+        required: true
+        description: nfl, nba, lcs, etc
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportState'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getStateSport
+  /user/{userId}/drafts/{sport}/{season}:
+    get:
+      tags:
+      - Drafts
+      summary: Get all drafts for user
+      description: This endpoint retrieves all drafts by a user.
+      parameters:
+      - in: path
+        name: userId
+        schema:
+          type: string
+        example: cc12ec49965eb7856f84d71cf85306af
+        required: true
+        description: the user is to get
+      - in: path
+        name: sport
+        schema:
+          type: string
+        example: nfl
+        required: true
+        description: Only "nfl" is supported right now
+      - in: path
+        name: season
+        schema:
+          type: number
+        example: 2020
+        required: true
+        description: The NFL season to get
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Drafts'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getUserUseridDraftsSportSeason
+  /league/{leagueId}/drafts:
+    get:
+      tags:
+      - Drafts
+      summary: Get all drafts for a league
+      description: This endpoint retrieves all drafts for a league. Keep in mind that
+        a league can have multiple drafts, especially dynasty leagues. Drafts are
+        sorted by most recent to earliest. Most leagues should only have one draft.
+      parameters:
+      - in: path
+        name: leagueId
+        schema:
+          type: string
+        example: cc12ec49965eb7856f84d71cf85306af
+        required: true
+        description: The ID of the league for which you are trying to retrieve drafts.
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Drafts'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getLeagueLeagueidDrafts
+  /draft/{draftId}:
+    get:
+      tags:
+      - Drafts
+      summary: Get a specific draft
+      description: This endpoint retrieves a specific draft.
+      parameters:
+      - in: path
+        name: draftId
+        schema:
+          type: string
+        example: 257270643320426496
+        required: true
+        description: The ID of the draft to retrieve
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Drafts'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getDraftDraftid
+  /draft/{draftId}/picks:
+    get:
+      tags:
+      - Drafts
+      summary: Get a specific draft
+      description: This endpoint retrieves a specific draft.
+      parameters:
+      - in: path
+        name: draftId
+        schema:
+          type: string
+        example: 257270643320426496
+        required: true
+        description: The ID of the draft to retrieve
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Picks'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getDraftDraftidPicks
+  /draft/{draftId}/traded_picks:
+    get:
+      tags:
+      - Drafts
+      summary: Get a specific draft
+      description: This endpoint retrieves a specific draft.
+      parameters:
+      - in: path
+        name: draftId
+        schema:
+          type: string
+        example: 257270643320426496
+        required: true
+        description: The ID of the draft to retrieve
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradedPicks'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getDraftDraftidTraded_picks
+  /players/nfl:
+    get:
+      tags:
+      - Players
+      summary: Fetch all players
+      description: 'Please use this call sparingly, as it is intended only to be used
+        once per day at most to keep your player IDs updated. The average size of
+        this query is 5MB. <br/>
+
+        Since rosters and draft picks contain Player IDs which look like "1042", "2403",
+        "CAR", etc, you will need to know what those IDs map to. The /players call
+        provides you the map necessary to look up any player. <br/>
+
+        You should save this information on your own servers as this is not intended
+        to be called every time you need to look up players due to the filesize being
+        close to 5MB in size. You do not need to call this endpoint more than once
+        per day.
+
+        '
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Players'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getPlayersNfl
+  /players/{sport}/trending/{type}:
+    get:
+      tags:
+      - Players
+      summary: Trending Players
+      description: 'Please give attribution to Sleeper you are using our trending
+        data. If you''d like to embed our trending list on your website or blog, please
+        use the embed code on the right. <br/>
+
+        You can use this endpoint to get a list of trending players based on adds
+        or drops in the past 24 hours. <br/>
+
+        You should save this information on your own servers as this is not intended
+        to be called every time you need to look up players due to the filesize being
+        close to 5MB in size. You do not need to call this endpoint more than once
+        per day.
+
+        '
+      parameters:
+      - in: path
+        name: sport
+        schema:
+          type: string
+          enum:
+          - nfl
+          - nba
+          - lcs
+        example: nfl
+        required: true
+        description: nfl, nba, lcs, etc
+      - in: path
+        name: type
+        schema:
+          type: string
+          enum:
+          - add
+          - drop
+        example: add
+        required: true
+        description: Either add or drop
+      - in: query
+        name: lookback_hours
+        schema:
+          type: string
+        example: 24
+        required: false
+        description: Number of hours to look back (default is 24) - optional
+      - in: query
+        name: limit
+        schema:
+          type: string
+        example: 25
+        required: false
+        description: Number of results you want, (default is 25) - optional
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrendingPlayers'
+        400:
+          description: Bad Request -- Your request is invalid.
+        404:
+          description: Not Found -- The specified kitten could not be found.
+        429:
+          description: Too Many Requests -- You're requesting too many kittens! Slow
+            down!
+        500:
+          description: Internal Server Error -- We had a problem with our server.
+            Try again later.
+        503:
+          description: Service Unavailable -- We're temporarily offline for maintenance.
+            Please try again later.
+      operationId: getPlayersSportTrendingType
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        user_id:
+          type: string
+        display_name:
+          type: string
+        avatar:
+          type: string
+      required:
+      - username
+      - user_id
+      - display_name
+      - avatar
+    Leagues:
+      type: array
+      items:
+        $ref: '#/components/schemas/League'
+    League:
+      type: object
+      properties:
+        total_rosters:
+          type: integer
+          example: 12
+        status:
+          type: string
+          example: pre_draft
+          description: can also be "drafting", "in_season", or "complete";
+        sport:
+          type: string
+          example: nfl
+        settings:
+          $ref: '#/components/schemas/LeagueSettings'
+        season_type:
+          type: string
+          example: regular
+        season:
+          type: string
+          example: '2018'
+        scoring_settings:
+          $ref: '#/components/schemas/ScoreingSettings'
+        roster_positions:
+          type: array
+          items:
+            type: string
+            example:
+            - QB
+            - RB
+            - RB
+            - WR
+            - WR
+            - TE
+            - FLEX
+            - FLEX
+            - K
+            - DEF
+            - BN
+            - BN
+            - BN
+            - BN
+            - BN
+        previous_league_id:
+          type: string
+          example: '198946952535085056'
+        name:
+          type: string
+          example: Sleeperbot Friends League
+        league_id:
+          type: string
+          example: '289646328504385536'
+        draft_id:
+          type: string
+          example: '289646328508579840'
+        avatar:
+          type: string
+          example: efaefa889ae24046a53265a3c71b8b64
+      required:
+      - total_rosters
+      - status
+      - sport
+      - settings
+      - season_type
+      - season
+      - scoring_settings
+      - roster_positions
+      - previous_league_id
+      - name
+      - league_id
+      - draft_id
+      - avatar
+    ScoreingSettings:
+      type: object
+      properties:
+        pass_2pt:
+          type: integer
+        pass_int:
+          type: integer
+        fgmiss:
+          type: integer
+        rec_yd:
+          type: number
+        xpmiss:
+          type: integer
+        fgm_30_39:
+          type: integer
+        blk_kick:
+          type: integer
+        pts_allow_7_13:
+          type: integer
+        ff:
+          type: integer
+        fgm_20_29:
+          type: integer
+        fgm_40_49:
+          type: integer
+        pts_allow_1_6:
+          type: integer
+        st_fum_rec:
+          type: integer
+        def_st_ff:
+          type: integer
+        st_ff:
+          type: integer
+        pts_allow_28_34:
+          type: integer
+        fgm_50p:
+          type: integer
+        fum_rec:
+          type: integer
+        def_td:
+          type: integer
+        fgm_0_19:
+          type: integer
+        int:
+          type: integer
+        pts_allow_0:
+          type: integer
+        pts_allow_21_27:
+          type: integer
+        rec_2pt:
+          type: integer
+        rec:
+          type: integer
+        xpm:
+          type: integer
+        st_td:
+          type: integer
+        def_st_fum_rec:
+          type: integer
+        def_st_td:
+          type: integer
+        sack:
+          type: integer
+        fum_rec_td:
+          type: integer
+        rush_2pt:
+          type: integer
+        rec_td:
+          type: integer
+        pts_allow_35p:
+          type: integer
+        pts_allow_14_20:
+          type: integer
+        rush_yd:
+          type: number
+        pass_yd:
+          type: number
+        pass_td:
+          type: integer
+        rush_td:
+          type: integer
+        fum_lost:
+          type: integer
+        fum:
+          type: integer
+        safe:
+          type: integer
+      required:
+      - pass_2pt
+      - pass_int
+      - fgmiss
+      - rec_yd
+      - xpmiss
+      - fgm_30_39
+      - blk_kick
+      - pts_allow_7_13
+      - ff
+      - fgm_20_29
+      - fgm_40_49
+      - pts_allow_1_6
+      - st_fum_rec
+      - def_st_ff
+      - st_ff
+      - pts_allow_28_34
+      - fgm_50p
+      - fum_rec
+      - def_td
+      - fgm_0_19
+      - int
+      - pts_allow_0
+      - pts_allow_21_27
+      - rec_2pt
+      - rec
+      - xpm
+      - st_td
+      - def_st_fum_rec
+      - def_st_td
+      - sack
+      - fum_rec_td
+      - rush_2pt
+      - rec_td
+      - pts_allow_35p
+      - pts_allow_14_20
+      - rush_yd
+      - pass_yd
+      - pass_td
+      - rush_td
+      - fum_lost
+      - fum
+      - safe
+      example:
+        pass_2pt: 2
+        pass_int: -1
+        fgmiss: -1
+        rec_yd: 0.10000000149011612
+        xpmiss: -1
+        fgm_30_39: 3
+        blk_kick: 2
+        pts_allow_7_13: 4
+        ff: 1
+        fgm_20_29: 3
+        fgm_40_49: 4
+        pts_allow_1_6: 7
+        st_fum_rec: 1
+        def_st_ff: 1
+        st_ff: 1
+        pts_allow_28_34: -1
+        fgm_50p: 5
+        fum_rec: 2
+        def_td: 6
+        fgm_0_19: 3
+        int: 2
+        pts_allow_0: 10
+        pts_allow_21_27: 0
+        rec_2pt: 2
+        rec: 1
+        xpm: 1
+        st_td: 6
+        def_st_fum_rec: 1
+        def_st_td: 6
+        sack: 1
+        fum_rec_td: 6
+        rush_2pt: 2
+        rec_td: 6
+        pts_allow_35p: -4
+        pts_allow_14_20: 1
+        rush_yd: 0.10000000149011612
+        pass_yd: 0.03999999910593033
+        pass_td: 4
+        rush_td: 6
+        fum_lost: -2
+        fum: -1
+        safe: 2
+    LeagueSettings:
+      type: object
+      properties:
+        max_keepers:
+          type: integer
+        draft_rounds:
+          type: integer
+        trade_review_days:
+          type: integer
+        reserve_allow_dnr:
+          type: integer
+        capacity_override:
+          type: integer
+        pick_trading:
+          type: integer
+        taxi_years:
+          type: integer
+        taxi_allow_vets:
+          type: integer
+        disable_adds:
+          type: integer
+        waiver_type:
+          type: integer
+        bench_lock:
+          type: integer
+        reserve_allow_sus:
+          type: integer
+        type:
+          type: integer
+        reserve_allow_cov:
+          type: integer
+        waiver_clear_days:
+          type: integer
+        waiver_day_of_week:
+          type: integer
+        playoff_teams:
+          type: integer
+        num_teams:
+          type: integer
+        reserve_slots:
+          type: integer
+        playoff_round_type:
+          type: integer
+        daily_waivers_hour:
+          type: integer
+        waiver_budget:
+          type: integer
+        reserve_allow_out:
+          type: integer
+        offseason_adds:
+          type: integer
+        playoff_seed_type:
+          type: integer
+        daily_waivers:
+          type: integer
+        playoff_week_start:
+          type: integer
+        league_average_match:
+          type: integer
+        leg:
+          type: integer
+        trade_deadline:
+          type: integer
+        reserve_allow_doubtful:
+          type: integer
+        taxi_deadline:
+          type: integer
+        reserve_allow_na:
+          type: integer
+        taxi_slots:
+          type: integer
+        playoff_type:
+          type: integer
+      required:
+      - max_keepers
+      - draft_rounds
+      - trade_review_days
+      - reserve_allow_dnr
+      - capacity_override
+      - pick_trading
+      - taxi_years
+      - taxi_allow_vets
+      - disable_adds
+      - waiver_type
+      - bench_lock
+      - reserve_allow_sus
+      - type
+      - reserve_allow_cov
+      - waiver_clear_days
+      - waiver_day_of_week
+      - playoff_teams
+      - num_teams
+      - reserve_slots
+      - playoff_round_type
+      - daily_waivers_hour
+      - waiver_budget
+      - reserve_allow_out
+      - offseason_adds
+      - playoff_seed_type
+      - daily_waivers
+      - playoff_week_start
+      - league_average_match
+      - leg
+      - trade_deadline
+      - reserve_allow_doubtful
+      - taxi_deadline
+      - reserve_allow_na
+      - taxi_slots
+      - playoff_type
+      example:
+        max_keepers: 1
+        draft_rounds: 3
+        trade_review_days: 2
+        reserve_allow_dnr: 0
+        capacity_override: 0
+        pick_trading: 1
+        taxi_years: 0
+        taxi_allow_vets: 0
+        disable_adds: 0
+        waiver_type: 0
+        bench_lock: 0
+        reserve_allow_sus: 0
+        type: 0
+        reserve_allow_cov: 0
+        waiver_clear_days: 2
+        waiver_day_of_week: 2
+        playoff_teams: 6
+        num_teams: 10
+        reserve_slots: 0
+        playoff_round_type: 0
+        daily_waivers_hour: 0
+        waiver_budget: 100
+        reserve_allow_out: 0
+        offseason_adds: 0
+        playoff_seed_type: 0
+        daily_waivers: 0
+        playoff_week_start: 15
+        league_average_match: 0
+        leg: 1
+        trade_deadline: 11
+        reserve_allow_doubtful: 0
+        taxi_deadline: 0
+        reserve_allow_na: 0
+        taxi_slots: 0
+        playoff_type: 0
+    Rosters:
+      type: array
+      items:
+        $ref: '#/components/schemas/Roster'
+    Roster:
+      type: object
+      properties:
+        starters:
+          type: array
+          items:
+            type: string
+        settings:
+          $ref: '#/components/schemas/RosterSettings'
+        roster_id:
+          type: integer
+        reserve:
+          type: array
+          items:
+            type: string
+          nullable: true
+          example: null
+        players:
+          type: array
+          items:
+            type: string
+        owner_id:
+          type: string
+        league_id:
+          type: string
+      required:
+      - starters
+      - settings
+      - roster_id
+      - reserve
+      - players
+      - owner_id
+      - league_id
+    RosterSettings:
+      type: object
+      properties:
+        wins:
+          type: integer
+        waiver_position:
+          type: integer
+        waiver_budget_used:
+          type: integer
+        total_moves:
+          type: integer
+        ties:
+          type: integer
+        losses:
+          type: integer
+        fpts_decimal:
+          type: integer
+        fpts_against_decimal:
+          type: integer
+        fpts_against:
+          type: integer
+        fpts:
+          type: integer
+      required:
+      - wins
+      - waiver_position
+      - waiver_budget_used
+      - total_moves
+      - ties
+      - losses
+      - fpts_decimal
+      - fpts_against_decimal
+      - fpts_against
+      - fpts
+    UsersInLeague:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserInLeague'
+    UserInLeague:
+      type: object
+      properties:
+        user_id:
+          type: string
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar:
+          type: string
+        metadata:
+          type: object
+          properties:
+            team_name:
+              type: string
+          required:
+          - team_name
+        is_owner:
+          type: boolean
+      required:
+      - user_id
+      - username
+      - display_name
+      - avatar
+      - metadata
+      - is_owner
+    Matchups:
+      type: array
+      items:
+        $ref: '#/components/schemas/Matchup'
+    Matchup:
+      type: object
+      properties:
+        starters:
+          type: array
+          items:
+            type: string
+        roster_id:
+          type: integer
+        players:
+          type: array
+          items:
+            type: string
+        matchup_id:
+          type: integer
+        points:
+          type: number
+        custom_points:
+          type: number
+          nullable: true
+      required:
+      - starters
+      - roster_id
+      - players
+      - matchup_id
+      - points
+      - custom_points
+    PlayoffBracket:
+      type: array
+      items:
+        type: object
+        properties:
+          r:
+            type: integer
+            description: The round for this matchup, 1st, 2nd, 3rd round, etc.
+          m:
+            type: integer
+            description: The match id of the matchup, unique for all matchups within
+              a bracket.
+          t1:
+            type: integer
+            nullable: true
+            description: 'The roster_id of a team in this matchup OR {w: 1} which
+              means the winner of match id 1'
+          t2:
+            type: integer
+            nullable: true
+            description: 'The roster_id of the other team in this matchup OR {l: 1}
+              which means the loser of match id 1'
+          t1_from:
+            type: object
+            properties:
+              l:
+                type: integer
+                nullable: true
+              w:
+                type: integer
+                nullable: true
+            description: Where t1 comes from, either winner or loser of the match
+              id, necessary to show bracket progression.
+          t2_from:
+            type: object
+            properties:
+              l:
+                type: integer
+                nullable: true
+              w:
+                type: integer
+                nullable: true
+            description: Where t2 comes from, either winner or loser of the match
+              id, necessary to show bracket progression.
+          w:
+            type: integer
+            nullable: true
+            description: The roster_id of the winning team, if the match has been
+              played.
+          l:
+            type: integer
+            nullable: true
+            description: The roster_id of the losing team, if the match has been played.
+          p:
+            type: integer
+            nullable: true
+        required:
+        - r
+        - m
+        - t1
+        - t2
+        - w
+        - l
+    Transactions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Transaction'
+    Transaction:
+      type: object
+      properties:
+        type:
+          type: string
+        transaction_id:
+          type: string
+        status_updated:
+          type: integer
+        status:
+          type: string
+        settings:
+          type: object
+          nullable: true
+          description: Trades do not use this field
+        roster_ids:
+          type: array
+          items:
+            type: integer
+          description: roster_ids involved in this transaction
+        metadata:
+          type: object
+          nullable: true
+        leg:
+          type: integer
+          description: in football, this is the week
+        drops:
+          type: object
+        draft_picks:
+          type: array
+          items:
+            $ref: '#/components/schemas/DraftPick'
+        creator:
+          type: string
+          description: user id who initiated the transaction
+        created:
+          type: integer
+        consenter_ids:
+          type: array
+          items:
+            type: integer
+          description: roster_ids of the people who agreed to this transaction
+        adds:
+          type: object
+          nullable: true
+        waiver_budget:
+          type: array
+          items:
+            $ref: '#/components/schemas/WaiverBudget'
+      required:
+      - type
+      - transaction_id
+      - status_updated
+      - status
+      - settings
+      - roster_ids
+      - metadata
+      - leg
+      - drops
+      - draft_picks
+      - creator
+      - created
+      - consenter_ids
+      - adds
+      - waiver_budget
+    DraftPick:
+      description: picks that were traded
+      type: object
+      properties:
+        season:
+          type: string
+          description: the season this draft pick belongs to
+        round:
+          type: integer
+          description: which round this draft pick is
+        roster_id:
+          type: integer
+          description: original owner's roster_id
+        previous_owner_id:
+          type: integer
+          description: previous owner's roster id (in this trade)
+        owner_id:
+          type: integer
+          description: the new owner of this pick after the trade
+      required:
+      - season
+      - round
+      - roster_id
+      - previous_owner_id
+      - owner_id
+    WaiverBudget:
+      type: object
+      description: roster_id 2 sends 55 FAAB dollars to roster_id 3
+      properties:
+        sender:
+          type: integer
+        receiver:
+          type: integer
+        amount:
+          type: integer
+      required:
+      - sender
+      - receiver
+      - amount
+    TradedPicks:
+      type: array
+      items:
+        $ref: '#/components/schemas/TradedPick'
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+          example: 2019
+          description: which season the pick is for
+        round:
+          type: integer
+          example: 5
+          description: which round the pick is
+        roster_id:
+          type: integer
+          example: 1
+          description: roster_id of ORIGINAL owner
+        previous_owner_id:
+          type: integer
+          example: 1
+          description: roster_id of the previous owner
+        owner_id:
+          type: integer
+          example: 2
+          description: roster_id of current owner
+      required:
+      - season
+      - round
+      - roster_id
+      - previous_owner_id
+      - owner_id
+    SportState:
+      type: object
+      properties:
+        week:
+          type: integer
+          example: 2
+          description: week
+        season_type:
+          type: string
+          enum:
+          - pre
+          - post
+          - regular
+          example: regular
+          description: pre, post, regular
+        season_start_date:
+          type: string
+          example: '2020-09-10'
+          description: regular season start
+        season:
+          type: string
+          example: '2020'
+          description: current season
+        previous_season:
+          type: string
+          example: '2019'
+          description: previous season
+        leg:
+          type: integer
+          example: 2
+          description: week of regular season
+        league_season:
+          type: string
+          example: '2021'
+          description: active season for leagues
+        league_create_season:
+          type: string
+          example: '2021'
+          description: flips in December
+        display_week:
+          type: integer
+          example: 3
+          description: Which week to display in UI, can be different than week
+      required:
+      - week
+      - season_type
+      - season_start_date
+      - season
+      - previous_season
+      - leg
+      - league_season
+      - league_create_season
+      - display_week
+    Drafts:
+      type: array
+      items:
+        $ref: '#/components/schemas/Draft'
+    Draft:
+      type: object
+      properties:
+        type:
+          type: string
+          example: snake
+        status:
+          type: string
+          example: complete
+        start_time:
+          type: integer
+          example: 1515700800000
+        sport:
+          type: string
+          example: nfl
+        settings:
+          $ref: '#/components/schemas/DraftSettings'
+        season_type:
+          type: string
+          example: regular
+        season:
+          type: string
+          example: 2017
+        metadata:
+          $ref: '#/components/schemas/DraftMetadata'
+        league_id:
+          type: string
+          example: '257270637750382592'
+        last_picked:
+          type: integer
+          example: 1515700871182
+        last_message_time:
+          type: integer
+          example: 1515700942674
+        last_message_id:
+          type: string
+          example: 257272036450111488
+        draft_order:
+          type: object
+          additionalProperties:
+            type: integer
+          nullable: true
+          description: this is the user_id to draft slot mapping
+          example:
+            12345678: 1
+            23434332: 2
+        slot_to_roster_id:
+          type: object
+          additionalProperties:
+            type: integer
+          nullable: true
+          description: this is the draft slot to roster_id mapping. leagues have rosters,
+            which have roster_ids. this means draft slot 1 (column 1) will go to roster
+            10, slot 2 will go to roster_id 3, etc
+          example:
+            1: 10
+            2: 3
+            3: 5
+        draft_id:
+          type: string
+          example: '257270643320426496'
+        creators:
+          type: array
+          items:
+            type: string
+          nullable: true
+          example:
+          - '457511950237696'
+        created:
+          type: integer
+          example: 1515700610526
+      required:
+      - type
+      - status
+      - start_time
+      - sport
+      - settings
+      - season_type
+      - season
+      - metadata
+      - league_id
+      - last_picked
+      - last_message_time
+      - last_message_id
+      - draft_order
+      - draft_id
+      - creators
+      - created
+    DraftSettings:
+      type: object
+      properties:
+        teams:
+          type: integer
+          example: 6
+        slots_wr:
+          type: integer
+          example: 2
+        slots_te:
+          type: integer
+          example: 1
+        slots_rb:
+          type: integer
+          example: 2
+        slots_qb:
+          type: integer
+          example: 1
+        slots_k:
+          type: integer
+          example: 1
+        slots_flex:
+          type: integer
+          example: 2
+        slots_def:
+          type: integer
+          example: 1
+        slots_bn:
+          type: integer
+          example: 5
+        rounds:
+          type: integer
+          example: 15
+        pick_timer:
+          type: integer
+          example: 128
+      required:
+      - teams
+      - slots_wr
+      - slots_te
+      - slots_rb
+      - slots_qb
+      - slots_k
+      - slots_flex
+      - slots_def
+      - slots_bn
+      - rounds
+      - pick_timer
+    DraftMetadata:
+      type: object
+      properties:
+        scoring_type:
+          type: string
+          example: ppr
+        name:
+          type: string
+          example: My Dynasty
+        description:
+          type: string
+          example: ''
+      required:
+      - scoring_type
+      - name
+      - description
+    Picks:
+      type: array
+      items:
+        $ref: '#/components/schemas/Pick'
+    Pick:
+      type: object
+      properties:
+        player_id:
+          type: string
+          example: 2391
+        picked_by:
+          type: string
+          description: user_id this pick will go to (not all leagues have users in
+            every slot, this can be ""
+          example: 234343434
+        roster_id:
+          type: string
+          description: roster_id this pick will go to
+          example: '1'
+        round:
+          type: integer
+          example: 5
+        draft_slot:
+          type: integer
+          description: which column this is on the draftboard
+          example: 5
+        pick_no:
+          type: integer
+          example: 1
+        metadata:
+          $ref: '#/components/schemas/PickMetadata'
+        is_keeper:
+          type: boolean
+          nullable: true
+          example: null
+        draft_id:
+          type: string
+          example: '257270643320426496'
+      required:
+      - player_id
+      - picked_by
+      - roster_id
+      - round
+      - draft_slot
+      - pick_no
+      - metadata
+      - is_keeper
+      - draft_id
+    PickMetadata:
+      type: object
+      properties:
+        team:
+          type: string
+          example: ARI
+        status:
+          type: string
+          example: Injured Reserve
+        sport:
+          type: string
+          example: nfl
+        position:
+          type: string
+          example: RB
+        player_id:
+          type: string
+          example: '2391'
+        number:
+          type: string
+          example: '31'
+        news_updated:
+          type: string
+          example: '1513007102037'
+        last_name:
+          type: string
+          example: Johnson
+        injury_status:
+          type: string
+          example: Out
+        first_name:
+          type: string
+          example: David
+      required:
+      - team
+      - status
+      - sport
+      - position
+      - player_id
+      - number
+      - news_updated
+      - last_name
+      - injury_status
+      - first_name
+    Players:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Player'
+      example:
+        3067:
+          hashtag: '#TomBrady-NFL-NE-12'
+          depth_chart_position: 1
+          status: Active
+          sport: nfl
+          fantasy_positions:
+          - QB
+          number: 12
+          search_last_name: brady
+          injury_start_date: null
+          weight: '220'
+          position: QB
+          practice_participation: null
+          sportradar_id: ''
+          team: NE
+          last_name: Brady
+          college: Michigan
+          fantasy_data_id: 17836
+          injury_status: null
+          player_id: '3086'
+          height: 6'4"
+          search_full_name: tombrady
+          age: 40
+          stats_id: ''
+          birth_country: United States
+          espn_id: ''
+          search_rank: 24
+          first_name: Tom
+          depth_chart_order: 1
+          years_exp: 14
+          rotowire_id: null
+          rotoworld_id: 8356
+          search_first_name: tom
+          yahoo_id: null
+    Player:
+      type: object
+      properties:
+        hashtag:
+          type: string
+          example: '#TomBrady-NFL-NE-12'
+        depth_chart_position:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: Active
+        sport:
+          type: string
+          example: nfl
+        fantasy_positions:
+          type: array
+          items:
+            type: string
+          example:
+          - QB
+        number:
+          type: integer
+          example: 12
+        search_last_name:
+          type: string
+          example: Brady
+        injury_start_date:
+          type: string
+          nullable: true
+          example: null
+        weight:
+          type: string
+          example: '220'
+        position:
+          type: string
+          example: QB
+        practice_participation:
+          type: string
+          nullable: true
+        sportradar_id:
+          type: string
+          example: ''
+        team:
+          type: string
+          example: NE
+        last_name:
+          type: string
+          example: Brady
+        college:
+          type: string
+          example: Michigan
+        fantasy_data_id:
+          type: integer
+          example: 17836
+        injury_status:
+          type: string
+          nullable: true
+          example: null
+        player_id:
+          type: string
+          example: '3086'
+        height:
+          type: string
+          example: 6'4"
+        search_full_name:
+          type: string
+          example: tombrady
+        age:
+          type: integer
+          example: 40
+        stats_id:
+          type: string
+          example: ''
+        birth_country:
+          type: string
+          example: United States
+        espn_id:
+          type: string
+          example: ''
+        search_rank:
+          type: integer
+          example: 24
+        first_name:
+          type: string
+          example: Tom
+        depth_chart_order:
+          type: integer
+          example: 1
+        years_exp:
+          type: integer
+          example: 14
+        rotowire_id:
+          type: string
+          nullable: true
+          example: null
+        rotoworld_id:
+          type: integer
+          example: 8356
+        search_first_name:
+          type: string
+          example: tom
+        yahoo_id:
+          type: string
+          nullable: true
+          example: null
+      required:
+      - hashtag
+      - depth_chart_position
+      - status
+      - sport
+      - fantasy_positions
+      - number
+      - search_last_name
+      - injury_start_date
+      - weight
+      - position
+      - practice_participation
+      - sportradar_id
+      - team
+      - last_name
+      - college
+      - fantasy_data_id
+      - injury_status
+      - player_id
+      - height
+      - search_full_name
+      - age
+      - stats_id
+      - birth_country
+      - espn_id
+      - search_rank
+      - first_name
+      - depth_chart_order
+      - years_exp
+      - rotowire_id
+      - rotoworld_id
+      - search_first_name
+      - yahoo_id
+    TrendingPlayers:
+      type: array
+      items:
+        $ref: '#/components/schemas/TrendingPlayer'
+    TrendingPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+          example: '1111'
+          description: the player_id
+        count:
+          type: integer
+          example: 45
+          description: number or adds
+      required:
+      - player_id
+      - count
