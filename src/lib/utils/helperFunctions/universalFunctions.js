@@ -203,7 +203,12 @@ export const getAvatarFromTeamManagers = (teamManagers, rosterID, year) => {
     if(!year || year > teamManagers.currentSeason) {
         year = teamManagers.currentSeason;
     }
-    return teamManagers.teamManagersMap[year][rosterID].team.avatar;
+    try {
+        return teamManagers.teamManagersMap[year][rosterID].team.avatar;
+      } catch (error) {
+        console.error(error);
+        return "/Sleeper.png";
+      }
 }
 
 export const getTeamNameFromTeamManagers = (teamManagers, rosterID, year) => {
