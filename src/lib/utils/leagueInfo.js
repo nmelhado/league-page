@@ -3,7 +3,7 @@ export const leagueID = "916411694123986944"; // your league ID
 export const leagueName = "Distinguished Gentlemen"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
-export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
+export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 // <iframe width="560" height="315" src="https://www.youtube.com/channel/UCGVh6WF6kCgl3x5AWiGE0MA/live" frameborder="0" allowfullscreen></iframe>
