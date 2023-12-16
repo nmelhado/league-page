@@ -48,7 +48,7 @@ export const managers = [
     },
     {
       "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "managerID": "869660544473432064",
+      "managerID": "869652886488014848",
       "name": "Andrew Dicks",
       "tookOver": 2022, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "New York", // (optional)
@@ -71,7 +71,7 @@ export const managers = [
     },
     {
       "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "managerID": "869660544473432064",
+      "managerID": "859955426350018560",
       "name": "Chris Fonte",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Monmouth County NJ", // (optional)
