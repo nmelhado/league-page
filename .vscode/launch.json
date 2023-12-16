@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "npm run dev --",
+            "name": "Run local",
+            "request": "launch",
+            "type": "node-terminal",
+            "env": {
+                "VITE_CONTENTFUL_CLIENT_ACCESS_TOKEN": "6kOi0WJjEJNNcWA5do8BathHQ0Is8B3QXP-zwi6zFog",
+                "VITE_CONTENTFUL_ACCESS_TOKE":  "CFPAT-N07xOCL6u3Qkl4YrYVflIeioHJgYpabysmQs3Hf0M_w",
+                "VITE_CONTENTFUL_SPACE": "mffzyhf15qxy",
+              }
+        },
+        {
+            "command": "npm run dev -- --host",
+            "name": "Run on network",
+            "request": "launch",
+            "type": "node-terminal",
+            "env": {
+                "VITE_CONTENTFUL_CLIENT_ACCESS_TOKEN": "6kOi0WJjEJNNcWA5do8BathHQ0Is8B3QXP-zwi6zFog",
+                "VITE_CONTENTFUL_ACCESS_TOKE":  "CFPAT-N07xOCL6u3Qkl4YrYVflIeioHJgYpabysmQs3Hf0M_w",
+                "VITE_CONTENTFUL_SPACE": "mffzyhf15qxy",
+              }
+        },
+    ]
+}
