@@ -1,4 +1,10 @@
 <div align="center">
+<div align="center">
+<a href="https://www.distinguished-gentlemen.club/" style="font-size:2em; text-decoration: underline;" >Got to our site</a>
+</div>
+<div align="center">
+<a href="https://app.contentful.com/spaces/mffzyhf15qxy/views/entries" style="font-size:2em; text-decoration: underline;" >Post to blog</a>
+</div>
   <img alt="League Page logo" src="https://storage.googleapis.com/nfl-player-data/League%20Page.png" width="100px" />
 
   **[(Unofficial) Sleeper League Page Template](https://github.com/nmelhado/league-page/)**
@@ -15,7 +21,6 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 <div align="center">
 <a href="https://www.legendsleagueff.com/" style="font-size:2em; text-decoration: underline;" >Live demo</a>
 </div>
-
 <br>
 <br>
 
@@ -31,6 +36,16 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
 <br>
 <br>
+
+## For local developing [npm](https://docs.npmjs.com/getting-started/what-is-npm):
+
+    npm install
+    npm run dev --
+    npm run dev -- --host (to test on other devices locally)
+
+## For local developing with a container
+
+    npm run docker-run
 
 ## Features
 - Up-to-date league information
@@ -90,15 +105,6 @@ Generate a custom league page for your Sleeper fantasy football league in just a
     - Finally, set `enableBlog` to true in `src/lib/utils/leagueInfo.js`
 - Customize your league constitution `/src/routes/constitution/index.svelte` (remember to adjust the table of contents accordingly)
 -----------
-## For local developing [npm](https://docs.npmjs.com/getting-started/what-is-npm):
-
-    npm install
-    npm run dev --
-    npm run dev -- --host (to test on other devices locally)
-
-## For local developing with a container
-
-    npm run docker-run
 
 ## To deploy on [Vercel](https://vercel.com/) for free:
 - Push up your changes
