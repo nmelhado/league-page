@@ -7,10 +7,13 @@ export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VIT
 
 /*   STEP 2   */
 // <iframe width="560" height="315" src="https://www.youtube.com/channel/UCGVh6WF6kCgl3x5AWiGE0MA/live" frameborder="0" allowfullscreen></iframe>
-export const homepageText = `
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Kiir6kQYpec?si=j5n1XkFxkXqy5sV6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <h3>Fonte Unfiltered S2 E13</h3>
-  <p>Shit gets crazy</p>
+export const homepageText = `` + 
+// =========== Fonte REPLACE THIS SECTION WITH STUFF FROM YOUTUBE =================
+`
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Kiir6kQYpec?si=s82JHIBFf99Xhn5Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+`
+// ===========LEAVE THE REST BELOW HERE =================
+ + `<h3>Fonte Unfiltered S2 E13</h3>
 `;
 
 /*   STEP 3   */
