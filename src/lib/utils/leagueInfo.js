@@ -94,7 +94,7 @@ export const managers = [
     },
     {
       "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-      "managerID": "872530477590982656",
+      "managerID": "872529230951600128",
       "name": "Timbo Slice",
       "tookOver": 2022, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Morris County (God’s county)", // (optional)
