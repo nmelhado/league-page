@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase";
 import { leagueID, managers } from '$lib/utils/leagueInfo';
 import { get } from 'svelte/store';
 import { teamManagersStore } from '$lib/stores';
@@ -17,9 +18,9 @@ export const getLeagueTeamManagers = async () => {
     // loop through all seasons and create a [year][roster_id]: team, managers object
 	while(currentLeagueID && currentLeagueID != 0) {
 		const [usersRaw, leagueData, rostersRaw] = await waitForAll(
-            fetch(`https://api.sleeper.app/v1/league/${currentLeagueID}/users`, {compress: true}),
+            supabase.from('view_league_users').select('*').eq('league_id', currentLeagueID),
 			getLeagueData(currentLeagueID),
-            fetch(`https://api.sleeper.app/v1/league/${currentLeagueID}/rosters`, {compress: true}),
+            supabase.from('view_league_rosters').select('*').eq('league_id', currentLeagueID),
         ).catch((err) => { console.error(err); });
 
         const [users, rosters] = await waitForAll(

@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase";
 import { getLeagueData } from "./leagueData"
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from "./nflState"
@@ -51,7 +52,7 @@ export const getRivalryMatchups = async (userOneID, userTwoID) => {
         // pull in all matchup data for the season
         const matchupsPromises = [];
         for(let i = 1; i < leagueData.settings.playoff_week_start; i++) {
-            matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curLeagueID}/matchups/${i}`, {compress: true}))
+            matchupsPromises.push(supabase.from('view_league_matchups').select('*').eq('league_key', curLeagueID)[i])
         }
         const matchupsRes = await waitForAll(...matchupsPromises);
 

@@ -1,4 +1,5 @@
 import { leagueID } from "$lib/utils/leagueInfo"
+import { supabase } from "$lib/utils/supabase"
 import { round } from "$lib/utils/helperFunctions/universalFunctions"
 import { waitForAll } from "$lib/utils/helperFunctions/multiPromise"
 import { json, error } from '@sveltejs/kit';
@@ -7,8 +8,8 @@ export async function GET() {
     // get NFL state from sleeper (week and year)
     const [nflStateRes, leagueDataRes, playoffsRes] = await waitForAll(
         fetch(`https://api.sleeper.app/v1/state/nfl`, {compress: true}),
-        fetch(`https://api.sleeper.app/v1/league/${leagueID}`, {compress: true}),
-        fetch(`https://api.sleeper.app/v1/league/${leagueID}/winners_bracket`, {compress: true}),
+        supabase.from('view_league').select('*').eq('league_id', leagueID),
+        supabase.from('view_league_winners_brackets').select('*').eq('league_id', leagueID),
     )
     
     const [nflState, leagueData, playoffs] = await waitForAll(

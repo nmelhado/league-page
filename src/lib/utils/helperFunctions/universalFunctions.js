@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase";
 import { managers as managersObj } from '$lib/utils/leagueInfo';
 import { goto } from "$app/navigation";
 import { stringDate } from './news';

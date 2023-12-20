@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase"
 import { getLeagueData } from './leagueData';
 import { getLeagueRosters } from './leagueRosters';
 import { waitForAll } from './multiPromise';
@@ -77,10 +78,10 @@ const getPodiums = async (previousSeasonID) => {
 // fetch the previous season's data from sleeper
 const getPreviousLeagueData = async (previousSeasonID) => {
 	const resPromises = [
-		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}`, {compress: true}),
-		getLeagueRosters(previousSeasonID),
-		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/losers_bracket`, {compress: true}),
-		fetch(`https://api.sleeper.app/v1/league/${previousSeasonID}/winners_bracket`, {compress: true}),
+		supabase.from('view_league').select('*').eq('league_id', previousSeasonID),
+		getLeagueRosters(previousSeasonID), // sleeper
+		supabase.from('view_league_losers_brackets').select('*').eq('league_id', previousSeasonID),
+		supabase.from('view_league_winners_brackets').select('*').eq('league_id', previousSeasonID),
 	]
 
 	const [leagueRes, rostersData, losersRes, winnersRes] = await waitForAll(...resPromises).catch((err) => { console.error(err); });

@@ -1,6 +1,6 @@
 <script>
     import List, { Item, Graphic, Separator, Text } from '@smui/list';
-import { dynasty } from './utils/helper';
+    import { dynasty } from './utils/helper';
 
     const today = new Date();
     const resources = [

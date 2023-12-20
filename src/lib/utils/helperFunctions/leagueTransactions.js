@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase";
 import { getLeagueData } from './leagueData';
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from './nflState';
@@ -107,10 +108,7 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	const transactionPromises = [];
 
 	for(const singleLeagueID of leagueIDs) {
-		while(week > 0) {
-			transactionPromises.push(fetch(`https://api.sleeper.app/v1/league/${singleLeagueID}/transactions/${week}`, {compress: true}));
-			week--;
-		}
+		transactionPromises.push(supabase.from('view_league_transactions').select('*').eq('league_id', singleLeagueID));
 		week = 18;
 	}
 
