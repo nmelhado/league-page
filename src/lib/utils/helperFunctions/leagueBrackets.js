@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase"
 import { getLeagueData } from './leagueData';
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getLeagueRosters } from './leagueRosters';
@@ -21,8 +22,8 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
 
     // get bracket data for winners and losers
     const bracketsAndMatchupFetches = [
-        fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/winners_bracket`, {compress: true}),
-        fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/losers_bracket`, {compress: true}),
+        supabase.from('view_league_winners_brackets').select('*').eq('league_id', queryLeagueID),
+        supabase.from('view_league_losers_brackets').select('*').eq('league_id', queryLeagueID),
     ]
 
     // variables for playoff records
@@ -49,7 +50,7 @@ export const getBrackets = async (queryLeagueID = leagueID) => {
     // add each week after the regular season to the fetch array
     for(let i = playoffsStart; i < 19; i++) {
         // Get the matchup data (starters) for the playoff weeks
-        bracketsAndMatchupFetches.push(fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/matchups/${i}`, {compress: true}));
+        bracketsAndMatchupFetches.push(supabase.from('view_league_matchups').select('*').eq('league_key', queryLeagueID)[i]);
     }
     
     // Simultaneously fetch the bracket and matchup data

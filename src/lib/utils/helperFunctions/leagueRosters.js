@@ -1,3 +1,4 @@
+import { supabase } from "$lib/utils/supabase";
 import { leagueID } from '$lib/utils/leagueInfo';
 import { get } from 'svelte/store';
 import { rostersStore } from '$lib/stores';
@@ -12,7 +13,7 @@ export const getLeagueRosters = async (queryLeagueID = leagueID) => {
     ) {
 		return storedRoster;
 	}
-    const res = await fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/rosters`, {compress: true}).catch((err) => { console.error(err); });
+	const res = await supabase.from('view_league_rosters').select('*').eq('league_id', queryLeagueID).catch((err) => { console.error(err); });
 	const data = await res.json().catch((err) => { console.error(err); });
 	
 	if (res.ok) {

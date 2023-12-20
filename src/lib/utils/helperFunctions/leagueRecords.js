@@ -1,4 +1,5 @@
 import { getLeagueData } from './leagueData';
+import { supabase } from "$lib/utils/supabase";
 import { leagueID } from '$lib/utils/leagueInfo';
 import { getNflState } from './nflState';
 import { getLeagueRosters } from "./leagueRosters";
@@ -148,7 +149,7 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 	const matchupsPromises = [];
 	let startWeek = parseInt(week);
 	while(week > 0) {
-		matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${curSeason}/matchups/${week}`, {compress: true}))
+		matchupsPromises.push(supabase.from('view_league_matchups').select('*').eq('week', week))
 		week--;
 	}
 
