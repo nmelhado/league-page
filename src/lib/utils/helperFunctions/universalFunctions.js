@@ -2,6 +2,8 @@ import { managers as managersObj } from '$lib/utils/leagueInfo';
 import { goto } from "$app/navigation";
 import { stringDate } from './news';
 
+const QUESTION = 'managers/question.jpg';
+
 export const cleanName = (name) => {
     return name.replace('Team ', '').toLowerCase().replace(/[ ’'!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/g, "");
 }
@@ -92,7 +94,7 @@ export const getAvatar = (leagueTeamManagers, author) => {
             return `https://sleepercdn.com/avatars/thumbs/${leagueTeamManagers.users[uID].avatar}`;
         }
     }
-    return 'managers/question.jpg';
+    return QUESTION;
 }
 
 export const parseDate = (rawDate) => {
@@ -203,7 +205,15 @@ export const getAvatarFromTeamManagers = (teamManagers, rosterID, year) => {
     if(!year || year > teamManagers.currentSeason) {
         year = teamManagers.currentSeason;
     }
-    return teamManagers.teamManagersMap[year][rosterID].team.avatar;
+    const yearManagers = teamManagers.teamManagersMap[year];
+    if(yearManagers == null) {
+        return QUESTION;
+    }
+    const roster = yearManagers[rosterID];
+    if(roster == null) {
+        return QUESTION;
+    }
+    return roster.team?.avatar;
 }
 
 export const getTeamNameFromTeamManagers = (teamManagers, rosterID, year) => {
