@@ -45,12 +45,12 @@ export const gotoManager = ({leagueTeamManagers, managerID, rosterID, year}) => 
         year = leagueTeamManagers.currentSeason;
     }
 
-    if(managerID && leagueTeamManagers.teamManagersMap[year] != null) {
+    if(managerID) {
         // modern approach
         managersIndex = managersObj.findIndex(m => m.managerID == managerID);
 
         // support for league pages still using deprecated roster field
-        if(managersIndex < 0) {
+        if(managersIndex < 0 && leagueTeamManagers.teamManagersMap[year] != null) {
             for(const rID in leagueTeamManagers.teamManagersMap[year]) {
                 if(leagueTeamManagers.teamManagersMap[year][rID] == null) continue;
                 for(const mID of leagueTeamManagers.teamManagersMap[year][rID].managers) {
