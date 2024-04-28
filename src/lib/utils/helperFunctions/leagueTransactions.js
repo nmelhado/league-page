@@ -119,8 +119,9 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	const transactionDataPromises = [];
 	
 	for(const transactionRes of transactionRess) {
-			if (!transactionRes.ok) {
-				throw new Error(transactionRes);
+			if (transactionRes == null || !transactionRes.ok) {
+                console.error(transactionRes);
+                continue;
 			}
 			transactionDataPromises.push(transactionRes.json());
 	}
