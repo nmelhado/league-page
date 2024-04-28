@@ -108,7 +108,8 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 
 	for(const singleLeagueID of leagueIDs) {
 		while(week > 0) {
-			transactionPromises.push(fetch(`https://api.sleeper.app/v1/league/${singleLeagueID}/transactions/${week}`, {compress: true}));
+			transactionPromises.push(fetch(`https://api.sleeper.app/v1/league/${singleLeagueID}/transactions/${week}`, {compress: true})
+            .catch((err) => { console.error(err); }));
 			week--;
 		}
 		week = 18;
@@ -119,8 +120,9 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	const transactionDataPromises = [];
 	
 	for(const transactionRes of transactionRess) {
-			if (!transactionRes.ok) {
-				throw new Error(transactionRes);
+			if (transactionRes == null || !transactionRes.ok) {
+                console.error(transactionRes);
+                continue;
 			}
 			transactionDataPromises.push(transactionRes.json());
 	}
