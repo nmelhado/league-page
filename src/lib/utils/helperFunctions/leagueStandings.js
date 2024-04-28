@@ -45,40 +45,42 @@ export const getLeagueStandings = async () => {
         }
     }
 
-    let week = 0;
-    if(nflState.season_type == 'regular') {
-        // max the week out at end of regular season
-        week = nflState.display_week > regularSeasonLength ? regularSeasonLength + 1 : nflState.display_week;
-    } else if(nflState.season_type == 'post') {
-        week = regularSeasonLength + 1;
-    }
-
-    // if at least one week hasn't been completed, then standings can't be created
-    if(week < 2) {
-        return null;
-    }
-
-    // pull in all matchup data for the season
-    const matchupsPromises = [];
-    for(let i = week - 1; i > 0; i--) {
-        matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${leagueID}/matchups/${i}`, {compress: true}))
-    }
-    const matchupsRes = await waitForAll(...matchupsPromises);
-
-    // convert the json matchup responses
-    const matchupsJsonPromises = [];
-    for(const matchupRes of matchupsRes) {
-        const data = matchupRes.json();
-        matchupsJsonPromises.push(data)
-        if (!matchupRes.ok) {
-            throw new Error(data);
+    if(divisions) {
+        let week = 0;
+        if(nflState.season_type == 'regular') {
+            // max the week out at end of regular season
+            week = nflState.display_week > regularSeasonLength ? regularSeasonLength + 1 : nflState.display_week;
+        } else if(nflState.season_type == 'post') {
+            week = regularSeasonLength + 1;
         }
-    }
-    const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); }).catch((err) => { console.error(err); });
 
-    // process all the matchups
-    for(const matchup of matchupsData) {
-        standings = processStandings(matchup, standings, rosters);
+        // if at least one week hasn't been completed, then standings can't be created
+        if(week < 2) {
+            return null;
+        }
+
+        // pull in all matchup data for the season
+        const matchupsPromises = [];
+        for(let i = week - 1; i > 0; i--) {
+            matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${leagueID}/matchups/${i}`, {compress: true}))
+        }
+        const matchupsRes = await waitForAll(...matchupsPromises);
+
+        // convert the json matchup responses
+        const matchupsJsonPromises = [];
+        for(const matchupRes of matchupsRes) {
+            const data = matchupRes.json();
+            matchupsJsonPromises.push(data)
+            if (!matchupRes.ok) {
+                throw new Error(data);
+            }
+        }
+        const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); }).catch((err) => { console.error(err); });
+
+        // process all the matchups
+        for(const matchup of matchupsData) {
+            standings = processStandings(matchup, standings, rosters);
+        }
     }
 
 	const response = {
