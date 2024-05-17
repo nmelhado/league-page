@@ -25,7 +25,7 @@ export const managers = [
     {
       "managerID": "863606469411606528",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Champ/Swag King/Touchdown",
-      "tookOver": "null", // (optional) used if a manager took over a team, delete this line or change to null otherwise
+      "tookOver": "2018", // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Tremont, OH", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
