@@ -144,7 +144,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Under 18 is fine with me!<p>&nbsp;</p><p>While Champ might have you believe that he knows football & fantasy, he's really quite mid (in addition to being a slimy loophole boy). With under a .500 record, Champ has made the playoffs 3 times and won the 'ship once. Boom or major bust vibes coming from this manager. Notable stats below. </p><p>Playoff Appearances = 3</p><p>Championship Appearances = 2</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "Under 18 is fine with me!<p>&nbsp;</p><p>While Champ might have you believe that he knows football & fantasy, he's really quite mid (in addition to being a slimy loophole boy). With under a .500 record, Champ has made the playoffs 3 times and won the 'ship once. Boom or major bust vibes coming from this manager. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 2</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 7, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
