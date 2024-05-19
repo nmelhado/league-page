@@ -131,7 +131,7 @@ export const managers = [
       "managerID": "863606469411606528",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Champ/Swag King/Touchdown/Brandon(?)",
       "location": "Tremont, OH", // (optional)
-      "bio": "Under 18 is fine with me!",
+      "bio": "Under 18 (PPG)is fine with me!",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -152,7 +152,7 @@ export const managers = [
       "managerID": "1000779411621638144",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "The Commish/Goodell",
       "location": "Baltimore, MD", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Let the league hate my RB's and put up points. And kickers suck.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -165,7 +165,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Let the league hate my RB's and put up points. And kickers suck.<p>&nbsp;</p><p>The Commish has been one of the most consistent players in the league, pairing the 2nd best overall record with the 3rd most PF and the most playoff appearances across the league. Notable stats below.</p><p>Playoff Appearances = 5</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "The Commish has been one of the most consistent players in the league, pairing the 2nd best overall record with the 3rd most PF and the most playoff appearances across the league. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 5</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -173,7 +173,7 @@ export const managers = [
       "managerID": "1082855342322569216",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Chris",
       "location": "Medina, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "First to worst and these punishment suck",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -186,7 +186,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "First to worst<p>&nbsp;</p><p>Chris' most notable season was the year he won in 2022 after having a $35 auction penalty. He was sure to make up for that season by finishing last and adding a Fathead of his BFF4L (Joshy Zelch) to his living room wall. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "Chris' most notable season was the year he won in 2022 after having a $35 auction penalty. He was sure to make up for that season by finishing last and adding a Fathead of his BFF4L (Joshy Zelch) to his living room wall. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -194,7 +194,7 @@ export const managers = [
       "managerID": "1082856110878539776",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Jake (a.k.a. Jack)",
       "location": "Erie, PA", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "The fewer points, the better!",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -207,7 +207,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "TE", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "The fewer points, the better!<p>&nbsp;</p><p>Mr. Bad Luck himself. There is nothing more consistent than Jake SUCKING at fantasy. He has the worst record in the league to date and has the lowst points for. He calls it bad luck, the rest of the clique calls it DOGSHIT. Notable stats below.</p><p>Playoff Appearances = 1</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
+      "philosophy": "Mr. Bad Luck himself. There is nothing more consistent than Jake SUCKING at fantasy. He has the worst record in the league to date and has the lowst points for. He calls it bad luck, the rest of the clique calls it DOGSHIT. Notable stats below.<p>&nbsp;</p>><p>Playoff Appearances = 1</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 6, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -215,7 +215,7 @@ export const managers = [
       "managerID": "1082856400725925888",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Cody",
       "location": "Medina, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Uhhh points are fun and me like the Lions.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -228,7 +228,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "D/ST", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Uhhh points are fun and me like the Lions.<p>&nbsp;</p><p>The most notable last place finisher of the Clique to date (RIP to the Waff House), Cody has managed to find himself in the bottom half of the league, next to the likes of Kuke and Nat. Cody is definitely not the worst in the league, but he's has yet to be a consistent contender. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 0</p>", // (optional)
+      "philosophy": "The most notable last place finisher of the Clique to date (RIP to the Waff House), Cody has managed to find himself in the bottom half of the league, next to the likes of Kuke and Nat. Cody is definitely not the worst in the league, but he's has yet to be a consistent contender. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -236,7 +236,7 @@ export const managers = [
       "managerID": "1082865115684368384",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Matt",
       "location": "Columbus, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Pretend I don't know football and threaten them with my cuffs.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -249,7 +249,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Pretend I don't know football and threaten them with my cuffs.<p>&nbsp;</p><p>Hailing from the Columbus precinct, Matt has solidified himself as a contender in the Clique. Leading the league in both win % and PF, Matt is a dominate force to be wrenkened with. Notable stats below.</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "Hailing from the Columbus precinct, Matt has solidified himself as a contender in the Clique. Leading the league in both win % and PF, Matt is a dominate force to be wrenkened with. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 3, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -257,7 +257,7 @@ export const managers = [
       "managerID": "1082865349898428416",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Papa John",
       "location": "Medina, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Always willing to panic trade to ruin my season! Especially if Nat rapes me!",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "dal", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -270,7 +270,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Always willing to panic trade to ruin my season!<p>&nbsp;</p><p>Papa, known for panic trading his team away, is a historically mediorce manager (at best). A below .500 record and 6th in PF, he might sniff the playoffs, but he's FAR from ever being a true threat. Notable stats below.</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
+      "philosophy": "Papa, known for panic trading his team away, is a historically mediorce manager (at best). A below .500 record and 6th in PF, he might sniff the playoffs, but he's FAR from ever being a true threat. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 10, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -278,7 +278,7 @@ export const managers = [
       "managerID": "1083427009616809984",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Kuke Yambor",
       "location": "Medina, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "I'll put Derek Henry's schlong on you!!",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -291,7 +291,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I'll put Derek Henry's schlong on you!!<p>&nbsp;</p><p>Kuke fits right into the middle of the pack. Year after year he puts all his eggs in the Derek Henry + another stud RB bucket and it rarely pays off but Kuke thinks it does when he's a few bud heavies deep. Notable stats below.</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "<p>Kuke fits right into the middle of the pack. Year after year he puts all his eggs in the Derek Henry + another stud RB bucket and it rarely pays off but Kuke thinks it does when he's a few bud heavies deep. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 6, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -299,7 +299,7 @@ export const managers = [
       "managerID": "1086501244337844224",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Nego",
       "location": "Columbus, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "My team always is the worst in my own eyes and I hate all of my players.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -312,7 +312,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "My team always is the worst in my own eyes and I hate all of my players.<p>&nbsp;</p><p>Nego is the definition of boom or bust. However, ever since the Clique has moved to an aution, Nego has been LOST. Busts on repeat and it's hard to expect anything different at this point. Notable stats below.</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 2</p><p>Championships won = 0</p>", // (optional)
+      "philosophy": "Nego is the definition of boom or bust. However, ever since the Clique has moved to an aution, Nego has been LOST. Busts on repeat and it's hard to expect anything different at this point. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 2</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 4, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -320,7 +320,7 @@ export const managers = [
       "managerID": "1093044196316971008",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Sean (a.k.a. Shane)",
       "location": "Columbus, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "I can tell you the history of any location on the map but I don't know fantasy (or politics).",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -333,7 +333,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "QB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I can tell you the history of any location on the map but I don't know fantasy (or politics).", // (optional)
+      "philosophy": "Sean has been better than most realize, finishing 5th in both wins and points for. Apparently he knows more about fantasy than he does economics, so he should stick to fantasy as much as possible. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 2, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -341,7 +341,7 @@ export const managers = [
       "managerID": "731260353303969792",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Connor",
       "location": "Chicago, IL", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Draft as many Steelers as possible and pray (and suck).",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "pit", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -354,7 +354,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "K", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Draft as many Steelers as possible and pray.", // (optional)
+      "philosophy": "Connor is the definition of the lucky guy. Through 6 seasons, he's 11th in points for but is 4th in win percentage. He's clearly a fantasy IDIOT with a lot of luck on his side to this point. It'll ware off soon. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 1, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -362,7 +362,7 @@ export const managers = [
       "managerID": "1097339888120201216",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Nate",
       "location": "North Royalton, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "I will trade anyone, anywhere, at any time.",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -375,7 +375,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I will trade anyone, anywhere, at any time.", // (optional)
+      "philosophy": "The slimeball trying to push trades and collude with anyone that is able and willing(?) has managed to have a mediocre career in the Dipstick Clique. We never know what to expect from him because it's solely based on trade rape. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 10, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
