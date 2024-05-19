@@ -165,7 +165,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Let the league hate my RB's and put up points. And kickers suck.", // (optional)
+      "philosophy": "Let the league hate my RB's and put up points. And kickers suck.<p>&nbsp;</p><p>The Commish has been one of the most consistent players in the league, pairing the 2nd best overall record with the 3rd most PF and the most playoff appearances across the league. Notable stats below.</p><p>Playoff Appearances = 5</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -186,7 +186,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "First to worst", // (optional)
+      "philosophy": "First to worst<p>&nbsp;</p><p>Chris' most notable season was the year he won in 2022 after having a $35 auction penalty. He was sure to make up for that season by finishing last and adding a Fathead of his BFF4L (Joshy Zelch) to his living room wall. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -207,7 +207,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "TE", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "The fewer points, the better!", // (optional)
+      "philosophy": "The fewer points, the better!<p>&nbsp;</p><p>Mr. Bad Luck himself. There is nothing more consistent than Jake SUCKING at fantasy. He has the worst record in the league to date and has the lowst points for. He calls it bad luck, the rest of the clique calls it DOGSHIT. Notable stats below.</p><p>Playoff Appearances = 1</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 6, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
