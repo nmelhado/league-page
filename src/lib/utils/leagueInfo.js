@@ -12,7 +12,7 @@ export const homepageText = `
   <p> </p>
   <p>From 2018-2023 The Dipstick Clique played fantasy football on ESPN. The league stats can be seen below. Manager specific stats can be seen on the Mangers page.</p>
   <p> </p>
-  <p><strong>Wins/Losses<strong></p>
+  <p><strong>Wins/Losses</strong></p>
   <p>1. Matt 50-31 / .617</p>
   <p>2. Greg 47-34 / .580</p>
   <p>3. Nego 44-37 / .543</p>
@@ -25,9 +25,6 @@ export const homepageText = `
   <p>10. Mike 37-44 / .457</p>
   <p>11. Chris 37-44 / .457</p>
   <p>12. Jake 34/47 / .420</p>
-  
-  
-  
 `;
 
 /*   STEP 3   */
