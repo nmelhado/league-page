@@ -9,6 +9,22 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 export const homepageText = `
   <p>Welcome to the official website of The Dipstick Clique!</p>
   <p>A league dedicated to highschool "friends" who may hate more people in the league than they actually like.</p>
+  <p>From 2018-2023 The Dipstick Clique played fantasy football on ESPN. The league stats can be seen below. Manager specific stats can be seen on the Mangers page.</p>
+  <p>Wins/Losses</p>
+  <p>1. Matt 50-31 / .617</p>
+  <p>2. Greg 47-34 / .580</p>
+  <p>3. Nego 44-37 / .543</p>
+  <p>4. Connor 43-38 / .531</p>
+  <p>5. Sean 42-39 / .519</p>
+  <p>6. Champ 38-42-1 / .475</p>
+  <p>7. Johnny 38-43 / .469</p>
+  <p>8. Nate 38-43 / .469</p>
+  <p>9. Cody 37-43-1 / .463</p>
+  <p>10. Mike 37-44 / .457</p>
+  <p>11. Chris 37-44 / .457</p>
+  <p>12. Jake 34/47 / .420</p>
+  
+  
   
 `;
 
