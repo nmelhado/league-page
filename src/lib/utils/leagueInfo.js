@@ -150,7 +150,7 @@ export const managers = [
     },
     {
       "managerID": "1000779411621638144",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
-      "name": "The Commish",
+      "name": "The Commish/Goodell",
       "location": "Baltimore, MD", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -228,7 +228,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "D/ST", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Uhhh points are fun and me like the Lions.", // (optional)
+      "philosophy": "Uhhh points are fun and me like the Lions.<p>&nbsp;</p><p>The most notable last place finisher of the Clique to date (RIP to the Waff House), Cody has managed to find himself in the bottom half of the league, next to the likes of Kuke and Nat. Cody is definitely not the worst in the league, but he's has yet to be a consistent contender. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 1</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 5, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -249,7 +249,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Pretend I don't know football and threaten them with my cuffs.", // (optional)
+      "philosophy": "Pretend I don't know football and threaten them with my cuffs.<p>&nbsp;</p><p>Hailing from the Columbus precinct, Matt has solidified himself as a contender in the Clique. Leading the league in both win % and PF, Matt is a dominate force to be wrenkened with. Notable stats below.</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 3, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -270,7 +270,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Always willing to panic trade to ruin my season!", // (optional)
+      "philosophy": "Always willing to panic trade to ruin my season!<p>&nbsp;</p><p>Papa, known for panic trading his team away, is a historically mediorce manager (at best). A below .500 record and 6th in PF, he might sniff the playoffs, but he's FAR from ever being a true threat. Notable stats below.</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 0</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 10, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -291,7 +291,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "I'll put Derek Henry's schlong on you!!", // (optional)
+      "philosophy": "I'll put Derek Henry's schlong on you!!<p>&nbsp;</p><p>Kuke fits right into the middle of the pack. Year after year he puts all his eggs in the Derek Henry + another stud RB bucket and it rarely pays off but Kuke thinks it does when he's a few bud heavies deep. Notable stats below.</p><p>Playoff Appearances = 2</p><p>Championship Appearances = 1</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 6, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
@@ -312,7 +312,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "My team always is the worst in my own eyes and I hate all of my players.", // (optional)
+      "philosophy": "My team always is the worst in my own eyes and I hate all of my players.<p>&nbsp;</p><p>Nego is the definition of boom or bust. However, ever since the Clique has moved to an aution, Nego has been LOST. Busts on repeat and it's hard to expect anything different at this point. Notable stats below.</p><p>Playoff Appearances = 4</p><p>Championship Appearances = 2</p><p>Championships won = 0</p>", // (optional)
       "tradingScale": 4, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
