@@ -9,9 +9,9 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 export const homepageText = `
   <p>Welcome to the official website of The Dipstick Clique!</p>
   <p>A league dedicated to highschool "friends" who may hate more people in the league than they actually like.</p>
-  <p> </p>
+  <p>&nbsp;</p>
   <p>For a total of 6 seasons between 2018 and 2023 The Dipstick Clique played fantasy football on ESPN. The league stats can be seen below. Manager specific stats can be seen on the Mangers page.</p>
-  <p> </p>
+  <p>&nbsp;</p>
   <p><strong>Wins/Losses</strong></p>
   <p>1. Matt 50-31 / .617</p>
   <p>2. Greg 47-34 / .580</p>
