@@ -25,6 +25,20 @@ export const homepageText = `
   <p>10. Mike 37-44 / .457</p>
   <p>11. Chris 37-44 / .457</p>
   <p>12. Jake 34/47 / .420</p>
+  <p>&nbsp;</p>
+  <p><strong>Total PF / PF per Game</strong></p>
+  <p>1. Matt 10,088 / 124.55</p>
+  <p>2. Nego 10,039 / 123.94</p>
+  <p>3. Greg 9,964 / 123.01</p>
+  <p>4. Nate 9,809 / 121.10</p>
+  <p>5. Sean 9,781 / 120.76</p>
+  <p>6. Johnny 9,760 / 120.50</p>
+  <p>7. Chris 9,655 / 119.21</p>
+  <p>8. Mike 9,498 / 117.27</p>
+  <p>9. Cody 9,276 / 115.95</p>
+  <p>10. Champ 9,260 / 115.76</p>
+  <p>11. Connor 9,141 / 112.86</p>
+  <p>12. Jake 9,054 / 111.79</p>
 `;
 
 /*   STEP 3   */
