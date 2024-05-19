@@ -131,7 +131,7 @@ export const managers = [
       "managerID": "863606469411606528",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Champ/Swag King/Touchdown/Brandon(?)",
       "location": "Tremont, OH", // (optional)
-      "bio": "Lorem ipsum...",
+      "bio": "Under 18 is fine with me!",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": null, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -144,7 +144,7 @@ export const managers = [
       "favoritePlayer": null, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "Under 18 is fine with me!<p>&nbsp;</p><p>While Champ might have you believe that he knows football & fantasy, he's really quite mid (in addition to being a slimy loophole boy). With under a .500 record, Champ has made the playoffs 3 times and won the 'ship once. Boom or major bust vibes coming from this manager. Notable stats below.</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 2</p><p>Championships won = 1</p>", // (optional)
+      "philosophy": "While Champ might have you believe that he knows football & fantasy, he's really quite mid (in addition to being a slimy loophole boy). With under a .500 record, Champ has made the playoffs 3 times and won the 'ship once. Boom or major bust vibes coming from this manager. Notable stats below.<p>&nbsp;</p><p>Playoff Appearances = 3</p><p>Championship Appearances = 2</p><p>Championships won = 1</p>", // (optional)
       "tradingScale": 7, // 1 - 10 (optional)
       "preferredContact": "Text",  // (optional) 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
