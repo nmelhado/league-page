@@ -63,7 +63,7 @@ export const tabs = [
             },
             {
                 icon: 'history_edu',
-                label: 'Constitution',
+                label: 'Regeln',
                 dest: '/constitution',
             },
             {
@@ -73,9 +73,9 @@ export const tabs = [
             },
         ]
     },
-    {
-        icon: 'lightbulb',
-        label: 'Resources',
-        dest: '/resources',
-    },
+    // {
+    //     icon: 'lightbulb',
+    //     label: 'Resources',
+    //     dest: '/resources',
+    // },
 ];

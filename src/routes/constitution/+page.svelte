@@ -96,7 +96,61 @@
 </style>
 
 <div class="constitution">
-    <h1 class="noUnderscore">LEGENDS LEAGUE CONSTITUTION</h1>
+
+    <h1>Regeln</h1>
+
+        <h2 class="sectionHeading">Keeper</h2>
+
+        <ul>
+        <li>Man behält maximal zwei Spieler.</li>
+        <li>Ein Keeper kostet einen Pick aus einer Runde früher.
+            <ul>
+            <li>Bsp.: Das Behalten eines Viertrundenpicks (oder Keeper aus der vierten Runde) aus 2022 muss mit einem Drittrundenpick aus 2023 bezahlt werden.</li>
+            </ul>
+        </li>
+        <li>Es zählt, wann der Spieler gedraftet (oder „ge-keept“) wurde. Egal, ob er danach nochmal irgendwann auf dem Waiver war oder getradet wurde.</li>
+        <li>Undrafted Spieler kosten ADP (zum Zeitpunkt der Keeper Deadline) + drei Runden.
+            <ul>
+            <li>Bsp.: Spieler X wurde 2022 vom Waiver geholt und hat 2023 einen ADP in der fünften Runde: Spieler X "kostet" dann einen Achtrundenpick.</li>
+            </ul>
+        </li>
+        </ul>
+
+        <h3 class="subSectionHeading noUnderscore">Sonderfälle</h3>
+
+        <ul>
+        <li>Sollte man den entsprechenden Pick nicht bezahlen können, da man ihn beispielsweise getradet hat, muss stattdessen ein Pick von einer Runde früher abgegeben werden.</li>
+        <li>Sollte man mehrere Picks pro Runde haben, wird der bezahlt, den man regulär für den Draft bekommen hat. Sollte man den nicht mehr haben, wird der früheste vorhande Pick in der Runde bezahlt.</li>
+        <li>Keeper können noch bis zum Zeitpunkt des Drafts entfernt – aber nicht ersetzt – werden. Nützlich z.B. im Falle von Verletzungen in der Pre-Season.</li>
+        </ul>
+
+        <h2 class="sectionHeading">Bestimmung der Draftreihenfolge</h2>
+
+        <ul>
+        <li>Es wird nicht die Draftreihenfolge direkt bestimmt. Stattdessen wird eine Reihenfolge bestimmt, in der man sich den Draftposition aussuchen darf.</li>
+        <li>Die Reihenfolge, in der die Draftposition ausgesucht werden darf, wird wie folgt festgelegt:
+            <ul>
+            <li>1.-3.: Nach Platzierung in der Consolation Bracket, beginnend mit dem ersten Platz</li>
+            <li>4.-11.: Nach der Anzahl an „points against“ in der regular season, beginnend mit den meisten „points against“</li>
+            <li>12. Wer die wenigsten Trades hat, darf sich in jedem Fall die Draftposition als letztes aussuchen und verliert damit seine durch die oben genannten Regeln bestimmte Draftposition. Tiebreaker sind die Anzahl der Transaktionen insgesamt (inklusive Waiver claims).</li>
+            </ul>
+        </li>
+        <li>Bei Gleichstand wird gelost</li>
+        </ul>
+
+        <h2 class="sectionHeading">Tank-Vermeidung</h2>
+
+        <ul>
+        <li>Jeder muss zwischen 3 und 7 Picks in den Runden 1-5 haben</li>
+        <li>Insgesamt muss jeder zwischen N-2 und N+2 Picks haben (bei N Runden im Draft)</li>
+        <li>Alle Picks, die darüber hinaus gehen, werden entfernt vor Draftbeginn
+            <ul>
+            <li>Falls nicht klar ist, welcher Pick genau betroffen ist, wird gelost</li>
+            </ul>
+        </li>
+        </ul>
+
+    <!-- <h1 class="noUnderscore">No Punt Intended - Regeln</h1>
     
     <h2 class="noUnderscore">TABLE OF CONTENTS</h2>
     
@@ -298,6 +352,6 @@
     <p>In the event that a manager was fined due to late payment, their extra fee will be added to the winner's payout. Similarly, if new managers come into the league and the payout is smaller, the difference will come out of the winner's prize.</p>
     
     <h3 bind:this={sevenThree}>7.3 Raising Dues</h3>
-    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buyin, finding a co-manager to split the cost is reccomended.</p>
+    <p>A ⅔ majority vote is required in order to raise league dues. In the event that a manager is no longer financially comfortable with the buyin, finding a co-manager to split the cost is reccomended.</p> -->
 
 </div>

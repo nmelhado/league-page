@@ -11,13 +11,13 @@ import { dynasty } from './utils/helper';
             premium: true,
             separator: true,
         },
-        {
-            name: "The Fantasy Footballers",
-            url: "https://www.thefantasyfootballers.com/",
-            icon: "podcasts",
-            premium: true,
-            separator: true,
-        },
+        // {
+        //     name: "The Fantasy Footballers",
+        //     url: "https://www.thefantasyfootballers.com/",
+        //     icon: "podcasts",
+        //     premium: true,
+        //     separator: true,
+        // },
         {
             name: "FantasyPros Dynasty Trade Value Chart",
             url: `https://www.fantasypros.com/${today.getFullYear()}/${today.getMonth() + 1}/fantasy-football-rankings-dynasty-trade-value-chart-${today.toLocaleString('default', { month: 'long' }).toLowerCase()}-${today.getFullYear()}-update/`,
