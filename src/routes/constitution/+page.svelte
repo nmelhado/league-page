@@ -149,6 +149,12 @@
             </ul>
         </li>
         </ul>
+        
+        <h2 class="sectionHeading">Verschiedenes</h2>
+        <ul>
+        <li>tbd</li>
+        </ul>
+        
 
     <!-- <h1 class="noUnderscore">No Punt Intended - Regeln</h1>
     
