@@ -236,16 +236,18 @@
             </div>
         </div>
     {/if}
-    <!-- Rival -->
-    <div class="infoSlot infoRival" on:click={() => changeManager(viewManager.rival.link)}>
-        <div class="infoLabel">
-            Rival
+    <!-- Rival (optional) -->
+    {#if viewManager.rival}
+        <div class="infoSlot infoRival" on:click={() => changeManager(viewManager.rival.link)}>
+            <div class="infoLabel">
+                Rival
+            </div>
+            <div class="infoIcon">
+                <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
+            </div>
+            <div class="infoAnswer">
+                {viewManager.rival.name}
+            </div>
         </div>
-        <div class="infoIcon">
-            <img class="rival" src="{viewManager.rival.image}" alt="rival"/>
-        </div>
-        <div class="infoAnswer">
-            {viewManager.rival.name}
-        </div>
-    </div>
+    {/if}
 </div>
