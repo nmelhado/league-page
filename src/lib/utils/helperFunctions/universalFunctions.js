@@ -216,6 +216,10 @@ export const getAvatarFromTeamManagers = (teamManagers, rosterID, year) => {
     if(roster == null) {
         return QUESTION;
     }
+    // if the team has no avatar, check for an avatar in the following year
+    if (roster.team?.avatar.endsWith("null")) {
+        return getAvatarFromTeamManagers(teamManagers, rosterID, year + 1);
+    }
     return roster.team?.avatar;
 }
 

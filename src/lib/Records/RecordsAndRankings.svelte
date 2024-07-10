@@ -468,11 +468,12 @@
         <DataTable class="recordTable">
             <Head>
                 <Row class="rTableHeader">
-                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Records</Cell>
+                    <Cell class="header headerPrimary" colspan=5>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Records</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
                     <Cell class="header">Week</Cell>
                     <Cell class="header">Total Points</Cell>
                 </Row>
@@ -484,7 +485,8 @@
                         <Cell class="cellName" on:click={() => gotoManager({year: leagueWeekRecord.year || prefix, leagueTeamManagers, rosterID: leagueWeekRecord.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={leagueWeekRecord.rosterID} year={allTime ? leagueWeekRecord.year : prefix} />
                         </Cell>
-                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
+                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }</Cell>
+                        <Cell>{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
                         <Cell>{round(leagueWeekRecord.fpts)}</Cell>
                     </Row>
                 {/each}
@@ -496,11 +498,12 @@
         <DataTable class="recordTable">
             <Head>
                 <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Lows</Cell>
+                    <Cell class="header headerPrimary" colspan=5>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Lows</Cell>
                 </Row>
                 <Row>
                     <Cell class="header rank"></Cell>
                     <Cell class="header">Manager</Cell>
+                    <Cell class="header">Year</Cell>
                     <Cell class="header">Week</Cell>
                     <Cell class="header">Total Points</Cell>
                 </Row>
@@ -512,7 +515,8 @@
                         <Cell class="cellName" on:click={() => gotoManager({year: leagueWeekLow.year || prefix, leagueTeamManagers, rosterID: leagueWeekLow.rosterID})}>
                             <RecordTeam {leagueTeamManagers} rosterID={leagueWeekLow.rosterID} year={allTime ? leagueWeekLow.year : prefix} />
                         </Cell>
-                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
+                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }</Cell>
+                        <Cell>{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
                         <Cell>{round(leagueWeekLow.fpts)}</Cell>
                     </Row>
                 {/each}

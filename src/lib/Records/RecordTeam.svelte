@@ -62,7 +62,7 @@
 </style>
 
 <div class="recordTeam">
-    {#if user}
+    {#if user && user.avatar}
         <img alt="team avatar" class="teamAvatar{compressed ? " compressed" : ""}" src="{`https://sleepercdn.com/avatars/thumbs/${user.avatar}`}" />
     {:else if rosterID}
         <img alt="team avatar" class="teamAvatar{compressed ? " compressed" : ""}" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
