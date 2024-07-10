@@ -3,13 +3,13 @@ import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
 import { dynasty } from '$lib/utils/helper';
 import { json } from '@sveltejs/kit';
 
-const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';
+// const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';
 const DYNASTY_LEAGUE= 'https://dynastyleaguefootball.com/feed/';
 const DYNASTY_NERDS= 'https://www.dynastynerds.com/feed/';
 
 export async function GET() {
 	const articles = [
-        getXMLArticles(FF_BALLERS, processFF),
+        // getXMLArticles(FF_BALLERS, processFF),
 	];
 	if(dynasty) {
 		articles.push(getXMLArticles(DYNASTY_LEAGUE, processDynastyLeague));
@@ -39,25 +39,25 @@ const getXMLArticles = async(url, callback) => {
     return callback(xmlData.rss.channel.item);
 }
 
-const processFF = (articles) => {
-	let finalArticles = [];
-	for(const article of articles.slice(0, 5)) {
-		const ts = Date.parse(article.pubDate);
-		const d = new Date(ts);
-		const date = stringDate(d);
-		const icon = 'newsIcons/ffballers.jpeg';
-		finalArticles.push({
-			title: article.title,
-			article: article.description,
-			link: article.link,
-			author: `Fantasy Footballers`,
-			ts,
-			date,
-			icon,
-		});
-	}
-	return finalArticles;
-}
+// const processFF = (articles) => {
+// 	let finalArticles = [];
+// 	for(const article of articles.slice(0, 5)) {
+// 		const ts = Date.parse(article.pubDate);
+// 		const d = new Date(ts);
+// 		const date = stringDate(d);
+// 		const icon = 'newsIcons/ffballers.jpeg';
+// 		finalArticles.push({
+// 			title: article.title,
+// 			article: article.description,
+// 			link: article.link,
+// 			author: `Fantasy Footballers`,
+// 			ts,
+// 			date,
+// 			icon,
+// 		});
+// 	}
+// 	return finalArticles;
+// }
 
 const processFTN = (rawArticles) => {
 	let finalArticles = [];

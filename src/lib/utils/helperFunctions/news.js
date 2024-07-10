@@ -4,7 +4,7 @@ import {news} from '$lib/stores';
 import { dynasty } from '$lib/utils/leagueInfo';
 
 const REDDIT_DYNASTY = 'https://www.reddit.com/r/DynastyFF/new.json';
-const REDDIT_FANTASY = 'https://www.reddit.com/r/fantasyfootball/new.json';
+const REDDIT_FANTASY = 'https://www.reddit.com/r/fantasyfootball/new.json?limit=50';
 const SERVER_API = '/api/fetch_serverside_news';
 
 export const getNews = async (servFetch, bypass = false) => {

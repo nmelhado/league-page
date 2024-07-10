@@ -67,7 +67,7 @@
 
 <div class="pageBody">
     <div class="banner" bind:this={el}>
-        <h4>Fantasy Football News and Updates</h4>
+        <h4>Fantasy Football News and Updates (Reddit)</h4>
     </div>
 
     <div class="articles">
