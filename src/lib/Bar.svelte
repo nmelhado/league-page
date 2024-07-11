@@ -1,7 +1,6 @@
 <script>
 	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, gotoManager, round } from "./utils/helperFunctions/universalFunctions";
 
-
     export let leagueTeamManagers, stat, label, xMin, xMax, secondStat, managerID, rosterID, color, year;
 
     $: user = managerID ? leagueTeamManagers.users[managerID] : null;

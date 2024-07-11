@@ -52,7 +52,7 @@
                 return {
                     name: "Empty",
                     avatar: null,
-                    poss: null,
+                    position: null,
                     team: null,
                     opponent: null,
                     projection: 0,

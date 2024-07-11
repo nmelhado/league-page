@@ -4,6 +4,13 @@ import { stringDate } from './news';
 
 const QUESTION = 'managers/question.jpg';
 
+export function checkAuthentication() {
+    return new Promise((resolve) => {
+        const isAuthenticated = localStorage.getItem('isAuthenticated');
+        resolve(isAuthenticated === 'true');
+    });
+}
+
 export const cleanName = (name) => {
     return name.replace('Team ', '').toLowerCase().replace(/[ ’'!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/g, "");
 }

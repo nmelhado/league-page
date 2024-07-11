@@ -217,7 +217,7 @@
 	{#if player.avatar}
 		<Cell class="avatar playerCell">
             <div class="playerAvatar" style="{player.avatar}">
-                {#if player.team && player.poss != "DEF"}
+                {#if player.team && player.position != "DEF"}
                     <img src="https://sleepercdn.com/images/team_logos/nfl/{player.team.toLowerCase()}.png" class="teamLogo" alt="team logo"/>
                 {/if}
             </div>
@@ -225,12 +225,12 @@
 	{/if}
 	<Cell class="playerCell nameCell" colspan={player.name != "Empty" ? 1 : 3}>
         <div class="info">
-            <!-- name -->
             {@html player.name}
-            <!-- name -->
-            {#if player.poss !== "DEF"}
+            {#if player.position !== "DEF"}
                 <div class="additionalInfo">
-                    <span class="text-{player.poss}" >{@html player.poss}</span>
+					{#if !!player.position}
+						<span class="text-{player.position}" >{@html player.position}</span>
+					{/if}
                     {#if player.team}
                         &nbsp;-&nbsp;
                         {player.team}

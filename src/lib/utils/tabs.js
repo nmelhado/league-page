@@ -16,11 +16,11 @@ export const tabs = [
         label: 'Trades & Waivers',
         dest: '/transactions',
     },
-    {
-        icon: 'article',
-        label: 'Blog',
-        dest: '/blog',
-    },
+    // {
+    //     icon: 'article',
+    //     label: 'Blog',
+    //     dest: '/blog',
+    // },
     {
         icon: 'view_comfy',
         label: 'League Info',

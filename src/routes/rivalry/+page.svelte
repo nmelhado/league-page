@@ -2,6 +2,15 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { Rivalry } from '$lib/components'
 	import { waitForAll } from '$lib/utils/helper';
+	import { onMount } from 'svelte';
+    import { checkAuthentication } from '$lib/utils/helperFunctions/universalFunctions';
+
+    onMount(async () => {
+        isAuthenticated = await checkAuthentication();
+        if (!isAuthenticated) {
+            goto('/login');
+        }
+    });
 
 	export let data;
 	const {

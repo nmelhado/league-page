@@ -5,6 +5,17 @@
     import { page } from '$app/stores';	
 	import IconButton from '@smui/icon-button';
 	import { Icon } from '@smui/common';
+	import { onMount } from 'svelte';
+    import { checkAuthentication } from '$lib/utils/helperFunctions/universalFunctions';
+    import { goto } from '$app/navigation';
+
+	let isAuthenticated = false;
+    onMount(async () => {
+        isAuthenticated = await checkAuthentication();
+        if (!isAuthenticated) {
+            goto('/login');
+        }
+    });
 
 	$: active = tabs.find(tab => tab.dest == $page.url.pathname || (tab.nest && tab.children.find(subTab => subTab.dest == $page.url.pathname)));
 
@@ -32,76 +43,77 @@
 	<title>{!$page.url.pathname[1] ? 'Home' : $page.url.pathname[1].toUpperCase() + $page.url.pathname.slice(2)} | League Page</title>
 </svelte:head>
 
-<style>
-	a {
-		display: table;
-    	margin: 0 auto;
-	}
-	nav {
-		background-color: var(--fff);
-		position: relative;
-		z-index: 2;
-		border-bottom: 1px solid #00316b;
-		box-shadow: 0 0 8px 0 #00316b;
-	}
+{#if isAuthenticated}
+	<style>
+		a {
+			display: table;
+			margin: 0 auto;
+		}
+		nav {
+			background-color: var(--fff);
+			position: relative;
+			z-index: 2;
+			border-bottom: 1px solid #00316b;
+			box-shadow: 0 0 8px 0 #00316b;
+		}
 
-	#logo {
-		width: 80px;
-		display: block;
-		margin: 0 auto;
-		padding: 10px;
-	}
+		#logo {
+			width: 80px;
+			display: block;
+			margin: 0 auto;
+			padding: 10px;
+		}
 
-    .large {
-		display: block;
-    }
-
-	.small {
-		display: none;
-	}
-
-	.container {
-		position: absolute;
-		top: 0.25em;
-		right: 0.25em;
-	}
-
-	:global(.lightDark) {
-		color: var(--g555)
-	}
-
-	@media (max-width: 950px) { /* width of the large navBar */
 		.large {
-			display: none;
+			display: block;
 		}
 
 		.small {
-			display: block;
+			display: none;
 		}
-	}
-</style>
 
-<nav>
-	<a href="/"><img id="logo" alt="league logo" src="/badge.png" /></a>
+		.container {
+			position: absolute;
+			top: 0.25em;
+			right: 0.25em;
+		}
 
-	<div class="container">
-		<IconButton
-			toggle
-			pressed={lightTheme}
-			on:MDCIconButtonToggle:change={switchTheme}
-			class="lightDark"
-		>
-			<Icon class="material-icons" on>dark_mode</Icon>
-			<Icon class="material-icons">light_mode</Icon>
-		</IconButton>
-	</div>
+		:global(.lightDark) {
+			color: var(--g555)
+		}
 
-	<div class="large">
-		<NavLarge {tabs} bind:active={active} />
-	</div>
+		@media (max-width: 950px) { /* width of the large navBar */
+			.large {
+				display: none;
+			}
 
-	<div class="small">
-		<NavSmall {tabs} bind:active={$page.url.pathname} />
-	</div>
+			.small {
+				display: block;
+			}
+		}
+	</style>
 
-</nav>
+	<nav>
+		<a href="/"><img id="logo" alt="league logo" src="/badge.png" /></a>
+
+		<div class="container">
+			<IconButton
+				toggle
+				pressed={lightTheme}
+				on:MDCIconButtonToggle:change={switchTheme}
+				class="lightDark"
+			>
+				<Icon class="material-icons" on>dark_mode</Icon>
+				<Icon class="material-icons">light_mode</Icon>
+			</IconButton>
+		</div>
+
+		<div class="large">
+			<NavLarge {tabs} bind:active={active} />
+		</div>
+
+		<div class="small">
+			<NavSmall {tabs} bind:active={$page.url.pathname} />
+		</div>
+	</nav>
+{/if}
