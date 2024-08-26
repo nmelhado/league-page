@@ -71,7 +71,7 @@ export const managers = [
       "managerID": "1126279652269518848",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Jared Falls",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "MN", // (optional)
+      "location": "CA", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/jfalls.jpg", // square ratio recommended (no larger than 500x500)
      // "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -115,7 +115,7 @@ export const managers = [
       "managerID": "872916359506554880",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Parker Lewis",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "DC", // (optional)
+      "location": "CA", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/mechanicguy.png", // square ratio recommended (no larger than 500x500)
      // "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -137,7 +137,7 @@ export const managers = [
       "managerID": "1125108756418801664",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Candon Canady",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "DC", // (optional)
+      "location": "TX", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/mechanicguy.png", // square ratio recommended (no larger than 500x500)
      // "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -159,7 +159,7 @@ export const managers = [
       "managerID": "1125471195735916544",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Al Ranta",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "TX", // (optional)
+      "location": "MN", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/camoboy.jpg", // square ratio recommended (no larger than 500x500)
       //"fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -181,7 +181,7 @@ export const managers = [
       "managerID": "1125634216076652544",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Tristan Layton",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "TX", // (optional)
+      "location": "MN", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/camoboy.jpg", // square ratio recommended (no larger than 500x500)
       //"fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -203,7 +203,7 @@ export const managers = [
       "managerID": "1126360727058493440",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
       "name": "Sam Ranta",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "TX", // (optional)
+      "location": "MN", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/camoboy.jpg", // square ratio recommended (no larger than 500x500)
       //"fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -223,9 +223,9 @@ export const managers = [
     },
     {
       "managerID": "1129122333018415104",  // the user's manager ID, go to https://api.sleeper.app/v1/league/<your_league_id>/users to find user IDs (you can use older leagueIDs to find user IDs for managers that are no longer in the league)
-      "name": "Dan",
+      "name": "Dan Goonin",
       //"tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "TX", // (optional)
+      "location":"FL", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/camoboy.jpg", // square ratio recommended (no larger than 500x500)
       //"fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
