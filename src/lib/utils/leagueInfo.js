@@ -8,7 +8,8 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 /*   STEP 2   */
 export const homepageText = `
  <p>Starting page for the</p>
- <p>2024 April Boys Fantasy Football League</p>;
+ <p>2024 April Boys Fantasy Football League</p>
+ `;
 
 /*   STEP 3   */
 /*
@@ -232,5 +233,4 @@ export const managers = [
       "tradingScale": 10, // 1 - 10
       "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
-    
   ]
