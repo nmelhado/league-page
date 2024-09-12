@@ -385,13 +385,13 @@
 		</div>
 	{/if}
 
-	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+	<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 
 	<div id="podium">
+		<img src="/podium.png" class="podiumImage" alt="podium" />
 
 		<!-- champs -->
-		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})} alt="champion" />
-		
+		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, 4: champion})} alt="champion" />
+		<img src="/laurel.png" class="laurel" alt="laurel" />
 		<span class="label firstLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 4})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 4)}</span>
-	</div>
 
