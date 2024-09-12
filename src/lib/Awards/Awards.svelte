@@ -386,3 +386,72 @@
 	{/if}
 </div>
 
+<div>
+	<h3>Pre-Sleeper Awards</h3>
+	
+		<h4>2021</h4>
+		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+	
+		<div id="podium">
+	
+			<!-- champs -->
+			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 4, 2023)}" class="first champ clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 4})} alt="champion" />
+			
+			<span class="label firstLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 4})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 4)}</span>
+		</div>
+	
+		<div class="toiletParent">
+				
+				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+	
+				<div class="toiletBowl">
+					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 9, 2023)}" class="toiletWinner clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 9})} alt="toilet bowl winner" />
+					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+				</div>
+				<span class="genLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 9)}</span>
+		</div>
+	
+		<h4>2020</h4>
+		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+	
+		<div id="podium">
+	
+			<!-- champs -->
+			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 1, 2023)}" class="first champ clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 1})} alt="champion" />
+			
+			<span class="label firstLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 1})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 1)}</span>
+		</div>
+	
+		<div class="toiletParent">
+				
+				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+	
+				<div class="toiletBowl">
+					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, 2023)}" class="toiletWinner clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 3})} alt="toilet bowl winner" />
+					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+				</div>
+				<span class="genLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 3)}</span>
+		</div>
+	
+		<h4>2019</h4>
+		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+	
+		<div id="podium">
+	
+			<!-- champs -->
+			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, 2023)}" class="first champ clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 3})} alt="champion" />
+			
+			<span class="label firstLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 3)}</span>
+		</div>
+	
+		<div class="toiletParent">
+				
+				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+	
+				<div class="toiletBowl">
+					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, 2023)}" class="toiletWinner clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
+					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+				</div>
+				<span class="genLabel clickable" on:click={() => gotoManager({2023, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, 2023, 8)}</span>
+		</div>
+	</div>

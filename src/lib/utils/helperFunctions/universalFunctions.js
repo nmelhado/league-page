@@ -251,24 +251,11 @@ export const getTeamFromTeamManagers = (teamManagers, rosterID, year) => {
 }
 
 export const getNestedTeamNamesFromTeamManagers = (teamManagers, year, rosterID) => {
-    const originalName = teamManagers.teamManagersMap[year][rosterID]?.team?.name;
-    const currentTeam = teamManagers.teamManagersMap[teamManagers.currentSeason]?.[rosterID];
-    const currentName = currentTeam ? currentTeam.team.name : null;
-
-    const managerID = currentTeam ? currentTeam.managers[0] : null;
-
-    // Directly reference getDatesActive, no need to import
-    const dates = getDatesActive(teamManagers, managerID);
-    const isRetired = dates && dates.end;
-
-    if (isRetired) {
-        return originalName;
-    }
-
-    if (cleanName(originalName) && currentName && cleanName(originalName) !== cleanName(currentName)) {
-        return `${originalName}<div class="curOwner">(${currentName})</div>`;
-    }
-
+    const originalName = teamManagers.teamManagersMap[year][rosterID]['team']['name'];
+    const currentName = teamManagers.teamManagersMap[teamManagers.currentSeason][rosterID]['team']['name'];
+    // if(cleanName(originalName) != cleanName(currentName)) {
+    //     return `${originalName}<div class="curOwner">(${currentName})</div>`;
+    // }
     return originalName;
 }
 
