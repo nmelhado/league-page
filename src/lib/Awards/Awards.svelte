@@ -384,8 +384,10 @@
 			<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: toilet})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, toilet)}</span>
 		</div>
 	{/if}
+</div>
 
-	<h3>Pre-Sleeper Awards</h3>
+<div class="awards">
+<h3>Pre-Sleeper Awards</h3>
 
 	<h4>2021</h4>
 	<img src="./banner.png" class="banner" alt="The Champion's Cup" />
