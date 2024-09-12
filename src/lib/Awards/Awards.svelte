@@ -1,7 +1,8 @@
 <script>
-    import { gotoManager } from '$lib/utils/helper';
-	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	export let podium, leagueTeamManagers;
+   import PreSleeperAwards from './PreSleeperAwards.svelte';
+   import { gotoManager } from '$lib/utils/helper';
+   import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+   export let podium, leagueTeamManagers;
 
 	const { year, champion, second, third, divisions, toilet } = podium;
 </script>
@@ -386,31 +387,4 @@
 	{/if}
 </div>	
 
-<h2>
-	Pre-Sleeper Awards
-	</h2>
-	
-	<h3>2021</h3>
-	<ul>
-		<li><strong>First Place:</strong> </li>
-		<li><strong>Second Place:</strong> </li>
-		<li><strong>Third Place:</strong> </li>
-		<li><strong>Sacko:</strong> </li>
-	</ul>
-	
-	<h3>2020</h3>
-	<ul>
-		<li><strong>First Place:</strong> </li>
-		<li><strong>Second Place:</strong> </li>
-		<li><strong>Third Place:</strong> </li>
-		<li><strong>Sacko:</strong> </li>
-	</ul>
-	
-	<h3>2019</h3>
-	<ul>
-		<li><strong>First Place:</strong> </li>
-		<li><strong>Second Place:</strong> </li>
-		<li><strong>Third Place:</strong> </li>
-		<li><strong>Sacko:</strong> </li>
-	</ul>
-
+<PreSleeperAwards />
