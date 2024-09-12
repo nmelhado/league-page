@@ -386,7 +386,7 @@
 	{/if}
 </div>
 
-<div class="awards">
+<div>
 <h3>Pre-Sleeper Awards</h3>
 
 	<h4>2021</h4>
