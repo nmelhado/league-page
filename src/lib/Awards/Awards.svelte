@@ -436,7 +436,7 @@
 		<h3>2019 Awards</h3>
 		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
-		<div id="podium">
+		<div>
 	
 			<!-- champs -->
 			<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="first champ clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="champion" />
