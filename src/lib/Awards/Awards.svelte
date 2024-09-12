@@ -387,9 +387,9 @@
 
 		<!-- Conditionally render Pre-Sleeper Awards if the year is 2022 -->
 	{#if year == 2022}
-		<h2>Pre-Sleeper</h3>
+		<h2>Pre-Sleeper</h2>
 
-		<h3>2021 Awards</h4>
+		<h3>2021 Awards</h3>
 		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
@@ -411,7 +411,7 @@
 				<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 9)}</span>
 		</div>
 	
-		<h3>2020 Awards</h4>
+		<h3>2020 Awards</h3>
 		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
