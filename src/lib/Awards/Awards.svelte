@@ -406,7 +406,7 @@
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 9, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})} alt="toilet bowl winner" />
-					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+					<img src="/toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 				</div>
 				<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 9)}</span>
 		</div>
@@ -424,7 +424,7 @@
 	
 		<div class="toiletParent">
 				
-				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+				<img src="/toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="toilet bowl winner" />
@@ -434,7 +434,7 @@
 		</div>
 	
 		<h3>2019 Awards</h3>
-		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
 	
@@ -446,7 +446,7 @@
 	
 		<div class="toiletParent">
 				
-				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+				<img src="/toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
