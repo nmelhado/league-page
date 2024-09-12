@@ -1,5 +1,4 @@
 <script>
-   import PreSleeperAwards from './PreSleeperAwards.svelte';
    import { gotoManager } from '$lib/utils/helper';
    import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
    export let podium, leagueTeamManagers;
@@ -388,11 +387,10 @@
 
 		<!-- Conditionally render Pre-Sleeper Awards if the year is 2022 -->
 	{#if year == 2022}
-		<!-- <PreSleeperAwards /> -->
-		<h3>Pre-Sleeper Awards</h3>
+		<h2>Pre-Sleeper</h3>
 
-		<h4>2021</h4>
-		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+		<h3>2021 Awards</h4>
+		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
 	
@@ -404,7 +402,7 @@
 	
 		<div class="toiletParent">
 				
-				<img src="./toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
+				<img src="/toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 9, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})} alt="toilet bowl winner" />
@@ -413,8 +411,8 @@
 				<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 9})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 9)}</span>
 		</div>
 	
-		<h4>2020</h4>
-		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
+		<h3>2020 Awards</h4>
+		<img src="/banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
 	
@@ -430,12 +428,12 @@
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 3, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})} alt="toilet bowl winner" />
-					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+					<img src="/toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 				</div>
 				<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 3})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 3)}</span>
 		</div>
 	
-		<h4>2019</h4>
+		<h3>2019 Awards</h3>
 		<img src="./banner.png" class="banner" alt="The Champion's Cup" />
 	
 		<div id="podium">
@@ -452,7 +450,7 @@
 	
 				<div class="toiletBowl">
 					<img src="{getAvatarFromTeamManagers(leagueTeamManagers, 8, year)}" class="toiletWinner clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})} alt="toilet bowl winner" />
-					<img src="./toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
+					<img src="/toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
 				</div>
 				<span class="genLabel clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: 8})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, 8)}</span>
 		</div>
