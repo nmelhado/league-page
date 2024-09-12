@@ -413,5 +413,4 @@
 		<li><strong>Third Place:</strong> </li>
 		<li><strong>Sacko:</strong> </li>
 	</ul>
-	</div>
 
