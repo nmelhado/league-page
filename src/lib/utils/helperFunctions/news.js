@@ -32,12 +32,14 @@ export const getNews = async (servFetch, bypass = false) => {
 
 const getFeed = async (feed, callback) => {
 	const res = await fetch(feed, {compress: true}).catch((err) => { console.error(err); });
+    
 	const data = await res.json().catch((err) => { console.error(err); });
 	
 	if (res.ok && data && data.data) {
 		return callback(data.data);
 	} else {
-		throw new Error(data);
+		console.error(data);
+        return [];
 	}
 }
 
