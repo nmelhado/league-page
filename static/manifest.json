@@ -1,6 +1,6 @@
 {
-  "short_name": "League Page",
-  "name": "League Page",
+  "short_name": "Two Hand Touch",
+  "name": "Two Hand Touch",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
@@ -50,12 +50,6 @@
       "short_name": "Trophy Room",
       "description": "View the managers' past awards and accomplishments",
       "url": "/awards"
-    },
-    {
-      "name": "Resources & News",
-      "short_name": "Resources",
-      "description": "View fantasy football resources and news",
-      "url": "/resources"
     }
   ],
   "description": "Information about the League"

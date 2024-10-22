@@ -100,8 +100,10 @@ Generate a custom league page for your Sleeper fantasy football league in just a
 
     npm run docker-run
 
-## To deploy on [Vercel](https://vercel.com/) for free:
+## To deploy on [Tiiny](https://vercel.com/) for free:
 - Push up your changes
+- Follow this Youtube [Video](https://www.youtube.com/watch?v=OGR0Hgki4_U)
+- Below is how you could originally push up your code
 - [Link your github repo to Vercel](https://vercel.com/guides/deploying-svelte-with-vercel#step-2:-deploying-your-svelte-app-with-vercel)
 - That's it!
 
