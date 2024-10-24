@@ -6,7 +6,7 @@ const dockerBuild = process.env.DOCKER_BUILD
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: node()
+		adapter: vercel()
 	}
 };
 
