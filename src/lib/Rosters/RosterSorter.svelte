@@ -48,20 +48,20 @@
 		background-size: auto 140px;
 	}
 
-	.banner-D-1 {
+	/* .banner-D-1 {
 		background-image: url("/division-1-banner.png");
 		background-position: left; 
-	}
+	} */
 
-	.banner-D-2 {
+	/* .banner-D-2 {
 		background-image: url("/division-2-banner.png");
 		background-position: right; 
-	}
+	} */
 
-	.banner-D-3 {
+	/* .banner-D-3 {
 		background-image: url("/division-3-banner.png");
 		background-position: left; 
-	}
+	} */
 
 	h2 {
 		text-align: center;
