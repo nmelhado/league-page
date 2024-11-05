@@ -30,8 +30,8 @@ https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#ii-adding
 
 export const managers = [
     {
-      "roster": 1,  // 791852794729598976 (look at the order of the power rankings graph)
-      "name": "Joshua Romero",
+      "roster": 1, "844760551790858240" (look at the order of the power rankings graph)
+      "name": "Eddie F",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Manor, TX", // (optional)
       "bio": "Lorem ipsum...",
