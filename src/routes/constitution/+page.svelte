@@ -96,7 +96,7 @@
 </style>
 
 <div class="constitution">
-    <h1 class="noUnderscore">LEGENDS LEAGUE CONSTITUTION</h1>
+    <h1 class="noUnderscore">MANOR FANTASY FOOTBALL LEAGUE CONSTITUTION</h1>
     
     <h2 class="noUnderscore">TABLE OF CONTENTS</h2>
     
@@ -160,32 +160,33 @@
         <li>WR</li>
         <li>TE</li>
         <li>FLEX (RB/WR/TE)</li>
-        <li>FLEX (RB/WR)</li>
-        <li>D/ST</li>
-        <li>K</li>
+        <li>FLEX (RB/WR/TE)</li>
+        <li>SUPERFLEX (QB/RB/WR/TE</li>
     </ul>
     
-    <p>18 Bench (Expanded by 5 between the keague draft and start of regular season)</p>
+    <p>10 Bench (Expanded by 5 between the competition committee and draft day during the off-season).</p>
 
-    <p>1 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
+    <p>3 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
     
         <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
         
         <div class="subBlock">
             <table class="positionMaximums">
-                <tr><td>QB</td><td class="right">3 active, 5 total</td></tr>
-                <tr><td>RB</td><td class="right">20</td></tr>
-                <tr><td>WR</td><td class="right">20</td></tr>
-                <tr><td>TE</td><td class="right">10</td></tr>
-                <tr><td>D/ST</td><td class="right">3</td></tr>
-                <tr><td>K</td><td class="right">3</td></tr>
+                <tr><td>QB</td><td class="right">none</td></tr>
+                <tr><td>RB</td><td class="right">none</td></tr>
+                <tr><td>WR</td><td class="right">none</td></tr>
+                <tr><td>TE</td><td class="right">none</td></tr>
             </table>
         </div>
 
 
     <h3 class="subSectionHeading" bind:this={oneTwo}>1.2 Trading</h3>
     
-    <p>Trading of players and draft picks (up to 3 drafts away) are allowed. Trades will process immediately and will be reversed if vetoed or under investigation for collusion. Tradable assets include players, draft picks, and FAAB $.</p>
+    <p>Trading of players and draft picks (up to 3 drafts away) are allowed. 
+
+Trades might take a day or two to process immediately and will be reversed if vetoed or under investigation for collusion.
+
+Tradable assets include players, draft picks, and FAAB $.</p>
     
     <h4 bind:this={oneTwoOne}>1.2.1 Trade Collusion</h4>
     <div class="subBlock">
