@@ -12,11 +12,6 @@ export const homepageText = `
   $1,000 up for grabs. Our core teams, The Comeback Kid, Raiders Fantasy Blue Ballers, SlickBears, 88Boyz11 and Texas Timeshifts have set the tone since day one, bringing intense rivalries and unforgettable matchups.
   A few years later the competition heated up with the addition of The People’s Champion, Bay Area Party Supplies, Vick2Times, and our latest players, Fristoe, Prime Time JG, CeeDees TDs and finally, Do It To Them and Loud and Stroud.
   With seasoned veterans and eager newcomers, every season is a fresh chance to battle it out for ultimate bragging rights and the $1000.00 PAYOUT!</p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
 `;
 
 /*   STEP 3   */
