@@ -184,9 +184,9 @@
     
     <p>Trading of players and draft picks (up to 3 drafts away) are allowed. 
 
-Trades might take a day or two to process immediately and will be reversed if vetoed or under investigation for collusion.
+Trades might take a day or two to process. Only the Commish has the authority to VETO a trade. In our 11-year history, only two trades have ever been vetoed.
 
-Tradable assets include players, draft picks, and FAAB $.</p>
+Tradable assets include players, draft picks, and FAAB $. Conditional trading is also allowed. For example, a manager may trade for a QB who is speculated to be benched. The condition could be: TEAM A trades a QB to TEAM B for a #1 pick, with the condition that the QB starts for the rest of the season barring (not counting) injury. If the QB gets benched, the draft pick is reduced to a 2nd-round pick instead.</p>
     
     <h4 bind:this={oneTwoOne}>1.2.1 Trade Collusion</h4>
     <div class="subBlock">
