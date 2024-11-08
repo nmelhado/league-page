@@ -27,7 +27,7 @@ export const managers = [
     {
       "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Eddie Fuentes Jr  |  Commish",
-      "location": "Manor Texas", // (optional)
+      "location": "Manor TX", // (optional)
       "bio": "Bears Down!",
       "photo": "/managers/EFJ.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -48,7 +48,7 @@ export const managers = [
     {
       "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Joshua Romero  |  Co-Commish",
-      "location": "Manor Texas", // (optional)
+      "location": "Manor TX", // (optional)
       "bio": "Go with your gut when it comes to trades, starting or sitting players, Because it could elevate your team. Stay confident in your team no matter the situation",
       "photo": "/managers/JR.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -69,7 +69,7 @@ export const managers = [
     {
       "roster": 13,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Joaquin Puente  |  Co-Commish",
-      "location": "San Francisco California", // (optional)
+      "location": "San Francisco CA", // (optional)
       "bio": "Loading...",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2017, // (optional) when did the manager start playing fantasy football
@@ -91,7 +91,7 @@ export const managers = [
       "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Trey Fuentes",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Pflugerville Texas", // (optional)
+      "location": "Pflugerville TX", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/TF.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -113,7 +113,7 @@ export const managers = [
       "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Ray Rodriguez",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Manor Texas", // (optional)
+      "location": "Manor TX", // (optional)
       "bio": "One man can be crucial to a team, but one man cannot make a team",
       "photo": "/managers/RRR.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
@@ -121,7 +121,7 @@ export const managers = [
       "mode": "Rebuild", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
         name: "SilkBears", // Can be anything (usually your rival's name)
-        link: 7, // manager array number within this array, or null to link back to all managers page
+        link: 3, // manager array number within this array, or null to link back to all managers page
         image: "/managers/TF.jpg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
       "favoritePlayer": 4892, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
@@ -134,7 +134,7 @@ export const managers = [
     {
       "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "John Diaz-Decaro",
-      "location": "Los Angeles, California", // (optional)
+      "location": "Los Angeles, CA", // (optional)
       "bio": "I am inevitable",
       "photo": "/managers/JDD.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2021, // (optional) when did the manager start playing fantasy football
@@ -156,16 +156,16 @@ export const managers = [
       "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Gerardo Calles",
       "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Austin Texas", // (optional)
+      "location": "Austin TX", // (optional)
       "bio": "Lorem ipsum...",
       "photo": "/managers/GC.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2015, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "pit", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
       "mode": "Win Now", // (optional) 'Win Now', 'Dynasty', or 'Rebuild' (anything else and you will need to add a new png to /static/ similar to the 'Rebuild.png' and 'Win Now.png' currently in there)
       "rival": {
-        "name": "Rival", // Can be anything (usually your rival's name)
-        "link": 6, // manager array number within this array, or null to link back to all managers page
-        "image": "/managers/rival.jpg" // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+        "name": "SlikBears", // Can be anything (usually your rival's name)
+        "link": 3, // manager array number within this array, or null to link back to all managers page
+        "image": "/managers/TF.jpg" // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
       },
       "favoritePlayer": 7564, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
