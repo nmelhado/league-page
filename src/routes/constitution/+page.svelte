@@ -223,7 +223,8 @@ Tradable assets include players, draft picks, and FAAB $. Conditional trading is
     
     <h4 bind:this={oneTwoFive}>1.2.5 Veto/Trade Process</h4>
     <div class="subBlock">
-        <p>Only the Comishiner may VETO trades. See Sections</p>
+        <p>Only the Comishiner may VETO trades. See Sections 1.2 Trading</p>
+        <h4 class="noUnderscore clickable" on:click={() => goToSection(oneTwo)}>1.2 Trading</h4>
     </div>
     
     
