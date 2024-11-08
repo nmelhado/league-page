@@ -134,7 +134,7 @@ export const managers = [
     {
       "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "John Diaz-Decaro",
-      "location": "Los Angels California", // (optional)
+      "location": "Los Angeles, California", // (optional)
       "bio": "I am inevitable",
       "photo": "/managers/JDD.jpg", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2021, // (optional) when did the manager start playing fantasy football
@@ -148,10 +148,11 @@ export const managers = [
       "favoritePlayer": 8183, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
       "valuePosition": "TE", // (optional) Favorite position (QB, WR, RB, TE, etc.)
       "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-      "philosophy": "If you drop a pass, you run a mile. If you miss a first down, you run a mile.If you fumble the ball, I will break my foot off in your John Brown hind parts.... Let's go to work!
+      "philosophy": "If you drop a pass, you run a mile. If you miss a first down, you run a mile. If you fumble the ball, I will break my foot off in your John Brown hind parts.... Let's go to work!", // Added closing quote here
       "tradingScale": 6, // 1 - 10
       "preferredContact": "Sleeper", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
-    },
+    }
+
   ]
   
   
