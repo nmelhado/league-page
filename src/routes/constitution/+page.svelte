@@ -187,7 +187,8 @@
 Trades might take a day or two to process. Only the Commish has the authority to VETO a trade. In our 11-year history, only two trades have ever been vetoed.
 
 Tradable assets include players, draft picks, and FAAB $. Conditional trading is also allowed. For example, a manager may trade for a QB who is speculated to be benched. The condition could be: TEAM A trades a QB to TEAM B for a #1 pick, with the condition that the QB starts for the rest of the season barring (not counting) injury. If the QB gets benched, the draft pick is reduced to a 2nd-round pick instead.</p>
-    
+    <p>The Commish will (mandatory) reach out to the two managers in cases where a trade is in question prior to vetoing a trade. If the two managers find the Commish's ruling biased, they can appeal to both Co-Commissioners, and it takes both Co-Commissioners to overturn the Commish's ruling.</p>
+
     <h4 bind:this={oneTwoOne}>1.2.1 Trade Collusion</h4>
     <div class="subBlock">
         <p>If any owners are suspected of accepting bribes/offering bribes to enhance their/another owners team via trade, trading any assets other than fantasy players, draft picks, FAAB $, or otherwise found guilty of engaging in any form of collusion*, all parties involved in the trade will be susceptible to punishment. The punishments will go as followed:</p>
@@ -207,7 +208,7 @@ Tradable assets include players, draft picks, and FAAB $. Conditional trading is
 
     <h4 bind:this={oneTwoTwo}>1.2.2 Lending Players Prohibition</h4>
     <div class="subBlock">
-        <p>Any player traded from a team may not be re-acquired via trade within 6 weeks of the original trade. Any teams involved in this behavior will be subject to the aforementioned collusion punishments.</p>
+        <p>Any player traded may not be re-acquired via trade within 6 weeks of the original trade. However, the offseason is an exception. Any trade involving a top-35 ranked player will not allow re-acquisition until 2 years after the original trade, no off season exception. The player will be tagged with "NO TRADE BACK TO and FROM." Any teams engaging in this behavior will be subject to the aforementioned collusion punishments.</p>
     </div>
     
     <h4 bind:this={oneTwoThree}>1.2.3 Trade Deadline</h4>
