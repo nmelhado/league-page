@@ -192,7 +192,7 @@ export const managers = [
       "favoritePlayer": 7564,
       "valuePosition": "WR",
       "rookieOrVets": "Rookies",
-      "philosophy": "¯\\_(ツ)_/¯",
+      "philosophy": "Lorem ipsum.",
       "tradingScale": 6,
       "preferredContact": "Sleepers"
     }
