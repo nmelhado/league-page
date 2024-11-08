@@ -152,7 +152,29 @@ export const managers = [
       "tradingScale": 6, // 1 - 10
       "preferredContact": "Sleeper", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     }
-        
+    {
+      "roster": 5,
+      "name": "Gerardo Calles",
+      "tookOver": 2020,
+      "location": "Austin Texas",
+      "bio": "Lorem ipsum...",
+      "photo": "/managers/name.jpg",
+      "fantasyStart": 2015,
+      "favoriteTeam": "pit",
+      "mode": "Win Now",
+      "rival": {
+        "name": "Rival",
+        "link": 6,
+        "image": "/managers/rival.jpg"
+      },
+      "favoritePlayer": 7564,
+      "valuePosition": "WR",
+      "rookieOrVets": "Rookies",
+      "philosophy": "¯\\_(ツ)_/¯",
+      "tradingScale": 6,
+      "preferredContact": "Sleepers"
+    }
+       
   ]
   
   
