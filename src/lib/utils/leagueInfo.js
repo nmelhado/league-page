@@ -153,7 +153,7 @@ export const managers = [
       "preferredContact": "Sleeper", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     }
     {
-      "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+      "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "John Diaz-Decaro",
       "location": "Los Angeles, California", // (optional)
       "bio": "I am inevitable",
