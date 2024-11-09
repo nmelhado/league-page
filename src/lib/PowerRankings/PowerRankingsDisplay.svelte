@@ -64,7 +64,7 @@
             x: "Manager",
             y: "Power Ranking",
             stat: "",
-            header: "Rest of Season Power Rankings",
+            header: "Power Rankings",
             field: "powerScore",
             short: "ROS Power Ranking"
         };
