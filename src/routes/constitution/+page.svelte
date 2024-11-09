@@ -229,10 +229,12 @@ Tradable assets include players, draft picks, and FAAB $. Conditional trading is
     
     
     <h3 bind:this={oneThree}>1.3 Waiver Wire</h3>
-    
-    <p>FAAB Waiver wire system. Each team will begin the season with $100. $0 bids are allowed. Bids will process Thursdays and Sundays at 9AM EST.</p>
 
-    <p>FAAB budgets will reset each season in January.</p>
+    <p>Begining 2023 season MFFL will be adding a bouns FAAB $ to those managers that attend and participate in the leagues competition commitee and in person draft. For those that live out of town they must follow along and participate live during the draft. No AUTO drafting.</p>
+    
+    <p>FAAB Waiver wire system. Each team will begin the season with $100-$200, exact amount to be announced each season by the Commish. NO $0 bids are allowed. Bids will process Thursdays at 2am.</p>
+
+    <p>FAAB budgets carries over to the next season, to the maximum amount of $999</p>
     
     
     <h2 class="sectionHeading" bind:this={two}>Section 2 Drafting</h2>
