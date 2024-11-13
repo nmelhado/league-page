@@ -105,7 +105,7 @@ const genElementStart = (nodeType, indent, target) => {
             paragraphText = '<hr />'
             break;
         case 'embedded-asset-block':
-            paragraphText = `<br /><div class="blogImg"><img src="${getImg(target)}" alt="${target.fields.title}" /></div>`
+            paragraphText = `<br /><div class="blogImg"><img class="innerImg" src="${getImg(target)}" alt="${target.fields.title}" /></div>`
             break;
     
         default:

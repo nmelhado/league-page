@@ -80,7 +80,7 @@ const computePlayers = (playerData, weeklyData, scoringSettings) => {
             const id = player.player_id;
             
             // check if the player is active in the NFL
-            if(!computedPlayers[id].wi) continue;
+            if(computedPlayers[id] == null || !computedPlayers[id].wi) continue;
 
             computedPlayers[id].wi[week] = {
                 p: calculateProjection(player.stats, scoringSettings),
