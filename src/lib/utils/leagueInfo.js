@@ -31,7 +31,7 @@ export const managers = [
       "name": "Tits",
     //   "tookOver": 2020, // (optional) used if a manager took over a team, delete this line or change to null otherwise
     //   "location": "Brooklyn", // (optional)
-      "bio": "Just trying to win that last one",
+      "bio": "Just trying to win that last one...And Complete",
     //   "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
     //   "fantasyStart": 2014, // (optional) when did the manager start playing fantasy football
       "favoriteTeam": "ne", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
