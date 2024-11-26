@@ -10,7 +10,7 @@ export const homepageText = `
   <p>The BCN Dynasty League was still in its infancy as 2023's BIG TUNA FF, a humble 10-team keeper league. Electric matchups between the likes of <i>nosternick</i> and <i>robertgunder47</i>, as well as a historic regular-season performance by <i>alimonyfootball</i> 
   propelled the league into the mainstream. This renown opened the door for something revolutionary: a 12-team, half-PPR Dynasty league, featuring all the competitors fans grew to know and love in BIG TUNA alongside two BRAND NEW expansion teams, each brimming with potential.
   The expanded league also features the most accurate fantasy football scoring system yet developed, incentivizing a focus on run-heavy, defensive (i.e. GOOD) football.</p>
-  <p>With the horizons broader than ever, who will rise above, inking their name in the book of champions? Who will be relegated to the dustbin of history? Who will build a legacy, or better yet: <i><b>A BCN DYNASTY...</b></i></p>
+  <p>With horizons broader than ever, who will rise above to ink their name in the book of champions? Who will be relegated to the dustbin of history? Who will build a legacy, or better yet: <i><b>A BCN DYNASTY...</b></i></p>
 `;
 
 /*   STEP 3   */
