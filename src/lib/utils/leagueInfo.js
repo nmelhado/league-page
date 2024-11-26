@@ -7,12 +7,10 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>The BCN Dynasty League was still in its infancy as 2023's BIG TUNA FF, a humble 10-team keeper league. Electric matchups between the likes of <i>nosternick</i> and <i>robertgunder47</i>, as well as a historic performance by <i>alimonyfootball<i> 
+  launched the league into the mainstream. This opened the door for something revolutionary: a 12-team, half-PPR Dynasty league, featuring all the competitors fans grew to know and love in BIG TUNA, as well as two expansion teams, each brimming with potential.
+  The expanded league also features the most accurate fantasy football scoring system yet developed, incentivizing a focus on run-heavy, defensive (i.e. GOOD) football.</p>
+  <p>With the horizons broader than ever, who will ink their name in the history books? Who will fall by the wayside? Who will build a legacy, or better yet: <i><b>A BCN DYNASTY...</b></i></p>
 `;
 
 /*   STEP 3   */
