@@ -158,7 +158,7 @@ export const managers = [
       "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "managerID" : "1075602954985521152"
       "name": "Aaron Knoff",
-      "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
+      "tookOver": 2024, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Ghent, Kentucky", // (optional)
       "bio": "...",
       "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
