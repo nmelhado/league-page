@@ -7,13 +7,10 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-`;
+  <p>Meltdog Fantasy Football (MFF) is a thriving fantasy football league that brings together 12 passionate competitors in a highly engaging environment. Established in 2021 and commissioned by Caleb "Meltdog" Melton, MFF is hosted on the Sleeper app and has grown into a hallmark of camaraderie, competition, and football fanaticism. Caleb’s leadership has been instrumental in cultivating a league culture that is equal parts spirited rivalry and genuine community.</p>
+  <p>To ensure the rich history of the league is preserved, MFF has expanded beyond the digital field. A dedicated website serves as a dynamic, living archive—a repository for records, game histories, trades, playoff brackets, and the stories behind the fiercest rivalries. This evolving platform captures the essence of MFF, transforming it into more than a league. It is a chronicle of its members' journeys, triumphs, and unforgettable moments.</p>
+  <p>Fantasy football isn’t just a pastime for Caleb; it’s a driving force that fuels his creativity and commitment as commissioner. His journey began with TikTok, where he shared league updates and highlights with an engaged audience, sparking a creative spark that has since grown into a multimedia approach. From the social media spotlight to the extensive league website, Caleb continues to push the boundaries of what it means to manage a fantasy football league, setting a new standard for commissioners everywhere.</p>
+  `;
 
 /*   STEP 3   */
 /*
