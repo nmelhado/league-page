@@ -210,7 +210,7 @@ export const managers = [
       "roster": 9
       "managerID": "860674527070392320",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Ayden Taylor",
-      "tookOver": 2022, // (optional) used if a manager took over a team, delete this line or change to null otherwise
+      "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
       "location": "Carrollton Kentucky", // (optional)
       "bio": "Season 1 Champion, Season 2 Manager of the Year and Offensive Manager of the Year.",
       "photo": "/managers/IMG_E8809[1].JPG", // square ratio recommended (no larger than 500x500)
