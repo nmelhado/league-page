@@ -27,7 +27,7 @@ export const managers = [
       "managerID": "860720020559376384",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Neil Abbott",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Champion and Comeback Manager of the Year for MFF Season 2.",
       "photo": "/managers/IMG_E8815[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -50,7 +50,7 @@ export const managers = [
       "managerID": "786129701889568768",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Caleb Melton",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Lexington Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Commissioner of Meltdog Fantasy Football. Have I won my own league? Of course not.",
       "photo": "/managers/IMG_8814[2].PNG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -73,7 +73,7 @@ export const managers = [
       "managerID": "859547886659149824",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Landon Isaacs",
       "tookOver": 2023, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Season 2 Rookie of the Year",
       "photo": "/managers/IMG_E8805[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
@@ -96,7 +96,7 @@ export const managers = [
       "managerID": "806769095004516352",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Grayson Kinman",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Season 3 Manager of the Year",
       "photo": "/managers/IMG_E8806[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -119,7 +119,7 @@ export const managers = [
       "managerID": "1075602954985521152",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Aaron Knoff",
       "tookOver": 2024, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Ghent Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Rudoodoo",
       "photo": "/managers/IMG_E8807[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -142,7 +142,7 @@ export const managers = [
       "managerID": "806760399406997504",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Seth Franklin",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "The Wilt Chamberlain of MFF. Season 0 Champion.",
       "photo": "/managers/IMG_E8804[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -165,7 +165,7 @@ export const managers = [
       "managerID": "887533042854711296",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Austin Hicks",
       "tookOver": 2024, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Season 3 Rookie of the Year",
       "photo": "/managers/IMG_8808[2].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2024, // (optional) when did the manager start playing fantasy football
@@ -188,7 +188,7 @@ export const managers = [
       "managerID": "860729485773918208",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Luke Taylor",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Promising young fantasy manager ready to win a playoff game..",
       "photo": "/managers/IMG_8812[2].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -211,7 +211,7 @@ export const managers = [
       "managerID": "860674527070392320",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Ayden Taylor",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Season 1 Champion, Season 2 Manager of the Year and Offensive Manager of the Year.",
       "photo": "/managers/IMG_E8809[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
@@ -234,7 +234,7 @@ export const managers = [
       "managerID": "980199599648362496",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Owen Stark",
       "tookOver": 2023, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "I know ball but it hasn't translated yet.",
       "photo": "/managers/IMG_E8810[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2023, // (optional) when did the manager start playing fantasy football
@@ -257,7 +257,7 @@ export const managers = [
       "managerID": "808485067943944192",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Cameron Butcher",
       "tookOver": 2024, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Leader of multiple squads, winner of nothing (yet).",
       "photo": "/managers/IMG_E8811[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2024, // (optional) when did the manager start playing fantasy football
@@ -280,7 +280,7 @@ export const managers = [
       "managerID": "808458864050667520",  // ID of the roster that the manager manages (look at the order of the power rankings graph)
       "name": "Garrison Brumback",
       "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
-      "location": "Carrollton Kentucky", // (optional)
+      "location": "Kentucky", // (optional)
       "bio": "Season 1 Manager of the Year.",
       "photo": "/managers/IMG_E8813[1].JPG", // square ratio recommended (no larger than 500x500)
       "fantasyStart": 2022, // (optional) when did the manager start playing fantasy football
