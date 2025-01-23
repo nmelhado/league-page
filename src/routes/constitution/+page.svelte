@@ -169,20 +169,6 @@
     <p>2 IR Spots (Player must be labeled as IR, or PUP in the Sleeper App)</p>
 
     <p>3 Taxi Spots (Taxi eligible players are those who have played no more than 1 year in the league)</p>
-    
-//        <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
-        
-//        <div class="subBlock">
-//            <table class="positionMaximums">
-//                <tr><td>QB</td><td class="right">3 active, 5 total</td></tr>
-//                <tr><td>RB</td><td class="right">20</td></tr>
-//                <tr><td>WR</td><td class="right">20</td></tr>
-//               <tr><td>TE</td><td class="right">10</td></tr>
-//                <tr><td>D/ST</td><td class="right">3</td></tr>
-//                <tr><td>K</td><td class="right">3</td></tr>
-//            </table>
-//        </div>
-
 
     <h3 class="subSectionHeading" bind:this={oneTwo}>1.2 Trading</h3>
     
