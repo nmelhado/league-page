@@ -28,14 +28,6 @@
 		width = right - left;
 	});
 
-	$effect(() => {
-		if(active.key === 'league_info') {
-			setTimeout(() => {
-				open();
-			}, 0);
-		}
-	});
-
 	let innerWidth = $state();
 
 	const open = () => {
@@ -119,6 +111,7 @@
 					<Tab
 						{tab}
 						minWidth
+						onclick={() => open()}
 					>
 						<Icon class="material-icons">{tab.icon}</Icon>
 						<Label>{tab.label}</Label>
