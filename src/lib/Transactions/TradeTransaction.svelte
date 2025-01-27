@@ -96,7 +96,7 @@
         <thead>
             <tr>
                 {#each transaction.rosters as owner}
-                    <th class="name clickable" style="width: {1 / transaction.rosters.length * 100}%;" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>
+                    <th class="name clickable" style="width: {1 / transaction.rosters.length * 100}%;" onclick={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>
                         <div class="holder">
                             <img class="avatar" src="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).avatar}" alt="{getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name} avatar"/>
                             <span class="ownerName">

@@ -122,11 +122,11 @@
             <div class="buttonHolder">
                 <Group variant="outlined">
                     <!-- Regular Season -->
-                    <Button class="selectionButtons" on:click={() => changeMatchupGame(1)} variant="{matchupWeek == 1 ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => changeMatchupGame(1)} variant="{matchupWeek == 1 ? "raised" : "outlined"}">
                         <Label>First Week</Label>
                     </Button>
                     <!-- Championship Bracket -->
-                    <Button class="selectionButtons" on:click={() => changeMatchupGame(2)} variant="{matchupWeek == 2 ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => changeMatchupGame(2)} variant="{matchupWeek == 2 ? "raised" : "outlined"}">
                         <Label>Second Week</Label>
                     </Button>
                 </Group>

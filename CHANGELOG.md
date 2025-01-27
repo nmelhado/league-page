@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2025-01-26
+
+### Fixed
+
+- Updated dependencies, mainly around Svelte
+    - Breaking change, so I had to also update some files to get everything working again
+    - Some files are still using old Svelte syntax, will update them as I come across them
+
 ## [2.3.5] - 2024-04-27
 
 ### Fixed
