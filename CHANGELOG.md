@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.2] - 2025-01-26
+
+### Fixed
+
+- Fixed bug where league info sub-menu starts opened if you open up on one of those pages
+
 ## [2.4.1] - 2025-01-26
 
 ### Fixed
