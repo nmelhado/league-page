@@ -91,7 +91,7 @@ const combThroughTransactions = async (week, currentLeagueID) => {
 	const leagueIDs = [];
 	let currentSeason = null;
 
-	while(currentLeagueID && currentLeagueID != 0) {
+	while(currentLeagueID && currentLeagueID != 0 && currentLeagueID !== '351176705865547776') {
 		// gather supporting info simultaneously
 		const leagueData = await getLeagueData(currentLeagueID).catch((err) => { console.error(err); });
 
