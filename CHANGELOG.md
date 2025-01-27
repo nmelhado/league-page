@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.1] - 2025-01-26
+
+### Fixed
+
+- Fixed duplicated playoff stat issue. [(issue #315)](https://github.com/nmelhado/league-page/issues/315)
+
 ## [2.4.0] - 2025-01-26
 
 ### Fixed
