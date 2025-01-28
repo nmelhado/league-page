@@ -54,7 +54,7 @@ export const managers = [
        "name": "Cooper",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Syracuse, NY", // (optional)
-       "bio": ""Kids call me Cwarder cuz I eat Quarters" - Cooper Ward",
+       "bio": "'Kids call me Cwarder cuz I eat Quarters' - Cooper Ward",
        "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2015, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "nyj", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
