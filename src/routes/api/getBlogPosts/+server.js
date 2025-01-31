@@ -11,7 +11,7 @@ export async function GET() {
         // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
         accessToken: import.meta.env.VITE_CONTENTFUL_CLIENT_ACCESS_TOKEN
     });
-	const data = await client.getEntries({content_type: 'blog_post'})
+	const data = await client.getEntries({content_type: 'blog'})
         .catch(e=> {
             console.error(e);
             throw error(500, "Problem retrieving blog posts");
