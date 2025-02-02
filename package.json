@@ -1,6 +1,6 @@
 {
   "name": "league-page",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "homepage": "https://github.com/nmelhado/league-page",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
   "dependencies": {
     "contentful": "^10.6.7",
     "contentful-management": "^10.46.4",
-    "cookie": "^0.4.1",
+    "cookie": "^0.7.0",
     "fast-xml-parser": "^4.2.5",
     "fuzzyjs": "^5.0.1"
   },

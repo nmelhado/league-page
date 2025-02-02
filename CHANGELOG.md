@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.3] - 2025-02-01
+
+### Fixed
+
+- Fixed the broken buttons below the bar charts. Now clicking on them will actually change the bar chart.
+
 ## [2.4.2] - 2025-01-26
 
 ### Fixed
