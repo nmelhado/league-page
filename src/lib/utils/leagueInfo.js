@@ -7,9 +7,9 @@ export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VIT
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>In 2024, a small group of friends banded together trying to keep their younger brother out of trouble. They got Cooper a job and he loved it. It was a shit job of course, mopping up bottomfeeders from the waiver wire and throwing Caleb Williams and Aaron Rodgers as starters each week. It stunk. But at least he had that sweet <s>music</s> <b>Saquon</b> to keep him going. Boy, it was the cat's meow. That was ShaDynasty. </p>
-  <p>Ok so... The love of your life was a <s>black woman</s> Fantasy League named Shadynasty? Yeah, what's wrong with that? It's strange, just unexpected, go on though. All right; Each year, the managers compete to win the ShaDynasty Cup and avoid the ever-humiliating Toilet Bowl.</p>
-  <p>Some managers built immediate win-now teams, while others began the slow process of building a juggernaut dynasty team. A portion of the league prioritized youth and draft picks, the rest gravitated towards the steadfast value of veterans. While some managers fled from injuries and down years, others bought the dip and built for the future.</p>
+  <p>In 2024, a small group of friends banded together trying to keep their younger brother out of trouble. They got Cooper a job and he loved it. It was a shit job of course, mopping up bottomfeeders from the waiver wire and fielding Caleb Williams and Aaron Rodgers as starters each week. It stunk. But at least he had that sweet <s>music</s> Ja'Marr to keep him going. Boy, it was the cat's meow. That was <b>ShaDynasty</b>. </p>
+  <p>Ok so... The love of your life is a <s>black woman</s> Fantasy League named Shadynasty? Yeah, what's wrong with that? It's strange, just unexpected, go on though. All right; ShaDynasty. Each year, the managers compete to win the ShaDynasty Cup and avoid the ever-humiliating Toilet Bowl.</p>
+  <p>Some managers built immediate win-now teams, while others opted to begin the slow process of building a juggernaut dynasty team. A portion of the league prioritized youth and draft picks, the rest gravitated towards the steadfast value of veterans. While some managers fled from injuries, others bought the dip and built for the future.</p>
   <p>While the ultimate prize is bragging rights and sending obnoxious texts to the rest of the league for the next year, the champion manager also walks away with $400.</p>
 `;
 
@@ -88,7 +88,7 @@ export const managers = [
        "rival": {
          name: "Nikolai", // Can be anything (usually your rival's name)
          link: 3, // manager array number within this array, or null to link back to all managers page
-         image: "/managers/NickDowler.PNG", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
+         image: "/managers/File 24.jpeg", // either a specific manager photo or '/managers/everyone.png' or '/managers/question.png'
        },
        "favoritePlayer": 4866, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
