@@ -7,8 +7,8 @@ export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VIT
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Welcome to the ShaDynasty League page, where all your dreams may come true. Congratulations to Nick Eade for his commanding performance in the 2024 season</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p>In 2024, a small group of friends banded together trying to keep their younger brother out of trouble. They got Cooper a job and he loved it. It was a shit job of course, mopping up bottomfeeders from the waiver wire and throwing Caleb Williams and Aaron Rodgers as starters each week. It stunk. But at least he had that sweet music (Saquon/Ja'Marr) to keep him going. And then one night, he heard the voice of an angel. Boy, she was the cat's meow. That was ShaDynasty. </p>
+  <p>Ok so... The love of your life was a <s>black woman</s> Fantasy League named Shadynasty? Yeah, what's wrong with that? It's strange, just unexpected, go on though. All right; Each year, the managers compete to win the ShaDynasty Cup and avoid the ever-humiliating Toilet Bowl.</p>
   <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
   <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
