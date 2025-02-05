@@ -27,7 +27,8 @@ export const managers = [
   // TUCKER 
   {
        "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-       "name": "Tucker",
+      "managerID": "991792875761405952",
+      "name": "Tucker",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Baltimore", // (optional)
        "bio": "Recently relocated to the Baltimore trenches amid growing ",
