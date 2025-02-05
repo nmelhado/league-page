@@ -51,6 +51,7 @@ export const managers = [
     // Cooper
   {
        "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1127631102816014336",
        "name": "Cooper",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Syracuse, NY", // (optional)
@@ -76,6 +77,7 @@ export const managers = [
   {
        "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
        "name": "Ross",
+       "managerID": "460593375200931840",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "East Rutherford, NJ", // (optional)
        "bio": "You know, Quasimodo predicted all of this.",
@@ -100,6 +102,7 @@ export const managers = [
   {
        "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
        "name": "Nick",
+       "managerID": "854460602586861568",  
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "West Rutherford, NJ", // (optional)
        "bio": "I have the youngest boys",
@@ -123,6 +126,7 @@ export const managers = [
     // SAM
   {
        "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1004145098680057856",   
        "name": "Sam",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Greenville, SC", // (optional)
@@ -147,6 +151,7 @@ export const managers = [
     // Puleo
   {
        "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1003748560732516352",   
        "name": "Ryan",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Washington, DC", // (optional)
@@ -171,6 +176,7 @@ export const managers = [
     // MATT 
   {
        "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1002755516885610496",  
        "name": "Matt",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Chi-Raq, IL", // (optional)
@@ -195,6 +201,7 @@ export const managers = [
     // AJ
   {
        "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1004454040773730304", 
        "name": "AJ",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Miami, FL", // (optional)
@@ -219,6 +226,7 @@ export const managers = [
     // KYLE 
   {
        "roster": 9,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "1002381518435717120", 
        "name": "Kyle",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Weehauken, NJ", // (optional)
@@ -243,6 +251,7 @@ export const managers = [
     // Robbie
   {
        "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+       "managerID": "999118080758464512", 
        "name": "Robbie",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Rutgas, NJ", // (optional)
