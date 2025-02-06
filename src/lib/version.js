@@ -5,4 +5,4 @@ available for your copy of League Page
 */
 
 // Keep in sync with package.json
-export const version = "2.4.3";
+export const version = "2.4.4";
