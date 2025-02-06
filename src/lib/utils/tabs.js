@@ -74,6 +74,12 @@ export const tabs = [
         ]
     },
     {
+        icon: 'person_search',
+        label: 'Player Database',
+        dest: '/playerDatabase',
+    },
+    
+    {
         icon: 'lightbulb',
         label: 'Resources',
         dest: '/resources',
