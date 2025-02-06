@@ -215,10 +215,11 @@
                 Favorite Player
             </div>
             <div class="infoIcon playerIcon">
-                <img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
-                  {#if viewManager.name === "Kyle"}
+                {#if viewManager.name === "Kyle"}
                     <img class="favoritePlayer" src="https://sleepercdn.com/content/nba/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
-    		        {/if}
+		{:else}
+                	<img class="favoritePlayer" src="https://sleepercdn.com/content/nfl/players/{viewManager.favoritePlayer}.jpg" alt="favorite player"/>
+    		{/if}
             </div>
             <div class="infoAnswer">
                 {players[viewManager.favoritePlayer].fn} {players[viewManager.favoritePlayer].ln}
