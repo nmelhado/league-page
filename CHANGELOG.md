@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.4] - 2025-02-05
+
+### Fixed
+
+- Fixed full blog post bug [(issue #341)](https://github.com/nmelhado/league-page/issues/341)
+
 ## [2.4.3] - 2025-02-01
 
 ### Fixed
