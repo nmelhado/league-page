@@ -8,7 +8,7 @@ export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VIT
 /*   STEP 2   */
 export const homepageText = `
   <p>In 2024, a small group of friends banded together trying to keep their younger brother, Cooper, out of trouble. They got him a job as a fantasty football manager, and he loved it! It was a shit job of course, mopping up bottomfeeders from the waiver wire and fielding Caleb Williams and Aaron Rodgers as starters each week. It stunk. But at least he had that sweet <s>music</s> Ja'Marr to keep him going. Boy, it was the cat's meow. That was <b>ShaDynasty</b>. </p>
-  <p>Ok so... The love of your life is a <s>black woman</s> Fantasy League named ShaDynasty? Yeah, what's wrong with that? It's strange, just unexpected, go on though. All right; <i>ShaDynasty</i>. Each year, the managers compete to win the ShaDynasty Cup and avoid the ever-humiliating Toilet Bowl.</p>
+  <p>Ok so... The love of your life is a <s>black woman</s> Fantasy League named ShaDynasty? Yeah, what's wrong with that? It's strange, just unexpected, but go on. All right; <i>ShaDynasty</i>. Each year, the managers compete to win the ShaDynasty Cup and avoid the ever-humiliating Toilet Bowl.</p>
   <p>Some managers built immediate win-now teams, while others opted to begin the slow process of building a juggernaut dynasty team. A portion of the league prioritized youth and draft picks, the rest gravitated towards the steadfast value of veterans. While some managers fled from injuries, others bought the dip and built for the future.</p>
   <p>While the ultimate prize is bragging rights and sending obnoxious texts to the rest of the league for the next year, the champion manager also walks away with $400.</p>
 `;
