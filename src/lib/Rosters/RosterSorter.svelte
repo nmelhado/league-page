@@ -121,7 +121,7 @@
 </style>
 
 <div class="expandButton">
-	<Button on:click={() => {expanded = !expanded}} variant="outlined">
+	<Button onclick={() => {expanded = !expanded}} variant="outlined">
 		<Label>{expanded ? "Minimize" : "Expand"} All Benches</Label>
 	</Button>
 </div>
