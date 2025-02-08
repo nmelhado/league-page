@@ -16,13 +16,13 @@
     onMount(loadAccuracy);
 
     function loadAccuracy() {
-        if(!accuracy) return;
+        if(!accuracy || accuracy === 1) return;
         let timer;
         progress = 0;
         closed = false;
         clearInterval(timer);
         timer = setInterval(() => {
-            progress += 0.01;
+            progress += 0.02;
             if (progress >= accuracy) {
                 clearInterval(timer);
                 if (progress >= 1) {
@@ -107,7 +107,7 @@
     }
 </style>
 
-{#if accuracy  && !closed}
+{#if accuracy && accuracy !== 1 && !closed}
     <div class="accuracy">
         <div class="accuracyText">
             Upcomig draft order accuracy: {parseInt(progress*100)}%

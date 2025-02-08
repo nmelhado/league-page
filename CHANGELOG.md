@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2025-02-11
+
+### Fixed
+
+- The upcoming drafts weren't showing the traded players. This happened because of a type mismatch (int vs string).
+
 ## [2.5.0] - 2025-02-08
 
 ### Added

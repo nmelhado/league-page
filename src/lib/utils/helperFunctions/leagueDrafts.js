@@ -99,8 +99,8 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLe
 	}
 
 	for(const pick of picks) {
-		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
+		if(pick.owner_id === pick.roster_id || pick.round > rounds) continue;
+		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id.toString())] = pick.owner_id;
 	}
 
 	let accuracy = (progression + 1) / (regularSeasonLength + 1);
