@@ -107,13 +107,13 @@
 <div class="matchups">
     <div class="weekContainer">
         {#if displayWeek > 1}
-            <Icon class="material-icons changeWeek" on:click={() => changeWeek(displayWeek - 1)}>chevron_left</Icon>
+            <Icon class="material-icons changeWeek" onclick={() => changeWeek(displayWeek - 1)}>chevron_left</Icon>
         {:else}
             <span class="spacer" />
         {/if}
         <h3 class="weekText">{year} Week {displayWeek} Matchups</h3>
         {#if displayWeek < matchupWeeks.length}
-            <Icon class="material-icons changeWeek" on:click={() => changeWeek(displayWeek + 1)}>chevron_right</Icon>
+            <Icon class="material-icons changeWeek" onclick={() => changeWeek(displayWeek + 1)}>chevron_right</Icon>
         {:else}
             <span class="spacer" />
         {/if}
