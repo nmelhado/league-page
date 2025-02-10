@@ -22,7 +22,7 @@ export const getAwards = async () => {
 const getPodiums = async (previousSeasonID) => {
 	const podiums = [];
 
-	while(previousSeasonID && previousSeasonID != 0) {
+	while(previousSeasonID && previousSeasonID != 0 && previousSeasonID !== '351176705865547776') {
 		// use the previous season ID to get the previous league, roster, user, and bracket data
 		const previousSeasonData = await getPreviousLeagueData(previousSeasonID);
 
