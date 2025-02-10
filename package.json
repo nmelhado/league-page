@@ -1,10 +1,6 @@
 {
   "name": "league-page",
-<<<<<<< HEAD
-  "version": "2.5.0",
-=======
   "version": "2.3.5",
->>>>>>> 917b29edcd95a5d827ead73a4df45d1ae284e9e5
   "homepage": "https://github.com/nmelhado/league-page",
   "repository": {
     "type": "git",
