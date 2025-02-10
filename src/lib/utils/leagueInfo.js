@@ -118,7 +118,7 @@ export const managers = [
        "favoritePlayer": 2078, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-       "philosophy": "I have the youngest boys in the league. Bijan and Achane make me Horny",
+       "philosophy": "I have the youngest boys in the league. Bijan and Achane make me Horny.",
        "tradingScale": 10, // 1 - 10
        "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
@@ -180,7 +180,7 @@ export const managers = [
        "name": "Matt",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Chi-Raq, IL", // (optional)
-       "bio": "Beat Ross",
+       "bio": "Beat Ross, that's all that matters",
        "photo": "/managers/File 10.jpeg", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2015, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "nyg", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -193,7 +193,7 @@ export const managers = [
        "favoritePlayer": 11675, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "TE", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-       "philosophy": "Brock Bowers, the next Greg (G-Reg)",
+       "philosophy": "Brock Bowers, the next Greg (G-Reg) Olsen",
        "tradingScale": 9, // 1 - 10
        "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
@@ -230,7 +230,7 @@ export const managers = [
        "name": "Kyle",
        "tookOver": null, // (optional) used if a manager took over a team, delete this line or change to null otherwise
        "location": "Weehauken, NJ", // (optional)
-       "bio": "Lorem ipsum...",
+       "bio": "I'm Kile I bought a house. Now I use LLMs to tell me if I am getting a fair trade.",
        "photo": "/managers/File 71.jpeg", // square ratio recommended (no larger than 500x500)
        "fantasyStart": 2015, // (optional) when did the manager start playing fantasy football
        "favoriteTeam": "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
@@ -243,7 +243,7 @@ export const managers = [
        "favoritePlayer": 1362, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "WR", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Vets", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-       "philosophy": "Your fantasy team's philosophy",
+       "philosophy": "Pretend like I don't know ball then win the league",
        "tradingScale": 10, // 1 - 10
        "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
@@ -268,7 +268,7 @@ export const managers = [
        "favoritePlayer": 30, // (optional) this corresponds to the Sleeper player ID (https://api.sleeper.app/v1/players/nfl)
        "valuePosition": "RB", // (optional) Favorite position (QB, WR, RB, TE, etc.)
        "rookieOrVets": "Rookies", // (optional) 'Rookies' or 'Vets' (anything else and you will need to add a new png to /static/ similar to the 'Rookies.png' and 'Vets.png' currently in there)
-       "philosophy": "Future 2027 Jets",
+       "philosophy": "Attain all of the Fantasy-Relevant 2027 Jets",
        "tradingScale": 7, // 1 - 10
        "preferredContact": "WhatsApp", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
      },
