@@ -75,22 +75,22 @@
         <div class="buttonHolder">
             <Group variant="outlined">
                 <!-- Regular Season -->
-                <Button class="selectionButtons" on:click={() => changeSelection('regular')} variant="{selection == 'regular' ? "raised" : "outlined"}">
+                <Button class="selectionButtons" onclick={() => changeSelection('regular')} variant="{selection == 'regular' ? "raised" : "outlined"}">
                     <Label>Regular Season</Label>
                 </Button>
                 <!-- Championship Bracket -->
-                <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' || selection == 'losers' ? "raised" : "outlined"}">
+                <Button class="selectionButtons" onclick={() => changeSelection('champions')} variant="{selection == 'champions' || selection == 'losers' ? "raised" : "outlined"}">
                     <Label>Playoffs</Label>
                 </Button>
             </Group>
             {#if selection == 'champions' || selection == 'losers'}
                 <Group variant="outlined">
                     <!-- Championship Bracket -->
-                    <Button class="selectionButtons" on:click={() => changeSelection('champions')} variant="{selection == 'champions' ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => changeSelection('champions')} variant="{selection == 'champions' ? "raised" : "outlined"}">
                         <Label>Champions' Bracket</Label>
                     </Button>
                     <!-- Losers Bracket -->
-                    <Button class="selectionButtons" on:click={() => changeSelection('losers')} variant="{selection == 'losers' ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => changeSelection('losers')} variant="{selection == 'losers' ? "raised" : "outlined"}">
                         <Label>Losers' Bracket</Label>
                     </Button>
                 </Group>

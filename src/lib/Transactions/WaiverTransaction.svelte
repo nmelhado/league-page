@@ -161,7 +161,7 @@
     }
 </style>
 
-<div class="waiverTransaction clickable" on:click={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>
+<div class="waiverTransaction clickable" onclick={() => gotoManager({year: transaction.season, leagueTeamManagers, rosterID: owner})}>
     <div class="name">
         <span class="ownerName">
             {getTeamFromTeamManagers(leagueTeamManagers, owner, transaction.season).name}

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0] - 2025-02-08
+
+### Added
+
+- Adding Vercel analytics! [(issue #327)](https://github.com/nmelhado/league-page/issues/327)
+    - Go to [Vercel Analytics](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fanalytics&title=Open+Web+Analytics) to enable
+
 ## [2.4.4] - 2025-02-05
 
 ### Fixed
@@ -33,7 +40,7 @@ All notable changes to this project will be documented in this file.
 - Updated dependencies, mainly around Svelte
     - Breaking change, so I had to also update some files to get everything working again
     - Some files are still using old Svelte syntax, will update them as I come across them
-  
+
 ## [2.3.5] - 2024-04-27
 
 ### Fixed
