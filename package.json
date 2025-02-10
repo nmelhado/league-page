@@ -80,7 +80,6 @@
     "@smui/textfield": "6.0.0-beta.13",
     "@sveltejs/adapter-vercel": "^3.0.1",
     "@sveltejs/kit": "^1.15.2",
-    "@vercel/analytics": "^1.4.1",
     "contentful": "^9.1.34",
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
