@@ -466,6 +466,7 @@ const digestBracket = ({bracket, playoffRecords, playoffRounds, matchupDifferent
 
 		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
 
+		postSeasonData = meshPostSeasonData(postSeasonData, pSD);
 		seasonPointsRecord = sPR;
 		matchupDifferentials = mD;
 	}

@@ -18,7 +18,7 @@
     let leagueTeamManagersDataLoaded, postsDataLoaded;
 
     onMount(async()=> {
-        [leagueTeamManagersDataLoaded, postsDataLoaded] = await waitForAll(leagueTeamManagersData,
+ 	[leagueTeamManagersDataLoaded, postsDataLoaded] = await waitForAll(leagueTeamManagersData,
         postsData);
         const post = postsDataLoaded.posts.filter(p => p.sys.id === postID)[0];
         id = post.sys.id;

@@ -1,21 +1,27 @@
 <script>
+	import { tabs } from '$lib/utils/tabs';
 	import NavSmall from './NavSmall.svelte';
 	import NavLarge from './NavLarge.svelte';
-    import { page } from '$app/state';
+    import { page } from '$app/stores';	
 	import IconButton from '@smui/icon-button';
 	import { Icon } from '@smui/common';
 
+	$: active = tabs.find(tab => tab.dest == $page.url.pathname || (tab.nest && tab.children.find(subTab => subTab.dest == $page.url.pathname)));
+
 	// toggle dark mode
-	let darkTheme = $state(typeof window === "undefined" || window.matchMedia("(prefers-color-scheme: dark)").matches);
-	function switchTheme(currentTheme) {
-		currentTheme = !currentTheme;
+	let lightTheme =
+		typeof window === "undefined" ||
+		window.matchMedia("(prefers-color-scheme: light)").matches;
+	
+	function switchTheme() {
+		lightTheme = !lightTheme;
 		let themeLink = document.head.querySelector("#theme");
 		if (!themeLink) {
 			themeLink = document.createElement("link");
 			themeLink.rel = "stylesheet";
 			themeLink.id = "theme";
 		}
-		themeLink.href = `/smui${currentTheme ? "" : "-dark"}.css`;
+		themeLink.href = `/smui${lightTheme ? "" : "-dark"}.css`;
 		document.head
 		.querySelector('link[href="/smui-dark.css"]')
 		.insertAdjacentElement("afterend", themeLink);
@@ -23,7 +29,7 @@
 </script>
 
 <svelte:head>
-	<title>{!page.url.pathname[1] ? 'Home' : page.url.pathname[1].toUpperCase() + page.url.pathname.slice(2)} | League Page</title>
+	<title>{!$page.url.pathname[1] ? 'Home' : $page.url.pathname[1].toUpperCase() + $page.url.pathname.slice(2)} | League Page</title>
 </svelte:head>
 
 <style>
@@ -81,8 +87,8 @@
 	<div class="container">
 		<IconButton
 			toggle
-			bind:pressed={darkTheme}
-			onclick={() => switchTheme(darkTheme)}
+			pressed={lightTheme}
+			on:MDCIconButtonToggle:change={switchTheme}
 			class="lightDark"
 		>
 			<Icon class="material-icons" on>dark_mode</Icon>
@@ -91,11 +97,11 @@
 	</div>
 
 	<div class="large">
-		<NavLarge />
+		<NavLarge {tabs} bind:active={active} />
 	</div>
 
 	<div class="small">
-		<NavSmall />
+		<NavSmall {tabs} bind:active={$page.url.pathname} />
 	</div>
 
 </nav>
