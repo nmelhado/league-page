@@ -82,7 +82,7 @@
 </style>
 
 <nav>
-	<a href="/"><img id="logo" alt="league logo" src="/ShaDynastyIcon.png" /></a>
+	<a href="/"><img id="logo" alt="league logo" src="/LeaguePhoto.png" /></a>
 
 	<div class="container">
 		<IconButton
