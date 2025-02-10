@@ -39,7 +39,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=v18.0.0 <19.0.0",
+    "node": ">=v20.0.0",
     "npm": ">=6.0.0"
   },
   "scripts": {
@@ -54,16 +54,6 @@
     "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --write --plugin-search-dir=. ."
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-node": "^1.2.3",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.1",
-    "prettier": "~2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "smui-theme": "6.0.0-beta.13",
-    "vite": "^4.0.0"
   },
   "type": "module",
   "dependencies": {
@@ -84,7 +74,30 @@
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
     "fast-xml-parser": "^4.2.5",
-    "fuzzyjs": "^5.0.1",
-    "svelte": "^3.50.1"
+    "fuzzyjs": "^5.0.1"
+  },
+  "devDependencies": {
+    "@smui/button": "^8.0.0-beta.3",
+    "@smui/data-table": "^8.0.0-beta.3",
+    "@smui/dialog": "^8.0.0-beta.3",
+    "@smui/drawer": "^8.0.0-beta.3",
+    "@smui/icon-button": "^8.0.0-beta.3",
+    "@smui/linear-progress": "^8.0.0-beta.3",
+    "@smui/list": "^8.0.0-beta.3",
+    "@smui/paper": "^8.0.0-beta.3",
+    "@smui/tab": "^8.0.0-beta.3",
+    "@smui/tab-bar": "^8.0.0-beta.3",
+    "@smui/textfield": "^8.0.0-beta.3",
+    "@sveltejs/adapter-node": "^5.2.12",
+    "@sveltejs/adapter-vercel": "^5.5.3",
+    "@sveltejs/kit": "^2.16.1",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-svelte": "^2.46.1",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "smui-theme": "^8.0.0-beta.3",
+    "svelte": "^5.19.2"
   }
 }
