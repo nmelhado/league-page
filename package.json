@@ -67,12 +67,10 @@
   },
   "type": "module",
   "dependencies": {
-<<<<<<< HEAD
     "@vercel/analytics": "^1.4.1",
     "contentful": "^10.6.7",
     "contentful-management": "^10.46.4",
     "cookie": "^0.7.0",
-=======
     "@smui/button": "6.0.0-beta.13",
     "@smui/data-table": "6.0.0-beta.13",
     "@smui/dialog": "6.0.0-beta.13",
@@ -89,7 +87,6 @@
     "contentful": "^9.1.34",
     "contentful-management": "^10.12.0",
     "cookie": "^0.4.1",
->>>>>>> 917b29edcd95a5d827ead73a4df45d1ae284e9e5
     "fast-xml-parser": "^4.2.5",
     "fuzzyjs": "^5.0.1",
     "svelte": "^3.50.1"
