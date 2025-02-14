@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2025-02-11
+
+### Fixed
+
+- The upcoming drafts weren't showing the traded players. This happened because of a type mismatch (int vs string).
+
+## [2.5.0] - 2025-02-08
+
+### Added
+
+- Adding Vercel analytics! [(issue #327)](https://github.com/nmelhado/league-page/issues/327)
+    - Go to [Vercel Analytics](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fanalytics&title=Open+Web+Analytics) to enable
+
 ## [2.4.4] - 2025-02-05
 
 ### Fixed

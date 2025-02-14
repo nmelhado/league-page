@@ -1,6 +1,6 @@
 {
   "name": "league-page",
-  "version": "2.4.4",
+  "version": "2.5.1",
   "homepage": "https://github.com/nmelhado/league-page",
   "repository": {
     "type": "git",
@@ -57,6 +57,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "contentful": "^10.6.7",
     "contentful-management": "^10.46.4",
     "cookie": "^0.7.0",
