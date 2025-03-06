@@ -1,18 +1,18 @@
 /*   STEP 1   */
 export const leagueID = "1183104551146070016"; // your league ID
-export const leagueName = "No Friends in Fantasy Fooball"; // your league name
+export const leagueName = "No Friends in Fantasy Fooball League"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>The No Friends in Fantasy Football League (NFIF) may have officially launched in December 2024, but its roots run deep. Originating from New Era Fantasy Football, NFIF carries a 16-year legacy dating back to the founding of the New Era in 2010.</p>
+  <p>The NFIF is commissioned by Khader Mustafa, one of the original commissioners of the New Era and a longtime league member. While NFIF stands as its own unique league, it remains deeply tied to the New Era ecosystem.</p>
+  <p>Its roster includes several New Era Legacy members, such as Moonie, Fowzi, and Damen (commissioner of NE2K), along with Big Blue, Robby, Ehmed (NE2K), Mo Willy (formerly of NE2K, now in NFIF), Larry (one-year in NE2K), and Milhem, a newcomer to the New Era ecosystem.</p>
+  <p>The phrase 'No Friends in Fantasy' originated in the New Era and quickly became a hard lesson for everyone involved—there are truly no friends in this game. Whenever someone tried to scheme or things took a ruthless turn, we'd say 'NFIF' or call out 'No Friends in Fantasy.'</p>
+  <p>Over the years, it became more than just a saying; it was often the subtitle of the New Era est. 2010 logo. Most seasons, the phrase was even extended to 'No Friends in Fantasy... Not Even Cousins.'</p>
+  <p>Now along with the New Era, NFIF has evolved. Spearheaded by Khader Mustafa, the NFIF will have a identity of its own, a legacy of its own. Who will dominate and be the true Kangaroo of NFIF?</p>
 `;
 
 /*   STEP 3   */
