@@ -91,14 +91,30 @@
     }
 
     p {
-        color: #777;
+    text-align: center; /* Centers the paragraph */
+    font-size: 1.1em; /* Makes text slightly larger */
+    color: #777;
+}
+
+.rules-link {
+    font-weight: bold;
+    color: #00316b; /* Adjust color to match theme */
+    text-decoration: none;
+}
+
+.rules-link:hover {
+    text-decoration: underline;
     }
 </style>
 
 <div class="constitution">
     <h1 class="noUnderscore">New Era/NFIF Rules</h1>
     
-    <p>Rules for NFIF and New Era Leagues could be found at NewEraLeagues.com</p>
+    <p>Rules for NFIF and New Era Leagues could be found at
+        <a href="https://neweraleagues.com"
+target="_blank"
+class="rules-link">the main site</a>.
+    </p>
 
    
 </div>
