@@ -77,7 +77,7 @@
     "@smui/tab-bar": "^8.0.0-beta.3",
     "@smui/textfield": "^8.0.0-beta.3",
     "@sveltejs/adapter-node": "^5.2.12",
-    "@sveltejs/adapter-vercel": "^5.5.3",
+    "@sveltejs/adapter-vercel": "^5.7.2",
     "@sveltejs/kit": "^2.16.1",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "eslint": "^9.18.0",
