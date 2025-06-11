@@ -26,13 +26,13 @@
 		top: 15px;
 		left: 15px;
 		font-size: 2em;
-		color: #888;
+		color: var(--g999); /* Updated to theme variable */
 		padding: 6px;
 		cursor: pointer;
 	}
 
 	:global(.menuIcon:hover) {
-		color: #00316b;
+		color: var(--blueOne); /* Updated to theme variable */
 	}
 
 	:global(.nav-drawer) {
@@ -41,8 +41,14 @@
 		left: 0;
 	}
 
-	:global(.nav-item) {
-		color: #858585 !important;
+	:global(.nav-drawer .mdc-deprecated-list-item) { /* Target SMUI list items */
+		min-height: 48px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+
+	:global(.nav-item) { /* For inactive items */
+		color: var(--g999) !important; /* Updated to theme variable */
 	}
 
 	.nav-back {

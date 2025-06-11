@@ -4,11 +4,14 @@
 
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #0082c3,
-  $secondary: #00316b,
-  $surface: #000000,
-  $background: #000000,
-  $error: color-palette.$red-900,
+  $primary: #007bff, // New Primary: Blue
+  $secondary: #17a2b8, // New Accent/Secondary: Teal
+  $surface: #121212, // Standard dark surface
+  $background: #18191a, // Slightly off-black background
+  $on-primary: #ffffff,
+  $on-secondary: #ffffff,
+  $on-surface: #e8eaed, // Light gray text for dark theme
+  $error: color-palette.$red-900
 );
 
 // Import all the styles for the classes.
@@ -65,8 +68,8 @@
   --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
   --fadeThree: rgba(0, 0, 0, 0.9) 90%;
   --fadeFour: rgba(0, 0, 0, 1) 100%;
-  --blueOne: #0082c3;
-  --blueTwo: #003c86;
+  --blueOne: #007bff; // Updated to new primary
+  --blueTwo: #17a2b8; // Updated to new secondary
   --r1: #1c1c1d;
   --r2: #1f1d1d;
   --r3: #181a18;
@@ -123,9 +126,10 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #222;
-  background: linear-gradient(to bottom right, #111,#222 );
-  background: -webkit-linear-gradient(to bottom right, #111,#222 );
+  // Updated background to use the new $background color
+  background: theme.$background;
+  background: linear-gradient(to bottom right, theme.$background, color.scale(theme.$background, $lightness: +10%));
+  background: -webkit-linear-gradient(to bottom right, theme.$background, color.scale(theme.$background, $lightness: +10%));
 }
  
 //
@@ -167,7 +171,7 @@ caption {
  
 code,
 pre {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono', 'SF Mono', 'Menlo', 'Monaco', monospace; // Prioritize system monospace fonts
 }
  
 small {
@@ -184,12 +188,15 @@ strong {
 }
 
 a {
-  color: #40b3ff;
+  color: theme.$primary; // Use primary color for links
 }
 a:visited {
-  color: color.scale(#40b3ff, $lightness: -35%);
+  // For dark theme, lighten the visited link color for better visibility
+  color: color.scale(theme.$primary, $lightness: +25%);
 }
 
 .mdc-button--outlined:not(:disabled) {
-  background-color: #070707 !important;
+  // Ensure outlined buttons have a background that contrasts with the new $background
+  // Using a slightly lighter shade of the surface or a specific dark theme button background
+  background-color: color.scale(theme.$surface, $lightness: +5%) !important;
 }

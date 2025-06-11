@@ -3,6 +3,7 @@
 	import List, { Item, Graphic, Text, Separator } from '@smui/list';
 	import TabBar from '@smui/tab-bar';
 	import { goto, preloadData } from '$app/navigation';
+	import { page } from '$app/stores'; // Import page store
 	import { enableBlog, managers } from '$lib/utils/leagueInfo';
 
 	export let active, tabs;
@@ -79,7 +80,8 @@
 		position: absolute;
 		z-index: 5;
 		background-color: var(--fff);
-		transition: all 0.4s;
+		transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+		/* Remove box-shadow and border from here if they are handled by inline styles directly based on 'display' */
 	}
 
 	.overlay {
@@ -135,19 +137,22 @@
 			</Tab>
 		{/if}
 	</TabBar>
-	<div class="subMenu" style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length ? 0 : 48) : 0}px; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? "3px" : "0"} 0 #00316b; border: {display ? "1px" : "0"} solid #00316b; border-top: none;">
+	<div
+		class="subMenu"
+		style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length ? 0 : 48) : 0}px; opacity: {display ? 1 : 0}; pointer-events: {display ? 'auto' : 'none'}; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? '3px' : '0'} 0 var(--blueOne); border: {display ? '1px' : '0'} solid var(--blueOne); border-top: none;"
+	>
 		<List>
 			{#each tabChildren as subTab, ix}
 				{#if subTab.label == 'Managers'}
-					<Item class="{managers.length ? '' : 'dontDisplay'}" on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
+					<Item activated={$page.url.pathname == subTab.dest} class="{managers.length ? '' : 'dontDisplay'}" on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
 						<Graphic class="material-icons">{subTab.icon}</Graphic>
 						<Text class="subText">{subTab.label}</Text>
 					</Item>
-					{#if ix != tabChildren.length - 1}
+					{#if ix != tabChildren.length - 1 && managers.length}
 						<Separator />
 					{/if}
 				{:else}
-					<Item on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
+					<Item activated={$page.url.pathname == subTab.dest} on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
 						<Graphic class="material-icons">{subTab.icon}</Graphic>
 						<Text class="subText">{subTab.label}</Text>
 					</Item>

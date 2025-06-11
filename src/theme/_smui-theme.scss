@@ -4,11 +4,14 @@
 
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #00316b,
-  $secondary: #0082c3,
-  $surface: #fff,
-  $background: #fff,
-  $error: color-palette.$red-900,
+  $primary: #007bff, // New Primary: Blue
+  $secondary: #17a2b8, // New Accent/Secondary: Teal
+  $surface: #ffffff,
+  $background: #f8f9fa, // Light gray background
+  $on-primary: #ffffff,
+  $on-secondary: #ffffff,
+  $on-surface: #212529, // Dark gray text on surface
+  $error: color-palette.$red-900
 );
 
 // Import all the styles for the classes.
@@ -65,8 +68,8 @@
   --fadeTwo: rgba(255, 255, 255, 0.7) 50%;
   --fadeThree: rgba(255, 255, 255, 0.9) 90%;
   --fadeFour: rgba(255, 255, 255, 1) 100%;
-  --blueOne: #00316b;
-  --blueTwo: #0082c3;
+  --blueOne: #007bff; // Updated to new primary
+  --blueTwo: #17a2b8; // Updated to new secondary
   --r1: #f7f9fd;
   --r2: #fbf7f7;
   --r3: #f7fbf7;
@@ -123,9 +126,10 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #f4f4f4;
-  background: linear-gradient(to bottom right, #f4f4f4,#ebebeb );
-  background: -webkit-linear-gradient(to bottom right, #f4f4f4,#ebebeb );
+  // Updated background to use the new $background color
+  background: #f8f9fa;
+  background: linear-gradient(to bottom right, #f8f9fa, color.scale(#f8f9fa, $lightness: -5%));
+  background: -webkit-linear-gradient(to bottom right, #f8f9fa, color.scale(#f8f9fa, $lightness: -5%));
 }
  
 //
@@ -167,7 +171,7 @@ caption {
  
 code,
 pre {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono', 'SF Mono', 'Menlo', 'Monaco', monospace; // Prioritize system monospace fonts
 }
  
 small {
@@ -184,12 +188,13 @@ strong {
 }
 
 a {
-  color: #40b3ff;
+  color: theme.$primary; // Use primary color for links
 }
 a:visited {
-  color: color.scale(#40b3ff, $lightness: -35%);
+  color: color.scale(theme.$primary, $lightness: -35%); // Darken primary for visited links
 }
 
 .mdc-button--outlined:not(:disabled) {
-  background-color: #f9f9f9 !important;
+  // Ensure outlined buttons have a background that contrasts with the new $background
+  background-color: theme.$surface !important;
 }
