@@ -7,10 +7,11 @@
 	import { Icon } from '@smui/tab';
   	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import { goto, preloadData } from '$app/navigation';
+	import { page } from '$app/stores'; // Import page store
 	import { leagueName } from '$lib/utils/helper';
 	import { enableBlog, managers } from '$lib/utils/leagueInfo';
 	
-	export let active, tabs;
+	export let tabs; // 'active' prop is no longer needed, will use $page store
 
 	let open = false;
 
@@ -42,13 +43,32 @@
 	}
 
 	:global(.nav-drawer .mdc-deprecated-list-item) { /* Target SMUI list items */
-		min-height: 48px;
-		padding-top: 4px;
-		padding-bottom: 4px;
+		min-height: 48px; /* Good base for touch target */
+		padding-top: 8px; /* Increased padding */
+		padding-bottom: 8px; /* Increased padding */
+		box-sizing: border-box;
 	}
 
-	:global(.nav-item) { /* For inactive items */
-		color: var(--g999) !important; /* Updated to theme variable */
+	:global(.nav-drawer .mdc-deprecated-list-item .mdc-deprecated-list-item__graphic) {
+		margin-right: 24px; /* Increased spacing between icon and text */
+	}
+
+	:global(.nav-drawer .mdc-deprecated-list-item__text) {
+		font-size: 1rem; /* Ensure text is adequately sized */
+		line-height: 1.5; /* Improve readability */
+	}
+
+	:global(.nav-drawer .mdc-deprecated-list-item--activated .mdc-deprecated-list-item__text) {
+		font-weight: bold; /* Make active item text bold */
+	}
+
+	:global(.nav-item) { /* For inactive items - Graphic (icon) and Text */
+		color: var(--g555) !important; /* Slightly darker gray for better contrast, using g555 */
+	}
+
+	/* Ensure activated icon also uses primary color if not by default */
+	:global(.nav-drawer .mdc-deprecated-list-item--activated .mdc-deprecated-list-item__graphic) {
+		color: var(--mdc-theme-primary, #007bff) !important;
 	}
 
 	.nav-back {
@@ -77,28 +97,30 @@
 		<List>
 			{#each tabs as tab}
 				{#if !tab.nest && (tab.label != 'Blog' || (tab.label == 'Blog' && enableBlog))}
-					<Item href="javascript:void(0)" on:click={() => selectTab(tab)} on:touchstart={() => preloadData(tab.dest)} on:mouseover={() => preloadData(tab.dest)} activated={active == tab.dest} >
-						<Graphic class="material-icons{active == tab.dest ? "" : " nav-item"}" aria-hidden="true">{tab.icon}</Graphic>
-						<Text class="{active == tab.dest ? "" : "nav-item"}">{tab.label}</Text>
+					{@const isActive = $page.url.pathname.startsWith(tab.dest)}
+					<Item href="javascript:void(0)" on:click={() => selectTab(tab)} on:touchstart={() => preloadData(tab.dest)} on:mouseover={() => preloadData(tab.dest)} activated={isActive} >
+						<Graphic class="material-icons{isActive ? '' : ' nav-item'}" aria-hidden="true">{tab.icon}</Graphic>
+						<Text class="{isActive ? '' : 'nav-item'}">{tab.label}</Text>
 					</Item>
 				{/if}
 			{/each}
 			{#each tabs as tab}
 				{#if tab.nest}
 					<Separator />
-					<Subheader>{tab.label}</Subheader>
-					{#each tab.children as subTab}
+					<Subheader>{tab.label}</Subheader> {#each tab.children as subTab}
 						{#if subTab.label == 'Managers'}
 							{#if managers.length}
-								<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={active == subTab.dest}  on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
-									<Graphic class="material-icons{active == subTab.dest ? "" : " nav-item"}" aria-hidden="true">{subTab.icon}</Graphic>
-									<Text class="{active == subTab.dest ? "" : "nav-item"}">{subTab.label}</Text>
+								{@const isActive = $page.url.pathname.startsWith(subTab.dest)}
+								<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={isActive}  on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
+									<Graphic class="material-icons{isActive ? '' : ' nav-item'}" aria-hidden="true">{subTab.icon}</Graphic>
+									<Text class="{isActive ? '' : 'nav-item'}">{subTab.label}</Text>
 								</Item>
 							{/if}
 						{:else}
-							<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={active == subTab.dest}  on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
-								<Graphic class="material-icons{active == subTab.dest ? "" : " nav-item"}" aria-hidden="true">{subTab.icon}</Graphic>
-								<Text class="{active == subTab.dest ? "" : "nav-item"}">{subTab.label}</Text>
+							{@const isActive = $page.url.pathname.startsWith(subTab.dest) || (subTab.altDest && $page.url.pathname.startsWith(subTab.altDest))}
+							<Item href="javascript:void(0)" on:click={() => selectTab(subTab)} activated={isActive}  on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
+								<Graphic class="material-icons{isActive ? '' : ' nav-item'}" aria-hidden="true">{subTab.icon}</Graphic>
+								<Text class="{isActive ? '' : 'nav-item'}">{subTab.label}</Text>
 							</Item>
 						{/if}
 					{/each}

@@ -1,6 +1,8 @@
 <script>
     import {round} from '$lib/utils/helper'
 	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import Button from '@smui/button';
+    import { Icon } from '@smui/icon-button'; // Import SMUI Icon for performance indicators
 
     export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek, leagueTeamManagers, year;
 
@@ -396,8 +398,12 @@
         padding: 6px 0;
     }
 
-    .close:hover {
-        background-color: var(--ddd);
+    /* .close and .close:hover will be removed */
+
+    .close-matchup-button-container {
+        text-align: center;
+        padding: 8px 0;
+        border-top: 1px solid var(--borderOverride, #ddd);
     }
 
     .nameHolder {
@@ -429,32 +435,58 @@
         text-align: left;
     }
 
-    .totalProjection {
-        color: #ccc;
+    .totalProjection { /* For team total projection */
+        color: var(--g555, #aaa);
         font-size: 0.7em;
         font-style: italic;
+        margin-left: 2px;
     }
 
-    .points {
+    .player-score-container { /* Positions the entire score block (actual + proj + icon) */
         position: absolute;
-        line-height: 1.1em;
-        top: 1em;
+        top: 1em; /* Adjust as needed */
+        display: flex;
+        align-items: center;
     }
-
-    .pointsL {
+    .pointsL { /* For away team, score on the left */
         left: 1em;
+        flex-direction: row; /* Away: Score Proj Icon */
     }
-
-    .pointsR {
+    .pointsR { /* For home team, score on the right */
         right: 1em;
+        flex-direction: row-reverse; /* Home: Icon Proj Score */
     }
 
-    .playerEmpty {
+    .player-actual-score {
+        font-weight: 600;
+        color: var(--on-surface, #212529);
+        font-size: 0.9em; /* Default player score font size */
+    }
+    .player-projection-score {
+        color: var(--g555, #aaa);
+        font-size: 0.75em; /* Slightly smaller than actual */
+        font-style: italic;
+        margin: 0 4px; /* Margin around projection text */
+    }
+    .performance-icon {
+        font-size: 1rem !important;
+        height: 1rem !important;
+        width: 1rem !important;
+    }
+    .performance-icon.positive {
+        color: var(--waiverAdd, #28a745); /* Green for positive */
+    }
+    .performance-icon.negative {
+        color: var(--waiverDrop, #dc3545); /* Red for negative */
+    }
+
+    .playerEmpty { /* Styling for empty player slots */
         height: 100%;
-        color: #555;
+        color: var(--g555, #aaa);
         font-style: italic;
         display: flex;
         align-items: center;
+        opacity: 0.7; /* Further de-emphasis */
     }
     .teamLogo {
         width: 21px;
@@ -513,7 +545,7 @@
                     </span>
                     <div class="nameHolder nameHolderL{player.home.name == 'Empty'? ' playerEmpty' : ''}">
                         <span class="playerInfo playerName playerNameHome">{player.home.name}</span>
-                        {#if player.home.team}
+                        {#if player.home.team && player.home.name !== 'Empty'}
                             {#if player.home.opponent}
                                 <div class="playerTeam">{player.home.pos != "DEF" ? `${player.home.team} ` : ""}vs {player.home.opponent}</div>
                             {:else}
@@ -521,7 +553,17 @@
                             {/if}
                         {/if}
                     </div>
-                    <span class="points pointsR">{round(player.home.points)}<div class="totalProjection">{round(player.home.projection)}</div></span>
+                    {#if player.home.name !== 'Empty'}
+                    <div class="player-score-container pointsR">
+                        <span class="player-actual-score">{round(player.home.points)}</span>
+                        <span class="player-projection-score">(Proj: {round(player.home.projection)})</span>
+                        {#if player.home.projection > 0 && player.home.points != player.home.projection}
+                            <Icon class="material-icons performance-icon {player.home.points > player.home.projection ? 'positive' : 'negative'}">
+                                {player.home.points > player.home.projection ? 'arrow_upward' : 'arrow_downward'}
+                            </Icon>
+                        {/if}
+                    </div>
+                    {/if}
                 </div>
 
                 <div class="dividerLine" />
@@ -540,7 +582,7 @@
                         {/if}
                     </span>
                     <div class="nameHolder nameHolderR{player.away.name == 'Empty'? ' playerEmpty' : ''}">
-                        {#if player.away.team}
+                        {#if player.away.team && player.away.name !== 'Empty'}
                             {#if player.away.opponent}
                                 <div class="playerTeam">{player.away.opponent} vs{player.away.pos != "DEF" ? ` ${player.away.team}` : ""}</div>
                             {:else}
@@ -549,12 +591,24 @@
                         {/if}
                         <span class="playerInfo playerName playerNameAway">{player.away.name}</span>
                     </div>
-                    <span class="points pointsL">{round(player.away.points)}<div class="totalProjection">{round(player.away.projection)}</div></span>
+                    {#if player.away.name !== 'Empty'}
+                    <div class="player-score-container pointsL">
+                        <span class="player-actual-score">{round(player.away.points)}</span>
+                        <span class="player-projection-score">(Proj: {round(player.away.projection)})</span>
+                        {#if player.away.projection > 0 && player.away.points != player.away.projection}
+                             <Icon class="material-icons performance-icon {player.away.points > player.away.projection ? 'positive' : 'negative'}">
+                                {player.away.points > player.away.projection ? 'arrow_upward' : 'arrow_downward'}
+                            </Icon>
+                        {/if}
+                    </div>
+                    {/if}
                 </div>
             </div>
         {/each}
         {#if !expandOverride}
-            <div class="close" on:click={() => expandClose()}>Close Matchup</div>
+            <div class="close-matchup-button-container">
+                <Button style="width: 95%;" variant="text" on:click={() => expandClose()}>Close Matchup</Button>
+            </div>
         {/if}
     </div>
 </div>

@@ -2,6 +2,7 @@
 	import { Awards } from '$lib/components'
 	import { waitForAll } from '$lib/utils/helper';
 	import LinearProgress from '@smui/linear-progress';
+	import EmptyState from '$lib/EmptyState.svelte';
 
     export let data;
     const {awardsData, teamManagersData} = data;
@@ -41,11 +42,13 @@
 			<LinearProgress indeterminate />
 		</div>
 	{:then [podiums, leagueTeamManagers] }
-		{#each podiums as podium}
-			<Awards {podium} {leagueTeamManagers} />
+		{#if podiums && podiums.length > 0}
+			{#each podiums as podium}
+				<Awards {podium} {leagueTeamManagers} />
+			{/each}
 		{:else}
-			<p class="nothingYet">No seasons have been completed yet, so no awards have been earned...</p>
-		{/each}
+			<EmptyState iconName="emoji_events" message="No seasons have been completed yet, so no awards have been earned." />
+		{/if}
 	{:catch error}
 		<!-- promise was rejected -->
 		<p>Something went wrong: {error.message}</p>

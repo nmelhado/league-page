@@ -45,14 +45,21 @@
 		goto(dest);
 	}
 
-	let tabChildren = []
-
-	for(const tab of tabs) {
-		if(tab.nest) {
-			tabChildren = tab.children;
-		}
+	let tabChildren = [];
+	// Find the tab that nests children to populate tabChildren
+	// This assumes only one tab can be a parent of the currently open submenu.
+	const nestedParentTab = tabs.find(t => t.nest);
+	if (nestedParentTab) {
+		tabChildren = nestedParentTab.children;
 	}
 
+	// Function to check if a tab is a parent of the active page
+	const isParentOfActivePage = (tab) => {
+		if (!tab.nest || !tab.children) {
+			return false;
+		}
+		return tab.children.some(child => $page.url.pathname.startsWith(child.dest));
+	};
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />
@@ -106,18 +113,34 @@
 	:global(.dontDisplay) {
 		display: none;
 	}
+
+	/* Style for parent tab when a child is active */
+	:global(.navBar .mdc-tab--active.active-parent) {
+		/* You might need to adjust these styles to fit your theme */
+		/* For example, ensure it gets the same underline or background as a directly active tab */
+	}
+
+	:global(.navBar .active-parent .mdc-tab__text-label) {
+		color: var(--mdc-theme-primary, #007bff); /* Or your theme's primary color */
+	}
+
+	:global(.navBar .active-parent .mdc-tab-indicator__content--underline) {
+		border-color: var(--mdc-theme-primary, #007bff); /* Or your theme's primary color */
+	}
 </style>
 
 <div class="overlay" style="display: {display ? "block" : "none"};" on:click={() => open(true)} />
 
 <div class="parent">
-	<TabBar class="navBar" {tabs} let:tab bind:active>
+	<TabBar class="navBar" {tabs} let:tab bind:active={activeTab} selected={$page.url.pathname}>
 		{#if tab.nest}
-			<div bind:this={el}>
+			<div bind:this={el} class:active-parent={isParentOfActivePage(tab)}>
 				<Tab
 					{tab}
 					on:click={() => open(display)}
 					minWidth
+					class="{isParentOfActivePage(tab) ? 'active-parent' : ''} {tab.class || ''}"
+					active={isParentOfActivePage(tab) || activeTab === tab.id}"
 				>
 					<Icon class="material-icons">{tab.icon}</Icon>
 					<Label>{tab.label}</Label>
@@ -125,42 +148,43 @@
 			</div>
 		{:else}
 			<Tab
-				class="{tab.label == 'Blog' && !enableBlog ? 'dontDisplay' : ''}"
+				class="{tab.label == 'Blog' && !enableBlog ? 'dontDisplay' : ''} {tab.class || ''}"
 				{tab}
 				on:touchstart={() => preloadData(tab.dest)}
 				on:mouseover={() => preloadData(tab.dest)}
-				on:click={() => goto(tab.dest)}
+				on:click={() => { activeTab = tab.id; goto(tab.dest); }}
 				minWidth
+				active={activeTab === tab.id}
 			>
 				<Icon class="material-icons">{tab.icon}</Icon>
 				<Label>{tab.label}</Label>
 			</Tab>
 		{/if}
 	</TabBar>
-	<div
-		class="subMenu"
-		style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length ? 0 : 48) : 0}px; opacity: {display ? 1 : 0}; pointer-events: {display ? 'auto' : 'none'}; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? '3px' : '0'} 0 var(--blueOne); border: {display ? '1px' : '0'} solid var(--blueOne); border-top: none;"
-	>
-		<List>
-			{#each tabChildren as subTab, ix}
-				{#if subTab.label == 'Managers'}
-					<Item activated={$page.url.pathname == subTab.dest} class="{managers.length ? '' : 'dontDisplay'}" on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
-						<Graphic class="material-icons">{subTab.icon}</Graphic>
-						<Text class="subText">{subTab.label}</Text>
-					</Item>
-					{#if ix != tabChildren.length - 1 && managers.length}
-						<Separator />
+	{#if tabChildren.length > 0}
+		<div
+			class="subMenu"
+			style="max-height: {display ? 49 * tabChildren.length - 1 - (managers.length && nestedParentTab && nestedParentTab.children.some(c => c.label === 'Managers') ? 0 : (nestedParentTab && nestedParentTab.children.some(c => c.label === 'Managers') && !managers.length ? 48 : 0)) : 0}px; opacity: {display ? 1 : 0}; pointer-events: {display ? 'auto' : 'none'}; width: {width}px; top: {height}px; left: {left}px; box-shadow: 0 0 {display ? '3px' : '0'} 0 var(--blueOne); border: {display ? '1px' : '0'} solid var(--blueOne); border-top: none;"
+		>
+			<List>
+				{#each tabChildren as subTab, ix}
+					{#if subTab.label == 'Managers'}
+						{#if managers.length}
+							<Item selected={$page.url.pathname.startsWith(subTab.dest)} on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => preloadData(subTab.dest)} on:mouseover={() => preloadData(subTab.dest)}>
+								<Graphic class="material-icons">{subTab.icon}</Graphic>
+								<Text class="subText">{subTab.label}</Text>
+							</Item>
+							{#if ix != tabChildren.length - 1} <Separator /> {/if}
+						{/if}
+					{:else}
+						<Item selected={$page.url.pathname.startsWith(subTab.dest)} on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
+							<Graphic class="material-icons">{subTab.icon}</Graphic>
+							<Text class="subText">{subTab.label}</Text>
+						</Item>
+						{#if ix != tabChildren.length - 1} <Separator /> {/if}
 					{/if}
-				{:else}
-					<Item activated={$page.url.pathname == subTab.dest} on:SMUI:action={() => subGoto(subTab.dest)} on:touchstart={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}} on:mouseover={() => {if(subTab.label != 'Go to Sleeper') preloadData(subTab.dest)}}>
-						<Graphic class="material-icons">{subTab.icon}</Graphic>
-						<Text class="subText">{subTab.label}</Text>
-					</Item>
-					{#if ix != tabChildren.length - 1}
-						<Separator />
-					{/if}
-				{/if}
-			{/each}
-		</List>
-	</div>
+				{/each}
+			</List>
+		</div>
+	{/if}
 </div>

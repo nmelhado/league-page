@@ -6,6 +6,7 @@
     import { onMount } from "svelte";
     import Post from "./Post.svelte";
     import { browser } from '$app/environment';
+    import EmptyState from '$lib/EmptyState.svelte';
 
     export let postsData, leagueTeamManagersData, queryPage = 1, filterKey = '';
 
@@ -151,20 +152,30 @@
 {:else}
     <div class="filterButtons">
         {#if filterKey == ''}
-            {#each categories as category}
-                <a class="noUnderline" on:click={() => changeFilter(category)} href="/blog?filter={category}&page=1"><div class="filter filterLink">{category}</div></a>
-            {/each}
+            {#if categories && categories.length > 0}
+                {#each categories as category}
+                    <a class="noUnderline" on:click={() => changeFilter(category)} href="/blog?filter={category}&page=1"><div class="filter filterLink">{category}</div></a>
+                {/each}
+            {/if}
         {:else}
             <div class="filteringBy">Showing <div class="filter filterLink noHover">{filterKey}</div> posts <a class="noUnderline" on:click={() => changeFilter('')} href="/blog?filter=&page=1"><div class="filter filterClear">Clear Filter</div></a></div>
         {/if}
     </div>
 
-    <Pagination {perPage} {total} bind:page={page} target={top} scroll={false} />
+    {#if total > 0}
+        <Pagination {perPage} {total} bind:page={page} target={top} scroll={false} />
 
-    {#each displayPosts as post}
-        {#key post.sys.id}
-        <Post {leagueTeamManagers} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
-        {/key}
-    {/each}
-    <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />
+        {#each displayPosts as post}
+            {#key post.sys.id}
+            <Post {leagueTeamManagers} createdAt={post.sys.createdAt} post={post.fields} id={post.sys.id} {direction} />
+            {/key}
+        {/each}
+        <Pagination {perPage} {total} bind:page={page} target={top} scroll={true} />
+    {:else}
+        {#if filterKey != ''}
+            <EmptyState iconName="filter_alt_off" message="No blog posts match the filter '{filterKey}'. Try clearing the filter." />
+        {:else}
+            <EmptyState iconName="article" message="No blog posts have been published yet." />
+        {/if}
+    {/if}
 {/if}

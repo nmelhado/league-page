@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import TradeTransaction from './TradeTransaction.svelte';
 	import WaiverTransaction from './WaiverTransaction.svelte';
+	import EmptyState from '$lib/EmptyState.svelte';
 
 	let loading = true;
 	let players;
@@ -76,7 +77,7 @@
 
 			<p on:click={() => goto("/transactions?show=waiver&query=&page=1")} class="link">( view more )</p>
 		{:else}
-			<p class="nothingYet">No waiver moves have been made yet...</p>
+			<EmptyState iconName="transfer_within_a_station" message="No waiver moves have been made yet." />
 		{/if}
 
 		{#if transactions.waivers.length && transactions.trades.length}
@@ -92,7 +93,7 @@
 
 			<p on:click={() => goto("/transactions?show=trade&query=&page=1")} class="link">( view more )</p>
 		{:else}
-			<p class="nothingYet">No trades have been made yet...</p>
+			<EmptyState iconName="swap_horiz" message="No trades have been made yet." />
 		{/if}
 	{/if}
 </div>

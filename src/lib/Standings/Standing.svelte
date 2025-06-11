@@ -18,16 +18,14 @@
 		border: 0.25px solid #777;
 	}
 
-    :global(.contrastRow) {
-        background-color: var(--f8f8f8);
-    }
+    /* :global(.contrastRow) and its rule removed */
 
     .team {
         text-align: center;
     }
 </style>
 
-<Row class="contrastRow">
+<Row> {/* class="contrastRow" removed */}
     <Cell class="">
         <div class="clickable team" on:click={() => gotoManager({leagueTeamManagers, rosterID: standing.rosterID})}>
             <img alt="team avatar" class="teamAvatar clickable" src="{team.avatar}" />

@@ -2,6 +2,7 @@
     import { generateParagraph } from "$lib/utils/helper";
     import { fly } from "svelte/transition";
 	import AuthorAndDate from "./AuthorAndDate.svelte";
+    import Button, { Label } from '@smui/button'; // Import SMUI Button
 
     export let leagueTeamManagers, post, createdAt, id = null, direction = 1;
 
@@ -32,33 +33,23 @@
 
 <style>
     .post {
-        background-color: var(--fff);
-        border: 1px solid var(--bbb);
-        border-radius: 1.5em;
-        color: var(--g333);
-        padding: 1.5em 0 1em;
+        background-color: var(--surface, #ffffff); /* Use theme surface color */
+        border: 1px solid var(--borderOverride, #ddd); /* Use theme border color */
+        border-radius: 8px; /* Consistent with other cards */
+        color: var(--on-surface, #212529); /* Use theme text color */
+        padding: 1.5em 1em 1em; /* Adjusted padding */
         margin: 2em 0;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
     }
 
-    h3 {
-        font-size: 2em;
+    h3 { /* Post Title */
+        font-size: 1.75em; /* Slightly adjusted */
         text-align: center;
-        margin: 0;
+        margin: 0 0 0.75em; /* Added bottom margin */
+		color: var(--on-surface, #212529);
     }
 
-    .button {
-        background-color: #0082c3;
-        font-size: 1em;
-        border-radius: 1em;
-        text-decoration: none;
-        padding: 0.5em 1em;
-        margin-right: 1em;
-        color: white;
-    }
-
-    .button:hover {
-        background-color: #00316b;
-    }
+    /* Removed .button and .button:hover styles, will use SMUI Button */
 
     :global(.body blockquote) {
         border-left: 3px solid rgb(231, 235, 238);
@@ -187,7 +178,8 @@
     }
 
     .viewFull {
-        padding: 0.2em 2em 1em;
+        padding: 1em 0 0; /* Adjusted padding, no horizontal padding needed if button is centered */
+        text-align: center; /* Center the button */
     }
 </style>
 
@@ -213,9 +205,13 @@
                 {/if}
             </div>
             
-            <div class="viewFull">
-                <a class="button" href="/blog/{id}">View Full Post</a>
-            </div>
+            {#if isOverflown}
+                <div class="viewFull">
+                    <Button variant="raised" href="/blog/{id}">
+                        <Label>Read Full Post</Label>
+                    </Button>
+                </div>
+            {/if}
 
             <hr class="divider" />
 

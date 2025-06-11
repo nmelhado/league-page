@@ -1,6 +1,7 @@
 <script>
     import { round } from "$lib/utils/helper";
 	import { checkIfManagerReceivedAward, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
+    import { Icon } from '@smui/icon-button'; // Import SMUI Icon
 
     export let awards, records, rosterID, tookOver, leagueTeamManagers, managerID;
 
@@ -184,6 +185,42 @@
 
     $: computePodiums(rosterID);
 
+    // Icon mapping
+    const awardIconMap = {
+        'Champion': 'emoji_events',
+        'Second': 'military_tech', // Could also be more specific if available like looks_two
+        'Third': 'military_tech',  // Could also be more specific if available like looks_3
+        'Division Champion': 'stars',
+        'Regular Season Champion': 'shield',
+        'Toilet Bowl': 'delete_sweep', // Or something more playful
+        'All-Time Wins Record': 'leaderboard',
+        'All-Time Fantasy Points Record': 'functions', // Sigma for sum/total
+        'All-Time Lineup IQ Record': 'psychology',
+        'All-Time Single Week Record': 'bolt', // For high score
+        'All-Time Season Long Points': 'event_repeat', // For season-long consistency
+        'default_record': 'analytics', // Default for other record types
+        'default_place': 'verified_user', // Default for other place-based awards
+    };
+
+    const getMaterialIconName = (awardType, awardName) => {
+        if (awardType === 'award') { // Annual awards like Champion, Second, etc.
+            if(awardIconMap[awardName]) return awardIconMap[awardName];
+            if(awardName.includes('Division Champion')) return awardIconMap['Division Champion'];
+            if(awardName.includes('Regular Season Champion')) return awardIconMap['Regular Season Champion'];
+            return awardIconMap['default_place'];
+        }
+        // For record types
+        if(awardIconMap[awardType]) return awardIconMap[awardType];
+
+        // Fallback for numbered places if not directly mapped
+        if (typeof awardName === 'number') {
+            if (awardName === 1) return 'looks_one';
+            if (awardName === 2) return 'looks_two';
+            if (awardName === 3) return 'looks_3';
+        }
+        return 'military_tech'; // A generic fallback
+    };
+
     const computeAward = (award) => {
         switch (award) {
             case 1:
@@ -214,80 +251,89 @@
 </script>
 
 <style>
-    .awardsCase {
-        background-color: var(--fff);
-        padding: 0 0 2em;
-        margin: 3em 0 4em;
-        border-bottom: 1px solid var(--aaa);
-        border-top: 1px solid var(--aaa);
-        box-shadow: 0 0 8px 4px var(--ccc);
+    .awardsCase { /* This is the main container for all awards, part of Manager.svelte's card */
+        /* background-color: var(--fff); */ /* Already in a card from Manager.svelte */
+        padding: 1em 0; /* Adjusted padding */
+        /* margin: 3em 0 4em; */ /* Handled by manager-section-card */
+        /* border-bottom: 1px solid var(--aaa); */ /* Remove if inside a card */
+        /* border-top: 1px solid var(--aaa); */   /* Remove if inside a card */
+        /* box-shadow: 0 0 8px 4px var(--ccc); */ /* Remove if inside a card */
     }
 
-    .awardsCaseInner {
+    .awardsCaseInner { /* Flex container for individual award cards */
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center; /* Center cards if they don't fill the row */
         flex-wrap: wrap;
+        gap: 1em; /* Spacing between award cards */
     }
 
-    h3 {
+    h3 { /* "Team Awards & Records" title */
         text-align: center;
-        font-size: 1.5em;
-        margin: 1.5em 0 0.5em;
-        font-weight: 200;
+        font-size: 1.3em; /* Adjusted size */
+        margin: 0 0 1em; /* Adjusted margin */
+        font-weight: 600; /* Bolder */
+        color: var(--on-surface);
     }
 
-    .award {
+    .award { /* Individual award card */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        margin: 1em 0.5em 2em;
+        padding: 1em;
+        background-color: var(--background); /* Slightly different from surface for card-in-card */
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        width: 150px; /* Fixed width for each award card */
+        min-height: 200px; /* Minimum height for consistency */
+        box-sizing: border-box;
     }
 
     .awardHeader, .awardLabel, .subText {
         text-align: center;
         line-height: 1.2em;
+        color: var(--on-surface-variant); /* Default text color for awards */
     }
 
-    .awardHeader {
-        height: 2.4em;
-        font-size: 0.85em;
-        width: 110px;
-        margin-bottom: 0.5em;
-    }
-
-    .awardLabel {
-        font-size: 0.9em;
-        margin-top: 1em;
-        font-weight: 500;
-        width: 130px;
-    }
-
-    .subText {
+    .awardHeader { /* Type of award, e.g., "All-Time Wins Record" */
         font-size: 0.8em;
-        width: 130px;
+        width: 100%;
+        margin-bottom: 0.75em;
+        font-weight: 500;
+        min-height: 2.4em; /* Allow for two lines */
+    }
+
+    .awardLabel { /* Specific award, e.g., "2023 Champion" */
+        font-size: 0.95em;
+        margin-top: 0.75em;
+        font-weight: 600; /* Make the main award label bolder */
+        width: 100%;
+        color: var(--on-surface); /* More prominent color for the award itself */
+    }
+
+    .subText { /* Extra details like points, year, week */
+        font-size: 0.75em;
+        width: 100%;
         color: var(--g555);
         margin-top: 0.3em;
         font-style: italic;
+        min-height: 2.4em; /* Allow for two lines */
     }
 
-    .sad {
+    .sad { /* For "...nothing yet" message */
         color: var(--g999);
         font-style: italic;
+        padding: 2em;
     }
 
-    .awardIcon {
-        height: 80px;
-        width: 80px;
-        border-radius: 100%;
-        box-shadow: 0 0 4px 1px var(--ccc);
-        text-align: center;
-        overflow: hidden;
+    .awardIcon { /* Container for the Material Icon */
+        font-size: 3em; /* Size of the Material Icon */
+        color: var(--mdc-theme-primary, #007bff); /* Use primary color for icons */
+        margin-bottom: 0.25em;
+        /* Removed old image-specific styles like border-radius, box-shadow, overflow */
     }
 
-    .awardImage{
-        height: 100%;
-    }
+    /* .awardImage class is no longer needed if using Material Icons directly */
     
     .disclaimer {
         font-size: 0.8em;
@@ -340,25 +386,35 @@
 
 </style>
 
-<div class="awardsCase">
+<div class="awardsCase"> {/* This div is already inside a manager-section-card from Manager.svelte */}
     <h3>Team Awards & Records</h3>
     <div class="awardsCaseInner">
-        {#each displayAwards as award}
+        {#each displayAwards as awardItem}
             <div class="award">
-                <div class="awardHeader">{award.type != 'award' ? award.type : ''}</div>
-                <div class="awardIcon">
-                    <img class="awardImage" src="{award.icon}" alt="trophy" />
+                <div class="awardHeader">{awardItem.type != 'award' ? awardItem.type : (awardItem.award == 'Champion' || awardItem.award == 'Second' || awardItem.award == 'Third' ? 'League Finish' : capitalizeFirstLetter(awardItem.award))}</div>
+                <Icon class="material-icons awardIcon">
+                    {getMaterialIconName(awardItem.type, awardItem.award)}
+                </Icon>
+                <div class="awardLabel">
+                    {#if awardItem.type == 'award'}{awardItem.year} {/if}{computeAward(awardItem.award)}{awardItem.former ? '*' : ''}
                 </div>
-                <div class="awardLabel">{award.type == 'award' ? `${award.year} ` : ''}{computeAward(award.award)}{award.former ? '*' : ''}</div>
-                {#if award.extraInfo}
-                    <div class="subText">{award.year ? `${award.year} ` : ''}{award.week ? `Week ${award.week} ` : ''}{award.year || award.week ? ' - ' : ''}{award.extraInfo}{award.wins ? ' Wins' : ''}{award.iq ? '%' : ''}{!award.wins && !award.iq ? 'pts' : ''}</div>
+                {#if awardItem.extraInfo}
+                    <div class="subText">
+                        {#if awardItem.type != 'award' && awardItem.year}{awardItem.year} {/if}
+                        {#if awardItem.week}Week {awardItem.week} {/if}
+                        {#if (awardItem.type != 'award' && awardItem.year) || awardItem.week} - {/if}
+                        {awardItem.extraInfo}{awardItem.wins ? ' Wins' : ''}{awardItem.iq ? '%' : ''}{!award.wins && !award.iq && typeof awardItem.extraInfo == 'number' ? ' pts' : ''}
+                    </div>
+                {/if}
+                 {#if awardItem.originalName && awardItem.former}
+                    <div class="subText">(as {awardItem.originalName})</div>
                 {/if}
             </div>
         {:else}
-            <p class="sad">...nothing yet</p>
+            <p class="sad">This manager hasn't racked up any notable awards or records yet.</p>
         {/each}
     </div>
     {#if formerGlobal}
-        <p class="disclaimer">*Awarded under a previous manager</p>
+        <p class="disclaimer">* Indicates award was achieved by this team under a previous manager.</p>
     {/if}
 </div>

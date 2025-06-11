@@ -3,6 +3,7 @@
 	import Pagination from "../Pagination.svelte"
     import { getNews } from "$lib/utils/helper";
 	import { onMount } from 'svelte';
+    import EmptyState from '$lib/EmptyState.svelte';
 
     export let news;
     let {articles, fresh} = news;
@@ -71,9 +72,13 @@
     </div>
 
     <div class="articles">
-        {#each displayArticles as article}
-            <SingleNews {article} />
-        {/each}
-        <Pagination {perPage} {total} bind:page={page} target={top} />
+        {#if total > 0}
+            {#each displayArticles as article}
+                <SingleNews {article} />
+            {/each}
+            <Pagination {perPage} {total} bind:page={page} target={top} />
+        {:else}
+            <EmptyState iconName="feed" message="No news articles available at the moment." />
+        {/if}
     </div>
 </div>

@@ -2,7 +2,7 @@
     import Button, { Label } from '@smui/button';
 	import Roster from './Roster.svelte';
 	
-	export let rosters, leagueTeamManagers, startersAndReserve, leagueData, players;
+	export let rosters, leagueTeamManagers, startersAndReserve, leagueData, players, searchTerm = ''; // Added searchTerm
 
 	const rosterPositions = leagueData.roster_positions;
 
@@ -134,7 +134,7 @@
 	{/if}
 	<div class="division">
 		{#each division.rosters as roster}
-			<Roster division={ix + 1} {expanded} {rosterPositions} {roster} {leagueTeamManagers} {players} {startersAndReserve} />
+			<Roster division={ix + 1} {expanded} {rosterPositions} {roster} {leagueTeamManagers} {players} {startersAndReserve} {searchTerm} />
 		{/each}
 	</div>
 {/each}
