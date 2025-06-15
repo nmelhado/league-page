@@ -13,7 +13,7 @@ export const homepageText = `
   <p>The phrase 'No Friends in Fantasy' originated in the New Era and quickly became a hard lesson for everyone involved—there are truly no friends in this game. Whenever someone tried to scheme or things took a ruthless turn, we'd say 'NFIF' or call out 'No Friends in Fantasy.'</p>
   <p>Over the years, it became more than just a saying; it was often the subtitle of the New Era est. 2010 logo. Most seasons, the phrase was even extended to 'No Friends in Fantasy... Not Even Cousins.'</p>
   <p>Now along with the New Era, NFIF has evolved. Spearheaded by Khader Mustafa, the NFIF will have a identity of its own, a legacy of its own. Who will dominate and be the true Kangaroo of NFIF?</p>
-  <p>For the latest updates, rules, and more, visit our main site: <a href="https://NewEraLeagues.com" class="main-site-link" target="_blank"><strong>NewEraLeagues.com</strong></a></p>
+  <p>For the latest updates, rules, and more, visit our main site: <a href="https://NewEraff.com" class="main-site-link" target="_blank"><strong>NewEraLeagues.com</strong></a></p>
 `;
 
 /*   STEP 3   */
