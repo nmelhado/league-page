@@ -27,7 +27,7 @@ export const managers = [
         "name": "Murder Hornets Manager", // Replace with actual name
         "location": "United States", // Update with actual location
         "bio": "Leading the deadly swarm in TRL since 2020. Known for making calculated moves and striking when opponents least expect it.",
-        "photo": "/managers/murder_hornets.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/742b7859c9a6f23cf2649818660a61d2.jpg", // Murder Hornets
         "fantasyStart": 2020,
         "favoriteTeam": "buf", // Update with actual favorite team
         "mode": "Win Now",
@@ -48,7 +48,7 @@ export const managers = [
         "name": "Black Hawk Bones Manager", // Replace with actual name
         "location": "United States", // Update with actual location
         "bio": "Soaring high in TRL competition since day one. Strategic, fierce, and always hunting for the perfect waiver pickup.",
-        "photo": "/managers/black_hawk_bones.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/62e985e5a16225eadb3e640350e20a2e.jpg", // Black Hawk Bones
         "fantasyStart": 2020,
         "favoriteTeam": "chi", // Update with actual favorite team
         "mode": "Win Now",
@@ -90,7 +90,7 @@ export const managers = [
         "name": "Newfoundland Growlers Manager", // Replace with actual name
         "location": "Canada", // Update with actual location
         "bio": "Representing the Great White North in TRL. Cold climate, hot takes, and championship aspirations.",
-        "photo": "/managers/newfoundland_growlers.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/1bb83a0e2e4ecf7b3ca506fe49f15855.jpg", // Newfoundland Growlers
         "fantasyStart": 2020,
         "favoriteTeam": "buf", // Update with actual favorite team
         "mode": "Win Now",
@@ -111,7 +111,7 @@ export const managers = [
         "name": "California Burritos Manager", // Replace with actual name
         "location": "California", // Update with actual location
         "bio": "Serving up spicy hot takes and even spicier lineup decisions. West Coast best coast for fantasy football.",
-        "photo": "/managers/california_burritos.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/927738195c01b864759636d898f4ab85.jpg", // California Burritos
         "fantasyStart": 2020,
         "favoriteTeam": "lac", // Update with actual favorite team
         "mode": "Win Now",
@@ -132,7 +132,7 @@ export const managers = [
         "name": "Kyoto Ninjas Manager", // Replace with actual name
         "location": "United States", // Update with actual location
         "bio": "Silent but deadly. Operating in the shadows of the waiver wire, striking with precision when others least expect it.",
-        "photo": "/managers/kyoto_ninjas.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/65a5f6ce6db1b49350c05c95fd59f49f.jpg", // Kyoto Ninjas
         "fantasyStart": 2020,
         "favoriteTeam": "sea", // Update with actual favorite team
         "mode": "Dynasty",
@@ -153,7 +153,7 @@ export const managers = [
         "name": "Brutal Hogs Manager", // Replace with actual name
         "location": "United States", // Update with actual location
         "bio": "Bringing the muscle to TRL since 2020. No fancy tricks, just powerful ground game and devastating blocks.",
-        "photo": "/managers/brutal_hogs.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/3cdb8de81d249e1946d10a1dc60349af.jpg", // Brutal Hogs
         "fantasyStart": 2020,
         "favoriteTeam": "pit", // Update with actual favorite team
         "mode": "Win Now",
@@ -174,7 +174,7 @@ export const managers = [
         "name": "Southwest Aliens Manager", // Replace with actual name
         "location": "Southwest US", // Update with actual location
         "bio": "Out of this world strategies and otherworldly draft picks. Area 51 has nothing on these lineup decisions.",
-        "photo": "/managers/southwest_aliens.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/fc650b5d4a75e003775512e2ceffade7.jpg", // Southwest Aliens
         "fantasyStart": 2020,
         "favoriteTeam": "den", // Update with actual favorite team
         "mode": "Rebuild",
@@ -195,7 +195,7 @@ export const managers = [
         "name": "Jesters Manager", // Replace with actual name
         "location": "United States", // Update with actual location
         "bio": "The court jester of TRL, but don't let the jokes fool you. Behind the humor lies a sharp fantasy football mind.",
-        "photo": "/managers/jesters.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/4024194ee0a6785376a806881db3ec52.jpg", // Jesters
         "fantasyStart": 2020,
         "favoriteTeam": "dal", // Update with actual favorite team
         "mode": "Win Now",
@@ -216,7 +216,7 @@ export const managers = [
         "name": "Mile High Melonheads Manager", // Replace with actual name
         "location": "Denver, CO", // Update with actual location
         "bio": "High altitude, high expectations. Thin air makes for clear thinking when it comes to fantasy football decisions.",
-        "photo": "/managers/mile_high_melonheads.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/fba302c33557e839566b0a537a7d7f8a.jpg", // Mile High Melonheads
         "fantasyStart": 2020,
         "favoriteTeam": "den", // Update with actual favorite team
         "mode": "Win Now",
@@ -238,7 +238,7 @@ export const managers = [
         "tookOver": 2023, // Replaced Team Sbecker in 2023
         "location": "Seattle, WA", // Update with actual location
         "bio": "New to TRL in 2023, bringing Pacific Northwest precision to fantasy football. Replacing Team Sbecker with fresh energy.",
-        "photo": "/managers/seattle_prestiges.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/14c5545661db24ac33e2bdf8e5c28bed.jpg", // Seattle Prestiges
         "fantasyStart": 2023,
         "favoriteTeam": "sea", // Update with actual favorite team
         "mode": "Dynasty",
@@ -259,7 +259,7 @@ export const managers = [
         "name": "D-Town Swirlies Manager", // Replace with actual name
         "location": "Dallas, TX", // Update with actual location
         "bio": "Bringing the swirl to TRL since 2020. Mixing up strategies and creating confusion for opponents since day one.",
-        "photo": "/managers/d_town_swirlies.jpg", // Add actual photo
+        "photo": "https://sleepercdn.com/uploads/89b876a383e6d1a1af584b8da9d59979.jpg", // D-Town Swirlies
         "fantasyStart": 2020,
         "favoriteTeam": "dal", // Update with actual favorite team
         "mode": "Win Now",

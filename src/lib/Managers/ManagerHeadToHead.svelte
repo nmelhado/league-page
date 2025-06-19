@@ -5,6 +5,15 @@
 
     export let viewManager, managers, headToHeadRecords, leagueTeamManagers;
 
+    // Debug logging
+    $: if (headToHeadRecords !== undefined) {
+        console.log('ManagerHeadToHead received data:', { 
+            headToHeadRecords, 
+            recordCount: headToHeadRecords ? Object.keys(headToHeadRecords).length : 0,
+            viewManagerName: viewManager?.name 
+        });
+    }
+
     // Process head-to-head records
     $: h2hData = headToHeadRecords ? Object.entries(headToHeadRecords)
         .map(([opponentRosterID, record]) => {

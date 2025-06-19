@@ -4,6 +4,11 @@
 
     export let managerStats, leagueTeamManagers, rosterID, managerID;
 
+    // Debug logging
+    $: if (managerStats) {
+        console.log('ManagerStatistics received data:', { managerStats, rosterID, seasons: managerStats.seasons });
+    }
+
     // Calculate manager performance metrics
     $: seasons = managerStats?.seasons || [];
     $: totalWins = seasons.reduce((sum, season) => sum + (season.wins || 0), 0);
