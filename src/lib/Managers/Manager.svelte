@@ -7,6 +7,8 @@
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
     import ManagerAwards from './ManagerAwards.svelte';
+    import ManagerStatistics from './ManagerStatistics.svelte';
+    import ManagerHeadToHead from './ManagerHeadToHead.svelte';
     import { onMount } from 'svelte';
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
 
@@ -30,6 +32,27 @@
     $: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 1 : roster.co_owners;
 
     $: commissioner = viewManager.managerID ? leagueTeamManagers.users[viewManager.managerID].is_owner : false;
+
+    // Mock data for enhanced manager statistics (in a real implementation, this would come from processed league data)
+    $: managerStats = {
+        seasons: [
+            // This would be computed from actual league data
+            { year: 2020, wins: 8, losses: 6, fpts: 1847, playoffs: true, championship: false },
+            { year: 2021, wins: 10, losses: 4, fpts: 1923, playoffs: true, championship: false },
+            { year: 2022, wins: 12, losses: 2, fpts: 2105, playoffs: true, championship: true },
+            { year: 2023, wins: 7, losses: 7, fpts: 1756, playoffs: false, championship: false },
+            { year: 2024, wins: 9, losses: 5, fpts: 1879, playoffs: true, championship: false }
+        ]
+    };
+
+    // Mock head-to-head records (in a real implementation, this would be computed from matchup data)
+    $: headToHeadRecords = {
+        // This would be computed from actual matchup history
+        "1": { wins: 3, losses: 2, ties: 0, pointsFor: 1847, pointsAgainst: 1756 },
+        "2": { wins: 2, losses: 4, ties: 1, pointsFor: 1423, pointsAgainst: 1678 },
+        "3": { wins: 5, losses: 1, ties: 0, pointsFor: 1892, pointsAgainst: 1534 }
+        // ... more records for other roster IDs
+    };
 
     let players, playersInfo;
     let loading = true;
@@ -299,10 +322,17 @@
     </div>
 
     {#if !loading}
-        <!-- Favorite player -->
+        <!-- Fantasy Information -->
         <ManagerFantasyInfo {viewManager} {players} {changeManager} />
+        
+        <!-- Manager Performance Statistics -->
+        <ManagerStatistics {managerStats} {leagueTeamManagers} {rosterID} managerID={viewManager.managerID} />
+        
+        <!-- Head-to-Head Records -->
+        <ManagerHeadToHead {viewManager} {managers} {headToHeadRecords} {leagueTeamManagers} />
     {/if}
 
+    <!-- Awards and Records -->
     <ManagerAwards {leagueTeamManagers} tookOver={viewManager.tookOver} {awards} {records} {rosterID} managerID={viewManager.managerID} />
 
     {#if loading}

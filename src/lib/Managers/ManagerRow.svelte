@@ -38,8 +38,8 @@
     }
 
     .manager:hover {
-        box-shadow: 0 0 10px 0 bar(--g999);
-        background-color: bar(--eee);
+        box-shadow: 0 0 10px 0 var(--g999);
+        background-color: var(--eee);
     }
 
     .photo {
