@@ -14,7 +14,8 @@
     $: seasons = managerStats?.seasons || [];
     $: totalWins = seasons.reduce((sum, season) => sum + (season.wins || 0), 0);
     $: totalLosses = seasons.reduce((sum, season) => sum + (season.losses || 0), 0);
-    $: totalPoints = seasons.reduce((sum, season) => sum + (season.fpts || 0), 0);
+    // Ensure that fpts is not NaN, as NaN + number = NaN
+    $: totalPoints = seasons.reduce((sum, season) => sum + (isNaN(season.fpts) ? 0 : season.fpts || 0), 0);
     $: winPercentage = totalWins + totalLosses > 0 ? round((totalWins / (totalWins + totalLosses)) * 100) : 0;
     $: averagePointsPerSeason = seasons.length > 0 ? round(totalPoints / seasons.length) : 0;
     $: playoffAppearances = seasons.filter(season => season.playoffs).length;
