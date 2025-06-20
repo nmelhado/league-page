@@ -10,6 +10,8 @@
     import ManagerStatistics from './ManagerStatistics.svelte';
     import ManagerHeadToHead from './ManagerHeadToHead.svelte';
     import DebugInfo from './DebugInfo.svelte';
+    import DataDebugPanel from './DataDebugPanel.svelte';
+    import RenderDiagnostic from './RenderDiagnostic.svelte';
     import { onMount } from 'svelte';
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
     import { computeManagerStats, computeHeadToHeadRecords } from '$lib/utils/helperFunctions/managerStats';
@@ -309,16 +311,31 @@
     </div>
 
     {#if !loading}
+        <!-- Component Rendering Diagnostics -->
+        <RenderDiagnostic componentName="Enhanced Components Section" dataProps={{ loading, hasManagerStats: !!managerStats, seasonsCount: managerStats?.seasons?.length || 0 }} />
+        
         <!-- Debug Information (temporary) -->
         <DebugInfo {records} {awards} {rosterID} {viewManager} />
         
+        <!-- Simple Debug Indicator -->
+        <div style="background: red; color: white; padding: 1em; margin: 1em 0;">
+            🚨 DEBUG: Manager component is loading! Loading state: {loading}
+        </div>
+        
+        <!-- Data Debug Panel for Analytics -->
+        <RenderDiagnostic componentName="DataDebugPanel" dataProps={{ managerStats, hasRecords: !!records, rosterID }} />
+        <DataDebugPanel {managerStats} {records} {rosterID} {viewManager} />
+        
         <!-- Enhanced Fantasy Information -->
+        <RenderDiagnostic componentName="ManagerFantasyInfo" dataProps={{ viewManager, hasPlayers: !!players }} />
         <ManagerFantasyInfo {viewManager} {players} {changeManager} />
         
         <!-- Manager Performance Statistics -->
+        <RenderDiagnostic componentName="ManagerStatistics" dataProps={{ managerStats, seasonsCount: managerStats?.seasons?.length || 0, rosterID }} />
         <ManagerStatistics {managerStats} {leagueTeamManagers} {rosterID} managerID={viewManager.managerID} />
         
         <!-- Head-to-Head Records -->
+        <RenderDiagnostic componentName="ManagerHeadToHead" dataProps={{ viewManager, managers, headToHeadRecords }} />
         <ManagerHeadToHead {viewManager} {managers} {headToHeadRecords} {leagueTeamManagers} />
     {/if}
 

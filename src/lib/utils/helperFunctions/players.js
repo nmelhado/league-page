@@ -1,9 +1,9 @@
 import { get } from 'svelte/store';
-import {players} from '$lib/stores';
-import { browser } from '$app/environment';
+import { players } from '$lib/stores';
+import { cacheManager, CACHE_DURATIONS } from '$lib/utils/cacheManager';
 
 export const loadPlayers = async (servFetch, refresh = false) => {     
-	if(get(players)[1426]) {
+	if(get(players)[1426] && !refresh) {
 		return {
             players: get(players),
             stale: false
@@ -12,48 +12,40 @@ export const loadPlayers = async (servFetch, refresh = false) => {
 
     const smartFetch = servFetch ?? fetch;
     
-    const now = Math.round(new Date().getTime() / 1000);
-    let playersInfo = null;
-    let expiration = null;
-    if(browser) {
-        playersInfo = JSON.parse(localStorage.getItem("playersInfo"));
-        expiration = parseInt(localStorage.getItem("expiration"));
+    // If refresh is requested, clear the cache first
+    if (refresh) {
+        cacheManager.remove('players_info');
     }
 
-    if(playersInfo && playersInfo[1426] && expiration && now > expiration && !refresh) {
-        return {
-            players: playersInfo,
-            stale: true
-        }
-    }
-    
-    if(!playersInfo || !expiration || now > expiration) {
-        const res = await smartFetch(`/api/fetch_players_info`, {compress: true});
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data);
-        }
-
-        if(browser) {
-            localStorage.setItem("playersInfo", JSON.stringify(data))
-
-            const ts = Math.round(new Date().getTime() / 1000);
-            const newExpiration = ts + (24 * 3600);
-
-            localStorage.setItem("expiration", newExpiration)  
-
-            players.update(() => data);
-        }
+    try {
+        // Use the cache manager's cachedFetch method
+        const result = await cacheManager.cachedFetch(
+            `/api/fetch_players_info`,
+            (data) => {
+                players.update(() => data);
+            },
+            CACHE_DURATIONS.PLAYERS,
+            'players_info'
+        );
 
         return {
-            players: data,
-            stale: false
+            players: result.data,
+            stale: result.isStale || false
         };
+        
+    } catch (error) {
+        console.error('Failed to load players:', error);
+        
+        // Fallback: try to get stale data from cache
+        const cached = cacheManager.get('players_info', {}, CACHE_DURATIONS.PLAYERS);
+        if (cached && cached.data) {
+            players.update(() => cached.data);
+            return {
+                players: cached.data,
+                stale: true
+            };
+        }
+        
+        throw error;
     }
-    players.update(() => playersInfo);
-    return {
-        players: playersInfo,
-        stale: false
-    };
 }

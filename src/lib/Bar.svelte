@@ -63,6 +63,24 @@
         height: 1.8em;
         border-radius: 0 0.9em 0.9em 0;
         z-index: 10;
+        transition: all 0.3s ease;
+        animation: growBar 0.8s ease-out;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .bar:hover {
+        transform: scaleY(1.05);
+        filter: brightness(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    @keyframes growBar {
+        from {
+            width: 0;
+        }
+        to {
+            width: var(--final-width);
+        }
     }
 
     .secondBar {

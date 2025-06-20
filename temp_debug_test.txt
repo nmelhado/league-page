@@ -1,0 +1,7 @@
+<!-- Add this temporarily at the very top of ManagerStatistics.svelte template section -->
+<div style="background: green; color: white; padding: 1em; margin: 1em 0; border: 3px solid red;">
+    🟢 MANAGER STATISTICS COMPONENT IS RENDERING!
+    <br>Manager Stats Available: {!!managerStats}
+    <br>Seasons Count: {managerStats?.seasons?.length || 0}
+    <br>Loading State: {loading}
+</div>

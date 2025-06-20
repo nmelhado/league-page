@@ -1,17 +1,21 @@
 import { get } from 'svelte/store';
-import {nflState} from '$lib/stores';
+import { nflState } from '$lib/stores';
+import { cacheManager, CACHE_DURATIONS } from '$lib/utils/cacheManager';
 
 export const getNflState = async () => {
 	if(get(nflState).season) {
 		return get(nflState);
 	}
-    const res = await fetch(`https://api.sleeper.app/v1/state/nfl`, {compress: true}).catch((err) => { console.error(err); });
-	const data = await res.json().catch((err) => { console.error(err); });
-	
-	if (res.ok) {
-		nflState.update(() => data);
-		return data;
-	} else {
-		throw new Error(data);
-	}
+
+	// Use cached fetch with automatic store updating
+	const result = await cacheManager.cachedFetch(
+		`https://api.sleeper.app/v1/state/nfl`,
+		(data) => {
+			nflState.update(() => data);
+		},
+		CACHE_DURATIONS.NFL_STATE,
+		'nfl_state'
+	);
+
+	return result.data;
 }

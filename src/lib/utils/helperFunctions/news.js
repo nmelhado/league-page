@@ -1,7 +1,8 @@
 import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
-import {news} from '$lib/stores';
+import { news } from '$lib/stores';
 import { dynasty } from '$lib/utils/leagueInfo';
+import { cacheManager, CACHE_DURATIONS } from '$lib/utils/cacheManager';
 
 const REDDIT_DYNASTY = 'https://www.reddit.com/r/DynastyFF/new.json';
 const REDDIT_FANTASY = 'https://www.reddit.com/r/fantasyfootball/new.json';
@@ -11,23 +12,61 @@ export const getNews = async (servFetch, bypass = false) => {
 	if(get(news)[0] && !bypass) {
 		return {articles: get(news), fresh: false};
 	}
+    
     const smartFetch = servFetch ?? fetch;
-	const newsSources = [
-		smartFetch(SERVER_API, {compress: true}), 
-	];
-	if(dynasty) {
-		newsSources.push(getFeed(REDDIT_DYNASTY, processReddit));
-	} else {
-		newsSources.push(getFeed(REDDIT_FANTASY, processReddit));
-	}
+    
+    try {
+        // Use cached fetch for server news
+        const serverNewsResult = await cacheManager.cachedFetch(
+            SERVER_API,
+            null, // No store updater needed here
+            CACHE_DURATIONS.NEWS,
+            'server_news'
+        );
 
-	const [serverRes, reddit] = await waitForAll(...newsSources).catch((err) => { console.error(err); });
-	const serverData = await serverRes.json().catch((err) => { console.error(err); });
+        // Use cached fetch for Reddit news
+        const redditEndpoint = dynasty ? REDDIT_DYNASTY : REDDIT_FANTASY;
+        const redditResult = await cacheManager.cachedFetch(
+            redditEndpoint,
+            null, // No store updater needed here
+            CACHE_DURATIONS.NEWS,
+            'reddit_news',
+            { dynasty: dynasty }
+        );
 
-	const articles = [...reddit, ...serverData].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
-	news.update(() => articles);
+        // Process Reddit data
+        const redditArticles = processReddit(redditResult.data?.data || {});
+        
+        // Combine articles
+        const articles = [...redditArticles, ...serverNewsResult.data].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
+        
+        // Update store
+        news.update(() => articles);
 
-	return {articles, fresh: true};
+        return {
+            articles, 
+            fresh: !serverNewsResult.fromCache || !redditResult.fromCache
+        };
+        
+    } catch (error) {
+        console.error('Failed to fetch news:', error);
+        
+        // Fallback to any cached data we might have
+        const cachedServerNews = cacheManager.get('server_news', {}, CACHE_DURATIONS.NEWS);
+        const cachedRedditNews = cacheManager.get('reddit_news', {}, { dynasty: dynasty }, CACHE_DURATIONS.NEWS);
+        
+        if (cachedServerNews?.data || cachedRedditNews?.data) {
+            const redditArticles = cachedRedditNews?.data?.data ? processReddit(cachedRedditNews.data.data) : [];
+            const serverArticles = cachedServerNews?.data || [];
+            const articles = [...redditArticles, ...serverArticles].sort((a, b) => (a.ts < b.ts) ? 1 : -1);
+            
+            news.update(() => articles);
+            return {articles, fresh: false};
+        }
+        
+        throw error;
+    }
+
 }
 
 const getFeed = async (feed, callback) => {

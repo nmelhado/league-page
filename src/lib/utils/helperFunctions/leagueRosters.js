@@ -1,6 +1,7 @@
 import { leagueID } from '$lib/utils/leagueInfo';
 import { get } from 'svelte/store';
 import { rostersStore } from '$lib/stores';
+import { cacheManager, CACHE_DURATIONS } from '$lib/utils/cacheManager';
 
 export const getLeagueRosters = async (queryLeagueID = leagueID) => {
     const storedRoster = get(rostersStore)[queryLeagueID];
@@ -12,16 +13,36 @@ export const getLeagueRosters = async (queryLeagueID = leagueID) => {
     ) {
 		return storedRoster;
 	}
-    const res = await fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/rosters`, {compress: true}).catch((err) => { console.error(err); });
-	const data = await res.json().catch((err) => { console.error(err); });
-	
-	if (res.ok) {
-		const processedRosters = processRosters(data);
-		rostersStore.update(r => {r[queryLeagueID] = processedRosters; return r});
-		return processedRosters;
-	} else {
-		throw new Error(data);
+
+	// Use cached fetch with automatic store updating
+	const result = await cacheManager.cachedFetch(
+		`https://api.sleeper.app/v1/league/${queryLeagueID}/rosters`,
+		(data) => {
+			const processedRosters = processRosters(data);
+			rostersStore.update(r => {
+				r[queryLeagueID] = processedRosters;
+				return r;
+			});
+		},
+		CACHE_DURATIONS.ROSTERS,
+		'league_rosters',
+		{ leagueID: queryLeagueID }
+	);
+
+	// Process the data if it wasn't already processed
+	let processedData = result.data;
+	if (Array.isArray(result.data)) {
+		processedData = processRosters(result.data);
+		// Update the store with processed data if it came from cache
+		if (result.fromCache) {
+			rostersStore.update(r => {
+				r[queryLeagueID] = processedData;
+				return r;
+			});
+		}
 	}
+
+	return processedData;
 }
 
 const processRosters = (rosters) => {

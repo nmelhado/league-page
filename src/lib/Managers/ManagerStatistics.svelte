@@ -1,6 +1,7 @@
 <script>
     import { round } from '$lib/utils/helper';
-    import BarChart from '$lib/BarChart.svelte';
+    import AnalyticsDashboard from '$lib/AnalyticsDashboard.svelte';
+    import EnhancedBarChart from '$lib/EnhancedBarChart.svelte';
 
     export let managerStats, leagueTeamManagers, rosterID, managerID;
 
@@ -237,15 +238,18 @@
             <div class="trendContainer">
                 <div class="chartSection">
                     <div class="chartTitle">Wins by Season</div>
-                    <BarChart data={winTrendData} />
+                    <EnhancedBarChart data={winTrendData} title="Wins by Season" height={200} />
                 </div>
                 
                 <div class="chartSection">
                     <div class="chartTitle">Points by Season</div>
-                    <BarChart data={pointsTrendData} />
+                    <EnhancedBarChart data={pointsTrendData} title="Points by Season" height={200} />
                 </div>
             </div>
         {/if}
+
+        <!-- Enhanced Analytics Dashboard -->
+        <AnalyticsDashboard {managerStats} {leagueTeamManagers} {rosterID} {managerID} />
     {:else}
         <div class="noDataMessage">
             📊 No historical statistics available yet.<br>

@@ -2,13 +2,13 @@
 
 @use '@material/theme/color-palette';
 
-// Svelte Colors!
+// Fantasy Football Dark Theme Colors!
 @use '@material/theme/index' as theme with (
-  $primary: #0082c3,
-  $secondary: #00316b,
-  $surface: #000000,
-  $background: #000000,
-  $error: color-palette.$red-900,
+  $primary: #2E8B57,
+  $secondary: #FF8C42,
+  $surface: #1a1a1a,
+  $background: #121212,
+  $error: #CF6679,
 );
 
 // Import all the styles for the classes.
@@ -33,60 +33,60 @@
 @use '@material/typography/index' as typography;
 
 :root {
-  --fff: #000000;
-  --fffTransparent: rgba(0,0,0,0);
-  --f8f8f8: #070707;
-  --f3f3f3: #0d0d0d;
-  --eee: #1b1b1b;
+  --fff: #1a1a1a;
+  --fffTransparent: rgba(26,26,26,0);
+  --f8f8f8: #1f1f1f;
+  --f3f3f3: #252525;
+  --eee: #2a2a2a;
   --ebebeb: #333;
-  --ddd: #282828;
-  --d7d7d7: #171717;
-  --ccc: #444;
-  --bbb: #444;
-  --aaa: #555;
-  --g999: #666;
+  --ddd: #404040;
+  --d7d7d7: #2e2e2e;
+  --ccc: #555;
+  --bbb: #666;
+  --aaa: #777;
+  --g999: #999;
   --g444: #bbb;
   --g555: #aaa;
   --g333: #ccc;
   --g111: #eee;
   --g000: #fff;
-  --boxShadowOne: #070707;
-  --boxShadowTwo: #272727;
-  --boxShadowThree: #0d0d0d;
-  --ir: #222;
+  --boxShadowOne: #0f0f0f;
+  --boxShadowTwo: #1a1a1a;
+  --boxShadowThree: #222;
+  --ir: #333;
   --champShadow: #111;
-  --transactHeader: #202424;
-  --draftSwapped: #202025;
-  --waiverAdd: #3e4741;
-  --waiverDrop: #423a3a;
-  --bracketMatch: #010102;
-  --matchupSelected: #2f2f35;
-  --fadeOne: rgba(0, 0, 0, 0) 0%;
-  --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
-  --fadeThree: rgba(0, 0, 0, 0.9) 90%;
-  --fadeFour: rgba(0, 0, 0, 1) 100%;
-  --blueOne: #0082c3;
-  --blueTwo: #003c86;
-  --r1: #1c1c1d;
-  --r2: #1f1d1d;
-  --r3: #181a18;
-  --headerPrimary: #2a2e31;
-  --borderOverride: rgba(255,255,255,.3);
-  --rivalryBack: #333;
+  --transactHeader: #1a2e1a;
+  --draftSwapped: #1a1f1e;
+  --waiverAdd: #1a2b1a;
+  --waiverDrop: #2b1a1a;
+  --bracketMatch: #1a1a1b;
+  --matchupSelected: #2a2a2f;
+  --fadeOne: rgba(26, 26, 26, 0) 0%;
+  --fadeTwo: rgba(26, 26, 26, 0.7) 50%;
+  --fadeThree: rgba(26, 26, 26, 0.9) 90%;
+  --fadeFour: rgba(26, 26, 26, 1) 100%;
+  --blueOne: #2E8B57;
+  --blueTwo: #FF8C42;
+  --r1: #1a1f1c;
+  --r2: #1f1a1a;
+  --r3: #1a1f1a;
+  --headerPrimary: #233326;
+  --borderOverride: rgba(255,255,255,.2);
+  --rivalryBack: #1f1f1f;
 
-  // Chart bar colors
-  --barChartOne: #446a88;
-  --barChartTwo: #32788f;
-  --barChartThree: #1d808d;
-  --barChartFour: #198886;
-  --barChartFive: #2b8673;
-  --barChartSix: #448864;
+  // Chart bar colors - Fantasy Football Dark Theme
+  --barChartOne: #2E8B57;
+  --barChartTwo: #FF8C42;
+  --barChartThree: #32CD32;
+  --barChartFour: #FFA500;
+  --barChartFive: #3CB371;
+  --barChartSix: #FF7F50;
 
-  // Comparisson bar colors
-  --compBarOne: #446a88;
-  --compBarTwo: #448864;
-  --compBarOneText: #7fc4f5;
-  --compBarTwoText: #79edad;
+  // Comparison bar colors
+  --compBarOne: #2E8B57;
+  --compBarTwo: #FF8C42;
+  --compBarOneText: #ffffff;
+  --compBarTwoText: #ffffff;
   
   // Positions
   --QBfade: #ff8fb2;
@@ -123,9 +123,9 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #222;
-  background: linear-gradient(to bottom right, #111,#222 );
-  background: -webkit-linear-gradient(to bottom right, #111,#222 );
+  background: #1a1a1a;
+  background: -webkit-linear-gradient(to bottom right, #121212, #1a1a1a);
+  background: linear-gradient(to bottom right, #121212, #1a1a1a);
 }
  
 //
@@ -184,12 +184,100 @@ strong {
 }
 
 a {
-  color: #40b3ff;
+  color: #2E8B57;
 }
 a:visited {
-  color: color.scale(#40b3ff, $lightness: -35%);
+  color: color.scale(#2E8B57, $lightness: -15%);
 }
 
 .mdc-button--outlined:not(:disabled) {
-  background-color: #070707 !important;
+  background-color: #1f1f1f !important;
+}
+
+// Fantasy Football Mobile Responsiveness Enhancements (Dark Theme)
+@media (max-width: 768px) {
+  // Improve touch targets for mobile
+  .mdc-button {
+    min-height: 44px;
+    padding: 8px 16px;
+  }
+  
+  // Better spacing for mobile manager cards
+  .mdc-card {
+    margin: 8px 4px;
+    border-radius: 8px;
+    background-color: #1f1f1f;
+  }
+  
+  // Mobile-friendly data table
+  .mdc-data-table {
+    font-size: 14px;
+  }
+  
+  .mdc-data-table__cell {
+    padding: 8px 4px;
+  }
+  
+  // Better mobile typography
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  // Extra small screens
+  .mdc-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .mdc-data-table {
+    font-size: 12px;
+  }
+  
+  .mdc-data-table__cell {
+    padding: 6px 2px;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+// Fantasy football theme specific enhancements (Dark Theme)
+.fantasy-card {
+  border-left: 4px solid var(--blueOne);
+  box-shadow: 0 2px 8px rgba(46, 139, 87, 0.15);
+  background-color: #1f1f1f;
+}
+
+.fantasy-button-primary {
+  background-color: var(--blueOne) !important;
+  color: white !important;
+}
+
+.fantasy-button-secondary {
+  background-color: var(--blueTwo) !important;
+  color: white !important;
+}
+
+.fantasy-accent {
+  color: var(--blueOne);
+  font-weight: 600;
 }

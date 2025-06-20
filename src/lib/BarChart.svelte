@@ -32,6 +32,14 @@
         margin: 0 auto;
         max-width: 950px;
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
+        border-left: 4px solid var(--blueOne);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .chartWrapper:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(27, 125, 62, 0.15);
     }
 
     .barChart {
