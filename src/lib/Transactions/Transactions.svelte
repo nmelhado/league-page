@@ -54,9 +54,9 @@
 		margin-bottom: 10px;
 	}
 
-	.link:hover {
-		color: #00316b;
-	}
+        .link:hover {
+                color: #345575;
+        }
 
 	.nothingYet {
 		margin: 5em 0;

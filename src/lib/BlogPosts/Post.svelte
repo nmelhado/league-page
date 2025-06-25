@@ -164,7 +164,7 @@
     }
 
     .authorAndDate a {
-        background-color: #00316b;
+        background-color: #345575;
         color: #fff;
         border-radius: 1em;
         text-decoration: none;
@@ -174,7 +174,7 @@
     }
 
     .authorAndDate a:hover {
-        background-color: #0082c3;
+        background-color: #7ca0c0;
     }
 
     :global(.body blockquote) {

@@ -32,9 +32,9 @@
 		cursor: pointer;
 	}
 
-	:global(.menuIcon:hover) {
-		color: #00316b;
-	}
+        :global(.menuIcon:hover) {
+                color: #345575;
+        }
 
 	:global(.nav-drawer) {
 		z-index: 5;
