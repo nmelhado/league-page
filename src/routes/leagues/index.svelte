@@ -19,24 +19,58 @@
         display: block;
         margin: 30px auto;
         width: 95%;
-        max-width: 600px;
+        max-width: 900px;
     }
+
     .loading {
         display: block;
         width: 85%;
         max-width: 500px;
         margin: 80px auto;
     }
-    table {
+
+    table.history {
         width: 100%;
         border-collapse: collapse;
+        background: var(--r1);
+        border-radius: 8px;
+        overflow: hidden;
     }
-    td, th {
-        padding: 8px;
+
+    td,
+    th {
+        padding: 12px 8px;
         border-bottom: 1px solid var(--g555);
     }
+
     th {
+        background: var(--blueOne);
+        color: #fff;
         text-align: left;
+    }
+
+    td.ep-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    td.ep-links a {
+        background: var(--blueOne);
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        text-decoration: none;
+        transition: background 0.2s ease-in-out;
+    }
+
+    td.ep-links a:hover {
+        background: #4c83c4;
+    }
+
+    td.mono {
+        font-family: monospace;
     }
 </style>
 
@@ -47,15 +81,26 @@
             <LinearProgress indeterminate />
         </div>
     {:then history}
-        <table>
+        <table class="history">
             <thead>
-                <tr><th>Season</th><th>League ID</th></tr>
+                <tr>
+                    <th>Season</th>
+                    <th>League ID</th>
+                    <th>Endpoints</th>
+                </tr>
             </thead>
             <tbody>
                 {#each history as item}
                     <tr>
                         <td>{item.season}</td>
-                        <td>{item.league_id}</td>
+                        <td class="mono">{item.league_id}</td>
+                        <td class="ep-links">
+                            <a href={`https://api.sleeper.app/v1/league/${item.league_id}`} target="_blank" rel="noopener">data</a>
+                            <a href={`https://api.sleeper.app/v1/league/${item.league_id}/rosters`} target="_blank" rel="noopener">rosters</a>
+                            <a href={`https://api.sleeper.app/v1/league/${item.league_id}/users`} target="_blank" rel="noopener">users</a>
+                            <a href={`https://api.sleeper.app/v1/league/${item.league_id}/matchups/1`} target="_blank" rel="noopener">matchups</a>
+                            <a href={`https://api.sleeper.app/v1/league/${item.league_id}/transactions/1`} target="_blank" rel="noopener">transactions</a>
+                        </td>
                     </tr>
                 {/each}
             </tbody>

@@ -1,6 +1,7 @@
 <!-- __layout.svelte -->
 <script>
-	import { Nav, Footer } from "$lib/components"
+        import { Nav, Footer } from "$lib/components"
+        import { fade } from 'svelte/transition';
     export let activeTab;
 </script>
 
@@ -15,8 +16,10 @@
 
 <div>
     <Nav bind:activeTab={activeTab} /> <!-- adds the nav (small and large) -->
-  
-    <slot activeTab={activeTab} />
+
+    <div transition:fade>
+        <slot activeTab={activeTab} />
+    </div>
 
     <Footer /> <!-- adds the footer -->
 

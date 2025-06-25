@@ -1,98 +1,103 @@
-import {leagueID} from '$lib/utils/leagueInfo';
+import { leagueID } from "$lib/utils/leagueInfo";
 
 export const tabs = [
-    {
-        icon: 'home',
-        label: 'Home',
-        dest: '/',
-    },
-    {
-        icon: 'local_fire_department',
-        label: 'Matchups',
-        dest: '/matchups',
-    },
-    {
-        icon: 'swap_horiz',
-        label: 'Trades & Waivers',
-        dest: '/transactions',
-    },
- //   {
- //       icon: 'swap_horiz',
- //       label: 'Trades & Waivers 2',
- //       nest: true,
- //       children: [
- //           {
- //               icon: 'swap_horiz',
- //               label: 'Recent Transactions',
- //               dest: '/transactions',
- //           },
- //           {
- //               icon: 'swap_horiz',
- //               label: 'Waiver Costs',
- //               dest: '/waivercost',
- //           },
- //       ]
- //   },
-    {
-        icon: 'article',
-        label: 'Blog',
-        dest: '/blog',
-    },
-    {
-        icon: 'view_comfy',
-        label: 'League Info',
-        nest: true,
-        children: [
-            {
-                icon: 'storage',
-                label: 'Rosters',
-                dest: '/rosters',
-            },
-            {
-                icon: 'groups',
-                label: 'Managers',
-                dest: '/managers',
-            },
-            {
-                icon: 'leaderboard',
-                label: 'Standings',
-                dest: '/standings',
-            },
-            {
-                icon: 'view_comfy',
-                label: 'Drafts',
-                dest: '/drafts',
-            },
-            {
-                icon: 'emoji_events',
-                label: 'Trophy Room',
-                dest: '/awards',
-            },
-            {
-                icon: 'military_tech',
-                label: 'Records',
-                dest: '/records',
-            },
-            {
-                icon: 'history',
-                label: 'Leagues',
-                dest: '/leagues',
-            },
-            {
-                icon: 'history_edu',
-                label: 'Constitution',
-                dest: '/constitution',
-            },
-            {
-                icon: 'sports_football',
-                label: 'Go to Sleeper',
-                dest: `https://sleeper.app/leagues/${leagueID}`,
-            },
-        ]
-    },
-    {
-        icon: 'lightbulb',
-        label: 'Resources',
-        dest: '/resources',
-    },
+  {
+    icon: "home",
+    label: "Home",
+    dest: "/",
+  },
+  {
+    icon: "local_fire_department",
+    label: "Matchups",
+    dest: "/matchups",
+  },
+  {
+    icon: "swap_horiz",
+    label: "Trades & Waivers",
+    dest: "/transactions",
+  },
+  //   {
+  //       icon: 'swap_horiz',
+  //       label: 'Trades & Waivers 2',
+  //       nest: true,
+  //       children: [
+  //           {
+  //               icon: 'swap_horiz',
+  //               label: 'Recent Transactions',
+  //               dest: '/transactions',
+  //           },
+  //           {
+  //               icon: 'swap_horiz',
+  //               label: 'Waiver Costs',
+  //               dest: '/waivercost',
+  //           },
+  //       ]
+  //   },
+  {
+    icon: "article",
+    label: "Blog",
+    dest: "/blog",
+  },
+  {
+    icon: "history",
+    label: "Leagues",
+    dest: "/leagues",
+  },
+  {
+    icon: "library_books",
+    label: "Articles",
+    dest: "/articles",
+  },
+  {
+    icon: "view_comfy",
+    label: "League Info",
+    nest: true,
+    children: [
+      {
+        icon: "storage",
+        label: "Rosters",
+        dest: "/rosters",
+      },
+      {
+        icon: "groups",
+        label: "Managers",
+        dest: "/managers",
+      },
+      {
+        icon: "leaderboard",
+        label: "Standings",
+        dest: "/standings",
+      },
+      {
+        icon: "view_comfy",
+        label: "Drafts",
+        dest: "/drafts",
+      },
+      {
+        icon: "emoji_events",
+        label: "Trophy Room",
+        dest: "/awards",
+      },
+      {
+        icon: "military_tech",
+        label: "Records",
+        dest: "/records",
+      },
+      {
+        icon: "history_edu",
+        label: "Constitution",
+        dest: "/constitution",
+      },
+      {
+        icon: "sports_football",
+        label: "Go to Sleeper",
+        dest: `https://sleeper.app/leagues/${leagueID}`,
+      },
+    ],
+  },
+  {
+    icon: "lightbulb",
+    label: "Resources",
+    dest: "/resources",
+  },
 ];

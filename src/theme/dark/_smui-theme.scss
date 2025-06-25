@@ -4,8 +4,8 @@
 
 // Svelte Colors!
 @use "@material/theme/index" as theme with (
-  $primary: #7ca0c0,
-  $secondary: #345575,
+  $primary: #91c0ff,
+  $secondary: #2b4e88,
   $surface: #000000,
   $background: #000000,
   $error: color-palette.$red-900
@@ -64,7 +64,7 @@
   --fadeTwo: rgba(0, 0, 0, 0.7) 50%;
   --fadeThree: rgba(0, 0, 0, 0.9) 90%;
   --fadeFour: rgba(0, 0, 0, 1) 100%;
-  --blueOne: #7ca0c0;
+  --blueOne: #91c0ff;
   --r1: #1c1c1d;
   --r2: #1f1d1d;
   --r3: #181a18;
@@ -176,7 +176,7 @@ a:visited {
 }
 
 .mdc-button--raised {
-  background-image: linear-gradient(135deg, var(--blueOne), #5c87a8);
+  background-image: linear-gradient(135deg, var(--blueOne), #4c83c4);
   color: #fff;
 }
 
