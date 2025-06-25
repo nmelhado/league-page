@@ -1,18 +1,18 @@
-@use 'sass:color';
+@use "sass:color";
 
-@use '@material/theme/color-palette';
+@use "@material/theme/color-palette";
 
 // Svelte Colors!
-@use '@material/theme/index' as theme with (
-  $primary: #00316b,
-  $secondary: #0082c3,
+@use "@material/theme/index" as theme with (
+  $primary: #345575,
+  $secondary: #7ca0c0,
   $surface: #fff,
   $background: #fff,
-  $error: color-palette.$red-900,
+  $error: color-palette.$red-900
 );
 
 // Import all the styles for the classes.
-@use '@material/typography/mdc-typography';
+@use "@material/typography/mdc-typography";
 // The following classes become available:
 //   mdc-typography--headline1
 //   mdc-typography--headline2
@@ -28,9 +28,9 @@
 //   mdc-typography--button
 //   mdc-typography--overline
 //   mdc-typography--body1
- 
+
 // Import the mixins.
-@use '@material/typography/index' as typography;
+@use "@material/typography/index" as typography;
 
 :root {
   --fff: #fff;
@@ -64,35 +64,35 @@
   --fadeTwo: rgba(255, 255, 255, 0.7) 50%;
   --fadeThree: rgba(255, 255, 255, 0.9) 90%;
   --fadeFour: rgba(255, 255, 255, 1) 100%;
-  --blueOne: #00316b;
+  --blueOne: #345575;
   --r1: #f7f9fd;
   --r2: #fbf7f7;
   --r3: #f7fbf7;
   // Positions
-  --QBfade: #ff8fb2;
-  --WRfade: #afd4ff;
-  --RBfade: #6ccac1;
-  --TEfade: #ffd6aa;
-  --Kfade: #deb4ff;
-  --DEfadeFfade: #fffbbc;
-  --PICKSfade: #73b647;
-  --CBfade: #ffcc7a;
-  --SSfade: #b7a1db;
-  --FSfade: #ebe7b3;
-  --DEfade: #b1d0e9;
-  --DLfade: #c392d3;
-  --LBfade: #98c097;
+  --QBfade: #ecc0c0;
+  --WRfade: #c0d3ec;
+  --RBfade: #c0e0d2;
+  --TEfade: #ecd1c0;
+  --Kfade: #d8c8ec;
+  --DEfadeFfade: #ece6c0;
+  --PICKSfade: #c9dabc;
+  --CBfade: #ecd9c0;
+  --SSfade: #d4c0e0;
+  --FSfade: #ece4c9;
+  --DEfade: #d0dbe6;
+  --DLfade: #e2c9d8;
+  --LBfade: #c6cadf;
 
-	--QB: #ff2a6d;
-	--WR: #58a7ff;
-	--RB: #00ceb8;
-	--TE: #ffae58;
-	--K: #bd66ff;
-	--DEF: #fff67a;
-	--DL: #ff795a;
-	--LB: #6d7df5;
-	--DB: #ff7cb6;
-	--BN: #b6d0eb;
+  --QB: #c94c4c;
+  --WR: #4c82c9;
+  --RB: #4ca96b;
+  --TE: #c98b4c;
+  --K: #9c6acd;
+  --DEF: #d1c75c;
+  --DL: #c96c5a;
+  --LB: #6c75c9;
+  --DB: #c96c9c;
+  --BN: #a8b6c9;
 }
 
 html,
@@ -102,61 +102,61 @@ body {
   background-color: theme.$surface;
   color: theme.$on-surface;
   min-height: 100vh;
-  background: #f4f4f4;
-  background: linear-gradient(to bottom right, #f4f4f4,#ebebeb );
-  background: -webkit-linear-gradient(to bottom right, #f4f4f4,#ebebeb );
+  background: #efefef;
+  background: linear-gradient(to bottom right, #efefef, #dcdcdc);
+  background: -webkit-linear-gradient(to bottom right, #efefef, #dcdcdc);
 }
- 
+
 //
 // Some defaults that may be helpful to you.
 // If you just want to use these, and not the classes, you can instead just
 // @use '@material/typography/index' as typography, and your CSS file will be smaller.
 //
 html {
-  @include typography.typography('body1');
+  @include typography.typography("body1");
 }
- 
+
 h1 {
-  @include typography.typography('headline1');
+  @include typography.typography("headline1");
 }
- 
+
 h2 {
-  @include typography.typography('headline2');
+  @include typography.typography("headline2");
 }
- 
+
 h3 {
-  @include typography.typography('headline3');
+  @include typography.typography("headline3");
 }
- 
+
 h4 {
-  @include typography.typography('headline4');
+  @include typography.typography("headline4");
 }
- 
+
 h5 {
-  @include typography.typography('headline5');
+  @include typography.typography("headline5");
 }
- 
+
 h6 {
-  @include typography.typography('headline6');
+  @include typography.typography("headline6");
 }
- 
+
 caption {
-  @include typography.typography('caption');
+  @include typography.typography("caption");
 }
- 
+
 code,
 pre {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
- 
+
 small {
   font-size: 0.9em;
 }
- 
+
 big {
   font-size: 1.1em;
 }
- 
+
 b,
 strong {
   font-weight: bold;
@@ -176,7 +176,7 @@ a:visited {
 }
 
 .mdc-button--raised {
-  background-image: linear-gradient(135deg, var(--blueOne), #00b2ff);
+  background-image: linear-gradient(135deg, var(--blueOne), #5c87a8);
   color: #fff;
 }
 
