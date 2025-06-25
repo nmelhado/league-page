@@ -5,6 +5,7 @@
         const show = page.query.get('show');
         const query = page.query.get('query');
         const curPage = page.query.get('page');
+        const team = page.query.get('team');
 
         const transactionsData = getLeagueTransactions(false);
 
@@ -20,6 +21,7 @@
             playersData,
             transactionsData,
             page: 0,
+            team: 0,
         }
         if(show && (show == "trade" || show == "waiver" || show == "both")) {
             props.show = show;
@@ -30,8 +32,11 @@
         if(curPage && !isNaN(curPage)) {
             props.page = parseInt(curPage) - 1;
         }
-		return { props };
-	}
+        if(team && !isNaN(team)) {
+            props.team = parseInt(team);
+        }
+                return { props };
+        }
     
 	const perPage = 10;
 </script>
@@ -40,7 +45,7 @@
 	import LinearProgress from '@smui/linear-progress';
 	import { TransactionsPage } from '$lib/components'
 
-    export let show, query, page, playersData, transactionsData;
+    export let show, query, page, team, playersData, transactionsData;
 
     let el, masterOffset;
 
@@ -86,7 +91,7 @@
             <LinearProgress indeterminate />
         </div>
     {:then [{transactions, currentManagers, stale}, playersInfo]}
-        <TransactionsPage {playersInfo} {stale} {transactions} {currentManagers} {masterOffset} {show} {query} queryPage={page} {perPage} postUpdate={true} />
+        <TransactionsPage {playersInfo} {stale} {transactions} {currentManagers} {masterOffset} {show} {query} team={team} queryPage={page} {perPage} postUpdate={true} />
     {:catch error}
         <p class="center">Something went wrong: {error.message}</p>
     {/await}
