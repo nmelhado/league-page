@@ -1,7 +1,7 @@
 /*   STEP 1   */
-export const leagueID = "784877413984260096"; // your league ID
+export const leagueID = "1194779081882595328"; // your league ID
 export const leagueName = "United Dynasty Fantasy Football League"; // your league name
-export const dues = 100; // (optional) used in template constitution page
+export const dues = 150; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
