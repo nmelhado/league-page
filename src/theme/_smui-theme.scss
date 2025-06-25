@@ -169,6 +169,24 @@ a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
 }
 
+.mdc-button {
+  border-radius: 6px;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.mdc-button--raised {
+  background-image: linear-gradient(135deg, var(--blueOne), #00b2ff);
+  color: #fff;
+}
+
 .mdc-button--outlined:not(:disabled) {
   background-color: #f9f9f9 !important;
+  border: 1px solid var(--blueOne);
+  color: var(--blueOne);
+}
+
+.mdc-button--outlined:not(:disabled):hover {
+  background-color: var(--blueOne);
+  color: #fff;
 }
