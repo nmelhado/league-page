@@ -69,6 +69,16 @@
         background: #4c83c4;
     }
 
+    .details-link {
+        color: var(--blueOne);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .details-link:hover {
+        text-decoration: underline;
+    }
+
     td.mono {
         font-family: monospace;
     }
@@ -87,6 +97,7 @@
                     <th>Season</th>
                     <th>League ID</th>
                     <th>Endpoints</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -100,6 +111,9 @@
                             <a href={`https://api.sleeper.app/v1/league/${item.league_id}/users`} target="_blank" rel="noopener">users</a>
                             <a href={`https://api.sleeper.app/v1/league/${item.league_id}/matchups/1`} target="_blank" rel="noopener">matchups</a>
                             <a href={`https://api.sleeper.app/v1/league/${item.league_id}/transactions/1`} target="_blank" rel="noopener">transactions</a>
+                        </td>
+                        <td>
+                            <a class="details-link" href={`/leagues/${item.league_id}`}>view</a>
                         </td>
                     </tr>
                 {/each}

@@ -6,16 +6,17 @@ import { waitForAll } from './multiPromise';
 import { get } from 'svelte/store';
 import {standingsStore} from '$lib/stores';
 
-export const getLeagueStandings = async () => {
-	if(get(standingsStore).matchupWeeks) {
-		return get(standingsStore);
-	}
+export const getLeagueStandings = async (queryLeagueID = leagueID) => {
+        const storeVal = get(standingsStore);
+        if(storeVal[queryLeagueID]) {
+                return storeVal[queryLeagueID];
+        }
 
-	const [nflState, leagueData, rosters] = await waitForAll(
-		getNflState(),
-		getLeagueData(),
-		getLeagueRosters(),
-	).catch((err) => { console.error(err); });
+        const [nflState, leagueData, rosters] = await waitForAll(
+                getNflState(),
+                getLeagueData(queryLeagueID),
+                getLeagueRosters(queryLeagueID),
+        ).catch((err) => { console.error(err); });
 
 	const yearData = leagueData.season;
 	const regularSeasonLength = leagueData.settings.playoff_week_start - 1;
@@ -41,9 +42,9 @@ export const getLeagueStandings = async () => {
 
 	// pull in all matchup data for the season
 	const matchupsPromises = [];
-	for(let i = week - 1; i > 0; i--) {
-		matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${leagueID}/matchups/${i}`, {compress: true}))
-	}
+        for(let i = week - 1; i > 0; i--) {
+                matchupsPromises.push(fetch(`https://api.sleeper.app/v1/league/${queryLeagueID}/matchups/${i}`, {compress: true}))
+        }
 	const matchupsRes = await waitForAll(...matchupsPromises);
 
 	// convert the json matchup responses
@@ -70,7 +71,7 @@ export const getLeagueStandings = async () => {
 		medianMatch,
 	}
 	
-	standingsStore.update(() => response);
+        standingsStore.update((s) => { s[queryLeagueID] = response; return s; });
 
 	return response;
 }
