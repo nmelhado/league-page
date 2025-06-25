@@ -30,48 +30,48 @@
 
 <style>
     #home {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 2rem;
         position: relative;
         overflow-y: hidden;
         z-index: 1;
+        padding: 2rem 1rem;
     }
 
     #main {
         flex-grow: 1;
         min-width: 320px;
         margin: 0 auto;
-        padding: 60px 0;
+        padding: 2rem 0;
     }
 
     .text {
-        padding: 0 30px;
-        max-width: 620px;
+        padding: 0 1rem;
+        max-width: 700px;
         margin: 0 auto;
+        text-align: center;
     }
 
     .leagueData {
         position: relative;
         z-index: 1;
         width: 100%;
-        min-width: 470px;
-        max-width: 470px;
+        max-width: 360px;
         min-height: 100%;
-        padding: 1rem;
-        background: linear-gradient(to bottom right, var(--fff), var(--f8f8f8));
+        padding: 1.5rem 1rem;
+        background: var(--fff);
         border: 1px solid var(--eee);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     @media (max-width: 950px) {
+        #home {
+            grid-template-columns: 1fr;
+        }
         .leagueData {
             max-width: 100%;
-            min-width: 100%;
-            width: 100%;
-        }
-        #home {
-            flex-wrap: wrap;
         }
     }
 
@@ -89,19 +89,27 @@
         text-align: center;
     }
 
+    .leagueName {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
     /* champ styling */
     #currentChamp {
-        padding: 25px 0;
-		background-color: var(--f3f3f3);
-        box-shadow: 5px 0 8px var(--champShadow);
-        border-left: 1px solid var(--ddd);
+        padding: 1.5rem 0;
+        background-color: var(--f3f3f3);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid var(--ddd);
+        border-radius: 6px;
+        margin-bottom: 1.5rem;
     }
 
     #champ {
         position: relative;
         width: 150px;
         height: 150px;
-        margin: 0 auto;
+        margin: 0 auto 0.5rem;
         cursor: pointer;
     }
 
@@ -127,18 +135,19 @@
 
     h4 {
         text-align: center;
-        font-size: 1.6em;
-        margin: 10px;
+        font-size: 1.3em;
+        margin: 0 0 0.5rem;
     }
 
     .label {
-        display: table;
+        display: inline-block;
         text-align: center;
         line-height: 1.1em;
-        padding: 6px 20px;
+        padding: 6px 16px;
         background-color: var(--fff);
-        border: 1px solid #aaa;
-        margin: 10px auto 0;
+        border: 1px solid var(--aaa);
+        border-radius: 4px;
+        margin: 0 auto;
         cursor: pointer;
     }
     
@@ -151,15 +160,15 @@
 
 <div id="home">
     <div id="main">
-        <div class="text">
-            <h6>{leagueName}</h6>
+        <section id="intro" class="text">
+            <h1 class="leagueName">{leagueName}</h1>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
             <!-- Most recent Blog Post (if enabled) -->
             {#if enableBlog}
                 <HomePost />
             {/if}
-        </div>
+        </section>
         <PowerRankings />
     </div>
     
