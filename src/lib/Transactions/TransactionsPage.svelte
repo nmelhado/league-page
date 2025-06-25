@@ -9,9 +9,9 @@
 	import { goto } from '$app/navigation';
 	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
 
-	export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentManagers, stale, perPage, postUpdate=false;
-	const oldQuery = query;
-	let page = queryPage || 0;
+       export let masterOffset = 0, show, playersInfo, query, queryPage, transactions, currentManagers, stale, perPage, team = 0, postUpdate=false;
+       const oldQuery = query;
+       let page = queryPage || 0;
 
 	const refreshTransactions = async () => {
 		const newTransactions = await getLeagueTransactions(false, true);
@@ -37,18 +37,27 @@
 	// filtered subset based on search
 	let subsetTransactions = [];
 
-	let totalTransactions = 0;
+       let totalTransactions = 0;
 
-	const setFilter = (filterBy, transactions) => {
-		if(filterBy == "both") {
-			return transactions;
-		} else {
-			return transactions.filter( transaction => transaction.type == filterBy);
-		}
-	}
+       const setFilter = (filterBy, transactions) => {
+               if(filterBy == "both") {
+                       return transactions;
+               } else {
+                       return transactions.filter( transaction => transaction.type == filterBy);
+               }
+       }
 
-	// filtered subset based on filter
-	$: filteredTransactions = setFilter(show, transactions);
+       const setTeamFilter = (teamId, transactions) => {
+               if(!teamId || teamId == 0) {
+                       return transactions;
+               }
+               teamId = parseInt(teamId);
+               return transactions.filter(transaction => transaction.rosters.indexOf(teamId) > -1);
+       }
+
+       // filtered subset based on filter
+       $: filteredByShow = setFilter(show, transactions);
+       $: filteredTransactions = setTeamFilter(team, filteredByShow);
 
 	const setQuery = (query, filteredTransactions) => {
 		if(!filteredTransactions) {
@@ -76,7 +85,7 @@
 		}
 		displayTransactions = setQuery(query, filteredTransactions);
 		if(postUpdate) {
-			setTimeout(() => {goto(`/transactions?show=${show}&query=${query}&page=${page+1}`, {noscroll: true,  keepfocus: true})}, 800);
+                       setTimeout(() => {goto(`/transactions?show=${show}&query=${query}&team=${team}&page=${page+1}`, {noscroll: true,  keepfocus: true})}, 800);
 		}
 	}
 
@@ -102,7 +111,7 @@
 		const FIVE_SECONDS = 5 * 1000; /* five seconds */
 		if(((new Date) - lastUpdate) > FIVE_SECONDS) {
 			called = false;
-			goto(`/transactions?show=${show}&query=${query.trim()}&page=${page+1}`, {noscroll: true,  keepfocus: true});
+                       goto(`/transactions?show=${show}&query=${query.trim()}&team=${team}&page=${page+1}`, {noscroll: true,  keepfocus: true});
 			return;
 		}
 		return setTimeout(updateQueryParam, 2000); // check every 2 seconds
@@ -111,7 +120,7 @@
 	const clearSearch = () => {
 		query = "";
 		if(postUpdate) {
-			goto(`/transactions?show=${show}&query=&page=${page+1}`, {noscroll: true,  keepfocus: true});
+                       goto(`/transactions?show=${show}&query=&team=${team}&page=${page+1}`, {noscroll: true,  keepfocus: true});
 		}
 	}
 	
@@ -142,11 +151,17 @@
 
     $: top = el?.getBoundingClientRect() ? el?.getBoundingClientRect().top  : 0;
 
-	const setShow = (val) => {
-		show = val;
-		page = 0;
-		changePage(0);
-	}
+        const setShow = (val) => {
+                show = val;
+                page = 0;
+                changePage(0);
+        }
+
+       const setTeam = (val) => {
+               team = parseInt(val);
+               page = 0;
+               changePage(0);
+       }
 </script>
 
 <style>
@@ -188,11 +203,17 @@
 		display: none !important;
 	}
 
-	.searchContainer {
-		width: 100%;
-		text-align: center;
-		margin: 2em 0 .5em;
-	}
+        .searchContainer {
+                width: 100%;
+                text-align: center;
+                margin: 2em 0 .5em;
+        }
+
+        .teamFilter {
+                width: 100%;
+                text-align: center;
+                margin: 1em 0;
+        }
 
 	.clearPlaceholder {
 		width: 48px;
@@ -263,8 +284,18 @@
 		<Button class="{show == "waiver" ? "disabled" : ""}" color="primary" on:click={() => setShow("waiver")} variant="{show == "waiver claims" ? "raised" : "outlined"}" touch>
 			<Label>Waivers Costs</Label>
 		</Button>
-	</div>
-	<div class="searchContainer">
+        </div>
+        <div class="teamFilter">
+                <span class="clearPlaceholder" />
+                <select bind:value={team} on:change={(e) => setTeam(e.target.value)}>
+                        <option value="0">All Teams</option>
+                        {#each Object.entries(currentManagers) as [id, manager]}
+                                <option value={id}>{manager.name}</option>
+                        {/each}
+                </select>
+                <span class="clearPlaceholder" />
+        </div>
+        <div class="searchContainer">
 		<span class="clearPlaceholder" />
 		<Textfield
 			class="shaped-outlined"
