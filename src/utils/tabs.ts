@@ -42,7 +42,7 @@ export const tabs: Tab[] = [
       },
       {
         icon: 'groups',
-        label: 'Managers',
+        label: 'All Managers',
         dest: '/managers',
       },
       {
@@ -72,12 +72,12 @@ export const tabs: Tab[] = [
       },
       {
         icon: 'history_edu',
-        label: 'Constitution',
+        label: 'By Laws',
         dest: '/constitution',
       },
       {
         icon: 'sports_football',
-        label: 'Go to Sleeper',
+        label: 'Open Sleeper App',
         dest: `https://sleeper.app/leagues/${leagueID}`,
       },
     ]
