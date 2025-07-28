@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test - League Info</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .nav { display: flex; gap: 20px; margin: 20px 0; border: 1px solid #ccc; padding: 10px; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a { display: block; padding: 10px; text-decoration: none; color: black; }
+        .dropdown-content a:hover { background: #f1f1f1; }
+        button { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🔧 League Info Debug Test</h1>
+    
+    <p>This is a simple test to verify the dropdown functionality works in your browser.</p>
+    
+    <div class="nav">
+        <button>Home</button>
+        <button>Matchups</button>
+        <button>Blog</button>
+        
+        <div class="dropdown">
+            <button>League Info ↓</button>
+            <div class="dropdown-content">
+                <a href="#rosters">Rosters</a>
+                <a href="#managers">All Managers</a>
+                <a href="#standings">Standings</a>
+                <a href="#rivalry">Rivalry</a>
+                <a href="#drafts">Drafts</a>
+                <a href="#awards">Trophy Room</a>
+                <a href="#records">Records</a>
+                <a href="#constitution">By Laws</a>
+                <a href="#sleeper">Open Sleeper App</a>
+            </div>
+        </div>
+        
+        <button>Resources</button>
+    </div>
+    
+    <h2>✅ Instructions:</h2>
+    <ol>
+        <li><strong>Hover over "League Info ↓"</strong> - A dropdown should appear</li>
+        <li><strong>If this works</strong> - Your browser supports dropdowns</li>
+        <li><strong>If this doesn't work</strong> - There's a browser/CSS issue</li>
+    </ol>
+    
+    <h2>🎯 Next Steps:</h2>
+    <p>If the dropdown above works, then the issue is with the React app. If it doesn't work, there's a browser issue.</p>
+    
+    <h2>🚀 React App Status:</h2>
+    <p>The React development server should be running at: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></p>
+    
+    <script>
+        console.log('Debug test loaded');
+        
+        // Test if JavaScript is working
+        setTimeout(() => {
+            console.log('JavaScript is working');
+            document.body.style.backgroundColor = '#f9f9f9';
+        }, 1000);
+    </script>
+</body>
+</html>
