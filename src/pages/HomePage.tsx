@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   Box,
   Typography,
   LinearProgress,
-  Paper,
-  Container,
   useTheme,
   useMediaQuery,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { leagueName, homepageText, enableBlog, managers } from '../utils/leagueInfo'
-import { useAppStore } from '../store'
+import { leagueName, homepageText, enableBlog } from '../utils/leagueInfo'
 import { PowerRankings } from '../components/PowerRankings'
 import { Transactions } from '../components/Transactions'
 import { HomePost } from '../components/BlogPosts/HomePost'
+import { useNFLState, useLeagueChampion } from '../hooks/useSleeperData'
+import { sleeperHelpers } from '../services/sleeperApi'
 
 const HomeContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -124,68 +123,23 @@ const TransactionsContainer = styled(Box)({
   margin: '10px auto',
 })
 
-interface NFLState {
-  season: number
-  season_type: string
-  week: number
-}
-
-interface Award {
-  year: number
-  champion: string
-}
-
 export default function HomePage() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  const { nflState, awards } = useAppStore()
-  const [nflStateData, setNflStateData] = useState<NFLState | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [awardsData, setAwardsData] = useState<Award[]>([])
-
-  useEffect(() => {
-    // Simulate API calls - replace with actual API calls
-    const fetchData = async () => {
-      try {
-        // This would be replaced with actual API calls
-        const mockNflState: NFLState = {
-          season: 2024,
-          season_type: 'regular',
-          week: 15,
-        }
-        setNflStateData(mockNflState)
-
-        const mockAwards: Award[] = [
-          { year: 2023, champion: '825182685528989696' },
-        ]
-        setAwardsData(mockAwards)
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  const getTeamName = (rosterId: string): string => {
-    const manager = managers.find(m => m.managerID === rosterId)
-    return manager ? manager.name : 'Unknown Team'
-  }
-
-  const getAvatarUrl = (rosterId: string): string => {
-    const manager = managers.find(m => m.managerID === rosterId)
-    return manager?.photo || '/managers/question.jpg'
-  }
+  
+  // Use real Sleeper data
+  const { data: nflState, isLoading: nflLoading, error: nflError } = useNFLState()
+  const { data: champion, isLoading: championLoading } = useLeagueChampion()
 
   const handleChampionClick = () => {
-    // Navigation logic for champion
-    console.log('Navigate to champion page')
+    if (champion) {
+      // Navigate to manager page - you can implement this with React Router
+      console.log('Navigate to champion page:', champion.teamName)
+    }
   }
 
   const renderNFLState = () => {
-    if (loading) {
+    if (nflLoading) {
       return (
         <>
           <div>Retrieving NFL state...</div>
@@ -194,50 +148,56 @@ export default function HomePage() {
       )
     }
 
-    if (!nflStateData) {
+    if (nflError || !nflState) {
       return <div>Something went wrong loading NFL state</div>
     }
 
-    let seasonText = `NFL ${nflStateData.season} `
-    if (nflStateData.season_type === 'pre') {
+    let seasonText = `NFL ${nflState.season} `
+    if (nflState.season_type === 'pre') {
       seasonText += 'Preseason'
-    } else if (nflStateData.season_type === 'post') {
+    } else if (nflState.season_type === 'post') {
       seasonText += 'Postseason'
     } else {
-      seasonText += nflStateData.week > 0 ? `Season - Week ${nflStateData.week}` : 'Preseason'
+      seasonText += nflState.week > 0 ? `Season - Week ${nflState.week}` : 'Preseason'
     }
 
     return <div>{seasonText}</div>
   }
 
   const renderChampion = () => {
-    if (loading) {
+    if (championLoading) {
       return (
         <>
-          <Typography>Retrieving awards...</Typography>
+          <Typography>Retrieving league leader...</Typography>
           <LinearProgress />
         </>
       )
     }
 
-    if (!awardsData.length) {
-      return <Typography>No former champs.</Typography>
+    if (!champion) {
+      return <Typography>No league data available.</Typography>
     }
 
-    const latestChamp = awardsData[0]
+    // For current season, show current leader instead of "champion"
+    const isCurrentSeason = nflState?.season === new Date().getFullYear().toString()
+    const title = isCurrentSeason ? `${nflState?.season} League Leader` : `${nflState?.season} Fantasy Champion`
+
     return (
       <>
-        <ChampTitle variant="h4">{latestChamp.year} Fantasy Champ</ChampTitle>
+        <ChampTitle variant="h4">{title}</ChampTitle>
         <ChampContainer onClick={handleChampionClick}>
           <ChampImage
-            src={getAvatarUrl(latestChamp.champion)}
+            src={champion.user?.avatar ? sleeperHelpers.getAvatarUrl(champion.user.avatar) : '/managers/question.jpg'}
             alt="champion"
           />
           <LaurelImage src="/laurel.png" alt="laurel" />
         </ChampContainer>
         <ChampLabel onClick={handleChampionClick}>
-          {getTeamName(latestChamp.champion)}
+          {champion.teamName}
         </ChampLabel>
+        <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
+          {champion.record} • {champion.settings.fpts.toFixed(1)} pts
+        </Typography>
       </>
     )
   }
