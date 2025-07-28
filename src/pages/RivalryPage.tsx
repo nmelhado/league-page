@@ -23,7 +23,7 @@ import {
   Alert,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { Versus } from '@mui/icons-material'
+import { SportsMma } from '@mui/icons-material'
 import { useManagerProfiles, useRivalryData } from '../hooks/useSleeperData'
 import { sleeperHelpers } from '../services/sleeperApi'
 
@@ -136,7 +136,7 @@ export default function RivalryPage() {
         </Grid>
 
         <Grid item xs={12} md={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Versus sx={{ fontSize: 40, color: 'primary.main' }} />
+          <SportsMma sx={{ fontSize: 40, color: 'primary.main' }} />
         </Grid>
 
         <Grid item xs={12} md={5}>
