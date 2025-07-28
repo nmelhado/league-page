@@ -1,45 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { 
   Box, 
-  Tab as MuiTab, 
-  Tabs, 
-  Menu, 
-  MenuItem, 
   Button,
-  Typography 
+  Typography,
+  Paper,
+  MenuList,
+  MenuItem
 } from '@mui/material'
 import { ExpandMore, Launch } from '@mui/icons-material'
 import { Link, useLocation } from 'react-router-dom'
 import { Tab } from '../../utils/tabs'
 import { leagueID } from '../../utils/leagueInfo'
+import { styled } from '@mui/material/styles'
 
 interface NavLargeProps {
   tabs: Tab[]
   currentTab?: Tab
 }
 
+const DropdownContainer = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  display: 'inline-block',
+  '&:hover .dropdown-menu': {
+    display: 'block',
+  }
+}))
+
+const DropdownMenu = styled(Paper)(({ theme }) => ({
+  position: 'absolute',
+  top: '100%',
+  left: 0,
+  display: 'none',
+  minWidth: '200px',
+  zIndex: 1000,
+  marginTop: theme.spacing(0.5),
+  boxShadow: theme.shadows[3],
+}))
+
 export function NavLarge({ tabs, currentTab }: NavLargeProps) {
   const location = useLocation()
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
-  const handleLeagueInfoClick = (event: React.MouseEvent<HTMLElement>) => {
-    console.log('League Info clicked!') // Debug log
-    event.preventDefault()
-    event.stopPropagation()
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    console.log('Menu closing') // Debug log
-    setAnchorEl(null)
-  }
 
   const openSleeperApp = () => {
     window.open(`https://sleeper.app/leagues/${leagueID}`, '_blank')
-    handleClose()
   }
-
-  console.log('NavLarge rendering, tabs:', tabs) // Debug log
 
   return (
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -50,92 +53,86 @@ export function NavLarge({ tabs, currentTab }: NavLargeProps) {
             key={tab.dest}
             component={Link}
             to={tab.dest}
-            sx={{ margin: 1 }}
+            sx={{ 
+              margin: 1,
+              textTransform: 'none',
+              color: 'inherit',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.04)'
+              }
+            }}
           >
             {tab.label}
           </Button>
         ))}
 
-        {/* League Info Dropdown */}
-        <Box sx={{ position: 'relative' }}>
+        {/* League Info Hover Dropdown */}
+        <DropdownContainer>
           <Button
-            onClick={handleLeagueInfoClick}
             endIcon={<ExpandMore />}
             sx={{ 
               margin: 1,
-              backgroundColor: anchorEl ? 'rgba(0, 0, 0, 0.1)' : 'transparent'
+              textTransform: 'none',
+              color: 'inherit',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.04)'
+              }
             }}
           >
             League Info
           </Button>
           
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-          >
-            <MenuItem onClick={handleClose}>
-              <Link to="/rosters" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <DropdownMenu className="dropdown-menu">
+            <MenuList>
+              <MenuItem component={Link} to="/rosters">
                 Rosters
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/managers" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/managers">
                 All Managers
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/standings" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/standings">
                 Standings
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/rivalry" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/rivalry">
                 Rivalry
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/drafts" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/drafts">
                 Drafts
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/awards" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/awards">
                 Trophy Room
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/records" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/records">
                 Records
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to="/constitution" style={{ textDecoration: 'none', color: 'inherit' }}>
+              </MenuItem>
+              <MenuItem component={Link} to="/constitution">
                 By Laws
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={openSleeperApp}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                Open Sleeper App
-                <Launch fontSize="small" />
-              </Box>
-            </MenuItem>
-          </Menu>
-        </Box>
+              </MenuItem>
+              <MenuItem 
+                onClick={openSleeperApp}
+                sx={{ cursor: 'pointer' }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  Open Sleeper App
+                  <Launch fontSize="small" />
+                </Box>
+              </MenuItem>
+            </MenuList>
+          </DropdownMenu>
+        </DropdownContainer>
 
         {/* Resources */}
         <Button
           component={Link}
           to="/resources"
-          sx={{ margin: 1 }}
+          sx={{ 
+            margin: 1,
+            textTransform: 'none',
+            color: 'inherit',
+            '&:hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.04)'
+            }
+          }}
         >
           Resources
         </Button>
