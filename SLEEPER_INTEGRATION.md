@@ -1,16 +1,31 @@
 # 🏈 Sleeper API Integration Complete!
 
-Your React app is now fully integrated with the Sleeper API and pulling real data from your fantasy league!
+Your React app is now fully integrated with the Sleeper API and pulling real data from your **National Chivos Fantasy Football League**!
 
 ## ✅ What's Working Now
 
 ### **Real Sleeper Data Integration**
-- ✅ **NFL State**: Current season, week, and season type
-- ✅ **League Info**: Team standings and records  
+- ✅ **NFL State**: Current season, week, and season type (2025 Season)
+- ✅ **League Info**: Team standings and records from your 12-team league
 - ✅ **Power Rankings**: Live rankings based on wins and points
 - ✅ **Recent Transactions**: Last 5 trades, waivers, and free agent moves
 - ✅ **League Leader**: Current season leader with real stats
 - ✅ **User Avatars**: Sleeper profile pictures and team info
+
+### **Your League Teams**
+Real teams from your Sleeper league:
+- **riffhawk** - "Bed, Bath & Bijan" (Commissioner)
+- **NYCSTONKMAN** - "Against All 42.71 Odds"
+- **mikeroman** - "Kyler Instincts"
+- **edber24** - "Breece Mode!"
+- **TheHeineKing** - "The HeineKing"
+- **winfante** - "Till NextYear Man"
+- **Yaroax** - Team TBD
+- **sajedchowdhury91** - "Winged Dragon of Ra"
+- **Eklips** - "SaUcE iN yOuR eYe🥴"
+- **balmanzar5** - "Killa B's"
+- **TheMentalist12** - "Hawk Tuaaa"
+- **JayAlbzBH** - Team TBD
 
 ### **Components Updated**
 - ✅ **Homepage**: Real NFL state, league leader, live data
@@ -52,14 +67,14 @@ Your React app is now fully integrated with the Sleeper API and pulling real dat
 ## 🎯 Live Features
 
 ### **Homepage Dashboard**
-- **NFL Status**: "NFL 2024 Season - Week 15"
+- **NFL Status**: "NFL 2025 Season - Pre-Draft"
 - **League Leader**: Current #1 team with record and points
-- **Power Rankings**: Live team rankings with avatars
+- **Power Rankings**: Live team rankings with Sleeper avatars
 - **Recent Activity**: Last 5 transactions with timestamps
 
 ### **Power Rankings**
 - **Real Standings**: Sorted by wins then points
-- **Team Avatars**: Sleeper profile pictures
+- **Team Avatars**: Real Sleeper profile pictures
 - **Live Stats**: W-L record, points for/against
 - **Visual Rankings**: Gold/silver/bronze for top 3
 
@@ -73,8 +88,11 @@ Your React app is now fully integrated with the Sleeper API and pulling real dat
 
 ### **Your League is Live!**
 The app is automatically pulling data from your Sleeper league:
-- **League ID**: `987565605387567104`
-- **League Name**: "National Chivos Fantasy League"
+- **League ID**: `1201635512016699392`
+- **League Name**: "National Chivos Fantasy Football League"
+- **Season**: 2025
+- **Teams**: 12 teams
+- **Status**: Pre-draft
 
 ### **Real-Time Updates**
 - Data refreshes automatically based on cache times
@@ -90,7 +108,7 @@ The app is automatically pulling data from your Sleeper league:
 
 Visit **http://localhost:5173** and you'll see:
 
-1. **Live NFL Status** - Current week and season
+1. **Live NFL Status** - Current week and season (2025 Pre-Draft)
 2. **Real Team Rankings** - Your actual league standings
 3. **Actual Transactions** - Recent trades and moves
 4. **Team Avatars** - Sleeper profile pictures
@@ -131,6 +149,6 @@ The integration is complete and ready to extend with:
 4. **Enhance UI**: Add more visual elements and charts
 5. **Mobile Optimization**: Test and improve mobile experience
 
-**Your Sleeper league is now live in React!** 🎉
+**Your National Chivos Fantasy Football League is now live in React!** 🎉
 
 All data is real, cached efficiently, and updates automatically. The foundation is solid for building out the rest of your fantasy league features.

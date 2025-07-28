@@ -1,14 +1,14 @@
 /*   STEP 1   */
-export const leagueID = "987565605387567104"; // your league ID
-export const leagueName = "National Chivos Fantasy League"; // your league name
+export const leagueID = "1201635512016699392"; // your league ID
+export const leagueName = "National Chivos Fantasy Football League"; // your league name
 export const dues = 100; // (optional) used in template constitution page
 export const dynasty = true; // true for dynasty leagues, false for redraft and keeper
 export const enableBlog = true; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VITE_CONTENTFUL_SPACE environment variables
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Welcome to the National Chivos Fantasy Football League! This is your home for all league information, standings, transactions, and more.</p>
+  <p>Check out the power rankings, recent transactions, and league standings. Stay up to date with all the action in your fantasy league!</p>
 `;
 
 export interface Manager {
@@ -38,9 +38,9 @@ export interface Manager {
 export const managers: Manager[] = [
   {
     "managerID": "825182685528989696",
-    "name": "Riff",
+    "name": "riffhawk",
     "location": "Brooklyn",
-    "bio": "Commish",
+    "bio": "Commissioner",
     "photo": "/managers/riff.jpg",
     "fantasyStart": 2023,
     "favoriteTeam": "cin",
@@ -50,15 +50,15 @@ export const managers: Manager[] = [
       link: null,
       image: "/managers/question.jpg",
     },
-    "philosophy": "Your fantasy team's philosophy",
+    "philosophy": "Bed, Bath & Bijan",
     "tradingScale": 10,
     "preferredContact": "WhatsApp",
   },
   {
     "managerID": "990681730120015872",
-    "name": "Migz",
+    "name": "TheHeineKing",
     "location": "The Heights",
-    "bio": "Heinenken",
+    "bio": "Heineken Enthusiast",
     "photo": "/managers/migz.jpg",
     "fantasyStart": 2023,
     "favoriteTeam": "nyj",
@@ -68,15 +68,15 @@ export const managers: Manager[] = [
       link: 2,
       image: "/managers/angel.jpg",
     },
-    "philosophy": "Drink Beer, Kick Ass",
+    "philosophy": "The HeineKing",
     "tradingScale": 3,
     "preferredContact": "Carrier Pigeon",
   },
   {
     "managerID": "994670697622343680",
-    "name": "Angel",
-    "location": "Seattle",
-    "bio": "Navy",
+    "name": "NYCSTONKMAN",
+    "location": "NYC",
+    "bio": "Against All Odds",
     "photo": "/managers/angel.jpg",
     "fantasyStart": 2023,
     "favoriteTeam": "ne",
@@ -86,7 +86,7 @@ export const managers: Manager[] = [
       link: 1,
       image: "/managers/migz.jpg",
     },
-    "philosophy": "Your fantasy team's philosophy",
+    "philosophy": "Against All 42.71 Odds",
     "tradingScale": 8,
     "preferredContact": "Phone",
   },
