@@ -3,39 +3,17 @@ import {
   Box, 
   Button,
   Typography,
-  Paper,
-  MenuList,
-  MenuItem
+  Divider
 } from '@mui/material'
-import { ExpandMore, Launch } from '@mui/icons-material'
+import { Launch } from '@mui/icons-material'
 import { Link, useLocation } from 'react-router-dom'
 import { Tab } from '../../utils/tabs'
 import { leagueID } from '../../utils/leagueInfo'
-import { styled } from '@mui/material/styles'
 
 interface NavLargeProps {
   tabs: Tab[]
   currentTab?: Tab
 }
-
-const DropdownContainer = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  display: 'inline-block',
-  '&:hover .dropdown-menu': {
-    display: 'block',
-  }
-}))
-
-const DropdownMenu = styled(Paper)(({ theme }) => ({
-  position: 'absolute',
-  top: '100%',
-  left: 0,
-  display: 'none',
-  minWidth: '200px',
-  zIndex: 1000,
-  marginTop: theme.spacing(0.5),
-  boxShadow: theme.shadows[3],
-}))
 
 export function NavLarge({ tabs, currentTab }: NavLargeProps) {
   const location = useLocation()
@@ -44,9 +22,21 @@ export function NavLarge({ tabs, currentTab }: NavLargeProps) {
     window.open(`https://sleeper.app/leagues/${leagueID}`, '_blank')
   }
 
+  const leagueInfoItems = [
+    { label: '📋 Rosters', path: '/rosters' },
+    { label: '👥 All Managers', path: '/managers' },
+    { label: '📊 Standings', path: '/standings' },
+    { label: '🔥 Rivalry', path: '/rivalry' },
+    { label: '📝 Drafts', path: '/drafts' },
+    { label: '🏆 Trophy Room', path: '/awards' },
+    { label: '📈 Records', path: '/records' },
+    { label: '📜 By Laws', path: '/constitution' },
+  ]
+
   return (
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', padding: 1 }}>
+      {/* Main Navigation Row */}
+      <Box sx={{ display: 'flex', alignItems: 'center', padding: 1, backgroundColor: '#f8f9fa' }}>
         {/* Regular tabs */}
         {tabs.filter(tab => !tab.nest).map((tab) => (
           <Button
@@ -66,60 +56,21 @@ export function NavLarge({ tabs, currentTab }: NavLargeProps) {
           </Button>
         ))}
 
-        {/* League Info Hover Dropdown */}
-        <DropdownContainer>
-          <Button
-            endIcon={<ExpandMore />}
-            sx={{ 
-              margin: 1,
-              textTransform: 'none',
-              color: 'inherit',
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.04)'
-              }
-            }}
-          >
-            League Info
-          </Button>
-          
-          <DropdownMenu className="dropdown-menu">
-            <MenuList>
-              <MenuItem component={Link} to="/rosters">
-                Rosters
-              </MenuItem>
-              <MenuItem component={Link} to="/managers">
-                All Managers
-              </MenuItem>
-              <MenuItem component={Link} to="/standings">
-                Standings
-              </MenuItem>
-              <MenuItem component={Link} to="/rivalry">
-                Rivalry
-              </MenuItem>
-              <MenuItem component={Link} to="/drafts">
-                Drafts
-              </MenuItem>
-              <MenuItem component={Link} to="/awards">
-                Trophy Room
-              </MenuItem>
-              <MenuItem component={Link} to="/records">
-                Records
-              </MenuItem>
-              <MenuItem component={Link} to="/constitution">
-                By Laws
-              </MenuItem>
-              <MenuItem 
-                onClick={openSleeperApp}
-                sx={{ cursor: 'pointer' }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  Open Sleeper App
-                  <Launch fontSize="small" />
-                </Box>
-              </MenuItem>
-            </MenuList>
-          </DropdownMenu>
-        </DropdownContainer>
+        {/* League Info Button (Visual Only) */}
+        <Button
+          sx={{ 
+            margin: 1,
+            textTransform: 'none',
+            color: 'primary.main',
+            fontWeight: 'bold',
+            backgroundColor: 'rgba(0, 49, 107, 0.1)',
+            '&:hover': {
+              backgroundColor: 'rgba(0, 49, 107, 0.2)'
+            }
+          }}
+        >
+          📊 League Info ⬇️
+        </Button>
 
         {/* Resources */}
         <Button
@@ -135,6 +86,57 @@ export function NavLarge({ tabs, currentTab }: NavLargeProps) {
           }}
         >
           Resources
+        </Button>
+      </Box>
+
+      {/* League Info Submenu - Always Visible */}
+      <Box sx={{ 
+        backgroundColor: '#ffffff', 
+        borderTop: '1px solid #e0e0e0',
+        padding: '8px 16px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 1,
+        justifyContent: 'center'
+      }}>
+        <Typography variant="caption" color="text.secondary" sx={{ width: '100%', textAlign: 'center', mb: 1 }}>
+          League Info Pages:
+        </Typography>
+        
+        {leagueInfoItems.map((item) => (
+          <Button
+            key={item.path}
+            component={Link}
+            to={item.path}
+            size="small"
+            variant={location.pathname === item.path ? "contained" : "outlined"}
+            sx={{ 
+              textTransform: 'none',
+              fontSize: '0.8rem',
+              minWidth: 'auto',
+              padding: '4px 8px'
+            }}
+          >
+            {item.label}
+          </Button>
+        ))}
+        
+        <Button
+          onClick={openSleeperApp}
+          size="small"
+          variant="outlined"
+          sx={{ 
+            textTransform: 'none',
+            fontSize: '0.8rem',
+            minWidth: 'auto',
+            padding: '4px 8px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5
+          }}
+        >
+          🚀 Open Sleeper App
+          <Launch fontSize="small" />
         </Button>
       </Box>
     </Box>
