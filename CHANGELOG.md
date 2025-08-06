@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2025-02-11
+
+### Fixed
+
+- The upcoming drafts weren't showing the traded players. This happened because of a type mismatch (int vs string).
+
+## [2.5.0] - 2025-02-08
+
+### Added
+
+- Adding Vercel analytics! [(issue #327)](https://github.com/nmelhado/league-page/issues/327)
+    - Go to [Vercel Analytics](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fanalytics&title=Open+Web+Analytics) to enable
+
+## [2.4.4] - 2025-02-05
+
+### Fixed
+
+- Fixed full blog post bug [(issue #341)](https://github.com/nmelhado/league-page/issues/341)
+
+## [2.4.3] - 2025-02-01
+
+### Fixed
+
+- Fixed the broken buttons below the bar charts. Now clicking on them will actually change the bar chart.
+
+## [2.4.2] - 2025-01-26
+
+### Fixed
+
+- Fixed bug where league info sub-menu starts opened if you open up on one of those pages
+
+## [2.4.1] - 2025-01-26
+
+### Fixed
+
+- Fixed duplicated playoff stat issue. [(issue #315)](https://github.com/nmelhado/league-page/issues/315)
+
+## [2.4.0] - 2025-01-26
+
+### Fixed
+
+- Updated dependencies, mainly around Svelte
+    - Breaking change, so I had to also update some files to get everything working again
+    - Some files are still using old Svelte syntax, will update them as I come across them
+
 ## [2.3.5] - 2024-04-27
 
 ### Fixed

@@ -99,8 +99,8 @@ const buildFromScratch = (rosters, previousOrder, rounds, picks, regularSeasonLe
 	}
 
 	for(const pick of picks) {
-		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
+		if(pick.owner_id === pick.roster_id || pick.round > rounds) continue;
+		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id.toString())] = pick.owner_id;
 	}
 
 	let accuracy = (progression + 1) / (regularSeasonLength + 1);
@@ -136,7 +136,11 @@ const buildConfirmed = (draftOrderObj, rounds, picks, players = null, type = nul
 	} else {
 		for(const pick of picks) {
 			if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
+			try {
+				draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)] = pick.owner_id;
+			} catch (error) {
+				console.error(`Possibly invaid roster ID?: ${pick.roster_id}`, error);
+			}
 		}
 	}
 
@@ -150,7 +154,11 @@ const completedNonAuction = ({players, draft, picks, draftOrder, rounds}) => {
 	}
 	for(const pick of picks) {
 		if(pick.owner_id == pick.roster_id || pick.round > rounds) continue;
-		draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = pick.owner_id;
+		try {
+			draft[pick.round - 1][draftOrder.indexOf(pick.roster_id)].newOwner = pick.owner_id;
+		} catch (error) {
+			console.error(`Possibly invaid roster ID?: ${pick.roster_id}`, error);
+		}
 	}
 	return draft;
 }

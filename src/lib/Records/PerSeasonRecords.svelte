@@ -158,7 +158,7 @@
 <div class="buttonHolder">
     <Group variant="outlined">
         {#each years as {year}, ix}
-            <Button class="selectionButtons" on:click={() => display = ix} variant="{display == ix ? "raised" : "outlined"}">
+            <Button class="selectionButtons" onclick={() => display = ix} variant="{display == ix ? "raised" : "outlined"}">
                 <Label>{year}</Label>
             </Button>
         {/each}

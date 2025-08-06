@@ -16,13 +16,13 @@
     onMount(loadAccuracy);
 
     function loadAccuracy() {
-        if(!accuracy) return;
+        if(!accuracy || accuracy === 1) return;
         let timer;
         progress = 0;
         closed = false;
         clearInterval(timer);
         timer = setInterval(() => {
-            progress += 0.01;
+            progress += 0.02;
             if (progress >= accuracy) {
                 clearInterval(timer);
                 if (progress >= 1) {
@@ -107,7 +107,7 @@
     }
 </style>
 
-{#if accuracy  && !closed}
+{#if accuracy && accuracy !== 1 && !closed}
     <div class="accuracy">
         <div class="accuracyText">
             Upcomig draft order accuracy: {parseInt(progress*100)}%
@@ -123,9 +123,9 @@
             {#each draftOrder as draftPosition}
                 {#if draftPosition}
                     <Cell class="draftTeam">
-                        <img class="avatar clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})} src="{getAvatarFromTeamManagers(leagueTeamManagers, draftPosition, year)}" alt="{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)} avatar"/>
+                        <img class="avatar clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})} src="{getAvatarFromTeamManagers(leagueTeamManagers, draftPosition, year)}" alt="{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)} avatar"/>
                         <br />
-                        <span class="clickable" on:click={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})}>{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)}{@html getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year) != getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition) ? `<br /><span class="curDraftName">(${getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition)})</span>` : ''}</span>
+                        <span class="clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: draftPosition})}>{getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year)}{@html getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition, year) != getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition) ? `<br /><span class="curDraftName">(${getTeamNameFromTeamManagers(leagueTeamManagers, draftPosition)})</span>` : ''}</span>
                     </Cell>
                 {/if}
             {/each}

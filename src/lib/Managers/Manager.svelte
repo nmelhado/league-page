@@ -266,23 +266,23 @@
         <div class="managerNav upper">
             <Group variant="outlined">
                 {#if manager == 0}
-                    <Button disabled class="selectionButtons" on:click={() => changeManager(parseInt(manager) - 1, true)} variant="outlined">
+                    <Button disabled class="selectionButtons" onclick={() => changeManager(parseInt(manager) - 1, true)} variant="outlined">
                         <Label>Previous Manager</Label>
                     </Button>
                 {:else}
-                    <Button class="selectionButtons" on:click={() => changeManager(parseInt(manager) - 1, true)} variant="outlined">
+                    <Button class="selectionButtons" onclick={() => changeManager(parseInt(manager) - 1, true)} variant="outlined">
                         <Label>Previous Manager</Label>
                     </Button>
                 {/if}
-                <Button class="selectionButtons" on:click={() => goto('/managers')} variant="outlined">
+                <Button class="selectionButtons" onclick={() => goto('/managers')} variant="outlined">
                     <Label>All Managers</Label>
                 </Button>
                 {#if manager == managers.length - 1}
-                    <Button disabled class="selectionButtons" on:click={() => changeManager(parseInt(manager) + 1, true)} variant="outlined">
+                    <Button disabled class="selectionButtons" onclick={() => changeManager(parseInt(manager) + 1, true)} variant="outlined">
                         <Label>Next Manager</Label>
                     </Button>
                 {:else}
-                    <Button class="selectionButtons" on:click={() => changeManager(parseInt(manager) + 1, true)} variant="outlined">
+                    <Button class="selectionButtons" onclick={() => changeManager(parseInt(manager) + 1, true)} variant="outlined">
                         <Label>Next Manager</Label>
                     </Button>
                 {/if}
@@ -331,23 +331,23 @@
     <div class="managerNav">
         <Group variant="outlined">
             {#if manager == 0}
-                <Button disabled class="selectionButtons" on:click={() => changeManager(parseInt(manager) - 1)} variant="outlined">
+                <Button disabled class="selectionButtons" onclick={() => changeManager(parseInt(manager) - 1)} variant="outlined">
                     <Label>Previous Manager</Label>
                 </Button>
             {:else}
-                <Button class="selectionButtons" on:click={() => changeManager(parseInt(manager) - 1)} variant="outlined">
+                <Button class="selectionButtons" onclick={() => changeManager(parseInt(manager) - 1)} variant="outlined">
                     <Label>Previous Manager</Label>
                 </Button>
             {/if}
-            <Button class="selectionButtons" on:click={() => goto('/managers')} variant="outlined">
+            <Button class="selectionButtons" onclick={() => goto('/managers')} variant="outlined">
                 <Label>All Managers</Label>
             </Button>
             {#if manager == managers.length - 1}
-                <Button disabled class="selectionButtons" on:click={() => changeManager(parseInt(manager) + 1)} variant="outlined">
+                <Button disabled class="selectionButtons" onclick={() => changeManager(parseInt(manager) + 1)} variant="outlined">
                     <Label>Next Manager</Label>
                 </Button>
             {:else}
-                <Button class="selectionButtons" on:click={() => changeManager(parseInt(manager) + 1)} variant="outlined">
+                <Button class="selectionButtons" onclick={() => changeManager(parseInt(manager) + 1)} variant="outlined">
                     <Label>Next Manager</Label>
                 </Button>
             {/if}

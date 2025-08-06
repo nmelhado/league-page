@@ -2,9 +2,9 @@
 	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, gotoManager, round } from "./utils/helperFunctions/universalFunctions";
 
 
-    export let leagueTeamManagers, stat, label, xMin, xMax, secondStat, managerID, rosterID, color, year;
+    let {leagueTeamManagers, stat, label, xMin, xMax, secondStat, managerID, rosterID, color, year} = $props();
 
-    $: user = managerID ? leagueTeamManagers.users[managerID] : null;
+    let user = $derived(managerID ? leagueTeamManagers.users[managerID] : null);
 </script>
 
 <style>
@@ -127,8 +127,8 @@
 </style>
 
 <div class="barParent">
-    <img alt="team avatar" on:click={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})} style="border-color: var({color});" class="teamAvatar clickable" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
-    <span class="managerName clickable" on:click={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})}>
+    <img alt="team avatar" onclick={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})} style="border-color: var({color});" class="teamAvatar clickable" src="{user ? `https://sleepercdn.com/avatars/thumbs/${user.avatar}` : getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" />
+    <span class="managerName clickable" onclick={() => gotoManager({year, leagueTeamManagers, managerID, rosterID})}>
         {#if user}
             {user.display_name}
         {:else if rosterID}
