@@ -76,7 +76,7 @@ export const homepageText = `
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Tim</td><td>4</td><td>120.18</td><td>1</td><td>0</td></tr>
+                <tr><td>Tsim</td><td>4</td><td>120.18</td><td>1</td><td>0</td></tr>
                 <tr><td>John</td><td>4</td><td>119.86</td><td>1</td><td>0</td></tr>
                 <tr><td>Vollmuth</td><td>4</td><td>119.08</td><td>1</td><td>0</td></tr>
                 <tr><td>Charlie</td><td>3</td><td>109.72</td><td>1</td><td>0</td></tr>
