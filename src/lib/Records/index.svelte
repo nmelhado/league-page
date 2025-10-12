@@ -4,14 +4,24 @@
     import AllTimeRecords from './AllTimeRecords.svelte';
     import PerSeasonRecords from './PerSeasonRecords.svelte';
 
-    export let leagueData, totals, stale, leagueTeamManagers;
+    let {leagueData, totals, stale, leagueTeamManagers} = $props();;
 
     const refreshTransactions = async () => {
         const newTransactions = await getLeagueTransactions(false, true);
         totals = newTransactions.totals;
     }
 
-    let leagueManagerRecords, leagueRosterRecords, leagueWeekHighs, leagueWeekLows, allTimeClosestMatchups, allTimeBiggestBlowouts, mostSeasonLongPoints, leastSeasonLongPoints, seasonWeekRecords, currentYear, lastYear;
+    let leagueManagerRecords = $state();
+    let leagueRosterRecords = $state();
+    let leagueWeekHighs = $state();
+    let leagueWeekLows = $state();
+    let allTimeClosestMatchups = $state();
+    let allTimeBiggestBlowouts = $state();
+    let mostSeasonLongPoints = $state();
+    let leastSeasonLongPoints = $state();
+    let seasonWeekRecords = $state();
+    let currentYear = $state();
+    let lastYear = $state();
 
     const refreshRecords = async () => {
         const newRecords = await getLeagueRecords(true);
@@ -20,12 +30,12 @@
         leagueData = newRecords;
     }
 
-    let key = "regularSeasonData";
+    let key = $state("regularSeasonData");
 
-    const refreshData = (lD, k) => {
-        if(!lD || !lD[k]) return;
+    $effect(() => {
+        if(!leagueData || !leagueData[key]) return;
 
-        const selectedLeagueData = lD[k];
+        const selectedLeagueData = leagueData[key];
 
         leagueManagerRecords = selectedLeagueData.leagueManagerRecords;
         leagueRosterRecords = selectedLeagueData.leagueRosterRecords;
@@ -38,9 +48,7 @@
         seasonWeekRecords = selectedLeagueData.seasonWeekRecords;
         currentYear = selectedLeagueData.currentYear;
         lastYear = selectedLeagueData.lastYear;
-    }
-
-    $:refreshData(leagueData, key);
+    });
 
     if(stale) {
         refreshTransactions();
@@ -50,7 +58,7 @@
         refreshRecords();
     }
 
-    let display = "allTime"
+    let display = $state("allTime");
 
 </script>
 
@@ -101,19 +109,19 @@
 
     <div class="buttonHolder">
         <Group variant="outlined">
-            <Button class="selectionButtons" on:click={() => key = "regularSeasonData"} variant="{key == "regularSeasonData" ? "raised" : "outlined"}">
+            <Button class="selectionButtons" onclick={() => key = "regularSeasonData"} variant="{key == "regularSeasonData" ? "raised" : "outlined"}">
                 <Label>Regular Season</Label>
             </Button>
-            <Button class="selectionButtons" on:click={() => key = "playoffData"} variant="{key == "playoffData" ? "raised" : "outlined"}">
+            <Button class="selectionButtons" onclick={() => key = "playoffData"} variant="{key == "playoffData" ? "raised" : "outlined"}">
                 <Label>Playoffs</Label>
             </Button>
         </Group>
         <br />
         <Group variant="outlined">
-            <Button class="selectionButtons" on:click={() => display = "allTime"} variant="{display == "allTime" ? "raised" : "outlined"}">
+            <Button class="selectionButtons" onclick={() => display = "allTime"} variant="{display == "allTime" ? "raised" : "outlined"}">
                 <Label>All-Time Records</Label>
             </Button>
-            <Button class="selectionButtons" on:click={() => display = "season"} variant="{display == "season" ? "raised" : "outlined"}">
+            <Button class="selectionButtons" onclick={() => display = "season"} variant="{display == "season" ? "raised" : "outlined"}">
                 <Label>Season Records</Label>
             </Button>
         </Group>

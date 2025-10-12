@@ -100,7 +100,7 @@
 {#if total > 0 && totPages > 1 }
     <div class="paginationBar">
         {#if page > 0}
-            <Icon class="material-icons button" on:click={() => changePage(page - 1)}>chevron_left</Icon>
+            <Icon class="material-icons button" onclick={() => changePage(page - 1)}>chevron_left</Icon>
         {:else}
             <span class="placeholder" />
         {/if}
@@ -111,12 +111,12 @@
                 {:else if pageLabel == "..."}
                     <span class="pg spacer">{pageLabel}</span>
                 {:else}
-                    <span class="dest pg" on:click={() => changePage(pageLabel - 1)}>{pageLabel}</span>
+                    <span class="dest pg" onclick={() => changePage(pageLabel - 1)}>{pageLabel}</span>
                 {/if}
             {/each}
         </div>
         {#if page < totPages - 1}
-            <Icon class="material-icons button" on:click={() => changePage(page + 1)}>chevron_right</Icon>
+            <Icon class="material-icons button" onclick={() => changePage(page + 1)}>chevron_right</Icon>
         {:else}
             <span class="placeholder" />
         {/if}

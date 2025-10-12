@@ -111,7 +111,7 @@
         <Group variant="outlined">
             {#each graphs as graph, ix}
                 {#if ix < 4}
-                    <Button class="selectionButtons" on:click={() => curGraph = ix} variant="{curGraph == ix ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => curGraph = ix} variant="{curGraph == ix ? "raised" : "outlined"}">
                         <Label>{graph.short}</Label>
                     </Button>
                 {/if}
@@ -121,7 +121,7 @@
         <Group variant="outlined">
             {#each graphs as graph, ix}
                 {#if ix > 3}
-                    <Button class="selectionButtons" on:click={() => curGraph = ix} variant="{curGraph == ix ? "raised" : "outlined"}">
+                    <Button class="selectionButtons" onclick={() => curGraph = ix} variant="{curGraph == ix ? "raised" : "outlined"}">
                         <Label>{graph.short}</Label>
                     </Button>
                 {/if}

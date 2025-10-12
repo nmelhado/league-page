@@ -5,21 +5,25 @@ export const tabs = [
         icon: 'home',
         label: 'Home',
         dest: '/',
+        key: 'home',
     },
     {
         icon: 'sports',
         label: 'Matchups',
         dest: '/matchups',
+        key: 'matchups',
     },
     {
         icon: 'swap_horiz',
         label: 'Trades & Waivers',
         dest: '/transactions',
+        key: 'transactions',
     },
     {
         icon: 'view_comfy',
         label: 'League Info',
         nest: true,
+        key: 'league_info',
         children: [
             {
                 icon: 'storage',

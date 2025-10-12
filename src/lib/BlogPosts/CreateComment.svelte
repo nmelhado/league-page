@@ -51,16 +51,16 @@
 
     <div class="submitArea">
         <Textfield class="shaped-outlined" variant="outlined"bind:value={author} label="Your Sleeper Username" />
-        <Button on:click={() => submit()} variant="unelevated">
+        <Button onclick={() => submit()} variant="unelevated">
             <Label>Submit Comment</Label>
         </Button>
-        <Button on:click={() => toggleShow()} color="secondary" variant="unelevated">
+        <Button onclick={() => toggleShow()} color="secondary" variant="unelevated">
             <Label>Cancel</Label>
         </Button>
     </div>
 {:else}
     <div class="submitArea">
-        <Button on:click={() => toggleShow()} variant="unelevated">
+        <Button onclick={() => toggleShow()} variant="unelevated">
             <Label>Leave a Comment</Label>
         </Button>
     </div>

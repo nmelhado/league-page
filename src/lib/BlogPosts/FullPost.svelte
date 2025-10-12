@@ -1,6 +1,6 @@
 <script>
 	import LinearProgress from '@smui/linear-progress';
-    import { generateParagraph } from "$lib/utils/helper";
+    import { generateParagraph, waitForAll } from "$lib/utils/helper";
     import { onMount } from "svelte";
     import Comments from "./Comments.svelte";
 	import AuthorAndDate from './AuthorAndDate.svelte';
@@ -15,9 +15,12 @@
 
     let loadingComments = true;
     let total, comments;
+    let leagueTeamManagersDataLoaded, postsDataLoaded;
 
     onMount(async()=> {
-        const post = postsData.posts.filter(p => p.sys.id === postID)[0];
+        [leagueTeamManagersDataLoaded, postsDataLoaded] = await waitForAll(leagueTeamManagersData,
+        postsData);
+        const post = postsDataLoaded.posts.filter(p => p.sys.id === postID)[0];
         id = post.sys.id;
 
         if(post != null) {
@@ -211,12 +214,12 @@
 
         <hr class="divider" />
 
-        <AuthorAndDate {type} leagueTeamManagers={leagueTeamManagersData} {author} {createdAt} />
+        <AuthorAndDate {type} leagueTeamManagers={leagueTeamManagersDataLoaded} {author} {createdAt} />
 
         <!-- display comments -->
         {#if !loadingComments}
             <hr class="divider commentDivider" />
-            <Comments leagueTeamManagers={leagueTeamManagersData} {comments} {total} postID={id} />
+            <Comments leagueTeamManagers={leagueTeamManagersDataLoaded} {comments} {total} postID={id} />
         {/if}
 
     </div>
