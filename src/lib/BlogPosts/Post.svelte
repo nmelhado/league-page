@@ -3,31 +3,37 @@
     import { fly } from "svelte/transition";
 	import AuthorAndDate from "./AuthorAndDate.svelte";
 
-    export let leagueTeamManagers, post, createdAt, id = null, direction = 1;
+    let { leagueTeamManagers, post, createdAt, id = null, direction = 1 } = $props();
 
     let safePost = false;
     let title, body, type, author;
 
-    if(post != null) {
+    // Safely validate post structure
+    if(post && typeof post === 'object') {
+        // Safely destructure post properties
         ({title, body, type, author} = post);
-        if(!title) {
-            console.error('Invalid post: No title provided');
-        } else if(!body) {
-            console.error(`Invalid post (${title}): No body provided`)
-        } else if(!type) {
-            console.error(`Invalid post (${title}): No type provided`)
-        } else if(!author) {
-            console.error(`Invalid post (${title}): No author provided`)
+        
+        // Validate required fields exist and are not empty
+        if(!title || typeof title !== 'string' || title.trim() === '') {
+            console.error('Invalid post: No title provided or title is empty');
+        } else if(!body || typeof body !== 'object') {
+            console.error(`Invalid post (${title}): No body provided or body is not an object`)
+        } else if(!type || typeof type !== 'string' || type.trim() === '') {
+            console.error(`Invalid post (${title}): No type provided or type is empty`)
+        } else if(!author || typeof author !== 'string' || author.trim() === '') {
+            console.error(`Invalid post (${title}): No author provided or author is empty`)
         } else {
             safePost = true;
         }
+    } else {
+        console.error('Invalid post: Post is null, undefined, or not an object');
     }
 
     const duration = 300;
 
     let e;
 
-    $: isOverflown = e ? e.scrollHeight > e.clientHeight : false;
+    let isOverflown = $derived(e ? e.scrollHeight > e.clientHeight : false);
 </script>
 
 <style>

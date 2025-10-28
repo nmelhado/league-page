@@ -1,7 +1,7 @@
 <script>
 	import { Row, Cell } from '@smui/data-table';
 	
-	export let player;
+	let { player } = $props();
 
 	const playerSLotClass = player.slot.replace('/', '').replace('SUPER_', 'S-').replace('REC_', 'R-');
 	const playerSlot = player.slot.replace('SUPER_', 'S ').replace('REC_', 'R ');
@@ -94,6 +94,10 @@
 		background-color: var(--BN);
 	}
 
+	.TAXI {
+		background-color: var(--TAXI, #9c27b0);
+	}
+
 	:global(.slot) {
 		width: 22px !important;
     	padding: 1px 6px 1px 8px !important;
@@ -180,6 +184,10 @@
 
 	.text-DB {
 		color: var(--DB);
+	}
+
+	.text-TAXI {
+		color: var(--TAXI, #9c27b0);
 	}
 
 	@media (max-width: 460px) {

@@ -1,16 +1,17 @@
 <script>
     import {round} from '$lib/utils/helper'
-  	import RecordsAndRankings from './RecordsAndRankings.svelte';
+    import { getRosterIDFromManagerID } from '$lib/utils/helperFunctions/universalFunctions';
+	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
-    export let key, leagueManagerRecords, leagueTeamManagers, leagueWeekHighs, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals;
+    let { key, leagueManagerRecords, leagueTeamManagers, leagueWeekHighs, leagueWeekLows, allTimeBiggestBlowouts, allTimeClosestMatchups, mostSeasonLongPoints, leastSeasonLongPoints, transactionTotals } = $props();
 
-    let winPercentages = [];
-    let lineupIQs = [];
-    let fptsHistories = [];
-    let tradesData = [];
-    let waiversData = [];
+    let winPercentages = $state([]);
+    let lineupIQs = $state([]);
+    let fptsHistories = $state([]);
+    let tradesData = $state([]);
+    let waiversData = $state([]);
 
-    let showTies = false;
+    let showTies = $state(false);
     
     for(const managerID in transactionTotals.allTime) {
         tradesData.push({
@@ -35,8 +36,14 @@
         for(const key in lRR) {
             const leagueManagerRecord = lRR[key];
             const denominator = (leagueManagerRecord.wins + leagueManagerRecord.ties + leagueManagerRecord.losses) > 0 ? (leagueManagerRecord.wins + leagueManagerRecord.ties + leagueManagerRecord.losses) : 1;
+            
+            // Get rosterID for this managerID to support co-owner display
+            const rosterInfo = getRosterIDFromManagerID(leagueTeamManagers, key);
+            const rosterID = rosterInfo ? rosterInfo.rosterID : null;
+            
             winPercentages.push({
                 managerID: key,
+                rosterID: rosterID,
                 percentage: round((leagueManagerRecord.wins + leagueManagerRecord.ties / 2) / denominator * 100),
                 wins: leagueManagerRecord.wins,
                 ties: leagueManagerRecord.ties,
@@ -45,6 +52,7 @@
 
             let lineupIQ = {
                 managerID: key,
+                rosterID: rosterID,
                 fpts: round(leagueManagerRecord.fptsFor),
             }
 
@@ -57,6 +65,7 @@
         
             fptsHistories.push({
                 managerID: key,
+                rosterID: rosterID,
                 fptsFor: round(leagueManagerRecord.fptsFor),
                 fptsAgainst: round(leagueManagerRecord.fptsAgainst),
                 fptsPerGame: round(leagueManagerRecord.fptsFor / denominator),
@@ -66,12 +75,18 @@
         }
 
         for(const managerID in transactionTotals.allTime) {
+            // Get rosterID for this managerID to support co-owner display
+            const rosterInfo = getRosterIDFromManagerID(leagueTeamManagers, managerID);
+            const rosterID = rosterInfo ? rosterInfo.rosterID : null;
+            
             tradesData.push({
                 managerID,
+                rosterID: rosterID,
                 trades: transactionTotals.allTime[managerID].trade,
             })
             waiversData.push({
                 managerID,
+                rosterID: rosterID,
                 waivers: transactionTotals.allTime[managerID].waiver,
             })
         }
@@ -84,7 +99,9 @@
         waiversData.sort((a, b) => b.waivers - a.waivers);
     }
 
-    $:setRankingsData(leagueManagerRecords)
+    $effect(() => {
+        setRankingsData(leagueManagerRecords);
+    });
 </script>
 
 <RecordsAndRankings

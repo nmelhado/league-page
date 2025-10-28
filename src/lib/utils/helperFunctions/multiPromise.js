@@ -1,3 +1,3 @@
 export const waitForAll = async (...ps) => {
-    return Promise.all(ps)
-}
+  return Promise.all(ps);
+};

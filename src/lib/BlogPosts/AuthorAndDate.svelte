@@ -1,7 +1,7 @@
 <script>
     import { parseDate, getAuthor, getAvatar } from "$lib/utils/helper";
 
-    export let type, leagueTeamManagers, author, createdAt;
+    let { type, leagueTeamManagers, author, createdAt } = $props();
 </script>
 
 <style>

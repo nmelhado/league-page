@@ -1,7 +1,7 @@
 <script>
     import Paper, { Title, Content } from '@smui/paper';
 
-    export let article;
+    let { article } = $props();
 </script>
 
 <style>

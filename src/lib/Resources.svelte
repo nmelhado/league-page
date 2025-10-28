@@ -94,8 +94,16 @@ import { dynasty } from './utils/helper';
             url: "https://www.fantasycalc.com/trade-calculator",
             icon: "calculate",
             premium: false,
-            separator: false,
+            separator: true,
             dynastyOnly: false,
+        },
+        {
+            name: "Keep, Trade, Cut League Power Rankings",
+            url: "https://keeptradecut.com/dynasty/power-rankings/league-overview?leagueId=1180244317552857088&platform=2",
+            icon: "trending_up",
+            premium: false,
+            separator: false,
+            dynastyOnly: true,
         },
     ];
 </script>

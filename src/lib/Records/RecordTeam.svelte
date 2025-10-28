@@ -1,7 +1,7 @@
 <script>
 	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, renderManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
 
-    export let leagueTeamManagers, managerID = null, rosterID = null, year, compressed = false, points = null;
+    let { leagueTeamManagers, managerID = null, rosterID = null, year, compressed = false, points = null } = $props();
 
     let user = null;
 

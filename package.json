@@ -53,11 +53,14 @@
     "smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
     "smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "format": "prettier --write --plugin-search-dir=. .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "type": "module",
   "dependencies": {
-    "@vercel/analytics": "^1.4.1",
+    "@vercel/analytics": "^1.5.0",
     "contentful": "^10.6.7",
     "contentful-management": "^10.46.4",
     "cookie": "^0.7.0",
@@ -76,16 +79,19 @@
     "@smui/tab": "^8.0.0-beta.3",
     "@smui/tab-bar": "^8.0.0-beta.3",
     "@smui/textfield": "^8.0.0-beta.3",
-    "@sveltejs/adapter-node": "^5.2.12",
-    "@sveltejs/adapter-vercel": "^5.5.3",
-    "@sveltejs/kit": "^2.16.1",
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@sveltejs/adapter-node": "^4.0.1",
+    "@sveltejs/adapter-vercel": "^4.0.5",
+    "@sveltejs/kit": "^2.47.3",
+    "@sveltejs/vite-plugin-svelte": "^5.1.1",
+    "@vitest/coverage-v8": "^4.0.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-svelte": "^2.46.1",
+    "jsdom": "^25.0.1",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.3",
     "smui-theme": "^8.0.0-beta.3",
-    "svelte": "^5.19.2"
+    "svelte": "^5.19.2",
+    "vitest": "^4.0.2"
   }
 }

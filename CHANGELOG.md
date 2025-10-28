@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Adding Vercel analytics! [(issue #327)](https://github.com/nmelhado/league-page/issues/327)
-    - Go to [Vercel Analytics](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fanalytics&title=Open+Web+Analytics) to enable
+  - Go to [Vercel Analytics](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fanalytics&title=Open+Web+Analytics) to enable
 
 ## [2.4.4] - 2025-02-05
 
@@ -44,8 +44,8 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Updated dependencies, mainly around Svelte
-    - Breaking change, so I had to also update some files to get everything working again
-    - Some files are still using old Svelte syntax, will update them as I come across them
+  - Breaking change, so I had to also update some files to get everything working again
+  - Some files are still using old Svelte syntax, will update them as I come across them
 
 ## [2.3.5] - 2024-04-27
 
@@ -72,7 +72,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Add positional key to rosters. [(enhancement #261)](https://github.com/nmelhado/league-page/issues/261)
-    - Aso added team logo and removed the large team text to better use the space
+  - Aso added team logo and removed the large team text to better use the space
 
 ## [2.3.2] - 2023-09-07
 
@@ -119,7 +119,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Fix resources bug. NBC Sports Edge API no longer works and was breaking the resources page [(issue #230)](https://github.com/nmelhado/league-page/issues/230)
-    - Removed it for now. Will try to add it back if I can find the new API
+  - Removed it for now. Will try to add it back if I can find the new API
 
 ## [2.2.4] - 2023-06-25
 
@@ -162,33 +162,33 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added the all new Rivalry page! ([(feature #160)](https://github.com/nmelhado/league-page/issues/160) & [(issue #181)](https://github.com/nmelhado/league-page/issues/181))
-    - The Rivalry page renders a comparisson between any 2 managers (past or prsent in the league)
-    - Possibly the best page on League Page...
+  - The Rivalry page renders a comparisson between any 2 managers (past or prsent in the league)
+  - Possibly the best page on League Page...
 
 ### Fixed
 
 - Fix error thrown when no blog is present [(issue #202)](https://github.com/nmelhado/league-page/issues/202)
-    - Turn rosters into a map instead of an array in order to deliver the correct data
+  - Turn rosters into a map instead of an array in order to deliver the correct data
 
 ## [2.1.6] - 2023-04-15
 
 ### Changed
 
 - Upgraded Vite and SvelteKit due to vulnerability issue
-- Fixed bugs due to Sleeper division bug 
-    - Bug broke roster, records, and awards pages
+- Fixed bugs due to Sleeper division bug
+  - Bug broke roster, records, and awards pages
 
 ### Fixed
 
 - Fix standings order issue[(issue #199)](https://github.com/nmelhado/league-page/issues/199)
-    - Turn rosters into a map instead of an array in order to deliver the correct data
+  - Turn rosters into a map instead of an array in order to deliver the correct data
 
 ## [2.1.5] - 2023-01-14
 
 ### Fixed
 
 - Fix standings order issue
-    - Turn rosters into a map instead of an array in order to deliver the correct data
+  - Turn rosters into a map instead of an array in order to deliver the correct data
 
 ## [2.1.4] - 2023-01-13
 
@@ -219,15 +219,15 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Rankings are now organize by manager instead of team! [(issue #164)](https://github.com/nmelhado/league-page/issues/164)
-    - This means that if managers have changed throughout the years, you will now see accurate rankings for a given manager
-    - **To take full advantage of this you need to add managerIDs to the managers object in leagueInfo`src/lib/utils/leagueInfo.js`**
-        - More instructions in the updated [Training Wheels managers instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
+  - This means that if managers have changed throughout the years, you will now see accurate rankings for a given manager
+  - **To take full advantage of this you need to add managerIDs to the managers object in leagueInfo`src/lib/utils/leagueInfo.js`**
+    - More instructions in the updated [Training Wheels managers instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#2-add-managers)
 - Use league specific avatar if avilable [(issue #156)](https://github.com/nmelhado/league-page/issues/156)
 
 ### Fixed
 
 - Standings order issue [(issue #179)](https://github.com/nmelhado/league-page/issues/179)
-    - The re-implememntation of how team and user data is rendered should have fixed this
+  - The re-implememntation of how team and user data is rendered should have fixed this
 
 ## [2.0.2] - 2022-09-29
 
@@ -247,14 +247,14 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Upgraded Vite and SvelteKit [(issue #149)](https://github.com/nmelhado/league-page/issues/149)
-    - **This may be a breaking change. It required a very significant rewrite**
+  - **This may be a breaking change. It required a very significant rewrite**
 
 ### Fixed
 
 - Blog being anabled crashing pages [(issue #141)](https://github.com/nmelhado/league-page/issues/141)
 - Support images and tables in blogs [(issue #140)](https://github.com/nmelhado/league-page/issues/140)
-    - **This is a breaking change for previous blog integrations as it now requires an additional API key!!**
-    - Follow the README or [TRAINING_WHEELS](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) guide to add the additional key and re-enable your blog
+  - **This is a breaking change for previous blog integrations as it now requires an additional API key!!**
+  - Follow the README or [TRAINING_WHEELS](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) guide to add the additional key and re-enable your blog
 - Roster ID mismatch [(issue #155)](https://github.com/nmelhado/league-page/issues/155)
 
 ## [1.3.4] - 2022-07-09
@@ -274,22 +274,22 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - When clicking on a manager from the managers page, the manager indefinitely loads. [issue #117](https://github.com/nmelhado/league-page/issues/117)
-    - RC: [PR #114 Adds playoff records and rankings to the records page](https://github.com/nmelhado/league-page/pull/114)
+  - RC: [PR #114 Adds playoff records and rankings to the records page](https://github.com/nmelhado/league-page/pull/114)
 
 ## [1.3.1] - 2022-04-28
 
 ### Fixed
 
 - Scroll to was not functioning properly on the constitution page, reported in [issue #109](https://github.com/nmelhado/league-page/issues/109)
-    - Added an additional offset to counteract the current scroll position
+  - Added an additional offset to counteract the current scroll position
 
 ## [1.3.0] - 2022-04-27
 
 ### Added
 
 - Playoff records and rankings [feature suggestion #80](https://github.com/nmelhado/league-page/issues/80)
-    - Only looks at playoff bracket, not toilet bowl
-    - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for the suggestion and investigation
+  - Only looks at playoff bracket, not toilet bowl
+  - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for the suggestion and investigation
 
 ### Fixed
 
@@ -321,17 +321,17 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Upgraded [SMUI](https://sveltematerialui.com/) version from 4 to 6
-    - This gives better compatibility with windows deployments and improves some functionality
-    - Removes the need for the VITE workaround script
-    - Adds TS compatibility for those interested
+  - This gives better compatibility with windows deployments and improves some functionality
+  - Removes the need for the VITE workaround script
+  - Adds TS compatibility for those interested
 
 ## [1.2.14] - 2021-01-05
 
 ### Added
 
 - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for implementing this
-    - Added `Single Week Scoring Lows` and `Season-long Scoring Lows`
-    - Cleaned up records interface
+  - Added `Single Week Scoring Lows` and `Season-long Scoring Lows`
+  - Cleaned up records interface
 
 ### Changed
 
@@ -354,45 +354,45 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - PPG Records [#92](https://github.com/nmelhado/league-page/issues/92)
-    - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for implementing this
+  - Big thank you to [OldNewsBlues](https://github.com/OldNewsBlues) for implementing this
 
 ## [1.2.10] - 2022-01-03
 
 ### Fixed
 
-- Bug that affects playoff matchup and standings 
-    - Reported in issue [#98](https://github.com/nmelhado/league-page/issues/98)
+- Bug that affects playoff matchup and standings
+  - Reported in issue [#98](https://github.com/nmelhado/league-page/issues/98)
 
 ## [1.2.7] - 2021-10-20
 
 ### Fixed
 
-- Bug that affects the draft page of keeper leagues 
-    - Reported in issue [#85](https://github.com/nmelhado/league-page/issues/85)
+- Bug that affects the draft page of keeper leagues
+  - Reported in issue [#85](https://github.com/nmelhado/league-page/issues/85)
 
 ## [1.2.6] - 2021-10-07
 
 ### Added
 
 - Docker support to address feature request [#68](https://github.com/nmelhado/league-page/issues/68)
-    - Big thank you to [1600dolo](https://github.com/1600dolo) for implementing this
+  - Big thank you to [1600dolo](https://github.com/1600dolo) for implementing this
 - **WARNING:** This might cause merge conflicts in `package-lock.json`. Going forward shouldn't happen again.
-    - Follow these instructions to [resolve the conflict](https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github). For the most part, you'll most likely want to keep the changes from master (the second change)
+  - Follow these instructions to [resolve the conflict](https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github). For the most part, you'll most likely want to keep the changes from master (the second change)
 
 ## [1.2.5] - 2021-09-27
 
 ### Fixed
 
 - Bug in records
-    - When the records tab was left and returned to multiple times, the total points column would eventually become NaN (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
-    - This bug was also reported in the same issue below, however I missed it so I ended up having to re-open it.
+  - When the records tab was left and returned to multiple times, the total points column would eventually become NaN (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
+  - This bug was also reported in the same issue below, however I missed it so I ended up having to re-open it.
 
 ## [1.2.4] - 2021-09-27
 
 ### Fixed
 
 - Bug in records
-    - Inverse of the correct week was shown (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
+  - Inverse of the correct week was shown (as reported in issue [#77](https://github.com/nmelhado/league-page/issues/77) by [OldNewsBlues](https://github.com/OldNewsBlues))
 
 ## [1.2.3] - 2021-09-26
 
@@ -406,7 +406,7 @@ All notable changes to this project will be documented in this file.
 
 - Added biggest blowout and narrowest victory records
 - Now caching league records for performance
-    - Cached records will load quickly and will be updated after new data is pulled in
+  - Cached records will load quickly and will be updated after new data is pulled in
 
 ### Fixed
 
@@ -414,16 +414,16 @@ All notable changes to this project will be documented in this file.
 
 ### Announcement
 
-- This will be the **real** last update for a while (*probably*)... couldn't help myself. I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up. Feel free to keep adding feature requests as they come to you though.
+- This will be the **real** last update for a while (_probably_)... couldn't help myself. I'm going on paternity leave! I will resume working on feature requests in November and will try to address bugs if they come up. Feel free to keep adding feature requests as they come to you though.
 
 ## [1.2.1] - 2021-09-23
 
 ### Fixed
 
 - Search bar bug that unfocused the input bar after every character typed
-    - If no input has been detected for 5 seconds, update query parameters in url string (updating will still unfocus the input, but (since 5 seconds have passed) the search should be complete)
+  - If no input has been detected for 5 seconds, update query parameters in url string (updating will still unfocus the input, but (since 5 seconds have passed) the search should be complete)
 - The matchups page was always starting on week 1
-    - If no query parameter has been set, use the current week
+  - If no query parameter has been set, use the current week
 
 ### Changed
 
@@ -439,8 +439,8 @@ All notable changes to this project will be documented in this file.
 
 - Ability to view and add comments to blog posts
 - :warning: WARNING !:warning:
-    - This will break previous contentful integrations because it requires you to change the type of API key to a [Content Management API key](https://www.contentful.com/developers/docs/references/authentication/#the-content-management-api)
-    - Please refer to the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) to see how to get the new API key (and then replace the old environment variable with the new one)
+  - This will break previous contentful integrations because it requires you to change the type of API key to a [Content Management API key](https://www.contentful.com/developers/docs/references/authentication/#the-content-management-api)
+  - Please refer to the [Training Wheels blog instructions](https://github.com/nmelhado/league-page/blob/master/TRAINING_WHEELS.md#iii-add-a-blog) to see how to get the new API key (and then replace the old environment variable with the new one)
 
 ## [1.1.2] - 2021-09-17
 
@@ -483,23 +483,23 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Pulling in the IDP projections overloaded Vercel's servers
-    - Reduce the amount returned in player call by shortening variable names
+  - Reduce the amount returned in player call by shortening variable names
 
 ## [1.0.11] - 2021-09-09
 
 ### Fixed
 
 - Pulling in the IDP projections overloaded Vercel's servers
-    - Split up the call into offensive and defensive projections and then combine them afterwards
+  - Split up the call into offensive and defensive projections and then combine them afterwards
 
 ## [1.0.10] - 2021-09-08
 
 ### Fixed
 
 - Fix for [issue #57](https://github.com/nmelhado/league-page/issues/57)
-    - IDP projections were not being properly pulled in (this affected the matchups pages and Power Ranking graph)
-        - Updated the projection URL to pull in IDP projections as well
-    - Also addressed minor bug that caused the matchups page to not refresh projections when the players object refreshes in the background
+  - IDP projections were not being properly pulled in (this affected the matchups pages and Power Ranking graph)
+    - Updated the projection URL to pull in IDP projections as well
+  - Also addressed minor bug that caused the matchups page to not refresh projections when the players object refreshes in the background
 
 ## [1.0.9] - 2021-09-08
 
@@ -518,42 +518,42 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Refresh large data in the background
-    - Both player data and transaction data can take a while to pull from Sleeper
-    - Display the stale data first, while updating the data in the background
-    - When the new data is available, update the UI to reflect the changes
+  - Both player data and transaction data can take a while to pull from Sleeper
+  - Display the stale data first, while updating the data in the background
+  - When the new data is available, update the UI to reflect the changes
 
 ## [1.0.6] - 2021-08-31
 
 ### Added
 
 - Reversal round support
-    - Feature support added by [scottiegarcia](https://github.com/scottiegarcia)
-    - [PR #51](https://github.com/nmelhado/league-page/pull/51)
+  - Feature support added by [scottiegarcia](https://github.com/scottiegarcia)
+  - [PR #51](https://github.com/nmelhado/league-page/pull/51)
 
 ## [1.0.5] - 2021-08-26
 
 ### Fixed
 
 - Some league rosters return null for the players, which breaks power rankings and the rosters page
-    - Bug reported in [issue #49](https://github.com/nmelhado/league-page/issues/49)
-    - For rosters, only compute the bench if the players field is valid
-    - For power rankings, skip teams with no players (if no teams have players, don't display the graph)
+  - Bug reported in [issue #49](https://github.com/nmelhado/league-page/issues/49)
+  - For rosters, only compute the bench if the players field is valid
+  - For power rankings, skip teams with no players (if no teams have players, don't display the graph)
 
 ## [1.0.4] - 2021-08-25
 
 ### Fixed
 
 - Made location, favorite team, and preferred contact nullable for managers
-    - Fallback displayed on all managers page (question mark image)
-    - Fallback location of "Undisclosed location" displayed
-    - Other fields are omitted in the Managers pages
+  - Fallback displayed on all managers page (question mark image)
+  - Fallback location of "Undisclosed location" displayed
+  - Other fields are omitted in the Managers pages
 
 ## [1.0.3] - 2021-08-21
 
 ### Fixed
 
 - Auction leagues did not display drafts correctly
-    - Logic has been addded to handle auction leagues
+  - Logic has been addded to handle auction leagues
 
 ### Changed
 
@@ -564,9 +564,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Sleepr API increments the week value during preseason which created bugs in the homepage, rankings, managers, and matchup pages
-    - Added a fix to only honor the Sleeper week during regular season
+  - Added a fix to only honor the Sleeper week during regular season
 - Transactions were sometimes out of order (if a trade was recently accepted long after the original offer was sent)
-    - League Page now sorts the transaction by update time
+  - League Page now sorts the transaction by update time
 
 <!-- ### Added -->
 <!-- ### Fixed -->

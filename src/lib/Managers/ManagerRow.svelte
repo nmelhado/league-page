@@ -3,7 +3,7 @@
 	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
     import {dynasty} from "$lib/utils/leagueInfo"
 
-    export let manager, leagueTeamManagers, key;
+    let { manager, leagueTeamManagers, key } = $props();
 
     let retired = false;
 

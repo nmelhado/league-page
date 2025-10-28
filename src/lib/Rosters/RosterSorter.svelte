@@ -39,41 +39,62 @@
 	.banner {
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		height: 140px;
-		width: 400px;
+		width: 500px;
 		border-radius: 40px;
 		margin: 10px auto;
+		background-color: #f5f5f5;
+		border: 2px solid #ddd;
+		padding: 0 20px;
+		gap: 20px;
+	}
+
+	.banner-image {
+		height: 120px;
+		width: 200px;
 		background-repeat: no-repeat;
-		background-size: auto 140px;
+		background-size: contain;
+		background-position: center;
+		flex-shrink: 0;
 	}
 
-	.banner-D-1 {
+	.banner-D-1 .banner-image {
 		background-image: url("/division-1-banner.png");
-		background-position: left; 
 	}
 
-	.banner-D-2 {
+	.banner-D-2 .banner-image {
 		background-image: url("/division-2-banner.png");
-		background-position: right; 
 	}
 
-	.banner-D-3 {
+	.banner-D-3 .banner-image {
 		background-image: url("/division-3-banner.png");
-		background-position: left; 
+	}
+
+	.banner-text {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	h2 {
 		text-align: center;
 		font-size: 3em;
+		margin: 0;
+		color: #333;
 	}
 
 	@media (max-width: 460px) {
 		.banner {
 			height: 110px;
-			width: 315px;
-			background-repeat: no-repeat;
-			background-size: auto 110px;
+			width: 380px;
+			padding: 0 15px;
+			gap: 15px;
+		}
+
+		.banner-image {
+			height: 90px;
+			width: 150px;
 		}
 
 		h2 {
@@ -84,9 +105,14 @@
 	@media (max-width: 360px) {
 		.banner {
 			height: 90px;
-			width: 258px;
-			background-repeat: no-repeat;
-			background-size: auto 90px;
+			width: 320px;
+			padding: 0 10px;
+			gap: 10px;
+		}
+
+		.banner-image {
+			height: 70px;
+			width: 120px;
 		}
 
 		h2 {
@@ -129,7 +155,10 @@
 {#each divisions as division, ix}
 	{#if division.name}
 		<div class="banner banner-D-{ix + 1}">
-			<h2>{division.name}</h2>
+			<div class="banner-image"></div>
+			<div class="banner-text">
+				<h2>{division.name}</h2>
+			</div>
 		</div>
 	{/if}
 	<div class="division">

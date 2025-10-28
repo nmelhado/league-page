@@ -2,7 +2,7 @@
     import Button, { Group, Label } from '@smui/button';
 	import Bar from './Bar.svelte';
 
-    export let graphs, leagueTeamManagers, curGraph = 0;
+    let { graphs, leagueTeamManagers, curGraph = 0 } = $props();
 
     const colors = [
         "--barChartOne",
@@ -14,15 +14,15 @@
     ];
 
     // note that due to changig to horizontal, yMin and yMax are now used as xMin and xMax
-    $: xMin = graphs[curGraph].secondStats.length > 0 ? graphs[curGraph].xMin/3 : graphs[curGraph].xMin;
-    $: xMax = graphs[curGraph].xMax;
-    $: stats = graphs[curGraph].stats;
-    $: secondStats = graphs[curGraph].secondStats;
-    $: managerIDs = graphs[curGraph].managerIDs;
-    $: rosterIDs = graphs[curGraph].rosterIDs;
-    $: labels = graphs[curGraph].labels;
-    $: header = graphs[curGraph].header;
-    $: year = graphs[curGraph].year;
+    let xMin = $derived(graphs[curGraph].secondStats.length > 0 ? graphs[curGraph].xMin/3 : graphs[curGraph].xMin);
+    let xMax = $derived(graphs[curGraph].xMax);
+    let stats = $derived(graphs[curGraph].stats);
+    let secondStats = $derived(graphs[curGraph].secondStats);
+    let managerIDs = $derived(graphs[curGraph].managerIDs);
+    let rosterIDs = $derived(graphs[curGraph].rosterIDs);
+    let labels = $derived(graphs[curGraph].labels);
+    let header = $derived(graphs[curGraph].header);
+    let year = $derived(graphs[curGraph].year);
 </script>
 
 <style>

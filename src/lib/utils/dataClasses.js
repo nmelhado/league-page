@@ -1,5 +1,3 @@
 import { Records } from "./Classes/records";
 
-export {
-    Records
-}
+export { Records };

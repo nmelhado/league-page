@@ -1,10 +1,10 @@
 <script>
 	import { Icon } from '@smui/tab';
-    export let total, perPage, page, target, scroll = true;
+    let { total, perPage, page, target, scroll = true } = $props();
 
-    let pageLabels = [];
+    let pageLabels = $state([]);
 
-    $: totPages = Math.ceil(total / perPage);
+    let totPages = $derived(Math.ceil(total / perPage));
 
     const computePages = (curPage, pages, iW) => {
         let tempPageLabels = []
@@ -33,7 +33,9 @@
     }
 
     let innerWidth;
-    $: computePages(page, totPages, innerWidth);
+    $effect(() => {
+        computePages(page, totPages, innerWidth);
+    });
 </script>
 
 <svelte:window bind:innerWidth={innerWidth} />

@@ -18,34 +18,57 @@
     let leagueTeamManagersDataLoaded, postsDataLoaded;
 
     onMount(async()=> {
-        [leagueTeamManagersDataLoaded, postsDataLoaded] = await waitForAll(leagueTeamManagersData,
-        postsData);
-        const post = postsDataLoaded.posts.filter(p => p.sys.id === postID)[0];
-        id = post.sys.id;
-
-        if(post != null) {
-            createdAt = post.sys.createdAt;
-            ({title, body, type, author} = post.fields);
-            if(!title) {
-                console.error('Invalid post: No title provided');
-            } else if(!body) {
-                console.error(`Invalid post (${title}): No body provided`)
-            } else if(!type) {
-                console.error(`Invalid post (${title}): No type provided`)
-            } else if(!author) {
-                console.error(`Invalid post (${title}): No author provided`)
+        try {
+            [leagueTeamManagersDataLoaded, postsDataLoaded] = await waitForAll(leagueTeamManagersData,
+            postsData);
+            
+            // Safely check if posts exist and find the post
+            const post = postsDataLoaded?.posts?.filter(p => p?.sys?.id === postID)?.[0];
+            
+            if(post && post.sys && post.sys.id) {
+                id = post.sys.id;
+                createdAt = post.sys.createdAt;
+                
+                // Safely destructure fields
+                const fields = post.fields || {};
+                ({title, body, type, author} = fields);
+                
+                // Validate required fields
+                if(!title) {
+                    console.error('Invalid post: No title provided');
+                } else if(!body) {
+                    console.error(`Invalid post (${title}): No body provided`)
+                } else if(!type) {
+                    console.error(`Invalid post (${title}): No type provided`)
+                } else if(!author) {
+                    console.error(`Invalid post (${title}): No author provided`)
+                } else {
+                    safePost = true;
+                }
             } else {
-                safePost = true;
+                console.error(`Post with ID ${postID} not found or invalid structure`);
             }
+            
+            loading = false;
+
+            // Only fetch comments if we have a valid post ID
+            if(id) {
+                const res = await fetch(`/api/getBlogComments/${id}`, {compress: true});
+                const commentsData = await res.json();
+
+                total = commentsData?.total || 0;
+                comments = [...(commentsData?.items || [])].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
+            } else {
+                total = 0;
+                comments = [];
+            }
+            loadingComments = false;
+        } catch (error) {
+            console.error('Error loading blog post:', error);
+            loading = false;
+            loadingComments = false;
+            safePost = false;
         }
-        loading = false;
-
-        const res = await fetch(`/api/getBlogComments/${id}`, {compress: true});
-        const commentsData = await res.json();
-
-        total = commentsData.total;
-        comments = [...commentsData.items].sort((a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt));
-        loadingComments = false;
     });
 
     const duration = 300;
