@@ -1,5 +1,5 @@
 <script>
-	import { gotoManager } from '$lib/utils/helper';
+	import { gotoManager } from '$lib/utils/helpers/helper';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import { Icon } from '@smui/icon-button';
 	import RosterRow from "./RosterRow.svelte"

@@ -1,5 +1,5 @@
 <script>
-	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, renderManagerNames } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers, renderManagerNames } from "$lib/utils/helpers/universalFunctions";
 
     export let leagueTeamManagers, managerID = null, rosterID = null, year, compressed = false, points = null;
 

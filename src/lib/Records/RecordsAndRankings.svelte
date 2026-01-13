@@ -1,10 +1,10 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
-    import { generateGraph, gotoManager, round } from '$lib/utils/helper';
+    import { generateGraph } from '$lib/utils/helpers/helper';
 
-  	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
-	import RecordTeam from './RecordTeam.svelte';
-	import BarChart from '$lib/BarChart.svelte';
+	import RecordTable from './RecordTable.svelte';
+	import RankingTable from './RankingTable.svelte';
+	import BarChart from '$lib/shared/components/BarChart.svelte';
 
     export let key, tradesData, waiversData, weekRecords, weekLows, seasonLongRecords, seasonLongLows, showTies, winPercentages, fptsHistories, lineupIQs, prefix, blowouts, closestMatchups, allTime=false, leagueTeamManagers;
 
@@ -233,13 +233,6 @@
         text-align: center;
     }
 
-    .italic {
-        display: block;
-        font-style: italic;
-        font-size: 0.9em;
-        color: var(--g999);
-    }
-
     :global(.recordTable) {
         box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
         margin: 2em;
@@ -264,20 +257,9 @@
         overflow-x: hidden;
     }
 
-    .subTitle {
-        font-style: italic;
-        font-size: 0.7em;
-        color: #888;
-        line-height: 1.2em;
-    }
-
     h4 {
         text-align: center;
         margin: 2em 0 1em;
-    }
-
-    .rankingTableWrapper {
-        width: 25%;
     }
 
     .rankingInner {
@@ -305,11 +287,6 @@
 
     :global(.rank) {
         padding-right: 0;
-    }
-
-    .vs {
-        padding-left: 0.6em;
-        margin: 0.5em 0;
     }
 
     :global(.mdc-data-table__cell, .mdc-data-table__header-cell) {
@@ -361,16 +338,9 @@
             font-size: 0.8em;
             padding: 1px 12px;
         }
-
-        .vsRecord {
-            margin: .6em 0;
-        }
     }
 
     @media (max-width: 480px) {
-        :global(.rank) {
-            padding: 1px 0 1px 5px !important;
-        }
         :global(.rank) {
             padding: 1px 0 1px 5px !important;
         }
@@ -464,197 +434,71 @@
 <h4>{prefix} Records</h4>
 
 <div class="fullFlex">
-    {#if weekRecords && weekRecords.length}
-        <DataTable class="recordTable">
-            <Head>
-                <Row class="rTableHeader">
-                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Records</Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Manager</Cell>
-                    <Cell class="header">Week</Cell>
-                    <Cell class="header">Total Points</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each weekRecords as leagueWeekRecord, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" onclick={() => gotoManager({year: leagueWeekRecord.year || prefix, leagueTeamManagers, rosterID: leagueWeekRecord.rosterID})}>
-                            <RecordTeam {leagueTeamManagers} rosterID={leagueWeekRecord.rosterID} year={allTime ? leagueWeekRecord.year : prefix} />
-                        </Cell>
-                        <Cell>{allTime ? leagueWeekRecord.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekRecord.week}</Cell>
-                        <Cell>{round(leagueWeekRecord.fpts)}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
-    {/if}
+    <RecordTable
+        data={weekRecords}
+        title="{prefix} {key == 'playoffData' ? 'Playoff ' : ''}Single Week Scoring Records"
+        type="week"
+        {allTime}
+        {prefix}
+        {key}
+        {leagueTeamManagers}
+    />
 
-    {#if weekLows && weekLows.length}
-        <DataTable class="recordTable">
-            <Head>
-                <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} {key == "playoffData" ? "Playoff " : ""}Single Week Scoring Lows</Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Manager</Cell>
-                    <Cell class="header">Week</Cell>
-                    <Cell class="header">Total Points</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each weekLows as leagueWeekLow, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" onclick={() => gotoManager({year: leagueWeekLow.year || prefix, leagueTeamManagers, rosterID: leagueWeekLow.rosterID})}>
-                            <RecordTeam {leagueTeamManagers} rosterID={leagueWeekLow.rosterID} year={allTime ? leagueWeekLow.year : prefix} />
-                        </Cell>
-                        <Cell>{allTime ? leagueWeekLow.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{leagueWeekLow.week}</Cell>
-                        <Cell>{round(leagueWeekLow.fpts)}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
+    <RecordTable
+        data={weekLows}
+        title="{prefix} {key == 'playoffData' ? 'Playoff ' : ''}Single Week Scoring Lows"
+        type="week"
+        {allTime}
+        {prefix}
+        {key}
+        {leagueTeamManagers}
+    />
+
+    {#if allTime && key == "regularSeasonData"}
+        <RecordTable
+            data={seasonLongRecords}
+            title="All-Time Highest Season Points"
+            subtitle="Ranked by PPG"
+            type="season"
+            {allTime}
+            {prefix}
+            {key}
+            {leagueTeamManagers}
+        />
     {/if}
 
     {#if allTime && key == "regularSeasonData"}
-        <DataTable class="recordTable">
-            <Head>
-                <Row>
-                    <Cell class="header headerPrimary" colspan=5>All-Time Highest Season Points<span class="italic">Ranked by PPG</span></Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Manager</Cell>
-                    <Cell class="header">Year</Cell>
-                    <Cell class="header">Total Points</Cell>
-                    <Cell class="header">PPG</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each seasonLongRecords as mostSeasonLongPoint, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" onclick={() => gotoManager({year: mostSeasonLongPoint.year, leagueTeamManagers, rosterID: mostSeasonLongPoint.rosterID})}>
-                            <RecordTeam {leagueTeamManagers} rosterID={mostSeasonLongPoint.rosterID} year={mostSeasonLongPoint.year} />
-                        </Cell>
-                        <Cell>{mostSeasonLongPoint.year}</Cell>
-                        <Cell>{round(mostSeasonLongPoint.fpts)}</Cell>
-                        <Cell>{mostSeasonLongPoint.fptsPerGame}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
-    {/if}
-    
-    {#if allTime && key == "regularSeasonData"}
-        <DataTable class="recordTable">
-            <Head>
-                <Row>
-                    <Cell class="header headerPrimary" colspan=5>All-Time Lowest Season Points<span class="italic">Ranked by PPG</span></Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Manager</Cell>
-                    <Cell class="header">Year</Cell>
-                    <Cell class="header">Total Points</Cell>
-                    <Cell class="header">PPG</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each seasonLongLows as leastSeasonLongPoint, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName" onclick={() => gotoManager({year: leastSeasonLongPoint.year, leagueTeamManagers, rosterID: leastSeasonLongPoint.rosterID})}>
-                            <RecordTeam {leagueTeamManagers} rosterID={leastSeasonLongPoint.rosterID} year={leastSeasonLongPoint.year} />
-                        </Cell>
-                        <Cell>{leastSeasonLongPoint.year}</Cell>
-                        <Cell>{round(leastSeasonLongPoint.fpts)}</Cell>
-                        <Cell>{leastSeasonLongPoint.fptsPerGame}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
+        <RecordTable
+            data={seasonLongLows}
+            title="All-Time Lowest Season Points"
+            subtitle="Ranked by PPG"
+            type="season"
+            {allTime}
+            {prefix}
+            {key}
+            {leagueTeamManagers}
+        />
     {/if}
 
-    {#if blowouts && blowouts.length}
-        <DataTable class="recordTable">
-            <Head>
-                <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Largest {key == "playoffData" ? "Playoff " : ""}Blowouts</Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Matchup</Cell>
-                    <Cell class="header">Week</Cell>
-                    <Cell class="header">Differential</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each blowouts as blowout, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName differentialName">
-                            <div class="vsRecord">
-                                <div onclick={() => gotoManager({year: blowout.year || prefix, leagueTeamManagers, rosterID: blowout.home.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.home.rosterID} year={allTime ? blowout.year : prefix} compressed={true} points={round(blowout.home.fpts)} />
-                                </div>
-                                <p class="vs">
-                                    vs
-                                </p>
-                                <div onclick={() => gotoManager({year: blowout.year || prefix, leagueTeamManagers, rosterID: blowout.away.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={blowout.away.rosterID} year={allTime ? blowout.year : prefix} compressed={true} points={round(blowout.away.fpts)} />
-                                </div>
-                            </div>
-                        </Cell>
-                        <Cell>{allTime ? blowout.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{blowout.week}</Cell>
-                        <Cell>{round(blowout.differential)}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
-    {/if}
+    <RecordTable
+        data={blowouts}
+        title="{prefix} Largest {key == 'playoffData' ? 'Playoff ' : ''}Blowouts"
+        type="differential"
+        {allTime}
+        {prefix}
+        {key}
+        {leagueTeamManagers}
+    />
 
-    {#if closestMatchups && closestMatchups.length}
-        <DataTable class="recordTable">
-            <Head>
-                <Row>
-                    <Cell class="header headerPrimary" colspan=4>{prefix} Narrowest {key == "playoffData" ? "Playoff " : ""}Wins</Cell>
-                </Row>
-                <Row>
-                    <Cell class="header rank"></Cell>
-                    <Cell class="header">Matchup</Cell>
-                    <Cell class="header">Week</Cell>
-                    <Cell class="header">Differential</Cell>
-                </Row>
-            </Head>
-            <Body>
-                {#each closestMatchups as closestMatchup, ix}
-                    <Row>
-                        <Cell class="rank">{ix + 1}</Cell>
-                        <Cell class="cellName differentialName">
-                            <div class="vsRecord">
-                                <div onclick={() => gotoManager({year: closestMatchup.year || prefix, leagueTeamManagers, rosterID: closestMatchup.home.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.home.rosterID} year={allTime ? closestMatchup.year : prefix} compressed={true} points={round(closestMatchup.home.fpts)} />
-                                </div>
-                                <p class="vs">
-                                    vs
-                                </p>
-                                <div onclick={() => gotoManager({year: closestMatchup.year || prefix, leagueTeamManagers, rosterID: closestMatchup.away.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} rosterID={closestMatchup.away.rosterID} year={allTime ? closestMatchup.year : prefix} compressed={true} points={round(closestMatchup.away.fpts)} />
-                                </div>
-                            </div>
-                        </Cell>
-                        <Cell>{allTime ? closestMatchup.year + " " : "" }{key == "regularSeasonData" ? "Week " : ""}{closestMatchup.week}</Cell>
-                        <Cell>{round(closestMatchup.differential)}</Cell>
-                    </Row>
-                {/each}
-            </Body>
-        </DataTable>
-    {/if}
+    <RecordTable
+        data={closestMatchups}
+        title="{prefix} Narrowest {key == 'playoffData' ? 'Playoff ' : ''}Wins"
+        type="differential"
+        {allTime}
+        {prefix}
+        {key}
+        {leagueTeamManagers}
+    />
 </div>
 
 <h4>{prefix} {key == "playoffData" ? "Playoff " : ""}Rankings</h4>
@@ -666,140 +510,44 @@
 <div class="rankingHolder">
     <div class="rankingInner" style="margin-left: -{100 * curTable}%;">
         {#if lineupIQs[0]?.potentialPoints}
-            <div class="rankingTableWrapper">
-                <DataTable class="rankingTable">
-                    <Head>
-                        <Row>
-                            <Cell class="header headerPrimary" colspan=5>
-                                {prefix} {key == "playoffData" ? "Playoff " : ""}Lineup IQ Rankings
-                                <div class="subTitle">
-                                    The percentage of potential points each manager has captured
-                                </div>
-                            </Cell>
-                        </Row>
-                        <Row>
-                            <Cell class="header"></Cell>
-                            <Cell class="header">Manager</Cell>
-                            <Cell class="header">Lineup IQ</Cell>
-                            <Cell class="header">Points</Cell>
-                            <Cell class="header">Potential Points</Cell>
-                        </Row>
-                    </Head>
-                    <Body>
-                        {#each lineupIQs as lineupIQ, ix}
-                            <Row>
-                                <Cell>{ix + 1}</Cell>
-                                <Cell class="cellName" onclick={() => gotoManager({year: lineupIQ.year || prefix, leagueTeamManagers, managerID: lineupIQ.managerID, rosterID: lineupIQ.rosterID})}>
-                                    <RecordTeam {leagueTeamManagers} managerID={lineupIQ.managerID} rosterID={lineupIQ.rosterID} year={allTime ? lineupIQ.year : prefix} />
-                                </Cell>
-                                <Cell>{lineupIQ.iq}%</Cell>
-                                <Cell>{round(lineupIQ.fpts)}</Cell>
-                                <Cell>{round(lineupIQ.potentialPoints)}</Cell>
-                            </Row>
-                        {/each}
-                    </Body>
-                </DataTable>
-            </div>
+            <RankingTable
+                data={lineupIQs}
+                title="{prefix} {key == 'playoffData' ? 'Playoff ' : ''}Lineup IQ Rankings"
+                subtitle="The percentage of potential points each manager has captured"
+                type="lineupIQ"
+                {allTime}
+                {prefix}
+                {leagueTeamManagers}
+            />
         {/if}
 
-        <div class="rankingTableWrapper">
-            <DataTable class="rankingTable">
-                <Head>
-                    <Row>
-                        <Cell class="header headerPrimary" colspan=6>{prefix} {key == "playoffData" ? "Playoff " : ""}Win Percentages Rankings</Cell>
-                    </Row>
-                    <Row>
-                        <Cell class="header"></Cell>
-                        <Cell class="header">Manager</Cell>
-                        <Cell class="header">Win %</Cell>
-                        <Cell class="header">Wins</Cell>
-                        {#if showTies}
-                            <Cell class="header">Ties</Cell>
-                        {/if}
-                        <Cell class="header">Losses</Cell>
-                    </Row>
-                </Head>
-                <Body>
-                    {#each winPercentages as winPercentage, ix}
-                        <Row>
-                            <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" onclick={() => gotoManager({year: winPercentage.year || prefix, leagueTeamManagers, rosterID: winPercentage.rosterID, managerID: winPercentage.managerID})}>
-                                <RecordTeam {leagueTeamManagers} managerID={winPercentage.managerID} rosterID={winPercentage.rosterID} year={allTime ? winPercentage.year : prefix} />
-                            </Cell>
-                            <Cell>{winPercentage.percentage}%</Cell>
-                            <Cell>{winPercentage.wins}</Cell>
-                            {#if showTies}
-                                <Cell>{winPercentage.ties}</Cell>
-                            {/if}
-                            <Cell>{winPercentage.losses}</Cell>
-                        </Row>
-                    {/each}
-                </Body>
-            </DataTable>
-        </div>
+        <RankingTable
+            data={winPercentages}
+            title="{prefix} {key == 'playoffData' ? 'Playoff ' : ''}Win Percentages Rankings"
+            type="winPercentage"
+            {allTime}
+            {prefix}
+            {leagueTeamManagers}
+            {showTies}
+        />
 
-        <div class="rankingTableWrapper">
-            <DataTable class="rankingTable">
-                <Head>
-                    <Row>
-                        <Cell class="header headerPrimary" colspan=5>
-                            {prefix} {key == "playoffData" ? "Playoff " : ""}Fantasy Points Rankings
-                        </Cell>
-                    </Row>
-                    <Row>
-                        <Cell class="header"></Cell>
-                        <Cell class="header">Manager</Cell>
-                        <Cell class="header">Points For</Cell>
-                        <Cell class="header">Points Against</Cell>
-                        <Cell class="header">Points Per Game</Cell>
-                    </Row>
-                </Head>
-                <Body>
-                    {#each fptsHistories as fptsHistory, ix}
-                        <Row>
-                            <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" onclick={() => gotoManager({year: fptsHistory.year || prefix, leagueTeamManagers, rosterID: fptsHistory.rosterID, managerID: fptsHistory.managerID})}>
-                                <RecordTeam {leagueTeamManagers} managerID={fptsHistory.managerID} rosterID={fptsHistory.rosterID} year={allTime ? fptsHistory.year : prefix} />
-                            </Cell>
-                            <Cell>{round(fptsHistory.fptsFor)}</Cell>
-                            <Cell>{round(fptsHistory.fptsAgainst)}</Cell>
-                            <Cell>{round(fptsHistory.fptsPerGame)}</Cell>
-                        </Row>
-                    {/each}
-                </Body>
-            </DataTable>
-        </div>
+        <RankingTable
+            data={fptsHistories}
+            title="{prefix} {key == 'playoffData' ? 'Playoff ' : ''}Fantasy Points Rankings"
+            type="fantasyPoints"
+            {allTime}
+            {prefix}
+            {leagueTeamManagers}
+        />
 
-        <div class="rankingTableWrapper">
-            <DataTable class="rankingTable">
-                <Head>
-                    <Row>
-                        <Cell class="header headerPrimary" colspan=4>
-                            {prefix} Transaction Totals
-                        </Cell>
-                    </Row>
-                    <Row>
-                        <Cell class="header"></Cell>
-                        <Cell class="header">Manager</Cell>
-                        <Cell class="header">Trades</Cell>
-                        <Cell class="header">Waivers</Cell>
-                    </Row>
-                </Head>
-                <Body>
-                    {#each transactions as transaction, ix}
-                        <Row>
-                            <Cell>{ix + 1}</Cell>
-                            <Cell class="cellName" onclick={() => gotoManager({year: transaction.year || prefix, leagueTeamManagers, rosterID: transaction.rosterID, managerID: transaction.managerID})}>
-                                <RecordTeam {leagueTeamManagers} managerID={transaction.managerID} rosterID={transaction.rosterID} year={allTime ? transaction.year : prefix} />
-                            </Cell>
-                            <Cell>{transaction.trades}</Cell>
-                            <Cell>{transaction.waivers}</Cell>
-                        </Row>
-                    {/each}
-                </Body>
-            </DataTable>
-        </div>
-
+        <RankingTable
+            data={transactions}
+            title="{prefix} Transaction Totals"
+            type="transactions"
+            {allTime}
+            {prefix}
+            {leagueTeamManagers}
+        />
     </div>
 </div>
 

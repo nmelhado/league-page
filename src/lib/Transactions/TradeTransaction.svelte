@@ -1,6 +1,6 @@
 <script>
-	import { gotoManager } from '$lib/utils/helper';
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { gotoManager } from '$lib/utils/helpers/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
 	import TransactionMove from './TransactionMove.svelte';
 
 	export let transaction, players, leagueTeamManagers;

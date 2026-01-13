@@ -1,6 +1,6 @@
 <script>
-    import {round} from '$lib/utils/helper'
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import {round} from '$lib/utils/helpers/helper'
+	import { getTeamFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
 
     export let matchup, players, active, ix, displayWeek, expandOverride=false, matchupWeek, leagueTeamManagers, year;
 
@@ -162,7 +162,7 @@
 
     :global(.homeGlow) {
         box-shadow: 0 0 6px 4px #3279cf;
-        background-color: #00316b !important;
+        background-color: var(--blueOne) !important;
     }
 
     .away {
@@ -174,7 +174,7 @@
 
     :global(.awayGlow) {
         box-shadow: 0 0 6px 4px #d15454;
-        background-color: #920505 !important;
+        background-color: var(--buttonPrimary) !important;
     }
 
     .name {
@@ -183,7 +183,7 @@
         line-height: 1.1em;
         flex-grow: 1;
         word-break: break-word;
-        color: #fff;
+        color: var(--fff);
         font-style: italic;
     }
 
@@ -194,7 +194,7 @@
 		width: 35px;
 		margin: 0;
 		border: 0.25px solid #777;
-        background-color: #eee;
+        background-color: var(--eee);
 	}
 
 	.playerAvatar {
@@ -317,7 +317,7 @@
 
     .playerTeam {
         display: inline-block;
-        color: #888;
+        color: var(--g888);
         font-style: italic;
         text-align: center;
         font-size: 0.5em;
@@ -416,7 +416,7 @@
 
     .totalPoints {
         line-height: 1.1em;
-        color: #fff;
+        color: var(--fff);
     }
 
     .totalPointsR {
@@ -451,7 +451,7 @@
 
     .playerEmpty {
         height: 100%;
-        color: #555;
+        color: var(--g555);
         font-style: italic;
         display: flex;
         align-items: center;

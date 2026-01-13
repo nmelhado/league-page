@@ -1,5 +1,5 @@
 <script>
-    import {getNflState, getLeagueRosters, getLeagueTeamManagers, waitForAll, loadPlayers, getLeagueData} from '$lib/utils/helper';
+    import {getNflState, getLeagueRosters, getLeagueTeamManagers, waitForAll, loadPlayers, getLeagueData} from '$lib/utils/helpers/helper';
     import PowerRankingsDisplay from './PowerRankingsDisplay.svelte';
     import LinearProgress from '@smui/linear-progress';
     
@@ -36,6 +36,3 @@
 	<!-- promise was rejected -->
 	<p>Something went wrong: {error.message}</p>
 {/await}
-
-
-

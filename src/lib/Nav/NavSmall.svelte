@@ -9,8 +9,8 @@
   	import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
 	import { goto, preloadData } from '$app/navigation';
     import { page } from '$app/state';
-	import { leagueName } from '$lib/utils/helper';
-	import { enableBlog, managers } from '$lib/utils/leagueInfo';
+	import { leagueName } from '$lib/utils/helpers/helper';
+	import { managers } from '$lib/utils/leagueInfo';
 
 	let active = $state(page.url.pathname);
 
@@ -28,13 +28,13 @@
 		top: 15px;
 		left: 15px;
 		font-size: 2em;
-		color: #888;
+		color: var(--g888);
 		padding: 6px;
 		cursor: pointer;
 	}
 
 	:global(.menuIcon:hover) {
-		color: #00316b;
+		color: var(--blueOne);
 	}
 
 	:global(.nav-drawer) {
@@ -72,7 +72,7 @@
 	<Content>
 		<List>
 			{#each tabs as tab}
-				{#if !tab.nest && (tab.label != 'Blog' || (tab.label == 'Blog' && enableBlog))}
+				{#if !tab.nest}
 					<Item href="javascript:void(0)" onSMUIAction={() => selectTab(tab)} ontouchstart={() => preloadData(tab.dest)} onmouseover={() => preloadData(tab.dest)} activated={active == tab.dest} >
 						<Graphic class="material-icons{active == tab.dest ? "" : " nav-item"}" aria-hidden="true">{tab.icon}</Graphic>
 						<Text class="{active == tab.dest ? "" : "nav-item"}">{tab.label}</Text>

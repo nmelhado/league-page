@@ -68,11 +68,11 @@
     :global(.changeWeek) {
         font-size: 3em;
         cursor: pointer;
-        color: #888;
+        color: var(--g888);
     }
 
     :global(.changeWeek:hover) {
-        color: #00316b;
+        color: var(--blueOne);
     }
 
     .spacer {

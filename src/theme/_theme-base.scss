@@ -1,0 +1,257 @@
+// Base theme configuration
+// This file contains the common structure shared between light and dark themes
+// Import this in both light and dark theme files
+
+@use 'sass:color';
+@use '@material/theme/color-palette';
+
+// Import all the styles for the classes.
+@use '@material/typography/mdc-typography';
+// The following classes become available:
+//   mdc-typography--headline1
+//   mdc-typography--headline2
+//   mdc-typography--headline3
+//   mdc-typography--headline4
+//   mdc-typography--headline5
+//   mdc-typography--headline6
+//   mdc-typography--subtitle1
+//   mdc-typography--subtitle2
+//   mdc-typography--body1
+//   mdc-typography--body2
+//   mdc-typography--caption
+//   mdc-typography--button
+//   mdc-typography--overline
+//   mdc-typography--body1
+
+// Import the mixins.
+@use '@material/typography/index' as typography;
+
+// Mixin to apply CSS custom properties
+// This gets called from light/dark theme files with different color values
+@mixin theme-variables(
+  $fff,
+  $fffTransparent,
+  $f8f8f8,
+  $f3f3f3,
+  $eee,
+  $ebebeb,
+  $ddd,
+  $d7d7d7,
+  $ccc,
+  $bbb,
+  $aaa,
+  $g999,
+  $g888,
+  $g666,
+  $g555,
+  $g444,
+  $g333,
+  $g111,
+  $g000,
+  $boxShadowOne,
+  $boxShadowTwo,
+  $boxShadowThree,
+  $ir,
+  $champShadow,
+  $transactHeader,
+  $draftSwapped,
+  $waiverAdd,
+  $waiverDrop,
+  $bracketMatch,
+  $matchupSelected,
+  $fadeOne,
+  $fadeTwo,
+  $fadeThree,
+  $fadeFour,
+  $blueOne,
+  $blueTwo,
+  $r1,
+  $r2,
+  $r3,
+  $headerPrimary,
+  $borderOverride,
+  $rivalryBack,
+  $barChartOne,
+  $barChartTwo,
+  $barChartThree,
+  $barChartFour,
+  $barChartFive,
+  $barChartSix,
+  $compBarOne,
+  $compBarTwo,
+  $compBarOneText,
+  $compBarTwoText,
+  $buttonOutlinedBg,
+  $heroText,
+  $buttonPrimary,
+  $buttonText
+) {
+  :root {
+    --fff: #{$fff};
+    --fffTransparent: #{$fffTransparent};
+    --f8f8f8: #{$f8f8f8};
+    --f3f3f3: #{$f3f3f3};
+    --eee: #{$eee};
+    --ebebeb: #{$ebebeb};
+    --ddd: #{$ddd};
+    --d7d7d7: #{$d7d7d7};
+    --ccc: #{$ccc};
+    --bbb: #{$bbb};
+    --aaa: #{$aaa};
+    --g999: #{$g999};
+    --g888: #{$g888};
+    --g666: #{$g666};
+    --g555: #{$g555};
+    --g444: #{$g444};
+    --g333: #{$g333};
+    --g111: #{$g111};
+    --g000: #{$g000};
+    --boxShadowOne: #{$boxShadowOne};
+    --boxShadowTwo: #{$boxShadowTwo};
+    --boxShadowThree: #{$boxShadowThree};
+    --ir: #{$ir};
+    --champShadow: #{$champShadow};
+    --transactHeader: #{$transactHeader};
+    --draftSwapped: #{$draftSwapped};
+    --waiverAdd: #{$waiverAdd};
+    --waiverDrop: #{$waiverDrop};
+    --bracketMatch: #{$bracketMatch};
+    --matchupSelected: #{$matchupSelected};
+    --fadeOne: #{$fadeOne};
+    --fadeTwo: #{$fadeTwo};
+    --fadeThree: #{$fadeThree};
+    --fadeFour: #{$fadeFour};
+    --blueOne: #{$blueOne};
+    --blueTwo: #{$blueTwo};
+    --r1: #{$r1};
+    --r2: #{$r2};
+    --r3: #{$r3};
+    --headerPrimary: #{$headerPrimary};
+    --borderOverride: #{$borderOverride};
+    --rivalryBack: #{$rivalryBack};
+
+    // Chart bar colors
+    --barChartOne: #{$barChartOne};
+    --barChartTwo: #{$barChartTwo};
+    --barChartThree: #{$barChartThree};
+    --barChartFour: #{$barChartFour};
+    --barChartFive: #{$barChartFive};
+    --barChartSix: #{$barChartSix};
+
+    // Comparison bar colors
+    --compBarOne: #{$compBarOne};
+    --compBarTwo: #{$compBarTwo};
+    --compBarOneText: #{$compBarOneText};
+    --compBarTwoText: #{$compBarTwoText};
+
+    // Brand colors
+    --heroText: #{$heroText};
+    --buttonPrimary: #{$buttonPrimary};
+    --buttonText: #{$buttonText};
+
+    // Positions - These are the same in both themes
+    --QBfade: #ff8fb2;
+    --WRfade: #afd4ff;
+    --RBfade: #6ccac1;
+    --TEfade: #ffd6aa;
+    --Kfade: #deb4ff;
+    --DEfadeFfade: #fffbbc;
+    --PICKSfade: #73b647;
+    --CBfade: #ffcc7a;
+    --SSfade: #b7a1db;
+    --FSfade: #ebe7b3;
+    --DEfade: #b1d0e9;
+    --DLfade: #c392d3;
+    --LBfade: #98c097;
+
+    --QB: #ff2a6d;
+    --WR: #58a7ff;
+    --RB: #00ceb8;
+    --TE: #ffae58;
+    --K: #bd66ff;
+    --Budget: #7947d4;
+    --DL: #ff795a;
+    --LB: #6d7df5;
+    --DB: #ff7cb6;
+    --BN: #b6d0eb;
+  }
+
+  .mdc-button--outlined:not(:disabled) {
+    background-color: #{$buttonOutlinedBg} !important;
+  }
+}
+
+// Common typography styles
+@mixin typography-styles {
+  html {
+    @include typography.typography('body1');
+  }
+
+  h1 {
+    @include typography.typography('headline1');
+  }
+
+  h2 {
+    @include typography.typography('headline2');
+  }
+
+  h3 {
+    @include typography.typography('headline3');
+  }
+
+  h4 {
+    @include typography.typography('headline4');
+  }
+
+  h5 {
+    @include typography.typography('headline5');
+  }
+
+  h6 {
+    @include typography.typography('headline6');
+  }
+
+  caption {
+    @include typography.typography('caption');
+  }
+
+  code,
+  pre {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  small {
+    font-size: 0.9em;
+  }
+
+  big {
+    font-size: 1.1em;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  a {
+    color: #40b3ff;
+  }
+  a:visited {
+    color: color.scale(#40b3ff, $lightness: -35%);
+  }
+}
+
+// Body styles mixin
+@mixin body-styles($surface, $on-surface, $background-gradient-start, $background-gradient-end) {
+  html,
+  body {
+    position: relative;
+    margin: 0;
+    background-color: $surface;
+    color: $on-surface;
+    min-height: 100vh;
+    background: $background-gradient-start;
+    background: linear-gradient(to bottom right, $background-gradient-start, $background-gradient-end);
+    background: -webkit-linear-gradient(to bottom right, $background-gradient-start, $background-gradient-end);
+  }
+}

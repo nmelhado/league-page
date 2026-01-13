@@ -1,6 +1,6 @@
 <script>
-	import { gotoManager } from '$lib/utils/helper';
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { gotoManager } from '$lib/utils/helpers/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
 
 	export let transaction, players, leagueTeamManagers;
 
@@ -108,7 +108,7 @@
     }
 
     .add {
-        color: #00ceb8;
+        color: var(--RB);
     }
 
     .drop {

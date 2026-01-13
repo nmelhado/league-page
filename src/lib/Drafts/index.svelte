@@ -1,5 +1,5 @@
 <script>
-	import { waitForAll } from '$lib/utils/helper';
+	import { waitForAll } from '$lib/utils/helpers/helper';
     import LinearProgress from '@smui/linear-progress';
     import Draft from './Draft.svelte'; 
 

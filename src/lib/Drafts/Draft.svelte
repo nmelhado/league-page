@@ -3,8 +3,8 @@
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';
     import DraftRow from './DraftRow.svelte';
-    import { gotoManager } from '$lib/utils/helper'
-	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import { gotoManager } from '$lib/utils/helpers/helper'
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
     
     export let draftData, leagueTeamManagers, previous = false, year, players;
 
@@ -45,12 +45,12 @@
 
     .accuracyText {
         font-size: 0.7em;
-        color: #666;
+        color: var(--g666);
     }
 
     .disclaimer {
         font-style: italic;
-        color: #888;
+        color: var(--g888);
     }
 
     :global(.draftBoard) {
@@ -79,7 +79,7 @@
 	}
 
     :global(.draftBoard td) {
-        border-right: 1px solid #ddd;
+        border-right: 1px solid var(--ddd);
         height: 7em;
         font-size: 0.7em;
     }
@@ -101,7 +101,7 @@
     }
 	
 	:global(.curDraftName) {
-        color: #888;
+        color: var(--g888);
         font-size: 0.7em;
         font-style: italic;
     }

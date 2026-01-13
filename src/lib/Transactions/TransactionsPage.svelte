@@ -4,10 +4,10 @@
 	import TradeTransaction from './TradeTransaction.svelte';
 	import Button, { Label } from '@smui/button';
 	import IconButton from '@smui/icon-button';
-	import Pagination from '../Pagination.svelte';
+	import Pagination from '../shared/components/Pagination.svelte';
 	import { match } from 'fuzzyjs';
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helper';
+	import { getLeagueTransactions, loadPlayers } from '$lib/utils/helpers/helper';
 	import WaiverTransaction from './WaiverTransaction.svelte';
 
 	export let show, playersInfo, query, queryPage, transactions, stale, perPage, postUpdate=false, leagueTeamManagers;
@@ -197,7 +197,7 @@
 		width: 100%;
 		font-style: italic;
 		text-align: center;
-		color: #999;
+		color: var(--g999);
 	}
 </style>
 

@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { getLeagueTransactions, getLeagueTeamManagers, loadPlayers, waitForAll } from '$lib/utils/helper';
+	import { getLeagueTransactions, getLeagueTeamManagers, loadPlayers, waitForAll } from '$lib/utils/helpers/helper';
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from 'svelte';
 	import TradeTransaction from './TradeTransaction.svelte';
@@ -34,31 +34,48 @@
 	.transactions {
 		position: relative;
 		width: 100%;
-		z-index: 1;
+		padding: 2rem 1rem;
+		max-width: 900px;
+		margin: 0 auto;
+		color: #f0f0f0;
+		font-family: 'Inter', sans-serif;
 	}
 
 	p {
 		text-align: center;
+		font-size: 0.95rem;
+		color: var(--ccc);
 	}
 
 	h5 {
 		text-align: center;
-		margin: 10px auto 16px;
+		margin: 2rem auto 1rem;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #ffffff;
+		letter-spacing: 0.5px;
 	}
 
 	.link {
 		cursor: pointer;
 		color: #888;
-		padding: 10px 20px;
-		margin-bottom: 10px;
+		padding: 0.5rem 1rem;
+		margin-top: 1rem;
+		font-weight: 500;
+		text-align: center;
+		display: inline-block;
+		transition: color 0.3s ease;
 	}
 
 	.link:hover {
-		color: #00316b;
+		color: #00bfff;
+		text-decoration: underline;
 	}
 
 	.nothingYet {
-		margin: 5em 0;
+		margin: 4rem 0;
+		font-size: 1rem;
+		color: var(--g999);
 	}
 </style>
 

@@ -1,4 +1,4 @@
-import { getBrackets, getLeagueMatchups, getLeagueTeamManagers, loadPlayers } from '$lib/utils/helper';
+import { getBrackets, getLeagueMatchups, getLeagueTeamManagers, loadPlayers } from '$lib/utils/helpers/helper';
 
 export async function load({ url, fetch }) {
     const queryWeek = url?.searchParams?.get('week');

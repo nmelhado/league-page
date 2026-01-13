@@ -1,14 +1,14 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
 	import LinearProgress from '@smui/linear-progress';
-    import {loadPlayers, getLeagueTransactions} from '$lib/utils/helper';
+    import {loadPlayers, getLeagueTransactions} from '$lib/utils/helpers/helper';
 	import Roster from '../Rosters/Roster.svelte';
 	import TransactionsPage from '../Transactions/TransactionsPage.svelte';
     import { goto } from '$app/navigation';
     import ManagerFantasyInfo from './ManagerFantasyInfo.svelte';
     import ManagerAwards from './ManagerAwards.svelte';
     import { onMount } from 'svelte';
-	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
 
     export let manager, managers, rostersData, leagueTeamManagers, rosterPositions, transactionsData, awards, records;
 
@@ -83,7 +83,7 @@
         max-width: 200px;
         height: auto;
         margin: 5em auto 1em;
-        box-shadow: 0 0 8px 4px #aaa;
+        box-shadow: 0 0 8px 4px var(--aaa);
     }
 
     h2 {
@@ -109,7 +109,7 @@
     }
 
     .basicInfo span {
-        color: #888;
+        color: var(--g888);
         font-size: 0.9em;
     }
 
@@ -147,7 +147,7 @@
     .teamSub {
         font-size: 0.4em;
         line-height: 1em;
-        color: #666;
+        color: var(--g666);
     }
 
     .managerNav {
@@ -173,7 +173,7 @@
 
     .commissionerBadge span {
         font-style: normal;
-        color: #fff;
+        color: var(--fff);
     }
 
     /* media queries */

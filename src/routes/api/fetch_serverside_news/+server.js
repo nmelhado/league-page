@@ -1,6 +1,6 @@
 import {XMLParser, XMLValidator} from 'fast-xml-parser';
-import { waitForAll } from '$lib/utils/helperFunctions/multiPromise';
-import { dynasty } from '$lib/utils/helper';
+import { waitForAll } from '$lib/utils/helpers/multiPromise';
+import { dynasty } from '$lib/utils/helpers/helper';
 import { json } from '@sveltejs/kit';
 
 const FF_BALLERS= 'https://thefantasyfootballers.libsyn.com/fantasyfootball';

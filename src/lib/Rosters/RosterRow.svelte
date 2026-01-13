@@ -111,7 +111,7 @@
 	}
 
 	span.nickname {
-		color: #888;
+		color: var(--g888);
 		font-style: italic;
 		font-size: 0.8em;
 	}
@@ -129,15 +129,15 @@
 	}
 
 	:global(.OUT) {
-		color: #851313;
+		color: var(--buttonPrimary);
 	}
 
 	:global(.IR) {
-		color: #851313;
+		color: var(--buttonPrimary);
 	}
 
 	:global(.PUP) {
-		color: #851313;
+		color: var(--buttonPrimary);
 	}
 
     .additionalInfo {

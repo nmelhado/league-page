@@ -1,6 +1,6 @@
 <script>
     import Button, { Group, Label } from '@smui/button';
-    import {round} from '$lib/utils/helper'
+    import {round} from '$lib/utils/helpers/helper'
   	import RecordsAndRankings from './RecordsAndRankings.svelte';
 
     export let leagueRosterRecords, seasonWeekRecords, leagueTeamManagers, currentYear, lastYear, transactionTotals, key;

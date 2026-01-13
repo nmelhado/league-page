@@ -1,5 +1,5 @@
 <script>
-    import { gotoManager } from '$lib/utils/helper';
+    import { gotoManager } from '$lib/utils/helpers/helper';
   	import { Row, Cell } from '@smui/data-table';
 
     export let columnOrder, team, standing, leagueTeamManagers;

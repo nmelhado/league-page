@@ -108,7 +108,7 @@
     }
 
     .Picks {
-        background: #73b647;
+        background: var(--PICKSfade);
     }
     .K {
         background-color: var(--K);
@@ -119,27 +119,27 @@
     }
 
     .CB {
-        background-color: #ffcc7a;
+        background-color: var(--CBfade);
     }
 
     .SS {
-        background-color: #b7a1db;
+        background-color: var(--SSfade);
     }
 
     .FS {
-        background-color: #ebe7b3;
+        background-color: var(--FSfade);
     }
 
     .DE {
-        background-color: #b1d0e9;
+        background-color: var(--DEfade);
     }
 
     .DL {
-        background-color: #c392d3;
+        background-color: var(--DLfade);
     }
 
     .LB {
-        background-color: #98c097;
+        background-color: var(--LBfade);
     }
 
     .favoritePlayer {

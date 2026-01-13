@@ -1,4 +1,4 @@
-import { getLeagueTransactions, loadPlayers, getLeagueTeamManagers } from '$lib/utils/helper';
+import { getLeagueTransactions, loadPlayers, getLeagueTeamManagers } from '$lib/utils/helpers/helper';
 
 export async function load({ url, fetch }) {
     const show = url?.searchParams?.get('show');

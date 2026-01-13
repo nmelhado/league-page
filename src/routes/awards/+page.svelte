@@ -1,6 +1,6 @@
 <script>
 	import { Awards } from '$lib/components'
-	import { waitForAll } from '$lib/utils/helper';
+	import { waitForAll } from '$lib/utils/helpers/helper';
 	import LinearProgress from '@smui/linear-progress';
 
     export let data;

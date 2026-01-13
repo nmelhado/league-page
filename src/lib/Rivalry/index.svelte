@@ -1,8 +1,8 @@
 <script>
 	import Matchup from "$lib/Matchups/Matchup.svelte";
 	import TradeTransaction from "$lib/Transactions/TradeTransaction.svelte";
-	import { getLeagueRecords, getLeagueTransactions, getRivalryMatchups, loadPlayers, round } from "$lib/utils/helper";
-	import { getRosterIDFromManagerIDAndYear } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getLeagueRecords, getLeagueTransactions, getRivalryMatchups, loadPlayers, round } from "$lib/utils/helpers/helper";
+	import { getRosterIDFromManagerIDAndYear } from "$lib/utils/helpers/universalFunctions";
 	import LinearProgress from '@smui/linear-progress';
 	import { onMount } from "svelte";
 	import ComparissonBar from "./ComparissonBar.svelte";

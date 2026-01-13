@@ -1,4 +1,4 @@
-import { getAwards, getLeagueTeamManagers } from '$lib/utils/helper';
+import { getAwards, getLeagueTeamManagers } from '$lib/utils/helpers/helper';
 
 export async function load() {
     const awardsData = getAwards();

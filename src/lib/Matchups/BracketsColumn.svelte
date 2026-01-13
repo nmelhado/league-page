@@ -1,6 +1,6 @@
 <script>
-    import { round } from "$lib/utils/helper";
-	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
+    import { round } from "$lib/utils/helpers/helper";
+	import { getAvatarFromTeamManagers, getTeamNameFromTeamManagers } from "$lib/utils/helpers/universalFunctions";
 
     export let leagueTeamManagers, players, matchCol, playoffsStart, ix, playoffLength, consolation = false, losers = false, numRosters, consolationNum, selected;
 
@@ -22,7 +22,7 @@
                 case 3:
                     label = 'Quarterfinals'
                     break;
-                case 3:
+                case 4:
                     label = 'Eighth-Finals'
                     break;
             
@@ -235,7 +235,7 @@
     }
 
     .bye {
-        color: #999;
+        color: var(--g999);
         font-style: italic;
     }
 
@@ -246,7 +246,7 @@
         width: 25px;
         margin: 0;
         border: 0.25px solid #777;
-        background-color: #eee;
+        background-color: var(--eee);
     }
 
     .points {

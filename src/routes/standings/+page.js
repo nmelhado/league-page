@@ -1,4 +1,4 @@
-import { getLeagueStandings, getLeagueTeamManagers } from '$lib/utils/helper';
+import { getLeagueStandings, getLeagueTeamManagers } from '$lib/utils/helpers/helper';
 
 export async function load() {
 

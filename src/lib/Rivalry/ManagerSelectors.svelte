@@ -1,6 +1,6 @@
 <script>
 	import { goto } from "$app/navigation";
-	import { getTeamData } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getTeamData } from "$lib/utils/helpers/universalFunctions";
 
     export let playerOne, playerTwo, leagueTeamManagers;
 

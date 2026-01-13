@@ -1,5 +1,5 @@
 <script>
-  	import { getTeamNameFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+  	import { getTeamNameFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
     import {Row, Cell } from '@smui/data-table';
     export let draftRow, draftType, row, reversalRound, previous=false, players, year, leagueTeamManagers;
 </script>
@@ -26,12 +26,12 @@
         top: 0.1em;
         left: 0.1em;
         font-style: italic;
-        color: #444;
+        color: var(--g444);
     }
 
     .newOwner {
         font-style: italic;
-        color: #444;
+        color: var(--g444);
         text-align: center;
         white-space: break-spaces;
         line-height: 1.2em;

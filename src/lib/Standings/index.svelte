@@ -1,6 +1,6 @@
 <script>
-    import { leagueName, round } from '$lib/utils/helper';
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+    import { leagueName, round } from '$lib/utils/helpers/helper';
+	import { getTeamFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
   	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
 	import LinearProgress from '@smui/linear-progress';
     import { onMount } from 'svelte';

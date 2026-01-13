@@ -1,5 +1,5 @@
 <script>
-	import { getTeamFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
+	import { getTeamFromTeamManagers } from '$lib/utils/helpers/universalFunctions';
 
 	export let move, leagueTeamManagers, players, season;
 
@@ -73,7 +73,7 @@
 	}
 
 	.originalOwner {
-		color: #aaa;
+		color: var(--aaa);
 		font-style: italic;
 	}
 

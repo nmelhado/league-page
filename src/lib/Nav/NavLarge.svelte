@@ -5,7 +5,7 @@
 	import TabBar from '@smui/tab-bar';
     import { page } from '$app/state';
 	import { goto, preloadData } from '$app/navigation';
-	import { enableBlog, managers } from '$lib/utils/leagueInfo';
+	import { managers } from '$lib/utils/leagueInfo';
 
 	let active = $state(tabs.find(tab => tab.dest == page.url.pathname || (tab.nest && tab.children.find(subTab => subTab.dest == page.url.pathname))));
 
@@ -119,7 +119,6 @@
 				</div>
 			{:else}
 				<Tab
-					class="{tab.label == 'Blog' && !enableBlog ? 'dontDisplay' : ''}"
 					{tab}
 					onTouchstart={() => preloadData(tab.dest)}
 					onMouseover={() => preloadData(tab.dest)}

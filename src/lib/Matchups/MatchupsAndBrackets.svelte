@@ -6,7 +6,7 @@
     import Button, { Group, Label } from '@smui/button';
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
-    import { loadPlayers } from '$lib/utils/helper';
+    import { loadPlayers } from '$lib/utils/helpers/helper';
 
 	export let queryWeek, leagueTeamManagersData, matchupsData, bracketsData, playersData;
 

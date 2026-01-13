@@ -7,7 +7,7 @@ import {
     getAwards,
     getLeagueRecords,
     managers as managersObj
-} from '$lib/utils/helper';
+} from '$lib/utils/helpers/helper';
 export async function load({ url }) {
     if(!managersObj.length) return false;
     const managersInfo = waitForAll(

@@ -1,6 +1,6 @@
 import { leagueID } from "$lib/utils/leagueInfo"
-import { round } from "$lib/utils/helperFunctions/universalFunctions"
-import { waitForAll } from "$lib/utils/helperFunctions/multiPromise"
+import { round } from "$lib/utils/helpers/universalFunctions"
+import { waitForAll } from "$lib/utils/helpers/multiPromise"
 import { json, error } from '@sveltejs/kit';
 
 export async function GET() {

@@ -1,4 +1,4 @@
-import { getNews } from '$lib/utils/helper';
+import { getNews } from '$lib/utils/helpers/helper';
 
 export async function load({fetch}) {
     const articlesData = getNews(fetch);
