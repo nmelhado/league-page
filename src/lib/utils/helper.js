@@ -18,6 +18,7 @@ import { getBrackets } from './helperFunctions/leagueBrackets';
 import { getBlogPosts, generateParagraph } from './helperFunctions/getBlogPosts';
 import { getLeagueStandings } from './helperFunctions/leagueStandings';
 import { getWeeklyAwards } from './helperFunctions/weeklyAwards';
+import { getLuckIndex } from './helperFunctions/luckIndex';
 
 export {
     enableBlog,
@@ -52,6 +53,7 @@ export {
     predictScores,
     getLeagueStandings,
     getWeeklyAwards,
+    getLuckIndex,
     getAuthor,
     parseDate,
     getAvatar,
