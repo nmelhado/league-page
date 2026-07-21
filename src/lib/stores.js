@@ -15,3 +15,5 @@ export const news = writable([]);
 export const posts = writable([]);
 export const brackets = writable({});
 export const standingsStore = writable({});
+export const weeklyAwardsStore = writable({});
+export const luckIndexStore = writable({});

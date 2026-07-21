@@ -52,6 +52,11 @@ export const tabs = [
                 dest: '/standings',
             },
             {
+                icon: 'casino',
+                label: 'Luck Index',
+                dest: '/luck-index',
+            },
+            {
                 icon: 'view_comfy',
                 label: 'Drafts',
                 dest: '/drafts',
@@ -60,6 +65,11 @@ export const tabs = [
                 icon: 'emoji_events',
                 label: 'Trophy Room',
                 dest: '/awards',
+            },
+            {
+                icon: 'star',
+                label: 'Weekly Awards',
+                dest: '/weekly-awards',
             },
             {
                 icon: 'military_tech',
