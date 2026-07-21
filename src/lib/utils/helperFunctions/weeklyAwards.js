@@ -6,14 +6,27 @@ import { round } from './universalFunctions';
 import { get } from 'svelte/store';
 import { weeklyAwardsStore } from '$lib/stores';
 
+// ordered list of every award we hand out, shared by the weekly cards and
+// the season-long tally so labels/emoji stay in sync
+export const AWARD_TYPES = [
+	{ key: 'sizzler', emoji: '🔥', title: 'Sizzler of the Week' },
+	{ key: 'toilet', emoji: '🚽', title: 'Stinker of the Week' },
+	{ key: 'blowout', emoji: '💥', title: 'Beatdown of the Week' },
+	{ key: 'nailBiter', emoji: '😰', title: 'Nail-Biter of the Week' },
+	{ key: 'robbed', emoji: '😤', title: 'Hard-Luck Loss' },
+	{ key: 'lucky', emoji: '🍀', title: 'Lucky Duck' },
+	{ key: 'bench', emoji: '🪑', title: 'Bench Warmer' },
+];
+
 /**
  * getWeeklyAwards builds auto-generated, fun "superlative" awards for each
- * completed week of the most recent season that has scoring data.
+ * completed week of the most recent season that has scoring data, plus a
+ * season-long tally of how many of each award every team has collected.
  *
  * It walks back through previous_league_id if the current season hasn't
  * started yet, so the page always shows something during the offseason.
  *
- * @returns {Object} { year, weeks: [{ week, awards: [...] }], latestWeek }
+ * @returns {Object} { year, weeks: [{ week, awards: [...] }], latestWeek, tally }
  */
 export const getWeeklyAwards = async () => {
 	// return the cached response for this session if we already built it
@@ -45,7 +58,7 @@ export const getWeeklyAwards = async () => {
 	}
 
 	if(!processed) {
-		const response = { year: parseInt(leagueData.season), weeks: [], latestWeek: null };
+		const response = { year: parseInt(leagueData.season), weeks: [], latestWeek: null, tally: { awardTypes: AWARD_TYPES, rows: [] } };
 		weeklyAwardsStore.update(() => response);
 		return response;
 	}
@@ -54,10 +67,28 @@ export const getWeeklyAwards = async () => {
 		year: processed.year,
 		weeks: processed.weeks,
 		latestWeek: processed.weeks[processed.weeks.length - 1].week,
+		tally: buildTally(processed.weeks),
 	};
 
 	weeklyAwardsStore.update(() => response);
 	return response;
+}
+
+// aggregate every week's awards into a per-team, per-award-type count
+const buildTally = (weeks) => {
+	const rowsMap = {};
+	for(const w of weeks) {
+		for(const award of w.awards) {
+			if(!rowsMap[award.rosterID]) {
+				rowsMap[award.rosterID] = { rosterID: award.rosterID, counts: {}, total: 0 };
+			}
+			const row = rowsMap[award.rosterID];
+			row.counts[award.key] = (row.counts[award.key] || 0) + 1;
+			row.total++;
+		}
+	}
+	const rows = Object.values(rowsMap).sort((a, b) => b.total - a.total);
+	return { awardTypes: AWARD_TYPES, rows };
 }
 
 // fetch every regular season week for a season and compute awards for the

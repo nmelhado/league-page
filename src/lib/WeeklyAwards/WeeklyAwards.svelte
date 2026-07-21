@@ -4,7 +4,7 @@
 
 	export let weeklyAwards, leagueTeamManagers;
 
-	const { year, weeks, latestWeek } = weeklyAwards;
+	const { year, weeks, latestWeek, tally } = weeklyAwards;
 
 	let selectedWeek = latestWeek;
 
@@ -144,6 +144,85 @@
 		margin: 60px auto;
 		color: var(--bbb);
 	}
+
+	.tallySection {
+		margin-top: 48px;
+	}
+
+	.tallyWrap {
+		overflow-x: auto;
+		border: 1px solid var(--bbb);
+		border-radius: 10px;
+		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		background-color: var(--fff);
+	}
+
+	th, td {
+		padding: 10px 12px;
+		text-align: center;
+		white-space: nowrap;
+		border-bottom: 1px solid var(--eee, #eaeaea);
+	}
+
+	thead th {
+		font-size: 0.9em;
+		position: sticky;
+		top: 0;
+		background-color: var(--fff);
+	}
+
+	.emojiHead {
+		font-size: 1.25em;
+	}
+
+	.teamCol {
+		text-align: left;
+		position: sticky;
+		left: 0;
+		background-color: var(--fff);
+		z-index: 1;
+	}
+
+	.teamCell {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
+	}
+
+	.tallyAvatar {
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		border: 1px solid var(--bbb);
+		flex-shrink: 0;
+	}
+
+	.tallyName {
+		font-weight: 600;
+		max-width: 160px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.zero {
+		color: var(--bbb);
+		opacity: 0.4;
+	}
+
+	.totalCol {
+		font-weight: 700;
+		border-left: 1px solid var(--bbb);
+	}
+
+	tbody tr:last-child td {
+		border-bottom: none;
+	}
 </style>
 
 <div class="wrapper">
@@ -184,6 +263,42 @@
 						</div>
 					</div>
 				{/each}
+			</div>
+		{/if}
+
+		{#if tally && tally.rows.length}
+			<div class="tallySection">
+				<h3>📊 Season Tally</h3>
+				<p class="subhead">Who's racking up the most hardware ({year})</p>
+				<div class="tallyWrap">
+					<table>
+						<thead>
+							<tr>
+								<th class="teamCol">Team</th>
+								{#each tally.awardTypes as type}
+									<th title={type.title}><span class="emojiHead">{type.emoji}</span></th>
+								{/each}
+								<th class="totalCol">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each tally.rows as row (row.rosterID)}
+								<tr>
+									<td class="teamCol">
+										<div class="teamCell" onclick={() => gotoManager({ year, leagueTeamManagers, rosterID: row.rosterID })}>
+											<img class="tallyAvatar" src={teamAvatar(row.rosterID)} alt={teamName(row.rosterID)} />
+											<span class="tallyName">{teamName(row.rosterID)}</span>
+										</div>
+									</td>
+									{#each tally.awardTypes as type}
+										<td class={row.counts[type.key] ? '' : 'zero'}>{row.counts[type.key] || 0}</td>
+									{/each}
+									<td class="totalCol">{row.total}</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		{/if}
 	{/if}
