@@ -19,6 +19,7 @@ import FullPost from './BlogPosts/FullPost.svelte';
 import Posts from './BlogPosts/Posts.svelte';
 import Standings from './Standings/index.svelte';
 import WeeklyAwards from './WeeklyAwards/WeeklyAwards.svelte';
+import LuckIndex from './LuckIndex/LuckIndex.svelte';
 
 export {
     Nav,
@@ -42,4 +43,5 @@ export {
     FullPost,
     Standings,
     WeeklyAwards,
+    LuckIndex,
 };

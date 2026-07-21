@@ -52,6 +52,11 @@ export const tabs = [
                 dest: '/standings',
             },
             {
+                icon: 'casino',
+                label: 'Luck Index',
+                dest: '/luck-index',
+            },
+            {
                 icon: 'view_comfy',
                 label: 'Drafts',
                 dest: '/drafts',
