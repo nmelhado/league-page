@@ -62,6 +62,11 @@ export const tabs = [
                 dest: '/awards',
             },
             {
+                icon: 'star',
+                label: 'Weekly Awards',
+                dest: '/weekly-awards',
+            },
+            {
                 icon: 'military_tech',
                 label: 'Records',
                 dest: '/records',
