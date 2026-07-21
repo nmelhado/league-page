@@ -159,12 +159,12 @@
 	}
 
 	.lucky {
-		color: #d13b3b;
+		color: #2e9c4f;
 		font-weight: 700;
 	}
 
 	.unlucky {
-		color: #2e9c4f;
+		color: #d13b3b;
 		font-weight: 700;
 	}
 
@@ -264,8 +264,8 @@
 		<p class="legend">
 			Through {weeksCounted} scored {weeksCounted === 1 ? 'week' : 'weeks'} of {year}.
 			<b>All-Play</b> counts each team against every other team every week, removing schedule luck.
-			<b>Luck</b> is actual wins minus expected wins — <span class="lucky">red means lucky</span> (winning more than your scores deserve),
-			<span class="unlucky">green means unlucky</span>.
+			<b>Luck</b> is actual wins minus expected wins — <span class="lucky">green means lucky</span> (winning more than your scores deserve),
+			<span class="unlucky">red means unlucky</span>.
 		</p>
 	{/if}
 </div>
