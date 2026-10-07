@@ -103,7 +103,7 @@ import { dynasty } from './utils/helper';
             icon: "calculate",
             premium: false,
             separator: false,
-            dynastyOnly: false,
+            dynastyOnly: true,
         },
     ];
 </script>
